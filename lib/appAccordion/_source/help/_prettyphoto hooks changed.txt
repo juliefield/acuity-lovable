@@ -1,0 +1,5 @@
+Prettyphoto changed hooks!
+
+http://forums.no-margin-for-errors.com/discussion/1700/relprettyphoto-is-invalid-keyword-for-rel-attribute-for-html5/p1
+
+http://forums.no-margin-for-errors.com/discussion/1741/achieve-clean-validation-for-html5/p1

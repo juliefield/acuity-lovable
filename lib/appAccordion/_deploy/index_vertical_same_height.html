@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>jQuery Accordion MultiPurpose Gallery Slideshow By Tean</title>
+    
+    	<link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.jscrollpane_vertical_same_height.css" media="all" />
+        <!--[if lte IE 8 ]><link rel="stylesheet" type="text/css" href="css/ie.css" /><![endif]-->
+        <link rel="stylesheet" type="text/css" href="css/accordionGallery_vertical_same_height.css" />
+        <link href='http://fonts.googleapis.com/css?family=Dosis:400,700' rel='stylesheet' type='text/css'>
+        
+        <script type="text/javascript" src="js/jquery-1.7.min.js"></script>
+        <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+        <script type="text/javascript" src="js/jquery.prettyPhoto.js" charset="utf-8"></script>
+        <script type="text/javascript" src="js/jquery.mousewheel.min.js"></script>
+        <script type="text/javascript" src="js/jquery.jscrollpane.min.js"></script>
+        <script type="text/javascript" src="js/froogaloop.min.js"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+        <script type="text/javascript" src="js/jquery.accordionGallery.min.js"></script>
+		<script type="text/javascript">
+			
+			function accordionGalleryReady(){
+				//function called when component is ready to receive public method calls
+				//console.log('accordionGalleryReady');
+			}
+			
+			function detailActivated(){
+				//function called when prettyphoto (in this case) is being triggered (in which case slideshow if is on, automatically stops, then later when prettyphoto is closed, slideshow is resumed)
+				//console.log('detailActivated');
+			}
+			
+			function detailClosed(){
+				//function called when prettyphoto (in this case) is closed
+				//console.log('detailClosed');
+			}
+			
+			function beforeSlideChange(slideNum){
+				//function called before slide change (plus slide number returned)
+				//console.log('beforeSlideChange, slideNum = ', slideNum);
+				if(slideNum == 0){//slide number containing vimeo iframe
+					if(vm_player && vm_player.api('unload') != undefined) vm_player.api('unload');	
+				}
+				else if(slideNum == 2){//slide number containing youtube iframe
+					if(yt_player && yt_player.stopVideo != undefined) yt_player.stopVideo();
+				}
+			}
+			
+			function afterSlideChange(slideNum){
+				//function called after slide change (plus slide number returned)
+				//console.log('afterSlideChange, slideNum = ', slideNum);
+			}
+			
+			// SETTINGS
+			var accordion_settings = {
+				/* componentOrientation: horizontal/vertical */
+				componentOrientation: 'vertical',
+				/* sameSizeSlides: true, false (if false, you NEED to set dimension attributtes for each slide: 'data-width', 'data-height', otherwise use css for slide dimensions since all slides will be the same size).*/
+				sameSizeSlides: true,
+				/* activeItem; slide to open on beginning, enter -1 for none, 0 = first, 1 = second, 2 = third... etc. */
+			 	activeItem: 0,
+				/* useKeyboardNavigation: true/false (navigate through slides with left/right keys) */
+				useKeyboardNavigation: true,
+				/* alignSlides: true/false (align slides in accordion as active slide number changes) */
+				alignSlides: true,
+				/* visibleItems: less of equal to total items in accordion. NOTE: The added sizes of your visible items HAVE to be at least the size of the accordion or more. So for example, you cannot have 1 visible item which has the width of 300px, while the width of your accordion is 500px, this is not going to work. Or you cannot have 2 visible items, each 250px wide, so together 500px, while the size of your accordion is 700px. The only way visibleItems can be 1, if the slide size is the size of the accordion or more (and thats in case of the sameSizeSlides = true obvioulsy). */
+				visibleItems:5,
+				/* slideshowOn; true, false (its automatically paused on accordion rollover) */
+				slideshowOn: false,
+				/* slideshowDirection; backward/forward */
+				slideshowDirection: 'forward',
+				/* useGlobalDelay; true, false (use same timer delay for all slides, if false you NEED to set individual delays for all slides: 'data-delay') */
+				useGlobalDelay: true,
+				/* slideshowDelay; global delay, in miliseconds */
+				slideshowDelay: 3000,
+				/* openOnRollover; true, false (if false, then open on click) */
+				openOnRollover: true,
+				/* keepSelection; true, false. If true, on mouse out of component keep accordion opened. This is only valid if openOnRollover = true.  */
+				keepSelection: true,
+				/* useControls: true, false (prev, pause/play, next). If you dont use them, dont delete them from the DOM, they css will remain 'display:none', but jquery code needs them for the slideshow timer. */
+				useControls:false
+				
+			};
+			
+			jQuery(window).load(function() {
+				
+				jQuery.noConflict();
+				
+				WebFontConfig = {
+				google: {
+					families: [ 'Dosis' ]
+				  },
+				  fontactive: function(fontFamily, fontDescription) {
+					//init component
+					jQuery.accordionGallery('#componentWrapper', accordion_settings);
+					accordion_settings = null;
+					
+					//init prettyphoto
+					jQuery("#componentWrapper a[data-rel^='prettyPhoto']").prettyPhoto({theme:'pp_default',
+												deeplinking: true, 
+												callback: function(){jQuery.accordionGallery.checkSlideshow2();}/* Called when prettyPhoto is closed */});
+												
+					//get vimeo api
+					vm_iframe = jQuery('#vm_player_1')[0],vm_player = $f(vm_iframe);
+					vm_player.addEvent('ready', function() {
+						//console.log('ready, ', vm_player);
+					});
+				  }
+			  };
+			  (function() {
+				var wf = document.createElement('script');
+				wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+					'://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+				wf.type = 'text/javascript';
+				wf.async = 'true';
+				var s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(wf, s);
+			  })();
+			  
+			  //after div holder (#gmap_canvas) for google map is ready in the dom, otherwise we get an error in ie coming from google maps.
+			  //google.maps.event.addDomListener(window, 'load', initialize);
+			   initializeGmap();
+			});
+			
+			
+			/*
+			https://developers.google.com/maps/documentation/javascript/reference
+			google map example 
+			*/
+			
+			  var gmap;
+			  function initializeGmap() {
+				var myOptions = {
+				  zoom: 8,
+				  center: new google.maps.LatLng(48.856614, 2.3522219),
+				  mapTypeId: google.maps.MapTypeId.ROADMAP
+				};
+				gmap = new google.maps.Map(document.getElementById('gmap_canvas'),
+					myOptions);
+			  }
+			  
+			  //vimeo vars
+			  var vm_iframe,vm_player;
+			
+			  //youtube vars
+			  var yt_player;
+			  
+			  var tag = document.createElement('script');
+			  tag.src = "http://www.youtube.com/player_api";
+			  var firstScriptTag = document.getElementsByTagName('script')[0];
+			  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+			  
+			  function onYouTubePlayerAPIReady() {
+				  yt_player = new YT.Player('yt_player1', {
+					events: {
+					  'onReady': onPlayerReady
+					}
+				  });
+			  }
+			  function onPlayerReady(event) {
+				// console.log('onPlayerReady');
+			  }
+		
+        </script>
+        
+  </head>
+  <body>  
+  
+     <div id="previewInfo">
+         <ul>
+             <li>Vertical version</li>
+             <li>Open on rollover</li>
+             <li>Scrollbar</li>
+             <li>Slideshow off</li>
+             <li>Same size slides</li>
+             <li>More items than visible in accordion</li>
+             <li>Inline HTML content</li>
+         </ul>
+     </div>
+     
+     <!-- wrapper for the whole component -->
+     <div id="componentWrapper">  
+                 
+           <!-- 
+           if 'sameSizeSlides'=false in the html settings, you NEED to set dimension attributtes for each slide: 'data-width', 'data-height'.
+           If componentOrientation = horizontal (data-width is needed, set 'height' of the slide in CSS!), since all slides need to be the same height.
+           If componentOrientation = vertical (data-height is needed, set 'width' of the slide in CSS!), since all slides need to be the same width.
+           data-width - (width of the slide)
+           data-height - (height of the slide)
+           data-link - link whole slide with this feature, leave blank for none. (NOTE! You cannot access anything inside this slide if click is assigned to the whole slide)
+           data-target (if data-link is used: '_blank' - open in new window, '_parent' - open in same window). Blank by default.
+           data-preventDefaultOnOpen - true/false (or empty), needed only if open slide on click is used.
+           
+           vimeo embed: https://developer.vimeo.com/player/embedding, https://developer.vimeo.com/player/js-api
+           youtube embed: https://developers.google.com/youtube/iframe_api_reference, https://developers.google.com/youtube/player_parameters
+           Youtube z-index problem: http://php.quicoto.com/how-to-fix-z-index-in-youtube-iframes/
+            -->   
+            
+           <div class="componentScrollWrapper">   
+                 
+               <div class="componentPlaylist"> 
+              		<div class="slide" data-width='' data-height='' data-delay='3000' data-link='' data-target='' data-preventDefaultOnOpen=''>
+						<iframe id="vm_player_1" src="http://player.vimeo.com/video/14665315?api=1&amp;player_id=vm_player_1" width="500" height="250" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                    </div>
+                    <div class="slide" data-width='' data-height='' data-delay='3000' data-link='' data-target='' data-preventDefaultOnOpen=''> 
+                        <img class='stack_img' src='data/images/v/sh/04.jpg' width='500' height='250' alt=''/>
+                        <div class="slide_content">
+                            <h3>Horizontal or vertical orientation</h3>
+                            <p><strong>Embed multiple instances</strong> in same page.<br />All <strong>5 demo examples included</strong> in the download package for easy setup.</p>
+                        </div>
+                        <div class="slide_detail">
+                            <a class="pp_content" href="data/images/v/sh/04l.jpg" data-rel="prettyPhoto[gallery1]" title="Nunc eget urna ut velit volutpat rhoncus."><img src="data/icons/detail.png" width="30" height="30" alt="Picture title" /></a>
+                            <a class="pp_link" href="http://codecanyon.net/user/Tean" target='_blank' ><img src="data/icons/link.png" width="30" height="30" alt="" /></a>  
+                        </div>
+                    </div>
+                    <div class="slide" data-width='' data-height='' data-delay='3000' data-link='' data-target='' data-preventDefaultOnOpen=''>
+                        <iframe id="yt_player1" class="youtube-player" type="text/html" width="500" height="250" src="http://www.youtube.com/embed/rDb7TMolGfs?wmode=transparent" frameborder="0"></iframe>
+                    </div> 
+                    <div class="slide" data-width='' data-height='' data-delay='3000' data-link='' data-target='' data-preventDefaultOnOpen=''>
+                        <img class='stack_img' src='data/images/v/sh/23.jpg' width='500' height='250' alt=''/>
+   						<div class="slide_content">
+                            <h3>Unlimited slides possible</h3>
+                            <p>Accordion supports <strong>unlimited number of slides</strong> inside which you can browse using the <strong>scroll</strong>, optional <strong>controls</strong> and optional <strong>keyboard navigation</strong>.</p>
+                        </div>
+                        <div class="slide_detail">
+                            <a class="pp_content" href="data/images/v/sh/23l.jpg" data-rel="prettyPhoto[gallery1]" title="Optional description in Prettyphoto."><img src="data/icons/detail.png" width="30" height="30" alt="Large Image" /></a>
+                        </div>
+                    </div>
+                    <div class="slide" data-width='' data-height='' data-delay='3000' data-link='' data-target='' data-preventDefaultOnOpen=''>
+                        <img class='stack_img' src='data/images/v/sh/27.jpg' width='500' height='250' alt=''/>
+                        <div class="slide_content">
+                            <h3>Inline custom content supported</h3>
+                            <p>Embed anything inside each slide, like <strong>Youtube</strong> or <strong>Vimeo</strong> video, <strong>Google maps</strong>, and <strong>HTML</strong> content...</p>
+                        </div>
+                        <div class="slide_detail">
+                            <a class="pp_content" href="http://www.youtube.com/watch?v=Q9Phn1yQT8U" data-rel="prettyPhoto[gallery1]" title="Morbi mi. Vivamus in nulla. Praesent nulla nibh, molestie id, lacinia et, dictum sed, eros. Quisque vehicula, enim et convallis condimentum, magna erat semper nisl, in pellentesque metus lacus quis ante."><img src="data/icons/detail.png" width="30" height="30" alt="Youtube Video" /></a>  
+                            <a class="pp_link" href="http://codecanyon.net/user/Tean" target='_blank' ><img src="data/icons/link.png" width="30" height="30" alt="" /></a>  
+                        </div>
+                    </div>
+                    <div class="slide" data-width='' data-height='' data-delay='3000' data-link='' data-target='' data-preventDefaultOnOpen=''>
+                        <div id="gmap_canvas"></div>
+                        <div class="slide_detail">
+                            <a class="pp_content" href="http://vimeo.com/14665315" data-rel="prettyPhoto[gallery1]" title="Optional description in Prettyphoto."><img src="data/icons/detail.png" width="30" height="30" alt="Vimeo Video" /></a>  
+                            <a class="pp_link" href="http://www.google.com/" target='_blank' ><img src="data/icons/link.png" width="30" height="30" alt="" /></a>  
+                        </div>
+                    </div> 
+                    <div class="slide" data-width='' data-height='' data-delay='3000' data-link='' data-target='' data-preventDefaultOnOpen=''>
+                        <img class='stack_img' src='data/images/v/sh/02.jpg' width='500' height='250' alt=''/>
+                        <div class="slide_content">
+                            <h3>Navigate slides with scrollbar, optional controls and keyboard support</h3>
+                            <p>Nullam aliquam, mauris <a href="http://codecanyon.net/user/Tean" target='_blank' >codecanyon</a> tempor fringilla, ante metus tempus justo, et rhoncus neque est quis nulla. Nulla hendrerit lacus quis orci.</p>
+                        </div>
+                        <div class="slide_detail">
+                            <a class="pp_content" href="data/images/v/sh/02l.jpg" data-rel="prettyPhoto[gallery1]" title="Optional description in Prettyphoto."><img src="data/icons/detail.png" width="30" height="30" alt="Optional image title" /></a>  
+                            <a class="pp_link" href="http://www.google.com/" target='_blank' ><img src="data/icons/link.png" width="30" height="30" alt="" /></a>  
+                        </div>
+                    </div>
+                    
+              </div>
+          
+          </div> 
+          
+          <!-- controls -->
+      	   <div class="componentControls">
+                <!-- next -->
+                <div class="controls_next">
+                    <img src="data/icons/next.png" alt="" width="33" height="33"/>
+                </div>
+                <!-- toggle -->
+                <div class="controls_toggle">
+                    <div class="controls_pause"><img src="data/icons/pause2.png" alt="" width="33" height="33"/>
+                    <div class="controls_pause2"><img src="data/icons/pause.png" alt="" width="33" height="33"/></div>
+                    </div>
+                  
+                    <div class="controls_play"><img src="data/icons/play2.png" alt="" width="33" height="33"/>
+                    <div class="controls_play2"><img src="data/icons/play.png" alt="" width="33" height="33"/></div>
+                    </div>
+                </div>
+                <!-- previous -->
+                <div class="controls_previous">
+                    <img src="data/icons/prev.png" alt="" width="33" height="33"/>
+                </div>
+    	  </div>
+          
+          <!-- preloader -->
+          <div class="mediaPreloader"></div>
+          
+          <!-- font calculations -->
+          <div class="fontMeasure">a</div>
+           
+      </div>
+      
+      
+      
+      
+       <!-- public function calls -->
+       <div id='publicFunctions'>
+            <p>PUBLIC API</p><br/>
+            <ul>
+                <!-- Toggle slideshow (pass true (play), false (stop) as parameter, or none for simple toggle) -->
+                <li><a href='#' onClick="jQuery.accordionGallery.toggleSlideshow(); return false;">Toggle slideshow</a></li>
+                
+                <!-- Toggle slideshow direction (forward, backward, or none for simple toggle) -->
+                <li><a href='#' onClick="jQuery.accordionGallery.toggleDirection('backward'); return false;">Toggle slideshow direction</a></li>
+                
+                <!-- Set global slideshow delay, in miliseconds -->
+                <li><a href='#' onClick="jQuery.accordionGallery.setSlideshowDelay(2000); return false;">Set slideshow delay</a></li>
+                
+                <!-- Play next media -->
+                <li><a href='#' onClick="jQuery.accordionGallery.nextMedia(); return false;">Play next media</a></li>
+                
+                <!-- Play previous media -->
+                <li><a href='#' onClick="jQuery.accordionGallery.previousMedia(); return false;">Play previous media</a></li>
+                
+                <!-- Open media number -->
+                <li><a href='#' onClick="jQuery.accordionGallery.openMedia(2); return false;">Open media number 2</a></li>
+            </ul>    
+       </div> 
+    
+      </body>
+</html>

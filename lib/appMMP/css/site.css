@@ -1,0 +1,311 @@
+﻿body 
+{
+    position: relative;
+    font-family:"HelveticaNeue",Helvetica,Arial,Verdana,sans-serif; 
+    font-size:14px;
+    margin: 0px;
+    zoom: 100%;
+}
+
+.fullbrowser
+{
+    background:#fff url(images/Orange80.png) repeat-x; /* Needs stacked body gradient, if there is one */
+}
+
+.fullbrowser
+{
+    width: 100%;
+    min-width: 800px;
+}
+
+.contactus
+{
+    position: absolute;
+    text-align: right;
+    right: 100px;
+    bottom: 30px;
+    text-decoration:none;
+}
+
+.menu
+{
+    position: absolute;
+    bottom: 8px;
+    left: 350px;
+    float: left;
+}
+
+.menu ul{
+    margin: 0; padding: 0;
+
+    float: left;}
+ 
+.menu ul li{
+    display: inline;
+    }
+ 
+.menu ul li a
+{
+    font-weight: bold;
+    float: left; text-decoration: none;
+    color: white;
+   padding: 3px 11px;
+    
+    }
+    
+ 
+.menu ul li a:visited{
+    color: white;}
+ 
+.menu ul li a:hover, .menu ul li .current{
+    color: Yellow;
+    }
+
+.footermenu
+{
+    float: right;
+    margin-right: 6px;
+    margin-top: -4px;
+}
+
+.footermenu ul{
+    margin: 0; padding: 0;   
+    float: left;}
+ 
+.footermenu ul li{
+    display: inline;
+    }
+ 
+.footermenu ul li a
+{
+    font-weight: bold;
+    float: left; text-decoration: none;
+    color: white;
+   padding: 3px 11px;
+    
+    }
+    
+ 
+.footermenu ul li a:visited{
+    color: white;}
+ 
+.footermenu ul li a:hover, .footermenu ul li .current{
+    color: Yellow;
+    }
+
+.arrow-down
+{
+    padding-left: 20px;
+    padding-bottom: 20px;
+    margin-left: 4px;
+}
+
+
+.mobile-header 
+{
+    padding: 3px;
+    height: 30px;
+    width: device-width;
+    /* background:#fff url(images/gray30.png) repeat-x; */
+    background:#fff url(images/orange40.png) repeat-x;
+    color: White;
+    display: block;
+}
+
+.mobile-logo
+{
+    float: left;
+    margin: 4px 0 0 2px;
+    font-size: 18px;
+}
+
+.mobile-menu
+{
+    margin-top: 4px;
+    float: right;
+}
+
+
+.mobile-body
+{
+    padding: 3px 3px 0 3px;
+    width: device-width;
+}
+
+.login
+{
+    display: none;
+    width: 210px;
+    float: right;
+    background-color: #c0c0c0;
+    padding: 10px;
+    margin: 0 5px 0 0;
+}
+
+.login input.text
+{
+    margin-bottom: 4px;
+}
+
+.login input.button
+{
+    margin-top: 10px;
+}
+
+.login label
+{
+    margin-top: 3px;
+    font-weight: bold;
+}
+
+.login.validation
+{
+  margin: 5px 0 2px 0;
+}
+
+.login a
+{
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.container
+{
+    /*background:#fff url(images/grayback.png) repeat-x;*/
+    width: 1000px;
+    margin: 10px auto 0 auto;    
+}
+
+.content
+{
+    padding: 6px 20px 0 20px;
+    font-size: 20px;
+    background: transparent;
+    position: relative;
+}
+
+.slogan 
+{
+    font-family: Impact, Charcoal, sans-serif;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-family: Tahoma, Geneva, sans-serif;
+    color: #505050;
+}
+
+.thesis
+{
+    font-size: 16px;
+    line-height: 30px;   
+}
+
+.thesis a
+{
+    text-decoration: underline;
+}
+
+.diagram
+{
+}
+.thesis
+{
+    font-family: Tahoma, Geneva, sans-serif;
+    color: Black;        
+}
+
+.diagram
+{
+    /*
+    padding-bottom: 180px;
+    padding-right: 700px;
+    background:#fff url(images/whattheheck.png) no-repeat;
+*/
+}
+
+.bigbutton
+{
+    padding: 6px 40px 20px 30px;
+    text-decoration: none;
+}
+
+#contactform .formline label
+{
+    width:90px;
+    display:inline-block;
+    text-align: right;
+    font-size: 12px;
+}
+
+#contactprompt
+{
+    font-size: 14px;
+    margin: 5px 0 5px 100px;
+    display: none;
+}
+
+
+.productpanel
+{
+    position:absolute;
+    width:300px;
+    /*background-color:#c0c0c0; */
+    height:20px;
+    text-align:center;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.productpanel h5
+{
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+.productpanel h5 a
+{
+    font-size: 10px;
+}
+
+.expandlink
+{
+    font-size: 10px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: -6px;
+}
+
+.productpanel ul
+{
+    text-align:left;
+    margin: 5px 0 0 30px;
+    padding: 0;
+    font-size: 12px;
+}
+
+.productpanel ul li
+{
+    margin-top: 3px;
+}
+
+.servicepanel
+{    
+    position: absolute; 
+}
+.servicepanel ul li
+{
+    margin-top: 5px;
+}
+
+.eventstable { margin-left: 50px; font-size: 14px; }
+.eventstable thead { background-color: #707070; color: White; }
+.eventstable thead tr td { width: 190px; }
+.eventstable tbody tr td { line-height: 20px; }
+.eventstable tbody tr td a { font-size: 12px; }
+
+.careerstable { margin-left: 50px; font-size: 14px; }
+.careerstable thead { background-color: #707070; color: White; }
+.careerstable tbody tr td { line-height: 20px; padding-right: 30px; }
+.careerstable tbody tr td a { font-size: 12px; }
+
+.menuhighlight { color: Yellow; font-weight: bold; }

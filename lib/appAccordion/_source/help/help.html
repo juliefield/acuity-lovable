@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+    
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Help Documentation</title>
+    
+        <style type="text/css">
+        
+            body {
+                margin: 0px;
+                padding: 0px;
+                font-family: Verdana, Helvetica, sans-serif;
+                font-size: 14px;
+                color: #333;
+            }
+                    
+            #navigation {
+                width: 300px;
+                background-color: #333;
+                position: fixed;
+                height: 100%;
+                left: 0px;
+				z-index:100;
+            }
+			        
+            #menu {
+				position:absolute;
+				top:90px;
+				left:30px;
+                line-height: 16px;
+            }
+                    
+            #menu ul {
+                margin: 0px;
+                padding: 0px;
+            }
+                    
+            #menu ul li {
+                display: block;
+                margin: 0px;
+                padding: 0px;
+                list-style-type: none;
+                margin-bottom: 15px;
+                text-align: left;
+            }
+                    
+            #menu ul li a {
+                color: #333;
+                font-size: 12px;
+                text-decoration: none;
+                display: inline-block;
+                padding: 3px;
+                background-color: #ddd;
+                outline: none;
+            }
+                    
+            #menu ul li a:visited {
+                color: #333333;
+            }
+                  
+				  
+				    
+            #content {
+                padding: 40px;
+                line-height: 22px;
+				background-color: #fff;
+			}
+                    
+            #content img {
+                border: 1px solid #DDDDDD;
+            }
+                    
+            #content .page h2 {
+                margin: 0px;
+                padding: 12px;
+                background-color: #EEEEEE;
+                display: inline-block;
+                font-size: 18px;
+                color: #999999;
+				margin-bottom:20px;
+				margin-top:50px;
+            }
+                    
+            #content .page h3 {
+                margin: 0px;
+                font-size: 18px;
+                padding: 20px 0 0 20px;
+                color: #999999;
+            }
+                    
+            #content .page h4 {
+                font-size: 14px;
+                color: #999999;
+            }
+                    
+            #content .page {
+                position: absolute;
+                top: 40px;
+                left: 340px;
+                padding-bottom: 80px;
+            }
+                    
+            #content .page ul {
+                margin: 12px;
+            }
+                    
+            #content .page ul li {
+                padding-right: 40px;
+                margin-bottom: 12px;
+                font-size: 14px;
+            }
+                    
+            #content .page p {
+				margin:0px 30px 0px 0px;
+            }
+			
+			#content .page p img {
+				margin-top: 5px;
+			}
+            
+            .setting {
+				display: inline-block;
+				background-color: #FFC;
+				border: 1px solid #EEE;
+				padding: 8px;
+				font-size: 13px;
+				margin:5px 0 5px 0;
+            }
+			
+			#productTitle{
+				position:fixed;
+				top:0px;
+				left:0px;
+				width:100%;
+				font-size: 25px;
+                color: #fff;
+				background:#111;
+				display:inline-block;
+				padding:10px;
+				z-index:101;
+            }
+			
+			#productTitle a{
+				font-size: 25px;
+                color: #fff;
+				text-decoration:none;
+            }
+        
+        </style>
+        
+        <script src="assets/jquery-1.7.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+                
+            var pageContent = [], len;
+                
+            $(document).ready(function() {
+				var content=$("#menu ul li a");
+				len=content.length;
+				//console.log(len);
+				var _item;
+				for(var i = 0; i < len; i++) {
+					_item=$(content[i]);
+					_item.attr("id", i);
+                    _item.bind('click',changePage);
+                }
+				i=0;
+				content= $(".page");
+				for(i; i < len; i++) {
+					_item=$(content[i]);
+					_item.attr("id", i);
+                    pageContent[i] =_item;
+					_item.css("display", "none");
+					//console.log(_item.html());
+                }
+				//load first page
+				pageContent[0].css("display", "block");
+            });
+                
+            function changePage() {
+                var id = parseInt($(this).attr("id"),10);
+				//console.log('changePage ', id);
+                for(var i = 0; i < len; i++) {
+					//console.log(pageContent[i]);
+                    if(id == i) {
+                        pageContent[i].css("display", "block");
+                    }else {
+                        pageContent[i].css("display", "none");
+                    }
+                }
+            }
+			changePage(0);
+        
+        </script>
+    
+    </head>
+    <body>
+    
+        <div id="navigation">
+        
+            <div id="menu">
+                <ul>
+                    <li><a href="#">Installation</a></li>
+                    <li><a href="#">Control buttons</a></li>
+                    <li><a href="#">Scrollbar</a></li>
+                    <li><a href="#">Constructing slides</a></li>
+                    <li><a href="#">Inline content</a></li>
+                    <li><a href="#">Special features</a></li>
+                    <li><a href="#">Controlling video in slides</a></li>
+                    <li><a href="#">Google Web Fonts</a></li>
+                    <li><a href="#">Callbacks</a></li>
+                    <li><a href="#">Public methods</a></li>
+                    <li><a href="#" style="color:#f00">Debugging</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div id="content">
+            
+            <div class="page">
+                
+                <h2>Installation</h2><br/>
+                
+                <p>
+                
+                You have 2 folders (deploy and source). <strong>You only need deploy folder on your server</strong>. Source folder hold javascript files (non minified versions) and help.<br/><br/>
+                <strong>Please dont place non-minified files on your server.</strong><br/><br/>
+                
+                To start open index.html in any text editor (Dreamweaver is good if you have it, but any plain text editor will do).<br/>There are 2 sections (one in head tag and one in body tag) that you need to copy into your website.<br/>In the head tag you have links to stylesheets and javascript files, and the settings for the component. In the body part are all the component elements.<br/><br/>
+
+Make sure you copy everything from both head and body tags into your web page at appropriate places.<br/><br/><br/>
+
+
+                
+                <strong>Editing jQuery file</strong><br/><br/>
+                
+                If you need to edit the main jquery files (which hold javascript code for the component), you will see it comes in 2 versions with the package: <strong>'minified'</strong> and <strong>'non-minified'</strong>.<br/><br/>What this basically means is that minified version has all the empty spaces removed and some of the 'encryption' applied. <br/>Both is usefull in case someone takes your script from your online website, making it almost useless for any kind of editing at least. <br/>I suggest using minified version on your website.<br/>Ofcourse if you need to edit this file yourself, switch to non-minified version (from the source folder) and then when you finish editing you can minify the file yourself here:<br/>
+                    <a href='http://closure-compiler.appspot.com/home' target='_blank'>http://closure-compiler.appspot.com/home</a><br/><br/>Its as simple as it gets, you just copy/paste content of the whole file in the left provided space, press 'COMPILE' and when its done copy/paste all content from the right window back to your file, overwritting all the content with the new (minified) one. You dont need to touch any of the minify options, just leave all default as it is (Optimization: simple).<br/><br/>
+                    Minified files usually have <strong>.min</strong> extension in its name and non-minified dont! <br/>
+                    It doesnt have to be that way, its just a common practice, but its important note in case your web paths get wrong.
+                </p>
+                
+                
+            </div>
+            
+            <div class="page">
+                
+               <h2>Control buttons</h2><br/>
+               
+               <p>
+               
+                <br/><img src="assets/16.jpg" /><br/><br/>
+                
+                If you dont want to use these buttons, set 'useControls:false' in html settings:
+                <br/><br/><img src="assets/37.jpg" /><br/><br/><strong>Dont delete them from the html!</strong> (dont remove this):<br/><br/><img src="assets/19.jpg" /><br/><br/>Its important that they stay inside the DOM because slideshow timer is dependant on this.<br/><br/>Their css is set to display:none so they wont interfere with anything.<br/><br/>
+                
+               If you are changing the look of control buttons, <strong>make sure you replicate all names and equal sizes between them</strong>. This is needed for this 'filling' preloader effect to work.
+                
+                </p>
+                
+            </div>
+            
+            <div class="page">
+                
+               <h2>Scrollbar</h2><br/>
+               
+               <p>
+               
+                <br/><img src="assets/38.jpg" /><br/><br/>
+               
+                Scrollbar use in jScrollPane:
+                <a href='http://jscrollpane.kelvinluck.com/' target='_blank'>http://jscrollpane.kelvinluck.com/</a><br/><br/>
+                
+                If you try to modify scrollbar in css and it stops working and you cannot get it back, I suggest resetting to original file and start again.<br/><br/>
+                There are a few things dependant on scrollbar to get initialized properly, and missing just one of these settings in css can brake it.<br/><br/><br/>
+                
+                Personally, I found some settings around these html elements (componentWrapper, componentScrollWrapper, componentPlaylist):
+                
+                <br/><br/><img src="assets/39.jpg" /><br/><br/>
+                
+                like 'position', 'width', 'height', 'overflow'  make scrollbar work. Now this is just one example, settings are different whether its horizontal or vertical orientation obviously.<br/><br/><br/>
+                
+                Initialization of jScrollPane in jquery code (jquery.accordionGallery.js) in case you need it:
+                
+                <br/><br/><img src="assets/52.jpg" /><br/><br/>
+                
+                
+                
+                </p>
+                
+            </div>
+ 
+ 			<div class="page">
+                
+               <h2>Constructing slides</h2><br/>
+               
+               <p>
+               
+                Every slide has this div wrapper:
+               
+                <br/><br/><img src="assets/20.jpg" /><br/><br/>
+                
+                <strong>This is required and it needs to be there</strong>.<br/><br/><strong>Everything else is optional</strong> (images, title, captions, prettyphoto...), you can place anything you want inside the slide. So again, you just need to have this div class='slide' inside.<br/><br/>
+                
+                Whole playlist is hidden with css opacity 0 (until everything sets at the beginning):
+                
+                <br/><br/><img src="assets/21.jpg" /><br/><br/>
+                
+                I didnt want to use 'display:none' in case there are problems with some browsers and slide content inside.<br/><br/>
+                
+                You can place inside anything you want and style it with css.<br/><br/><br/><br/>
+                
+                
+                
+                These divs <strong>need to have defined width and height</strong> (this is partly set in css, partly in jquery code).<br/><br/>
+                
+                If all your slides are the <strong>same size</strong>:
+                
+                <br/><br/><img src="assets/40.jpg" /><br/><br/>
+                
+                Then you set slide width and height both in css:
+                
+                <br/><br/><img src="assets/41.jpg" /><br/><br/>
+                
+                Also note in the previous picture that image size in slides is also declared there, and well in html (below picture):
+                
+                <br/><br/><img src="assets/42.jpg" /><br/><br/><br/><br/>
+                
+                If your slides are <strong>different size</strong>:
+                
+                <br/><br/><img src="assets/43.jpg" /><br/><br/>
+                
+                Then for horizontal orientation, only height is set in css (since all slides are the same height, but not width):
+                
+                <br/><br/><img src="assets/48.jpg" /><br/><br/>
+                
+                width for each slide will be set in html (data-width):
+                
+                <br/><br/><img src="assets/49.jpg" /><br/><br/>
+                
+                Also note in the previous picture that image size in slides is also declared there.<br/><br/><br/><br/>
+                
+                The opposite works for vertical orientation, in css only slide width is declared (since all slides are the same width, but not height):
+                
+                <br/><br/><img src="assets/50.jpg" /><br/><br/>
+                
+                height for each slide will be set in html (data-height):
+                
+                <br/><br/><img src="assets/51.jpg" /><br/><br/>
+                
+                Also note in the previous picture that image size in slides is also declared there.<br/><br/>
+                
+                These custom attributtes (data-width, data-height) are for my jquery code which sets size of each slide individually.<br/><br/><br/><br/>
+               
+               </p>
+                
+           </div>   
+               
+           <div class="page">
+                
+               <h2>Inline content</h2><br/>
+                
+                <p>
+                
+                <strong>Example of google maps</strong> inside slide:
+                
+                <br/><br/><img src="assets/24.jpg" /><br/><br/>
+                
+                Google maps api call on top of html:
+                
+                <br/><br/><img src="assets/30.jpg" /><br/><br/>
+                
+                Plus this javascript in html:
+                
+                <br/><br/><img src="assets/25.jpg" /><br/><br/>
+                
+                And css:
+                
+                <br/><br/><img src="assets/27.jpg" /><br/><br/><br/><br/>
+                
+                <strong>Example of some ordinary content</strong> inside slide:
+                
+                <br/><br/><img src="assets/26.jpg" /><br/><br/>
+                
+                And css:
+                
+                <br/><br/><img src="assets/28.jpg" /><br/><br/><br/><br/>
+                
+                You add <strong>slide detail:</strong> (prettyphoto, image link)
+                
+                <br/><br/><img src="assets/53.jpg" /><br/><br/>
+                
+                Is added like this:
+                
+                <br/><br/><img src="assets/23.jpg" /><br/><br/>
+                
+            </div>
+            
+            <div class="page">
+                
+               <h2>Special features</h2><br/>
+                
+                <p>
+                
+                <strong>Whole slide link</strong> is controlled with this:
+                
+                <br/><br/><img src="assets/66.jpg" /><br/><br/>
+                
+                data-link - link whole slide with this feature, leave blank for none. (NOTE! You cannot access anything inside this slide if click is assigned to the whole slide)<br/>
+          		data-target (if data-link is used: '_blank' - open in new window, '_parent' - open in same window)<br/><br/>
+                
+                This is achieved by making a transparent div the same size as the slide and placing it inside the slide above all other layers and making it clickable, see following in the jquery.accordionGallery.js file:
+                
+                <br/><br/><img src="assets/67.jpg" /><br/><br/>
+                
+                You can possibly change the z-index of this transparent div, placing it some layers down if you still want to have some elements above it.<br/>
+                Also, <strong>note feature below</strong>, which creates another transparent div, above all other content, to prevent click going below (so you dont mess something if changing z indexes). 
+                <br/><br/><br/><br/><br/><br/>
+                
+                
+                Prevent click on slide from executing other action <strong>data-preventDefaultOnOpen</strong>, aka force slide to open when clicked regardless of content inside:
+                
+                <br/><br/><img src="assets/74.jpg" /><br/><br/>
+
+                Good examples are Youtube and Vimeo video. <br/>When you place an iframe inslide the slide (like the examples in the preview) and you click on closed slide containing that video, video will start playing instead of slide opening.<br/><br/>
+                
+                If <strong>data-preventDefaultOnOpen</strong> is true, this creates transparent div above all layers in slide, and attaches click to it instead of default slide div holder to open the slide. Then when the slide opens, this transparent div is hidden so it doesnt interfere with content.<br/><br/>
+                
+                Check this in jquery.accordionGlalery.js:
+                
+                <br/><br/><img src="assets/75.jpg" /><br/><br/><br/><br/><br/><br/>
+                
+                
+                
+               <strong> Show content when slide opens, hide when it closes</strong>:
+                
+                <br/><br/><img src="assets/76.jpg" /><br/><br/>
+                
+                If you place a content inside div with a class <strong>slide_content</strong>, this content will be hidden (opacity 0) in all slides, and then when slide opens, it will show that contant (fade in), and  hide this content when slide closes (fade out).
+                
+                
+                
+                
+                </p>
+                
+            </div>
+            
+            <div class="page">
+               
+                <h2>Controlling video in slides</h2><br/>
+                
+                <p>
+                
+                If you look at the preview example named <strong>index_horizontal_dif_width</strong> or <strong>index_vertical_same_height</strong>, you will see that have 'built in' video functions for <strong>Vimeo</strong> and <strong>Youtube</strong> which stop/reset video to beginning when slides which contained video in exited.<br/><br/>
+                
+                So for example, if you start video on certain slide, and then advance to another slide, it will automatically stop the video.<br/><br/>
+                This is achieved with the following:<br/><br/>
+                
+                Vimeo api script:
+                
+                <br/><br/><img src="assets/68.jpg" /><br/><br/>
+                
+                Stop/reset callbacks included in public function callbacks assosiated with slide numbers in which video resides:
+                
+                <br/><br/><img src="assets/69.jpg" /><br/><br/>
+                
+                Vimeo api initialization:
+                
+                <br/><br/><img src="assets/70.jpg" /><br/><br/>
+                
+                Vimeo and Youtube global vars and Youtube api initialization:
+                
+                <br/><br/><img src="assets/71.jpg" /><br/><br/>
+                
+                Youtube video embedded in slide, notice frame 'id' attributte, and notice 'transparency', this is needed for some browsers and proper z-index layering:
+                
+                <br/><br/><img src="assets/72.jpg" /><br/><br/>
+                
+                Vimeo video embedded in slide, notice frame 'id' attributte:
+                
+                <br/><br/><img src="assets/73.jpg" /><br/><br/>
+                
+                You can use this feature to add additional functionality, like maybe auto start video when slide is entered or smiliar...<br/><br/>
+                
+                Check these links for Vimeo and Youtube api:<br/><br/>
+                
+                <a href='https://developer.vimeo.com/player/embedding' target='_blank'>https://developer.vimeo.com/player/embedding</a><br/><br/>
+                <a href='https://developer.vimeo.com/player/js-api' target='_blank'>https://developer.vimeo.com/player/js-api</a><br/><br/>
+                
+                <a href='https://developers.google.com/youtube/iframe_api_reference' target='_blank'>https://developers.google.com/youtube/iframe_api_reference</a><br/><br/>
+                <a href='https://developers.google.com/youtube/player_parameters' target='_blank'>https://developers.google.com/youtube/player_parameters</a><br/><br/>
+                <a href='http://php.quicoto.com/how-to-fix-z-index-in-youtube-iframes/' target='_blank'>http://php.quicoto.com/how-to-fix-z-index-in-youtube-iframes/</a><br/><br/>
+                
+                
+                    
+                </p>
+                
+            </div>
+
+            <div class="page">
+               
+                <h2>Google web fonts</h2><br/>
+                
+                <p>
+                
+                Google web fonts are being used in the component.<br/>
+                You can find all the info here:<br/>
+                <a href='http://www.google.com/webfonts#ChoosePlace:select' target='_blank'>http://www.google.com/webfonts</a><br/><br/>
+                In the html file, they are being loaded on the beginning before script is being executes:
+                <br/><br/><img src="assets/60.jpg" /><br/><br/>
+                And in css file you will see it appearing on a couple of places:
+                <br/><br/><img src="assets/15.jpg" /><br/><br/><br/>
+                
+                <h4>If you want to get rid of google web fonts do this:</h4>
+                Replace this while thing in html file:
+                <br/><br/><img src="assets/14.jpg" /><br/><br/>
+                with just this:
+                <br/><br/><img src="assets/46.jpg" /><br/><br/>
+                Delete google font call on top of html file:
+                <br/><br/><img src="assets/47.jpg" /><br/><br/>
+                In the CSS files edit font-family wherever google web font appears:
+                <br/><br/><img src="assets/15.jpg" /><br/><br/>
+                    
+                </p>
+                
+            </div>
+            
+            <div class="page">
+            
+               <h2>Callbacks (methods called from jquery into html)</h2><br/>
+                
+                <p>
+                	There are currently following callbacks available but new one can always be made. 
+                    <br/><br/><img src="assets/45.jpg" /><br/><br/>
+                    If you need a specific callback just send me an email request.
+                </p>
+                
+            </div>
+            
+            <div class="page">
+            
+               <h2>Public methods available</h2><br/>
+                
+                <p>
+                	There are some public methods available which you can use. These methods are available after this function (callback) in html has fired:
+                    <br/><br/><img src="assets/44.jpg" /><br/><br/>
+                    Public methods in html:
+                	<br/><br/><img src="assets/17.jpg" /><br/><br/>
+                    If you dont use this, you can delete this whole part from the html file.<br/><br/><br/>
+                    Also, in the css, find wherever this font name appears:
+                    <br/><br/><img src="assets/18.jpg" /><br/><br/>
+                    You can delete / modify that as well if you dont use them.
+                </p>
+                
+            </div>
+            
+            <div class="page">
+            
+               <h2>Finding errors in code</h2><br/>
+                
+               <p>
+               
+               Sometimes if the script doesnt run as it supposed to or doesnt run at all, open/install <strong>firebug</strong>:
+
+                <a href='http://getfirebug.com/' target='_blank'>http://getfirebug.com/</a><br/><br/>
+                
+                Its a <strong>MUST</strong> have extension for firefox which allows you to see possible erorrs in code (any much more).<br/><br/>
+                
+                Once you have firebug, open <strong>CONSOLE</strong> section and run the file again online or on local server like xampp to see if any errors occur.
+                    
+                <br/><br/><img src="assets/13.jpg" /><br/><br/>   
+                
+                </p> 
+                    
+            </div>
+        
+        </div>
+                        
+
+        <div id="productTitle"><a href='http://codecanyon.net/user/Tean' _target='blank'>jQuery Accordion MultiPurpose Gallery Slideshow</a></div>
+    
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

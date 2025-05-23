@@ -1,0 +1,33 @@
+﻿
+
+
+
+
+  <div class="footer">
+    <div class="container">
+        <div class="footermenu">
+            <ul>
+                <!--
+                <li><a href="about.aspx">Careers</a></li>
+                <li><a href="about.aspx">Events</a></li>
+                <li><a href="contact.aspx">Contact</a></li>
+                -->
+            </ul>
+        </div>
+    </div>
+  </div>
+    <script type="text/javascript" language="javascript">
+        var nm = a$.xss(window.location.pathname).split("/").pop().split("#")[0].toLowerCase();
+        $(".menu ul li a").each(function () { menuhighlight(nm, this); });
+        $(".contactus").each(function () { menuhighlight(nm, this); });
+        $(".footermenu ul li a").each(function () { menuhighlight(nm, this); });
+        function menuhighlight(nm, me) {
+            if (nm == $(me).attr("href")) {
+                $(me).css("color", "yellow");
+                if ($(me).html() == "Home") {
+                    //$(me).css("display", "none");
+                }
+                $(me).click(function () { return false; });
+            }
+        }
+    </script>

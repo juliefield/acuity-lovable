@@ -1,0 +1,233 @@
+﻿
+.carousel, .card, .carousel-container{position:absolute; bottom:0px; height:276px; width:1000px}
+
+.carousel-outer {
+	width: 100%;
+	background: url(images/bg_carousel_tile.png) repeat-x;
+	background-color: Red;
+	margin-bottom: 48px;
+	height: 370px;
+	overflow:hidden;
+	min-width: 1000px;
+}
+
+.card {
+	left: 50%;
+	margin-left:-480px;
+}
+
+.card.large {
+	margin-left: -530px;
+}
+
+.carousel{position:relative; top:auto; left:auto; right:auto; padding:0;
+	margin: 0 auto;height:100%;width:100%;}
+.carousel-container{top:auto; bottom:0; width:100%;}
+.carousel-ui{position:absolute; top:1px; height:42px; left:50%; right:0; width:auto;margin-left:-454px;}
+
+.cr-dot{top:0px; border-left:1px solid #ccc; height:49px; position:absolute; color:#444; cursor:pointer; text-align:center; }
+.cr-dot:hover {background: #c0c0c0;}
+.cr-dot img{position:absolute; left:4px; top:8px}
+.cr-dot span{display:block; padding-left:24px; font-size:11px;padding-top: 2px;}
+.cr-dot.selected, .cr-dot.selected:hover {background:#fff;}
+.cr-dot.selected .tip, .carousel .tip{width:50px;height:30px;position:absolute;top:50px;left:91px;background:url(images/spr_carousel.png) no-repeat 50% 0px;margin-left:-25px;}
+
+.cr-dot.last{border-right:1px solid #ccc}
+
+.card .left-div{position:absolute; left:704px; top:30px; width:224px; left:auto; right:10px}
+.card.large .left-div{right: -40px; top: 0px;}
+#carousel img{position:absolute; bottom:0; left:-4px;border-width:0;}
+.card h3{margin-bottom:14px; margin-left:4px}
+.card.large h3 {margin-bottom: 0;}
+#carousel p{margin-left:4px; font-size:15px}
+#carousel .cta{margin-top:24px; width:200px; padding:0; height:43px; background:url(badlink/images/sprite_home.png) no-repeat 0 -600px; text-shadow:#8A8C90 0 -1px 1px}
+#carousel .cta:hover{background-position:-200px -600px;color:#fff;}
+
+.full-link {
+	color: #333;
+}
+
+.full-link:hover {
+	text-decoration: none;
+	color: #666;
+}
+
+.CustomKPIpos { bottom: 10px; left: 100px; }
+
+.slidemenu
+{
+}
+
+.slidemenu ul
+{
+    margin: 0; padding: 0;
+    float: left;
+    height: 40px;
+    border-left: 1px solid Gray;
+}
+ 
+.slidemenu ul li{
+    margin: 0; padding: 0;
+    display: inline;
+    }
+ 
+.slidemenu ul li a
+{
+    margin: 0; padding: 0;
+    font-size: 11px;
+    float: left; text-decoration: none;
+    border-right: 1px solid Gray;
+    color: Black;
+    height: 40px;
+    width: 155px;
+    position: relative;
+}
+
+.car3
+{
+    color: black;
+    height: 40px;
+    width: 155px;
+    vertical-align: middle;
+    position: absolute;
+    left: 10px;
+    top: 0px;
+    height: 40px;
+    text-align: center;
+    width: 110px;
+}
+
+.car2
+{
+    color: black;
+    height: 40px;
+    width: 155px;
+    vertical-align: middle;
+    position: absolute;
+    left: 10px;
+    top: 6px;
+    height: 40px;
+    text-align: center;
+    width: 110px;
+}
+
+.car1
+{
+    color: black;
+    height: 40px;
+    width: 155px;
+    vertical-align: middle;
+    position: absolute;
+    left: 10px;
+    top: 12px;
+    height: 40px;
+    text-align: center;
+    width: 110px;
+}
+
+.nicar3
+{
+    color: black;
+    height: 40px;
+    width: 155px;
+    vertical-align: middle;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 40px;
+    text-align: center;
+    width: 110px;
+}
+
+.nicar2
+{
+    color: black;
+    height: 40px;
+    width: 155px;
+    vertical-align: middle;
+    position: absolute;
+    left: 0px;
+    top: 6px;
+    height: 40px;
+    text-align: center;
+    width: 110px;
+}
+
+.nicar1
+{
+    color: black;
+    height: 40px;
+    width: 155px;
+    vertical-align: middle;
+    position: absolute;
+    left: 0px;
+    top: 12px;
+    height: 40px;
+    text-align: center;
+    width: 110px;
+}
+
+.line3
+{
+    vertical-align: middle;
+    position: absolute;
+    left: 40px;
+    top: 0px;
+    height: 40px;
+    text-align: center;
+    width: 110px;
+}
+
+.line2
+{
+    vertical-align: middle;
+    position: absolute;
+    left: 40px;
+    top: 6px;
+    height: 40px;
+    text-align: center;
+    width: 110px;
+}
+
+.line1
+{
+    vertical-align: middle;
+    position: absolute;
+    left: 40px;
+    top: 12px;
+    height: 40px;
+    text-align: center;
+    width: 110px;
+}
+
+.slidemenu ul li a img
+{
+  border-width: 0px;
+  padding-left: 4px;
+  padding-right: 3px;
+  vertical-align: middle;
+}
+ 
+.slidemenu ul li a:visited{
+    margin: 0; padding: 0;
+    /*color: white;*/}
+ 
+.slidemenu ul li a:hover, .slidemenu ul li .current{
+    background-color: #c0c0c0;
+    }
+
+.sm-text
+{
+    margin-top: 5px;
+    padding-left: 5px;
+
+}
+.icon-shop 
+{
+    margin-left: 5px;
+    padding-left: 35px;
+    padding-right: 30px;
+    padding-top: 5px;
+    padding-bottom: 9px;
+    background: transparent url(images/shop_icon.png) no-repeat bottom left;
+}

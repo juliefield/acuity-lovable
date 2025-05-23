@@ -1,0 +1,59 @@
+﻿.mobile-hide { display:none;}
+.mobile-show { display:none;}
+
+input.text
+{
+    width: 200px;
+    height: 17px;
+    padding: 3px 0 0 3px;
+    border: 3px solid #eoeoeo;
+}
+
+input.button
+{
+    width: 205px;
+    height: 30px;
+    font-weight: bold;
+}
+
+.validation
+{
+    color: Red;
+    display: none;
+}
+
+.header
+{
+    padding-top: 20px;
+    height: 60px;
+    color: White;
+    width: 1000px;
+    display: block;
+    margin: 0 auto 0 auto;
+    position: relative;
+}
+
+.logo a
+{
+    margin: -10px 0 0 20px;
+    padding-left: 235px;
+    padding-bottom: 50px;
+    float: left;
+    font-size: 18px;
+
+}
+
+.logo span
+{
+    display: none;
+}
+
+.footer
+{
+    padding: 3px;
+    height: 40px;
+    width: 100%;
+    margin-top: -40px;
+    color: White;
+    display: block;
+}

@@ -1,0 +1,367 @@
+*{
+	margin:0;
+	padding:0;
+	border:0;
+}
+
+a{ 
+	text-decoration: none; 
+}
+
+ul{
+	list-style: none;
+}
+
+body {
+	background:#fff;
+}
+
+
+
+/* component wrapper */
+#componentWrapper{
+	position:absolute;
+	width:505px;
+	height:550px;
+	left:50%;
+	top:50%;
+	margin-left:-250px;
+	margin-top:-275px;
+	/*background:#ccc;*/
+}
+
+/* wrapper for scroll */
+#componentWrapper .componentScrollWrapper{
+	position:relative;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+	
+	/* hide playlist on beginning, then animate in after slide setup */
+	opacity: 0; 
+	filter: alpha(opacity=0); 
+	-ms-filter: "alpha(opacity=0)"; 
+	-khtml-opacity: 0; 
+	-moz-opacity: 0; 
+}
+
+#componentWrapper .componentPlaylist{
+	position:relative;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+	overflow:hidden; 
+}
+
+/* slide holder. */
+#componentWrapper .slide{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:500px;
+	/* no height here when slides different height, height is set with jquery! */
+	background:#ccc;
+	
+	/* shadow in slide */
+	 -moz-box-shadow:    0px -1px 8px #111;
+	 -webkit-box-shadow: 0px -1px 8px #111;
+	 box-shadow:         0px -1px 8px #111;
+}
+
+/* image in slide */
+#componentWrapper .slide .stack_img{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:500px;
+	display:block;
+}
+
+
+
+/* controls */
+#componentWrapper .componentControls{
+	position:absolute;
+	width:118px;
+	height:33px;
+	top:534px;
+	left:193px;
+	display:none;
+	/*background:red;*/
+}
+
+#componentWrapper .componentControls .controls_previous{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:33px;
+	height:33px;
+}
+
+#componentWrapper .componentControls .controls_previous img{
+	position:absolute;
+	display:block;
+	top:0px;
+	left:0px;
+	width:33px;
+	height:33px;
+}
+
+#componentWrapper .componentControls .controls_toggle{
+	position:absolute;
+	top:0px;
+	left:43px;
+	width:33px;
+	height:33px;
+}
+
+#componentWrapper .componentControls .controls_pause2{
+	position:absolute;
+	top:0px;
+	left:0px;
+	height:33px;
+	overflow:hidden;
+}
+
+#componentWrapper .componentControls .controls_pause2 img{
+	position:absolute;
+	display:block;
+	top:0px;
+	left:0px;
+	width:33px;
+	height:33px;
+}
+
+#componentWrapper .componentControls .controls_pause{
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+
+#componentWrapper .componentControls .controls_pause img{
+	position:relative;
+	display:block;
+	top:0px;
+	left:0px;
+	width:33px;
+	height:33px;
+}
+
+#componentWrapper .componentControls .controls_play2{
+	position:absolute;
+	top:0px;
+	left:0px;
+	height:33px;
+	overflow:hidden;
+}
+
+#componentWrapper .componentControls .controls_play2 img{
+	position:absolute;
+	display:block;
+	top:0px;
+	left:0px;
+	width:33px;
+	height:33px;
+}
+
+#componentWrapper .componentControls .controls_play{
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+
+#componentWrapper .componentControls .controls_play img{
+	position:relative;
+	display:block;
+	top:0px;
+	left:0px;
+	width:33px;
+	height:33px;
+}
+
+
+#componentWrapper .componentControls .controls_next{
+	position:absolute;
+	top:0px;
+	left:86px;
+	width:33px;
+	height:33px;
+}
+
+#componentWrapper .componentControls .controls_next img{
+	position:absolute;
+	display:block;
+	top:0px;
+	left:0px;
+	width:33px;
+	height:33px;
+}
+
+
+
+
+
+#componentWrapper .slide_content {
+	position: absolute;
+	bottom:0px;
+	left:0px;
+	width:460px;
+	padding:20px;
+	
+	font-family: 'Dosis', sans-serif;
+	
+	/* Fallback for web browsers that doesn't support RGBa 
+	background: rgb(0, 0, 0); */
+	/* RGBa with 0.6 opacity */
+	background: rgba(0, 0, 0, 0.6);
+	
+	opacity: 0; 
+	filter: alpha(opacity=0); 
+	-ms-filter: "alpha(opacity=0)"; 
+	-khtml-opacity: 0; 
+	-moz-opacity: 0; 
+}
+
+#componentWrapper .slide_content h3{
+	font-size: 23px;
+	color:#C30;
+}
+
+#componentWrapper .slide_content p{
+	color:#fff;
+	position:relative;
+	left:1px;
+}
+
+#componentWrapper .slide_content a{
+	color:yellow;
+}
+
+#componentWrapper .slide_content a:hover, a:active{
+  text-decoration:underline;
+}
+
+
+
+/* detail holder */
+#componentWrapper .slide_detail{
+	position:absolute; 
+	width:30px;
+	height:80px;
+	right:30px;
+	top:20px;
+	/*background:red;*/
+}
+
+/* image details for lightbox */
+#componentWrapper .pp_content{
+	position:relative; 
+	display:block;
+	width:30px;
+	height:30px;
+	left:0px;
+	top:0px;
+	margin-bottom:10px;
+}
+
+/* image link */
+#componentWrapper .pp_link{
+	position:relative; 
+	display:block;
+	width:30px;
+	height:30px;
+	left:0px;
+	top:0px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* preloader */
+#componentWrapper .mediaPreloader{
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin:-25px 0px 0px -25px;
+	background:#000 url('../data/loader.gif') no-repeat center center;
+	width:50px;
+	height:50px;
+	z-index:999;
+	opacity:0.7;
+}
+
+
+
+
+/* font calculations */
+#componentWrapper .fontMeasure{
+	visibility:hidden;
+}
+
+
+
+
+
+
+/* public functions */	
+#publicFunctions{
+	position: absolute;
+	padding: 10px 25px 20px 20px;
+	background:#555;
+	left:50px;
+	top:50px;
+	font-family: 'Dosis', sans-serif;
+	font-size: 16px;
+	color:#fff;
+	list-style:circle;
+	
+	-moz-box-shadow: 2px 2px 5px #222;
+	-webkit-box-shadow: 2px 2px 5px #222;
+	box-shadow: 2px 2px 5px #222;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=2, Direction=135, Color='#222222')";
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=2, Direction=135, Color='#222222');
+	
+	display:none;
+}
+
+#publicFunctions li a{
+	font-family: 'Dosis', sans-serif;
+	font-size: 16px;
+	color:#fff;
+}
+
+#publicFunctions li a:hover, #publicFunctions li .current{
+	text-decoration: underline;
+}
+
+
+
+/* just for preview purposes */
+#previewInfo {
+	position: absolute;
+	padding: 10px 20px 10px 30px;
+	background:#777;
+	left:0px;
+	top:100px;
+	font-family: 'Dosis', sans-serif;
+	font-size: 17px;
+	color:#fff;
+	list-style:circle;
+	
+	-moz-box-shadow: 2px 2px 5px #333;
+	-webkit-box-shadow: 2px 2px 5px #333;
+	box-shadow: 2px 2px 5px #333;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=2, Direction=135, Color='#333333')";
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=2, Direction=135, Color='#333333');
+	
+}

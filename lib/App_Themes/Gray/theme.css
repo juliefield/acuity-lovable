@@ -1,0 +1,47 @@
+﻿.arrow-down
+{
+    background: transparent url(images/arrow_down_white.png) no-repeat;
+}
+.fullbrowser
+{
+    background:#fff url(images/gray40.png) repeat-x; /* Needs stacked body gradient, if there is one */
+}
+.footer
+{
+    background:#fff url(images/gray40.png) repeat-x;
+}
+
+.logo a
+{
+    /* background: transparent url(images/TP1red.png) no-repeat; */
+}
+.logo span
+{
+    display: inline;
+    margin: 0;
+    padding: 0;
+    margin-left: -250px;
+}
+
+.mobile-header 
+{
+    background:#fff url(images/gray40.png) repeat-x;
+}
+
+.bigbutton
+{
+/*    background: transparent url(images/orangebutton.png) no-repeat; */
+    color: black;
+}
+
+/* backgrounds */
+
+.productsarea { background-color:#e0e0e0; }
+.servicesarea { background-color:#e0e0e0; }
+.newsarea { background:#e0e0e0; }
+.aboutarea { background-color:#FFFFAD; }
+.careersarea { background:#FFFFAD; }
+.contactarea { background-color:#FFFFAD; }
+.supportarea { background-color:#FFFFAD; }
+.portalarea { background:#e0e0e0; }
+

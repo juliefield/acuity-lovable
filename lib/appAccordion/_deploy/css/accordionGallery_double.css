@@ -1,0 +1,730 @@
+*{
+	margin:0;
+	padding:0;
+	border:0;
+}
+
+a{ 
+	text-decoration: none; 
+}
+
+ul{
+	list-style: none;
+}
+
+body {
+	background:#fff;
+}
+
+
+
+
+/* first instance */
+
+/* component wrapper */
+#componentWrapper{
+	position:absolute;
+	width:670px;
+	height:355px;
+	left:50%;
+	top:70px;
+	margin-left:-335px;
+	/*background:#ccc;*/
+}
+
+/* wrapper for scroll */
+#componentWrapper .componentScrollWrapper{
+	position:relative;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:355px;
+	
+	/* hide playlist on beginning, then animate in after slide setup */
+	opacity: 0; 
+	filter: alpha(opacity=0); 
+	-ms-filter: "alpha(opacity=0)"; 
+	-khtml-opacity: 0; 
+	-moz-opacity: 0; 
+}
+
+#componentWrapper .componentPlaylist{
+	position:relative;
+	top:0px;
+	left:0px;
+	height:333px;
+	overflow:hidden; 
+}
+
+/* slide holder. */
+#componentWrapper .slide{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:500px;
+	height:333px;
+	background:#ccc;
+	
+	/* shadow in slide */
+	 -moz-box-shadow:    -4px 0px 8px #111;
+	 -webkit-box-shadow: -4px 0px 8px #111;
+	 box-shadow:         -4px 0px 8px #111;
+}
+
+/* image in slide */
+#componentWrapper .slide .stack_img{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:500px;
+	height:333px;
+	display:block;
+}
+
+
+
+/* controls */
+#componentWrapper .componentControls{
+	position:absolute;
+	width:118px;
+	height:33px;
+	top:-15px;
+	left:276px;
+	display:none;
+	/*background:red;*/
+}
+
+#componentWrapper .componentControls .controls_previous{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:33px;
+	height:33px;
+}
+
+#componentWrapper .componentControls .controls_previous img{
+	position:absolute;
+	display:block;
+	top:0px;
+	left:0px;
+	width:33px;
+	height:33px;
+}
+
+#componentWrapper .componentControls .controls_toggle{
+	position:absolute;
+	top:0px;
+	left:43px;
+	width:33px;
+	height:33px;
+}
+
+#componentWrapper .componentControls .controls_pause2{
+	position:absolute;
+	top:0px;
+	left:0px;
+	height:33px;
+	overflow:hidden;
+}
+
+#componentWrapper .componentControls .controls_pause2 img{
+	position:absolute;
+	display:block;
+	top:0px;
+	left:0px;
+	width:33px;
+	height:33px;
+}
+
+#componentWrapper .componentControls .controls_pause{
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+
+#componentWrapper .componentControls .controls_pause img{
+	position:relative;
+	display:block;
+	top:0px;
+	left:0px;
+	width:33px;
+	height:33px;
+}
+
+#componentWrapper .componentControls .controls_play2{
+	position:absolute;
+	top:0px;
+	left:0px;
+	height:33px;
+	overflow:hidden;
+}
+
+#componentWrapper .componentControls .controls_play2 img{
+	position:absolute;
+	display:block;
+	top:0px;
+	left:0px;
+	width:33px;
+	height:33px;
+}
+
+#componentWrapper .componentControls .controls_play{
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+
+#componentWrapper .componentControls .controls_play img{
+	position:relative;
+	display:block;
+	top:0px;
+	left:0px;
+	width:33px;
+	height:33px;
+}
+
+
+#componentWrapper .componentControls .controls_next{
+	position:absolute;
+	top:0px;
+	left:86px;
+	width:33px;
+	height:33px;
+}
+
+#componentWrapper .componentControls .controls_next img{
+	position:absolute;
+	display:block;
+	top:0px;
+	left:0px;
+	width:33px;
+	height:33px;
+}
+
+
+
+
+
+#componentWrapper .slide_content {
+	position: absolute;
+	bottom:0px;
+	left:0px;
+	width:460px;
+	padding:20px;
+	
+	font-family: 'Dosis', sans-serif;
+	
+	/* Fallback for web browsers that doesn't support RGBa 
+	background: rgb(0, 0, 0); */
+	/* RGBa with 0.6 opacity */
+	background: rgba(0, 0, 0, 0.6);
+	
+	opacity: 0; 
+	filter: alpha(opacity=0); 
+	-ms-filter: "alpha(opacity=0)"; 
+	-khtml-opacity: 0; 
+	-moz-opacity: 0; 
+}
+
+#componentWrapper .slide_content h3{
+	font-size: 23px;
+	color:#6CF;
+}
+
+#componentWrapper .slide_content p{
+	color:#fff;
+	position:relative;
+	left:1px;
+}
+
+#componentWrapper .slide_content a{
+	color:yellow;
+}
+
+#componentWrapper .slide_content a:hover, a:active{
+  text-decoration:underline;
+}
+
+
+
+/* detail holder */
+#componentWrapper .slide_detail{
+	position:absolute; 
+	width:30px;
+	height:80px;
+	right:20px;
+	top:20px;
+	/*background:red;*/
+}
+
+/* image details for lightbox */
+#componentWrapper .pp_content{
+	position:relative; 
+	display:block;
+	width:30px;
+	height:30px;
+	left:0px;
+	top:0px;
+	margin-bottom:10px;
+}
+
+/* image link */
+#componentWrapper .pp_link{
+	position:relative; 
+	display:block;
+	width:30px;
+	height:30px;
+	left:0px;
+	top:0px;
+}
+
+
+
+
+/* preloader */
+#componentWrapper .mediaPreloader{
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin:-25px 0px 0px -25px;
+	background:#000 url('../data/loader.gif') no-repeat center center;
+	width:50px;
+	height:50px;
+	z-index:999;
+	opacity:0.7;
+}
+
+
+
+
+/* font calculations */
+#componentWrapper .fontMeasure{
+	visibility:hidden;
+}
+
+
+
+
+/*second instance*/
+
+/* component wrapper */
+#componentWrapper2{
+	position:absolute;
+	width:505px;
+	height:400px;
+	left:50%;
+	top:500px;
+	margin-left:-250px;
+	/*background:#ccc;*/
+}
+
+/* wrapper for scroll */
+#componentWrapper2 .componentScrollWrapper{
+	position:relative;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+	
+	/* hide playlist on beginning, then animate in after slide setup */
+	opacity: 0; 
+	filter: alpha(opacity=0); 
+	-ms-filter: "alpha(opacity=0)"; 
+	-khtml-opacity: 0; 
+	-moz-opacity: 0; 
+}
+
+#componentWrapper2 .componentPlaylist{
+	position:relative;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+	overflow:hidden; 
+}
+
+/* slide holder. */
+#componentWrapper2 .slide{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:500px;
+	height:250px;
+	background:#111;
+	
+	/* shadow in slide */
+	 -moz-box-shadow:    0px -4px 8px #111;
+	 -webkit-box-shadow: 0px -4px 8px #111;
+	 box-shadow:         0px -4px 8px #111;
+}
+
+/* image in slide */
+#componentWrapper2 .slide .stack_img{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:500px;
+	height:250px;
+	display:block;
+}
+
+
+
+/* controls */
+#componentWrapper2 .componentControls{
+	position:absolute;
+	width:118px;
+	height:33px;
+	top:-40px;
+	left:276px;
+	display:none;
+	/*background:red;*/
+}
+
+#componentWrapper2 .componentControls .controls_previous{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:33px;
+	height:33px;
+}
+
+#componentWrapper2 .componentControls .controls_previous img{
+	position:absolute;
+	display:block;
+	top:0px;
+	left:0px;
+	width:33px;
+	height:33px;
+}
+
+#componentWrapper2 .componentControls .controls_toggle{
+	position:absolute;
+	top:0px;
+	left:43px;
+	width:33px;
+	height:33px;
+}
+
+#componentWrapper2 .componentControls .controls_pause2{
+	position:absolute;
+	top:0px;
+	left:0px;
+	height:33px;
+	overflow:hidden;
+}
+
+#componentWrapper2 .componentControls .controls_pause2 img{
+	position:absolute;
+	display:block;
+	top:0px;
+	left:0px;
+	width:33px;
+	height:33px;
+}
+
+#componentWrapper2 .componentControls .controls_pause{
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+
+#componentWrapper2 .componentControls .controls_pause img{
+	position:relative;
+	display:block;
+	top:0px;
+	left:0px;
+	width:33px;
+	height:33px;
+}
+
+#componentWrapper2 .componentControls .controls_play2{
+	position:absolute;
+	top:0px;
+	left:0px;
+	height:33px;
+	overflow:hidden;
+}
+
+#componentWrapper2 .componentControls .controls_play2 img{
+	position:absolute;
+	display:block;
+	top:0px;
+	left:0px;
+	width:33px;
+	height:33px;
+}
+
+#componentWrapper2 .componentControls .controls_play{
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+
+#componentWrapper2 .componentControls .controls_play img{
+	position:relative;
+	display:block;
+	top:0px;
+	left:0px;
+	width:33px;
+	height:33px;
+}
+
+
+#componentWrapper2 .componentControls .controls_next{
+	position:absolute;
+	top:0px;
+	left:86px;
+	width:33px;
+	height:33px;
+}
+
+#componentWrapper2 .componentControls .controls_next img{
+	position:absolute;
+	display:block;
+	top:0px;
+	left:0px;
+	width:33px;
+	height:33px;
+}
+
+
+
+
+
+#componentWrapper2 .slide_content {
+	position: absolute;
+	bottom:0px;
+	left:0px;
+	width:460px;
+	padding:20px;
+	
+	font-family: 'Dosis', sans-serif;
+	
+	/* Fallback for web browsers that doesn't support RGBa 
+	background: rgb(0, 0, 0); */
+	/* RGBa with 0.6 opacity */
+	background: rgba(0, 0, 0, 0.6);
+	
+	opacity: 0; 
+	filter: alpha(opacity=0); 
+	-ms-filter: "alpha(opacity=0)"; 
+	-khtml-opacity: 0; 
+	-moz-opacity: 0; 
+}
+
+#componentWrapper2 .slide_content h3{
+	font-size: 23px;
+	color:#C93;
+}
+
+#componentWrapper2 .slide_content p{
+	color:#fff;
+	position:relative;
+	left:1px;
+}
+
+#componentWrapper2 .slide_content a{
+	color:yellow;
+}
+
+#componentWrapper2 .slide_content a:hover, a:active{
+  text-decoration:underline;
+}
+
+
+
+/* detail holder */
+#componentWrapper2 .slide_detail{
+	position:absolute; 
+	width:30px;
+	height:80px;
+	right:30px;
+	top:20px;
+	/*background:red;*/
+}
+
+/* image details for lightbox */
+#componentWrapper2 .pp_content{
+	position:relative; 
+	display:block;
+	width:30px;
+	height:30px;
+	left:0px;
+	top:0px;
+	margin-bottom:10px;
+}
+
+/* image link */
+#componentWrapper2 .pp_link{
+	position:relative; 
+	display:block;
+	width:30px;
+	height:30px;
+	left:0px;
+	top:0px;
+}
+
+
+
+
+
+/* google map example */
+#componentWrapper2 #gmap_canvas{
+	position:absolute; 
+	top:0px;
+	left:0px;
+	width:500px;
+	height:250px;
+}
+
+
+
+/* slide with content */
+#componentWrapper2 #custom_content{
+	position:absolute; 
+	top:0px;
+	left:0px;
+	width:500px;
+	height:333px;
+	background-image:url('../data/bg.gif');
+	background-repeat:repeat;
+}
+
+#componentWrapper2 #custom_content img{
+	position:absolute; 
+	display:block;
+	top:40px;
+	left:30px;
+	width:200px;
+	height:150px;
+	border: 10px solid #fff;
+}
+
+#componentWrapper2 #custom_content h3{
+	position: absolute;
+	top:55px;
+	left:270px;
+	font-family: sans-serif;
+	font-size: 25px;
+	color:#777;
+}
+
+#componentWrapper2 #custom_content p{
+	position: absolute;
+	top:100px;
+	left:270px;
+	width:220px;
+	
+	font-family: sans-serif;
+	font-size: 16px;
+	color:#777;
+}
+
+#componentWrapper2 #custom_content p a{
+	font-family: sans-serif;
+	font-size: 16px;
+	color:#09C;
+}
+
+#componentWrapper2 #custom_content p a:hover, a:active{
+    text-decoration:underline;
+}
+
+
+
+
+
+
+/* preloader */
+#componentWrapper2 .mediaPreloader{
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin:-25px 0px 0px -25px;
+	background:#000 url('../data/loader.gif') no-repeat center center;
+	width:50px;
+	height:50px;
+	z-index:999;
+	opacity:0.7;
+}
+
+
+
+
+/* font calculations */
+#componentWrapper2 .fontMeasure{
+	visibility:hidden;
+}
+
+
+
+
+
+
+/* public functions */	
+#publicFunctions{
+	position: absolute;
+	padding: 10px 25px 20px 20px;
+	background:#555;
+	left:50px;
+	top:50px;
+	font-family: 'Dosis', sans-serif;
+	font-size: 16px;
+	color:#fff;
+	list-style:circle;
+	
+	-moz-box-shadow: 2px 2px 5px #222;
+	-webkit-box-shadow: 2px 2px 5px #222;
+	box-shadow: 2px 2px 5px #222;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=2, Direction=135, Color='#222222')";
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=2, Direction=135, Color='#222222');
+	
+}
+
+#publicFunctions li a{
+	font-family: 'Dosis', sans-serif;
+	font-size: 16px;
+	color:#fff;
+}
+
+#publicFunctions li a:hover, #publicFunctions li .current{
+	text-decoration: underline;
+}
+
+
+
+
+
+/* public functions */	
+#publicFunctions2{
+	position: absolute;
+	padding: 10px 25px 20px 20px;
+	background:#555;
+	right:50px;
+	top:50px;
+	font-family: 'Dosis', sans-serif;
+	font-size: 16px;
+	color:#fff;
+	list-style:circle;
+	
+	-moz-box-shadow: 2px 2px 5px #222;
+	-webkit-box-shadow: 2px 2px 5px #222;
+	box-shadow: 2px 2px 5px #222;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=2, Direction=135, Color='#222222')";
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=2, Direction=135, Color='#222222');
+	
+}
+
+#publicFunctions2 li a{
+	font-family: 'Dosis', sans-serif;
+	font-size: 16px;
+	color:#fff;
+}
+
+#publicFunctions2 li a:hover, #publicFunctions2 li .current{
+	text-decoration: underline;
+}
+
+
+

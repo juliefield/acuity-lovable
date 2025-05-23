@@ -1,0 +1,107 @@
+﻿body 
+{
+    position: relative;
+    font-family:"HelveticaNeue",Helvetica,Arial,Verdana,sans-serif; 
+    font-size:12px;
+    margin: 0px;
+    
+    zoom: 100%;
+}
+
+
+.menuheader
+{
+    float: right;
+    display: block;
+    height: 32px;
+    font-size: 14px;
+    margin-top: 10px;
+    background:transparent url(images/DownArrow.gif) right top no-repeat;
+    padding-right: 19px;
+    cursor: pointer;
+}
+
+.gear 
+{
+    float: right;
+    height: 32px;
+    width: 32px;
+    margin: 3px 0 0 10px;
+    background:transparent url(images/gear.png) no-repeat;
+    cursor: pointer;
+}
+
+.section
+{
+    position: absolute;
+    display:block;
+    top: 0px;
+    left: -2000px;    
+    width: 100%;
+}
+
+.sectionheader
+{
+    padding: 0px;
+    margin: 0px;
+    font-size: 18px;
+    font-weight: bold;
+
+}
+
+.container
+{
+    background-color:white;
+    width: 100%;
+    display: block;
+    min-height: 500px;
+    position:relative;
+}
+
+.content
+{
+    padding: 20px;
+    font-size: 20px;
+    background: transparent;
+}
+
+.submenu
+{
+    position: absolute;
+    top: 40px;
+    right: 0px;
+    border: 1px solid black;
+    border-top: none;
+    display: block;
+    padding: 0 0 10px 0px;
+    background-color: #e0e0e0;
+}
+
+.submenu ul{
+    margin: 0; padding: 0;
+    display: block;
+    list-style: none;
+    }
+ 
+.submenu ul li
+{
+    padding: 3px;
+  
+}
+ 
+.submenu ul li a
+{
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+   padding: 3px 11px;
+    
+    }
+ 
+.submenu ul li a:visited{
+    color: Gray;}
+ 
+.submenu ul li a:hover, .menu ul li .current{
+    color: White;
+    background-color: Black;
+    }

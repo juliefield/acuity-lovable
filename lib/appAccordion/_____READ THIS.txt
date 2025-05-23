@@ -1,0 +1,45 @@
+QUICK FAQ:
+
+
+1. 
+For Internet Explorer, you NEED to run the file online or on local server like xampp!
+
+If you press F12 in IE, and open console (reload the file) you will see these errors:
+
+CSS3117: @font-face failed cross-origin request. Resource access is restricted. 
+x-7NZTw0n-ypOAaIE8uSrvesZW2xOQ-xsNqO47m55DA.woff
+
+This means the font is failing offline.
+
+
+
+
+
+
+2. 
+If the file doesnt work, open/install firebug:
+
+http://getfirebug.com/
+
+Its a MUST have extension for firefox which allows you to see possible erorrs in case (any much more).
+
+Once you have firebug, open CONSOLE and run the file again online or on local server like xampp to see if any errors occur.
+
+
+
+
+
+
+3. 'images' folder in _deploy folder comes from prettyphoto.
+
+
+
+
+
+4. Embedding video as inline content in slides (like youtube and vimeo), may take some time to load, especially if there a lots of instances, keep this in mind.
+
+
+
+
+5. For IE7 Vimeo javascript api calls are not going to work.
+https://vimeo.com/forums/topic:41660

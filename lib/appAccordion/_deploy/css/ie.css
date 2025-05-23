@@ -1,0 +1,14 @@
+
+/* IE transparent bg hack */
+#componentWrapper .slide_content {
+	background: url(../data/bg.png);
+}
+
+/* we need inherit here for transparent slide_content bg */
+#componentWrapper .slide_content h3{
+	filter:inherit;
+}
+
+#componentWrapper .slide_content p{
+	filter:inherit;
+}

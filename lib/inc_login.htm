@@ -1,0 +1,14 @@
+﻿        <div class="login">
+            <div>
+                <div id="loginform"  class="loginform" runat="server">
+                    <form id="login" action="#">
+                        <label>Username:</label><input type="text" id="username" class="text" name="R:username"  />
+                        <label>Password:</label><input type="password" id="password" class="text" name="R:password"  />
+                        <div id="loginfv" class="validation"></div>
+                        <div><input type="button" onclick="if (appLib.fv(this,'loginfv')) appMMP.login(this,'a','loginfv','username','password');" class="button" value="sign in" /></div>
+                        <div><a href="NewUser.aspx">New Account</a></div>
+                    </form>
+                </div>
+            </div>
+            <div id="lert2" style="display:none;">All Message go here: <span id="msgdv" style="color: Red;"></span></div>
+        </div>
