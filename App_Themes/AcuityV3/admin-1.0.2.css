@@ -1,0 +1,603 @@
+.companynode, .modelnode, .projectnode, .kpinode, .subkpinode
+{
+    display:block;
+}
+
+.clonable
+{
+    color: #0076BF;
+    font-weight: bold;
+}
+
+.kpinode, .subkpinode
+{
+    /* z-index: 150; */
+}
+
+.companynode:hover, .modelnode:hover, .projectnode:hover, .kpinode:hover, .subkpinode:hover
+{
+    display:block;
+    background-color: black;
+    color:White;
+    cursor: pointer;
+}
+
+.projectnode
+{
+    /* background-color: White; */
+    border-top: 1px solid black;
+}
+
+.modeladd, .projectadd, .kpiadd, .subkpiadd, .projectinactive
+{
+    float: right;
+    padding-right: 10px;
+}
+
+.showid
+{
+    display:none;
+}
+
+.activenode
+{
+    background-color: Black;
+    color:White;
+}
+
+.ranges-wrapper-4
+{
+    position: relative;
+    text-align: center;
+    margin: 0px auto;
+    height: 433px;
+    width: 1200px;
+}
+
+.ranges-wrapper-3
+{
+    position: relative;
+    margin: 0px auto;
+}
+
+.ranges-clone
+{
+    /*
+    position:absolute;
+    top: 0px;
+    left: 0px;
+    */
+    float: left;
+    width: 100px;    
+    text-align: center;
+    margin-top: 100px;
+    padding-right: 4px;
+}
+
+.ranges-clone p
+{
+    font-size: 12px;
+    font-style: italic;
+}
+
+.ranges-clone-link
+{
+    float: left;
+    width: 50px;    
+    text-align: center;
+    margin-top: 150px;
+    padding-right: 4px;
+    margin-right: 2px;
+    padding-top: -2px;
+    cursor: pointer;
+    background: url(images/blue_right_arrow.png) no-repeat center right;
+}
+
+.ranges-clone-link p
+{
+    font-size: 10px;
+    text-decoration: underline;
+    font-style: italic;
+}
+
+.ranges-clone-dragbox
+{
+    margin-top: 20px;
+    margin-left: 115px;
+    background: url(images/target1.png) no-repeat;
+    width: 100px;
+    height: 100px;
+}
+
+.ranges-chart
+{
+    /*
+    position: absolute;
+    top: 0px;
+    left: 0px;
+*/
+    float: left;
+    padding: 0;
+    margin: 0;
+    height: 400px;
+}
+
+.ranges-wrapper-2
+{
+    /*
+    position: absolute;
+    top: 0px;
+    left: 410px;
+*/
+    float: left;
+}
+
+
+#kpichart 
+{
+    height: 400px;
+    width: 400px;
+}
+
+.ranges-wrapper
+{
+    border: 1px solid gray;
+    width: 330px;
+    height: 400px;
+    background-color: White;
+}
+
+.ranges-header
+{
+    overflow-y: hidden;
+    height: 20px;
+    width: 330px;
+}
+
+.ranges-body
+{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    /* height: 130px; */
+    width: auto;
+}
+
+.ranges-footer
+{
+    overflow-y: hidden;
+    height: 30px;
+    width: 315px;
+}
+
+.rangetable-header
+{
+    table-layout: fixed;
+    overflow-y: hidden;
+    height: 20px;    
+    width: auto;
+}
+
+.rangetable-header th
+{
+    text-align: center;
+    width: 100px;
+}
+
+.rangetable-body
+{
+}
+
+.rangetable-body td
+{
+    text-align: center;
+    width: 100px;
+    white-space:nowrap;
+}
+
+.rangetable-footer
+{
+    overflow-y: hidden;
+    width: auto;
+}
+
+.rangetable-footer th
+{
+    text-align: center;
+    width: 100px;
+}
+
+.rangetable-row-0
+{
+    background-color: #d0d0d0;
+}
+
+.rangetable-blank 
+{
+ 	padding-right: 30px;
+}
+
+.rangetable-delete
+{
+ 	background: url(images/minus_button.jpg) no-repeat center left;
+ 	padding-right: 25px;
+ 	cursor: pointer;
+}
+
+.rangetable-add
+{
+ 	background: url(images/plus_button.jpg) no-repeat bottom left;
+ 	padding-right: 25px;
+ 	cursor: pointer;
+}
+
+.rangetable-row-1
+{
+    background-color: #e0e0e0;
+}
+
+.rangetable-error
+{
+    color: Red;
+}
+
+
+.rangetable-input, .rangetable-input-add
+{
+    width: 80px;
+    text-align: center;
+    height: 20px;
+    border: 1px solid gray;
+}
+
+.rangetable-footbar
+{
+    position:relative;
+    width: 330px;
+    height: 30px;
+    vertical-align:middle;
+}
+
+.rangetable-buttons
+{
+    position:absolute;
+    top: 0px;
+    right:0px;
+}
+
+.admin-crumb 
+{
+    display: none;
+}
+
+.edit-span 
+{
+    padding: 0 10px 0 10px;
+    font-weight: bold;
+}
+
+.edit-span input
+{
+    border: 1px solid gray;
+    font-weight: normal;
+    padding: 3px;
+}
+
+.admin-org-desc
+{
+    position: relative;
+    margin-bottom: 20px;
+}
+.admin-sectionbox
+{
+    position: relative;
+    margin: 50x 0 10px 0;
+    width:auto;
+    height: auto;
+    padding: 20px;
+    padding-right: 100px;
+    border-top: 1px solid #c0c0c0;
+}
+
+.admin-sectionbox > span
+{
+    position:absolute;
+    top: -10px;
+    left: 5px;
+    background-color: White;
+}
+
+.admin-alert-help
+{
+    clear:left;
+    font-size: 12px;
+    font-style:italic;
+    padding: 2px 0 10px 20px;
+}
+.admin-org-savecancel,.admin-project-savecancel,.admin-kpi-savecancel,.admin-subkpi-savecancel
+{
+    margin-top: 10px;
+    clear: both;
+    display:none;
+}
+
+.admin-kpi-desc 
+{
+    margin-top: 5px;
+}
+
+.admin-kpi-desc input
+{
+    width: 300px;
+    
+}
+
+.admin-kpi-project
+{
+    position: absolute;
+    top: 5px;
+    right: 15px;
+}
+.admin-kpi-weight
+{
+    margin-top: 4px;
+    margin-bottom: 8px;
+}
+.admin-kpi-weight input
+{
+    text-align: center;
+    width: 50px;
+}
+.admin-kpi-subkpiconvert
+{
+    position: absolute;
+    top: 30px;
+    right: 15px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.admin-kpilist h1
+{
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #0076BF; /* Blue */
+    color:White;
+    width: 100%;
+    padding: 3px 0 3px 0;
+    margin-bottom: 2px;   
+}
+
+.admin-kpilist td,.admin-kpilist th
+{
+    text-align: center;
+    width: 200px;
+}
+
+.admin-kpilist thead td,.admin-kpilist tfoot td
+{
+    font-weight: bold;
+    font-size: 14px;
+}
+.admin-kpilist thead td
+{
+    border-bottom: 1px solid gray;
+}
+.admin-kpilist tfoot td
+{
+    border-top: 1px solid gray;
+}
+
+
+.admin-subkpi-desc 
+{
+    margin-top: 20px;
+    margin-bottom: 12px;
+}
+
+.admin-subkpi-desc input
+{
+    width: 300px;
+    
+}
+
+.admin-subkpi-project
+{
+    position: absolute;
+    top: 5px;
+    right: 15px;
+}
+
+.admin-subkpi-kpi
+{
+    position: absolute;
+    top: 25px;
+    right: 15px;
+}
+
+.admin-scoregadget
+{   
+    padding-top: 10px; 
+    background-color: #f0f0f0;
+    margin-right: 10px;
+}
+
+
+
+.admin-alert h1
+{
+    border-top: 1px solid gray;
+    margin-top: 10px;
+    padding-top: 20px;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.admin-link 
+{
+    font-size: 12px;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.admin-alert-add-wrapper
+{
+    /* border-top: 1px solid gray; */
+    /* border-bottom: 1px solid gray; */
+    font-size: 16px;
+    background-color: #d8d8d8;
+    display:block;
+    height: 220px;
+    margin-right: 15px;
+    padding: 10px;
+    margin-top: 3px;
+}
+
+.admin-alert-edit-wrapper
+{
+    margin-left: 20px;
+    /* border-top: 1px solid gray; */
+    /* border-bottom: 1px solid gray; */
+    font-size: 15px;
+    background-color: #d8d8d8;
+    display:block;
+    height: 220px;
+    margin-right: 15px;
+    padding: 10px;
+    margin-top: 3px;
+}
+
+
+.admin-alert-add
+{
+    clear: left;
+}
+
+.admin-alert-listing
+{
+    margin-bottom: 10px;
+    margin-left: 20px;
+    clear: left;
+}
+
+.admin-alert-within
+{
+    display:none;
+}
+
+.admin-alert-score,.admin-alert-cph-percent
+{
+    width: 50px;
+}
+
+.admin-alert-number
+{
+    width: 30px;
+}
+
+.admin-alert-messagesline
+{
+    margin-top: 20px;
+}
+
+.admin-alert-messagediv
+{
+    float: left;
+    margin-right: 20px;
+    vertical-align: middle;
+}
+
+.admin-alert-messagediv label
+{
+    font-size: 10px;
+}
+
+.admin-alert-messagediv textarea
+{
+    height: 150px;
+    width: 270px;
+    font-size: 12px;
+}
+
+.admin-alert-adddiv 
+{
+    margin-top: 12px;
+}
+
+.admin-alert-ccmanager label
+{
+    vertical-align: top;
+    font-size: 18px;
+    line-height: 30px;
+}
+
+.admin-alert-ccmanager select
+{
+    vertical-align: top;
+}
+
+.admin-alert-cconly label
+{
+    font-size: 10px;
+}
+
+.admin-alert-button-add
+{
+}
+
+.admin-alert-button-cancel 
+{
+}
+
+.admin-messagebox-linkfooter
+{
+    clear: both;
+}
+
+.admin-messagebox-preview, .admin-messagebox-resetpositive, .admin-messagebox-resetnegative
+{
+    font-size: 11px;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-left: 10px;
+    float: right;
+}
+
+#scoregadget
+{
+}
+
+.admin-evaltype
+{
+    border-top: 1px solid black;
+    margin-top: 3px;
+    padding-top: 2px;
+}
+
+.admin-supweightlist input,.admin-toolweightlist input
+{
+    width: 50px;
+    text-align: center;
+}
+
+.dev-allowed 
+{
+    display:none;
+}
+
+.dev-display-reports
+{
+    display:none;
+    position: relative;
+    height: 300px;
+    width: 100%;    
+}
+
+#reportsEditor
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}

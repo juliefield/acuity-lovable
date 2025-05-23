@@ -1,0 +1,72 @@
+
+.app-header {
+  background:$dark-blue url(../images/app-header-bg.jpg) top left repeat-y;
+  padding: 10px;
+  margin: 0;
+  width: 100%;
+  height: 55px;
+  overflow: visible;
+
+  svg {
+    display: none;
+  }
+
+  &_logo {
+    float: left;
+    margin-left: 5px;
+  }
+
+  &_left {
+    float: left;
+  }
+
+  &_right {
+    float: right;
+    padding-right: 30px;
+  }
+
+  .heading {
+    font-weight: bold;
+    color: #fff;
+    font-style: italic;
+    font-size: 16px;
+    margin: 20px;
+    float: left;
+  }
+
+  .header-tile,
+  .app-header-tile {
+    float: right;
+  }
+  .header-tile a,
+  .app-header-tile a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  &_loading {
+    @include border-radius;
+    color: #fff;
+    background-color: $alert-red;
+    font-weight: bold;
+    font-style: italic;
+    display: none;
+    font-size: 16px;
+    float:right;
+    margin: 15px;
+    padding: 5px 20px;
+  }
+
+  &_logout {
+    margin: 25px 10px 0 10px;
+
+    a {
+      @include primary-link-color;
+    }
+  }
+  &_welcome-user {
+    margin: 25px 10px 0 10px;
+    font-weight: bold;
+    color: #fff;
+  }
+}

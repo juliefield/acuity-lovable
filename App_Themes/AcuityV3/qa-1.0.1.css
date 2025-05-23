@@ -1,0 +1,179 @@
+.qa-wrapper-popup
+{
+    display:none;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 500;
+    height: 100%;
+    width: 100%;
+    background:rgba(0,0,0,0.5);
+}
+
+.qa-wrapper2-popup
+{    
+    position: relative;
+    margin: 50px auto 0 auto;
+    background-color: White;
+    border: 10px solid green;
+    border-radius: 25px;
+    height: auto;
+    width: 400px;
+}
+
+.qa-close
+{
+    position: absolute;
+    cursor: pointer;
+    top: 11px;
+    right: 11px;
+    height: 15px;
+    width: 15px;
+    font-size: 12px;
+    color: Green;
+    font-weight: bold;
+}
+
+.qa-incorrect
+{
+    font-weight: bold;
+    color: Red;
+}
+
+.qa-box-popup
+{
+    padding: 25px;
+
+}
+
+.qa-box-popup h1
+{
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+}
+
+.qa-box-popup p
+{
+    font-size: 13px;
+}
+
+.qa-question
+{
+    display:none;
+}
+
+.qa-question ol
+{
+    list-style-type: decimal;
+    padding-left: 20px;    
+}
+
+.qa-question ul
+{
+    list-style: disc;
+    padding-left: 20px;    
+}
+
+.qa-box-popup ol li,.qa-box-popup ul li
+{
+    margin-top: 8px;
+    padding: 5px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.qa-submit-wrapper
+{
+    position: relative;
+    height: 30px;
+}
+
+.qa-submit, .qa-done
+{
+    display: block;
+    margin: 0 auto 0 auto;
+    text-align: center;
+}
+
+.qa-submit-previous
+{
+    position: absolute;
+    top: 5px;
+    left: 0px;
+}
+
+.qa-submit-next 
+{
+    position: absolute;
+    top: 5px;
+    right: 0px;
+}
+
+.qa-done
+{
+    margin-top: 6px; 
+}
+
+.qa-submit-disabled
+{
+    background-color: lightgray ! important;
+}
+
+.qa-question, .qa-answer
+{
+}
+
+
+.qa-answer, .qa-answer-feedback, .qa-footer
+{
+    display: none;
+}
+
+.qa-bubble
+{
+    background-color: Green;
+    color: White;
+    curor: pointer;
+    padding: 4px;
+    font-size: 12px;
+    position: absolute;
+    font-weight: bold;
+    border: 2px solid Green;
+    border-radius: 5px;
+}
+
+.qa-w-4
+{
+}
+
+.qa-w-4 .qa-close
+{
+	font-size: 	20px;
+	color: #931010;
+	
+}
+
+.qa-w-4 .qa-wrapper2-popup
+{
+	border: 15px solid #931010;
+  border-radius: 10px;
+	width: 600px;
+}
+
+.qa-w-4 .qa-box-popup,.qa-w-4 input
+{
+	background-color: white;
+}
+
+.qa-w-4 .qa-box-popup h1
+{
+	font-size: 	24px;
+	display: none;
+	
+}
+
+.qa-w-4 .qa-box-popup p 
+{
+	font-size: 	24px;
+}

@@ -1,0 +1,145 @@
+﻿body 
+{
+    padding:0;
+    margin: 0;
+	background-color: #242424;
+	text-align:center;
+}
+
+img 
+{ margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+
+a
+{ margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+
+h1
+{ margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+
+h2
+{ margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+
+p
+{ margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+
+div
+{ margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+
+.container
+{
+    position: relative;
+    margin: 0 auto;
+    background: white url(tgg.png) no-repeat top left;
+    width: 847px;
+    height: 634px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #636467;
+}
+
+.date
+{
+    position: absolute;
+    top: 118px;
+    left: 720px;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #636467;
+	margin-top: 5px;
+	background-color:White;
+}
+
+.dinner
+{
+    position: absolute;
+    top: 318px;
+    left: 60px;
+    font-size: 15px;
+}
+
+.outing
+{
+    position: absolute;
+    top: 328px;
+    left: 450px;
+    font-size: 15px;
+}
+
+.leftbody
+{
+    position: absolute;
+    top: 455px;
+    left: 60px;
+    text-align: justify;
+    font-size: 14px;
+}
+
+.rightbody
+{
+    position: absolute;
+    top: 455px;
+    left: 435px;
+    text-align: justify;
+    font-size: 14px;
+}
+
+
+.bottomlinks
+{
+  position: absolute;
+  top: 600px;
+  left: 50px;    
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  color: #636467;
+  background-color:White;
+}
+
+.bottomlinks a
+{
+    text-decoration: none;
+    margin-left: 30px;
+    font-weight: bold;
+	color: #636467;
+}
+
+
+.info
+{
+    width:350px;
+    font-family: Times New Roman, Times New Roman, Serif;
+    color: Black;
+    background-color: White;
+}
+
+.info h1
+{
+    color: #007454;
+    font-size: 17px;
+    margin-bottom: 6px;
+}
+
+.info h2
+{
+    color: #007454;
+    font-size: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	margin-top: 3px;
+}
+
+.leadletter
+{
+    color:#007454;
+    font-size:16px;
+}
+

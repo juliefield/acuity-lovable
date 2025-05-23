@@ -1,0 +1,145 @@
+
+.chzn-container {
+  @include border-radius;
+  font-size: 12px;
+  font-weight: 500;
+  position: relative;
+  display: inline-block;
+  zoom: 1;
+  color: $font-color;
+
+  .chzn-results li {
+    line-height: 18px;
+    padding: 6px;
+    margin: 0;
+    list-style: none;
+
+    &:hover {
+      background-color: $brand-blue;
+    }
+  }
+
+  &-single .chzn-single {
+    @include border-radius;
+    background-color: #fff;
+    border: 0px;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    height: 18px;
+    line-height: 18px;
+    padding: 2px 0 2px 8px;
+    color: #000;
+    text-decoration: none;
+    margin: 2px 0;
+    width: 159px;
+
+    div {
+      background: $brand-blue;
+      border-left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      display: block;
+      height: 100%;
+      width: 24px;
+
+      b {
+        background: none;
+
+        &:before {
+          font-family: fontAwesome;
+          content: '\f107';
+          position: absolute;
+          right: 10px;
+          top: 3px;
+          width: 5px;
+          height: 5px;
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+.chzn-container-multi .chzn-choices {
+  width: 165px;
+}
+
+input[type="button" i],
+input[type="submit" i],
+input[type="reset" i],
+input[type="file" i]::-webkit-file-upload-button,
+button {
+  @include border-radius;
+  @include blue-btn-hover;
+  border: 0px;
+  padding: 5px;
+  background: $brand-blue;
+}
+button[disabled],
+html input[disabled] {
+  background: darken($dark-gray-blue, 5%);
+
+  &:hover {
+    background: darken($dark-gray-blue, 5%);
+  }
+}
+input[type="button" i] {
+  @include border-radius;
+  @include blue-btn-hover;
+  border: 0px;
+  padding: 5px;
+  background: $brand-blue;
+}
+
+.ui-slider .ui-slider-handle {
+  @include circle(50%);
+  @include box-shadow;
+  border: 0px;
+  background: $brand-blue !important;
+  height: 17px;
+  width: 17px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.stg-field label {
+  float: left;
+  padding: 3px;
+  font-size: 13px;
+}
+
+.home-show-wrapper {
+  position: absolute;
+  top: 5px;
+  right: 130px;
+  z-index: 1;
+}
+.report-show-wrapper {
+  position: inherit;
+
+  select {
+    width: 460px;
+  }
+}
+.report-intraining-wrapper,
+.home-intraining-wrapper {
+  top: 0;
+  right: 90px;
+}
+.report-grouping-wrapper,
+.home-grouping-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.admin-editing-wrapper {
+  position: absolute;
+  top: 5px;
+  right: 70px;
+}

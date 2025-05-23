@@ -1,0 +1,79 @@
+
+.messages-side_div {
+  .messages-compose {
+    margin-left: 10px;
+    font-size: 12px;
+    display: inline-block;
+  }
+
+  h2 {
+    display: inline-block;
+  }
+
+  .message-wrapper {
+    padding: 0;
+    margin-right: 5px;
+  }
+  .messages-box-wrapper {
+    margin: 0;
+
+    a {
+      display: block;
+      color: #fff;
+      font-size: 14px;
+      text-decoration: none;
+      padding: 8px;
+
+      &:hover {
+        background: $brand-blue;
+        color: #fff;
+      }
+    }
+
+    .messages-box-active {
+      background: darken($dark-gray-blue, 5%);
+    }
+  }
+
+  .messages-box-unread {
+    @include alert-number;
+  }
+
+  .messages-alert-newmessages {
+    @include border-radius;
+    display: block;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    background-color: $alert-red;
+    padding: 5px;
+    margin: 0 4px 0 0;
+    display: none;
+    font-size: 16px;
+  }
+
+  .message-notifiers {
+    padding: 20px 0;
+    border-top: 1px solid darken($dark-gray-blue, 5%);
+    margin-top: 20px;
+    margin: 20px 11px 0 0;
+
+    a {
+     padding: 15px 8px;
+     color: $brand-blue;
+     font-size: 13px;
+     text-decoration: none;
+
+     &:hover {
+       text-decoration: underline;
+     }
+   }
+  }
+}
+
+.messageprogress {
+  z-index: 2;
+  position: absolute;
+  top: 50px;
+  left:140px;
+}

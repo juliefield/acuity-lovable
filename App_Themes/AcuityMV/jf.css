@@ -1,0 +1,57 @@
+﻿/* include some styles here for the io wrapper (I really dislike pure) */
+
+.jf-form fieldset
+{
+    margin: 8px;
+    padding: 3px;
+    width: auto;
+}
+
+.jf-form fieldset legend
+{
+    font-weight: bold;
+}
+
+.jf-control-group input
+{
+    margin: 0 5px 0 5px;
+}
+
+.jf-control-group, .jf-controls
+{
+    margin-top: 8px;
+}
+
+.jf-controls
+{
+    display:block;
+    text-align: center;
+}
+
+/* jsonForm-Specific */
+
+.jf-wrapper ul
+{
+    list-style-type: none;
+}
+
+.jf-wrapper li label
+{
+    font-weight: bold;
+    padding-right: 10px;
+}
+
+.jf-wrapper td,.jf-wrapper th
+{
+    border: 1px solid gray;
+}
+.jf-wrapper input
+{
+    margin: 2px;
+}
+
+.jf-data
+{
+    color: Red;
+    display: none; /* display for debugging */
+}

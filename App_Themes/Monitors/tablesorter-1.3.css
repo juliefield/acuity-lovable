@@ -1,0 +1,72 @@
+.headerSortUp
+{
+ 	background: url(images/asc.gif) no-repeat right center ;        
+}
+
+.headerSortDown
+{
+ 	background: url(images/desc.gif) no-repeat right center ;
+}
+
+.tableColumnExpand
+{
+ 	background: url(images/plus_sign.gif) no-repeat left center ;
+}
+
+.tableColumnCollapse
+{
+ 	background: url(images/minus_sign.gif) no-repeat left center ;
+}
+
+.table-expand
+{
+    white-space: nowrap;
+}
+
+
+.tbl-key,.tbl-filterkey,.tbl-drillkey,.tbl-dk,.tbl-sk,.tbl-identkey,.tbl-ident,.tbl-info,.tbl-tabletooltip,.tbl-ttt
+{
+    display:none;
+    color: Red !important;
+    font-weight: bold;
+}
+
+.tbl-seq,.tbl-serieslink /* MADELIVE */
+{
+    display:none;
+}
+
+.tbl-drill tbody td
+{
+    /* cursor: pointer; */ /* MADEDEV2 */
+}
+
+/* MADE2DEV2 */
+.tbl-mytip
+{
+    padding: 15px;
+    border: 1px solid gray;
+    background-color: White;
+}
+
+.tbl-mytip table
+{
+}
+
+.tbl-mytip th
+{
+    font-weight: bold;
+    padding: 0 5px 0 5px;
+}
+
+.tbl-mytip td
+{
+    font-weight: normal;
+    padding: 0 5px 0 5px;
+}
+
+.tbl-mytip th,.tbl-mytip td
+{
+    font-size: 13px;
+    text-align: center;
+}

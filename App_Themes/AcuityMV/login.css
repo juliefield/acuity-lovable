@@ -1,0 +1,70 @@
+.login-form,.login-welcome
+{
+    position:absolute;
+    top:5px;
+    right:20px;
+    text-align:right;
+}
+
+.login-welcome
+{
+    margin-top:0px;
+    display:none;
+    text-align: center;
+    line-height: 25px;
+    font-size: 12px;
+}
+
+.login-welcome a
+{
+    font-size: 10px;
+    vertical-align: middle;
+}
+
+.login-username
+{
+    font-weight: bold;
+    font-size: 18px;
+    color: #0076BF;
+}
+
+.login-form label
+{
+    font-size: 12px;
+    margin-right: 3px;
+}
+
+.login-form input
+{
+    font-size: 12px;
+}
+
+.login-validation
+{
+    font-size: 11px;
+    font-weight: bold;
+    color: Red;
+}
+
+.login-lock
+{
+    background-image: url(images/lock-16.png);
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    margin-left: 4px;
+    padding: 0 20px 20px 0;
+    display:inline-block;
+}
+
+.login-modal-title
+{
+    display: block;
+    text-align: right;
+}
+
+.login-modal-image
+{
+    background: url(images/Acuity_5c_Right_crop.png) no-repeat left 25%;
+    background-size: 200px;
+}
+

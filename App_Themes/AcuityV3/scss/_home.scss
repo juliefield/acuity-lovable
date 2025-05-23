@@ -1,0 +1,224 @@
+
+.home {
+  &_page {
+    @include tab-content-spacing;
+  }
+
+  &_message-panel {
+    @include border-radius;
+    background-color: #fff;
+    position: absolute;
+    left: 0;
+    top: 0px;
+    width: 330px;
+
+    &-label {
+      background: $table-label-background;
+      padding: 15px;
+      font-weight: bold;
+      font-size: 14px;
+      margin: 1px 0;
+      position: relative;
+
+      &-number {
+        @include alert-number;
+        min-width: 17px;
+        min-height: 17px;
+      }
+    }
+  }
+}
+
+.home_message-row {
+  margin: 0;
+  padding: 0;
+  max-height: 186px;
+  overflow-y: auto;
+
+  a {
+    text-decoration: none;
+    font-size: 13px;
+  }
+
+  li {
+    list-style: none;
+    padding: 10px;
+    border-bottom: 1px solid lighten($border-color, 10%);
+
+    &:nth-child(even) {
+      background: $table-row-bg-even;
+    }
+
+    &:last-child {
+      border-bottom: 0;
+    }
+
+    &:hover {
+      background: darken($table-row-bg-even,2%);
+    }
+  }
+
+  &_date {
+    font-size: 12px;
+    float: right;
+    font-style: italic;
+    margin-right: 15px;
+  }
+
+  &_avatar {
+    @include avatar-circle(28px);
+    float: left;
+    margin: 0 15px 0 0;
+  }
+  &_icon {
+    float: left;
+    font-size: 20px;
+    color: $dark-gray-blue;
+    margin-top: 5px;
+    margin-left: 4px;
+  }
+
+  &_name {
+    font-weight: bold;
+    font-size: 12px;
+  }
+
+  &_subject {
+    font-style: italic;
+    font-size: 12px;
+    margin-top: 7px;
+  }
+
+  &_content {
+    margin-left: 35px;
+  }
+}
+
+.avatar {
+  &-circle {
+    @include avatar-circle(35px);
+  }
+
+  &-name {
+    margin-top: 0;
+    margin-left: 58px;
+    line-height: 25px;
+
+    &--tagline {
+      font-size: 11px;
+      font-style: italic;
+      margin-top: 0;
+      line-height: 18px;
+    }
+  }
+
+  &-date {
+    font-size: 11px;
+    font-weight: normal;
+    margin: 0;
+    line-height: 28px;
+  }
+
+  &-number {
+    @include circle(50%);
+    width: 34px;
+    height: 28px;
+    float: left;
+    margin: 5px;
+    text-align: center;
+    font-weight: bold;
+    padding-top: 6px;
+    font-size: 18px;
+  }
+}
+
+.player-profile-card {
+	width: 300px;
+	float: left;
+	margin: 10px;
+	padding: 0 0 2px 0;
+	background: white;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	margin-bottom: 23px;
+	position: relative;
+
+  &__header {
+  	@include table-topper;
+    padding-left: 87px;
+  }
+
+  &__avatar {
+    @include avatar-circle(58px);
+  	position: absolute;
+  	z-index: 1;
+  	border: 3px solid #fff;
+  }
+
+  &__details {
+  	padding: 0 10px 10px 10px;
+  }
+
+  &__team-name {
+  	margin-left: 76px;
+    font-size: 14px;
+  }
+
+  &__number {
+  	border-width: 4px;
+  	border-style: solid;
+  	float: none;
+  	margin: 10px auto;
+  	width: 80px;
+  	height: 63px;
+  	font-size: 40px;
+  	padding-top: 15px;
+  }
+
+  &__tag-line {
+  	font-style: italic;
+  	font-size: 12px;
+  	font-weight: bold;
+  	margin-bottom: 20px;
+  }
+
+  &__title {
+  	font-size: 14px;
+  	font-weight: bold;
+  	background: #F7F9FB;
+  	padding: 10px;
+  	border-top: 1px solid #DFE1E2;
+  	border-bottom: 1px solid #DFE1E2;
+  	margin-left: 1px;
+  }
+}
+
+.home-data-panel {
+  position: absolute;
+  left: 360px;
+  top: 0px;
+}
+
+.home-sections-panel {
+  @include border-radius;
+  width: 760px;
+  height: 400px;
+  padding: 20px 20px 0 20px;
+  background-color: #fff;
+  position: absolute;
+  left: 360px;
+  top: 620px;
+  margin-bottom: 40px;
+
+  .hometabs {
+    @include top-rounded-corners;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 800px;
+    border-width: 0px;
+    z-index: 0;
+    padding: 0;
+  }
+}

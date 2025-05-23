@@ -1,0 +1,66 @@
+.app-logo
+{
+    position: absolute;
+    left: 4px;
+    margin: 0;
+	padding: 0;
+    top: 5px;
+    height: 65px;
+	width: 173px;
+	background-image: url(images/Acuity_5c_Right_crop.png);
+	background-repeat: no-repeat;
+}
+
+.app-logo h1 {
+	display: none;
+}
+
+
+.app-header
+{
+    position: relative;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 80px;
+    overflow: visible;
+}
+
+.app-heading
+{
+    position: absolute;
+    left: 290px;
+    top: 48px;
+    margin: 0;
+	padding: 0;
+	width: 300px;
+	height: 65px;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.header-tile,.app-header-tile
+{
+    margin-top: 17px;
+    margin-left: 50%;
+    position: relative;
+    float: left;
+    padding:  0 10px 0 10px;
+    z-index: 100;    
+}
+
+.header-tile a,.app-header-tile a
+{
+    color: Black;
+    text-decoration: none;
+}
+
+.app-heading-mobile
+{
+    left: 120px;
+}
+
+.app-logo-mobile
+{
+    display: none;
+}

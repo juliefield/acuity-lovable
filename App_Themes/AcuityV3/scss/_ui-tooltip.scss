@@ -1,0 +1,19 @@
+
+.ui-tooltip {
+  &-default {
+    @include box-shadow;
+    border: 0px;
+    background-color: $light-blue;
+    color: $font-color;
+    border-color: $light-blue;
+  }
+
+  &-content {
+    font-size: 16px;
+    line-height: 20px;
+    padding: 10px;
+    color: $font-color;
+    background: none;
+    border-color: $light-blue;
+  }
+}

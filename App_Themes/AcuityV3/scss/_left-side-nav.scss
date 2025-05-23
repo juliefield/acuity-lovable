@@ -1,0 +1,52 @@
+
+.leftpanel {
+  background: $dark-gray-blue;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 280px;
+  height: 100%;
+  color: #fff;
+  border-top: 1px solid $dark-gray-blue;
+
+  &-icons {
+    background: $dark-gray-blue;
+    position: absolute;
+    top: 0;
+    left: 0px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 55px;
+    text-align: center;
+    overflow: hidden;
+    display: none;
+
+    &_item {
+      position:relative;
+      padding: 15px 0;
+      color: #fff;
+      cursor: pointer;
+
+      i {
+        font-size: 28px;
+      }
+
+      &:hover {
+        background: $brand-blue;
+      }
+    }
+  }
+
+  .app-drp {
+    display: inline-block;
+    line-height: 16px;
+    width: 16px;
+    cursor: pointer;
+    margin-left: 4px;
+    margin-top: -5px;
+    background: url(images/calendar_4.png) no-repeat center top;
+    display: none;
+  }
+}

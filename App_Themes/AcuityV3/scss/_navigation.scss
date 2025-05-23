@@ -1,0 +1,150 @@
+
+.nav3 {
+
+  &-icon {
+    @include border-radius;
+    @include blue-btn-hover;
+    position: absolute;
+    top: 17px;
+    right: 10px;
+    cursor: pointer;
+    z-index: 200;
+    background: $brand-blue;
+    text-align: center;
+    padding: 6px 8px;
+    color: white;
+
+    i {
+      font-size: 30px;
+      color: #fff;
+    }
+  }
+
+  &-shadow {
+    position:absolute;
+    top: 0px;
+    right: 0;
+    width: 100%;
+    height: 5000px;
+    font-size: 5000px;
+    z-index: 1000;
+    display:block;
+    background:rgb(17,17,17);
+    background: transparent\9;
+    background:rgba(17,17,17,0.3);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4c111111,endColorstr=#4c111111);
+    zoom: 1;
+    display:none;
+
+    &:nth-child(n) {
+      filter: none;
+    }
+  }
+
+  &-close {
+    position: absolute;
+    top: 5px;
+    right: 0px;
+    height:25px;
+    width: 300px;
+    cursor:pointer;
+    z-index: 201;
+    background: white url(images/close_icon.gif) no-repeat right;
+  }
+
+  &-close2 {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    height:20px;
+    width:20px;
+    cursor:pointer;
+    z-index: 201;
+  }
+
+  &-wrapper {
+    position: absolute;
+    top: 75px;
+    right: -300px;
+    width: 220px;
+    z-index: 1000;
+    background:#eeeeee;
+  }
+
+  &-linkhelp {
+    position: absolute;
+    top: -500px;
+    right: -500px;
+    z-index: 202;
+    color: #fff;
+    display: block;
+    text-align: center;
+    padding-left: 10px;
+    padding-top: 50px;
+    font-size: 28px;
+    display:none;
+    background: #CD6607 url(images/white_arrow-512r.png) no-repeat top right;
+  }
+
+  ul {
+    list-style:none;
+    margin: 0;
+    padding: 0;
+    float: left;
+    z-index: 1000;
+
+    li {
+      padding: 0;
+      margin: 0;
+      border-bottom: 1px solid $light-gray;
+
+      a {
+        padding: 15px;
+        width: 220px;
+        z-index: 201;
+        vertical-align: middle;
+        background-color: #fff;
+        margin-bottom: 0px;
+        color: $font-color;
+        display: block;
+        text-decoration: none;
+        font-weight: bold;
+
+        &:hover {
+          background: $brand-blue;
+          color: #fff;
+        }
+
+        &.logout-link {
+          color: $alert-red;
+
+          &:hover {
+            color: #fff;
+          }
+        }
+      }
+
+      &:last-child {
+        border-bottom: 0px;
+      }
+    }
+  }
+}
+
+.top-tab-nav {
+  background: #0092CE;
+  padding: 0;
+
+  a {
+    display: inline-block;
+    padding: 15px 15px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+
+    &:hover {
+      background: #1da5dc;
+      cursor: pointer;
+    }
+  }
+}

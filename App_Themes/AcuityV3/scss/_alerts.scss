@@ -1,0 +1,48 @@
+
+.alert {
+  &_maintenance {
+    position: relative;
+    top: 0;
+    color: #fff;
+    background-color: $alert-red;
+    padding: 5px;
+    margin: 0;
+    text-align: center;
+    display: none;
+  }
+}
+
+.alert {
+  @include border-radius;
+  padding: 10px 20px;
+  font-size: 14px;
+  color: $font-color;
+  border: 0px;
+  display: inline-block;
+  margin: 15px 0;
+  width: auto;
+  font-style: italic;
+
+  &--info {
+    background: $alert-info;
+  }
+  &--warning {
+    background: $alert-warning;
+  }
+  &--danger {
+    background: $alert-red;
+    color: #fff;
+  }
+  &--success {
+    background: $alert-success;
+  }
+  &--secondary {
+    background: $alert-secondary;
+  }
+  &--light {
+    background: $alert-light;
+  }
+  &--dark {
+    background: $alert-dark;
+  }
+}

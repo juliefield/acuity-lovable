@@ -1,0 +1,230 @@
+.boardgame-theme {
+
+  .box {
+  	position: absolute;
+    width: 55px;
+    height: 55px;
+    font-size: 27px;
+    text-align: center;
+    z-index:-1;
+    display: table;
+
+    &#box0 {
+      top: 0;
+      left: 100px;
+    }
+    &#box1 {
+      top: 56px;
+      left: 100px;
+    }
+    &#box2 {
+      top: 112px;
+      left: 100px;
+    }
+    &#box3 {
+      top: 168px;
+      left: 100px;
+    }
+    &#box4 {
+      top: 300px;
+      left: 100px;
+    }
+    &#box5 {
+      top: 400px;
+      left: 100px;
+    }
+    &#box6 {
+      top: 500px;
+      left: 100px;
+    }
+    &#box7 {
+      top: 500px;
+      left: 200px;
+    }
+    &#box8 {
+      top: 500px;
+      left: 300px;
+    }
+    &#box9 {
+      top: 500px;
+      left: 400px;
+    }
+    &#box10 {
+      top: 500px;
+      left: 500px;
+    }
+    &#box11 {
+      top: 500px;
+      left: 600px;
+    }
+    &#box12 {
+      top: 500px;
+      left: 700px;
+    }
+    &#box13 {
+      top: 400px;
+      left: 700px;
+    }
+    &#box14 {
+      top: 300px;
+      left: 700px;
+    }
+    &#box15 {
+      top: 300px;
+      left: 600px;
+    }
+    &#box16 {
+      top: 300px;
+      left: 500px;
+    }
+    &#box17 {
+      top: 300px;
+      left: 400px;
+    }
+    &#box18 {
+      top: 300px;
+      left: 300px;
+    }
+    &#box19 {
+      top: 200px;
+      left: 300px;
+    }
+    &#box20 {
+      top: 100px;
+      left: 300px;
+    }
+    &#box21 {
+      top: 0;
+      left: 300px;
+    }
+    &#box22 {
+      top: 0;
+      left: 400px;
+    }
+    &#box23 {
+      top: 0;
+      left: 500px;
+    }
+    &#box24 {
+      top: 100px;
+      left: 500px;
+    }
+    &#box25 {
+      top: 100px;
+      left: 600px;
+    }
+    &#box26 {
+      top: 100px;
+      left: 700px;
+    }
+    &#box27 {
+      top: 0;
+      left: 700px;
+    }
+    &#box28 {
+      top: 0;
+      left: 800px;
+    }
+    &#box29 {
+      top: 0;
+      left: 900px;
+    }
+
+    span {
+      vertical-align: middle;
+      display: table-cell;
+    }
+  }
+
+  .leaderboard-group {
+    position: absolute;
+    left: 30px;
+    top: 110px;
+  }
+  .namelegend {
+    display: none;
+  }
+
+  .leaderboard {
+    @include leaderboard-flex;
+    width: 37px;
+    background: white;
+
+    &:nth-child(odd) {
+      background: #F8FAFC;
+    }
+
+    &name {
+      @include leaderboard-flex;
+      left: 37px;
+      width: 296px;
+      text-align: left;
+      padding: 8px 0;
+      background: #F8FAFC;
+      height: 24px;
+
+      &:nth-child(odd) {
+        background: white;
+      }
+
+      .avatarspecial {
+        overflow: hidden;
+        float: left;
+        position: relative;
+        top: -1px;
+        margin: 0 6px;
+      }
+      .avatar {
+        overflow: hidden;
+        float: left;
+        position: relative;
+        top: -1px;
+        margin: 0 6px;
+        border: 0;
+      }
+    }
+
+    &num{
+      @include leaderboard-flex;
+      left: 305px;
+      width: 35px;
+      background: white;
+
+      &:nth-child(odd) {
+        background: #F8FAFC;
+      }
+    }
+  }
+
+  &_tiki {
+    background:transparent url(../images/tiki-water-bg.png) center center / cover no-repeat;
+    height: 100%;
+    width: 100%;
+
+    &-logo {
+      position: absolute;
+      right: 40px;
+      bottom: 160px;
+      width: 358px;
+      height: 132px;
+    }
+
+    .grass {
+      position: absolute;
+      bottom: 70px;
+
+      &--left {
+        left: 0;
+      }
+      &--right {
+        right: 0;
+      }
+    }
+
+    .box {
+      color: #000;
+      background-color: #18A4E1;
+    }
+  }
+
+}

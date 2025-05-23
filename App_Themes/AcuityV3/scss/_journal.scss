@@ -1,0 +1,205 @@
+
+.report-box {
+  width: 100%;
+
+  svg {
+    width: 100% !important;
+  }
+
+  .highcharts-container  {
+    width: 100%;
+  }
+}
+
+#tabs-journalform {
+  padding-top: 20px;
+  padding-left: 0;
+  padding-right: 0;
+  margin: 0;
+  background: $table-label-background;
+  position: relative;
+}
+
+.toggle-btns {
+  float: right;
+  margin-top: -2px;
+
+  button {
+    border:1px solid #AEC3D4;
+    padding:3px 15px;
+    border-radius: 0;
+    background: #AEC3D4;
+    font-size: 11px;
+    color: #fff;
+
+    &.active {
+      border:1px solid $light-gray;
+      background: white;
+      color: $font-color;
+    }
+
+    &:first-child {
+      -webkit-border-top-left-radius: 4px;
+      -webkit-border-bottom-left-radius: 4px;
+      -moz-border-radius-topleft: 4px;
+      -moz-border-radius-bottomleft: 4px;
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+          margin-right: -3px;
+    }
+
+    &:last-child {
+      -webkit-border-top-right-radius: 4px;
+      -webkit-border-bottom-right-radius: 4px;
+      -moz-border-radius-topright: 4px;
+      -moz-border-radius-bottomright: 4px;
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+    }
+  }
+}
+.agent-trend-chart {
+  min-height: 450px !important;
+}
+
+.journal-panel {
+  background: $table-label-background;
+
+  .row [class^="col"] {
+    overflow: hidden;
+  }
+  .rpt-toggle-table,
+  .rpt-toggle-chart {
+    right: 2px;
+  }
+  .tooltip {
+    background: white;
+  }
+  .report-touchcount {
+    .acuity-table__top-th {
+      display: none;
+    }
+  }
+  .report-touchrank {
+    margin-bottom: 20px;
+    max-height: 350px;
+    overflow-x: auto;
+
+    tfoot {
+      display: none;
+    }
+    .acuity-table__top-th {
+      display: none;
+    }
+  }
+
+  .half-col {
+    &_flex {
+      display: flex;
+
+      @media (max-width: $medium) {
+        display: block;
+      }
+
+      .col-6 {
+        width: 50%;
+
+        @media (max-width: $medium) {
+          width: 100%;
+        }
+
+        &:first-child {
+          margin-left: 0;
+          margin-right: 10px;
+
+          @media (max-width: $medium) {
+            margin-left: 0;
+            margin-right: 0;
+          }
+        }
+        &:nth-child(2) {
+          margin-left: 10px;
+          margin-right: 0;
+
+          @media (max-width: $medium) {
+            margin-left: 0;
+            margin-right: 0;
+          }
+
+          table {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+  .addrecord-table {
+    div:nth-of-type(2) {
+      background: transparent !important;
+    }
+
+    .acuity-table {
+      margin-bottom: 0;
+    }
+
+    tfoot {
+      display: none;
+    }
+
+    .table-form-journal {
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .table-form-journal div .btn {
+      display: none;
+    }
+    .table-form-journal div .btn.btn-top-right {
+      display: block;
+    }
+
+  }
+
+  .highcharts-axis-labels {
+    text {
+      transform: rotate(0deg);
+    }
+  }
+
+  #journal-agent-trend {
+    .highcharts-container {
+      padding-top: 20px;
+      background: white;
+    }
+  }
+
+  .journal-details {
+    display: none;
+    margin-bottom: 10px;
+
+    .col-12 {
+      margin-left: 0;
+      margin-right: 0;
+      width: 100%;
+    }
+  }
+  .openbox-container {
+    @include border-radius;
+    padding: 10px 10px 5px 10px;
+    border: $default-border;
+    margin-bottom: 10px;
+
+    h2 {
+      margin: 0 0 7px 5px;
+    }
+  }
+  #openbox-button {
+    color: #fff !important;
+  }
+  #journaldetailsbox {
+    &:hover {
+      color: $brand-blue;
+      cursor: pointer;
+    }
+  }
+}

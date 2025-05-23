@@ -1,0 +1,450 @@
+
+.sidekick {
+  &_container {
+    background: $background-lightblue;
+    border: 0;
+
+    h1 {
+      font-weight: normal;
+      margin: 0;
+    }
+
+    .table-topper_summary {
+      margin-top: 20px;
+    }
+  }
+  &_icon {
+    float: left;
+    margin-right: 5px;
+    margin-top: -5px;
+  }
+  &_performance {
+    width: auto !important;
+    padding: 15px 0;
+    border: 1px solid $light-gray !important;
+    background: white;
+    height: auto !important;
+
+    .highcharts-container {
+      height: auto !important;
+    }
+
+    p {
+      font-size: 16px;
+    }
+
+    .col-6 .report-wrapper {
+      border: 1px solid $light-gray;
+
+      br {
+        display: none;
+      }
+
+      table {
+        margin-bottom: 0;
+
+        tfoot,
+        .acuity-table__top-th {
+          display: none;
+        }
+      }
+    }
+    .rpt-toggle-table,
+    .rpt-toggle-chart {
+      top: 1px;
+      right: 0;
+    }
+  }
+  &_summary {
+    background: white;
+    padding: 0 !important;
+    width: auto !important;
+    border: 1px solid $light-gray !important;
+  }
+}
+.rpt-id-DashboardGrid1 {
+  width: calc(100%) !important;
+  height: calc(100%) !important;
+  top: calc(0%) !important;
+  left: calc(0%) !important;
+}
+.rpt-id-DashboardGrid1 table td:first-child {
+   text-align: left;
+   color: $brand-blue !important;
+ }
+.summary-process-wrap {
+  height:600px;
+  padding:30px;
+
+  .highcharts-xaxis-labels {
+    transform: rotate(0deg);
+  }
+
+  .highcharts-tooltip-box {
+    background: white !important;
+    fill: white !important;
+    border: 0;
+  }
+}
+
+.top-metric-labels {
+  border-bottom: 1px solid $light-gray;
+  padding: 10px;
+  width: auto;
+
+  &_right {
+    text-align: right;
+
+    @media (max-width: $medium) {
+      text-align: left;
+    }
+
+    .top-metric-labels_img {
+      float: right;
+      margin-left: 15px;
+      margin-right: 0;
+
+      @media (max-width: $medium) {
+        float: left;
+        margin-left: 0;
+        margin-right: 15px;
+      }
+    }
+
+    ul.color-label-boxes {
+      float: right;
+
+      @media (max-width: $medium) {
+        float: left;
+      }
+
+      li {
+        margin-left: 15px;
+        margin-right: 0;
+
+        @media (max-width: $medium) {
+          margin-left: 0;
+          margin-right: 15px;
+        }
+      }
+    }
+  }
+
+  &_img {
+    float: left;
+    margin-right: 15px;
+    padding-top: 5px;
+  }
+
+  p {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 16px;
+  }
+}
+
+ul.color-label-boxes {
+  margin: 0 !important;
+  padding: 0;
+
+  li {
+    display: inline-block;
+    margin-right: 15px;
+    padding-top: 0;
+    padding-left: 25px;
+    position: relative;
+    font-weight: bold;
+
+    .box-color {
+      height: 18px;
+      width: 18px;
+      position: absolute;
+      left: 0;
+      top: 0;
+
+      &--purple {
+        background: $purple;
+      }
+      &--blue {
+        background: $brand-blue;
+      }
+      &--teal {
+        background: $teal;
+      }
+      &--orange {
+        background: $orange;
+      }
+      &--gray {
+        background: $boxlabel-gray;
+      }
+      &--pink {
+        background: $pink;
+      }
+      &--darkpurple {
+        background: $darkpurple;
+      }
+    }
+  }
+}
+.date-pagination {
+  text-align: center;
+  padding: 0 0 15px 0;
+}
+
+.bubble-diagram {
+  &_container {
+    position: relative;
+
+    .bubble-diagram {
+      @include circle(100%);
+      position: absolute;
+      color: white;
+      text-align: center;
+      display: table;
+
+      b {
+        font-weight: bold;
+        font-size: 33px;
+        color: white;
+      }
+      div {
+        display: table-cell;
+        vertical-align: middle;
+        color: white;
+
+        span {
+          font-size: 11px;
+          font-style: italic;
+          color: white;
+          display: block;
+          margin-top: -8px;
+        }
+      }
+
+      &.bubble {
+        &--small {
+          width: 102px;
+          height: 102px;
+        }
+        &--medium {
+          width: 132px;
+          height: 132px;
+        }
+        &--large {
+          width: 185px;
+          height: 185px;
+        }
+
+        &--purple {
+          background: $purple;
+        }
+        &--blue {
+          background: $brand-blue;
+        }
+        &--teal {
+          background: $teal;
+        }
+        &--orange {
+          background: $orange;
+        }
+        &--gray {
+          background: $boxlabel-gray;
+        }
+        &--pink {
+          background: $pink;
+        }
+        &--darkpurple {
+          background: $darkpurple;
+        }
+
+        &-1 {
+          left: 10px;
+          top: 30px;
+        }
+
+        &-2 {
+          left: 180px;
+          top: 20px;
+        }
+
+        &-3 {
+          top: 180px;
+          left: 20px;
+        }
+        &-4 {
+          left: 115px;
+          top: 21px;
+        }
+
+        &-5 {
+          left: -80px;
+          top: 87px;
+        }
+
+        &-6 {
+          top: 180px;
+          left: 165px;
+        }
+      }
+    }
+  }
+  &_process {
+    background:transparent url(../images/process-bub-bg.png) center center no-repeat;
+    width: 290px;
+    height: 320px;
+  }
+  &_performance {
+    background:transparent url(../images/performance-bub-bg.png) center center no-repeat;
+    position: relative;
+    width: 280px;
+    height: 320px;
+    top: -150px;
+    left: 250px;
+
+    @media (max-width: $large) {
+      top: -70px;
+      left: 90px;
+    }
+  }
+}
+
+.toggle-btns {
+  float: right;
+  margin-top: 10px;
+
+  button {
+    border:1px solid #AEC3D4;
+    padding:3px 15px;
+    border-radius: 0;
+    background: #AEC3D4;
+    font-size: 11px;
+    color: #fff;
+
+    &.active {
+      border:1px solid $light-gray;
+      background: white;
+      color: $font-color;
+    }
+
+    &:first-child {
+      -webkit-border-top-left-radius: 4px;
+      -webkit-border-bottom-left-radius: 4px;
+      -moz-border-radius-topleft: 4px;
+      -moz-border-radius-bottomleft: 4px;
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+          margin-right: -3px;
+    }
+
+    &:last-child {
+      -webkit-border-top-right-radius: 4px;
+      -webkit-border-bottom-right-radius: 4px;
+      -moz-border-radius-topright: 4px;
+      -moz-border-radius-bottomright: 4px;
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+    }
+  }
+}
+
+
+ul.pagination-bar {
+  text-align: center;
+
+  li {
+    list-style: none;
+    display: inline-block;
+    border: 1px solid $light-gray;
+    padding: 8px;
+    margin: 0;
+
+    a {
+      text-decoration: none;
+    }
+
+    &:first-child {
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+      background: $brand-blue;
+      margin-right: -4px;
+      padding: 11px 15px;
+
+      a,
+      a i {
+        color: #fff;
+      }
+    }
+
+    &:last-child {
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      background: $brand-blue;
+      margin-left: -4px;
+      padding: 11px 15px;
+
+      a,
+      a i {
+        color: #fff;
+      }
+    }
+  }
+}
+
+.two-col-arrow {
+  position: relative;
+  &:before {
+    content: '';
+    background-image: url(../images/2col-arrow.png);
+    position: absolute;
+    top: 50%;
+    left: 110px;
+    right: 0;
+    margin: 0 auto;
+    height: 79px;
+    width: 20px;
+    z-index: 1;
+
+    @media (max-width: $medium) {
+      display: none;
+    }
+  }
+  &:after {
+    content: '';
+    width: 1px;
+    height: 100%;
+    position: absolute;
+    background: $light-gray;
+    left: 93px;
+    right: 0;
+    margin: 0 auto;
+    top: 0;
+
+    @media (max-width: $medium) {
+      display: none;
+    }
+  }
+}
+.sidekick-reco-box {
+  background: white;
+  border: 1px solid $light-gray;
+  border-top: 0;
+
+  #agent-selection {
+    padding: 0;
+  }
+}
+#assistTable,
+#liveSummaryTable {
+  br {
+    display: none;
+  }
+}
+
+#assistTable table.acuity-table,
+#liveSummaryTable table.acuity-table {
+  margin-bottom: 0;
+
+  tfoot {
+    display: none;
+  }
+}

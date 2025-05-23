@@ -1,0 +1,204 @@
+
+.player-profile-thumbsup {
+	background: $thumbs-up-bg;
+  margin: 0;
+
+  &-item {
+  	text-align: center;
+  	padding: 15px 20px 10px 20px;
+  	float: left;
+  	width: 123px;
+  	border-right: 1px solid $border-color;
+  	margin-left: 1px;
+
+    &:hover {
+    	cursor: pointer;
+    }
+
+    &:nth-child(2) {
+      border-right: 0;
+      width: 124px;
+    }
+
+    &--on {
+    	background: $thumbs-up-bg-on !important;
+    }
+  }
+
+	&.is-small &-item {
+		padding: 5px 5px 5px 5px;
+		width: auto;
+
+		img {
+			width: 50%;
+		}
+	}
+
+  &-label {
+  	color: $dark-gray-blue;
+  	font-weight: normal;
+  	margin-top: 12px;
+    font-size: 11px;
+  }
+}
+
+.player-thumbsup-list {
+	width: 100%;
+
+  &-received,
+  &-given,
+  &-either {
+  	background: $thumbs-up-bg-on;
+  	width: 100%;
+  	top: 0;
+  	bottom: 0;
+  	height: 237px;
+  	overflow-y: scroll;
+  	line-height: 50px;
+  	font-size: 14px;
+  	display: none;
+  }
+
+  &-either {
+		display: block;
+		position: relative;
+		max-height: 186px;
+  }
+}
+
+.thumbup-list-row {
+	padding: 8px 10px;
+	border-bottom: 1px solid $border-color;
+
+	&.is-new {
+		background-color: $alert-warning;
+	}
+
+  &:last-child {
+  	border-bottom: 0px;
+  }
+}
+
+.player-date {
+	font-size: 12px;
+	font-weight: normal;
+	color: $dark-gray-blue;
+}
+
+.number-bubble {
+  @include border-radius;
+  text-align: center;
+  font-size: 17px;
+	color: #000000;
+	font-weight: 400;
+  padding: 5px;
+  border: 1px solid $border-color;
+  background: white;
+  position: relative;
+  margin-top: 13px;
+  width: 28px;
+	height: 24px;
+
+	.alert-number {
+		@include alert-number;
+		min-width: 12px;
+		min-height: 12px;
+		font-size: 11px;
+		font-weight: 400;
+		position: absolute;
+		right: -16px;
+		top: -10px;
+	}
+
+  &-left {
+  	float: left;
+
+		.alert-number {
+			left: -16px;
+			right: auto;
+		}
+
+    &:after {
+    	height: 15px;
+    	width: 10px;
+    	content: url(../images/bubble-arrow-nub-left.png);
+    	position: absolute;
+    	right: -10px;
+    	top: 9px;
+    }
+  }
+
+  &-right {
+  	float: right;
+  	margin-left: 5px;
+
+    &:before {
+    	height: 15px;
+    	width: 10px;
+    	content: url(../images/bubble-arrow-nub-right.png);
+    	position: absolute;
+    	left: -10px;
+    	top: 9px;
+    }
+  }
+}
+
+.is-small .number-bubble {
+	font-size: 14px;
+	width: 22px;
+	height: 18px;
+	padding: 0;
+
+	&:before, &:after {
+		top: 2px;
+	}
+
+	.alert-number {
+		padding: 1px;
+	}
+
+	&-left {
+		.alert-number {
+			left: -9px;
+			top: -10px;
+		}
+	}
+
+	&-right {
+		.alert-number {
+			right: -9px;
+			top: -10px;
+		}
+	}
+}
+
+.thumbup {
+	float: right;
+	width: 19px;
+	height: 20px;
+	background-image: url(../images/thumbup-off.png);
+	background-position: top center;
+	background-repeat: no-repeat;
+	margin-top: 16px;
+	margin-right: 10px;
+	cursor: pointer;
+
+	&-float-left {
+		float: left;
+		margin-top: 5px;
+	}
+}
+
+.thumbcount {
+	float: right;
+	width: 19px;
+	height: 20px;
+	margin-top: 6px;
+	margin-right: 10px;
+}
+.thumbup-on, .thumbupOn {
+	background-image: url(../images/thumbup-on.png);
+}
+.thumbup-active {
+	background-image: url(../images/thumbup-link.png);
+}

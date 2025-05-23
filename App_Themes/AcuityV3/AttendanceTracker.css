@@ -1,0 +1,57 @@
+﻿.AT-UserId
+{
+    background-color: #c0c0c0;
+    padding: 0 2px 0 2px;
+    color: White;
+}
+
+.AT-Date,.AT-Date input
+{
+    width: 110px;
+}
+
+.AT-Category
+{
+}
+
+.AT-Notes,.AT-Notes input
+{
+    width: 400px;
+}
+
+.AT-Points,.AT-Points input
+{
+    width: 50px;
+}
+
+.AT-admin
+{
+    display:block;
+    border-top: 1px solid black;
+}
+
+.AT-admin h1
+{
+    padding:0;
+    margin: 4px 0 4px 0;
+    font-size: 14px;
+}
+
+.AT-delete
+{
+ 	background: url(images/minus_button.jpg) no-repeat center left;
+ 	padding-right: 25px;
+ 	cursor: pointer;
+}
+
+.AT-add
+{
+ 	background: url(images/plus_button.jpg) no-repeat bottom left;
+ 	padding-right: 25px;
+ 	cursor: pointer;
+}
+
+#scoreeditorarea td span
+{
+    display:none;
+}

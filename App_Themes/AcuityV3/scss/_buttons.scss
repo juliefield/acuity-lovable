@@ -1,0 +1,19 @@
+
+.btn {
+  padding: 10px 15px;
+  color: #fff;
+  font-size: 15px;
+
+  &--blue {
+    background: $brand-blue;
+  }
+
+  &-small {
+    padding: 4px 10px;
+    font-size: 13px;
+  }
+}
+
+input[type="button" i].btn {
+  padding: 10px 15px;
+}

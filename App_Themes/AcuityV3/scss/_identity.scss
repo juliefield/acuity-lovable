@@ -1,0 +1,283 @@
+
+.identity-card {
+	width: 300px;
+	float: left;
+	margin: 10px;
+	padding: 0 0 2px 0;
+	background: white;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	margin-bottom: 23px;
+	position: relative;
+
+  &__header {
+  	@include table-topper;
+    padding-left: 87px;
+  }
+
+  &__avatar {
+    @include avatar-circle(58px);
+  	position: absolute;
+  	z-index: 1;
+  	border: 3px solid #fff;
+  }
+
+  &__details {
+  	padding: 0 10px 10px 10px;
+    min-height: 100px;
+  }
+
+  &__team-name {
+  	margin-left: 76px;
+    font-size: 14px;
+  }
+
+  &__number {
+  	border-width: 4px;
+  	border-style: solid;
+  	float: none;
+  	margin: 10px auto;
+  	width: 80px;
+  	height: 63px;
+  	font-size: 40px;
+  	padding-top: 15px;
+  }
+
+  &__tag-line {
+  	font-style: italic;
+  	font-size: 12px;
+  	font-weight: bold;
+  	margin-bottom: 20px;
+  }
+
+  &__title {
+  	font-size: 14px;
+  	font-weight: bold;
+  	background: #F7F9FB;
+  	padding: 10px;
+  	border-top: 1px solid #DFE1E2;
+  	border-bottom: 1px solid #DFE1E2;
+  	margin-left: 1px;
+  }
+
+  &_setupbtn {
+    @include border-radius;
+    float: right;
+    margin-top: -5px;
+    cursor: pointer;
+  }
+
+  &_setup-popup {
+    @include custom-dropshadow(0.2);
+    @include border-radius;
+  	position: fixed;
+  	top: 210px;
+  	left: 340px;
+  	background-color: #fff;
+  	z-index: 99999;
+  	width: 850px;;
+
+    @media (max-width: $small) {
+      width: 80%;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 0px;
+      margin: 0;
+      left: 18px;
+      top: -34px;
+      height: 20px;
+      border-left: 17px solid transparent;
+      border-right: 17px solid transparent;
+      border-bottom: 15px solid #fff;
+    }
+
+    p {
+      font-size: 14px;
+    }
+
+    h2 {
+      margin-top: 0;
+      border-bottom: $default-border;
+      padding-bottom: 11px;
+    }
+
+    &-content {
+      max-height: 600px;
+      overflow-y: scroll;
+      padding: 20px 30px;
+    }
+
+    .cancel-btn,
+    input[type="file" i]::-webkit-file-upload-button {
+      @include border-radius;
+      background: transparent;
+      border: $default-border;
+      font-size: 13px;
+      padding: 8px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.identity-setup {
+  &_form-group {
+    position: relative;
+  	margin: 0;
+    width: 460px;
+    float: right;
+    height: auto;
+
+    @media (max-width: $small) {
+      width: 100%;
+    }
+
+    &-label {
+    	position: absolute;
+    	font-weight: bold;
+    	top: -10px;
+    	left: 0;
+    }
+
+    .tabbed {
+      &>section {
+        &>div {
+          height: auto;
+        }
+
+        &>h1 {
+          margin-top: 6px;
+
+          &>label {
+           padding: 6px 8px;
+
+            @media (max-width: $small) {
+              padding: 6px 8px;
+              width: 134px;
+              font-size: 13px;
+              margin-top: 2px;
+            }
+          }
+        }
+      }
+      &>input:checked+section>h1 {
+        margin-top: 7px;
+      }
+    }
+
+    #inputJersey {
+      width: 30px;
+      outline:none;
+    }
+    #inputNickname {
+      width: 100%;
+      outline:none;
+    }
+    #inputSlogan {
+      width: 100%;
+      outline: none;
+      height: 70px;
+    }
+    .form-label {
+      margin-bottom: 5px;
+    }
+    .form-description {
+      font-size: 12px;
+      line-height: 20px;
+    }
+  }
+
+  &_preview {
+    float: left;
+    margin-top: 5px;
+    text-align: center;
+    width: 297px;
+    position: relative;
+
+    &-avatar {
+    	position: absolute;
+      background:transparent url("../images/empty_headshot.png") center center / cover no-repeat;
+      top: 0;
+      left: 70px;
+    	height: 150px;
+    	width: 150px;
+    	z-index: 97;
+    	text-align: center;
+    	overflow: hidden;
+    	-webkit-border-radius: 50%;
+    	-moz-border-radius: 50%;
+    	border-radius: 50%;
+
+      img {
+      	height: 155px;
+      }
+    }
+
+    &-jersey {
+      height: 260px;
+      width: 300px;
+      text-align: center;
+      margin-top: 100px;
+    }
+    &-jersey-name {
+      text-align: center;
+      font-size: 17px;
+      font-weight: bold;
+      position: absolute;
+      width: 138px;
+      left: 0;
+      right: 0;
+      top: 160px;
+      margin: 0 auto;
+    }
+    &-slogan {
+      line-height: 23px;
+      font-style: italic;
+      font-weight: 600;
+      text-align: center;
+    }
+  }
+}
+
+.identity-setup_form-two-column {
+  float: left;
+  width: 46%;
+  margin: 10px 0;
+  font-size: 13px;
+  font-weight: bold;
+
+  &:nth-child(odd) {
+    margin-left: 5px;
+  }
+
+  select {
+    width: 100%;
+    margin-top: 5px;
+    font-weight: normal;
+  }
+}
+.max-characters {
+  float: right;
+  font-size: 12px;
+  font-style: italic;
+}
+.input-empty {
+	color: gray;
+}
+.setup-input {
+  padding: 5px;
+}
+.choose-file-uploadbtn {
+  background: #fff;
+  color: $cool-dark-gray;
+  font-size: 14px;
+}

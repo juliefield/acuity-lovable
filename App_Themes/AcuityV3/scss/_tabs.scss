@@ -1,0 +1,96 @@
+
+.ui-tabs {
+
+  .ui-tabs-nav {
+    @include border-radius-custom(0px);
+    margin: 0;
+    padding: 0;
+    background: $nav-bg-blue;
+    border: 0;
+
+    li {
+      @include border-radius-custom(0px);
+      list-style: none;
+      float: left;
+      position: relative;
+      top: 0 !important;
+      margin: 0 1px !important;
+      border-bottom: 0 !important;
+      padding: 0;
+
+      &.ui-tabs-selected {
+        margin-bottom: 0;
+        padding-bottom: 0 !important;
+      }
+
+      a {
+        float: left;
+        padding: 15px 20px;
+        text-decoration: none;
+
+        &:hover {
+          background: $brand-blue;
+        }
+      }
+    }
+  }
+}
+
+.ui-tabs {
+  .hometabs_gray.ui-tabs-nav {
+    background: $table-label-background;
+
+    li {
+      &.ui-tabs-selected {
+        background: #fff;
+        color: $font-color;
+      }
+
+      a {
+        color: $font-color;
+        font-size: 13px;
+
+        &:hover {
+          background: #fff;
+        }
+      }
+
+      &:first-child {
+        margin-left: 0 !important;
+      }
+    }
+  }
+}
+
+
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default {
+  background: none;
+  border: 0;
+  color: #fff;
+
+  &:hover {
+    background: $brand-blue;
+  }
+}
+
+.ui-state-default a,
+.ui-state-default a:link,
+.ui-state-default a:visited {
+  color: #fff;
+}
+
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active {
+  background: $brand-blue;
+}
+
+.tabs.ui-tabs.ui-widget.ui-widget-content.ui-corner-all {
+  @include border-radius-custom(0px);
+  padding: 0;
+  background: none;
+  border: 0;
+  width: 100% !important;
+}

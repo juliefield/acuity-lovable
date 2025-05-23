@@ -1,0 +1,195 @@
+.qasetup-wrapper 
+{
+    position: relative;
+}
+
+.qasetup-form fieldset
+{
+    position: relative;
+    margin: 8px;
+    padding: 3px;
+    width: auto;
+}
+
+.qasetup-form fieldset legend
+{
+    font-weight: bold;
+}
+
+.qasetup-checklists
+{
+    width: 20%;
+    margin: 10px 0 10px 0;
+}
+
+.qasetup-checklist ul
+{
+    list-style: none;
+    margin: 2px 0 0 15px;
+    padding: 0;
+}
+
+.qasetup-checklist li
+{
+    margin-top: 3px;
+}
+
+.qasetup-checklist li span
+{
+    margin-left: 3px;
+}
+
+.qasetup-boxclear
+{
+    position: absolute;
+    top: 0px;
+    right: 15px;
+    background-color: White;
+    color: Gray;
+    cursor: pointer;
+    padding: 0 5px 0 5px;
+}
+
+#qasetuplibtabs 
+{
+    position: relative;
+    margin-left: 20%;
+    margin-right: auto;
+    margin-top: -9px;
+    width: 30%;
+}
+
+#qasetuplibtabs > ul 
+{
+    height: 40px;
+}
+
+.qasetup-lib-tab
+{
+    height: auto;
+    font-size: 11px;
+    min-height: 600px;
+}
+
+#qasetupoutlinetabs 
+{
+    position: absolute;
+    top: 0px;
+    left: 51%;
+    width: 48.5%;
+}
+
+#qasetupoutlinetabs > ul 
+{
+    height: 40px;
+}
+
+.qasetup-outline-tab
+{
+    height: auto;
+    min-height: 600px;
+}
+
+.qasetup-lib-list
+{
+    list-style: none;
+    padding: 0;
+
+}
+.qasetup-lib-list > li
+{
+    margin: 2px 0 3px 0;
+}
+
+.qasetup-lib-sublist
+{
+    color: Gray;
+    display: none;
+    list-style: none;
+}
+
+.qasetup-lib-sublist > li
+{
+    border-left: 1px solid lightgray;
+    margin-left: 10px;
+    padding: 3px;
+}
+
+.qasetup-lib-sectionlist
+{
+    list-style: none;
+}
+
+.qasetup-lib-sectionsubitem
+{
+    list-style: none;
+    margin-left: 0px;
+}
+
+.qasetup-lib-questionlist
+{
+    list-style: none;
+}
+
+.qasetup-lib-questionsubitem
+{
+    list-style: none;
+    margin-left: 0px;
+}
+
+.qasetup-lib-questionsubitem li
+{
+    margin-bottom: 4px;
+}
+
+.qasetup-lib-subitem
+{
+    margin-left: 10px;
+}
+
+.qasetup-expand-link
+{
+    cursor: pointer;
+    margin-right: 4px;
+}
+
+.qasetup-newform-link
+{
+    margin-left: 10px;
+    cursor: pointer;
+    text-decoration: underline;    
+}
+
+.draggable
+{
+    z-index: 1000;
+    cursor: pointer;
+}
+
+/* jsonForm styling (is this worth the tradeoff?) */
+
+.qasetup-outline-settings-jsonform
+{
+    max-height: 600px;
+    font-size: 11px;
+    /* margin-left: -120px; */
+}
+
+.jf-command-add,.jf-command-update
+{
+    /* margin-left: 120px; */
+}
+
+/* Field Hiding */
+/*
+
+.jfd-qaOutlines > label,
+.jfd-qaOutlines-html
+,.jfd-qaOutlines-formId
+,.jfd-qaOutlines-javascript
+,.jfd-qaOutlines-css
+,.jfd-ServiceMark
+{
+    display:none;
+}
+*/
