@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>P5</title>
+    <!--
+    <script type="text/javascript" src="lib/jquery/jquery-1.7.2.min.js"></script>
+    -->
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.dom.min.js"></script>
+    <script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js"></script>        
+    <script type="text/javascript">
+
+        let mobilenet;
+        let puffin;
+
+        function modelReady() {
+            console.log("Model 3 is ready!!!");
+            mobilenet.predict(puffin, gotResults);
+        }
+
+        function gotResults(error, results) {
+            if (error) {
+                console.error(error);
+            }
+            else {
+                console.log(results);
+                let label = results[0]
+            }
+        }
+
+
+        function imageReady() {
+            image(puffin, 0, 0, width, height);
+        }
+
+        function setup() {
+            createCanvas(480, 480);
+            puffin = createImg('images/puffin.jpg', imageReady);
+            puffin.hide();
+            background(0);
+            mobilenet = ml5.imageClassifier("MobileNet", modelReady);
+        }
+
+        function draw() {
+        }
+    </script>
+
+
+</head>
+<body>
+</html>

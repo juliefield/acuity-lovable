@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML> 
+  <head> 
+    <title>Zoo</title>
+  </head>
+  <body style="width:200px;" onload="document.form1.prompt.focus();" onkeydown="if (event.keyCode==13) {event.keyCode=9; return event.keyCode }">
+    <form name="form1" onsubmit="return false;">
+      <div id="log"></div>
+      <div id="input">
+	&gt; <input name="prompt" type="text" style="border-width:0px;" onchange="OUTPUT('> ' + this.value);GETINPUT(this.value.toLowerCase());this.value='';" />
+        <input name="afterprompt" type="text" style="border-width:0px;" onfocus="document.form1.prompt.focus();" />
+      </div>
+      <div><br/><br/><br/></div>
+    </form>
+    <script language="javascript">
+      function OUTPUT(txt)
+      {
+        var d = document.getElementById("log");
+	d.innerHTML += "<div>" + txt + "</div>"
+	window.scrollTo(0,document.body.scrollHeight);
+      }
+
+      //***** Your Logic:
+
+
+      var question = new Array();
+      var animal = new Array();
+      var trueindex = new Array();
+      var falseindex = new Array();
+
+      OUTPUT("<b>Zoo - A GREAT GAME!  Think of an animal and I will guess what it is!</b>");
+      question[0]="";
+      animal[0]="dog";
+
+      var current = 0;
+      var newanimal;
+      var mode = 0; //0=asking yes or no about current
+
+      askyesorno();
+
+      function askyesorno()
+      {
+	mode=0;
+	if (question[current]=="")
+	{
+	  OUTPUT("Is your animal a " + animal[current] + " (yes or no)?");
+	}
+	else
+	{
+	  OUTPUT(question[current]+"?");
+	}
+      }
+
+      function GETINPUT(txt)
+      {
+	if (mode == 0) //asking (yes or no).
+	{
+	  if ((txt == "yes")||(txt == "y"))
+	  {
+	    if (question[current]=="")
+	    {
+	      OUTPUT("Hurray! I guessed your animal!  Let's play again!  Think of an animal.");
+	      current = 0;
+	      askyesorno();
+	    }
+	    else
+	    {
+	      current = trueindex[current];
+	      askyesorno();
+	    }
+	  }
+	  else if ((txt == "no")||(txt == "n"))
+	  {
+	    if (question[current]=="")
+	    {
+	      mode = 1;
+	      OUTPUT("hmmm.  I give up.  What was your animal?");
+	    }
+	    else
+	    {
+	      current = falseindex[current];
+	      askyesorno();
+	    }
+	  }
+	  else
+	  {
+	    OUTPUT("I don't understand '" + txt + "', please enter yes or no.");
+	  }
+	}
+	else if (mode == 1)  //Asked for the name for the animal.
+	{
+	  newanimal = animal.length;
+	  animal[newanimal]=txt;
+	  question[newanimal]="";
+	  mode = 2;
+	  OUTPUT("A "+animal[newanimal]+"! I should have known!");
+	  OUTPUT("Hey, so I can get it next time, can you type in a question that is TRUE for a "+animal[newanimal]+",  but is NOT TRUE for a "+animal[current]+"?");	  
+	}
+	else if (mode == 2) //Asked for the differentiating question.
+	{
+	  question[current]=txt;
+	  trueindex[current] = newanimal;
+
+	  falseindex[current] = animal.length; //We are moving the current animal.
+	  animal[falseindex[current]]=animal[current];
+	  question[falseindex[current]]="";
+	  animal[current]=""; //No animal here anymore, it's been replaced with a question.
+	  current=0;
+	  OUTPUT("OK, got it.  Let's play again!  Think of an animal.");
+	  askyesorno();
+	}
+      }
+    </script>
+  </body>
+</HTML>

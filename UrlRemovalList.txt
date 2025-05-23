@@ -1,0 +1,47 @@
+D jq/ReportTable.aspx?cid=SprintEscMissingKPI&sb=dv
+D jq/ReportTable.aspx?cid=DukeMissingKPI&sb=dv
+D jq/ReportTable.aspx?cid=CSRadminlog&sb=dv
+D jq/reportsmenu.aspx?cid=SprintACDReports&sb=acd
+D jq/ACDMetrics.aspx?cid=DailyACDNewCombined&sb=acd
+D jq/reportsmenu.aspx?cid=Quality
+D jq/reportsmenu.aspx?cid=DataValidations
+D ers-import.acuityapmr.com/jq/ReportTable.aspx?cid=MTDVolume&sb=acd
+D jq/ReportTable.aspx?cid=UtilizationSprintEsc&sb=dv
+D jq/ACDMetrics.aspx?cid=SprintMont&sb=cms
+D jq/ReportTable.aspx?cid=SprintMissingKPI&sb=dv
+D jq/ReportTable.aspx?cid=DukeMissingKPI&sb=dv
+D jq/ReportTable.aspx?cid=SprintMissingKPIPilot&sb=dv
+D jq/ReportTable.aspx?cid=ProgressMissingKPI&sb=dv
+D jq/ReportTable.aspx?cid=SprintMissingKPI&sb=dv
+D jq/reportsmenu.aspx?cid=PSEGReports&sb=psg
+D jq/ReportTable.aspx?cid=EntergyMissingKPI&sb=dv
+D jq/ReportTable.aspx?cid=MissingCMSData&sb=dv
+D jq/ACDMetrics.aspx?cid=ImportLogRecords
+
+The above were removed at 7pm on 9/20.
+Searches:  "acuity missing kpi ers", 
+
+
+After doing this, I told it to ignore all parameters.
+
+Scenarios:
+
+1) Google doesn't re-index the site (results stay in Google).  Steps I've taken to try to force indexing.
+	A) Removal of Robots.txt file, so no Bypass directive - on the theory that it has to see the pages to unindex.
+	B) NOINDEX Metatag added to the trouble URLs
+	C) Specific requests to index the pages (with the NOINDEX Metatags, so that's unclear).
+	It still could fail, but I'm feeling pretty good about it.
+
+2) Google stops showing ReportTable.aspx,ReportsMenu.aspx, and ACDMetrics.aspx results due to telling it to ignore parameters.
+
+3) Google only stops indexing the parameter combinations above.
+	If this happens, I can take steps to explicitly send all urls by parsing records in CDS (that will take a lot of work).
+
+
+
+
+
+
+
+
+

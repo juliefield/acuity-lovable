@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<!-- 
+    Note: As an alternative to hand editing this file you can use the 
+    web admin tool to configure settings for your application. Use
+    the Website->Asp.Net Configuration option in Visual Studio.
+    A full list of settings and comments can be found in 
+    machine.config.comments usually located in 
+    \Windows\Microsoft.Net\Framework\v2.x\Config 
+-->
+<configuration>
+  <appSettings>
+    <add key="ClientNumber" value="ACUITY"/>
+    <add key="ClientID_V2" value="26"/>
+    <add key="jslib" value="http://localhost/dropbox/sites/www/lib.digitalkeyservices.com/"/>
+  </appSettings>
+
+  <connectionStrings>
+    <!-- <add name="Connection20" connectionString="Server=DEVLAT\SQLEXPRESS;database=GoldenCRM;Trusted_Connection=Yes;"/> -->
+    <add name="Connection20" connectionString="Server=digitalkeyservices.com;User ID=NEVERFINDUSERNAME;Password=NEVERFINDPASSWORD1;database=GoldenCRM;"/>
+
+    <!--Connection - is ERS-Specific -->
+    <!-- 
+    <add name="Connection" connectionString="Server=ers.acuityapmr.com;User ID=NEVERFINDUSERNAME;Password=NEVERFINDPASSWORD;database=ERS2"/>
+    <add name="Employee" connectionString="Server=ers.acuityapmr.com;User ID=NEVERFINDUSERNAME;Password=NEVERFINDPASSWORD;database=ERS2"/>
+    <add name="Operations" connectionString="Server=ers.acuityapmr.com;User ID=NEVERFINDUSERNAME;Password=NEVERFINDPASSWORD;database=ERS2"/>
+    -->
+    <add name="Connection" connectionString="Server=digitalkeyservices.com;User ID=NEVERFINDUSERNAME;Password=NEVERFINDPASSWORD1;database=ERSD2"/>
+    <add name="Employee" connectionString="Server=digitalkeyservices.com;User ID=NEVERFINDUSERNAME;Password=NEVERFINDPASSWORD1;database=ERSD2"/>
+    <add name="Operations" connectionString="Server=digitalkeyservices.com;User ID=NEVERFINDUSERNAME;Password=NEVERFINDPASSWORD1;database=ERSD2"/>
+
+    <add name="SLA" connectionString="Server=digitalkeyservices.com;User ID=NEVERFINDUSERNAME;Password=NEVERFINDPASSWORD1;database=ERS_FINANCIAL"/>
+    <add name="Program" connectionString="Server=digitalkeyservices.com;User ID=NEVERFINDUSERNAME;Password=NEVERFINDPASSWORD1;database=ERS_FINANCIAL"/>
+    <add name="Enterprise" connectionString="Server=digitalkeyservices.com;User ID=NEVERFINDUSERNAME;Password=NEVERFINDPASSWORD1;database=ERS_SLA"/>
+    <add name="Financial" connectionString="Server=digitalkeyservices.com;User ID=NEVERFINDUSERNAME;Password=NEVERFINDPASSWORD1;database=ERS_SLA"/>
+
+    <!--TODO: Hook this up -->
+    <add name="Connection-ers.acuityapmr.com" connectionString="Server=ers.acuityapmr.com;User ID=NEVERFINDUSERNAME;Password=NEVERFINDPASSWORD;database=ERS2"/>
+    <add name="Connection-sla.ers.acuityapmr.com" connectionString="Server=digitalkeyservices.com;User ID=NEVERFINDUSERNAME;Password=NEVERFINDPASSWORD1;database=ERS_Sla"/>
+    <add name="Connection-enterprise.ers.acuityapmr.com" connectionString="Server=digitalkeyservices.com;User ID=NEVERFINDUSERNAME;Password=NEVERFINDPASSWORD1;database=ERS_Enterprise"/>
+
+    <!--Gack - is for Score-Yourself and anything else (TODO: Substitute the subdomain-specific scheme above) -->
+    <add name="Gack" connectionString="Server=www.jeffgack.com;User ID=NEVERFINDUSERNAME;Password=NEVERFINDPASSWORD1;database=GACK"/>
+    
+    <!-- NOTE - The live content manager is on ERS's machine temporarily -->
+    <add name="Utilities" connectionString="Server=digitalkeyservices.com;User ID=NEVERFINDUSERNAME;Password=NEVERFINDPASSWORD1;database=ClientUtilities"/>
+
+  </connectionStrings>
+  <system.web>
+        <!-- 
+            Set compilation debug="true" to insert debugging 
+            symbols into the compiled page. Because this 
+            affects performance, set this value to true only 
+            during development.
+
+            Visual Basic options:
+            Set strict="true" to disallow all data type conversions 
+            where data loss can occur. 
+            Set explicit="true" to force declaration of all variables.
+        -->
+        <compilation debug="true" />
+        <pages/>
+        <!--
+            The <authentication> section enables configuration 
+            of the security authentication mode used by 
+            ASP.NET to identify an incoming user. 
+        -->
+        <authentication mode="Windows" />
+        <!--
+            The <customErrors> section enables configuration 
+            of what to do if/when an unhandled error occurs 
+            during the execution of a request. Specifically, 
+            it enables developers to configure html error pages 
+            to be displayed in place of a error stack trace.
+        -->
+
+    <customErrors mode="Off" >
+    </customErrors>
+  </system.web>
+</configuration>
