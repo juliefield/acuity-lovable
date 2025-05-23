@@ -1,0 +1,92 @@
+.container {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  width: 980px;
+  padding: 15px;
+}
+.col-left {
+  width: 250px;
+  float: left;
+  position: fixed;
+}
+a {
+  color: #0076C4;
+}
+h2 {
+  font-size: 25px;
+  margin-top: 0;
+}
+h3 {
+  color: #0076C4;
+}
+p {
+  font-size: 14px;
+  line-height: 21px;
+}
+.col-right ul li,
+.col-right ol li {
+  margin-bottom: 8px;
+  font-size: 14px;
+  line-height: 21px;
+}
+ol.margin-left {
+  margin-left: 50%;
+}
+hr {
+  height: 1px;
+  border-top: 0;
+  border-left: 0;
+  border-bottom: 1px dashed #CCC;
+  margin: 40px 0;
+}
+.clearfix {
+  clear: both;
+}
+.half-img {
+  width: 340px;
+}
+.pull-right {
+  float: right !important;
+}
+.pull-left {
+  float: left !important;
+}
+.icon-img {
+  width: 100px;
+  float: left;
+  text-align: center;
+}
+.centered {
+  text-align: center;
+}
+.tip {
+  background: #E5ECF2;
+  padding: 15px;
+  color: #0076C4;
+  border: 3px solid #0076C4;
+}
+.col-right {
+  width: 680px;
+  margin-left: 250px;
+  padding-left: 40px;
+  border-left: 1px dashed #CCC;
+  padding-bottom: 100px;
+}
+.col-right img.responsive {
+  width: 100%;
+}
+.col-left ul {
+  margin: 0;
+  padding: 0;
+}
+.col-left ul li {
+  list-style: none;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #0076C4;
+}
+.col-left ul li ul {
+  margin: 10px 15px 15px 15px;
+}
+.col-left ul li ul li {
+  list-style: none;
+}

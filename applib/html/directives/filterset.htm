@@ -1,0 +1,219 @@
+<div class="stgdashboard-override-hide">
+  <div id="StgDashboard" class="stg attrition-hide">
+    <div class="stgdashboard_role-select">
+      <select style="display:none;">
+        <option value="Agent" selected="selected">Agent Operations Data</option>
+        <option value="Supervisor">Supervisor Operations Data</option>
+        <option value="Source">HR-Centric KPIs</option>
+        <option value="Program">Program</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div id="StgAttritionSearch" class="stg attrition-show">
+  <div class="attrition-show-hr stgdashboard_show-hr">
+    <select style="display:none;">
+      <option value="Hierarchy" selected="selected">Use Hierarchy</option>
+      <option value="Location">By Location</option>
+    </select>
+  </div>
+</div>
+<!-- Employee  SLA   Enterprise -->
+<dl class="attrition-show-hi">
+  <dt id="agencylabel" style="display:none;">Agency</dt>
+  <dd id="agencyfilter" style="display:none;">
+    <select class="chosen" id="selAgencys">
+      <option value="">..loading</option>
+    </select>
+  </dd>
+  <dt id="agencyofficelabel" style="display:none;">Office</dt>
+  <dd id="agencyofficefilter" style="display:none;">
+    <select class="chosen" id="selAgencyoffices">
+      <option value="">..loading</option>
+    </select>
+  </dd>
+  <dt id="projectlabel"><span class="scaname">Project</span></dt>
+  <dd id="projectfilter">
+    <select class="chosen" id="selProjects">
+      <option value="">..loading</option>
+    </select>
+  </dd>
+  <dt id="locationlabel"><span class="locname">Location</span></dt>
+  <dd id="locationfilter">
+    <select class="chosen" id="selLocations">
+      <option value="">..loading</option>
+    </select>
+  </dd>
+  <dt id="grouplabel"><span class="grpname">Group</span></dt>
+  <dd id="groupfilter">
+    <select class="chosen" id="selGroups">
+      <option value="">..loading</option>
+    </select>
+  </dd>
+  <dt id="teamlabel"><span class="teamname">Team</span></dt>
+  <dd id="teamfilter">
+    <select class="chosen" id="selTeams">
+      <option value="">..loading</option>
+    </select>
+  </dd>
+  <dt id="csrlabel">CSR</dt>
+  <dd id="csrfilter" style="position:relative;">
+    <select class="chosen" id="selCSRs">
+      <option value="">..loading</option>
+    </select>
+    <div class="filters-attributes-link">&nbsp;</div>
+  </dd>
+</dl>
+
+<dl id="filtersdiv" class="attrition-show-hi">
+
+  <dt>In Training</dt>
+  <dd>
+    <div id="StgInTraining" class="stg settings-block_content">
+      <select style="display:none;">
+        <option value="Only">Only</option>
+        <option value="Include">Include</option>
+        <option value="Exclude" selected="selected">Exclude</option>
+      </select>
+    </div>
+  </dd>
+
+  <dt id="filterlabel">Attributes</dt>
+  <dd id="filtergroup">&nbsp;</dd>
+</dl>
+<dl class="attrition-show-hi">
+  <dt id="hiredatelabel" style="display:none;">Hire Date:</dt>
+  <dd id="hiredatefilter" style="display:none;">
+    <div id="hiredate">
+      <div class="hd-slider"></div>
+      <div class='hd-label'></div>
+    </div>
+  </dd>
+</dl>
+<dl class="attrition-show-loc">
+  <dt><span class="locname">Location</span></dt>
+  <dd>
+    <select class="chosen" id="selAttritionLocations">
+      <option value="">..loading</option>
+    </select>
+  </dd>
+</dl>
+<dl id="kpidl" class="attrition-hide">
+  <dt class="kpi-display">KPI</dt>
+  <dd class="kpi-display">
+    <select class="chosen" id="selKPIs" onchange="">
+      <option value="">..loading</option>
+    </select>
+  </dd>
+  <dt class="subkpi-display">SubKPI</dt>
+  <dd class="subkpi-display">
+    <select class="chosen" id="selSubKPIs" onchange="">
+      <option value="">..loading</option>
+    </select>
+  </dd>
+  <dt style="display:none;">X Axis:</dt>
+  <dd style="display:none;">
+    <select class="chosen" id="selXaxiss" onchange="">
+      <option value="">..loading</option>
+    </select>
+  </dd>
+</dl>
+<dl id="datedl" class="attrition-hide">
+  <dt class="date-display">Score View:</dt>
+  <dd class="date-display">
+    <select class="chosen" id="selPayperiods">
+      <option value="">..loading</option>
+    </select>
+  </dd>
+  <div class="date-interval-block">
+    <dt class="date-display">Date Interval:</dt>
+    <dd class="date-display date-interval-block_range">
+      <span id="spanDatefrom"></span> - <span id="spanDateto"></span>
+    </dd>
+  </div>
+</dl>
+<dl id="trenddl">
+  <dt>Trend By:</dt>
+  <dd>
+    <select class="chosen" id="selTrendbys">
+      <option value="">..loading</option>
+    </select>
+  </dd>
+  <div class="date-range-block">
+    <dt>Date Range:</dt>
+    <dd>
+      <div id="daterange">
+        <div class="dr-slider"></div>
+        <div class='dr-label'></div>
+      </div>
+    </dd>
+  </div>
+</dl>
+<div class="attrition-hide filter-display-options">
+  <ul class="dashboard-legacy-view-buttons">
+    <li>
+      <input type="radio" id="rdoGrid" name="plottype" value="grid" />
+      <label id="rdoGridLabel" for="rdoGrid">Grid</label>
+    </li>
+    <li>
+      <input type="radio" id="rdoBase" name="plottype" checked="checked" value="base" />
+      <label id="rdoBaseLabel" for="rdoBase">Bar</label>
+    </li>
+    <li>
+      <input type="radio" id="rdoTrend" name="plottype" value="trend" />
+      <label id="rdoTrendLabel" for="rdoTrend">Trend</label>
+    </li>
+    <li>
+      <span id="showpay">
+        <input type="radio" id="rdoPay" name="plottype" value="pay" />
+        <label id="rdoPayLabel" for="rdoPay">Pay</label>
+      </span>
+    </li>
+  </ul>
+  <div class="dashboard-views-v2">
+    <div id="StgView" class="stg">
+      <div class="attrition-show-hr">
+        <select style="display:none;">
+          <option value="Grid" selected="selected">Grid</option>
+          <option value="Chart">Chart</option>
+        </select>
+      </div>
+    </div>
+    <div id="StgViewDateType" class="stg">
+      <div class="attrition-show-hr">
+        <select style="display:none;">
+          <option value="Period" selected="selected">Period</option>
+          <option value="Multiple">Multiple</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="filter-btns">
+    <input id="btnPlot" type="button" value="Plot" />
+    <input id="btnAdd" type="button" value="Add" />
+    <input id="btnClear" type="button" value="Clear" />
+  </div>
+</div>
+<div class="attrition-show filter-show-agents">
+  <input type="button" onclick="appApmAttrition.showagents();" value="Show Agents" />
+</div>
+<div id="StgAttritionTest" class="stg attrition-show attrition-show-testing">
+  <h2>View by Role:</h2>
+  <div>
+    <select style="display:none;">
+      <option value="Supervisor" selected="selected">Supervisor View</option>
+      <option value="HR">Human Resources View</option>
+    </select>
+  </div>
+</div>
+<dl id="presetsdl" style="display:none;">
+  <dt>Presets:</dt>
+  <dd>
+    <select class="chosen" id="selPresets" data-placeholder="..select a preset">
+      <option value="">(not selected)</option>
+      <option value="Preset1">Preset1</option>
+      <option value="Preset2">Preset2</option>
+    </select>
+    <div class="filters-presets-link presets-command-add">&nbsp;</div>
+  </dd>
+</dl>

@@ -1,0 +1,98 @@
+<div class="agent-wrapper" style="overflow:auto;">
+    <div class="agent" style="min-height:300px;position:relative;">
+        <div class="agent-settings-slideout agent-settings-collapsed" style="z-index:20;position:absolute;right:0px;top:30px;height:150px;">
+            <div class="agent-settings-bar">S<br />e<br />t<br />t<br />i<br />n<br />g<br />s</div>
+            <div class="agent-settings" style="display:none;position:relative;">
+                <div class="agent-settings-collapse" style="position:absolute;top:0px;right:0px;font-weight:bold;font-size:10px;text-decoration:underline;color:blue;cursor:pointer;">close</div>
+                <br /> Current Role: <span data-bind="text: oKBRole()"></span><br /> Change Role: <select><option>Show Everything</option><option>Admin</option><option>Sales</option><option>Back-end Data</option></select>
+                <br /><br />
+                <div><input class="agent-settings-showdeleted" type="checkbox" />&nbsp;Show deleted children.</div>
+            </div>
+        </div>
+        <div data-bind="visible: outline()">
+            <div style="font-size:20px;">
+                Outline View
+                <div style="float:right;padding-left:10px;padding-bottom:10px;padding-right:15px;font-size:14px;">
+                    <input data-bind="visible: editing(), click: function() { saveOutline(nodeid()); }" type="submit" value="Update Tree" /><input style="margin-left: 20px;" data-bind="visible: editing(), click: function() { editing(false); viewOutline(nodeid());}" type="submit" value="Cancel" />
+                    <a style="padding-right: 8px;" href="#" data-bind="visible: (!editing()) && allow_found(), click: function() { outline(false); }">Exit Outline</a>
+                    <a style="padding-right: 8px;" href="#" data-bind="visible: (!editing()) && allow_found(), click: function() { editing(true); viewOutline(nodeid()); }">Edit</a>
+                </div>
+            </div>
+            <div class="agent-outline">
+                <p>Knowledge Base</p>
+                <ul pid="0" class="o-root">
+                    <li class="o-sep">------</li>
+                    <li class="o-drag" nid="1">Item 1</li>
+                    <ul pid="1">
+                        <li class="o-sep">------</li>
+                        <li class="o-drag" nid="2">Item 1.1</li>
+                        <li class="o-sep">------</li>
+                        <li class="o-drag" nid="3">Item 1.2</li>
+                        <li class="o-sep">------</li>
+                    </ul>
+                    <li class="o-sep">------</li>
+                    <li class="o-drag" nid="4">Item 2</li>
+                    <li class="o-sep">------</li>
+                </ul>
+            </div>
+            <input data-bind="visible: editing(), click: function() { saveOutline(nodeid()); }" type="submit" value="Update Tree" /><input style="margin-left: 20px;" data-bind="visible: editing(), click: function() { editing(false); viewOutline(nodeid());}" type="submit" value="Cancel" />
+        </div>
+        <div data-bind="visible: !outline()">
+
+            <div style="display:block;padding:6px;">
+                <a style="padding-right: 8px;" href="#" data-bind="visible: nodeparent() != 0, click: function() { jumpToNode(nodeparent(),false,false); }">&lt;</a>
+                <span style="display:inline-block;font-size:20px;font-weight:bold;" data-bind="visible: !editing(), html: subject()"></span>
+                <input type="text" style="width:300px;display:inline-block;" data-bind="visible: editing(), value: editSubject" />
+                <span data-bind="visible: editing()">Hide Coda Header: </span>
+                <input type="checkbox" id="headercheck" data-bind="visible: editing(), click: hideHeader(), checked: hideCodaHeader()"/>
+                <div style="float:right;padding-left:10px;padding-bottom:10px;padding-right:15px;">
+                    <a style="padding-right: 8px;" href="#" data-bind="visible: (!editing()) && allow_found(), click: function() { viewOutline(nodeid()); }">Outline</a>
+                    <a style="padding-right: 8px;" href="#" data-bind="visible: (!editing()) && allow_found(), click: function() { editNode(nodeid()); }">Edit</a>
+                    <a style="padding-right: 8px;" href="#" data-bind="visible: (!editing()) && allow_found() && (children().length == 0),click: function() { setNodeState(nodeid(), nodeparent(), false); }">Delete</a>
+                    <a href="#" data-bind="visible: allow_found() && (nodeparent() != 0), click: function() { addChild(nodeparent()); }">Add Sibling</a>
+                </div>
+            </div>
+            <div data-bind="visible: servicingapp() == ''">
+                <div id="headerblocker" style="z-index:10; background-color:White; position:absolute; width:100%; height:59px;" data-bind="visible: (!editing()) && hideCodaHeader()"></div>
+                <p style="padding:6px;padding-right: 24px;font-size:14px;" data-bind="visible:!editing(),html: body()"></p>
+                <textarea rows="10" cols="80" style="padding:6px;padding-right: 24px;font-size:14px;" data-bind="visible: editing(),textInput: editBody"></textarea>
+            </div>
+
+            <div data-bind="visible: (servicingapp() == 'Help')">
+                <p data-bind="visible: !editing(), html: helpContent()"></p>
+                <!-- CodeMirror Test -->
+                <div data-bind="visible: editing()">
+                    <textarea id="helpCode" name="helpCode" data-bind="html: helpContent()"></textarea>
+                </div>
+            </div>
+            <div style="display:block;padding:20px;text-align: center;" data-bind="visible:editing()">
+                <input data-bind="click: function() { saveNode(nodeid()); }" type="submit" value="Submit Changes" /><input style="margin-left: 20px;" data-bind="click: function() { cancelEdit();editing(false); }" type="submit" value="Cancel" />
+            </div>
+            <div style="margin-top: -10px;" data-bind="visible: (servicingapp() == 'Help') && editing()">
+                <div style="border-bottom:1px solid gray;height:1px;position:relative;margin-bottom:10px;">
+                    <p style="position:absolute;background-color:white;padding:5px;top:-30px;left:30px;color:gray;font-style:italic;">Preview:</p>
+                </div>
+                <iframe id="htmlPreview"></iframe>
+            </div>
+            <div>
+                <ul>
+                    <div data-bind="foreach: children()">
+                        <li>
+                            <a href="#" data-bind="visible: active=='Y', html: subject, click: function() { jumpToNode(id,false,true); }"></a><span data-bind="visible: active=='N', html: subject"></span></li>
+                        <ul data-bind="visible: active=='N'">
+                            <li style="color:DarkGray">
+                                (Deleted <span data-bind="text:upddt"></span> by <span data-bind="text:updby"></span>)
+                                <a href="#" data-bind="click: function() { setNodeState(id, nodeid(), true); }">Undelete</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <li data-bind="visible: addingChild()"><input data-bind="value: childSubject" style="width:300px;" type="text" /><input data-bind="click: function() { addNode(nodeid()); }" type="submit" value="Submit" /><input data-bind="click: function() { addingChild(false); }" type="submit"
+                            value="Cancel" /></li>
+                </ul>
+                <ul>
+                    <li data-bind="visible: ((!addingChild()) && (!editing())) && (allow_found()) && ((nodeparent()!=0) || (oRole()=='Admin'))"><a href="#" data-bind="click: function() { addChild(nodeid()); }">Add Child</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

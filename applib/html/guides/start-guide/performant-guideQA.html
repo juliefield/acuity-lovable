@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <link rel='stylesheet' href='css/guide-styles.css' type='text/css' media='all' />
+  <meta charset="ISO-8859-1">
+</head>
+<body id="top">
+  <div class="container">
+    <div class="col-left">
+      <ul>
+        <li>
+          <a href="#login">Log In</a>
+        </li>
+        <li>
+          <a href="#reports">Reports Table</a>
+        </li>
+        <li>
+          <a href="#report-types">Report Types</a>
+        </li>
+        <li>
+          <a href="#filtering">Filtering the Table</a>
+        </li>
+        <li>
+          <a href="#quality">Quality Monitoring</a>
+        </li>
+        <li>
+          <a href="#quality-form">Quality Monitoring Form</a>
+        </li>
+        <li>
+          <a href="#scoring">Scoring</a>
+        </li>
+        <li>
+          <a href="#comments">Comments and Review Notes</a>
+        </li>
+        <li>
+          <a href="#save-quality">Save Quality Monitors</a>
+        </li>
+        <li>
+          <a href="#acknowledgement">Acknowledgement Requests</a>
+        </li>
+
+        <li>
+          <a href="#rebuttals">Rebuttals</a>
+        </li>
+        <li>
+          <a href="#notes">Important Notes</a>
+        </li>
+        <li>
+          <a href="#email">Email (aka Acuity Message Center)</a>
+        </li>
+        <li>
+          <a href="#chat">Chat</a>
+        </li>
+
+        <li>
+          <a href="#quizzes">Quizzes, Surveys, Polls</a>
+        </li>
+        <li>
+          <a href="#create-questions">Creating Questions</a>
+        </li>
+        <li>
+          <a href="#create-quiz">Creating Quizzes, Surveys, or Polls</a>
+        </li>
+        <li>
+          <a href="#assign-quiz">Assigning Quizzes, Surveys or Polls</a>
+        </li>
+        <li>
+          <a href="#quiz-reporting">Reporting</a>
+        </li>
+        <li>
+          <a href="#password">Password Reset</a>
+        </li>
+
+        <li>
+          <br />
+          <a href="images/downloadable/PerformantQAUserGuide.pdf" target="_blank">Download Guide (PDF)</a>
+        </li>
+        <li>
+          <br />
+          <a href="#top">Back to Top</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-right">
+      <h2>Performant Automated Compliance System - User Guide</h2>
+      <p>
+        System Flow for Quality Assurance Role
+      </p>
+
+      <hr id="login" />
+      <h3>Login</h3>
+      <p>
+        To log in, enter URL <a href="https://performant.acuityapmr.com">https://performant.acuityapmr.com</a>
+      </p>
+      <p>
+        Upon log in, Quality Assurance roles will be directed to the <strong>Reports</strong> table on
+        the main dashboard. The default report view is the <strong>Processing Grid (QA)</strong> report. (See Below)
+      </p>
+      <img src="images/performant-img1.jpg" class="responsive" />
+
+      <div class="clearfix"></div>
+      <hr id="reports" />
+      <h3>Reports Table</h3>
+      <p>
+        The <strong>Reports</strong> table lists information about quality monitors completed during the selected time frame.
+      </p>
+      <p>
+        Information included in the table:
+      </p>
+      <ul>
+        <li>
+          Quality Assurance analyst
+        </li>
+        <li>
+          Case Number
+        </li>
+        <li>
+          Review Date
+        </li>
+        <li>
+          Name of CSR
+        </li>
+        <li>
+          Overall score
+        </li>
+        <li>
+          QA and Review Notes
+        </li>
+        <li>
+          Released Status
+        </li>
+        <li>
+          Team Leader
+        </li>
+        <li>
+          Rebuttal and Rebuttal Response
+        </li>
+      </ul>
+
+      <hr id="report-types" />
+      <h3>Report Types</h3>
+      <p><strong>Selecting Reports</strong></p>
+      <p>
+        To navigate between the different report types, use the <strong>Show:</strong> drop down menu at the top of the report.
+      </p>
+      <img src="images/performant-img2.jpg"  />
+      <br />
+      <br />
+      <p><strong>Processing Grid (QA)</strong></p>
+      <p>
+        This is the default report that is populated for Quality Assurance roles.
+        The <strong>Processing Grid (QA)</strong> report displays all quality monitors for the selected
+        dates, along with relevant information regarding each monitor.
+      </p>
+      <img src="images/performant-img3.jpg" class="responsive"  />
+      <br />
+      <br />
+      <p><strong>Monitor Hierarchy</strong></p>
+      <p>
+        The <strong>Monitor Hierarchy</strong> report provides a summarized list of the quality monitors for the selected date range.
+      </p>
+      <img src="images/performant-img4.jpg" class="responsive"  />
+      <br />
+      <br />
+      <p><strong>Monitor Counts</strong></p>
+      <p>
+        The <strong>Monitor Counts</strong> displays a total count of completed monitors, along with overall percentages for GHP Accuracy, NGHP Accuracy, and Total Accuracy.
+      </p>
+      <img src="images/performant-img5.jpg" class="responsive"  />
+      <br />
+      <br />
+      <p><strong>Monitor Counts with TL/Mgr</strong></p>
+      <p>
+        The <strong>Monitor Counts with TL/Mgr</strong> report further drills down the data in the <strong>Monitor Counts</strong> report by Team Lead and by Manager
+      </p>
+      <img src="images/performant-img6.jpg" class="responsive"  />
+      <br />
+
+
+
+
+
+
+      <hr id="filtering" />
+      <h3>Filtering the Table</h3>
+      <p>
+        The <strong>Reports</strong> table can be filtered using the Filter menu. The table can be
+        filtered by Project, Location, Group, Team, Case Worker, KPI, and Score View
+        (Date Interval)
+      </p>
+      <div class="centered">
+        <img src="images/performant-img7.jpg" />
+      </div>
+      <br />
+      <p>
+        The <strong>Reports</strong> table can also be filtered using the <strong>Filter:</strong> search bar at the top
+        of the table. The search bar can be used to filter specific information in
+        the any of the columns in the table.
+      </p>
+      <p>
+        Note: the filter search bar is case-sensitive.
+      </p>
+      <div class="clearfix"></div>
+
+
+      <hr id="quality"/>
+      <h3>Quality Monitoring</h3>
+
+      <p>
+        The quality monitoring functionality is accessed by opening the Menu on the
+        main dashboard, and selecting <strong>Monitor</strong>.
+      </p>
+      <div class="centered">
+        <img src="images/performant-img8.jpg" />
+      </div>
+      <br />
+      <p>
+        The user will be directed to the Monitor page where a new quality monitor can be created.
+      </p>
+      <div class="centered">
+        <img src="images/performant-img9.jpg" />
+      </div>
+      <br />
+      <p>
+        Each new monitor form has required fields of information that can be populated through the drop-down menus.
+      </p>
+      <ul>
+        <li>
+          <strong>Performant</strong> is used to populate the <strong>Project</strong> field
+        </li>
+        <li>
+          <strong>Internal Review</strong> is used to populate the <strong>Evaluation Form</strong> field
+        </li>
+        <li>
+          The <strong>Agent</strong> drop-down menu contains all active agents in Acuity to select from
+        </li>
+        <li>
+          The <strong>Case Number</strong> field should include the case number that corresponds with the quality monitor
+        </li>
+        <li>
+          The <strong>Evaluation Date</strong> records the time and date of the quality monitor evaluation
+        </li>
+      </ul>
+      <p>
+        Once all fields have been completed, select <strong>Evaluate</strong> to open the quality monitor form.
+      </p>
+
+      <div class="clearfix"></div>
+
+
+
+      <hr id="quality-form" />
+      <h3>Quality Monitor Form</h3>
+      <p>
+        Each new quality monitor form will populate with the initially entered information, along with additional fields that can be entered.
+      </p>
+      <img src="images/performant-img11.jpg" class="responsive"/>
+      <p>
+        Additional fields include:
+      </p>
+      <ul>
+        <li>
+          GHP or NGHP
+        </li>
+        <li>
+          Letter ID and Name (Drop-down menu that includes all Letter IDs)
+        </li>
+        <li>
+          Supervisor
+        </li>
+        <li>
+          Team Lead
+        </li>
+        <li>
+          Manager
+        </li>
+      </ul>
+      <img src="images/performant-img10.jpg" class="responsive" />
+      <p>
+        The quality monitor form includes a list of parameters, a checklist of input
+        statements that map to question numbers, a disposition for each question,
+        along with a comments box for each section.
+      </p>
+
+      <hr id="scoring" />
+      <h3>Scoring</h3>
+      <p>
+        Each new quality monitor form is automatically populated with a score of 100%.
+        Selecting <strong>Fail</strong> dispositions will update the overall score, based on the
+        points assigned to each disposition.
+      </p>
+      <p>
+        Sections with <strong>0 (AF)</strong> in the <strong>Points</strong> column, will update the overall score to a
+        <strong>0% Auto Fail</strong> if a <strong>Fail</strong> disposition is selected.
+      </p>
+      <p>
+        Sections with <strong>16 (AF)</strong> in the <strong>Points</strong> section will maintain the overall score based
+        on the point deduction and will record the monitor as an <strong>Auto Fail</strong> if a <strong>Fail</strong>
+        disposition is selected.
+      </p>
+      <p>
+        Sections that only include point values in the <strong>Points</strong> section will deduct the
+        amount of points listed from the overall score if a <strong>Fail</strong> disposition is selected.
+        If a <strong>Fail</strong> disposition is selected, a point multiplier will also appear that can
+        be applied to the deduction.
+      </p>
+      <p>
+        The <strong>Acknowledgement Required</strong> check box will automatically be checked for
+        any monitor that is scored below a 94%.
+      </p>
+
+
+      <hr id="comments" />
+      <h3>Comments and Review Notes</h3>
+
+      <p>
+        Comments can be entered by Quality Assurance in the <strong>Comments</strong> box to the
+        right of each section in the quality monitor.
+      </p>
+      <p>
+        <strong>Review Notes</strong> and <strong>QA Notes</strong> can be entered in each quality monitor form,
+        in the fields provided in the bottom of the monitor.
+      </p>
+      <ul>
+        <li>
+          <strong>Review Notes</strong> that have been entered into any quality monitor are visible
+          to everyone including, CSRs, Supervisors, Team Leads, Managers, and
+          Quality Assurance
+        </li>
+        <li>
+          <strong>QA Notes</strong> that have been entered into any quality monitor are only
+          visible to Quality Assurance and Admins
+            <ul>
+              <li>
+                Placing the word "Hold" in the <strong>QA Notes</strong> will place the monitor on
+                hold and prevent the form from being released
+              </li>
+              <li>
+                Once ready to be released, deleting the word "Hold" will
+                automatically release the form
+              </li>
+            </ul>
+        </li>
+      </ul>
+      <p>
+        To submit the monitor form, click <strong>Save Monitor</strong>
+      </p>
+
+
+      <div class="clearfix"></div>
+
+            <hr id="save-quality" />
+            <h3>Saved Quality Monitors</h3>
+            <p>
+              Saved quality monitors will be available for all Quality Assurance
+              roles to review in the <strong>Reports</strong> table.
+            </p>
+            <p>
+              Team Leads and Supervisors will be able open and review new quality
+              monitors once the monitors are released. The release date for new quality
+              monitors is always <strong>9AM EST the next Monday</strong>.
+            </p>
+            <p>
+              Saved quality monitors can be opened directly from the <strong>Reports</strong> table
+              by clicking the score for the selected monitor.
+            </p>
+            <img src="images/performant-img12.jpg" class="responsive" />
+            <br />
+
+            <hr id="acknowledgement" />
+            <h3>Acknowledgement Requests</h3>
+            <p>
+              Acknowledgement requests are sent directly from the <strong>Reports</strong> table
+              using the <strong>Send Request</strong> link in the <strong>Acknowledgement</strong> column.
+            </p>
+            <div class="centered">
+              <img src="images/performant-img13.jpg"  />
+            </div>
+            <br />
+            <p>
+              Once an acknowledgement request is sent, the employee will receive a
+              written communication via email that an acknowledgement request has
+              been submitted. The employee can acknowledge the monitor by opening
+              the monitor and clicking the red acknowledgement box.
+            </p>
+            <div class="centered">
+              <img src="images/performant-img14.jpg"  />
+            </div>
+            <br />
+            <p>
+              QA's and Admins are able to view if an acknowledgement request has
+              been sent by viewing the <strong>Acknowledgement</strong> column.
+            </p>
+            <ul>
+              <li>
+                Requests that have been sent will update to <strong>Sent</strong>
+              </li>
+              <li>
+                Requests that have not been sent will update to <strong>Not Sent</strong>
+              </li>
+              <li>
+                Requests that do not require acknowledgment will update to <strong>Not Required</strong>
+              </li>
+            </ul>
+            <p>
+              Once the monitor has been acknowledged by the employee, the <strong>Reports</strong>
+              table will update the <strong>AckDate</strong> column to the date the employee
+              acknowledged the monitor.
+            </p>
+            <div class="clearfix"></div>
+
+
+            <hr id="rebuttals" />
+            <h3>Rebuttals</h3>
+            <p>
+              Rebuttals are handled by Team Leads and Supervisors, and are
+              accessed inside of each quality monitor form in the <strong>Rebuttal</strong> section.
+            </p>
+            <div class="centered">
+              <img src="images/performant-img15.jpg"  />
+            </div>
+            <br />
+            <p>
+              The <strong>Rebuttal</strong> section allows for notes to be entered outlining the
+              reason for the rebuttal. Once the rebuttal is submitted, the rebuttal
+              will be submitted to the entire QA team. The QA team will receive
+              an external email that includes details about the monitor, as well
+              as a link to the monitor.
+            </p>
+            <br />
+            <img src="images/performant-img16.jpg" class="responsive" />
+            <br />
+            <p>
+              QA will then be able to review the rebuttal and provide a
+              response. If the rebuttal is approved and there is a change in
+              score, the QA should check the box <strong>Rebuttal resulted in a change
+              in scoring</strong>.
+            </p>
+            <br />
+            <img src="images/performant-img17.jpg" class="responsive" />
+            <br />
+            <p>
+              Once the rebuttal response is ready to be submitted, the QA will click <strong>Submit Rebuttal Response</strong>.
+            </p>
+            <p>
+              The Team Lead and the Supervisor will receive an external email
+              confirming that a response was received for the rebuttal. The email will
+              include information regarding the quality monitor, as well as link
+              to the monitor.
+            </p>
+            <br />
+            <img src="images/performant-img18.jpg" class="responsive" />
+            <br />
+
+            <div class="clearfix"></div>
+
+
+            <hr id="notes" />
+            <h3>Important Notes</h3>
+            <ul>
+              <li>
+                Comments from QA cannot be changed by Team Leads or Supervisors
+              </li>
+              <li>
+                Rebuttal comments from the Team Lead/Supervisors cannot be changed by QA
+              </li>
+              <li>
+                QA does not have the ability to send Acknowledgement Requests
+              </li>
+              <li>
+                Team Leads can see overall scores of all monitors, but cannot open other Team Leads' monitor forms
+              </li>
+            </ul>
+            <div class="clearfix"></div>
+
+
+            <hr id="email" />
+            <h3>Email (aka Acuity Message Center)</h3>
+            <p>
+              Acuity houses internal messaging and chat features that can be
+              accessed directly from the main dashboard.
+            </p>
+            <p>
+              To access the internal messaging system, select the messages icon
+              at the top of the dashboard, or selecting Message Center.
+            </p>
+            <div class="centered">
+              <img src="images/performant-img19.jpg" />
+            </div>
+            <p>
+              Selecting either of these options will direct the user to the <strong>Message Center</strong>.
+            </p>
+            <img src="images/performant-img20.jpg" class="responsive" />
+            <p>
+              From the <strong>Message Center</strong>, users will be able to access the following messaging folders:
+            </p>
+            <ul>
+              <li>
+                <strong>Inbox</strong> &ndash; all new and previously received messages will be available to view in the Inbox
+              </li>
+              <li>
+                <strong>Archive</strong> &ndash; any saved messages will be saved in the Archive folder
+              </li>
+              <li>
+                <strong>Deleted</strong> &ndash; Deleted messages will be sent to the Deleted folder
+              </li>
+              <li>
+                <strong>Sent Messages</strong> &ndash; Sent messages will be saved in the Sent Messages folder
+              </li>
+            </ul>
+            <p>
+              To compose a new message, click <strong>Compose</strong>.
+            </p>
+            <div class="centered">
+              <img src="images/performant-img21.jpg" />
+            </div>
+            <p>
+              Selecting  <strong>Compose</strong> will open a blank email form. (see below)
+            </p>
+            <img src="images/performant-img22.jpg" class="responsive" />
+            <br />
+            <p>
+              The blank form contains the following fields:
+            </p>
+            <ul>
+              <li>
+                <strong>To:</strong> &ndash; Click inside of the blank field to populate a menu of
+                recipients to choose from. The menu will contain recipients
+                that are assigned to the project that is currently selected in
+                the Dashboard
+              </li>
+              <li>
+                <strong>Subject</strong> &ndash; the subject field should be populated with the subject of the message
+              </li>
+              <li>
+                <strong>Body of the Message</strong> &ndash; The body of the message is the field used to enter the message
+              </li>
+            </ul>
+            <p>
+              Once all fields have been filled out, click the <strong>Send</strong> button to send the message.
+            </p>
+            <div class="clearfix"></div>
+
+
+            <hr id="chat" />
+            <h3>Chat</h3>
+            <p>
+              Acuity also houses an internal instant messaging feature, <strong>Chat</strong>.
+              To access the chat function, select the <strong>Chat</strong> icon at the top of
+              the Dashboard.
+            </p>
+            <div class="centered">
+              <img src="images/performant-img23.jpg" />
+            </div>
+            <p>
+              Selecting the chat icon will open a chat window in the bottom left corner of the dashboard.
+            </p>
+            <br />
+            <div class="centered">
+              <img src="images/performant-img24.jpg" />
+            </div>
+            <br />
+            <p>
+              To begin a new chat, click inside of the <strong>Chat with...</strong> field to populate a
+              list of recipients to select from. Chat has the ability to chat with one individual user, or a group of users by selecting multiple recipients.
+            </p>
+            <p>
+              Once users are selected, messages can be sent by entering information
+              into the field next to the logged in user's username and pressing Enter.
+            </p>
+            <p>
+              To open multiple chat conversations simultaneously, select the <strong>+tm</strong> icon
+              at the top of the chat window. This will open a list of all users assigned to
+              the current team. By selecting the check boxes next to each user, individual
+              chats can be initiated with each checked user.
+            </p><br />
+            <div class="centered">
+              <img src="images/performant-img25.jpg" />
+            </div><br />
+            <p>
+              Note: Only users that have check marks will receive chat messages.
+              Simply check and uncheck users to add and/or remove them from the chat conversation.
+            </p>
+
+            <div class="clearfix"></div>
+
+
+            <hr id="quizzes" />
+            <h3>Quizzes, Surveys, Polls</h3>
+            <p>
+              From an administrative standpoint, there are four core steps in the Quiz/Survey/Poll process.
+            </p>
+            <ol>
+              <li>
+                Creating questions
+              </li>
+              <li>
+                Creating quizzes, surveys, or poll
+              </li>
+              <li>
+                Assigning quizzes, surveys, or polls
+              </li>
+              <li>
+                Analyzing the results
+              </li>
+            </ol>
+            <p>
+              <strong>To access the Quiz/Survey Module</strong>
+            </p>
+            <p>
+              To access the quizzing module, click the Menu <img src="images/performant-img26.jpg" /> icon in the top right area.  The screen below will be displayed.
+            </p>
+            <br />
+            <div class="centered">
+              <img src="images/performant-img27.jpg" />
+            </div>
+            <br />
+            <div class="clearfix"></div>
+
+            <hr id="create-questions" />
+            <h3>Creating Questions</h3>
+            <p>
+              Surveys, Polls, and Quizzes require a repository of questions and answers.
+            </p>
+            <p>
+              To create a <strong>New question</strong>, click <strong>Question Setup</strong> from the left menu panel.
+            </p>
+            <img src="images/performant-img28.jpg" class="responsive" />
+            <br />
+            <p>
+              Then click the <strong>Add new</strong> button, create the question, assign it to a project and click <strong>Save</strong>.
+            </p>
+            <img src="images/performant-img29.jpg" class="responsive" />
+            <br />
+            <p>
+              Over time, your accumulated "knowledge-base" of questions can be reviewed and
+              edited by clicking the <strong>Search</strong> button upon which all existing questions will be
+              displayed in the bottom window.
+            </p>
+            <img src="images/performant-img30.jpg" class="responsive" />
+            <br />
+            <div class="clearfix"></div>
+
+            <hr id="create-quiz" />
+            <h3>Creating Quizzes, Surveys, or Polls </h3>
+            <p>
+              Now that you have questions, you can create a quiz!
+              From the left panel, click <strong>Survey Setup</strong> | <strong>Knowledge</strong> | <strong>Add New</strong>
+            </p>
+            <img src="images/performant-img31.jpg" class="responsive" />
+            <br />
+            <p>
+              Select the questions you'd like included in the quiz and put them
+              in the desired order. Then, use the <strong>Project</strong> and <strong>KPI</strong> selectors to
+              assign the quiz to a project and relevant KPI. <strong>Name</strong> the quiz and
+              click <strong>Save</strong>.
+            </p>
+            <img src="images/performant-img32.jpg" class="responsive" />
+            <br />
+            <div class="clearfix"></div>
+
+            <hr id="assign-quiz" />
+            <h3>Assigning Quizzes, Surveys or Polls</h3>
+            <p>
+              When you're ready to send your survey to recipients, click <strong>Survey Assign</strong> | <strong>Employee</strong> | <strong>Knowledge</strong>
+            </p>
+            <p>
+              In the screen displayed, select a <strong>Project</strong>, the relevant
+              <strong>Quiz/Survey/Poll</strong> and target recipients, then click <strong>Send</strong>.
+            </p>
+            <img src="images/performant-img33.jpg" class="responsive" />
+            <br />
+            <p>
+              Once sent, quiz recipients will receive notification in their Acuity messaging inbox.
+            </p>
+            <img src="images/performant-img34.jpg" class="responsive" />
+            <br />
+            <p>
+              Clicking the prompts will display the Quiz to the recipient. The recipient
+              selects answers or responses and click <strong>Save</strong> to submit.
+            </p>
+            <img src="images/performant-img35.jpg" class="responsive" />
+            <br />
+            <div class="clearfix"></div>
+
+            <hr id="quiz-reporting" />
+            <h3>Reporting - Quiz/Survey/Poll</h3>
+            <p>
+              To analyze the results of your quiz, survey and poll initiatives,
+              go to <strong>Admin</strong> | <strong>Reports</strong> and select
+              <strong>Quiz</strong> from the menu in the left panel.
+            </p>
+            <br />
+            <div class="centered">
+              <img src="images/performant-img36.jpg" />
+            </div>
+            <br />
+
+            <p>
+              Select the report you'd like to view, then specify the Project,
+              Quiz Name, and Date Range, then click the <strong>Table</strong> button.
+            </p>
+            <img src="images/performant-img37.jpg" class="responsive" />
+            <br />
+            <p>
+              Once sent, quiz recipients will receive notification in their Acuity messaging inbox.
+            </p>
+            <img src="images/performant-img34.jpg" class="responsive" />
+            <br />
+            <p>
+              Clicking the prompts will display the Quiz to the recipient. The recipient
+              selects answers or responses and click <strong>Save</strong> to submit.
+            </p>
+            <img src="images/performant-img35.jpg" class="responsive" />
+            <br />
+            <div class="clearfix"></div>
+
+            <hr id="password" />
+            <h3>Password Reset</h3>
+            <ol>
+              <li>
+                To reset an employee's password, first select that employee from
+                the "Case Worker" filter on the left
+                <br /><br />
+                <div class="centered">
+                  <img src="images/password4.jpg" />
+                </div>
+                <br />
+              </li>
+              <li>
+                Open the menu and select "Reset CSR Password"
+                <br /><br />
+                <div class="centered">
+                  <img src="images/password5.jpg" />
+                </div>
+                <br />
+              </li>
+              <li>
+                Once clicking "Reset CSR Password", a prompt will appear asking
+                you to confirm the password change, along with what the new password will be
+                <br /><br />
+                <div class="centered">
+                  <img src="images/password6.jpg" />
+                </div>
+                <br />
+              </li>
+              <li>
+                To confirm the password change, simply click "OK"
+              </li>
+            </ol>
+            <div class="clearfix"></div>
+
+
+            <br /><br />
+            <a href="#top">Back to Top</a>
+            <div class="clearfix"></div>
+
+          </div>
+        </div>
+      </body>

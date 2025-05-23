@@ -1,0 +1,25 @@
+    <div class="rpt-popup-background form-popup">
+        <div class="rpt-popup-sizer form-popup" style="width: 700px;">
+            <div class="rpt-dismiss form-popup" ng-click="dismissform()">x</div>
+            <div class="rpt-popup form-popup" style="width: 610px;">
+                <div class="rpt-form" style="position:relative; height:450px;">
+                    <h1>Journal Entry Form</h1>
+                    <div style="padding: 20px;position:absolute;left:0px;top:0px;width:500px">
+                        <dl>
+                            <div><dt>User:</dt><dd>{{f.User}}</dd></div>
+                            <div><dt>Specialist:</dt><dd>{{f.User}}</dd></div>
+                            <div><dt>Occurrence Date:</dt><dd><input style="width:100px;" dynamic-ui type="text" ng-model="f.Date" /></dd></div>
+                            <div><dt>Delivered By:</dt><dd><input style="width:100px;" dynamic-ui type="text" ng-model="f.DeliveredBy" /></dd></div>
+                            <div><dt>Reason:</dt><dd><input style="width:100px;" class="clugue-for-reason" dynamic-ui type="text" ng-model="f.Reason" /></dd></div>
+                            <div><dt>Details-Issues:</dt><br /><dd><textarea style="width:500px;" ng-model="f.DetailsIssues" rows="4' cols="170"></textarea></dd></div>
+                            <div><dt>Resolution-Followup:</dt><br/><dd><textarea style="width:500px;" ng-model="f.ResolutionFollowup" rows="4' cols="170"></textarea></dd></div>
+                            <div><br /><dt>Date Closed:</dt><dd><input style="width:100px;" dynamic-ui type="text" ng-model="f.DateClosed" /></dd></div>
+                        </dl>
+                    </div>
+                </div>
+                <p ng-show="f.User==''"><b>No user selected, select one from the filters.</b></p>
+                <button type="button" class="btn btn-xs btn-success" ng-disabled="f.User == ''" ng-show="$parent.formedit" ng-click="submitform()" style="margin-top:60px;">Submit</button>
+            </div>
+        </div>
+    </div>
+

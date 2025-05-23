@@ -1,0 +1,183 @@
+﻿        <div class="draft-wrapper">
+            <div class="draft-pending" data-bind="visible: oPending()">Request Pending...</div>
+            <div class="draft-desc">
+                <div class="draft-desc-name"><span data-bind="html: oLeagueName()"></span></div>
+                <div class="draft-desc-id" data-bind="html: oDraftID()"></div>
+                <div class="draft-desc-begintime"><span data-bind="html: oBeginTime()"></span></div>
+                <div class="draft-desc-closetime" style="display:none;"><label>Draftroom will close in: </label><span></span></div>
+                <div class="draft-desc-prompt"><span data-bind="html: oPrompt()"></span></div>
+            </div>
+            <div class="draft-chat">
+                <div class="draft-chatstream-wrapper">
+                    <label>Smack Talk:</label>
+                    <div class="draft-chatstream">
+                        <div class="draft-chatstream-received">You're Toast!</div>
+                        <div class="draft-chatstream-sent">I know you are, but what am I?</div>
+                        <div style="clear:both;"></div>
+                    </div>
+                </div>
+                <div class="draft-chat-send" style="width: 400px;">
+                    <span data-bind="text: oUid()"></span>:&nbsp;
+                    <input class="draft-chat-inputline" type="text"/>
+                    <input class="draft-chat-returnline" type="text" style="border:0;width:0px"/>
+                </div>
+            </div>
+
+            <div class="draft-opp-wrapper">
+                <label data-bind="text: oCountdown()=='0' ? 'Drafting Now' : 'Draft Begins in: ' + oCountdown()"></label>
+                <table class="draft-opp-table" data-bind="css: { draftOppInit: oCountdown() != '0' }">
+                    <thead>
+                        <tr>
+                            <th style="display:none;">uid</th>
+                            <th style="width: 50px;">Round</th>
+                            <th style="width: 50px;">#</th>
+                            <th style="width: 200px;">Team</th>
+                        </tr>
+                    </thead>
+                    <tbody class="draft-opp-table-body">
+                        <tr><td>1</td><td>1</td><td>Team 1</td></tr>
+                        <tr><td>1</td><td>2</td><td>Team 2</td></tr>
+                        <tr><td>1</td><td>3</td><td>Team 3</td></tr>
+                        <tr><td>1</td><td>4</td><td>Team 4</td></tr>
+                        <tr><td>1</td><td>5</td><td>Team 5</td></tr>
+                        <tr><td>1</td><td>6</td><td>Team 6</td></tr>
+                        <tr><td>1</td><td>7</td><td>Team 7</td></tr>
+                        <tr><td>1</td><td>8</td><td>Team 8</td></tr>
+                        <tr><td>1</td><td>9</td><td>Team 9</td></tr>
+                        <tr><td>1</td><td>10</td><td>Team 10</td></tr>
+                        <tr><td>1</td><td>11</td><td>Team 11</td></tr>
+                        <tr><td>1</td><td>12</td><td>Team 12</td></tr>
+                        <tr><td>2</td><td>1</td><td>Team 1</td></tr>
+                        <tr><td>2</td><td>2</td><td>Team 2</td></tr>
+                        <tr><td>2</td><td>3</td><td>Team 3</td></tr>
+                        <tr><td>2</td><td>4</td><td>Team 4</td></tr>
+                        <tr><td>2</td><td>5</td><td>Team 5</td></tr>
+                        <tr><td>2</td><td>6</td><td>Team 6</td></tr>
+                        <tr><td>2</td><td>7</td><td>Team 7</td></tr>
+                        <tr><td>2</td><td>8</td><td>Team 8</td></tr>
+                        <tr><td>2</td><td>9</td><td>Team 9</td></tr>
+                        <tr><td>2</td><td>10</td><td>Team 10</td></tr>
+                        <tr><td>2</td><td>11</td><td>Team 11</td></tr>
+                        <tr><td>2</td><td>12</td><td>Team 12</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="draft-detail-wrapper">
+                <label>Player Detail</label>
+                <div class="draft-detail-prompt" style="display:none;">
+                    It's your turn to draft, select a player from the player selection table below, then click 'DRAFT PLAYER' to draft.
+                </div>
+                <div class="draft-detail">
+                </div>
+                <div class="draft-detail-buttons" style="display:none;">
+                    <input class="draft-detail-button-q" type="button" value="Add to Queue" />&nbsp;<input class="draft-detail-button-draft" type="button" value="DRAFT PLAYER" data-bind="visible: oDraftingNow()" />
+                </div>
+            </div>
+
+            <div class="draft-ers-wrapper" style="display:none;">
+                <label>Draft Sequence</label>
+                <div class="draft-ers-subwrapper">
+                    <div class="draft-er">
+                        <div class="draft-er-image"></div>
+                        <div class="draft-er-name">Jeffrey Gackenheimer</div>
+                        <div class="draft-er-order">1</div>
+                    </div>
+                    <div class="draft-er">
+                        <div class="draft-er-image"></div>
+                        <div class="draft-er-name">Greg Salvato</div>
+                        <div class="draft-er-order">2</div>
+                    </div>
+                    <div class="draft-er">
+                        <div class="draft-er-image"></div>
+                        <div class="draft-er-name">Dean Weathers</div>
+                        <div class="draft-er-order">3</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="draft-table-q-wrapper">
+                <label>Queue</label>
+                <div class="draft-q-save">Save Queue</div>
+                <div class="draft-q-saved">Queue Saved</div>
+                <table class="draft-table-q">
+                    <thead>
+                        <tr>
+                            <th style="display:none;">uid</th><th colspan="3">&nbsp;</th> <th style="width:140px;">Name</th><th style="width:140px;">Team</th>
+                        </tr>
+                    </thead>
+                    <tbody class="draft-table-q-body"></tbody>
+                </table>
+            </div>
+
+
+            <div class="draft-table-drafted-wrapper">
+                <label>My Team</label>
+                <table class="draft-table-drafted draft-table-drafted-tablesorter">
+                    <thead>
+                        <tr>
+                            <th style="display:none;">uid</th><th style="width:50px;">Pick</th><th style="width:110px;">Name</th><th style="width:110px;">Team</th>
+                        </tr>
+                    </thead>
+                    <tbody class="draft-table-drafted-body"></tbody>
+                </table>
+            </div>
+
+            <div class="draft-obs-select-wrapper">
+                <div class="draft-select-observe"><input  type="checkbox", value="On" /><label>Observe Only</label></div>
+                <div class="draft-select-autopick"><input  type="checkbox", value="On" /><label>Auto-Pick</label></div>
+                <div class="draft-select-pause"><input  type="checkbox", value="On" /><label>Pause</label></div>
+                <br /><br /><input class="draft-reset" type="button" style="display:none;" value="Reset Draft" />
+                <div class="draft-obs-wrapper" style="display:none;">
+                    <div class="draft-obs-name">Jeff Gack</div>
+                </div>
+            </div>
+
+            <div class="draft-table-wrapper">
+                <span class="draft-table-menu draft-table-menu-player">Player Selection</span>
+                <span class="draft-table-menu draft-table-menu-teams menu-disabled">Teams</span>
+                <span class="draft-table-menu-results menu-disabled" style="display: none;">Draft Results</span>
+                <div class="draft-table-pane">
+                    <table class="draft-table draft-table-tablesorter">
+                        <thead>
+                            <tr>
+                                <th style="display:none;">uid</th><th>Name</th><th>Project</th><th>Location</th><th>Team</th><th>Recent Bal Score</th><th>90 Day Bal Score</th>
+                            </tr>
+                        </thead>
+                        <tbody class="draft-table-body"></tbody>
+                    </table>
+                </div>
+                <div class="draft-team-table-pane" style="display:none;">
+                    <div class="draft-team-table-header">
+                        <label>Team Selection</label>
+                    </div>
+                    <table class="draft-team-table draft-team-table-tablesorter">
+                        <thead>
+                            <tr>
+                                <th style="display:none;">uid</th><th>Pick</th><th>Name</th><th>Project</th><th>Location</th><th>Team</th><th>Recent Bal Score</th><th>90 Day Bal Score</th>
+                            </tr>
+                        </thead>
+                        <tbody class="draft-team-table-body"></tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        <div class="unwelcome-wrapper" style="display:none;text-align: center; margin: 30px auto 0 auto;padding:30px;border: 4px solid red;font-size:20px; border-radius: 15px;">
+            <div class="unwelcome-prompt"></div>            
+        </div>
+        <div class="final-wrapper" style="display:none;text-align: center; margin: 100px auto 0 auto;padding:30px;border: 4px solid green;font-size:20px; border-radius: 15px;">
+            <div class="final-wrapper2">
+                <h2>Final Team</h2>
+                <h5>Thank you for participating, this draft is complete.</h5>
+                <table class="final-team-table final-team-table-tablesorter">
+                    <thead>
+                        <tr>
+                            <th style="display:none;">uid</th><th>Pick</th><th>Name</th><th>Project</th><th>Location</th><th>Team</th><th>Recent Bal Score</th><th>90 Day Bal Score</th>
+                        </tr>
+                    </thead>
+                    <tbody class="final-team-table-body"></tbody>
+                </table>
+            </div>
+        </div>
+

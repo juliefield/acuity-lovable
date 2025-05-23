@@ -1,0 +1,31 @@
+    <div class="rpt-popup-background form-popup">
+        <div class="rpt-popup-sizer form-popup" style="width: 700px;">
+            <div class="rpt-dismiss form-popup" ng-click="dismissform()">x</div>
+            <div class="rpt-popup form-popup" style="width: 610px;">
+                <div class="rpt-form" style="position:relative; height:400px;">
+                    <h1>Attendance Entry Form</h1>
+                    <div style="padding: 20px;position:absolute;left:0px;top:0px;width:300px">
+                        <dl>
+                            <div><dt>User:</dt><dd>{{f.User}}</dd></div>
+                            <div><dt>Specialist:</dt><dd>{{f.User}}</dd></div>
+                            <div><dt>Date:</dt><dd><input style="width:100px;" dynamic-ui type="text" ng-model="f.Date" /></dd></div>
+                            <div><dt>Arrival Time:</dt><dd><input style="width:100px;" dynamic-ui type="text" ng-model="f.ArrivalTime" /></dd></div>
+                            <div><dt>Departure Time:</dt><dd><input style="width:100px;" dynamic-ui type="text" ng-model="f.DepartureTime"  /></dd></div>
+                            <div><dt>Notification Time:</dt><dd><input style="width:100px;" dynamic-ui type="text" ng-model="f.NotificationTime"  /></dd></div>
+                            <div><dt>Reason:</dt><br /><dd><textarea ng-model="f.Reason" rows="4' cols="70"></textarea></dd></div>
+                        </dl>
+                    </div>
+                    <div style="padding: 20px;position:absolute;right:0px;top:0px;width:300px">
+                        <dl>
+                            <div><dt>Occurrence:</dt><dd style="border: 1px solid black;width: 100px;position:relative;"><input dynamic-ui type="text" ng-model="f.Occurrence" /></dd>
+                            <div><dt>Comments:</dt><br /><dd><textarea ng-model="f.Comments" rows="4' cols="50"></textarea></dd></div>
+                            <div style="margin-top:12px;"><dt>Action Taken:</dt><dd style="border: 1px solid black;width: 100px;position:relative;"><input dynamic-ui type="text" ng-model="f.ActionTaken" /></dd></div>
+                        </dl>
+                    </div>
+                </div>
+                <p ng-show="f.User==''"><b>No user selected, select one from the filters.</b></p>
+                <button type="button" class="btn btn-xs btn-success" ng-show="$parent.formedit" ng-disabled="f.User == ''" ng-click="submitform()" style="margin-top:60px;">Submit</button>
+            </div>
+        </div>
+    </div>
+

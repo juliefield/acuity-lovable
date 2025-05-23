@@ -1,0 +1,42 @@
+<div class="player-profile-thumbsup">
+   <div class="player-profile-thumbsup-item" ng-click="thumbclick('received')" ng-class="{'player-profile-thumbsup-item--on' : dir == 'received'}">
+      <img src="../applib/css/images/thumbsup-lrg-received.png" alt="Thumbs Up Received" />
+      <div class="number-bubble number-bubble-left">
+         {{thumbsreceived}}
+      </div>
+      <div class="player-profile-thumbsup-label">
+         Received
+      </div>
+   </div>
+   <div class="player-profile-thumbsup-item" ng-click="thumbclick('given')" ng-class="{'player-profile-thumbsup-item--on' : dir == 'given'}">
+      <div class="number-bubble number-bubble-right">
+         {{thumbsgiven}}
+      </div>
+      <img src="../applib/css/images/thumbsup-lrg-given.png" alt="Thumbs Up Given" />
+      <div class="player-profile-thumbsup-label">
+         Given
+      </div>
+   </div>
+   <div class="clearfix"></div>
+</div>
+<div class="player-thumbsup-list" ng-show="listready">
+   <div class="player-thumbsup-list-either">
+      <div class="thumbup-list-row" ng-repeat="li in thumblist">
+         <div class="player-photo-avatar avatar-circle">
+            <img ng-src="avatars/{{li.player.avatarfilename}}" width="35" />
+         </div>
+         <div class="avatar-name">
+            <div>{{li.player.name}}</div>
+            <div class="avatar-name--tagline" ng-show="dir == 'given'">
+               {{ (li.context == "agame-roster-performance") ? "Game performance was liked by you on" : ((li.context == "teammate-performance") ? "Team scores were liked by you on" : "received a thumbs-up from you on") }}
+               <br />{{li.stamp}}
+            </div>
+            <div class="avatar-name--tagline" ng-show="dir == 'received'">
+               {{ (li.context == "agame-roster-performance") ? "liked your game performance on" : ((li.context == "teammate-performance") ? "liked your team scores on" : "gave you a thumbs-up on") }}
+               <br />{{li.stamp}}
+            </div>
+         </div>
+      </div>
+      <!--LIST OF PEOPLE ROW END-->
+   </div>
+</div>

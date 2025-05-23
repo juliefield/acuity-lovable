@@ -1,0 +1,25 @@
+﻿<!-- UserAttributes HTML - View for a Knockout control -->
+<div class="filters-attributes-wrapper">
+    <div class="filters-attributes-modal">
+        <div class="filters-attributes-close">X</div>
+        <p data-bind="text: Prompt"></p>
+        <div class="filters-attributes-list-wrapper">
+            <div data-bind="visible: allSelectedItems().length > 0">
+                <select class="filters-attributes-list" multiple="multiple" height="3" data-bind="options:allSelectedItems, selectedOptions:selectedItems"> </select> 
+                <div><button data-bind="click: removeSelected, enable: selectedItems().length > 0">Remove</button></div>
+            </div>
+            <div data-bind="visible: (allSelectedItems().length <= 0) && (Prompt() != 'Loading...')">
+                <p>No Attributes Found</p>
+            </div>
+        </div>
+        <div style="margin-top: 15px;" class="filters-attributes-list-wrapper">
+            <form data-bind="submit:addItem">
+                <div data-bind="visible: allAvailableItems().length > 0">
+                    <br /><div>Add attribute:</div>
+                    <select class="filters-attributes-list" data-bind="value:itemToAdd, valueUpdate: 'afterkeydown',options:allAvailableItems"> </select> 
+                    <button type="submit" data-bind="enable: itemToAdd().length > 0">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

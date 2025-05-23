@@ -1,0 +1,41 @@
+<div  ng-click="show()" ng-show="showicon" style="height:30px;">
+    <span class="rpt-tableicon">&nbsp;&nbsp;</span><span class="rpt-tableicontext">{{icontext}}</span>
+</div>
+
+<div style="position:relative; background-color:White; overflow: scroll;" ng-show="showeditor">
+    <div class="table-responsive" style="width: calc(70%);overflow-x:auto;" ng-show="showtable">
+        <div class="rpt-table-topper" ng-show="showheader"><div class="rpt-title">{{headertext}}</div></div>
+        <table class="acuity-table acuity-tablesorter">
+            <thead>
+                <tr>
+                    <th ng-repeat="col in table.columns" ng-show="col.display == 'Y'">{{ col.name }}</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="r in table.records">
+                    <td ng-repeat="col in table.columns" ng-show="col.display == 'Y'"><input type="text" style="border: none;width: 100%;text-align:center;vertical-align:middle;padding:0;margin:0;" edit="edit" ng-model="r[col.name]" dynamic-ui ng-change="onInputChange($event)" ng-disabled="formedit" /></td>
+                    <td nowrap>
+                        <span ng-click="editrow($index)" style="padding-left: 5px;cursor:pointer;" ng-show="formedit">Edit</span>
+                        <span ng-click="editrow($index)" style="padding-left: 5px;cursor:pointer;" ng-hide="formedit">View</span>
+                        <span ng-click="deleterow($index)" style="padding-left: 5px;cursor:pointer;" ng-show="formdelete">X</span>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot ng-show="footer_tablesum">
+            		<tr ng-show="footer_tablesum">
+            			<td ng-repeat="col in table.columns" ng-show="col.display == 'Y'">{{ts[col.name]}}</td>
+            		</tr>
+            </tfoot>
+        </table>
+        <div>
+            <button type="button" class="btn btn-xs btn-success" ng-click="addrow()" ng-show="formadd">Add Row</button>
+            <!-- TODO: Remove this when you get record-level adding completed -->
+            <!-- <button type="button" class="btn btn-xs btn-success" ng-click="save()" ng-show="(edit != 'none')&&(datasystem == 'DBS')">Save All</button> -->
+        </div>
+    </div>
+    <div ng-hide="showtable">Table Not Loaded</div>
+
+    <div class="form-anchor"></div>
+
+</div>

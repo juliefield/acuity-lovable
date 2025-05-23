@@ -1,0 +1,958 @@
+﻿
+        <div class="fan-wrapper">
+            <div class="fan" data-bind="css: { bgHome: selectedSection() === 'Hm', bgPlayoffs: (selectedSection() === 'PLAYOFFS'), bgTeamStandings: (selectedSection() === 'Team Standings'), bgRoster: (selectedSection() === 'Roster'), bgMatchup: selectedSection() === 'Matchup', bgSchedule: selectedSection() === 'Schedule', bgTeamSetup: (selectedSection() === 'Team Setup'), bgLeagueSetup: (selectedSection() === 'Divisions'), bgLeagueAdmin: (selectedSection() === 'League Admin'), bgStats: (selectedSection() === 'Stats'), bgTV: (selectedSection() === 'TV') }">
+                <div class="fan-menu">
+                    <div class="pure-menu pure-menu-horizontal pure-menu-scrollable custom-close-top custom-menu">
+                        <ul  class="pure-menu-list custom-menu-list" data-bind="foreach: sections().list">
+                            <li class="pure-menu-item custom-menu-item" data-bind="visible: show">
+                                <a class="pure-menu-link custom-menu-link" href="#" data-bind="css: { customMenuActive: selectedSection() === name, customHomeIcon: name === 'Hm', customTVIcon: name === 'TV' }, click: function(data) { selectSection(data.name); }" >
+                                    <span data-bind="text: name"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="fan-content-media">
+                    <div class="fan-tv" data-bind="visible: (selectedSection() === 'TV')" style="overflow:hidden; position: relative; height: 5000px; width: 100%;">
+                        <!--
+                        <div class="fan-tv-gamefeed-wrapper" style="width: 50%; height: 5000px; position:absolute;top:0px;left:0px;">
+                            <div class="fan-tv-gamefeed" data-bind="foreach: tv().gameFeed" style="position: absolute; top: 1000px; left: 0px; text-align: center;">
+                                <div style="width: 100%; text-align: center; margin: 10px; background-color: #080808; position: relative; color:White;">
+                                    <div class="fan-tv-home-helmet" style="position:absolute; top: 15px; left: 20px; height: 60px; width: 60px;"></div>
+                                    <div class="fan-tv-visitor-helmet" style="position:absolute; top: 15px; right: 20px; height: 60px; width: 60px;"></div>
+                                    <div style="font-size: 13px;">
+                                        <span data-bind="text:home.fanTeamName"></span>&nbsp;-VS-&nbsp;<span data-bind="text:visitor.fanTeamName"></span>
+                                    </div>
+                                    <div style="font-size: 14px;">
+                                        <span data-bind="text:gameDates"></span>
+                                    </div>
+                                    <div>
+                                        <span data-bind="text:home.score"></span>&nbsp;-to-&nbsp;<span data-bind="text:visitor.score"></span>
+                                    </div>
+                                    <div>
+                                        <span data-bind="text:gameStatus"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fan-tv-logo" style="position:absolute; right: 0px; top: -70px; width: 50%;"></div>
+
+                        <div class="fan-tv-standings-wrapper" style="position:absolute; right: 0px; top: 300px; width: 50%;">
+                            <div class="fan-tv-standings" data-bind="foreach: tv().leagues" style="display:table; margin: 0 auto;">
+                                <div class="fan-tv-standings-league" style="display:none;color:White;">
+                                    <div style="display:block;text-align: center; margin-bottom: 5px;background-color:Yellow;color:Black;">Top 5 in <span data-bind="text:leaguename"></span>
+                                    </div>
+                                    <div class="fan-tv-standings-top5" data-bind="foreach: teams">
+                                        <div>
+                                            <div class="fan-tv-top5-helmet" style="height: 30px; width: 30px; display: inline-block; vertical-align: middle; margin: 2px 0 2px 0;"></div>
+                                            <div style="display:inline-block; vertical-align: middle;">
+                                                <span data-bind="text:($index() + 1)"></span>
+                                                <span data-bind="text: name"></span>
+                                                (W:<span data-bind="text: wins"></span>,L:<span data-bind="text: losses"></span>,T:<span data-bind="text: ties"></span>)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        -->
+                        <div class="fan-tv-gamefeed-wrapper" style="height: 70px; width: 5000px; position:absolute;top:0px;left:0px;">
+                            <div class="fan-tv-gamefeed" data-bind="foreach: tv().gameFeed" style="position: absolute; width: 15000px; top: 0px; margin: 0; left: 0px; height: 70px; text-align: left;background-color:#cccccc;">
+                                <div style="width: 200px; height: 70px; margin: 0; text-align: center; border-right: 1px solid black; border-left: 1px solid black; background-color: #cccccc; position: relative; color:black; display:inline-block;">
+                                    <div class="fan-tv-home-helmet" style="position:absolute; top: 20px; left: 0px; height: 30px; width: 30px;"></div>
+                                    <div class="fan-tv-visitor-helmet" style="position:absolute; top: 40px; left: 0px; height: 30px; width: 30px;"></div>
+                                    <div style="font-size: 12px; position:absolute; top: 25px; left: 35px; height: 16px; width: 120px; overflow:hidden;"><span data-bind="text:home.fanTeamName"></span></div>
+                                    <div style="font-size: 12px; position:absolute; top: 45px; left: 35px; height: 16px; width: 120px; overflow:hidden;"><span data-bind="text:visitor.fanTeamName"></span></div>
+                                    <div style="font-size: 12px; position:absolute; top: 25px; left: 150px;width:50px;"><span data-bind="text:home.score"></span></div>
+                                    <div style="font-size: 12px; position:absolute; top: 45px; left: 150px;width:50px;"><span data-bind="text:visitor.score"></span></div>
+                                    <div style="font-size: 10px; position:absolute; top: 5px; left: 5px;"><span data-bind="text:gameDates"></span></div>
+                                    <div style="font-size: 10px; position:absolute; top: 5px; left: 150px; width:50px; font-weight:bold;"><span data-bind="text:gameStatus"></span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="fan-tv-logo" style="position:absolute; left: 0px; top: 10px; width: 300px;"></div>
+
+                        <div class="fan-tv-standings-wrapper" style="position:absolute; left: 300px; top: 110px; width: 400px;">
+                            <div class="fan-tv-standings" data-bind="foreach: tv().leagues" style="display:table; margin: 0 auto;">
+                                <div class="fan-tv-standings-league" style="display:none;color:White;">
+                                    <div style="font-size:12px;display:block;text-align: center; margin-bottom: 5px;background-color:Yellow;color:Black;">Top 5 in <span data-bind="text:leaguename"></span>
+                                    </div>
+                                    <div class="fan-tv-standings-top5" data-bind="foreach: teams">
+                                        <div>
+                                            <div class="fan-tv-top5-helmet" style="height: 30px; width: 30px; display: inline-block; vertical-align: middle; margin: 2px 0 2px 0;"></div>
+                                            <div style="display:inline-block; vertical-align: middle;font-size:12px;">
+                                                <span data-bind="text:($index() + 1)"></span>
+                                                <span data-bind="text: name"></span>
+                                                (W:<span data-bind="text: wins"></span>,L:<span data-bind="text: losses"></span>,T:<span data-bind="text: ties"></span>)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--
+                        <div class="fan-tv-playerstats-wrapper" style="position:absolute; left: 10px; top: 350px; width: 100%;">
+                            <h2 style="font-size:12px;background-color:Yellow;margin:0;font-weight:normal;padding:0;">MVP Selection Criteria</h2>
+                            <div class="fan-tv-playerstats" data-bind="foreach: tv().playerstats" style="display:table; margin: 0 auto;display:inline-block;">
+                                <div style="width:300px;display:inline-block;vertical-align:top;">
+                                <table class="pure-table fan-tv-playerstats-table" style="font-size:11px;color:White;margin-top: 5px;">
+                                    <thead style="background-color:#333333;color:White;">
+                                        <tr>
+                                            <th colspan="2">Top Scores (<span data-bind="text: starts"></span> Starts)</th><th>Average</th>
+                                        </tr>
+                                        <tr class="fan-leaguesetup-subheader">
+                                            <th>Player</th>
+                                            <th>Team</th>
+                                            <th>Score</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody data-bind="foreach: player">
+                                        <tr style="text-align: left;" class="fan-stats-player">
+                                            <td data-bind="text: name"></td>
+                                            <td><span data-bind="text: fan_team_name"></span> (<span data-bind="text: team_name"></span>)</td>
+                                            <td style="text-align: center;" data-bind="text: agame_avg_score"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                </div>
+                            </div>
+                        </div>
+                        -->
+                                                                    <!--
+                                            <span data-bind="text: points_for.toFixed(2)"></span>
+                                            <span data-bind="text: points_against.toFixed(2)"></span>
+                                            -->
+
+
+<!--
+                    <div class="fan-standings fan-table" data-bind="visible: (selectedSection() === 'Team Standings'),foreach: standings().leagues">
+                        <table class="pure-table">
+                            <thead><tr class="fan-standings-header"><th colspan="8" data-bind="text: leaguename"></th></tr>
+                                <tr class="fan-standings-subheader"><th>Team</th><th></th><th>Place</th><th>Wins</th><th>Losses</th><th>Ties</th><th>Points For</th><th>Points Against</th></tr>
+                            </thead>
+                            <tbody data-bind="foreach: teams">
+                                <tr style="text-align: right;" class="fan-standings-team" data-bind="css: { customFanRecordHighlight: highlight === 'Y' }">
+                                    <td style="text-align: left;"><span data-bind="text: name"></span><span></span></td>
+                                    <td></td>
+                                    <td data-bind="text:($index() + 1)"></td>
+                                    <td data-bind="text: wins"></td>
+                                    <td data-bind="text: losses"></td>
+                                    <td data-bind="text: ties"></td>
+                                    <td data-bind="text: points_for.toFixed(2)"></td>
+                                    <td data-bind="text: points_against.toFixed(2)"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+-->
+                    </div>
+                </div>
+
+                <div class="fan-content">
+                    <div class="fanDebug"></div>
+                    <div class="fan-home" data-bind="visible: (selectedSection() === 'Hm')">
+                        <div class="fan-home-main">
+                            <h1>Welcome to A-GAME!</h1>
+                        </div>
+                    </div>
+                    <div class="fan-team" data-bind="visible: (selectedSection() === 'Team Setup')">
+                        <div class="fan-av-wrapper" style="position: relative;">
+                            <div id="AvatarId" class="fan-av"></div>
+                            <div class="fan-av-footer">
+                                <input type="button" class="fan-av-flip" value="reverse" />
+                            </div>
+                            <div class="fan-av-color-wrapper2">
+                                 <div class="pure-control-group fan-form-group">
+                                    <label for="teamname">Team Name:</label>
+                                    <span name="teamname" type="text" data-bind="text: teamName"></span>
+                                </div>
+                                 <div class="pure-control-group fan-form-group">
+                                    <label for="fanname">A-GAME Team Name:</label>
+                                    <input type="text" style="width: 400px;" data-bind="value: fanTeamName" />
+                                </div>
+                                <div class="fan-av-color-wrapper">
+                                    Helmet Color
+                                    <input class='helmet_color_picker' style="height: 50px; width: 20px;" value='#ff00ff'/>
+                                </div>
+                                <div class="fan-av-color-wrapper">
+                                    Mask Color: <input class='mask_color_picker' style="width: 20px;" value='#ff00ff'/>
+                                </div>
+                                 <div class="pure-control-group fan-form-group">
+                                    <input type="checkbox" data-bind="checked: autoSelectRoster" /><label>Automatically Select Teams</label><br /><span style="font-size: 11px;padding-left: 15px;">Automatic selections can be changed in <a style="cursor: pointer; text-decoration:underline;" data-bind="click: function() { selectSection('Roster'); }">Roster View</a></span>
+
+                                 </div>
+                                 <div class="pure-control-group fan-av-color-wrapper">
+                                    <br /><input type="button" class="fan-not-seeing-value-of-ko" data-bind="visible: canEditTeam() == 'Y'" type="button" value="Save Settings" />
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fan-matchup" data-bind="visible: (selectedSection() === 'Matchup'), foreach: matchups().matchups">
+                        <div class="pure-control-group">
+                            <div class="fan-matchup-banner"><span>Head to Head - </span><span data-bind="text: leagueName"></span></div>
+                            <div class="fan-matchup-banner"><span data-bind="text: seasonText"></span><span> Game </span><span data-bind="text: seasonWeekNumber"></span></div>
+                            <div  class="fan-matchup-banner">
+                                <a data-bind="visible: (seasonWeekNumber!='1') || (season=='P'), click: function() { matchupPrevWeek(); }">&#9664;</a>
+                                <span data-bind="text: gameDates"></span>
+                                <a data-bind="visible: matchupWeek() < 0, click: function() { matchupNextWeek(); }">&#9658;</a>
+                                &nbsp&nbsp;<a data-bind="visible: matchupWeek() < 0, click: function() { matchupCurrentWeek(); }">&#9658;|</a>
+
+                            </div>
+                            <div  class="fan-matchup-banner" data-bind="text: gameStatus">
+                            </div>
+                            <div class="fan-matchup-ticker" style="position: relative; text-align: center;" data-bind="visible: prompt != ''">
+                                <div class="fan-ticker-slide" style="text-align: center;" data-bind="text: prompt">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="fan-matchup-sidebyside" data-bind="visible: (home.bye=='N') || (visitor.bye=='N')">
+                            <div class="fan-matchup-homeside" style="text-align: right;">
+                                <div class="fan-matchup-banner" style="text-align: center; data-bind="text: home.fanTeamName"></div>
+                                <div style="text-align: center;">
+                                <table class="pure-table fan-table fan-matchup-table center">
+                                    <thead>
+                                        <tr>
+                                            <td colspan="3" style="text-align: center; font-weight: bold; background-color: #606060; color: White;vertical-align:middle;"><span data-bind="text: home.fanTeamName"></span><br /><span  style="font-weight: normal;font-size: 10px;" data-bind="text:home.teamName"></span></td>
+                                            <td style="background-color: White; border:none;" colspan="1" class="fan-helmet-home"></td>
+                                            <td colspan="2" style="text-align: center;background-color: White; border:none;">VERSUS</td>
+                                            <td style="background-color: White; border:none;" colspan="1" class="fan-helmet-visitor"></td>
+                                            <td colspan="3" style="text-align: center; font-weight: bold; background-color: #606060; color: White;vertical-align:middle;"><span data-bind="text: visitor.fanTeamName"></span><br /><span  style="font-weight: normal;font-size: 10px;" data-bind="text:visitor.teamName"></span></td>
+                                        </tr>
+                                        <!--
+                                        <tr>
+                                            <td colspan="4" style="text-align: center; font-weight: bold; background-color: #606060; color: White;" data-bind="text: home.fanTeamName"></td>
+                                            <td colspan="2" style="text-align: center;background-color: White;">VERSUS</td>
+                                            <td colspan="4" style="text-align: center; font-weight: bold; background-color: #606060; color: White;" data-bind="text: visitor.fanTeamName"></td>
+                                        </tr>
+                                        -->
+                                        <tr class="fan-matchup-header" style="text-align: center;"><th>Name</th><td>Balanced</td><th>X</th><th>Game Score</th><th>Pos</th><th>Pos</th><td>Balanced</td><th>X</th><th>Game Score</th><th>Name</th></tr>
+                                    </thead>
+                                    <tbody data-bind="foreach: home.roster">
+                                        <tr>
+                                            <td data-bind="text: name"></td>
+                                            <td><span data-bind="text: balScore"></span><span data-bind="visible: excludeFlag == 'Y'" class="fan-exception" onclick="alert('The score for this agent was excluded due to a scoring abnormaility (inccomplete KPIs or ineligible status).  If you believe this to be in error, please contact the league administrator.'); return false;">&nbsp;&nbsp;</span></td>
+                                            <td data-bind="text: weight"></td>
+                                            <td data-bind="text: score"></td>
+                                            <td style="font-weight: bold;text-align: center;" data-bind="text: position"></td>
+                                            <td style="font-weight: bold;text-align: center; border-left: 3px solid black;" data-bind="text: v_position"></td>
+                                            <td  data-bind="text: v_balScore"></td>
+                                            <td data-bind="text: v_weight"></td>
+                                            <td data-bind="text: v_score"></td>
+                                            <td data-bind="text: v_name"></td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot style="border-top: 2px solid black;">
+                                        <tr><td colspan="3" style="text-align: right;">Total Score:</td><td style="font-weight: bold;" data-bind="text: home.score"></td><td></td><td colspan="3" style="text-align: right;">Total Score:</td><td style="font-weight: bold;" data-bind="text: visitor.score.toFixed(2)"></td><td></td></tr>
+                                    </tfoot>
+                                </table>
+                                </div>
+                            </div>
+                            <!--
+                            <div class="fan-matchup-visitorside">
+                                <div class="fan-matchup-banner" data-bind="text: visitor.fanTeamName"></div>
+                                <table class="pure-table fan-table fan-matchup-table">
+                                    <thead><tr class="fan-matchup-header"><th>Pos</th><td>Balanced</td><th>X</th><th>Score</th><th>Name</th></tr>
+                                    </thead>
+                                    <tbody data-bind="foreach: visitor.roster">
+                                        <tr>
+                                            <td style="font-weight: bold;text-align: center;" data-bind="text: position"></td>
+                                            <td data-bind="text: balScore"></td>
+                                            <td data-bind="text: weight"></td>
+                                            <td data-bind="text: score"></td>
+                                            <td data-bind="text: name"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            -->
+                        </div>
+                        <div class="fan-matchup-footer">
+                            <div class="fan-matchup-banner">Results last recorded on: <span data-bind="text: gameDateRecorded"></span></div>
+                        </div>
+                    </div>
+                    <div class="fan-playoffs" data-bind="visible: (selectedSection() === 'PLAYOFFS'),foreach: brackets().leagues">
+<div class="bkt-wrapper">
+    <div class="bkt-header" data-bind="text: leagueName"></div>
+    <div class="bkt-col" data-bind="visible: bg8.games.length > 0,foreach: bg8.games">
+        <div class="bkt-game-8">
+            <div class="bkt-team">
+                <span data-bind="text: teams[0].fanTeamName"></span>
+                <span class="bkt-team-score" data-bind="text: teams[0].score"></span>
+            </div>
+            <div class="bkt-box-8">
+                <div class="bkt-box-info"><b><span data-bind="text: teams[0].gameStatus"></span></b><br /><span data-bind="text: teams[0].gameDates"></span></div>
+            </div>
+            <div class="bkt-team">
+                <span data-bind="text: teams[1].fanTeamName"></span>
+                <span class="bkt-team-score" data-bind="text: teams[1].score"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="bkt-col" data-bind="visible: bg4.games.length > 0,foreach: bg4.games">
+        <div class="bkt-game-4">
+            <div class="bkt-team">
+                <span data-bind="text: teams[0].fanTeamName"></span>
+                <span class="bkt-team-score" data-bind="text: teams[0].score"></span>
+            </div>
+            <div class="bkt-box-4">
+                <div class="bkt-box-info"><b><span data-bind="text: teams[0].gameStatus"></span></b><br /><span data-bind="text: teams[0].gameDates"></span></div>
+            </div>
+            <div class="bkt-team">
+                <span data-bind="text: teams[1].fanTeamName"></span>
+                <span class="bkt-team-score" data-bind="text: teams[1].score"></span>
+            </div>
+        </div>
+    </div>
+    <div class="bkt-col" data-bind="visible: (bg4.games.length == 0)&&(bg8.games.length != 0)">
+        <div class="bkt-game-4">
+            <div class="bkt-team">
+                <span>&nbsp;</span>
+            </div>
+            <div class="bkt-box-4"></div>
+            <div class="bkt-team">
+                <span>&nbsp;</span>
+            </div>
+        </div>
+        <div class="bkt-game-4">
+            <div class="bkt-team">
+                <span>&nbsp;</span>
+            </div>
+            <div class="bkt-box-4"></div>
+            <div class="bkt-team">
+                <span>&nbsp;</span>
+            </div>
+        </div>
+    </div>
+    <div class="bkt-col" data-bind="visible: bg2.games.length > 0,foreach: bg2.games">
+        <div class="bkt-game-2">
+            <div class="bkt-team">
+                <span data-bind="text: teams[0].fanTeamName"></span>
+                <span class="bkt-team-score" data-bind="text: teams[0].score"></span>
+            </div>
+            <div class="bkt-box-2">
+                <div class="bkt-box-info">
+                    <b><span style="color:#3192ca;font-size: 13px;">Championship Matchup</span></b><br />
+                    <b><span data-bind="text: teams[0].gameStatus" style="color:Red;"></span></b><br />
+                    <span data-bind="text: teams[0].gameDates"></span>
+                </div>
+            </div>
+            <div class="bkt-team">
+                <span data-bind="text: teams[1].fanTeamName"></span>
+                <span class="bkt-team-score" data-bind="text: teams[1].score"></span>
+            </div>
+        </div>
+    </div>
+    <div class="bkt-col" data-bind="visible: bg2.games.length == 0">
+        <div class="bkt-game-2">
+            <div class="bkt-team">
+                <span>&nbsp;</span>
+            </div>
+            <div class="bkt-box-2"></div>
+            <div class="bkt-team">
+                <span>&nbsp;</span>
+            </div>
+        </div>
+    </div>
+    <div class="bkt-col" data-bind="visible: bg1.games.length > 0,foreach: bg1.games">
+        <div class="bkt-game-1">
+            <div class="bkt-team">
+                <span style="display:block;text-align: center;height: 30px;" data-bind="text: teams[0].fanTeamName"></span>
+            </div>
+            <div class="bkt-box-1">
+                <div class="bkt-box-info">
+                    <b><span style="color:#3192ca;font-size: 20px;">Championship Winners!</span></b>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="clear:both;height: 30px;">&nbsp;</div>
+</div>
+
+                    </div>
+
+                    <div class="fan-standings fan-table" data-bind="visible: (selectedSection() === 'Team Standings'),foreach: standings().leagues">
+                        <table class="pure-table fan-standings-table">
+                            <thead><tr class="fan-standings-header"><th colspan="8" data-bind="text: leaguename"></th></tr>
+                                <tr class="fan-standings-subheader"><th>Team</th><th></th><th>Place</th><th>Wins</th><th>Losses</th><th>Ties</th><th>Points For</th><th>Points Against</th></tr>
+                            </thead>
+                            <tbody data-bind="foreach: teams" style="background-color:DarkGray;">
+                                <tr style="text-align: right;" class="fan-standings-team" data-bind="css: { customFanRecordHighlight: highlight === 'Y' }">
+                                    <!--<td style="text-align: left;"><a data-bind="visible: leagueCrumb()!=0, click: function(data) { setTeam(data.id); }"><span data-bind="text: name"></span></a><span data-bind="visible: leagueCrumb()==0,text: name"></span></td> -->
+                                    <td style="text-align: left;"><a data-bind="click: function(data) { setTeam(data.id); }, attr: { title: realname }"><span data-bind="text: name"></span></a></td>
+                                    <td></td>
+                                    <td data-bind="text:($index() + 1)"></td>
+                                    <td data-bind="text: wins"></td>
+                                    <td data-bind="text: losses"></td>
+                                    <td data-bind="text: ties"></td>
+                                    <td data-bind="text: points_for.toFixed(2)"></td>
+                                    <td data-bind="text: points_against.toFixed(2)"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="fan-standings fan-table" data-bind="visible: ((selectedSection() === 'Team Standings') && (oRole() != 'CSR'))">
+                        <div style="display:block;width:100%;margin-top:4px;padding: 3px;font-weight:bold;background: black;color:White;">Around the League</div>
+                        <div data-bind="foreach: standings().otherLeagues">
+                            <table class="pure-table fan-standings-table" style="float:left; margin: 5px;">
+                                <thead><tr class="fan-standings-header"><th colspan="8" data-bind="text: leaguename"></th></tr>
+                                    <tr class="fan-standings-subheader"><th>Team</th><th></th><th>Place</th><th>Record</th></tr>
+                                </thead>
+                                <tbody data-bind="foreach: teams" style="background-color:DarkGray;">
+                                    <tr style="text-align: right;" class="fan-standings-team" data-bind="css: { customFanRecordHighlight: highlight === 'Y' }">
+                                        <!--<td style="text-align: left;"><a data-bind="visible: leagueCrumb()!=0, click: function(data) { setTeam(data.id); }"><span data-bind="text: name"></span></a><span data-bind="visible: leagueCrumb()==0,text: name"></span></td> -->
+                                        <td style="text-align: left;"><a data-bind="click: function(data) { setTeam(data.id); }, attr: { title: realname }"><span data-bind="text: name"></span></a></td>
+                                        <td></td>
+                                        <td data-bind="text:($index() + 1)"></td>
+                                        <td><span data-bind="text: wins"></span>-<span data-bind="text: losses"></span>-<span data-bind="text: ties"></span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="fan-schedule fan-table" data-bind="visible: (selectedSection() === 'Schedule')">
+                        <div data-bind="foreach: schedule().leagues">
+                            <table class="pure-table" style="clear:both;">
+                                <thead><tr class="fan-schedule-header"><th colspan="8" data-bind="text: leaguename"></th></tr>
+                                <tr class="fan-standings-subheader"><th>Season</th><th>Game</th><th>Game Dates</th><th>Status</th><th>Home Team</th><th>Home Score</th><th>Visitor Team</th><th>Visitor Score</th></tr>
+                                </thead>
+                                <tbody data-bind="foreach: weeks">
+                                    <tr style="text-align: left;" class="fan-schedule-week" data-bind="css: { customFanRecordHighlight: gamestatus === 'IN PLAY' }">
+                                        <td data-bind="text: season"></td>
+                                        <td style="text-align: left;" data-bind="text: season_week_number"></td>
+                                        <td data-bind="text: gamedates"></td>
+                                        <td data-bind="text: gamestatus"></td>
+                                        <td data-bind="text: hometeamname"></td>
+                                        <td data-bind="text: hometeamscore"></td>
+                                        <td data-bind="text: visitorteamname"></td>
+                                        <td data-bind="text: visitorteamscore"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="fan-playersetup fan-table" data-bind="visible: (selectedSection() === 'Player Setup')">
+                        <div class="fan-player" style="float:left;">
+                            <div class="fan-avatar"></div>
+                            <div id="PlayerBodyId" class="fan-jersey"></div>
+                            <div class="fan-jersey-name">Player Name</div>
+                        </div>
+                        <div style="float:left;">
+                            <div class="fan-player-form-wrapper">
+                                <div class="fan-player-form-group">
+                                    <div class="fan-player-form-group-label">Update Headshot</div>
+                                    <label for="fileUpload">Select Image to Upload: </label><input id="fileUpload" name="fileUpload" type="file" accept=".bmp,.gif,.jpg,.jpeg,.png" />
+                                    <input id="btnUploadFile" type="button" value="Upload File" />
+                                </div>
+                                <div class="fan-player-form-group">
+                                    <div class="fan-player-form-group-label">Player Info</div>
+                                    <p>Please select the number for your jersey.  Be sure to confer<br />with your coach to be sure the # you choose is available.</p>
+                                    <label for="inputJersey">Jersey #: </label><input id="inputJersey" type="input" style="width: 30px;" value="00" />
+                                    <p>Please enter your last name or a nickname for your jersey.</p>
+                                    <label for="inputNickname">Name on jersey: </label><input id="inputNickname" type="input" style="width: 200px;" value="" />
+                                    <p>Please share with us some bit of wisdom to display with<br />your statistics in the media view and other places.</p>
+                                    <input id="inputSlogan" type="input" style="width: 400px;" value="" />
+                                    <br /><br /><input id="savePlayerSetup" type="button" value="Save Player Info" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fan-leaguesetup fan-table" data-bind="visible: (selectedSection() === 'Divisions')">
+                        <!--
+                        <h2>For Pre-Season play, all leagues are being administered by A-GAME's Developers.<br />A league setup interface is coming soon.</h5>
+                        <h5 style="margin-top: 150px;">&lt;&lt;&lt; NOTE: Use the Team and CSR filters to view the A-GAME experience of any team leader or CSR (you will see what they see, as if you were logged in as them).</h5>
+                        <h5>You can also click on any of the leagues in the table below:</h5>
+                        -->
+                        <h2>Divisions In Play:</h2>
+                        <table class="pure-table fan-leaguesetup-table">
+                            <thead><tr><th colspan="8">Active Divisions</th></tr>
+                                <tr class="fan-leaguesetup-subheader"><th>Name</th><th>Game</th><!--<th>Region</th>--><th>Start Date</th><th>Games</th><!--<th>Playoffs?</th>--><th>Current<br />Game</th><th>Active<br /> Games</th>
+                                </tr>
+                            </thead>
+                            <tbody data-bind="foreach: leagues().leagues">
+                                <tr style="text-align: left;" class="fan-leaguesetup-leagues">
+                                    <td><a data-bind="click: function(data) { setLeagueCrumb(data.leagueid); }"><span data-bind="text: name"></span></a></td>
+                                    <td></td>
+                                    <!--<td data-bind="text: region"></td>-->
+                                    <td data-bind="text: startDate"></td>
+                                    <td data-bind="text: regularSeasonWeeks"></td>
+                                    <!--<td data-bind="text: playoffs"></td>-->
+                                    <td data-bind="text: seasonWeekNumber"></td>
+                                    <td data-bind="text: activeGames"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="fan-leaguesetup fan-table" data-bind="visible: (selectedSection() === 'League Admin')">
+                        <!--
+                        <h2>For Pre-Season play, all leagues are being administered by A-GAME's Developers.<br />A league setup interface is coming soon.</h5>
+                        <h5 style="margin-top: 150px;">&lt;&lt;&lt; NOTE: Use the Team and CSR filters to view the A-GAME experience of any team leader or CSR (you will see what they see, as if you were logged in as them).</h5>
+                        <h5>You can also click on any of the leagues in the table below:</h5>
+                        -->
+                        <h2>League Administration:</h2>
+                        <table class="pure-table fan-leagueadmin-table">
+                            <thead><tr><th colspan="2">Participation Table V0.1 - All Divisions.</th></tr>
+                                <tr class="fan-leaguesetup-subheader"><th>Team Name</th><th>Fan Team Name</th><th data-bind="visible: ((oRole() == 'Admin') || (oRole() == 'CorpAdmin'))">Roster<br />Lock<br />Override</th><th>Helmet<br />Colored?</th><th>Roster<br />Assigned<br />(Current Game)</th><th>Auto-<br />Assignments<br /></th><th>Total</th><th>Status:<br />Active</th><th>In-Training</th><th>Termed</th>
+                                </tr>
+                            </thead>
+                            <tbody data-bind="foreach: leagueadmin().spytable">
+                                <tr style="text-align: left;" class="fan-leagueadmin-spytable">
+                                    <td><a data-bind="click: function(data) { setTeamJump(data.league_id,data.team_id); }"><span data-bind="text: team_name"></span></a></td>
+                                    <td><a data-bind="click: function(data) { setTeamJump(data.league_id,data.team_id); }"><span data-bind="text: fan_team_name"></span></a></td>
+                                    <td data-bind="visible: ((oRole() == 'Admin') || (oRole() == 'CorpAdmin'))"><input type="checkbox" class="fan-spytable-setRLock" data-bind="checked: stg.overrideRosterLock" /><span style="display:none;" data-bind="text: teams_id"></span></td>
+                                    <td data-bind="text: helmetcolorselected"></td>
+                                    <td data-bind="text: manuallyassigned"></td>
+                                    <td data-bind="text: autoassigned"></td>
+                                    <td data-bind="text: totalassigned"></td>
+                                    <td data-bind="text: Active"></td>
+                                    <td data-bind="text: InTraining"></td>
+                                    <td data-bind="text: Termed"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="fan-stats fan-table" data-bind="visible: (selectedSection() === 'Stats')">
+                        <div style="margin: 15px;">
+                            <label for="showstandingsfor">Show Standings For:&nbsp;</label><select name="showstandingsfor" data-bind="value: showStandingsFor,valueAllowUnset: false"><option value="teams">Teams</option><option value="players">Players</option></select>
+                            &nbsp;&nbsp;<label for="groupstatsby">Group By:&nbsp;</label><select name="groupstatsby" data-bind="value: groupStatsBy,valueAllowUnset: false"><option value="league">Entire League</option><option value="division">Division</option><option value="team">Team</option></select>
+                            <span style="display:none;">
+                                &nbsp;&nbsp;<label for="columnview">View:&nbsp;</label><select name="columnview" data-bind="value: columnView,valueAllowUnset: false"><option value="brief">Brief</option><option value="avg">Averages</option><option value="mvp">MVP Criteria</option><option value="new">NEW (Uncategorized) Columns</option><option selected="selected" value="all">All Columns</option></select>
+                            </span>
+                            &nbsp;&nbsp;<label for="grouplimit" style="display:none;">Limit Each Group To:&nbsp;</label><select style="display:none;" name="grouplimit" data-bind="value: groupLimit,valueAllowUnset: false"><option value="1">Top 1</option><option value="5">Top 5</option><option value="10">Top 10</option><option value="25">Top 25</option><option value="50000">All</option></select>
+                            <span data-bind="visible: adminExcludedAgents">
+                                &nbsp;&nbsp;<input type="checkbox" class="fan-exclude-control" data-bind="checked: showExcludedAgents,click: function() { return redrawExclusions(); }" />&nbsp;<label for="grouplimit" class="fan-exclude-control">Show Excluded Agents</label><span class="fan-exclude-prompt" style="display:none;">Rebuilding, please wait...</span>
+                            </span>
+                            <div class="fan-stats-slow"></div>
+                        </div>
+
+                        <table class="pure-table fan-stats-table fan-teamstats-table fan-stats-tablesorter" data-bind="visible: (groupStatsBy() == 'league') && (showStandingsFor() == 'teams')">
+                            <thead>
+                                <tr class="fan-leaguesetup-subheader">
+                                    <th>Rank</th>
+                                    <th>Team<div class="table-download" ></div>
+                                    </th>
+                                    <th>Division</th>
+                                    <th>W</th>
+                                    <th>L</th>
+                                    <th>T</th>
+                                    <th>PF</th>
+                                    <th>PA</th>
+                                    <th>Net</th>
+                                    <th data-bind="visible: isV('avg')">Avg Game Score</th>
+                                    <th data-bind="visible: isV('avg')">Avg Acuity Score</th>
+                                    <th data-bind="visible: isV('avg')">Avg Improvement</th>
+                                </tr>
+                            </thead>
+                            <tbody data-bind="foreach: stats().teamstats">
+                                <tr style="text-align: left;" class="fan-stats-player" data-bind="visible: ($index() < parseInt(groupLimit()) ) || (team_id == oTeam()),css: { customFanRecordHighlight: (team_id == oTeam()) }">
+                                    <td data-bind="text: $index() + 1"></td>
+                                    <td style="text-align: left;"><a style="cursor:pointer;text-decoration:underline;" data-bind="click: function(data) { setTeam(data.team_id); }, attr: { title: team_name }"><span data-bind="text: fan_team_name"></span>&nbsp;(<span data-bind="text:team_name"></span>)</a></td>
+                                    <td data-bind="text: divisionTextRemoved(name)"></td>
+                                    <td data-bind="text: wins"></td>
+                                    <td data-bind="text: losses"></td>
+                                    <td data-bind="text: ties"></td>
+                                    <td data-bind="text: points_for"></td>
+                                    <td data-bind="text: points_against"></td>
+                                    <td data-bind="text: net_points"></td>
+                                    <td data-bind="visible: isV('avg'),text: agame_avg_score"></td>
+                                    <td data-bind="visible: isV('avg'),text: acuity_avg_score"></td>
+                                    <td data-bind="visible: isV('avg'),text: avg_improvement"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div data-bind="visible: (groupStatsBy() == 'division')  && (showStandingsFor() == 'teams'), foreach: stats().teamdivisions">
+                            <table class="pure-table fan-stats-table fan-teamstats-table fan-stats-tablesorter">
+                                <thead>
+                                    <tr class="fan-leaguesetup-subheader">
+                                        <th>Rank</th>
+                                        <th>Teams in <span data-bind="text: name"></span> <div class="table-download" ></div>
+                                        </th>
+                                        <th>W</th>
+                                        <th>L</th>
+                                        <th>T</th>
+                                        <th>PF</th>
+                                        <th>PA</th>
+                                        <th>Net</th>
+                                        <th data-bind="visible: isV('avg')">Avg Game Score</th>
+                                        <th data-bind="visible: isV('avg')">Avg Acuity Score</th>
+                                        <th data-bind="visible: isV('avg')">Avg Improvement</th>
+                                    </tr>
+                                </thead>
+                                <tbody data-bind="foreach: teamstats">
+                                    <tr style="text-align: left;" class="fan-stats-player" data-bind="visible: ($index() < parseInt(groupLimit()))  || (team_id == oTeam()),css: { customFanRecordHighlight: (team_id == oTeam()) }">
+                                        <td data-bind="text: $index() + 1"></td>
+                                        <td style="text-align: left;"><a style="cursor:pointer;text-decoration:underline;" data-bind="click: function(data) { setTeam(data.team_id); }, attr: { title: team_name }"><span data-bind="text: fan_team_name"></span>&nbsp;(<span data-bind="text:team_name"></span>)</a></td>
+                                        <td data-bind="text: wins"></td>
+                                        <td data-bind="text: losses"></td>
+                                        <td data-bind="text: ties"></td>
+                                        <td data-bind="text: points_for"></td>
+                                        <td data-bind="text: points_against"></td>
+                                        <td data-bind="text: net_points"></td>
+                                        <td data-bind="visible: isV('avg'),text: agame_avg_score"></td>
+                                        <td data-bind="visible: isV('avg'),text: acuity_avg_score"></td>
+                                        <td data-bind="visible: isV('avg'),text: avg_improvement"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <br />
+                        </div>
+
+                        <table class="pure-table fan-stats-table fan-playerstats-table fan-stats-tablesorter" data-bind="visible: (groupStatsBy() == 'league') && (showStandingsFor() == 'players')">
+                            <thead>
+                                <tr>
+                                    <th class="table-dud" colspan="2" data-bind="visible: showExcludedAgents"></th>
+                                    <th class="table-dud" colspan="3"></th>
+                                    <th class="table-dud tool-stats-mvp" colspan="2">MVP</th>
+                                    <th class="table-expand tool-stats-mip" data-bind="attr: { colspan: showPlusMIP() ? '4' : '2'}, css: { tableColumnExpand: !showPlusMIP(), tableColumnCollapse: showPlusMIP() }">MIP</th>
+                                    <th class="table-expand tool-stats-game" data-bind="attr: { colspan: showPlusGAME() ? '7' : '1'}, css: { tableColumnExpand: !showPlusGAME(), tableColumnCollapse: showPlusGAME() }">During Season</th>
+                                    <th class="table-expand tool-stats-prior" data-bind="attr: { colspan: showPlusPRIOR() ? '3' : '1'}, css: { tableColumnExpand: !showPlusPRIOR(), tableColumnCollapse: showPlusPRIOR() }">Prior to Season</th>
+                                    <th class="table-expand" data-bind="attr: { colspan: showPlusDETAIL() ? '9' : '1'}, css: { tableColumnExpand: !showPlusDETAIL(), tableColumnCollapse: showPlusDETAIL() }">Details</th>
+                                </tr>
+                                <tr class="fan-leaguesetup-subheader">
+                                    <th style="text-align: center;" data-bind="visible: showExcludedAgents">Exclude</th>
+                                    <th style="text-align: center;" data-bind="visible: showExcludedAgents"># Flags</th>
+                                    <th>Player<div class="table-download" ></div>
+                                    </th>
+                                    <th>Team</th>
+                                    <th>Division</th>
+                                    <th>Rank</th>
+                                    <th>Score</th>
+                                    <th>Rank</th>
+                                    <th>Score</th>
+                                    <th data-bind="visible: showPlusMIP">DIFF BASE10</th>
+                                    <th data-bind="visible: showPlusMIP">DIFF BASE10 WEIGHTED</th>
+                                    <th>Avg Score All</th>
+                                    <th data-bind="visible: showPlusGAME">Total # of Scores</th>
+                                    <th data-bind="visible: showPlusGAME">Avg Score START</th>
+                                    <th data-bind="visible: showPlusGAME"># Starts</th>
+                                    <th data-bind="visible: showPlusGAME">Avg Score NON-START</th>
+                                    <th data-bind="visible: showPlusGAME">Max Score NON-START</th>
+                                    <th data-bind="visible: showPlusGAME"># Non-Starts</th>
+                                    <th>Performance Baseline</th>
+                                    <th data-bind="visible: showPlusPRIOR">Baseline Periods</th>
+                                    <th data-bind="visible: showPlusPRIOR">Max Score Baseline</th>
+                                    <th class="tool-stats-gamut">Gamut Quotient</th>
+                                    <th data-bind="visible: showPlusDETAIL">MVP Calc Date</th>
+                                    <th data-bind="visible: showPlusDETAIL">AGAME KPIS SCORED</th>
+                                    <th data-bind="visible: showPlusDETAIL">AGAME KPIS POSSIBLE</th>
+                                    <th data-bind="visible: showPlusDETAIL">BENCH KPIS SCORED</th>
+                                    <th data-bind="visible: showPlusDETAIL">BENCH KPIS POSSIBLE</th>
+                                    <th data-bind="visible: showPlusDETAIL">SEASON KPIS SCORED</th>
+                                    <th data-bind="visible: showPlusDETAIL">SEASON KPIS POSSIBLE</th>
+                                    <th data-bind="visible: showPlusDETAIL">MIP TOT SCORES</th>
+                                </tr>
+                            </thead>
+                            <tbody data-bind="foreach: stats().playerstats">
+                                <tr style="text-align: left;" class="fan-stats-player" data-bind="visible: ( (showExcludedAgents() || ((exclude == 'N')|| ((exclude == 'A')&&(parseInt(flagCount)==0)))) && ($index() < parseInt(groupLimit())) ) || (user_id == oCSR()),css: { customFanRecordHighlight: (user_id == oCSR()) }">
+                                    <td style="text-align: center;" data-bind="visible: showExcludedAgents">
+                                        <select class="fan-stats-select-exclusion" data-bind="value: exclude"><option value="Y">Yes</option><option value="N">No</option><option value="A">Auto</option></select>
+                                        <span style="display:none;" data-bind="text:user_id"></span>
+                                        <!-- <select data-bind="value: exclude,event:{ change: function(data) { return excludeAgentBox(this,data.user_id); } }"><option value="Y">Yes</option><option value="N">No</option><option value="A">Auto</option></select> -->
+                                        <!-- <input data-bind="checked: exclude == 'Y',click: function(data) { return excludeAgent(data.user_id); }" type="checkbox" /> -->
+                                    </td>
+                                    <td data-bind="visible: showExcludedAgents,text: flagCount"></td>
+                                    <td data-bind="text: name"></td>
+                                    <td style="text-align: left;">
+                                        <a style="cursor:pointer;text-decoration:underline;" data-bind="click: function(data) { setTeam(data.team_id); }, attr: { title: team_name }">
+                                            <span data-bind="text: fan_team_name"></span><span style="display:none;">&nbsp;(<span data-bind="text:team_name"></span>)</span>
+                                        </a>
+                                    </td>
+                                    <td data-bind="text: divisionTextRemoved(league_name)"></td>
+                                    <td data-bind="text: rank"></td>
+                                    <td data-bind="text: MVP_weighted"></td>
+                                    <td data-bind="text: miprank"></td>
+                                    <td data-bind="text: avg_improvement"></td>
+                                    <td data-bind="visible: showPlusMIP,text: diff_base10"></td>
+                                    <td data-bind="visible: showPlusMIP,text: diff_base10_weighted"></td>
+                                    <td data-bind="text: mip_avg_score"></td>
+                                    <td data-bind="visible: showPlusGAME,text: total_season_scores"></td>
+                                    <td data-bind="visible: showPlusGAME,text: agame_avg_score"></td>
+                                    <td data-bind="visible: showPlusGAME,text: agame_total_scores"></td>
+                                    <td data-bind="visible: showPlusGAME,text: bench_avg_score"></td>
+                                    <td data-bind="visible: showPlusGAME,text: bench_max_score"></td>
+                                    <td data-bind="visible: showPlusGAME,text: bench_total_scores"></td>
+                                    <td data-bind="text: acuity_avg_score"></td>
+                                    <td data-bind="visible: showPlusPRIOR,text: acuity_total_scores"></td>
+                                    <td data-bind="visible: showPlusPRIOR,text: acuity_max_score"></td>
+                                    <td data-bind="text: season_kpis_scored_pct"></td>
+                                    <td data-bind="visible: showPlusDETAIL,text: MVP_Calc_Date"></td>
+                                    <td data-bind="visible: showPlusDETAIL,text: agame_kpis_scored"></td>
+                                    <td data-bind="visible: showPlusDETAIL,text: agame_kpis_possible"></td>
+                                    <td data-bind="visible: showPlusDETAIL,text: bench_kpis_scored"></td>
+                                    <td data-bind="visible: showPlusDETAIL,text: bench_kpis_possible"></td>
+                                    <td data-bind="visible: showPlusDETAIL,text: season_kpis_scored"></td>
+                                    <td data-bind="visible: showPlusDETAIL,text: season_kpis_possible"></td>
+                                    <td data-bind="visible: showPlusDETAIL,text: mip_tot_scores"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div data-bind="visible: (groupStatsBy() == 'division')  && (showStandingsFor() == 'players'), foreach: stats().playerdivisions">
+                            <table class="pure-table fan-stats-table fan-playerstats-table fan-stats-tablesorter">
+                                <thead>
+                                    <tr>
+                                        <th class="table-dud" colspan="2" data-bind="visible: showExcludedAgents"></th>
+                                        <th class="table-dud" colspan="2"></th>
+                                        <th class="table-expand tool-stats-mvp" data-bind="attr: { colspan: showPlusMVP() ? '3' : '2'}, css: { tableColumnExpand: !showPlusMVP(), tableColumnCollapse: showPlusMVP() }">MVP</th>
+                                        <th class="table-expand tool-stats-mip" data-bind="attr: { colspan: showPlusMIP() ? '5' : '2'}, css: { tableColumnExpand: !showPlusMIP(), tableColumnCollapse: showPlusMIP() }">MIP</th>
+                                        <th class="table-expand tool-stats-game" data-bind="attr: { colspan: showPlusGAME() ? '7' : '1'}, css: { tableColumnExpand: !showPlusGAME(), tableColumnCollapse: showPlusGAME() }">During Season</th>
+                                        <th class="table-expand tool-stats-prior" data-bind="attr: { colspan: showPlusPRIOR() ? '3' : '1'}, css: { tableColumnExpand: !showPlusPRIOR(), tableColumnCollapse: showPlusPRIOR() }">Prior to Season</th>
+                                        <th class="table-expand" data-bind="attr: { colspan: showPlusDETAIL() ? '9' : '1'}, css: { tableColumnExpand: !showPlusDETAIL(), tableColumnCollapse: showPlusDETAIL() }">Details</th>
+                                    </tr>
+                                    <tr class="fan-leaguesetup-subheader">
+                                        <th style="text-align: center;" data-bind="visible: showExcludedAgents">Exclude</th>
+                                        <th style="text-align: center;" data-bind="visible: showExcludedAgents"># Flags</th>
+                                        <th>Players in <span data-bind="text: league_name"></span><div class="table-download"></div>
+                                        </th>
+                                        <th>Team</th>
+                                        <th>Overall<br />Rank</th>
+                                        <th>Score</th>
+                                        <th data-bind="visible: showPlusMVP">Division<br />Rank</th>
+                                        <th>Overall<br />Rank</th>
+                                        <th>Score</th>
+                                        <th data-bind="visible: showPlusMIP">Division<br />Rank</th>
+                                        <th data-bind="visible: showPlusMIP">DIFF BASE10</th>
+                                        <th data-bind="visible: showPlusMIP">DIFF BASE10 WEIGHTED</th>
+                                        <th>Avg Score All</th>
+                                        <th data-bind="visible: showPlusGAME">Total # of Scores</th>
+                                        <th data-bind="visible: showPlusGAME">Avg Score START</th>
+                                        <th data-bind="visible: showPlusGAME"># Starts</th>
+                                        <th data-bind="visible: showPlusGAME">Avg Score NON-START</th>
+                                        <th data-bind="visible: showPlusGAME">Max Score NON-START</th>
+                                        <th data-bind="visible: showPlusGAME"># Non-Starts</th>
+                                        <th>Performance Baseline</th>
+                                        <th data-bind="visible: showPlusPRIOR">Baseline Periods</th>
+                                        <th data-bind="visible: showPlusPRIOR">Max Score Baseline</th>
+                                        <th class="tool-stats-gamut">Gamut Quotient</th>
+                                        <th data-bind="visible: showPlusDETAIL">MVP Calc Date</th>
+                                        <th data-bind="visible: showPlusDETAIL">AGAME KPIS SCORED</th>
+                                        <th data-bind="visible: showPlusDETAIL">AGAME KPIS POSSIBLE</th>
+                                        <th data-bind="visible: showPlusDETAIL">BENCH KPIS SCORED</th>
+                                        <th data-bind="visible: showPlusDETAIL">BENCH KPIS POSSIBLE</th>
+                                        <th data-bind="visible: showPlusDETAIL">SEASON KPIS SCORED</th>
+                                        <th data-bind="visible: showPlusDETAIL">SEASON KPIS POSSIBLE</th>
+                                        <th data-bind="visible: showPlusDETAIL">MIP TOT SCORES</th>
+                                    </tr>
+                                </thead>
+                                <tbody data-bind="foreach: playerstats">
+                                    <tr style="text-align: left;" class="fan-stats-player" data-bind="visible: ( (showExcludedAgents() || ((exclude == 'N')|| ((exclude == 'A')&&(parseInt(flagCount)==0)))) && (rank <= parseInt(groupLimit())) ) || (user_id == oCSR()),css: { customFanRecordHighlight: (user_id == oCSR()) }">
+                                        <td style="text-align: center;" data-bind="visible: showExcludedAgents">
+                                            <select class="fan-stats-select-exclusion" data-bind="value: exclude"><option value="Y">Yes</option><option value="N">No</option><option value="A">Auto</option></select>
+                                            <span style="display:none;" data-bind="text:user_id"></span>
+                                            <!-- <select data-bind="value: exclude,event:{ change: function(data) { return excludeAgentBox(this,data.user_id); } }"><option value="Y">Yes</option><option value="N">No</option><option value="A">Auto</option></select> -->
+                                            <!-- <input data-bind="checked: exclude == 'Y',click: function(data) { return excludeAgent(data.user_id); }" type="checkbox" /> -->
+                                        </td>
+                                        <td data-bind="visible: showExcludedAgents,text: flagCount"></td>
+                                        <td data-bind="text: name"></td>
+                                        <td style="text-align: left;">
+                                            <a style="cursor:pointer;text-decoration:underline;" data-bind="click: function(data) { setTeam(data.team_id); }, attr: { title: team_name }">
+                                                <span data-bind="text: fan_team_name"></span><span style="display:none;">&nbsp;(<span data-bind="text:team_name"></span>)</span>
+                                            </a>
+                                        </td>
+                                        <td data-bind="text: rank"></td>
+                                        <td data-bind="text: MVP_weighted"></td>
+                                        <td data-bind="visible: showPlusMVP,text: divrank"></td>
+                                        <td data-bind="text: miprank"></td>
+                                        <td data-bind="text: avg_improvement"></td>
+                                        <td data-bind="visible: showPlusMIP,text: divmiprank"></td>
+                                        <td data-bind="visible: showPlusMIP,text: diff_base10"></td>
+                                        <td data-bind="visible: showPlusMIP,text: diff_base10_weighted"></td>
+                                        <td data-bind="text: mip_avg_score"></td>
+                                        <td data-bind="visible: showPlusGAME,text: total_season_scores"></td>
+                                        <td data-bind="visible: showPlusGAME,text: agame_avg_score"></td>
+                                        <td data-bind="visible: showPlusGAME,text: agame_total_scores"></td>
+                                        <td data-bind="visible: showPlusGAME,text: bench_avg_score"></td>
+                                        <td data-bind="visible: showPlusGAME,text: bench_max_score"></td>
+                                        <td data-bind="visible: showPlusGAME,text: bench_total_scores"></td>
+                                        <td data-bind="text: acuity_avg_score"></td>
+                                        <td data-bind="visible: showPlusPRIOR,text: acuity_total_scores"></td>
+                                        <td data-bind="visible: showPlusPRIOR,text: acuity_max_score"></td>
+                                        <td data-bind="text: season_kpis_scored_pct"></td>
+                                        <td data-bind="visible: showPlusDETAIL,text: MVP_Calc_Date"></td>
+                                        <td data-bind="visible: showPlusDETAIL,text: agame_kpis_scored"></td>
+                                        <td data-bind="visible: showPlusDETAIL,text: agame_kpis_possible"></td>
+                                        <td data-bind="visible: showPlusDETAIL,text: bench_kpis_scored"></td>
+                                        <td data-bind="visible: showPlusDETAIL,text: bench_kpis_possible"></td>
+                                        <td data-bind="visible: showPlusDETAIL,text: season_kpis_scored"></td>
+                                        <td data-bind="visible: showPlusDETAIL,text: season_kpis_possible"></td>
+                                        <td data-bind="visible: showPlusDETAIL,text: mip_tot_scores"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <br />
+                        </div>
+
+                        <div data-bind="visible: (groupStatsBy() == 'team')  && (showStandingsFor() == 'players'), foreach: stats().playerteams">
+                            <table class="pure-table fan-stats-table fan-playerstats-table fan-stats-tablesorter">
+                                <thead>
+                                    <tr>
+                                        <th class="table-dud" colspan="2" data-bind="visible: showExcludedAgents"></th>
+                                        <th class="table-dud" colspan="2"></th>
+                                        <th class="table-expand tool-stats-mvp" data-bind="attr: { colspan: showPlusMVP() ? '3' : '2'}, css: { tableColumnExpand: !showPlusMVP(), tableColumnCollapse: showPlusMVP() }">MVP</th>
+                                        <th class="table-expand tool-stats-mip" data-bind="attr: { colspan: showPlusMIP() ? '5' : '2'}, css: { tableColumnExpand: !showPlusMIP(), tableColumnCollapse: showPlusMIP() }">MIP</th>
+                                        <th class="table-expand tool-stats-game" data-bind="attr: { colspan: showPlusGAME() ? '7' : '1'}, css: { tableColumnExpand: !showPlusGAME(), tableColumnCollapse: showPlusGAME() }">During Season</th>
+                                        <th class="table-expand tool-stats-prior" data-bind="attr: { colspan: showPlusPRIOR() ? '3' : '1'}, css: { tableColumnExpand: !showPlusPRIOR(), tableColumnCollapse: showPlusPRIOR() }">Prior to Season</th>
+                                        <th class="table-expand" data-bind="attr: { colspan: showPlusDETAIL() ? '9' : '1'}, css: { tableColumnExpand: !showPlusDETAIL(), tableColumnCollapse: showPlusDETAIL() }">Details</th>
+                                    </tr>
+                                    <tr class="fan-leaguesetup-subheader">
+                                        <th style="text-align: center;" data-bind="visible: showExcludedAgents">Exclude</th>
+                                        <th style="text-align: center;" data-bind="visible: showExcludedAgents"># Flags</th>
+                                        <th>Players in <a style="cursor:pointer;text-decoration:underline;" data-bind="click: function(data) { setTeam(data.team_id); }, attr: { title: team_name }">
+                                                <span data-bind="text: fan_team_name"></span><span style="display:none;">&nbsp;(<span data-bind="text:team_name"></span>)</span>
+                                            </a>
+                                        </th>
+                                        <th>Division</th>
+                                        <th>Overall<br />Rank</th>
+                                        <th>Score</th>
+                                        <th data-bind="visible: showPlusMVP">Team<br />Rank</th>
+                                        <th>Overall<br />Rank</th>
+                                        <th>Score</th>
+                                        <th data-bind="visible: showPlusMIP">Team<br />Rank</th>
+                                        <th data-bind="visible: showPlusMIP">DIFF BASE10</th>
+                                        <th data-bind="visible: showPlusMIP">DIFF BASE10 WEIGHTED</th>
+                                        <th>Avg Score All</th>
+                                        <th data-bind="visible: showPlusGAME">Total # of Scores</th>
+                                        <th data-bind="visible: showPlusGAME">Avg Score START</th>
+                                        <th data-bind="visible: showPlusGAME"># Starts</th>
+                                        <th data-bind="visible: showPlusGAME">Avg Score NON-START</th>
+                                        <th data-bind="visible: showPlusGAME">Max Score NON-START</th>
+                                        <th data-bind="visible: showPlusGAME"># Non-Starts</th>
+                                        <th>Performance Baseline</th>
+                                        <th data-bind="visible: showPlusPRIOR">Baseline Periods</th>
+                                        <th data-bind="visible: showPlusPRIOR">Max Score Baseline</th>
+                                        <th class="tool-stats-gamut">Gamut Quotient</th>
+                                        <th data-bind="visible: showPlusDETAIL">MVP Calc Date</th>
+                                        <th data-bind="visible: showPlusDETAIL">AGAME KPIS SCORED</th>
+                                        <th data-bind="visible: showPlusDETAIL">AGAME KPIS POSSIBLE</th>
+                                        <th data-bind="visible: showPlusDETAIL">BENCH KPIS SCORED</th>
+                                        <th data-bind="visible: showPlusDETAIL">BENCH KPIS POSSIBLE</th>
+                                        <th data-bind="visible: showPlusDETAIL">SEASON KPIS SCORED</th>
+                                        <th data-bind="visible: showPlusDETAIL">SEASON KPIS POSSIBLE</th>
+                                        <th data-bind="visible: showPlusDETAIL">MIP TOT SCORES</th>
+                                    </tr>
+                                </thead>
+                                <tbody data-bind="foreach: playerstats">
+                                        <td style="text-align: center;" data-bind="visible: showExcludedAgents">
+                                            <select class="fan-stats-select-exclusion" data-bind="value: exclude"><option value="Y">Yes</option><option value="N">No</option><option value="A">Auto</option></select>
+                                            <span style="display:none;" data-bind="text:user_id"></span>
+                                            <!-- <select data-bind="value: exclude,event:{ change: function(data) { return excludeAgentBox(this,data.user_id); } }"><option value="Y">Yes</option><option value="N">No</option><option value="A">Auto</option></select> -->
+                                            <!-- <input data-bind="checked: exclude == 'Y',click: function(data) { return excludeAgent(data.user_id); }" type="checkbox" /> -->
+                                        </td>
+                                        <td data-bind="visible: showExcludedAgents,text: flagCount"></td>
+                                        <td data-bind="text: name"></td>
+                                        <td data-bind="text: divisionTextRemoved(league_name)"></td>
+
+                                        <td data-bind="text: rank"></td>
+                                        <td data-bind="text: MVP_weighted"></td>
+                                        <td data-bind="visible: showPlusMVP,text: teamrank"></td>
+                                        <td data-bind="text: miprank"></td>
+                                        <td data-bind="text: avg_improvement"></td>
+                                        <td data-bind="visible: showPlusMIP,text: teammiprank"></td>
+                                        <td data-bind="visible: showPlusMIP,text: diff_base10"></td>
+                                        <td data-bind="visible: showPlusMIP,text: diff_base10_weighted"></td>
+                                        <td data-bind="text: mip_avg_score"></td>
+                                        <td data-bind="visible: showPlusGAME,text: total_season_scores"></td>
+                                        <td data-bind="visible: showPlusGAME,text: agame_avg_score"></td>
+                                        <td data-bind="visible: showPlusGAME,text: agame_total_scores"></td>
+                                        <td data-bind="visible: showPlusGAME,text: bench_avg_score"></td>
+                                        <td data-bind="visible: showPlusGAME,text: bench_max_score"></td>
+                                        <td data-bind="visible: showPlusGAME,text: bench_total_scores"></td>
+                                        <td data-bind="text: acuity_avg_score"></td>
+                                        <td data-bind="visible: showPlusPRIOR,text: acuity_total_scores"></td>
+                                        <td data-bind="visible: showPlusPRIOR,text: acuity_max_score"></td>
+                                        <td data-bind="text: season_kpis_scored_pct"></td>
+                                        <td data-bind="visible: showPlusDETAIL,text: MVP_Calc_Date"></td>
+                                        <td data-bind="visible: showPlusDETAIL,text: agame_kpis_scored"></td>
+                                        <td data-bind="visible: showPlusDETAIL,text: agame_kpis_possible"></td>
+                                        <td data-bind="visible: showPlusDETAIL,text: bench_kpis_scored"></td>
+                                        <td data-bind="visible: showPlusDETAIL,text: bench_kpis_possible"></td>
+                                        <td data-bind="visible: showPlusDETAIL,text: season_kpis_scored"></td>
+                                        <td data-bind="visible: showPlusDETAIL,text: season_kpis_possible"></td>
+                                        <td data-bind="visible: showPlusDETAIL,text: mip_tot_scores"></td>
+
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <br />
+                        </div>
+                    </div>
+
+                    <div class="fan-roster fan-table" data-bind="visible: (selectedSection() === 'Roster'),foreach: roster().current">
+                        <div class="pure-control-group fan-roster-header" style="display:block;text-align: center; width: auto;">
+                            <div class="fan-roster-banner" style="background-color:Yellow;"><span data-bind="text: team.name"></span></div>
+                            <div class="fan-roster-banner" style="background-color:Yellow; font-size: 20px;" data-bind="visible: season=='P'">
+                                PLAYOFFS - Round <span data-bind="text: seasonWeekNumber"></span>
+                            </div>
+                            <div class="fan-roster-banner">
+                                <a data-bind="visible: (seasonWeekNumber!='1') || (season=='P'), click: function() { rosterPrevWeek(); }">&#9664;</a>
+                                <span data-bind="text:week.start"></span>-<span data-bind="text:week.end"></span>
+                                <a data-bind="visible: matchupWeek() < 0, click: function() { rosterNextWeek(); }">&#9658;</a>
+                                &nbsp&nbsp;<a data-bind="visible: matchupWeek() < 0, click: function() { rosterCurrentWeek(); }">&#9658;|</a>
+                            </div>
+                            <div class="fan-roster-banner" style="font-weight: normal;">
+                                <span>Opponent:&nbsp;</span>
+                                <span data-bind="text: opponent.fanname"></span>
+                                <span data-bind="visible: opponent.fanname != opponent.name">
+                                    (<span data-bind="text: opponent.name"></span>)
+                                </span>
+                                , Roster Status: &nbsp;<span data-bind="text: rosterStatus"></span>
+                            </div>
+                            <div class="fan-roster-banner" style="background-color:Black;color:White;" data-bind="visible: prompt != '', text: prompt">
+                            </div>
+                            <div class="fan-roster-banner" style="background-color:Red;color:White;" data-bind="visible: alert != '', text: alert">
+                            </div>
+                        </div>
+
+                        <div style="white-space: nowrap;">
+                            <table class="pure-table" style="float:left;">
+                                <thead>
+                                    <tr class="fan-roster-subheader"><th colspan="6">Roster Selection</th></tr>
+                                    <tr class="fan-roster-subheader"><th>Starts</th><th>Name</th><th>Title</th><th>Status</th><th>Position</th><th>Wt</th></tr>
+                                </thead>
+                                <tbody data-bind="foreach: pool">
+                                    <tr style="text-align: center;" class="fan-roster-player" data-bind="css: { customFanRecordHighlight: position !== '', customIneligible: position === 'Ineligible' }">
+                                        <td data-bind="text: starts"></td>
+                                        <td data-bind="text: name"></td>
+                                        <td data-bind="text: title"></td>
+                                        <td data-bind="text: status"></td>
+                                        <td style="position:relative;">
+                                            <span data-bind="text: position"></span>
+                                            <span class="fan-position-edit" style="position: absolute; right: 0px; top: 6px;" data-bind="visible: editable">&nbsp;&nbsp;</span>
+                                        </td>
+                                        <td data-bind="text: weight"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="pure-table" style="display: inline-block;">
+                                <thead>
+                                    <tr class="fan-roster-header" style="text-align: left;"><th colspan="100">KPI Stats</th></tr>
+                                    <tr data-bind="foreach: kpis">
+                                        <th> <span data-bind="text: name"></span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="fan-roster-scores">
+                                </tbody>
+                            </table>
+                        </div>
+                        <!--
+                        <div class="fan-position-xtra">
+                            <p>Available Positions</p>
+                            <div class="fan-position-xtra-box">
+                                <span class="fan-position-draggable"><span>WR</span></span>
+                            </div>
+                        </div>
+                        -->
+                    </div>
+                    <div class="fan-bottom-padding">&nbsp;</div>
+                </div>
+            </div>
+        </div>

@@ -1,0 +1,1718 @@
+			<script language="javascript">
+			    function qa_1(o) {
+
+			        qa_ans["1_100"] = {};
+			        qa_ans["1_100"].index = -1;
+			        qa_ans["1_100"].correctindex = 3;
+			        $("#qa_div").qa({
+			            action: "styleListHover",
+			            data: {
+			                f: 1,
+			                q: 100
+			            }
+			        });
+
+			        $(".qa-w-1").show();
+
+			        $("#qa_div").qa({
+			            action: "setQuestion",
+			            data: {
+			                f: 1,
+			                q: 100
+			            }
+			        });
+
+			        $(".qa-s-1-100").unbind().bind("click", function () {
+			            $(".qa-s-1-100").hide();
+			            var bld = "";
+			            if (qa_ans["1_100"].index != qa_ans["1_100"].correctindex) {
+			                bld += "<p>The correct answer is " + (qa_ans["1_100"].correctindex + 1) + "</p>";
+			                bld += '<p>Your answer is <span class="qa-incorrect">incorrect</span>, your answer was ' + (qa_ans["1_100"].index + 1) + ".</p>";
+			                $(".qa-q-1-100 ol li").eq(qa_ans["1_100"].index).each(function () {
+			                    $(this).css("background-color", "Red");
+			                });
+			                $(".qa-g-1").html("+0 Coins");
+			            } else {
+			                bld += "<p>Your answer is CORRECT!</p>";
+			                $(".qa-g-1").html("+5 Coins");
+			            }
+			            $(".qa-q-1-100 ol li").eq(qa_ans["1_100"].correctindex).each(function () {
+			                $(this).css("background-color", "#75ce14");
+			            });
+			            $(".qa-q-1-100 ol li").unbind();
+			            $(".qa-a-1-100").html(bld).show();
+			            $(".qa-f-1-100").show();
+			            $(".qa-ft-1").show();
+			            $("#qa_div").qa({
+			                action: "save",
+			                data: $.extend(true, {}, o, {
+			                    f: 1
+			                })
+			            });
+			        });
+
+			        $(".qa-d-1").unbind().bind("click", function () {
+			            $(".qa-w-1").hide();
+			        });
+			    }
+			</script>
+
+			<div class="qa-wrapper-popup qa-w-1 ">
+				<div class="qa-wrapper2-popup">
+					<div class="qa-box-popup qa-box-popup_compliance">
+						<div class="qa-question qa-q-1-100">
+							<h1>Today's Compliance Question</h1>
+							<p>A collector calls the Consumer's cell phone using an Automatic Telephone
+								Dialing System (ATDS). The Consumer tells the Collector he can't call his
+								cell phone anymore. The next day, the Collector manually dials the Consumer's
+								cell phone from a non-Automatic Telephone Dialing System (ATDS).
+								What is the Collector's TCPA liability?</p>
+							<ol>
+								<li>Possibly $1500</li>
+								<li>Definitely $1500</li>
+								<li>Definitely $500</li>
+								<li>Possibly $500</li>
+							</ol>
+							<div class="qa-submit-wrapper">
+								<input class="qa-submit qa-submit-disabled qa-s-1-100" type="button" disabled="disabled" value="Submit" />
+							</div>
+						</div>
+						<div class="qa-answer-summary">
+							<div class="qa-answer qa-a-1-100">
+							</div>
+							<div class="qa-answer-feedback qa-f-1-100">
+								<h2>Feedback</h2>
+								<p>We don't know whether the Collector originally had consent to call the Consumer, so we don't know if the first call was a violation. The second call would have been a violation if the Collactor was using an Automatic Telephone Dialing System (ATDS)
+									because he knowingly called without consent.</p>
+							</div>
+						</div>
+						<div class="qa-footer qa-ft-1">
+							<div class="qa-stats" style="position: relative; background-color: #606060; padding: 6px;">
+								<div class="qa-scoring qa-sc-1" style="font-weight: bold; font-size: 11px;line-height: 14px;padding: 4px;color: White;">
+									Your Current Score: 89.55%<br /> Compliance Score: 95.52%
+								</div>
+								<div class="qa-game">
+									<div style="position:absolute; top: 0px; right: 0px;" class="CEPoints-icon-reduced"><span class="qa-g-1"></span></div>
+								</div>
+							</div>
+							<input class="qa-done qa-d-1" type="button" value="Done" />
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<script language="javascript">
+			    function qa_2(o) {
+
+			        $(".qa-w-2 .qa-close").unbind().bind("click", function () {
+			            $(".qa-w-2").hide();
+			        });
+
+			        qa_ans["2_200"] = {};
+			        qa_ans["2_200"].index = -1;
+			        $("#qa_div").qa({
+			            action: "styleListHover",
+			            data: {
+			                f: 2,
+			                q: 200
+			            }
+			        });
+			        $(".qa-a-2-200").val("Select a value.");
+
+			        qa_ans["2_201"] = {};
+			        qa_ans["2_201"].index = -1
+			        $("#qa_div").qa({
+			            action: "styleListHover",
+			            data: {
+			                f: 2,
+			                q: 201
+			            }
+			        });
+
+			        qa_ans["2_202"] = {};
+			        qa_ans["2_202"].value = 7;
+			        $(".qa-slider-q-2-202").slider({
+			            value: qa_ans["2_202"].value,
+			            min: 1,
+			            max: 10,
+			            step: 1,
+			            slide: function (event, ui) {
+			                $(".qa-a-2-202").val(ui.value);
+			                $(".qa-s-2-202").prop("disabled", false).removeClass("qa-submit-disabled");
+			            }
+			        });
+			        $(".qa-a-2-202").val("Select a value.");
+
+			        $(".qa-w-2").show();
+
+			        $("#qa_div").qa({
+			            action: "setQuestion",
+			            data: {
+			                f: 2,
+			                q: 200
+			            }
+			        });
+
+			        $(".qa-s-2-200").unbind().bind("click", function () {
+			            $("#qa_div").qa({
+			                action: "setQuestion",
+			                data: {
+			                    f: 2,
+			                    q: 201
+			                }
+			            });
+			        });
+
+			        $(".qa-p-2-201").unbind().bind("click", function () {
+			            $("#qa_div").qa({
+			                action: "setQuestion",
+			                data: {
+			                    f: 2,
+			                    q: 200
+			                }
+			            });
+			        });
+			        $(".qa-s-2-201").unbind().bind("click", function () {
+			            $("#qa_div").qa({
+			                action: "setQuestion",
+			                data: {
+			                    f: 2,
+			                    q: 202
+			                }
+			            });
+			        });
+
+			        $(".qa-p-2-202").unbind().bind("click", function () {
+			            $("#qa_div").qa({
+			                action: "setQuestion",
+			                data: {
+			                    f: 2,
+			                    q: 201
+			                }
+			            });
+			        });
+			        $(".qa-s-2-202").unbind().bind("click", function () {
+			            $("#qa_div").qa({
+			                action: "setQuestion",
+			                data: {
+			                    f: 2,
+			                    q: 203
+			                }
+			            });
+
+			            /* TODO: This will likely have to be custom, see if there's a way to generalize it. */
+			            var t203 = "";
+			            var t204 = "";
+			            var t205 = "";
+
+			            function qa_2_203_validation() {
+			                if ((t203 != "") && (t204 != "") && (t205 != "")) {
+			                    $(".qa-s-2-203").prop("disabled", false).removeClass("qa-submit-disabled");
+			                } else {
+			                    $(".qa-s-2-203").prop("disabled", true).addClass("qa-submit-disabled");
+			                }
+			            }
+			            $(".qa-a-2-203").unbind().bind("change keyup paste", function () {
+			                t203 = $(this).val();
+			                qa_2_203_validation()
+			            });
+			            $(".qa-a-2-204").unbind().bind("change keyup paste", function () {
+			                t204 = $(this).val();
+			                qa_2_203_validation()
+			            });
+			            $(".qa-a-2-205").unbind().bind("change keyup paste", function () {
+			                t205 = $(this).val();
+			                qa_2_203_validation()
+			            });
+			        });
+
+			        $(".qa-p-2-203").unbind().bind("click", function () {
+			            $("#qa_div").qa({
+			                action: "setQuestion",
+			                data: {
+			                    f: 2,
+			                    q: 202
+			                }
+			            });
+			        });
+			        $(".qa-s-2-203").unbind().bind("click", function () {
+			            $(".qa-question").hide();
+			            $(".qa-g-2").html("+5 Coins");
+			            /* Save the answers */
+			            $("#qa_div").qa({
+			                action: "save",
+			                data: $.extend(true, {}, o, {
+			                    f: 2
+			                })
+			            });
+			            $(".qa-d-2").unbind().bind("click", function () {
+			                $(".qa-w-2").hide();
+			            });
+
+			            $(".qa-ft-2").show();
+			        });
+			    }
+			</script>
+
+			<div class="qa-wrapper-popup qa-w-2">
+				<div class="qa-wrapper2-popup">
+					<div class="qa-close"><i class="fa fa-times"></i></div>
+					<div class="qa-box-popup">
+						<h1>A-GAME Post-Season Questionaire</h1>
+						<div class="qa-question qa-q-2-200">
+							<div class="qa-stats qa-game-2" style="position: relative; background-color: #606060; padding: 6px; height: 34px;margin-top:6px;">
+								<div class="qa-scoring qa-sc-2" style="font-weight: bold; font-size: 11px;line-height: 14px;padding: 4px;color: White;">
+									Give us your feedback,<br />receive Treasure Hunt points!<br /><br />
+								</div>
+								<div class="qa-game">
+									<div style="position:absolute; top: 8px; right: 0px;" class="CEPoints-icon-reduced"><span class="qa-g-2"></span></div>
+								</div>
+							</div>
+							<p>What is your overall impression of the A-GAME Football Challenge?</p>
+							<ul>
+								<li>Loved it!</li>
+								<li>Neutral</li>
+								<li>Hated it.</li>
+							</ul>
+							<div class="qa-submit-wrapper">
+								<input class="qa-submit qa-submit-next qa-submit-disabled qa-s-2-200" type="button" disabled="disabled" value="Next>" />
+							</div>
+						</div>
+						<div class="qa-question qa-q-2-201">
+							<p>To what extent did A-GAME motivate you to perform your best? </p>
+							<ul>
+								<li>Greatly</li>
+								<li>Somewhat</li>
+								<li>Neutral</li>
+								<li>Demotivated</li>
+							</ul>
+							<div class="qa-submit-wrapper">
+								<input class="qa-submit qa-submit-previous qa-p-2-201" type="button" value="<Previous" />
+								<input class="qa-submit qa-submit-next qa-submit-disabled qa-s-2-201" type="button" disabled="disabled" value="Next>" />
+							</div>
+						</div>
+						<div class="qa-question qa-q-2-202">
+							<p>On a scale of 1-10 (10 being highest), what is your level of interest in playing next year?</p>
+							<p>
+								<div style="display:block;text-align:center; margin: 6px;">
+									<input type="text" class="qa-a-2-202" readonly style="text-align: center;border: 0;font-weight:bold;">
+								</div>
+								<div class="qa-slider-q-2-202"></div>
+							</p>
+							<div class="qa-submit-wrapper">
+								<input class="qa-submit qa-submit-previous qa-p-2-202" type="button" value="<Previous" />
+								<input class="qa-submit qa-submit-next qa-submit-disabled qa-s-2-202" type="button" disabled="disabled" value="Next>" />
+							</div>
+						</div>
+						<div class="qa-question qa-q-2-203">
+							<p>The thing I like most about A-GAME is:</p>
+							<p>
+								<textarea class="qa-a-2-203" rows="3" style="width: 100%"></textarea>
+							</p>
+							<p>The thing I like least about A-GAME is:</p>
+							<p>
+								<textarea class="qa-a-2-204" rows="3" style="width: 100%"></textarea>
+							</p>
+							<p>Suggestions for change or other feedback:</p>
+							<p>
+								<textarea class="qa-a-2-205" rows="6" style="width: 100%"></textarea>
+							</p>
+							<div class="qa-submit-wrapper">
+								<input class="qa-submit qa-submit-previous qa-p-2-203" type="button" value="<Previous" />
+								<input class="qa-submit qa-submit-next qa-submit-disabled qa-s-2-203" type="button" disabled="disabled" value="Finish>" />
+							</div>
+						</div>
+						<div class="qa-footer qa-ft-2">
+							<p>We appreciate you taking the time to fill out this questionaire.</p>
+							<div class="qa-stats" style="position: relative; background-color: #606060; padding: 6px;">
+								<div class="qa-scoring qa-sc-2" style="font-weight: bold; font-size: 11px;line-height: 14px;padding: 4px;color: White;">
+									Thank you for your feedback!<br /><br />
+								</div>
+								<div class="qa-game qa-game-2">
+									<div style="position:absolute; top: 0px; right: 0px;" class="CEPoints-icon-reduced"><span class="qa-g-2"></span></div>
+								</div>
+							</div>
+							<div class="qa-submit-wrapper">
+								<input class="qa-done qa-d-2" type="button" value="Done" />
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<script language="javascript">
+			    function qa_4(o) {
+			        $(".qa-w-4 .qa-close").unbind().bind("click", function () {
+			            $(".qa-w-4").hide();
+			        });
+			        qa_ans["4_209"] = {};
+			        qa_ans["4_209"].value = 7;
+			        $(".qa-slider-q-4-209").slider({
+			            value: qa_ans["4_209"].value,
+			            min: 1,
+			            max: 10,
+			            step: 1,
+			            slide: function (event, ui) {
+			                $(".qa-a-4-209").val(ui.value);
+			                $(".qa-s-4-209").prop("disabled", false).removeClass("qa-submit-disabled");
+			            }
+			        });
+			        $(".qa-a-4-209").val("Select a value.");
+			        var t210 = "";
+			        var t211 = "";
+
+
+			        $("#qa_div").qa({
+			            action: "setQuestion",
+			            data: {
+			                f: 4,
+			                q: 209
+			            }
+			        });
+
+			        $(".qa-w-4").show();
+
+			        $(".qa-s-4-209").unbind().bind("click", function () {
+			            $("#qa_div").qa({
+			                action: "setQuestion",
+			                data: {
+			                    f: 4,
+			                    q: 210
+			                }
+			            });
+			        });
+
+			        $(".qa-p-4-210").unbind().bind("click", function () {
+			            $("#qa_div").qa({
+			                action: "setQuestion",
+			                data: {
+			                    f: 4,
+			                    q: 209
+			                }
+			            });
+			        });
+			        $(".qa-s-4-210").unbind().bind("click", function () {
+			            $("#qa_div").qa({
+			                action: "setQuestion",
+			                data: {
+			                    f: 4,
+			                    q: 211
+			                }
+			            });
+			        });
+
+			        $(".qa-p-4-211").unbind().bind("click", function () {
+			            $("#qa_div").qa({
+			                action: "setQuestion",
+			                data: {
+			                    f: 4,
+			                    q: 210
+			                }
+			            });
+			        });
+			        $(".qa-s-4-211").unbind().bind("click", function () {
+			            $(".qa-question").hide();
+			            /* Save the answers */
+
+			            $("#qa_div").qa({
+			                action: "save",
+			                data: $.extend(true, {}, o, {
+			                    f: 4
+			                })
+			            });
+			            $(".qa-d-4").unbind().bind("click", function () {
+			                $(".qa-w-4").hide();
+			            });
+			            $(".qa-ft-4").show();
+			        });
+
+			        function qa_4_210_validation() {
+			            if (t210 != "") {
+			                $(".qa-s-4-210").prop("disabled", false).removeClass("qa-submit-disabled");
+			            } else {
+			                $(".qa-s-4-210").prop("disabled", true).addClass("qa-submit-disabled");
+			            }
+			        }
+			        $(".qa-a-4-210").unbind().bind("change keyup paste", function () {
+			            t210 = $(this).val();
+			            qa_4_210_validation()
+			        });
+			        function qa_4_211_validation() {
+			            if (t211 != "") {
+			                $(".qa-s-4-211").prop("disabled", false).removeClass("qa-submit-disabled");
+			            } else {
+			                $(".qa-s-4-211").prop("disabled", true).addClass("qa-submit-disabled");
+			            }
+			        }
+			        $(".qa-a-4-211").unbind().bind("change keyup paste", function () {
+			            t211 = $(this).val();
+			            qa_4_211_validation()
+			        });
+
+			    }
+
+
+			    function qa_3(o) {
+
+			        $(".qa-question p").css("font-weight", "bold");
+			        $(".qa-w-3 .qa-close").unbind().bind("click", function () {
+			            $(".qa-w-3").hide();
+			        });
+
+			        qa_ans["3_200"] = {};
+			        qa_ans["3_200"].index = -1;
+			        $("#qa_div").qa({
+			            action: "styleListHover",
+			            data: {
+			                f: 3,
+			                q: 200
+			            }
+			        });
+
+			        qa_ans["3_201"] = {};
+			        qa_ans["3_201"].index = -1
+			        $("#qa_div").qa({
+			            action: "styleListHover",
+			            data: {
+			                f: 3,
+			                q: 201
+			            }
+			        });
+
+			        qa_ans["3_206"] = {};
+			        qa_ans["3_206"].index = -1
+			        $("#qa_div").qa({
+			            action: "styleListHover",
+			            data: {
+			                f: 3,
+			                q: 206
+			            }
+			        });
+
+			        qa_ans["3_207"] = {};
+			        qa_ans["3_207"].index = -1
+			        $("#qa_div").qa({
+			            action: "styleListHover",
+			            data: {
+			                f: 3,
+			                q: 207
+			            }
+			        });
+
+			        qa_ans["3_200"] = {};
+			        qa_ans["3_200"].value = 5;
+			        $(".qa-slider-q-3-200").slider({
+			            value: qa_ans["3_200"].value,
+			            min: 1,
+			            max: 5,
+			            step: 1,
+			            slide: function (event, ui) {
+			                //console.log("debug: slider input val = " + ui.value);
+			                $(".qa-a-3-200").val(ui.value);
+			                //console.log("debug: slider accepted val = " + $(".qa-a-3-200").val());
+			                $(".qa-s-3-200").prop("disabled", false).removeClass("qa-submit-disabled");
+			            }
+			        });
+			        $(".qa-a-3-200").val("Select a value.");
+
+			        $(".qa-a-3-200").val("5");
+			        $(".qa-s-3-200").prop("disabled", false).removeClass("qa-submit-disabled");
+
+			        qa_ans["3_202"] = {};
+			        qa_ans["3_202"].value = 10;
+			        $(".qa-slider-q-3-202").slider({
+			            value: qa_ans["3_202"].value,
+			            min: 1,
+			            max: 10,
+			            step: 1,
+			            slide: function (event, ui) {
+			                //console.log("debug: slider input val = " + ui.value);
+			                $(".qa-a-3-202").val(ui.value);
+			                //console.log("debug: slider accepted val = " + $(".qa-a-3-202").val());
+			                $(".qa-s-3-202").prop("disabled", false).removeClass("qa-submit-disabled");
+			            }
+			        });
+
+			        $(".qa-a-3-202").val("Select a value.");
+
+			        $(".qa-a-3-202").val("10");
+			        $(".qa-s-3-202").prop("disabled", false).removeClass("qa-submit-disabled");
+
+
+			        $(".qa-w-3").show();
+
+			        $("#qa_div").qa({
+			            action: "setQuestion",
+			            data: {
+			                f: 3,
+			                q: 200
+			            }
+			        });
+
+			        $(".qa-s-3-200").unbind().bind("click", function () {
+			            //Special escape for those not involved
+			            if (qa_ans["3_200"].index == 3) {
+			                $(".qa-s-3-203").trigger("click");
+			            } else {
+			                $("#qa_div").qa({
+			                    action: "setQuestion",
+			                    data: {
+			                        f: 3,
+			                        q: 201
+			                    }
+			                });
+			            }
+			        });
+
+			        $(".qa-p-3-201").unbind().bind("click", function () {
+			            $("#qa_div").qa({
+			                action: "setQuestion",
+			                data: {
+			                    f: 3,
+			                    q: 200
+			                }
+			            });
+			        });
+			        $(".qa-s-3-201").unbind().bind("click", function () {
+			            $("#qa_div").qa({
+			                action: "setQuestion",
+			                data: {
+			                    f: 3,
+			                    q: 204
+			                }
+			            });
+			            var t204 = "";
+			            function qa_3_204_validation() {
+			                if (t204 != "") {
+			                    $(".qa-s-3-204").prop("disabled", false).removeClass("qa-submit-disabled");
+			                } else {
+			                    $(".qa-s-3-204").prop("disabled", true).addClass("qa-submit-disabled");
+			                }
+			            }
+			            $(".qa-a-3-204").unbind().bind("change keyup paste", function () {
+			                t204 = $(this).val();
+			                qa_3_204_validation();
+			            });
+			        });
+
+			        $(".qa-p-3-204").unbind().bind("click", function () {
+			            $("#qa_div").qa({
+			                action: "setQuestion",
+			                data: {
+			                    f: 3,
+			                    q: 201
+			                }
+			            });
+			        });
+			        $(".qa-s-3-204").unbind().bind("click", function () {
+			            $("#qa_div").qa({
+			                action: "setQuestion",
+			                data: {
+			                    f: 3,
+			                    q: 202
+			                }
+			            });
+			        });
+
+			        $(".qa-p-3-206").unbind().bind("click", function () {
+			            $("#qa_div").qa({
+			                action: "setQuestion",
+			                data: {
+			                    f: 3,
+			                    q: 201
+			                }
+			            });
+			        });
+			        $(".qa-s-3-206").unbind().bind("click", function () {
+			            $("#qa_div").qa({
+			                action: "setQuestion",
+			                data: {
+			                    f: 3,
+			                    q: 207
+			                }
+			            });
+			        });
+
+			        $(".qa-p-3-202").unbind().bind("click", function () {
+			            $("#qa_div").qa({
+			                action: "setQuestion",
+			                data: {
+			                    f: 3,
+			                    q: 204
+			                }
+			            });
+			        });
+			        $(".qa-s-3-202").unbind().bind("click", function () {
+			            $("#qa_div").qa({
+			                action: "setQuestion",
+			                data: {
+			                    f: 3,
+			                    q: 207
+			                }
+			            });
+			        });
+
+			        $(".qa-p-3-207").unbind().bind("click", function () {
+			            $("#qa_div").qa({
+			                action: "setQuestion",
+			                data: {
+			                    f: 3,
+			                    q: 202
+			                }
+			            });
+			        });
+			        $(".qa-s-3-207").unbind().bind("click", function () {
+			            $("#qa_div").qa({
+			                action: "setQuestion",
+			                data: {
+			                    f: 3,
+			                    q: 203
+			                }
+			            });
+			        });
+
+			        $(".qa-s-3-207").unbind().bind("click", function () {
+			            $("#qa_div").qa({
+			                action: "setQuestion",
+			                data: {
+			                    f: 3,
+			                    q: 203
+			                }
+			            });
+			            /* TODO: This will likely have to be custom, see if there's a way to generalize it. */
+			            var t203 = "";
+			            // var t204 = "";
+			            // var t205 = "";
+			            // var t208 = "";
+
+						// function qa_3_203_validation() {
+			            //     if (t203 != "") {
+			            //         $(".qa-s-3-203").prop("disabled", false).removeClass("qa-submit-disabled");
+			            //     } else {
+			            //         $(".qa-s-3-203").prop("disabled", true).addClass("qa-submit-disabled");
+			            //     }
+			            // }
+						function qa_3_203_validation() {
+			                if (t203 != "") {
+			                    $(".qa-s-3-203").prop("disabled", false).removeClass("qa-submit-disabled");
+			                } else {
+			                    $(".qa-s-3-203").prop("disabled", true).addClass("qa-submit-disabled");
+			                }
+			            }
+						// function qa_3_203_validation() {
+			            //     if ((t203 != "") && (t204 != "") && (t205 != "") && (t208 != "")) {
+			            //         $(".qa-s-3-203").prop("disabled", false).removeClass("qa-submit-disabled");
+			            //     } else {
+			            //         $(".qa-s-3-203").prop("disabled", true).addClass("qa-submit-disabled");
+			            //     }
+						// 	console.log(qa_3_203_validation); 
+			            // }
+			            $(".qa-a-3-203").unbind().bind("change keyup paste", function () {
+			                t203 = $(this).val();
+			                qa_3_203_validation();
+			            });
+			            // $(".qa-a-3-204").unbind().bind("change keyup paste", function () {
+			            //     t204 = $(this).val();
+			            //     qa_3_203_validation()
+			            // });
+			            // $(".qa-a-3-205").unbind().bind("change keyup paste", function () {
+			            //     t205 = $(this).val();
+			            //     qa_3_203_validation()
+			            // });
+			            // $(".qa-a-3-208").unbind().bind("change keyup paste", function () {
+			            //     t208 = $(this).val();
+			            //     qa_3_203_validation()
+			            // });
+			        });
+
+			        $(".qa-p-3-203").unbind().bind("click", function () {
+			            $("#qa_div").qa({
+			                action: "setQuestion",
+			                data: {
+			                    f: 3,
+			                    q: 207
+			                }
+			            });
+			        });
+			        $(".qa-s-3-203").unbind().bind("click", function () {
+			            $(".qa-question").hide();
+			            $(".qa-g-3").html("+5 Coins");
+			            /* Save the answers */
+			            $("#qa_div").qa({
+			                action: "save",
+			                data: $.extend(true, {}, o, {
+			                    f: 3
+			                })
+			            });
+			            $(".qa-d-3").unbind().bind("click", function () {
+			                $(".qa-w-3").hide();
+			            });
+			            $(".qa-ft-3").show();
+			        });
+			    }
+
+			    function qa_6(o) {
+
+			        $(".qa-w-6 .qa-close").unbind().bind("click", function () {
+			            $(".qa-w-6").hide();
+			        });
+
+			        qa_ans["6_217"] = {};
+			        qa_ans["6_217"].value = 7;
+			        $(".qa-slider-q-6-217").slider({
+			            value: qa_ans["6_217"].value,
+			            min: 1,
+			            max: 10,
+			            step: 1,
+			            slide: function (event, ui) {
+			                $(".qa-a-6-217").val(ui.value);
+			                $(".qa-s-6-0").prop("disabled", false).removeClass("qa-submit-disabled");
+			            }
+			        });
+			        $(".qa-a-6-217").val("Select a value.");
+
+			        $(".qa-w-6").show();
+
+			        $("#qa_div").qa({
+			            action: "setQuestion",
+			            data: {
+			                f: 6,
+			                q: 215
+			            }
+			        });
+
+			        $(".qa-a-6-215").unbind().bind("change keyup paste", function () {
+			            if ($(this).val() != "") {
+			                $(".qa-s-6-216").prop("disabled", false).removeClass("qa-submit-disabled");
+			            } else {
+			                $(".qa-s-6-216").prop("disabled", true).addClass("qa-submit-disabled");
+			            }
+			        });
+
+			        $(".qa-a-6-216").unbind().bind("change keyup paste", function () {
+			            if ($(this).val() != "") {
+			                $(".qa-s-6-217").prop("disabled", false).removeClass("qa-submit-disabled");
+			            } else {
+			                $(".qa-s-6-217").prop("disabled", true).addClass("qa-submit-disabled");
+			            }
+			        });
+
+			        $(".qa-s-6-216").unbind().bind("click", function () {
+			            $("#qa_div").qa({
+			                action: "setQuestion",
+			                data: {
+			                    f: 6,
+			                    q: 216
+			                }
+			            });
+			        });
+
+			        $(".qa-p-6-215").unbind().bind("click", function () {
+			            $("#qa_div").qa({
+			                action: "setQuestion",
+			                data: {
+			                    f: 6,
+			                    q: 215
+			                }
+			            });
+			        });
+			        $(".qa-s-6-217").unbind().bind("click", function () {
+			            $("#qa_div").qa({
+			                action: "setQuestion",
+			                data: {
+			                    f: 6,
+			                    q: 217
+			                }
+			            });
+			        });
+
+			        $(".qa-p-6-216").unbind().bind("click", function () {
+			            $("#qa_div").qa({
+			                action: "setQuestion",
+			                data: {
+			                    f: 6,
+			                    q: 216
+			                }
+			            });
+			        });
+			        $(".qa-s-6-0").unbind().bind("click", function () {
+			            $(".qa-question").hide();
+			            /* Save the answers */
+			            $("#qa_div").qa({
+			                action: "save",
+			                data: $.extend(true, {}, o, {
+			                    f: 6
+			                })
+			            });
+			            $(".qa-d-6").unbind().bind("click", function () {
+			                $(".qa-w-6").hide();
+			            });
+			            $(".qa-ft-6").show();
+			            $(".qa-bubble").hide(); //assumes the bubble is for this survey.
+			        });
+			    }
+			</script>
+
+			<div class="qa-wrapper-popup qa-w-6">
+				<div class="qa-wrapper2-popup">
+					<div class="qa-close"><i class="fa fa-times"></i></div>
+					<div class="qa-box-popup">
+						<h1>Survey Alert! Please provide your input.</h1> <!-- (Manager) -->
+                        <h5>Answer three quick questions for a chance to win a $50 Amazon gift card - Survey ends 5/10.</h5>
+                        <div class="qa-question qa-q-6-215">
+						    <p>What is the most useful thing that you or your organization provides specifically to supervisors to help them succeed?</p>
+							<p>
+							    <textarea class="qa-a-6-215" rows="6" style="width: 100%"></textarea>
+							</p>
+	    					<div class="qa-submit-wrapper">
+    						    <input class="qa-submit qa-submit-next qa-submit-disabled qa-s-6-216" type="button" disabled="disabled" value="Next>" />
+		    				</div>
+                        </div>
+                        <div class="qa-question qa-q-6-216">
+						    <p>What is the one thing you'd like or plan to provide specifically to your supervisors to help them succeed?</p>
+						    <p>
+							    <textarea class="qa-a-6-216" rows="6" style="width: 100%"></textarea>
+						    </p>
+    						<div class="qa-submit-wrapper">
+	    						<input class="qa-submit qa-submit-previous qa-p-6-215" type="button" value="<Previous" />
+		    					<input class="qa-submit qa-submit-next qa-submit-disabled qa-s-6-217" type="button" disabled="disabled" value="Next>" />
+			    			</div>
+                        </div>
+    					<div class="qa-question qa-q-6-217">
+	    					<p>On a scale of 1-10, to what extent are you providing supervisors what they need to succeed?</p>
+		    				<p>
+			    				<div style="display:block;text-align:center; margin: 6px;">
+				    				<input type="text" class="qa-a-6-217" readonly style="text-align: center;border: 0;font-weight:bold;">
+					    		</div>
+						    	<div class="qa-slider-q-6-217"></div>
+							</p>
+    						<div class="qa-submit-wrapper">
+	    						<input class="qa-submit qa-submit-previous qa-p-6-216" type="button" value="<Previous" />
+    							<input class="qa-submit qa-submit-next qa-submit-disabled qa-s-6-0" type="button" disabled="disabled" value="Finish>" />
+			    			</div>
+                        </div>
+						<div class="qa-footer qa-ft-6">
+							<p>We appreciate you taking the time to fill out this questionaire.</p>
+							<div class="qa-stats" style="position: relative; background-color: #606060; padding: 6px;">
+								<div class="qa-scoring qa-sc-6" style="font-weight: bold; font-size: 11px;line-height: 14px;padding: 4px;color: White;">
+									Thank you for your feedback!<br /><br />
+								</div>
+							</div>
+							<div class="qa-submit-wrapper">
+								<input class="qa-done qa-d-6" type="button" value="Done" />
+							</div>
+						</div>
+
+
+
+				    </div>
+                </div>
+            </div>
+
+			<script language="javascript">
+
+			    function qa_7(o) {
+
+			        $(".qa-w-7 .qa-close").unbind().bind("click", function () {
+			            $(".qa-w-7").hide();
+			        });
+
+			        qa_ans["7_214"] = {};
+			        qa_ans["7_214"].value = 7;
+			        $(".qa-slider-q-7-214").slider({
+			            value: qa_ans["7_214"].value,
+			            min: 1,
+			            max: 10,
+			            step: 1,
+			            slide: function (event, ui) {
+			                $(".qa-a-7-214").val(ui.value);
+			                $(".qa-s-7-0").prop("disabled", false).removeClass("qa-submit-disabled");
+			            }
+			        });
+			        $(".qa-a-7-214").val("Select a value.");
+
+			        $(".qa-w-7").show();
+
+			        $("#qa_div").qa({
+			            action: "setQuestion",
+			            data: {
+			                f: 7,
+			                q: 212
+			            }
+			        });
+
+			        $(".qa-a-7-212").unbind().bind("change keyup paste", function () {
+			            if ($(this).val() != "") {
+			                $(".qa-s-7-213").prop("disabled", false).removeClass("qa-submit-disabled");
+			            } else {
+			                $(".qa-s-7-213").prop("disabled", true).addClass("qa-submit-disabled");
+			            }
+			        });
+
+			        $(".qa-a-7-213").unbind().bind("change keyup paste", function () {
+			            if ($(this).val() != "") {
+			                $(".qa-s-7-214").prop("disabled", false).removeClass("qa-submit-disabled");
+			            } else {
+			                $(".qa-s-7-214").prop("disabled", true).addClass("qa-submit-disabled");
+			            }
+			        });
+
+			        $(".qa-s-7-213").unbind().bind("click", function () {
+			            $("#qa_div").qa({
+			                action: "setQuestion",
+			                data: {
+			                    f: 7,
+			                    q: 213
+			                }
+			            });
+			        });
+
+			        $(".qa-p-7-212").unbind().bind("click", function () {
+			            $("#qa_div").qa({
+			                action: "setQuestion",
+			                data: {
+			                    f: 7,
+			                    q: 212
+			                }
+			            });
+			        });
+			        $(".qa-s-7-214").unbind().bind("click", function () {
+			            $("#qa_div").qa({
+			                action: "setQuestion",
+			                data: {
+			                    f: 7,
+			                    q: 214
+			                }
+			            });
+			        });
+
+			        $(".qa-p-7-213").unbind().bind("click", function () {
+			            $("#qa_div").qa({
+			                action: "setQuestion",
+			                data: {
+			                    f: 7,
+			                    q: 213
+			                }
+			            });
+			        });
+			        $(".qa-s-7-0").unbind().bind("click", function () {
+			            $(".qa-question").hide();
+			            /* Save the answers */
+			            $("#qa_div").qa({
+			                action: "save",
+			                data: $.extend(true, {}, o, {
+			                    f: 7
+			                })
+			            });
+			            $(".qa-d-7").unbind().bind("click", function () {
+			                $(".qa-w-7").hide();
+			            });
+			            $(".qa-ft-7").show();
+			            $(".qa-bubble").hide(); //assumes the bubble is for this survey.
+			        });
+			    }
+			</script>
+
+			<div class="qa-wrapper-popup qa-w-7">
+				<div class="qa-wrapper2-popup">
+					<div class="qa-close"><i class="fa fa-times"></i></div>
+					<div class="qa-box-popup">
+						<h1>Survey Alert! Please provide your input.</h1> <!-- (Supervisor) -->
+                        <h5>Answer three quick questions for a chance to win a $50 Amazon gift card - Survey ends 5/10.</h5>
+                        <div class="qa-question qa-q-7-212">
+						    <p>What is the most useful thing provided to you by your employer to help you to succeed?</p>
+							<p>
+							    <textarea class="qa-a-7-212" rows="6" style="width: 100%"></textarea>
+							</p>
+	    					<div class="qa-submit-wrapper">
+    						    <input class="qa-submit qa-submit-next qa-submit-disabled qa-s-7-213" type="button" disabled="disabled" value="Next>" />
+		    				</div>
+                        </div>
+                        <div class="qa-question qa-q-7-213">
+						    <p>What is the one thing you wish your employer would provide you to help you succeed?</p>
+						    <p>
+							    <textarea class="qa-a-7-213" rows="6" style="width: 100%"></textarea>
+						    </p>
+    						<div class="qa-submit-wrapper">
+	    						<input class="qa-submit qa-submit-previous qa-p-7-212" type="button" value="<Previous" />
+		    					<input class="qa-submit qa-submit-next qa-submit-disabled qa-s-7-214" type="button" disabled="disabled" value="Next>" />
+			    			</div>
+                        </div>
+    					<div class="qa-question qa-q-7-214">
+	    					<p>On a scale of 1-10, to what extent are you provided by your employer with what you need to succeed?</p>
+		    				<p>
+			    				<div style="display:block;text-align:center; margin: 6px;">
+				    				<input type="text" class="qa-a-7-214" readonly style="text-align: center;border: 0;font-weight:bold;">
+					    		</div>
+						    	<div class="qa-slider-q-7-214"></div>
+							</p>
+    						<div class="qa-submit-wrapper">
+	    						<input class="qa-submit qa-submit-previous qa-p-7-213" type="button" value="<Previous" />
+    							<input class="qa-submit qa-submit-next qa-submit-disabled qa-s-7-0" type="button" disabled="disabled" value="Finish>" />
+			    			</div>
+                        </div>
+						<div class="qa-footer qa-ft-7">
+							<p>We appreciate you taking the time to fill out this questionaire.</p>
+							<div class="qa-stats" style="position: relative; background-color: #606060; padding: 6px;">
+								<div class="qa-scoring qa-sc-7" style="font-weight: bold; font-size: 11px;line-height: 14px;padding: 4px;color: White;">
+									Thank you for your feedback!<br /><br />
+								</div>
+							</div>
+							<div class="qa-submit-wrapper">
+								<input class="qa-done qa-d-7" type="button" value="Done" />
+							</div>
+						</div>
+
+				    </div>
+                </div>
+            </div>
+
+			<div class="qa-wrapper-popup qa-w-3">
+				<div class="qa-wrapper2-popup" style="width:650px;">
+					<div class="qa-close"><i class="fa fa-times"></i></div>
+					<div class="qa-box-popup">
+						<h1> Acuity Employee Feedback Questionnaire</h1>
+						<div class="qa-question qa-q-3-200">
+							<p>On a scale of 1-5, how important (5 being most) is senior leader connection<br />and engagement with the frontline workforce?</p>
+							<p>
+								<div style="display:block;text-align:center; margin: 6px;">
+									<input type="text" class="qa-a-3-200" readonly style="text-align: center;border: 0;font-weight:bold;">
+								</div>
+								<div class="qa-slider-q-3-200"></div>
+							</p>
+							<div class="qa-submit-wrapper">
+								<input class="qa-submit qa-submit-next qa-submit-disabled qa-s-3-200" type="button" disabled="disabled" value="Next >" />
+							</div>
+						</div>
+						<div class="qa-question qa-q-3-201">
+							<p>How has A-GAME Leagues or the Acuity platform impacted your motivation at work?<br />(Please do not answer if you have not participated in Leagues)</p>
+							<ul>
+								<li>Big Boost</li>
+								<li>Moderate Boost</li>
+								<li>Little Boost</li>
+								<li>No Impact</li>
+								<li>Negative Impact</li>
+							</ul>
+							<div class="qa-submit-wrapper">
+								<input class="qa-submit qa-submit-previous qa-p-3-201" type="button" value="< Previous" />
+								<input class="qa-submit qa-submit-next qa-s-3-201" type="button" value="Next >" />
+							</div>
+						</div>
+						<div class="qa-question qa-q-3-204">
+							<p>Please share at least one aspect about Acuity or A-GAME<br />that boosted your motivation or inspired you at work.</p>
+							<p>
+								<textarea class="qa-a-3-204" rows="3" style="width: 100%"></textarea>
+							</p>
+							<div class="qa-submit-wrapper">
+								<input class="qa-submit qa-submit-previous qa-p-3-204" type="button" value="< Previous" />
+								<input class="qa-submit qa-submit-next qa-submit-disabled qa-s-3-204" type="button" disabled="disabled" value="Next >" />
+							</div>
+						</div>
+                        <div class="qa-question qa-q-3-202">
+							<p>On a scale of 1-10, how interested (10 being highest level ) are you in participating<br />in future A-GAME competitions?</p>
+							<p>
+								<div style="display:block;text-align:center; margin: 6px;">
+									<input type="text" class="qa-a-3-202" readonly style="text-align: center;border: 0;font-weight:bold;">
+								</div>
+								<div class="qa-slider-q-3-202"></div>
+							</p>
+							<div class="qa-submit-wrapper">
+								<input class="qa-submit qa-submit-previous qa-p-3-202" type="button" value="<Previous" />
+								<input class="qa-submit qa-submit-next qa-submit-disabled qa-s-3-202" type="button" disabled="disabled" value="Next >" />
+							</div>
+                        </div>
+                        <div class="qa-question qa-q-3-207">
+							<p>Which aspect of A-GAME do you value most? (Select one)</p>
+							<ul>
+								<li>Direct interaction with senior leaders</li>
+								<li>Friendly competition with colleagues</li>
+								<li>Recognition for performance</li>
+								<li>Team collaboration</li>
+								<li>Professional development</li>
+								<li>All of the above!</li>
+								<li>Other (please specify in next question)</li>
+							</ul>
+							<div class="qa-submit-wrapper">
+								<input class="qa-submit qa-submit-previous qa-p-3-207" type="button" value="< Previous" />
+								<input class="qa-submit qa-submit-next qa-submit-disabled qa-s-3-207" type="button" disabled="disabled" value="Next >" />
+							</div>
+						</div>
+						<div class="qa-question qa-q-3-203">
+							<p>What other input, positive or negative, would you like Aucera or TouchPoint One leadership<br />to know regarding A-GAME Leagues or any aspect of the Acuity platform?</p>
+							<p>
+								<textarea class="qa-a-3-203" rows="3" style="width: 100%"></textarea>
+							</p>
+							<div class="qa-submit-wrapper">
+								<input class="qa-submit qa-submit-previous qa-p-3-203" type="button" value="< Previous" />
+								<input class="qa-submit qa-submit-next qa-submit-disabled qa-s-3-203" type="button" disabled="disabled" value="Finish >" />
+							</div>
+						</div>
+						<!-- <div class="qa-question qa-q-3-200">
+							<p>What is your overall impression of the A-GAME Football Challenge?</p>
+							<ul>
+								<li>Loved it!</li>
+								<li>Neutral</li>
+								<li>Hated it.</li>
+								<li>I had no involvement in A-GAME <br />this season, so I'm not a good candidate for this survey..</li>
+							</ul>
+							<div class="qa-submit-wrapper">
+								<input class="qa-submit qa-submit-next qa-submit-disabled qa-s-3-200" type="button" disabled="disabled" value="Next>" />
+							</div>
+						</div> -->
+						<!-- <div class="qa-question qa-q-3-201">
+							<p>To what extent did A-GAME motivate you to perform your best? </p>
+							<ul>
+								<li>Greatly</li>
+								<li>Somewhat</li>
+								<li>Neutral</li>
+								<li>Demotivated</li>
+							</ul>
+							<div class="qa-submit-wrapper">
+								<input class="qa-submit qa-submit-previous qa-p-3-201" type="button" value="<Previous" />
+								<input class="qa-submit qa-submit-next qa-submit-disabled qa-s-3-201" type="button" disabled="disabled" value="Next>" />
+							</div>
+						</div> -->
+						<!-- <div class="qa-question qa-q-3-206">
+							<p>To what extent did A-GAME motivate/engage your agents/team?</p>
+							<ul>
+								<li>Greatly</li>
+								<li>Somewhat</li>
+								<li>Neutral</li>
+								<li>Demotivated</li>
+							</ul>
+							<div class="qa-submit-wrapper">
+								<input class="qa-submit qa-submit-previous qa-p-3-206" type="button" value="<Previous" />
+								<input class="qa-submit qa-submit-next qa-submit-disabled qa-s-3-206" type="button" disabled="disabled" value="Next>" />
+							</div>
+						</div> -->
+						<!-- <div class="qa-question qa-q-3-207">
+							<p>Did you observe any increase in agent-to-agent assistance or support? (Yes/No)</p>
+							<ul>
+								<li>Yes</li>
+								<li>No</li>
+							</ul>
+							<div class="qa-submit-wrapper">
+								<input class="qa-submit qa-submit-previous qa-p-3-207" type="button" value="<Previous" />
+								<input class="qa-submit qa-submit-next qa-submit-disabled qa-s-3-207" type="button" disabled="disabled" value="Next>" />
+							</div>
+						</div> -->
+						<!-- <div class="qa-question qa-q-3-202">
+							<p>On a scale of 1-10 (10 being highest), what is your level of interest in playing next year?</p>
+							<p>
+								<div style="display:block;text-align:center; margin: 6px;">
+									<input type="text" class="qa-a-3-202" readonly style="text-align: center;border: 0;font-weight:bold;">
+								</div>
+								<div class="qa-slider-q-3-202"></div>
+							</p>
+							<div class="qa-submit-wrapper">
+								<input class="qa-submit qa-submit-previous qa-p-3-202" type="button" value="<Previous" />
+								<input class="qa-submit qa-submit-next qa-submit-disabled qa-s-3-202" type="button" disabled="disabled" value="Next>" />
+							</div>
+						</div> -->
+
+						<!-- <div class="qa-question qa-q-3-203">
+							<p>The thing I like most about A-GAME is:</p>
+							<p>
+								<textarea class="qa-a-3-203" rows="3" style="width: 100%"></textarea>
+							</p>
+							<p>The thing I like least about A-GAME is:</p>
+							<p>
+								<textarea class="qa-a-3-204" rows="3" style="width: 100%"></textarea>
+							</p>
+							<p>Suggestions for change or other feedback:</p>
+							<p>
+								<textarea class="qa-a-3-205" rows="6" style="width: 100%"></textarea>
+							</p>
+							<p>What was the most unexpected outcome (positive or negative) of A-GAME?</p>
+							<p>
+								<textarea class="qa-a-3-208" rows="6" style="width: 100%"></textarea>
+							</p>
+							<div class="qa-submit-wrapper">
+								<input class="qa-submit qa-submit-previous qa-p-3-203" type="button" value="<Previous" />
+								<input class="qa-submit qa-submit-next qa-submit-disabled qa-s-3-203" type="button" disabled="disabled" value="Finish>" />
+							</div>
+						</div> -->
+						<div class="qa-footer qa-ft-3">
+							<p>We appreciate you taking the time to fill out this questionaire.</p>
+							<div class="qa-stats">
+								<div class="qa-scoring qa-sc-3">
+									<p>Thank you for your feedback!</p>
+								</div>
+							</div>
+							<div class="qa-submit-wrapper">
+								<input class="qa-done qa-d-3" type="button" value="Done" />
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<div class="qa-wrapper-popup qa-w-4">
+				<div class="qa-wrapper2-popup">
+					<div class="qa-close"><i class="fa fa-times"></i></div>
+					<div class="qa-box-popup">
+						<h1>A-GAME Post-Season Survey</h1>
+						<div class="qa-question qa-q-4-209">
+							<p>On a scale of 1-10, how do you like Acuity<br />(A-GAME included)?&nbsp;&nbsp;<span style="font-size:13px;">10 says I do. 1 not so much.</span></p>
+							<p>
+								<div style="display:block;text-align:center; margin: 6px;">
+									<input type="text" class="qa-a-4-209" readonly style="text-align: center;border: 0;font-weight:bold;">
+								</div>
+								<div class="qa-slider-q-4-209"></div>
+							</p>
+							<div class="qa-submit-wrapper">
+								<input class="qa-submit qa-submit-next qa-submit-disabled qa-s-4-209" type="button" disabled="disabled" value="Next>" />
+							</div>
+						</div>
+
+						<div class="qa-question qa-q-4-210">
+							<p>Briefly, what is one thing about Acuity you appreciate or value?</p>
+							<p>
+								<textarea class="qa-a-4-210" rows="3" style="width: 100%"></textarea>
+							</p>
+							<div class="qa-submit-wrapper">
+								<input class="qa-submit qa-submit-previous qa-p-4-210" type="button" value="<Previous" />
+								<input class="qa-submit qa-submit-next qa-submit-disabled qa-s-4-210" type="button" disabled="disabled" value="Next>" />
+							</div>
+						</div>
+						<div class="qa-question qa-q-4-211">
+							<p>What is one thing about Acuity you think should be eliminated or changed?</p>
+							<p>
+								<textarea class="qa-a-4-211" rows="3" style="width: 100%"></textarea>
+							</p>
+							<div class="qa-submit-wrapper">
+								<input class="qa-submit qa-submit-previous qa-p-4-211" type="button" value="<Previous" />
+								<input class="qa-submit qa-submit-next qa-submit-disabled qa-s-4-211" type="button" disabled="disabled" value="Next>" />
+							</div>
+						</div>
+						<div class="qa-footer qa-ft-4">
+							<p>We appreciate you taking the time to fill out this questionaire.</p>
+							<div class="qa-stats" style="position: relative; background-color: #606060; padding: 6px;">
+								<div class="qa-scoring qa-sc-4" style="font-weight: bold; text-align: center;font-size: 22px;line-height: 32px;padding: 4px;color: White;">
+									Thank you for your feedback!<br /><br />You've been entered to win<br />a $25 Starbucks gift card!
+								</div>
+							</div>
+							<div class="qa-submit-wrapper">
+								<input class="qa-done qa-d-4" type="button" value="Done" />
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+
+			<script language="javascript">
+
+			    function qa_changepassword_rejectionreason(txt) {
+			        if (txt.length < 8) {
+			            return ("Too Short");
+			        } else {
+			            var numfound = false;
+			            var letterfound = false;
+			            for (var i in txt) {
+			                if ((txt[i] >= '1') && (txt[i] <= '9')) {
+			                    numfound = true;
+			                } else {
+			                    letterfound = true; //or special character
+			                }
+			            }
+			            if (!numfound) {
+			                return ("Number Needed");
+			            } else if (!letterfound) {
+			                return ("Letter Needed");
+			            }
+			        }
+			        return "";
+			    }
+
+			    function qa_changepassword(o) {
+			        if (
+                        ((a$.urlprefix() == "chime.") && (
+                        ($.cookie("TP1Role") == "Admin")
+                            || ($.cookie("TP1Username").toLowerCase() == "nerskine")
+                            || ($.cookie("TP1Username").toLowerCase() == "ohawk")
+							|| ($.cookie("TP1Username").toLowerCase() == "avairavan")
+                            || ($.cookie("TP1Username").toLowerCase() == "ejeanlouis")
+                            || ($.cookie("TP1Username").toLowerCase() == "kbrown")
+                            || ($.cookie("TP1Username").toLowerCase() == "lwilson")
+                            || ($.cookie("TP1Username").toLowerCase() == "mwilson")
+                            || ($.cookie("TP1Username").toLowerCase() == "tbadgett")
+                            || ($.cookie("TP1Username").toLowerCase() == "tkelley")
+                            || ($.cookie("TP1Username").toLowerCase() == "mjobe")
+                            || ($.cookie("TP1Username").toLowerCase() == "tlyle")
+                            || ($.cookie("TP1Username").toLowerCase() == "sstevens002")
+                            || ($.cookie("TP1Username").toLowerCase() == "dperkins")
+                            || ($.cookie("TP1Username").toLowerCase() == "mcamp004")
+                            || ($.cookie("TP1Username").toLowerCase() == "oblack")
+                            || ($.cookie("TP1Username").toLowerCase() == "canderson007")
+                            || ($.cookie("TP1Username").toLowerCase() == "lsutton002")
+                            || ($.cookie("TP1Username").toLowerCase() == "mcurry")
+                            || ($.cookie("TP1Username").toLowerCase() == "crodgers002")
+                            || ($.cookie("TP1Username").toLowerCase() == "thaynes002")
+                            || ($.cookie("TP1Username").toLowerCase() == "sbutler002")
+                            || ($.cookie("TP1Username").toLowerCase() == "cgray004")
+                        ))
+                        ||
+                        ((a$.urlprefix() == "cox.") && (
+                        ($.cookie("TP1Role") == "Admin")
+                            || ($.cookie("TP1Username").toLowerCase() == "ogray")
+                            || ($.cookie("TP1Username").toLowerCase() == "vsnedeke")
+                        ))
+                        ||
+                        ((a$.urlprefix() == "da.") && (
+                        ($.cookie("TP1Role") != "CSR") //Everyone Team Leader & Above
+                        )) ||
+                        ((a$.urlprefix() == "performant-recovery.") && (
+                        ($.cookie("TP1Role") == "Admin")
+                            || ($.cookie("TP1Username").toLowerCase() == "u15878") //Tereasa
+                        ))
+                        ||
+                        ((a$.urlprefix() == "walgreens.") && (
+                        ($.cookie("TP1Role") == "Admin")
+                            || ($.cookie("TP1Username").toLowerCase() == "1976217") //Jane
+                            || ($.cookie("TP1Username").toLowerCase() == "1693322") //Kayla
+                            || ($.cookie("TP1Username").toLowerCase() == "1419802") //Laquanda
+                            || ($.cookie("TP1Username").toLowerCase() == "4259109") //Tatiana
+                            || ($.cookie("TP1Username").toLowerCase() == "4371473") //Karen
+                            || ($.cookie("TP1Username").toLowerCase() == "4492424") //Kegan
+                            || ($.cookie("TP1Username").toLowerCase() == "4598605") //Shakeel
+                            || ($.cookie("TP1Username").toLowerCase() == "2527291") //Jacie
+                        ))
+                        ||
+                        ((a$.urlprefix(true).indexOf("mnt") == 0) && (
+                        ($.cookie("TP1Role") == "Admin")
+                        ))
+                        ||
+                        ((a$.urlprefix() == "frost-arnett.") && (
+                        (($.cookie("TP1Role") == "Admin")||($.cookie("TP1Role") == "CorpAdmin"))
+                        ))
+                        ) {
+			            $(".qa-resetpassword-allowed").show();
+			            $(".qa-q-resetpassword-1").show();
+			            if ($(".qa-resetpassword-select-user").eq(0).children().length <= 1) {
+			                //alert("debug: listlength = " + $(".qa-resetpassword-select-user").eq(0).children().length);
+			                a$.ajax({
+			                    type: "GET",
+			                    service: "JScript",
+			                    async: true,
+			                    data: {
+			                        lib: "fan",
+			                        product: "Acuity",
+			                        cmd: "getClient",
+			                        idtype: "ME"
+			                    },
+			                    dataType: "json",
+			                    cache: false,
+			                    error: a$.ajaxerror,
+			                    success: gotclient
+			                });
+
+			                function gotclient(json) {
+			                    if (a$.jsonerror(json)) {
+			                    }
+			                    else {
+			                        $(".qa-resetpassword-select-user").html('<option value="">Select User from List...</option>');
+			                        for (var i in json.client.userlist) {
+			                            if (json.client.userlist[i].role != "Admin") {
+			                                $(".qa-resetpassword-select-user").append('<option value="' + json.client.userlist[i].user_id + '">' + json.client.userlist[i].name + ' (' + json.client.userlist[i].role + ')</option>');
+			                            }
+			                        }
+			                        //alert("debug: successful getClient returned " + json.client.userlist.length + " users");
+			                        $(".qa-resetpassword-select-user").unbind().bind("change", function () {
+			                            if ($(this).val() != "") {
+			                                $(".qa-resetpassword-submiterror").removeClass("qa-disabled");
+			                                $(".qa-d-resetpassword-1").prop("disabled", false).removeClass("qa-submit-disabled");
+			                            }
+			                            else {
+			                                $(".qa-d-resetpassword-1").prop("disabled", true).addClass("qa-submit-disabled");
+			                            }
+			                        });
+			                        $(".qa-d-resetpassword-1").unbind("click").bind("click", function () {
+			                            if (confirm("Please confirm that you'd like to reset the password for user: " + $(".qa-resetpassword-select-user").val() + "(" + $(".qa-resetpassword-select-user").val() + ")")) {
+			                                a$.ajax({
+			                                    type: "GET",
+			                                    service: "JScript",
+			                                    async: true,
+			                                    data: {
+			                                        lib: "login",
+			                                        product: "Acuity",
+			                                        CSR: $(".qa-resetpassword-select-user").val(),
+			                                        cmd: "resetpassword"
+			                                    },
+			                                    dataType: "json",
+			                                    cache: false,
+			                                    error: a$.ajaxerror,
+			                                    success: attemptreset2
+			                                });
+			                                function attemptreset2(json) {
+			                                    if (a$.jsonerror(json)) {
+			                                        alert("Password Reset Failed");
+			                                    }
+			                                    else {
+			                                        alert("Password Reset Successful!");
+			                                        $(".qa-resetpassword-select-user").val("");
+			                                    }
+			                                }
+			                            }
+			                        });
+
+			                    }
+			                };
+			            }
+			            //qa-resetpassword-select-user
+			            //qa-resetpassword-submiterror
+			        }
+
+			        $(".qa-changepassword .qa-close").unbind().bind("click", function () {
+			            $(".qa-changepassword").hide();
+			            if (a$.exists(o.showsprintgamestart)) {
+			                qa_sprintgamestart();
+			            }
+			        });
+			        $(".qa-q-changepassword-1").show();
+			        $(".qa-changepassword").show();
+
+			        $(".qa-d-changepassword-1").unbind().bind("click", function () {
+			            alert("debug: submitting change");
+			            $(".qa-changepassword").hide();
+			        });
+			        $(".qa-changepassword-text-current").unbind().bind("keyup", function () {
+			            if ($(this).val().length >= 1) {
+			                $(".qa-changepassword-text-new").prop("disabled", false);
+			            } else {
+			                $(".qa-changepassword-text-new").prop("disabled", true);
+			                $(".qa-changepassword-text-confirm").prop("disabled", true);
+			                $(".qa-changepassword-strength-prompt").hide();
+			                $(".qa-d-changepassword-1").prop("disabled", true).addClass("qa-submit-disabled"); ;
+			            }
+			        });
+			        $(".qa-changepassword-text-new").unbind().bind("keyup", function () {
+			            var reason = qa_changepassword_rejectionreason($(this).val());
+			            $(".qa-d-changepassword-1").prop("disabled", true);
+			            $(".qa-changepassword-text-confirm").val("");
+			            if (reason == "") {
+			                $(".qa-changepassword-text-confirm").prop("disabled", false);
+			                $(".qa-changepassword-strength-prompt").show();
+			                $(".qa-changepassword-strength-prompt").css("color", "green");
+			                $(".qa-changepassword-strength-reason").html("Good!");
+
+			            } else {
+			                $(".qa-changepassword-text-confirm").prop("disabled", true);
+			                $(".qa-changepassword-strength-prompt").show();
+			                $(".qa-changepassword-strength-prompt").css("color", "red");
+			                $(".qa-changepassword-strength-reason").html(reason);
+			                $(".qa-d-changepassword-1").prop("disabled", true).addClass("qa-submit-disabled"); ;
+			            }
+			        });
+			        $(".qa-changepassword-text-confirm").unbind().bind("keyup", function () {
+			            if ($(this).val() != $(".qa-changepassword-text-new").eq(0).val()) {
+			                $(".qa-changepassword-match-prompt").hide();
+			                $(".qa-d-changepassword-1").prop("disabled", true).addClass("qa-submit-disabled"); ;
+			            } else {
+			                $(".qa-changepassword-match-prompt").show();
+			                $(".qa-d-changepassword-1").prop("disabled", false).removeClass("qa-submit-disabled");
+			            }
+			        });
+			        $(".qa-d-changepassword-1").unbind().bind("click", function () {
+			            a$.ajax({
+			                type: "GET",
+			                service: "JScript",
+			                async: true,
+			                data: {
+			                    lib: "login",
+			                    product: "Acuity",
+			                    cmd: "changepassword",
+			                    current: $(".qa-changepassword-text-current").eq(0).val(),
+			                    change: $(".qa-changepassword-text-new").eq(0).val()
+			                },
+			                dataType: "json",
+			                cache: false,
+			                error: a$.ajaxerror,
+			                success: attemptchange
+			            });
+
+			            function attemptchange(json) {
+			                if (a$.jsonerror(json)) {
+			                    $(".qa-changepassword-submiterror").html(json.msg).show();
+			                    $(".qa-changepassword-text-current").val("").trigger("keyup");
+			                } else {
+			                    if (json.success == "Y") {
+			                        $(".qa-changepassword h1").html("Password Successfully Changed");
+			                        $(".qa-q-changepassword-1").hide();
+			                        var myid;
+
+			                        function closebox() {
+			                            $(".qa-changepassword").hide();
+			                            if (a$.exists(o.showsprintgamestart)) {
+			                                qa_sprintgamestart();
+			                            }
+			                        }
+			                        myid = setTimeout(closebox, 2000);
+
+			                    } else {
+			                        $(".qa-changepassword-submiterror").html(json.reason).show();
+			                        $(".qa-changepassword-text-current").val("").trigger("keyup");
+			                    }
+			                }
+			            }
+
+			        });
+			        /*
+			        "qa-changepassword-strength-prompt"
+			        "qa-changepassword-strength-reason"
+			        "qa-changepassword-text-new"
+			        "qa-changepassword-text-confirm"
+			        */
+			    }
+
+			    function qa_sprintgamestart(o) {
+			        //return; //Defeat the splash screen
+			        $(".qa-sprintgamestart .qa-close,.qa-d-sprintgamestart-1").unbind().bind("click", function () {
+			            $(".qa-sprintgamestart").hide();
+			        });
+			        $(".qa-q-sprintgamestart-1").show();
+			        $(".qa-sprintgamestart").show();
+			    };
+			</script>
+
+			<div class="qa-wrapper-popup qa-editgroup">
+				<div class="qa-wrapper2-popup" style="width:600px;">
+					<div class="qa-close"><i class="fa fa-times"></i></div>
+					<div class="qa-box-popup">
+						<h1>Chat Group</h1>
+						<div class="qa-question qa-q-editgroup-1">
+							<div style="display:block;text-align:left; margin: 6px;">
+								<label>Group Name:</label><br /><input type="text" class="qa-editgroup-name" style="width:250px;" />
+							</div>
+                            <div style="display:block;"><label>Members:</label>
+                                <span class="chatgroup-plus-team" style="padding-left: 120px;color:black;font-size:12px;cursor:pointer;text-decoration:underline;">Add Current CSRs</span>
+                                <span class="chatgroup-clear" style="padding-left: 120px;color:black;font-size:12px;cursor:pointer;text-decoration:underline;">Clear</span>
+                                <br />
+                                <div class="groupto-div">
+                                </div>
+							    <div class="qa-submit-wrapper" style="margin-top: 20px;">
+								    <input class="qa-editgroup-done qa-done qa-submit-disabled" disabled="disabled" type="button" value="Save Changes" />
+							    </div>
+                            </div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="qa-wrapper-popup qa-savereport">
+				<div class="qa-wrapper2-popup">
+					<div class="qa-close"><i class="fa fa-times"></i></div>
+					<div class="qa-box-popup">
+						<h1>Save to Favorites</h1>
+                        <div>
+                            <label>Name:&nbsp;</label><input type="text" class="qa-savereport-title" style="width: 300px;" />
+                            <p>Note: Current filters will be saved with the report.</p>
+                        </div>
+    				    <div class="qa-submit-wrapper" style="margin-top: 20px;">
+	    				    <input class="qa-done" type="button" value="Save Report" />
+					    </div>
+                    </div>
+                </div>
+            </div>
+			<div class="qa-wrapper-popup qa-changepassword">
+				<div class="qa-wrapper2-popup qa-wrapper2-popup_password">
+					<div class="qa-close"><i class="fa fa-times"></i></div>
+					<div class="qa-box-popup">
+						<h1>Please Change Your Password</h1>
+						<div class="qa-question qa-q-changepassword-1">
+							<p class="qa-changepassword-extra">Your password needs to be changed.</p>
+							<p class="qa-changepassword-submiterror" style="font-weight:bold;color:Red;display:none;"></p>
+							<div style="display:block;text-align:left; margin: 6px;">
+								<label>Current Password:</label><br /><input type="password" autocomplete="off" class="qa-changepassword-text-current" />
+							</div>
+							<p class="qa-box-popup_instructions">Use at least 8 characters and at least 1 number.</p>
+							<div style="display:block;text-align:left; margin: 6px; margin-top: 12px;min-width:400px;">
+								<label>New Password:</label><br /><input type="password" autocomplete="off" disabled="disabled" class="qa-changepassword-text-new" />
+								<span class="qa-changepassword-strength-prompt" style="font-size: 11px; font-weight:bold; display:none;"><label style="">Strength:</label><span class="qa-changepassword-strength-reason"></span></span>
+								<br /><br /><label>Confirm New Password:</label><br /><input type="password" autocomplete="off" disabled="disabled" class="qa-changepassword-text-confirm" />
+								<div class="qa-changepassword-match-prompt" style="font-size: 11px; font-weight:bold;margin-top: 5px;display:none;">Match Confirmed</div>
+							</div>
+							<div class="qa-submit-wrapper" style="margin-top: 20px;">
+								<input class="qa-done qa-submit-disabled qa-d-changepassword-1" disabled="disabled" type="button" value="Submit Change" />
+							</div>
+						</div>
+                        <div class="qa-resetpassword-allowed" style="display:none;">
+						    <h2 style="border-top: 1px solid black;padding-top:20px;margin-top:20px;">Reset Password for Someone Else</h2>
+						    <div class="qa-question qa-q-resetpassword-1">
+							    <p class="qa-resetpassword-extra">Password will be changed to: P@ssw0rd.</p>
+							    <p class="qa-resetpassword-submiterror" style="font-weight:bold;color:Red;display:none;"></p>
+							    <div style="display:block;text-align:left; margin: 6px;">
+								    <label>User to Reset: </label><select class="qa-resetpassword-select-user"><option value="">Loading...</option></select>
+							    </div>
+							    <div class="qa-submit-wrapper" style="margin-top: 20px;">
+								    <input class="qa-done qa-submit-disabled qa-d-resetpassword-1" disabled="disabled" type="button" value="Submit Password Reset" />
+							    </div>
+						    </div>
+                        </div>
+					</div>
+				</div>
+			</div>
+
+			<div class="qa-wrapper-popup qa-coxexecutive">
+				<div class="qa-wrapper2-popup configuration-popup">
+					<div class="qa-box-popup">
+						<img src="../../../3/ng/Dev/images/acuity-loading.gif" alt="loading" />
+						<h2>Configuring Main View, please wait...</h2>
+                    </div>
+                </div>
+            </div>
+
+			<div class="qa-wrapper-popup qa-sprintgamestart">
+				<div class="qa-wrapper2-popup" style="width: 600px; border-color:Black; background-color: #f3d623;">
+					<div class="qa-close"><i class="fa fa-times"></i></div>
+					<div class="qa-box-popup">
+						<h2><span style="color:Blue;">IQOR DASMA</span> MAKES A BOLD MOVE TO #1!</h2>
+						<!--
+                <h2><span style="color:Blue;">WILL</span> <span style="color:Green;">VALOR COSTA RICA</span> <span style="color:Blue;">MAINTAIN ITS POSITION ATOP THE LEADERBOARD?</span></h2>
+                <h2><span style="color:Blue;">WHAT TEAMS WILL MAKE THE </span> <span style="color:Green;">ELITE TOP TEN</span> <span style="color:Blue;">?</span></h2>
+                <h2>STAY TUNED FOR FINAL SCORES, MEDAL COUNTS AND STANDINGS</h2>
+                <h2>�AND THANK YOU ALL FOR A JOB WELL DONE!</h2>
+                -->
+						<div class="qa-question qa-q-sprintgamestart-1">
+							<h3>TOP PARTNERS<br />
+                        <span style="color:Blue;">GOLD:</span> iQor - Dasma<br />
+                        <span style="color:Blue;">SILVER:</span> Valor - Costa Rica<br />
+                        <span style="color:Blue;">BRONZE:</span> AFNI - Philippines<br />
+                    </h3>
+							<h3>TOP TEAMS<br />
+                        1) Michael Tommy Team � <span style="color:Blue;">Valor Costa Rica</span><br />
+                        2) Ana Rodriguez Team - <span style="color:Blue;">Valor Costa Rica</span><br />
+                        3) Jeno Staana Team - <span style="color:Blue;">iQor Dasma</span><br />
+                        4) Applerose Gerada Team - <span style="color:Blue;">iQor Dasma</span><br />
+                        5) Michael Ballesteros - <span style="color:Blue;">iQor Dasma</span><br />
+                    </h3>
+							<h3>Congratulations to iQor Dasma and everyone for their strong efforts and impressive stats!</h3>
+							<!--<h4>In the event of a <span style="color:Blue;">Team Medal Count tie</span> (i.e. 3 teams score 4 total medals of 2 gold, 1 silver and 1 bronze), balanced scores will determine rank. Teams tied with 4 total medals of 1 gold, 2 silver and 1 bronze would then follow, again, using the team balanced score calculation to break the tie and determine rank position.</h4>
+                    -->
+							<!--
+                    <h4><span style="font-style: italic;">�Winners are not people who never fail but people who never quit!�</span> � <span style="color:Blue;">Vince Lombardi</span>.<br />Round 3 is underway and it�s anyone�s GOLD!</h4>
+                    -->
+							<!-- <p>Live game scores are now showing!  Please note there is a 24-36 hour delay on getting results posted (Monday's results will appear some time Wednesday).</p> -->
+							<!--<h4>Final scores for Round 1 will be displayed by end of day Wednesday, so check back to see who�s grabbed gold.</h4>-->
+							<div class="qa-submit-wrapper" style="margin-top: 20px;">
+								<input class="qa-done qa-d-sprintgamestart-1" type="button" value="Close" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="qa-wrapper-popup qa-multichoice-quiz">
+				<div class="qa-wrapper2-popup qa-wrapper2-popup_multichoice-quiz" style="background-color:white;width:655px;text-align:center;">
+					<div class="qa-close"><i class="fa fa-times"></i></div>
+                        <p style="height:15px;">&nbsp;</p>
+                        <iframe src="" style="height:600px;width:650px;border:0px;"></iframe>
+                    </div>
+                </div>
+            </div>
+
+			<div id="qa_div"></div>
+			<!-- master div for QA markup to be expanded into and to provide reference for it's control -->

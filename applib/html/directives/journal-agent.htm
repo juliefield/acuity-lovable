@@ -1,0 +1,5 @@
+<ul>
+    <li ng-repeat="r in csrs | orderBy:'lastnm'">
+        <a href="#" ng-click="load_journal_agent(r.uid);">{{r.lastnm}}, {{r.firstnm}} ({{r.uid}})</a>
+    </li>
+</ul>

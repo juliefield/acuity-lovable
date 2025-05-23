@@ -1,0 +1,20 @@
+<div class="player-profile-card__avatar">
+   <img ng-src="{{myavatarfilename}}" />
+</div>
+<div class="player-profile-card__header">
+   <p>{{mynickname}} <span ng-hide="mynickname == ''">(</span>{{myname}}<span ng-hide="mynickname == ''">)</span>
+   </p>
+</div>
+<div class="player-profile-card__details">
+   <p class="player-profile-card__team-name">
+      {{myfanname}}
+   </p>
+   <div class="text-center">
+      <div class="avatar-number player-profile-card__number" ng-style="{ 'background-color': mybackgroundcolor, 'color': mycolor }">
+        {{myjersey}}
+      </div>
+      <div class="player-profile-card__tag-line" ng-hide="myslogan == ''">
+        "{{myslogan}}"
+      </div>
+   </div>
+</div>

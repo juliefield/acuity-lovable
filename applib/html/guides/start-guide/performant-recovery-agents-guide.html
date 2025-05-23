@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <link rel='stylesheet' href='css/guide-styles.css' type='text/css' media='all' />
+  <script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+  <meta charset="ISO-8859-1">
+</head>
+<body id="top">
+  <div class="container">
+    <div class="col-left">
+      <ul>
+        <li>
+          <a href="#login">System Login</a>
+        </li>
+        <li>
+          <a href="#password">Password Reset</a>
+        </li>
+        <li>
+          <a href="#com">Communications and Support</a>
+        </li>
+        <li>
+          <a href="#filters">Filters and Views</a>
+        </li>
+        <li>
+          <a href="#audit">Audit Status Description</a>
+        </li>
+        
+        <li>
+          <a href="#review-audit">Reviewing Audit Monitoring Forms</a>
+          <ul>
+            <li>
+              <a href="#pending-review">Pending Agent Review</a>
+            </li>
+            <li>
+              <a href="#pending-corrective">Pending Agent CAR Confirmation</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#reports">Reports</a>
+          <ul>
+            <li>
+              <a href="#reports-menu">Reports Menu</a>
+            </li>
+            <li>
+              <a href="#report-generation">Report Generation</a>
+            </li>
+            <li>
+              <a href="#report-navigation">Report Navigation Tips</a>
+            </li>
+          </ul>
+        </li>
+        
+
+        
+
+        <li>
+          <br />
+          <a id="id_pdf" href="images/downloadable/UserGuide_agent_Performant_Recovery.pdf" target="_blank">Download Guide (PDF)</a>
+        </li>
+        <li>
+          <br />
+          <a href="#top">Back to Top</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-right">
+      <h2>Acuity Performance Management System - Performant Recovery Manager's User Guide</h2>
+
+      <hr id="login" />
+      <h3>System Login</h3>
+      <img src="images/cox_login.png" class="responsive" />
+      <p>
+        When you login for the first time (simply enter the user name and
+        password into the appropriate fields as shown in the screen shot above),
+        you will be prompted to change the default password (typically <b>P@ssw0rd</b>)
+        to one of your own (remember it or store it somewhere safe for future
+        reference should you forget it).
+      </p>
+      <div class="half-img pull-right" style="margin-left: 15px;">
+        <img src="images/pw_change.jpg" class="responsive" />
+      </div>
+      <p>
+        At some point during or near the end of training, you should have
+        received a user name and a default password to access Acuity. A special
+        url has been set up for you to access Acuity -
+      </p>
+      <p>
+        <a href="https://performant-recovery.acuityapm.com/" target="_blank">https://performant-recovery.acuityapm.com/</a>
+      </p>
+      <div class="clearfix"></div>
+
+      <hr id="password" />
+      <h3>Password Reset</h3>
+      <ol>
+        <li>
+          To reset an employee's password, first select that employee from the 
+          "CSR" filter on the left
+          <br /><br />
+          <div class="centered">
+            <img src="images/recovery-password1.jpg" />
+          </div>
+          <br />
+        </li>
+        <li>
+          Open the menu and select "Reset CSR Password"
+          <br /><br />
+          <div class="centered">
+            <img src="images/recovery-password2.jpg" />
+          </div>
+          <br />
+        </li>
+        <li>
+          Once clicking "Reset CSR Password", a prompt will appear asking you to 
+          confirm the password change, along with what the new password will be
+          <br /><br />
+          <div class="centered">
+            <img src="images/recovery-password3.jpg" />
+          </div>
+          <br />
+        </li>
+        <li>
+          To confirm the password change, simply click "OK"
+        </li>
+      </ol>
+
+      <hr id="com" />
+      <h3>Communications and Support</h3>
+      <br />
+      <div class="icon-img">
+        <img src="images/chat_icon.jpg" width="50" />
+      </div>
+      <p>
+        You can reach out to your supervisor by using the <b>Chat</b>
+        feature accessible at the top of Acuity.
+      </p>
+      <div class="clearfix"></div>
+      <br />
+      <div class="icon-img">
+        <img src="images/messaging_icon.jpg" width="90" style="margin-top:8px;"/>
+      </div>
+      <p>
+        Communication may also be facilitated via Acuity's conventional
+        <b>Messaging</b> feature accessible via the envelope icon. A round marker 
+        next to the envelope icon will indicate when a new message has been received.
+      </p>
+      <div class="clearfix"></div>
+
+      <hr id="filters"/>
+      <h3>Filters and Views</h3>
+      <img src="images/recovery-filters1.jpg" class="pull-left" style="margin-right: 15px;"/>
+      <p>
+        Filters located in Acuity's left panel - enabled or disabled based on 
+        role - determine what information is displayed in the main report window. 
+        The filter is expandable and collapsible.
+      </p>
+      <p>
+        To isolate specific data (location, DM, TM, CSR, or date range) use the 
+        filter. The data selection in the Filter panel is based on hierarchy. 
+        Example: Team Managers can view all CSRs on their teams. CSRs can only 
+        see their own data. To view historical performance, select a previous 
+        date range from the <b>Score View</b> filter.
+      </p>
+      <p class="tip">
+        <strong>TIP:</strong> after selecting filters, click the <b>Submit</b>
+        button to run the new or modify the existing report.
+      </p>
+      <div class="clearfix"></div>
+
+      <hr id="audit"/>
+      <h3>Audit Status Description</h3>
+      <br />
+      <div class="centered">
+        <img src="images/recovery-agent10.jpg" />
+      </div>
+      <div class="clearfix"></div>
+      <br />
+
+      <hr id="review-audit" />
+      <h3>Reviewing Audit Monitoring Forms </h3>
+      <h4 id="pending-review">Pending Agent Review</h4>
+      <p>
+        To review the Audit Monitoring Forms that are in a Pending Agent 
+        Review status, select the IRS or Non-IRS Pending Review report.  
+      </p>
+      <ol>
+        <li>
+          Click on the Reports tab.
+        </li>
+        <li>
+          Select IRS or Non-IRS Pending Review report from the dropdown menu.
+        </li>
+        <li>
+          Click on Filter to expand the Filter panel.
+          <br><br>
+          <img src="images/recovery-reviewing1.jpg" />
+        </li>
+        <li>
+          Select the Score View (date range). To select the date range, click on the dropdown menu.
+        </li>
+        <li>
+          Click Submit to run the report. The results will appear in the window 
+          along with any CARs that are currently in process. CARs that require 
+          your attention will have the following statuses:
+          <br><br>
+          <ul>
+            <li>Pending Agent Review - these are new CARs that need to be reviewed.</li>
+            <li>Pending Agent CAR Confirmation - this is to confirm that you 
+              have received Corrective Action from your manager.</li>
+          </ul>
+        </li>
+        <li>Click on the X to collapse the Filter panel. The report will be displayed in the window. 
+          <br>
+          <br>
+          <img src="images/recovery-agent1.png" />
+
+        </li>
+        <li>Click on the Monitor ID # to open the CAR monitoring form with Pending Agent Review status.
+          <br>
+          <br>
+          <img src="images/recovery-agent2.jpg" class="responsive" />
+        </li>
+        <li>
+          Below is an example of the CAR monitoring form with the status: Pending 
+          Agent Review. You can either agree with ALL observations and point 
+          totals on the form or disagree with at least one of the findings or 
+          point on the form.
+          <br>
+          <br>
+          <img src="images/recovery-agent3.jpg" class="responsive" /><br><br>
+          <ul style="list-style-type: lower-alpha;">
+            <li>
+              Agree - click on the first radio button labeled "I agree with ALL 
+              observations and point totals on this form" and click Submit 
+              Acknowledgement / Dispute to Manager button. This releases the 
+              form to your manager. Once the form is released to the manager, 
+              it can no longer be edited by you. <em>Note: If you click Close, the 
+              form will close and remain in Pending Agent Review status.</em> 
+            </li>
+            <li>
+              Disagree - click on the second radio button labeled "I disagree 
+              with at least one of the findings, or points assessed above". 
+              Check the box below the finding(s) that are being disputed, enter 
+              the dispute reason in the Agent Dispute text box. If the box next 
+              to the finding is not checked, this means that you agree with that 
+              finding or point total. Once the finding(s) are disputed, click 
+              Submit Acknowledgement / Dispute to Manager button. This releases 
+              the form to your manager. Once the form is released to the manager, 
+              it can no longer be edited by you. Note: If you click Close, the 
+              form will close and remain in Pending Agent Review status.
+              <br>
+              <br>
+              In the example below the agent is disputing 1 of the 3 findings. 
+              <br>
+          <br>
+          <img src="images/recovery-agent4.jpg" class="responsive" />
+            </li>
+          </ul>
+        </li>
+        <li>
+          After the Submit Acknowledgement / Dispute to Manager button is clicked, 
+          you will navigate back to the IRS or Non-IRS Pending Review report. 
+          Click Submit again to re-run the report, this will display CAR's new 
+          status:
+          <br>
+          <br>
+          <ul>
+            <li>Pending Corrective Action - if you agreed with ALL observations and point totals.</li>
+            <li>Pending Dispute Review - if you disagreed with at least one finding.</li>
+          </ul>
+          <br>
+          The next step in the process is for your Manager and Compliance to review the CAR. 
+          <ul>
+            <li>
+              If you agreed with the findings, your Manager will perform the Corrective Action. 
+            </li>
+            <li>
+              If you disagreed with any observation, your Manager will review the disputed finding(s). 
+              <br>
+              <br>
+              <ul>
+                <li>
+                  If they find the dispute Invalid (in other words, they disagree 
+                  with you), they will perform the Corrective Action.
+                  <br><br>
+                  <div class="centered">
+                    <img src="images/recovery-agent5.jpg"  />
+                  </div>
+                </li>
+                <li>
+                  If they find the dispute Valid (in other words, they agree with 
+                  you), the CAR will be routed to Compliance for dispute review. 
+                  Once Compliance completes the dispute review, the CAR will be 
+                  returned to the manager for the Corrective Action Step/notification 
+                  that the dispute review is complete.
+                </li>
+              </ul>
+              <br>
+              Once the steps above are complete, the CAR will be returned to you 
+              for one last step. The last step in the process is to confirm that 
+              you have received Corrective Action Training from your manager.  
+            </li>
+          </ul>
+        </li>
+       </ol> 
+       <br><br>
+      <h4 id="pending-corrective">Pending Agent CAR Confirmation</h4>
+      <p>
+        To review the Audit Monitoring Forms that are in a Pending Agent CAR 
+        Confirmation status, select and run the IRS or Non-IRS Pending Review 
+        report. Select a CAR with this status and click on the Monitor ID # to 
+        open the form.
+        <br><br>
+          <div class="centered">
+            <img src="images/recovery-agent6.jpg" class="responsive"  />
+          </div>
+      </p>
+      <ol>
+        <li>
+          Check the box "I have received corrective action training from my manager".
+        </li>
+        <li>
+          Click Confirm Receipt of Training button to complete the CAR.
+          <br>
+          <br>
+          After the Confirm Receipt of Training button is clicked, you will 
+          navigate back to the IRS or Non-IRS Pending Review report. Click Submit 
+          again to re-run the report, the CAR will no longer appear in the report 
+          as the status is now Complete. 
+
+          <br><br>
+          <div class="centered">
+            <img src="images/recovery-agent7.jpg" class="responsive"  />
+          </div>
+        </li>
+        
+      </ol>
+
+
+
+      <hr id="reports" />
+      <h3>Reports</h3>
+      <h4 id="reports-menu">Report Menu</h4>
+      <p>
+        Reports are enabled or disabled based on the user's role and permissions. 
+        There are 4 reports that you will have access:
+      </p>
+      <h5>Monitors</h5>
+      <ul>
+        <li>
+          <strong>IRS or Non-IRS Audit Log -</strong> this is a list of all CAR details within select date range.
+        </li>
+        <li>
+          <strong>RS or Non-IRS Point Summary -</strong> this report provides a summary list for the following:
+          <ul>
+            <li>
+              <strong>Date Range Points  - </strong> These are the points of the completed & pending CARs for the selected date range.
+            </li>
+            <li>
+              <strong>Rolling 90-Day Points - </strong> 
+              These are the completed & pending CAR points from the end date of 
+              the date range and any points going back 90 days (this number 
+              includes the Date Range Points). <em>Note: if the date range end date 
+              is greater than the current date, the current date is used as the 
+              90-day reference point.</em>
+            </li>
+            <li>
+              <strong>Pending Points - </strong> These are CAR points that are in a pending status and not yet complete.
+            </li>
+            <li>
+              <strong>In-Draft Pending Points  - </strong> These points are only visible for the Compliance and Admin teams.
+            </li>
+          </ul>
+        </li>
+        <li>
+          <strong>IRS or Non-IRS Pending Review -</strong> This is the report 
+          for any CARs that are in the review stage and not yet complete for the 
+          selected date range.
+        </li>
+        <li>
+          <strong>IRS or Non-IRS Findings -</strong> This report lists all Findings 
+          for every CAR (regardless of the status) in the selected date range.
+        </li>
+      </ul>
+
+      <br>
+      <h4 id="report-generation">Report Generation:</h4>
+      <ol>
+        <li>
+          Click on the Reports tab.
+        </li>
+        <li>
+          Select the report from the drop-down menu.
+        </li>
+        <li>
+          Click the Filters tab to expand the Filter Panel. <em>Note: Project, 
+            Location, DM, TM, and CSR will be pre-populated as you will only 
+            be able to see your data.</em>
+
+          <br><br>
+          <div class="centered">
+            <img src="images/recovery-agent8.jpg" class="responsive"  />
+          </div>
+        </li>
+        <li>
+          Select the Score View (date range) either from the drop-down menu. 
+          For a custom date range, click on the calendar icon and select a start 
+          and end date.
+        </li>
+
+        <li>
+          Click Submit to run the report.
+        </li>
+        <li>
+          Click the X to collapse the Filter panel. The report results will be displayed in the window.
+          <br><br>
+              <div class="centered">
+                <img src="images/recovery-agent9.jpg"   />
+              </div>
+        </li>
+      </ol>
+
+      <br>
+      <h4 id="report-navigation">Report Navigation Tips:</h4>
+      <ul>
+        <li>
+          Reports have Search capability to further narrow down the report results.
+        </li>
+        <li>
+          The data can be sorted by clicking the arrows after the column heading.
+          <br><br>
+              <div class="centered">
+                <img src="images/recovery-reviewing9.jpg" class="responsive"  />
+              </div>
+        </li>
+      </ul>
+
+
+      
+
+
+      <div class="clearfix"></div>
+
+           
+
+
+
+
+
+
+            <br /><br />
+            <a href="#top">Back to Top</a>
+            <div class="clearfix"></div>
+
+          </div>
+        </div>
+<script language="javascript">
+    function gup(name) {
+        name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+        var regexS = "[\\?&]" + name + "=([^&#]*)";
+        var regex = new RegExp(regexS);
+        var results = regex.exec(window.location.href);
+        if (results == null) return "";
+        else {
+            //alert("debug:results[1]="+results[1]);
+            return decodeURI(results[1]);
+        }
+    }
+    $(document).ready(function () {
+        var p = gup("prefix");
+        if (p.indexOf("frost-arnett") >= 0) {
+            p = "frost-arnett";
+        }
+        else if (p.indexOf("-") > 0) {
+            p = p.substring(0, p.indexOf("-"));
+        }
+        /*
+        $("#id_pdf").attr("href", "images/downloadable/" + p + "-guide-pdf-download.pdf");
+        $("#id_link").html("https://" + p + ".acuityapm.com");
+        $("#id_link").attr("href", "https://" + p + ".acuityapm.com");
+        $("#id_link").attr("target", "https://" + p + ".acuityapm.com");
+        */
+    });
+</script>
+
+      </body>

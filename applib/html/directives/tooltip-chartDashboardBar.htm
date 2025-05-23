@@ -1,0 +1,32 @@
+<div style="background-color:white; border-radius: 10px; opacity: 1.0; padding: 20px; margin: -20px;">
+    <div>{{SeriesName}}</div>
+    <div>{{InTrainingInfo}}</div>
+    <div>{{StartDate}}-{{EndDate}}</div>
+    <div>Performance Score: {{PerformanceScore}}</div>
+    <div>KPI Weight Factor: {{WeightPercentage}}</div>
+    <div>{{CountLabel}}{{Count}}</div>
+    <div ng-show="showRanges">
+        <table class="tooltip-scoretable">
+            <thead>
+                <tr>
+                    <th class="tooltip-scoretable-maintitle" colspan="3">{{GoalsHeaderText}}</th>
+                </tr>
+                <tr>
+                    <th>&nbsp;</th><th>Threshold</th><th>Score</th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="ts in tablescores">
+                <tr>
+                    <td>{{YourScoreArrow}}</td>
+                    <td>{{ThresholdValue}}</td>
+                    <td>{{Score}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div><b>{{DataName}}{{RawScore}}</b></div>
+    <div>Import Date: {{ImportDate}}</div>
+    <div>{{RankText}}</div>
+</div>
+
+
