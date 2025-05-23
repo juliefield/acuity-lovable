@@ -1,0 +1,16 @@
+.tooltip-sidebar 
+{
+    font-size: 14px;
+    /*background-color: orange;*/
+    color: Black;
+    border-width: 0px;
+    max-width: 500px;
+    text-align: center;
+}
+
+.tooltip-text
+{
+    display:block;
+    text-align: center;
+    line-height: 16px;
+}

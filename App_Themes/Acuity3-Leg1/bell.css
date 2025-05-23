@@ -1,0 +1,40 @@
+﻿.bell-wrapper
+{
+    /*
+    position: absolute;
+    top: 0px;
+    left: 410px;
+*/
+    float: left;
+    margin-left: 10px;
+    position:relative;
+}
+
+.bell-graph
+{
+    float: left;
+    padding: 0;
+    margin: 0;
+    height: 400px;
+
+}
+
+.bell-progress
+{
+    z-index:500;
+    position:absolute;
+    top: 200px;
+    left:200px;
+    /* display:none; */
+}
+
+#bellGraph
+{
+    height: 400px;
+    width: 400px;
+}
+
+.bell-stats
+{
+    font-size: 12px;
+}

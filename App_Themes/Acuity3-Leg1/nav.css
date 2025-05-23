@@ -1,0 +1,63 @@
+﻿
+.nav
+{
+    color:White;
+    text-align: center;
+}
+
+.nav ul
+{
+    list-style:none;
+    margin: 0;
+    padding: 0;
+    float: left;
+    z-index: 1000;
+    /*clear: left; */
+    /*overflow: hidden;*/
+}
+
+.navlabel, .navarrow, .nav ul li
+{
+    background: -webkit-gradient(linear, left top, left bottom, from(#959595), to(#454545));
+    background: -moz-linear-gradient(top, #959595, #454545);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#959595, endColorstr=#454545);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#959595, endColorstr=#454545)";
+    padding-top: 5px;    
+    height: 25px;
+    width: 150px;
+    z-index: 1001;
+}
+
+.nav ul li:hover
+{
+    background: -webkit-gradient(linear, left top, left bottom, from(#454545), to(#959595));
+    background: -moz-linear-gradient(top, #454545, #959595);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#454545, endColorstr=#959595);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#454545, endColorstr=#959595)";
+    z-index: 1001;
+}
+    
+.navlabel
+{
+    width: 150px;
+    margin-bottom: 1px;
+    float:left;
+}
+
+.navarrow
+{
+    border-left: 2px solid white;
+    float:left;
+    width: 20px;
+}
+
+.nav ul li
+{
+    margin-bottom: 0px;
+}
+
+.nav ul li a
+{
+    text-decoration: none;
+    color: White;
+}

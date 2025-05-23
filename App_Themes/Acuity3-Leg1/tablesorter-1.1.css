@@ -1,0 +1,43 @@
+.headerSortUp
+{
+ 	background: url(images/asc.gif) no-repeat right center ;        
+}
+
+.headerSortDown
+{
+ 	background: url(images/desc.gif) no-repeat right center ;
+}
+
+.tableColumnExpand
+{
+ 	background: url(images/plus_sign.gif) no-repeat left center ;
+}
+
+.tableColumnCollapse
+{
+ 	background: url(images/minus_sign.gif) no-repeat left center ;
+}
+
+.table-expand
+{
+    white-space: nowrap;
+}
+
+
+.tbl-key,.tbl-filterkey,.tbl-drillkey,.tbl-identkey,.tbl-ident,.tbl-info
+{
+    display:none;
+    color: Red !important;
+    font-weight: bold;
+}
+
+.tbl-seq,.tbl-serieslink /* MADELIVE MAKEDEV */
+{
+    display:none;
+}
+
+
+.tbl-drill tbody td
+{
+    cursor: pointer;
+}

@@ -1,0 +1,623 @@
+/* TODO: Change these to .rpt- */
+/* //MADELIVE: The entire thing */
+.col-4.sidekick-column {
+  margin: 0 0 15px 0 !important;
+  width: 96%;
+  min-height: 310px !important;
+  background: #fff;
+}
+.sidekick-column:nth-child(2) {
+  margin: 0 10px 15px 10px !important;
+}
+@media (max-width: 992px) {
+  .sidekick-column:nth-child(2) {
+    margin: 0 0 15px 0 !important;
+  }
+}
+.col-3.sidekick-column {
+  width: 75%;
+  min-width: 329px;
+  background: white;
+}
+@media (max-width: 992px) {
+  .col-3.sidekick-column,
+  .col-4.sidekick-column {
+    width: 100%;
+  }
+}
+.touchquality-box {
+  padding: 0 15px 15px 15px;
+}
+.touchquality-title {
+  color: #000;
+  text-align: center;
+  font-size: 17px;
+}
+.touchquality-scores {
+  text-align: center;
+  width: 262px;
+  height: 120px;
+  margin: 0 auto;
+}
+.touchquality-scores_col {
+  float: left;
+  text-align: center;
+  font-size: 15px;
+  margin: 0 20px;
+}
+.touchquality-scores_circle {
+  background: gray;
+  text-align: center;
+  width: 90px;
+  height: 70px;
+  font-size: 32px;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  color: white;
+  font-weight: bold;
+  padding-top: 20px;
+  margin-bottom: 5px;
+}
+.circle-teal {
+  background: #44D7B6;
+}
+.blue-gray-circle {
+  background: #405362;
+}
+.touchquality-stats {
+  border-top:1px solid #D4D4D4;
+  padding: 10px;
+  margin-top: 25px;
+}
+.touchquality-stats_col {
+  width: 32.3333%;
+  display: inline-block;
+  text-align: center;
+  font-size: 13px;
+}
+.touchquality-stats_col span {
+  font-size: 22px;
+  display:block;
+}
+.journal-panel #journaldetailsbox {
+  background-image: url(images/sidekick-pg-icon.png);
+}
+
+.report-titlelink {
+  text-decoration: none !important;
+  /* MADELIVE color: #000;  (removed !important) */
+  cursor: pointer !important;
+}
+.report-grouping-wrapper,.home-grouping-wrapper {
+  position: absolute;
+  top: 6px;
+  right: 35px;
+}
+.report-show-wrapper,.home-show-wrapper {
+  position: absolute;
+  top: 6px;
+  right: 435px;
+}
+.home-print-wrapper {
+  position: absolute;
+  top: 6px;
+  left: 2px;
+  font-size:80x;
+  cursor: pointer;
+  z-index: 99999 !important;
+}
+.report-filter-wrapper {
+  position: absolute;
+  top: 6px;
+  right: 800px;
+}
+.report-intraining-wrapper,.home-intraining-wrapper {
+  position: absolute;
+  top: 6px;
+  right: 235px;
+}
+.rpt-pad {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.ReportReports .rpt-pad {
+  padding-left: 0;
+  padding-right: 0;
+}
+.report-search-top {
+  padding: 20px;
+  background: #eee;
+}
+.report-search-top input,
+.report-search-top select {
+  width: 100%;
+  max-width: 100%;
+}
+.report-search-top label {
+  font-size: 13px;
+  margin-bottom: 5px;
+  display: block;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #222;
+}
+.report-acuity-print {
+  cursor: pointer;
+  color: #0092CE;
+  font-size: 14px;
+  text-align: right;
+}
+.report-acuity-print:hover {
+  text-decoration: underline;
+}
+@media only screen and (max-width: 1100px) {  /* 720px */
+  .report-acuity-print {
+    text-align: left;
+  }
+}
+.reports_instructions {
+  font-size: 20px;
+  text-align: center;
+  margin: 20px auto;
+}
+.ui-tabs .ui-tabs-panel {
+  padding: 1em;
+  padding: 0;
+}
+.rpt-chart {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  display: table;
+}
+.rpt-highchart {
+  width: 100%;
+  display: table-row;
+}
+.rpt-table {
+  /* padding-left:10px;
+  padding-right:10px;
+  */
+  overflow: auto;
+}
+
+.rpt-toggle span {
+  display: none;
+}
+
+.rpt-toggle-table {
+  position: absolute;
+  top: 0;
+  right: 38px;
+  font-size: 10px;
+  cursor: pointer;
+  z-index: 999;
+  height: 25px;
+  padding: 6px;
+  width: 25px;
+  background:#1F2A37 url(images/list-icon.png) no-repeat 11px 13px;
+  border-left: 1px solid #515A65;
+}
+
+.rpt-toggle-table:hover {
+  background: #1F2A37 url(images/list-icon.png) no-repeat 11px 13px;
+}
+
+.rpt-toggle-chart {
+  position: absolute;
+  top: 0;
+  right: 39px;
+  font-size: 10px;
+  cursor: pointer;
+  z-index: 999;
+  height: 25px;
+  padding: 6px;
+  width: 25px;
+  background:#1F2A37 url(images/chart-icon.png) no-repeat 11px 13px;
+  border-left: 1px solid #515A65;
+}
+
+.rpt-toggle-chart:hover {
+  background: #1F2A37 url(images/chart-icon.png) no-repeat 11px 13px;
+}
+
+.rpt-filters {
+  position: absolute;
+  top: 0px;
+  padding-top: 8px;
+  right: 117px;
+  cursor: pointer;
+  z-index: 999;
+  height: 27px;
+  background-color: #2D3A48;
+  padding: 0 0 0 16px;
+}
+.rpt-filters span {
+  color: #898F96;
+  padding: 11px 8px 9px 8px;
+  float: left;
+}
+.rpt-filters span:hover {
+  color: #fff;
+}
+.rpt-filter-params,.rpt-filter-param {
+  display: none;
+}
+
+.rpt-filter-daterange-icon {
+  display: block;
+  background: transparent url(images/calendar-icon.png) no-repeat 10px 12px;
+  height: 25px;
+  padding: 6px;
+  width: 25px;
+  float: left;
+}
+.rpt-filter-daterange-icon:hover {
+  background: transparent url(images/calendar-icon-hover.png) no-repeat 10px 12px;
+}
+.rpt-filter-daterange-icon span {
+  display: none;
+}
+
+.rpt-filter-daterange
+{
+  display: none;
+  position: absolute;
+  top: 38px;
+  left: -84px;
+  width: 201px;
+  z-index: 999;
+  color: #000;
+  background: #fff;
+  padding: 15px;
+  -webkit-box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.45);
+  -moz-box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.45);
+  box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.45);
+}
+.rpt-filter-daterange:before {
+  content:'';
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: -5px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid #fff;
+}
+.rpt-filter-intervals {
+  display: inline;
+  position:relative;
+}
+
+.rpt-filter-startdate,.rpt-filter-enddate {
+  cursor: pointer;
+}
+
+.rpt-filter-interval-active {
+  font-weight: bold;
+  color: white !important;
+  background: #0092CE;
+}
+.rpt-max-link {
+  position: absolute;
+  top: 0px;
+  right: 0;
+  font-size: 10px;
+  cursor: pointer;
+  height: 25px;
+  width: 25px;
+  padding: 6px;
+  background: black;
+  margin: 0;
+  border-left: 1px solid #515A65;
+}
+.rpt-close {
+  position: absolute;
+  top: 1px;
+  right: 36px;
+  font-size: 10px;
+  cursor: pointer;
+  height: 25px;
+  width: 30px;
+  padding: 6px;
+  margin: 0;
+  background:transparent url(images/close-icon.png) center center no-repeat; /* 11px 11px; */
+}
+.rpt-close:hover {
+  background:#1F2A37 url(images/close-icon-hover.png) center center no-repeat;
+}
+
+
+.rpt-max-link-plus {
+  background: #1F2A37 url(images/expand-icon.png) no-repeat 11px 11px;
+}
+.rpt-max-link-minus {
+  background: #52667E url(images/minimize-icon.png) no-repeat 11px 11px;
+}
+
+.rpt-panel {
+  position: absolute;
+  border: 1px solid #eee;
+  /* width: 100%; maybe? */
+}
+.rpt-panel-maximized {
+width:calc(100% - 16px) !important;
+  height:calc(100% - 16px) !important;
+  top: calc(0% + 3px) !important;
+  left: calc(0% + 3px) !important;
+}
+.report-menu-wrapper {
+  padding-bottom: 10px;
+  height: 30px;
+}
+.ReportReports {
+  position: relative;
+  height: calc(100% - 44px);
+  width: calc(100% - 4px);
+}
+#myreportcontainer .rpt-table-topper
+/* copied from table_topper in base */
+{
+  position:relative;
+  margin: 30px auto 0 auto;
+  padding: 15px 0;
+  background: #051422;
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-topright: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+}
+/* Note: Table toppers and Chart toppers have different requirements */
+.ReportReports .rpt-table-topper {
+  background-color: transparent;
+  color: #000;
+  width: 100%;
+  display: block;
+  vertical-align: middle;
+  margin: 0;
+}
+
+.rpt-chart-topper {
+  background-color: transparent;
+  /*#a4bfc4;
+  */
+  color: #000;
+  width: 100%;
+  display: table-cell;
+  height: 26px;
+  vertical-align: middle;
+}
+.rpt-chart .rpt-chart-topper {
+  padding-bottom: 20px !important;
+}
+.rpt-title {
+  font-size: 15px;
+  font-weight: normal;
+  background: #2D3A48;
+  color: #fff;
+  padding: 10px;
+}
+/*
+.rpt-title .toggle-btns {
+  margin-top: 0 !important;
+}
+*/
+/* */
+.rpt-report-AttendanceBank-legend {
+  position:absolute;
+  top: 24px;
+  right: 20px;
+  color: #fff;
+  z-index: 10;
+  font-size: 10px;
+}
+.rpt-report-AttendanceBank th.header,
+.rpt-report-AttendanceBank th.headerSortDown,
+.rpt-report-AttendanceBank th.headerSortUp {
+  background-image: none !important;
+}
+.rpt-report-AttendanceBank table td {
+  font-size: 10px !important;
+}
+.rpt-report-AttendanceBank table th {
+  font-size: 10px !important;
+}
+.rpt-report-AttendanceBank .table_topper {
+  /* display:none;
+  */
+}
+.rpt-report-AttendanceBank .rpt-date-weekend {
+  background-color: lightgray;
+}
+.rpt-report-AttendanceBank .rpt-date-payday {
+  background-color: green;
+  color: #fff !important;
+}
+
+/* V2-V3 Extras */
+
+.ui-datepicker-calendar td a
+{
+    color: Black !important; /* The default datepicker is showing white on white on V3 (maybe V2 too) */
+}
+
+.rpt-title {
+  display: block;
+  height: 20px;
+  color: white;
+}
+
+.tooltip-scoretable th,.tooltip-scoretable td
+{
+    padding-left: 5px;
+    padding-right: 5px;
+    text-align: center;
+}
+
+.tooltip-scoretable-maintitle
+{
+    font-weight: bold !important;
+    background-color: lightgray;
+    text-align: center;
+}
+
+.rpt-tableicon
+{
+  width: 30px;
+  cursor: pointer;
+  background: url(images/tableicon.png) center center no-repeat;
+}
+
+.rpt-tableicontext
+{
+    cursor: pointer;
+    padding-left: 5px;
+    font-size: 13px;
+    font-style: italic;
+    color: #346291;
+}
+
+.rpt-popup-background
+{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 500;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background:rgba(0,0,0,0.5);
+}
+
+.rpt-popup-sizer
+{
+    position: relative;
+    margin: 50px auto 0 auto;
+    background-color: White;
+    border: 10px solid green;
+    border-radius: 25px;
+    height: auto;
+    width: 400px;
+}
+
+.rpt-dismiss
+{
+    font-size: 32px;
+    font-weight:normal;
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    cursor: pointer;
+    font-weight: normal;
+    z-index: 100;
+}
+
+
+.rpt-popup
+{
+    padding: 25px;
+
+}
+
+.rpt-popup h1
+{
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+}
+
+.rpt-popup p
+{
+    font-size: 13px;
+}
+
+.rpt-popup ol li,.qa-box-popup ul li
+{
+    margin-top: 8px;
+    padding: 5px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.rpt-form dt
+{
+    font-size:11px;
+    font-weight:bold;
+    display:inline-block;
+    width: 100px;
+    height: 35px;
+}
+.rpt-form dd
+{
+    display:inline;
+    height: 35px;
+}
+
+.rpt-panel-popup
+{
+	display:none;
+}
+
+.rpt-panel-popup .rpt-table
+{
+    overflow: visible;
+}
+.rpt-panel.rpt-panel-ExecView_TABLE.rpt-id-DashboardGrid1 {
+  height: auto !important;
+  top: 0 !important;
+  max-height: 370px;
+  position: relative;
+  border: 0px !important;
+  overflow-y: auto;
+  width: 100%;
+}
+.rpt-panel.rpt-panel-ExecView_TABLE.rpt-id-DashboardGrid1 table.acuity-table {
+  margin: 0;
+}
+.rpt-panel.rpt-panel-ExecView_TABLE.rpt-id-DashboardGrid1 table.acuity-table br {
+  display: none;
+}
+.rpt-panel.rpt-panel-dashboardtrend-ExecView_1,
+.rpt-panel.rpt-panel-dashboardtrend-ExecView_2,
+.rpt-panel.rpt-panel-dashboardtrend-ExecView_3 {
+  position: relative;
+  top: auto !important;
+  float: left;
+  left: auto !important;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: calc(33% - 6px);
+  height: calc(40% - 6px);
+  margin-top: 20px;
+}
+.rpt-panel.rpt-panel-dashboardtrend-ExecView_1.rpt-panel-maximized,
+.rpt-panel.rpt-panel-dashboardtrend-ExecView_2.rpt-panel-maximized,
+.rpt-panel.rpt-panel-dashboardtrend-ExecView_3.rpt-panel-maximized,
+.rpt-panel.rpt-panel-loginpercentage {
+  height: 90% !important;
+  margin: 0 !important;
+  width: 100% !important;
+}
+.rpt-panel.rpt-panel-ExecView_TABLE.rpt-id-DashboardGrid1.rpt-panel-maximized {
+  margin: 0 !important;
+  width: 100% !important;
+}
+.rpt-panel.rpt-panel-dashboardtrend-ExecView_2 {
+  margin-left:12px;
+  margin-right:12px;
+}
+#tabs-report .tabarea {
+  overflow-y: auto !important;
+}
+.ReportReports.reports_instructions {
+  height: auto !important;
+}

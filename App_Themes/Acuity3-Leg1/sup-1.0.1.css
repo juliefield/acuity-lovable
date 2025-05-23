@@ -1,0 +1,142 @@
+.SupTools-wrapper
+{
+    position: relative;
+}
+
+.SupTools-bottompadding /* to keep things from "floating off" the bottom */
+{
+    clear: both;
+    height: 150px;
+}
+
+.sup-controlpanel
+{
+    position: relative;
+    height: 60px;
+}
+
+.sup-Heading
+{
+    vertical-align: middle;
+}
+
+.sup-stgtoolslevel
+{
+    position:absolute;
+    top:0px; 
+    right: 0px;
+    margin:-5px 3px 0px 0px;
+    font-size: 10px;
+    width:300px;
+}
+
+.sup-MissingKPIAgentDrill
+{
+    cursor: pointer;
+    text-decoration: underline;
+}
+.sup-MissingKPIAgentDrill span
+{
+    display: none;
+}
+
+.sup-MissingKPIAgents
+{
+    margin-top: 10px;
+    font-size: 11px;
+}
+
+.sup-hover 
+{
+    background-color: #eeeeee;
+    cursor: pointer;
+}
+
+
+
+.sup-cardheader-hover
+{
+    /* background-color: #eeeeee; */ /* Doesn't change, why not? */
+    cursor: pointer;
+}
+
+.sup-MissingKPITable td
+{
+    text-align: center;
+}
+
+.sup-KPICards table
+{
+    float: left;
+    border: 1px solid #c0c0c0;
+    margin: 2px;
+}
+
+.sup-KPICardName
+{
+    font-size: 13px;
+}
+
+.sup-colorblock
+{
+    margin: 0 3px 0 2px;
+    font-size: 6px;
+    vertical-align: middle;
+}
+
+.sup-KPICardScore 
+{
+    text-align: center;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 0 5px 0 5px;
+}
+
+.sup-KPICardHeader
+{
+    background-color: #0076bf;
+    font-size: 14px;
+    font-weight: normal;
+    color: White;
+}
+
+.sup-memberuid 
+{
+    display:none;
+}
+
+.sup-contextmenu
+{
+    z-index:10000;
+    position:absolute;
+    background-color: darkgray;
+    color:White;
+    border: 1px solid gray;
+    font-size: 13px;
+    padding: 3px;
+}
+
+.sup-custom-menu {
+    display: none;
+    z-index: 1000;
+    position: absolute;
+    overflow: hidden;
+    border: 1px solid #CCC;
+    white-space: nowrap;
+    font-family: sans-serif;
+    background: #FFF;
+    color: #333;
+    border-radius: 5px;
+    padding: 0;
+}
+
+/* Each of the items in the list */
+.sup-custom-menu li {
+    padding: 8px 12px;
+    cursor: pointer;
+    list-style-type: none;
+}
+
+.sup-custom-menu li:hover {
+    background-color: #DEF;
+}

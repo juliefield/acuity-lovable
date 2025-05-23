@@ -1,0 +1,118 @@
+.filters-attributes-link
+{
+/*
+    vertical-align: top;
+    position: relative;
+    height: 20px;
+    width: 16px;
+    display: inline-block;
+    cursor:pointer;
+ 	background: url(images/attribute_16.png) no-repeat bottom left;
+*/
+    position: absolute;
+    height: 20px;
+    width: 16px;
+    top: -1px;
+    left: 176px;
+    cursor:pointer;
+ 	background: url(images/attribute_16.png) no-repeat bottom left;
+}
+
+.filters-presets-link
+{
+    position: absolute;
+    height: 12px;
+    width: 12px;
+    top: 5px;
+    left: 258px;
+    cursor:pointer;
+}
+
+.presets-command-add
+{
+ 	background: url(images/plus_sign.gif) no-repeat bottom left;
+ 	vertical-align: middle;
+}
+
+.presets-command-delete
+{
+ 	background: url(images/minus_sign.gif) no-repeat bottom left;
+ 	vertical-align: middle;
+ 	background-color: White;
+}
+
+
+.filters-attributes-modal
+{
+    position:absolute;
+    top: 300px;
+    left: 285px;
+    background-color: White;
+    z-index: 1000;
+    height: auto;
+    width: 200px;
+    border: 2px solid blue;
+    border-radius: 20px;
+    padding: 10px;
+    display: none;
+}
+
+.filters-line-wrapper
+{
+    height:25px;
+    position: relative;
+}
+
+.filters-line-notcheckbox
+{
+    position:absolute;
+    top: 5px;
+    left:0px;
+    display:none;
+}
+
+.filters-line-notlabel
+{
+    position:absolute;
+    top: 5px;
+    left: 15px;
+    display:none;
+}
+
+.filters-line-select-wrapper
+{
+    position: absolute;
+    top: 3px;
+    left: 40px;
+}
+
+.filters-line-select
+{
+    width: 140px;
+}
+
+.filters-line-not-dim
+{
+    color: darkgray;
+}
+
+.filters-line-not-bright
+{
+    color: white;
+    font-weight: bold;
+}
+
+.filters-attributes-close
+{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.filters-attributes-list-wrapper,.filters-attributes-list
+{
+    text-align: center;
+}

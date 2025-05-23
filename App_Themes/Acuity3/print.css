@@ -1,0 +1,110 @@
+@media print {
+  .leftpanel,.app-header,.ui-tabs-nav{
+    display:none;
+  }
+  .ReportReports {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 15px;
+    font-size: 14px;
+    line-height: 18px;
+  }
+  textarea.qst-comments {
+    overflow: visible;
+    display: block;
+    height: auto;
+    resize: none;
+    white-space: normal;
+    min-height: 100px;
+  }
+  .monitor-table th {
+    text-align: center;
+    border: 1px solid black;
+    color: white;
+    background-color: black;
+  }
+  thead {
+    display: table-header-group;
+  }
+  thead th {
+    text-align: center;
+    border: 1px solid black;
+    color: white;
+    background-color: black;
+  }
+  .parameters-col {
+    width: 5% !important;;
+    background-color: black;
+  }
+  .disposition {
+    text-align: center !important;
+    padding: 10px !important;
+  }
+  .checklist-col {
+    width: 5% !important;
+    background-color: black;
+  }
+  .points-col {
+    width: 5% !important;
+    background-color: black;
+  }
+  .disposition-col {
+    width: 15% !important;
+    background-color: black;
+  }
+
+  .highlight-hover.highlight {
+    color: black !important;
+    font-weight: bold;
+    border: 1px solid black !important;
+    background: none !important;
+  }
+  .comments-col {
+    width: 75% !important;
+    background-color: black;
+  }
+  .monitor-title-container a,
+  .monitor-title-container span,
+  .monitor-title-container button,
+  .mon-close,
+  .mon-delete,
+  .mon-submit {
+    display: none !important;
+  }
+  .monitor-view table {
+    border-spacing: 0px;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  table.monitor-table td {
+    border:1px solid black;
+    padding: 10px;
+  }
+  .monitor-view {
+    padding: 20px;
+  }
+  .mon-show-reviewnotes {
+    padding: 20px;
+  }
+
+
+  textarea.qst-comments {
+    display: block;
+    width: 95% !important;
+    min-height:  40px;
+    font-size: 11px;
+    resize: none;
+    overflow: visible;
+    padding: 0 !important;
+    max-height: 100%;
+    margin: 10px;
+    border: 0;
+  }
+  * { overflow: visible !important; }
+  .monitor-review-body { page-break-after:always; }
+}
