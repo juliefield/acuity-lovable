@@ -1,0 +1,45 @@
+﻿.sideNav_nav
+{
+    position:absolute;
+    height: 60px;
+    top: 400px;
+    width: 30px;
+    cursor:pointer;
+}
+
+.sideNav_nav-prev
+{
+    left: 0px;
+    background: white url(images/camera_prev.png) no-repeat 6px 20px;
+}
+
+.sideNav_nav-next
+{
+    right: 0px;
+    background: white url(images/camera_next.png) no-repeat 6px 20px;
+}
+
+.sideNav_tag
+{
+    position:absolute;
+    top: 400px;
+    height: 60px;
+    background-color:White;
+    line-height: 60px; 
+    vertical-align: middle;
+    cursor:pointer;
+    display:none;
+    padding: 0 10px 0 10px;
+}
+
+.sideNav_tag-prev
+{
+    left: 30px;
+    border-right: 1px solid #e0e0e0;
+}
+
+.sideNav_tag-next
+{
+    right: 30px;
+    border-left: 1px solid #e0e0e0;
+}

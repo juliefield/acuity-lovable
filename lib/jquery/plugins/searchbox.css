@@ -1,0 +1,46 @@
+﻿.searchbox
+{
+}
+
+.searchbox label
+{
+    font-weight: bold;
+}
+
+.searchbox input
+{
+}
+
+.searchbox-results
+{
+    background: white;
+    border: 2px solid black;
+    height:auto;
+    display:none;
+}
+.searchbox-results-record
+{
+    border-bottom: 1px solid gray;
+    padding-left: 5px; 
+}
+
+.searchbox-results-hover
+{
+    background: #d0d0d0;
+}
+
+.searchbox-results-record span
+{
+    display:none;
+}
+
+.searchbox-results-hdr
+{
+    font-weight: bold;
+    font-size: 14px;
+}
+.searchbox-results-matches
+{
+    margin-left: 25px;
+    font-style: italic;
+}

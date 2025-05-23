@@ -1,0 +1,56 @@
+﻿.collapse_list
+{
+    font-size: 12px;
+    color: Gray;
+}
+
+.collapse_list ul
+{
+    list-style: none;
+}
+
+.collapse_list > ul
+{
+    margin: 0;
+    padding: 0;
+}
+
+.collapse_height 
+{
+    display:none;
+}
+
+.collapse_list > ul > li
+{
+    border-top: 1px solid #d0d0d0;
+    color: #0078C1;
+    font-weight: bold;
+    margin-left: 0px;
+    padding: 20px 0 20px 25px;
+}
+
+.collapse_list_plus
+{
+    background: transparent url(images/accordionplus.png) no-repeat 0px 20px;
+    cursor: pointer;
+}
+
+.collapse_list_minus
+{
+    background: transparent url(images/accordionminus.png) no-repeat 0px 20px;
+    cursor: pointer;
+}
+
+.collapse_list ul > li > ul
+{
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+.collapse_list ul > li > ul > li
+{
+    color: Gray;
+    font-weight: normal;
+    margin-left: 0px;
+    padding: 20px 0 0 0;
+}
