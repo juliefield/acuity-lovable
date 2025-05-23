@@ -1,0 +1,980 @@
+body {
+	background: #fff;
+	padding: 0px;
+	margin: 0px;
+	font-family: Arial, Verdana, Helvetica, sans-serif;f
+	font-size: 10pt;
+	color: #000;
+	overflow: hidden;
+}
+
+.tooltip-sidebar 
+{
+    font-size: 14px;
+    /*background-color: orange;*/
+    color: Black;
+    border-width: 0px;
+    max-width: 500px;
+    text-align: center;
+}
+
+.ui-tooltip-content
+{
+    font-size: 16px;
+    line-height: 20px;
+    padding: 10px;
+    background-color: #FBD249;
+    border-width: 0px;
+    font-weight: bold;
+    color: Black;    
+}
+
+.tooltip-text
+{
+    display:block;
+    text-align: center;
+    line-height: 16px;
+    background-color: Red;
+}
+
+.gradient-light
+{
+    /* For WebKit (Safari, Google Chrome etc) */
+    background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#959595));
+    /* For Mozilla/Gecko (Firefox etc) */
+    background: -moz-linear-gradient(top, #F9F9F9, #959595);
+    /* For Internet Explorer 5.5 - 7 */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#F9F9F9, endColorstr=#959595);
+    /* For Internet Explorer 8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#F9F9F9F9, endColorstr=#95959595)";
+}  
+
+.gradient-lightest
+{
+    /* For WebKit (Safari, Google Chrome etc) */
+    background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#959595));
+    /* For Mozilla/Gecko (Firefox etc) */
+    background: -moz-linear-gradient(top, #F9F9F9, #959595);
+    /* For Internet Explorer 5.5 - 7 */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#F9F9F9, endColorstr=#D0D0D0);
+    /* For Internet Explorer 8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#F9F9F9, endColorstr=#D0D0D0)";
+}  
+
+#loading
+{
+    display:block;
+    text-align:center;
+    margin-top: 200px;
+}
+
+.header
+{
+    position: relative;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 65px;
+    overflow: visible;
+}
+
+.logo
+{
+    position: absolute;
+    left: 4px;
+    margin: 0;
+	padding: 0;
+    top: -10px;
+    height: 65px;
+	width: 300px;
+	background-image: url(images/Acuity_5c_Right_crop.png);
+	background-repeat: no-repeat;
+}
+
+.logo h1 {
+	display: none;
+}
+
+.heading
+{
+    position: absolute;
+    left: 290px;
+    top: 40px;
+    margin: 0;
+	padding: 0;
+	width: 300px;
+	height: 65px;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.header-tile
+{
+    margin-top: 17px;
+    position: relative;
+    float: right;
+    padding:  0 10px 0 10px;
+    z-index: 100;    
+}
+
+.header-tile a
+{
+    color: Black;
+    text-decoration: none;
+}
+
+.content
+{
+    position:relative; 
+    margin-top: 0px;
+}
+
+.leftpanel
+{
+    /*
+    position:relative;
+    margin-top: 6px;
+    */
+    position:absolute;
+    top: 4px;
+    left: 0px;
+    overflow-y: scroll;
+    overflow-x: visible;
+    border-top: 1px solid black;
+    width: 300px;
+    height: 100%;
+    /* For WebKit (Safari, Google Chrome etc) */
+    background: -webkit-gradient(linear, left top, left bottom, from(#959595), to(#F9F9F9));
+    /* For Mozilla/Gecko (Firefox etc) */
+    background: -moz-linear-gradient(top, #959595, #F9F9F9);
+    /* For Internet Explorer 5.5 - 7 */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#909095, endColorstr=#FFFFFF);
+    /* For Internet Explorer 8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#AAAAAA, endColorstr=#DDDDDD)";
+
+}
+
+.tabs
+{
+    position:absolute;
+    top:1px;
+    left:280px;
+    border-width:0px;
+    z-index: 0;
+}
+
+
+.companynode, .modelnode, .projectnode, .kpinode, .subkpinode
+{
+    display:block;
+}
+
+.clonable
+{
+    color: #0076BF;
+    font-weight: bold;
+}
+
+.kpinode, .subkpinode
+{
+    /* z-index: 150; */
+}
+
+.companynode:hover, .modelnode:hover, .projectnode:hover, .kpinode:hover, .subkpinode:hover
+{
+    display:block;
+    background-color: black;
+    color:White;
+    cursor: pointer;
+}
+
+.projectnode
+{
+    /* background-color: White; */
+    border-top: 3px solid black;
+}
+
+.modeladd, .projectadd, .kpiadd, .subkpiadd
+{
+    float: right;
+    padding-right: 10px;
+}
+
+.showid
+{
+    display:none;
+}
+
+.activenode
+{
+    background-color: Black;
+    color:White;
+}
+
+.ranges-wrapper-4
+{
+    position: relative;
+    text-align: center;
+    margin: 0px auto;
+    height: 433px;
+    width: 900px;
+}
+
+.ranges-wrapper-3
+{
+    position: relative;
+    margin: 0px auto;
+}
+
+.ranges-clone
+{
+    /*
+    position:absolute;
+    top: 0px;
+    left: 0px;
+    */
+    float: left;
+    width: 100px;    
+    text-align: center;
+    margin-top: 100px;
+    padding-right: 4px;
+}
+
+.ranges-clone p
+{
+    font-size: 12px;
+    font-style: italic;
+}
+
+
+.ranges-clone-dragbox
+{
+    margin-top: 20px;
+    margin-left: 115px;
+    background: url(images/target1.png) no-repeat;
+    width: 100px;
+    height: 100px;
+}
+
+.ranges-chart
+{
+    /*
+    position: absolute;
+    top: 0px;
+    left: 0px;
+*/
+    float: left;
+    padding: 0;
+    margin: 0;
+    height: 400px;
+}
+
+.ranges-wrapper-2
+{
+    /*
+    position: absolute;
+    top: 0px;
+    left: 410px;
+*/
+    float: left;
+}
+
+
+#kpichart 
+{
+    height: 400px;
+    width: 400px;
+}
+
+.ranges-wrapper
+{
+    border: 1px solid gray;
+    width: 330px;
+    height: 400px;
+    background-color: White;
+}
+
+.ranges-header
+{
+    overflow-y: hidden;
+    height: 20px;
+    width: 330px;
+}
+
+.ranges-body
+{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    /* height: 130px; */
+    width: auto;
+}
+
+.ranges-footer
+{
+    overflow-y: hidden;
+    height: 30px;
+    width: 315px;
+}
+
+.rangetable-header
+{
+    table-layout: fixed;
+    overflow-y: hidden;
+    height: 20px;    
+    width: auto;
+}
+
+.rangetable-header th
+{
+    text-align: center;
+    width: 100px;
+}
+
+.rangetable-body
+{
+}
+
+.rangetable-body td
+{
+    text-align: center;
+    width: 100px;
+    white-space:nowrap;
+}
+
+.rangetable-footer
+{
+    overflow-y: hidden;
+    width: auto;
+}
+
+.rangetable-footer th
+{
+    text-align: center;
+    width: 100px;
+}
+
+.rangetable-row-0
+{
+    background-color: #d0d0d0;
+}
+
+.rangetable-blank 
+{
+ 	padding-right: 30px;
+}
+
+.rangetable-delete
+{
+ 	background: url(images/minus_button.jpg) no-repeat center left;
+ 	padding-right: 25px;
+ 	cursor: pointer;
+}
+
+.rangetable-add
+{
+ 	background: url(images/plus_button.jpg) no-repeat bottom left;
+ 	padding-right: 25px;
+ 	cursor: pointer;
+}
+
+.rangetable-row-1
+{
+    background-color: #e0e0e0;
+}
+
+.rangetable-error
+{
+    color: Red;
+}
+
+
+.rangetable-input, .rangetable-input-add
+{
+    width: 80px;
+    text-align: center;
+    height: 20px;
+    border: 1px solid gray;
+}
+
+.rangetable-footbar
+{
+    position:relative;
+    width: 330px;
+    height: 30px;
+    vertical-align:middle;
+}
+
+.rangetable-buttons
+{
+    position:absolute;
+    top: 0px;
+    right:0px;
+}
+
+.stg-iphoneswitch
+{
+    position:absolute;
+    left: 0px;
+    top: 0px;
+    height: 27px;
+    width: 150px;
+    background: url(images/itoggle.png) no-repeat;
+    background-attachment:top left;
+    background-position: 0px -28px; /* ON - move to -50px -28px for OFF */
+}
+
+.jtoggle-wrapper
+{
+    position: relative;
+    height: 27px;
+    width: 94px;
+    overflow: hidden;    
+    cursor: pointer;
+}
+
+.jtoggle-shell
+{
+    background: transparent url(images/itoggle.png) no-repeat top left;
+    height: 27px;
+    width: 94px;
+}
+
+.tabarea 
+{
+    position: relative;
+    overflow-y: auto;
+}
+
+.ui-tabs-nav
+{
+    color: Red;
+}
+
+.admin-editing-wrapper
+{
+    position:absolute;
+    top:10px;
+    right:5px;
+    clear: both;
+}
+
+.admin-editing-wrapper label
+{
+    float: left;
+    padding: 3px 3px 0 0;
+}
+.admin-editing-wrapper span
+{
+    float:left;
+}
+
+.edit-span 
+{
+    padding: 0 10px 0 10px;
+    font-weight: bold;
+}
+
+.edit-span input
+{
+    border: 1px solid gray;
+    font-weight: normal;
+    padding: 3px;
+}
+
+.admin-org-savecancel,.admin-project-savecancel,.admin-kpi-savecancel,.admin-subkpi-savecancel
+{
+    margin-top: 10px;
+    display:none;
+}
+
+.admin-kpi-desc 
+{
+    margin-top: 5px;
+}
+
+.admin-kpi-desc input
+{
+    width: 300px;
+    
+}
+
+.admin-kpi-project
+{
+    position: absolute;
+    top: 5px;
+    right: 15px;
+}
+.admin-kpi-weight
+{
+    margin-top: 4px;
+    margin-bottom: 8px;
+}
+.admin-kpi-weight input
+{
+    text-align: center;
+    width: 50px;
+}
+.admin-kpi-subkpiconvert
+{
+    position: absolute;
+    top: 30px;
+    right: 15px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.admin-subkpi-desc 
+{
+    margin-top: 20px;
+    margin-bottom: 12px;
+}
+
+.admin-subkpi-desc input
+{
+    width: 300px;
+    
+}
+
+.admin-subkpi-project
+{
+    position: absolute;
+    top: 5px;
+    right: 15px;
+}
+
+.admin-subkpi-kpi
+{
+    position: absolute;
+    top: 25px;
+    right: 15px;
+}
+
+.admin-scoregadget
+{   
+    padding-top: 10px; 
+    background-color: #f0f0f0;
+    margin-right: 10px;
+}
+
+
+
+.admin-alert h1
+{
+    border-top: 1px solid gray;
+    margin-top: 10px;
+    padding-top: 20px;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.admin-link 
+{
+    font-size: 12px;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.admin-alert-add-wrapper
+{
+    /* border-top: 1px solid gray; */
+    /* border-bottom: 1px solid gray; */
+    font-size: 16px;
+    background-color: #d8d8d8;
+    display:block;
+    height: 220px;
+    margin-right: 15px;
+    padding: 10px;
+    margin-top: 3px;
+}
+
+.admin-alert-edit-wrapper
+{
+    margin-left: 20px;
+    /* border-top: 1px solid gray; */
+    /* border-bottom: 1px solid gray; */
+    font-size: 15px;
+    background-color: #d8d8d8;
+    display:block;
+    height: 220px;
+    margin-right: 15px;
+    padding: 10px;
+    margin-top: 3px;
+}
+
+
+.admin-alert-add
+{
+    clear: left;
+}
+
+.admin-alert-listing
+{
+    margin-bottom: 10px;
+    margin-left: 20px;
+    clear: left;
+}
+
+.admin-alert-within
+{
+    display:none;
+}
+
+.admin-alert-score
+{
+    width: 50px;
+}
+
+.admin-alert-number
+{
+    width: 30px;
+}
+
+.admin-alert-messagesline
+{
+    margin-top: 20px;
+}
+
+.admin-alert-messagediv
+{
+    float: left;
+    margin-right: 20px;
+    vertical-align: middle;
+}
+
+.admin-alert-messagediv label
+{
+    font-size: 10px;
+}
+
+.admin-alert-messagediv textarea
+{
+    height: 150px;
+    width: 270px;
+    font-size: 12px;
+}
+
+.admin-alert-adddiv 
+{
+    margin-top: 12px;
+}
+
+.admin-alert-ccmanager label
+{
+    vertical-align: top;
+    font-size: 18px;
+    line-height: 30px;
+}
+
+.admin-alert-ccmanager select
+{
+    vertical-align: top;
+}
+
+.admin-alert-cconly label
+{
+    font-size: 10px;
+}
+
+.admin-alert-button-add
+{
+}
+
+.admin-alert-button-cancel 
+{
+}
+
+.admin-messagebox-linkfooter
+{
+    clear: both;
+}
+
+.admin-messagebox-preview, .admin-messagebox-resetpositive, .admin-messagebox-resetnegative
+{
+    font-size: 11px;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-left: 10px;
+    float: right;
+}
+
+#scoregadget
+{
+}
+
+.spinner
+{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: inline-block;
+    line-height: 0;
+    vertical-align: middle;
+}
+.spinner input
+{
+    padding: 0;
+    margin: 0;
+    font-size: .45em;
+    border-width: .5px;
+    height: 1.5em;
+    width: 2em;
+}
+
+.message-preview
+{
+    position: absolute;
+    top: 0px;
+    margin: 100px auto 0 auto;
+    height:600px;
+    width: 600px;
+    text-align:left;
+    padding: 5px 25px 0 25px;
+    background-color: White;
+    border: 3px solid gray;
+    z-index: 100000;
+}
+
+.message-scroll
+{
+    position:relative;
+    z-index: 100000;
+}
+.admin-alertblock 
+{
+    padding-bottom: 10px;
+}
+    
+.admin-alert
+{
+    padding-bottom: 20px;
+}
+
+.headericon-message
+{
+    position:relative;
+    height: 40px;
+    width: 40px;
+    float: left;
+    margin-top: 1px;
+    cursor:pointer;
+    margin-right: 20px;
+ 	background: url(images/env_gray2.png) no-repeat;
+}
+
+.headericon-graph
+{
+    position:relative;
+    height: 40px;
+    width: 40px;
+    float: left;
+    margin-top: 1px;
+    cursor:pointer;
+ 	background: url(images/abcgraph.png) no-repeat;
+}
+
+.headericon-chat
+{
+    position: relative;
+    height: 40px;
+    width: 35px;
+    float: left;
+    margin-right: 20px;
+    margin-top: -1px;
+    cursor:pointer;
+ 	background: url(images/chatBubble.png) no-repeat;
+}
+
+.headericon-import
+{
+    position: relative;
+    height: 40px;
+    width: 35px;
+    float: left;
+    margin-right: 20px;
+    margin-top: -4px;
+    cursor:pointer;
+ 	background: url(images/import.png) no-repeat;
+}
+
+.messages-badge-unread
+{
+    position: absolute;
+    top: -5px;
+    right: -3px;
+    color:White;
+    background-color: Black;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    border: 0px;
+    padding: 0 4px 0 4px;
+}
+
+.messages-badge-incomplete
+{
+    position: absolute;
+    top: 15px;
+    right: -3px;
+    color:White;
+    background-color: Red;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    border: 0px;
+    padding: 0 4px 0 4px;
+}
+
+
+.window-close
+{
+    position: absolute;
+    top: 3px;
+    right: 5px;
+    text-decoration: none;
+    color: Black;
+    font-weight: bold;
+}
+
+.chat-beep-icon
+{
+    position: absolute;
+    top: 7px;
+    right: 8px;
+    font-size: 12px;
+    font-weight:bold;
+    background-color:Red;
+    padding: 0 3px 0 3px;
+    color: White;
+}
+
+.chat-save
+{
+    position: absolute;
+    top: 4px;
+    right: 90px;
+    color: Black;
+    font-weight: normal;
+    font-size: 12px;
+    text-decoration: underline;
+    cursor:pointer;
+    display:none;
+}
+
+.chat-mute
+{
+    position: absolute;
+    top: 1px;
+    right: 30px;
+    color: Black;
+    font-weight: normal;
+    font-size: 12px;
+    padding-left: 8px;
+    vertical-align: middle;
+}
+
+.chat-mute input
+{
+    position:relative;
+    padding-top: 4px;
+}
+
+.chat-timestamp
+{
+    font-size: 14px;
+    display:block;
+    text-align: center;
+    font-style: italic;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    color: #606060;
+}
+
+.chat-stats
+{
+    position: absolute;
+    top: 3px;
+    right: 90px;
+    text-decoration: none;
+    color: Black;
+    font-size: 14px; 
+}
+
+.chat-window
+{
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 500px;
+    border: 4px solid #D3344A;
+    -moz-border-radius: 2px;
+    background-color:White;
+    border-radius: 2px;    
+}
+
+.chat-label
+{
+    position: relative;
+    margin: 3px;
+    width: 230px;
+    font-weight: bold;
+    font-size: 18px;
+    margin-left: 5px;
+    height: 20px;
+    overflow:hidden;
+}
+
+
+.chat-select
+{
+    clear:both;
+    position:relative;
+    width: 290px;
+    padding-left: 5px;    
+    padding-top: 5px;
+    text-align: center;
+}
+
+.chat-parties
+{
+    position:relative;
+    width: 290px;
+}
+
+
+.chat-refresh
+{
+    position: absolute;
+    top: 3px;
+    right: 25px;
+    text-decoration: none;
+    color: Black;
+    font-weight: bold;
+}
+
+.chat-area
+{
+    position:relative;
+    width: 290px;
+    height: 240px;
+    overflow-y: scroll;
+    background-color: #e0e0e0;
+    padding-left: 5px;
+}
+
+.chat-send 
+{
+    position:relative;
+    width: 290px;
+    height: 30px;
+    background-color: White;
+    font-weight: bold;
+    padding-top: 4px;
+    margin: 3px;
+    margin-left: 5px;
+}
+
+.chat-send input
+{
+    border-width: 0px;
+    height: 20px;
+    font-size: 16px;
+}

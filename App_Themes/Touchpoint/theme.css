@@ -1,0 +1,48 @@
+﻿.arrow-down
+{
+    background: transparent url(images/arrow_down_white.png) no-repeat;
+}
+.fullbrowser
+{
+    background:#fff url(images/Orange80.png) repeat-x; /* Needs stacked body gradient, if there is one */
+}
+.footer
+{
+    background:#fff url(images/orange40.png) repeat-x;
+}
+
+.logo
+{
+    background: transparent url(images/TouchPoint_wTOP.gif) no-repeat;
+    height: 80px;
+    width: 400px;
+    margin: 0;
+}
+
+.bigbutton
+{
+    background: transparent url(images/OrangeButton5.png) no-repeat;
+    color: white;
+}
+
+.bordered
+{
+    border: 1px solid #EF4721;
+}
+
+/* DIFFERENCES betweeen Orange and Orange2 */
+
+.productsarea { background-color:white; }
+.servicesarea { background-color:white; }
+.newsarea { background:white; border-bottom: 1px solid  #EF4721; border-top: 1px solid  #EF4721;}
+.aboutarea { background-color:white; }
+.careersarea { background:white; }
+.contactarea { background-color:white; }
+.supportarea { background-color:white; border-bottom: 1px solid #EF4721}
+.portalarea { background:white; }
+
+
+.logo a
+{
+    height: 200px;
+}

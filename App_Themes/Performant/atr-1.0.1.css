@@ -1,0 +1,73 @@
+.AttritionLedger-wrapper
+{
+}
+
+.AttritionLedger h5
+{
+    margin: 3px 0 3px 0;
+    padding: 2px;
+    font-size: 16px;
+    font-weight: bold;
+    display:block;
+    background-color: LightGray;
+}
+
+.AttritionLedger td 
+{
+    padding: 0 5px 0 5px;
+    font-size: 12px;
+}
+
+.AttritionLedger th
+{
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.atr-disposition-link, .atr-verification-link
+{
+    cursor:pointer;
+    color:Red;
+    font-weight: bold;
+    text-decoration:underline;
+    text-align: right;
+}
+
+.atr-expand-link
+{
+    cursor:pointer;
+    text-align: right;
+}
+
+.atr-expand-link span, .atr-disposition-link span, .atr-verification-link span
+{
+    display:none;
+}
+
+.atr-sublog th
+{
+    font-size: 11px;
+}
+
+.atr-sublog td
+{
+    text-align: center;
+}
+
+.atr-sublog span
+{
+    display:none;
+}
+.atr-input-eventdt
+{
+    width: 80px;
+}
+.atr-input-notes
+{
+    width: 100px;
+}
+
+.atr-agent-line td
+{
+    border-top: 1px solid lightgray;
+}
