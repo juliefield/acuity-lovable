@@ -1,0 +1,170 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+jglib
+</name>
+</assembly>
+<members>
+<member name="P:jglib.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:jglib.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="P:jglib.My.Resources.Resources.CDSTextEditor">
+	<summary>
+  Looks up a localized string similar to // This code derived from:
+// +----------------------------------------------------------------+
+// | SimpleTextEditor 1.0                                           |
+// | Author: Cezary Tomczak [www.gosu.pl]                           |
+// | Free for any use as long as all copyright messages are intact. |
+// +----------------------------------------------------------------+
+
+function CDSTextEditor(id, objectId) {
+    if (!id || !objectId) { alert("CDSTextEditor.constructor(id, objectId) failed, two  [rest of string was truncated]";.
+</summary>
+</member><member name="P:jglib.My.Resources.Resources.DivTunnel">
+	<summary>
+  Looks up a localized string similar to   $(document).ready(function()
+  {
+    DivGet();
+  });
+  
+  function DivGet()
+  {
+    $.ajax({
+      type: "GET",
+      cache: false,
+      async: true,
+      url: jgQMlmc,
+      dataType: "html",
+      error: function(request,textStatus, errorThrown){
+          alert('Error in AJAX call:' + request.status + ' / ' + textStatus + ' / ' + errorThrown);
+      },
+      success: DivInject
+    });  
+  }
+
+  function DivInject(html)
+  {
+    alert("Got for injection:" + html);
+    DivGet();
+  [rest of string was truncated]";.
+</summary>
+</member><member name="P:jglib.My.Resources.Resources.QueryMaker">
+	<summary>
+  Looks up a localized string similar to   $(document).ready(function()
+  {
+    $.ajax({
+      type: "GET",
+      url: jgQMlmc,
+      dataType: "xml",
+      error: function(request,textStatus, errorThrown){
+          alert('Error loading ListConfig XML Document:' + request.status + ' / ' + textStatus + ' / ' + errorThrown);
+      },
+      success: parseListConfig
+    });
+  });
+  
+  var hlddbType;
+  var hldsearchCase;
+  var hlddisplayname;
+  var hlddisplayTool;
+  var hldfield;
+  
+  function parseinxml(xml,parenti)
+  {
+    var b [rest of string was truncated]";.
+</summary>
+</member><member name="P:jglib.My.Resources.Resources.RecordsGrid">
+	<summary>
+  Looks up a localized string similar to 
+        function JGRGmoveright()
+        {
+            var sl = document.getElementById("JGRGleft");
+            var dl = document.getElementById("JGRGright");
+            JGRGmoveSelected(sl,dl);
+            return false;
+        }
+        function JGRGmoveleft()
+        {
+            var dl = document.getElementById("JGRGleft");
+            var sl = document.getElementById("JGRGright");
+            JGRGmoveSelected(sl,dl);
+            return false;
+        }
+        function JGRGmoveSelect [rest of string was truncated]";.
+</summary>
+</member><member name="P:jglib.My.Resources.Resources.String1">
+	<summary>
+  Looks up a localized string similar to test string.
+</summary>
+</member><member name="P:jglib.My.Resources.Resources.UploadFileDisplayer">
+	<summary>
+  Looks up a localized string similar to 
+var jgWIZmaxcols = 0;
+
+function trim(s) {
+    if (typeof s != 'undefined')
+    {
+    	s = s.replace(/(^\s*)|(\s*$)/gi,"");
+	    s = s.replace(/[ ]{2,}/gi," ");
+	    s = s.replace(/\n /,"\n");
+	    return s;
+	 }
+	 else
+	 {
+	    return "";
+	 }
+}
+
+var jgUPWorksheetIndex = "";
+
+function jgUPFillTable()
+{
+    var ws = document.getElementById("worksheetselect")
+    if (ws != null)
+    {
+        for (i = 0; i &lt; ws.options.length; i++)
+        {
+            if (ws.options[i].selected)
+   [rest of string was truncated]";.
+</summary>
+</member><member name="P:jglib.My.Resources.Resources.UploadFileDisplayer1">
+	<summary>
+  Looks up a localized string similar to 
+var jgWIZmaxcols = 0;
+
+function trim(s) {
+    if (typeof s != 'undefined')
+    {
+    	s = s.replace(/(^\s*)|(\s*$)/gi,"");
+	    s = s.replace(/[ ]{2,}/gi," ");
+	    s = s.replace(/\n /,"\n");
+	    return s;
+	 }
+	 else
+	 {
+	    return "";
+	 }
+}
+
+function jgUPFillTable()
+{
+    var ta = document.getElementById("txtab");
+    var rt = document.getElementById("rawtext");
+    
+    //TODO: parse the string and preset the fielddelimiter and textqualifier vars.
+    var fd = document.getElement [rest of string was truncated]";.
+</summary>
+</member><member name="T:jglib.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+</members>
+</doc>
