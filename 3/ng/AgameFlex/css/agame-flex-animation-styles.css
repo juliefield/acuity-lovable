@@ -1,0 +1,346 @@
+
+.inline-item
+{
+	display:inline-block;
+	margin:0px;
+	padding:0px;
+}
+.rightposition
+{
+	right:50px;
+	float:right;
+}
+.clearfix
+{
+	clear:both;
+}
+.left-column {	
+	width:15%;
+	max-width:15%;
+	min-width:15%;
+	display: inline-block;	
+	max-height:75vh;
+	overflow-y: auto;
+   border:1px solid lime;
+}
+.right-column {	
+	width:84%;
+	max-width:84%;
+	min-width:84%;
+	display: inline-block;	
+	max-height:75vh;
+	height:75vh;
+	overflow:none;
+   border:1px solid lime;
+}
+
+.flex-animation-holder
+{
+   border:4px dashed darkgray;
+}
+.flex-animation-header
+{
+   background-color:hotpink;
+   border:1px dashed black;
+}
+.flex-animation-content
+{
+   min-height:99%;
+	max-height:99%;
+	height:99%;
+	width:99%;
+	min-width:99%;
+	max-width:99%;
+   padding:3px;
+	background-color:slategray;
+   border:1px dashed black;
+}
+.flex-animation-footer
+{
+   background-color:cyan;
+   border:1px dashed black;
+}
+.flex-animation-button-holder
+{
+	width:90%;
+}
+.flex-animation-scoring-info-holder
+{
+   border:1px solid hotpink;
+   background-color:orchid;
+}
+.flex-animation-board-holder
+{
+   background-color:lightslategray;
+	border:1px solid purple;   
+}
+.flex-animation-scoreboard-list 
+{
+	height:99%;
+	background-color: aqua;
+}
+.flex-animation-scoreboard-list-item
+{
+	background-color:seagreen;
+	font-weight:normal;
+}
+.flex-animation-scoreboard-list-item:nth-child(even)
+{
+	background-color:lightseagreen;
+	font-weight:bold;
+}
+.flex-animation-scoreboard-list-item.active
+{
+	background-color:blue;
+	color:white;
+}
+.flex-animation-scoreboard-item
+{	
+	border:1px dotted darkgrey;
+	display:inline-block;
+}
+.player-name
+{
+	text-align:left;
+	width:49%;
+}
+.player-score
+{
+	width:49%;
+	text-align:center;
+}
+
+
+.flex-animation-player-token.Racecars
+{
+	background-image:url("../images/assets/Racecars/playerbasegamepiece.png");
+	height:50px;
+	width:100px;	
+	background-size:cover;	
+	background-position: center center;
+}
+
+.flex-animation-player-race-lane
+{
+	z-index:0;
+	border:2px solid yellow;
+	background-color:lightslategray;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+.flex-animation-player-race-lane-name
+{
+	z-index:1;	
+	font-size:25px;
+	font-weight:bold;
+	height:50px;	
+	color:black;
+	float:right;
+	padding-right:10px;
+	vertical-align:middle;	
+}
+.flex-animation-player-race-lane-user-laps
+{
+	z-index:1;
+	font-size:10px;
+	position:relative;
+	bottom:0;
+	right:0;
+	width:75px;
+	border:1px dashed brown;
+}
+DIV.flex-animation-player-race-lane-step
+{	
+	display:inline-block !important;
+	z-index:250;		
+	height:50px;
+	width:10px;	
+	text-align:center;
+	vertical-align: middle;		
+}
+.flex-animation-player-token
+{
+	display:inline-block;
+	position:absolute;
+	margin:0px;
+	padding:0px;
+	width:100px;
+	z-index:500;
+	background-color:transparent;
+	border:2px dotted coral;
+	overflow: none;
+}
+.flex-animation-player-token.active
+{
+	border:5px solid lime;
+	border-radius:10px;
+	overflow: none;
+}
+.flex-animation-player-token-avatar
+{
+	z-index:550;
+	height:35px;
+	width:35px;
+	text-align:center;
+	margin:0px;
+	padding:0px;
+}
+.flex-animation-player-token-player-name
+{
+	z-index:550px;
+	font-size:10px;
+	color:black;
+	border:1px dashed lightgreen;
+	font-weight:bold;
+	text-align:center;
+}
+.flex-animation-lights
+{
+	border:1px solid black;
+	width:200px;	
+	height:60px;
+	background-color:black;
+	text-align:center;
+}
+.flex-animation-lights-red
+{
+	display: inline-block;
+	border:1px solid red;	
+	height:50px;
+	width:50px;
+	border-radius: 75px;
+	margin:3px;
+}
+.flex-animation-lights-yellow
+{
+	display: inline-block;
+	border:1px solid yellow;
+	height:50px;
+	width:50px;
+	border-radius: 75px;
+	margin:3px;	
+}
+.flex-animation-lights-green
+{
+	display: inline-block;
+	border:1px solid green;
+	height:50px;
+	width:50px;
+	border-radius: 75px;
+	margin:3px;
+}
+.flex-game-winner-btn-close
+{
+	float:right;
+}
+#animation-winner-holder
+{
+	z-index:8000;
+	position:absolute;
+	top:10vh;
+	left:10vw;
+	max-width: 920px;
+	max-height:600px;
+	color: #000;
+	background-color:white;
+	-webkit-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.75);
+	width: 100%;
+	height:100%;
+}
+.flex-game-winner-popup-header
+{
+	height:50px;
+	border:1px dashed darkgray;
+	background-color:lime;	
+}
+.flex-game-winner-popup-content
+{
+	min-height:500px;
+	max-height:500px;
+	border:1px solid purple;
+	background-color:cyan;
+}
+.flex-game-winner-popup-footer
+{
+	border:1x dotted orange;
+	background-color:blue;
+}
+.scoreboard-player-avatar
+{
+	height:15px;
+	width:15px;
+	margin:0px;
+	padding:0px;
+}
+.winner-information-display-holder
+{
+	min-height:500px;
+	max-height:500px;
+	overflow:auto;
+}
+.winner-information-headline
+{
+	font-size:25px;
+}
+.winner-list-holder
+{
+	max-height:150px;
+	min-height:150px;
+	overflow:auto;
+}
+.winner-player-name
+{
+	font-weight:bold;
+	font-size:15px;
+}
+.winner-player-name-multiple
+{
+	display:inline-block;
+}
+.game-complete
+{
+	background-image: linear-gradient(to top right, black,white);
+}
+/*wizard development*/
+.flex-animation-enemy-token.wizard
+{
+	background-image:url("../images/assets/wizard/enemyBoss.jpg");
+	height:250px;
+	width:200px;
+	min-height:250px;
+	min-width:200px;
+	background-size:cover;	
+	background-position: center center;
+	border:1px dashed blue;
+	position:relative;
+}
+.flex-animation-enemy-ability
+{
+	width:20px;
+	height:15px;
+	display:inline-block;
+	border:1px dashed orange;	
+}
+.flex-animation-ability
+{
+	position:absolute;
+	border:1px solid lime;
+}
+.animation-item
+{
+	border:none;
+}
+.flex-animation-player-step
+{	
+	height:50px;
+	width:50px;
+	border:1px dotted orchid;
+}
+.flex-animation-player-token.wizard
+{
+	height:50px;
+	width:50px;
+	border:1px solid darkgreen;
+}

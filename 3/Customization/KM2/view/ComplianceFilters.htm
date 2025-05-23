@@ -1,0 +1,75 @@
+<div class="custom-dashboard-filter-panel">
+   <div class="custom-dashboard-filters">
+      <div class="inline-div">
+         <span class="filter-label">
+            Project 
+            
+            <button class="showAddToFilterButton" dataValue="project">+</button>
+            <span id="compDashboardCurrentFilter_Project" class="current-filter-selected-list"></span>
+            <input type="hidden" id="compDashboardCurrentFilterSelected_Project">
+         </span>
+         
+      </div>
+      <div class="inline-div">
+         <span class="filter-label">
+            Location
+            
+            <button class="showAddToFilterButton" dataValue="location">+</button>
+            <span id="compDashboardCurrentFilter_Location" class="current-filter-selected-list"></span>
+            <input type="hidden" id="compDashboardCurrentFilterSelected_Location">
+         </span>
+      </div>
+      <div class="inline-div">
+         <span class="filter-label">
+            LOB
+            <button class="showAddToFilterButton" dataValue="group">+</button>
+            <span id="compDashboardCurrentFilter_Group" class="current-filter-selected-list"></span>
+            <input type="hidden" id="compDashboardCurrentFilterSelected_Group">
+         </span>
+      </div>
+      <div class="inline-div">
+         <span class="filter-label">
+            Team
+            <button class="showAddToFilterButton" dataValue="team">+</button>
+            <span id="compDashboardCurrentFilter_Team" class="current-filter-selected-list"></span>
+            <input type="hidden" id="compDashboardCurrentFilterSelected_Team">
+         </span>
+      </div>
+      <div class="inline-div">
+         <span class="filter-label">
+            Auditor
+            <button class="showAddToFilterButton" dataValue="users">+</button>
+            <span id="compDashboardCurrentFilter_Users" class="current-filter-selected-list"></span>
+            <input type="hidden" id="compDashboardCurrentFilterSelected_Users">
+         </span>
+      </div>
+      <div class="inline-div">
+         <span>Dates </span>
+         <span>
+            <input id="compDashboardFilter_StartDate" class="date-filter-input date-input" /> - <input id="compDashboardFilter_EndDate" class="date-filter-input date-input" />
+         </span>
+      </div>
+   </div>
+   <div class="compliance-filter-btns">
+      <button id="btnApplyFilter" class="button btn btn-filter">Apply Filter</button>
+      &nbsp;
+      <button id="btnClearFilter" class="button btn btn-clear">Clear Filters</button>
+   </div>
+
+   <div id="filterPanelSelectionHolder" class="form-filter-holder">
+      <div class="form-filter-holder-content">
+         <div class="form-filter-header">
+            <div id="filterPanelSelectionHolderAreaName"></div>
+            <input type="hidden" id="filterApplyArea" />
+         </div>
+         <div class="form-filter-body">
+            <div id="filterPanelSelectionOptionListHolder" class="editor-list-holder"></div>
+         </div>
+         <div class="form-filter-footer">
+            <button id="btnAddSelectedFilter" class="button btn add-selected-button">Add Selected</button>
+            <button id="btnClearCurrentFilters" class="button btn add-selected-button">Clear Selected</button>
+            <button class="btn-close editor-close">Close</button>
+         </div>
+      </div>
+   </div>
+</div>

@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title></title>
+        <script type="text/javascript" src="../../lib/jquery/jquery-1.7.2.min.js"></script>
+        <script src="../../lib/jquery/plugins/jquery.cookie.js" type="text/javascript"></script>
+        <script type="text/javascript" src="../../applib/js/appLib-1.1.15.js"></script>
+    </head>
+    <body>
+    test
+      <script src="https://cdn.socket.io/4.6.0/socket.io.min.js" integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+" crossorigin="anonymous"></script>
+      <script type="text/javascript">
+        
+
+            //Check that page is ready to connect to websocket
+            function callOnReady() {
+                if ($("#wsc_message_com",a$.WindowTop().document).html() == "READY") {
+                    runService();
+                }
+                else {
+                    setTimeout(callOnReady, 500);
+                }
+            }
+            callOnReady();
+ 
+            function runService() {
+                $("#wsc_message_com",a$.WindowTop().document).html("CONNECTING...");
+
+                
+                const ws = io("https://nathan.acuityapmr.com");
+                
+                var userInfo = {};
+
+                ws.on('connect', () => {
+                    $("#wsc_status",a$.WindowTop().document).html("CONNECTED");
+                    $("#wscOnline",a$.WindowTop().document).css("display","block"); //Connected dot.
+
+                    const login = {
+                        userid: $("#wsc_userid",a$.WindowTop().document).html(),
+                        clientid: $("#wsc_client",a$.WindowTop().document).html()
+                    }
+                    userInfo = login
+                    console.log('Sent login info: ' + JSON.stringify(login));
+                    ws.emit('login', JSON.stringify(login));
+                });
+
+                ws.addEventListener('login', (data) => {
+                    try {
+                        message = JSON.parse(data); 
+
+                        if (typeof message.error !== 'undefined') { //only occurs when userid is not in db
+                            window.top.document.getElementById("wsc_status").innerHTML = 'ERROR';
+                            window.top.document.getElementById("wsc_idlastmsg").innerHTML = 0;
+                            window.top.document.getElementById("wsc_message_com").innerHTML = message.error;
+                        }
+                        else { //standard path
+                            window.top.document.getElementById("wsc_status").innerHTML = 'LOGGED_IN';
+                            window.top.document.getElementById("wsc_idlastmsg").innerHTML = message.id;
+                            window.top.document.getElementById("wsc_info").innerHTML = message.info;
+                            window.top.document.getElementById("wsc_route").innerHTML = message.route;
+                            
+                            
+                            //window top = a$.WindowTop()
+                            console.log('Login Successful');
+                        }
+                    }
+                    catch(err)
+                    {
+                        console.log(err);
+                    }   
+                });
+
+                ws.addEventListener('update', (data) => {
+                    try {
+                        console.log(data);
+                        if (typeof data.id !== 'undefined') { //ensures this userid had a message in db
+                            window.top.document.getElementById("wsc_idlastmsg").innerHTML = data.id;
+                            window.top.document.getElementById("wsc_info").innerHTML = data.info;
+                            window.top.document.getElementById("wsc_route").innerHTML = data.route;
+                        }
+                    }
+                    catch (err) {
+                        console.log(err);
+                    }
+                });
+
+                ws.on('disconnect', () => {
+                    console.log("Connection Closed");
+                    $("#wscOnline",a$.WindowTop().document).css("display","none");
+                });
+
+            }
+        </script>
+
+    </body>
+</html>

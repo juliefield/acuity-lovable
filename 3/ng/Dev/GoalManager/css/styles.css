@@ -1,0 +1,564 @@
+button
+{
+    margin: 3px;
+}
+button:hover {
+    background: #017bad;
+    cursor: pointer;
+}
+textarea
+{
+    min-width: 99%;
+    max-width:99%;
+    width:99%;
+    resize:none;
+    min-height:75px;
+    height:75px;
+}
+.errorField {
+    border: 2px solid red !important;
+}
+.error-information-holder {
+    color: red;
+}
+.error-information-holder ul {
+    margin-left: 18px;
+    padding-left: 0;
+    margin-top: 4px;
+}
+.error-information-holder ul li {
+    list-style: none;
+    display: inline-block;
+    color: red;
+    position: relative;
+    margin-right: 10px;
+}
+.error-information-holder ul li:after {
+    content: ',';
+    position: absolute;
+    right: -4px;
+    bottom: 0;
+}
+.error-information-holder ul li:last-child:after {
+    display: none;
+}
+.centerspacer
+{
+    min-width:200px;
+    width:30%;
+}
+.center
+{
+    text-align:center;
+}
+.goal-completed,
+.task-completed,
+.goal-archived,
+.task-archived
+{
+    font-weight:bold;
+    position: relative;
+    
+}
+
+.goal-completed:before,
+.task-completed:before {
+    content: "\f058";
+    font-family: 'Font Awesome 5 Pro';
+    position: absolute;
+    top: 9px;
+    left: 17px;
+    color: #32ab0a;
+    font-size: 24px;
+}
+.goal-archived:before,
+.task-archived:before
+{
+    content: "\e053";
+    font-family: 'Font Awesome 5 Pro';
+    position: absolute;
+    top: 9px;
+    left: 17px;
+    color: #009ad9;
+    font-size: 24px;
+}
+.goal-archived div,
+.task-archived div
+{
+    font-style:italic;
+}
+.archive-btn {
+    font-size: 14px;
+    padding: 5px 8px;
+}
+.goal-completed div,
+.task-completed div
+{
+    font-style: italic;
+    text-decoration:line-through !important;
+}
+.user-goal-manager-header-options div,
+.user-task-manager-header-options div
+{
+    display:inline-block;
+}
+.user-goal-manager-header-options,
+.user-task-manager-header-options
+{
+    padding:3px;
+}
+.user-goal-manager-button-holder,
+.user-task-manager-button-holder
+{
+    float: right;
+    margin-top: -8px;
+}
+.data-item-header
+{
+    padding: 5px 0;
+    font-weight: bold;
+    font-size: 15px;
+    background: #1f2b38;
+    color: white;
+    margin-top: 0; 
+    min-height: auto !important;
+    max-height: auto !important;
+    height: auto !important;
+    position: relative;
+}
+.user-goal-manager-user-goals-list,
+.user-task-manager-user-tasks-list {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 10px;
+    border:1px solid #ddd;
+}
+.widget.width-2col.width-2col-only-style .user-goal-manager-user-goals-list,
+.widget.width-2col.width-2col-only-style .user-task-manager-user-tasks-list {
+    display: block;
+    width: 100%;
+}
+.widget.width-2col.width-2col-only-style .goal-start-value, 
+.widget.width-2col.width-2col-only-style .goal-end-value, 
+.widget.width-2col.width-2col-only-style .goal-current-value, 
+.widget.width-2col.width-2col-only-style .task-start-value, 
+.widget.width-2col.width-2col-only-style .task-end-value, 
+.widget.width-2col.width-2col-only-style .task-current-value {
+    width: 30px;
+}
+.widget.width-2col.width-2col-only-style .goal-name, 
+.widget.width-2col.width-2col-only-style .task-name {
+    max-width: 200px;
+    min-width: 190px
+}
+.divider {
+    margin: 0 8px;
+    width: 1px;
+    border-right: 1px solid #a9a9a9;
+}
+.user-goal-manager-user-goal-row-item,
+.user-task-manager-user-task-row-item-holder {
+    position: relative;
+}
+.user-task-manager-holder,
+.user-goal-manager-holder
+{
+    font-family: Arial, Verdana, Helvetica, sans-serif;
+    font-size:10pt;
+    padding: 20px;
+
+}
+.user-goal-manager-button-options-holder,
+.user-task-manager-button-options-holder
+{    
+    width:99%;
+    padding: 0;
+}
+.user-goal-manager-user-goal-row-item-header div,
+.user-goal-manager-user-goal-row-item-sub-header div,
+.user-goal-manager-user-goal-row-item div,
+.user-task-manager-user-task-row-item-header div,
+.user-task-manager-user-task-row-item-sub-header div,
+.user-task-manager-user-task-row-item div
+{
+    display:inline-block;   
+    vertical-align: top;   
+}
+.user-goal-manager-user-goal-row-item-sub-header,
+.user-task-manager-user-task-row-item-sub-header 
+{
+    font-size:1em;
+}
+.user-goal-manager-user-goal-row-item:nth-child(even),
+.user-task-manager-user-task-row-item-holder:nth-child(even) 
+{
+    background-color:rgba(230, 230, 230, 230);
+}
+
+.user-goal-manager-goal-selector-checkbox-holder,
+.user-task-manager-task-selector-checkbox-holder,
+.user-task-manager-task-selector-checkbox-spacer
+{
+    min-height: 25px;
+    height: 25px;
+    vertical-align: top !important;
+    min-width: 50px;
+    width: 50px;
+    position: relative;
+    top: 4px; 
+    padding: 5px;
+}   
+.goal-assigned {
+    margin-top: 9px;
+}
+.goal-assigned.data-item-header {
+    margin-top: 0;
+    padding: 8px 5px 5px 5px;
+}
+
+.user-goal-manager-select-all-checkbox,
+.user-goal-manager-goal-selector-checkbox,
+.user-task-manager-select-all-checkbox,
+.user-task-manager-goal-selector-checkbox 
+{
+    width:50px;
+}
+.user-goal-data-item,
+.user-task-data-item
+{
+    padding:8px 5px 5px 5px;
+}
+.user-goal-manager-user-stats-holder {
+    font-style: italic;
+}
+
+.task-name
+{
+    display:inline-block;
+    max-width:300px;
+    min-width:300px;  
+    font-weight: bold; 
+}
+.goal-name
+{
+    display:inline-block;
+
+    min-width:28%;  
+    font-weight: bold; 
+}
+.goal-start-value,
+.goal-end-value,
+.goal-current-value,
+.task-start-value,
+.task-end-value,
+.task-current-value
+{
+    width:100px;    
+}
+.goal-end-date,
+.task-end-date,
+.task-due-date
+{
+    width:100px;
+}
+.goal-assigned
+{
+    width:100px;
+}
+.goal-team-leader,
+.task-team-leader
+{
+    width:150px;
+}
+.goal-button-holder,
+.task-button-holder
+{
+    width:150px;
+    text-align: right;
+    position: absolute;
+    right: 15px;
+    top:0;
+}
+
+.user-goal-manager-editor-holder,
+.user-task-manager-editor-holder,
+.user-goal-manager-create-task-holder
+{
+    max-height: 100%;
+    min-height: 100%;
+    overflow-y: auto;
+    width: 90%;
+    max-width: 600px; 
+    position: absolute;
+    right: 0;
+    margin: 0 auto;
+    top: 0;
+    padding: 20px 15px;
+    background: white;
+    -webkit-box-shadow: 0px 0px 9px 2000px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 9px 2000px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 9px 2000px rgba(0, 0, 0, 0.75);
+    z-index: 100000;
+}
+.user-goal-manager-editor-goal-sub-type {
+    margin-left: 124px;
+    margin-bottom: 10px;
+}
+.no-data-found p {
+    text-align: center;
+    padding: 15px;
+    font-style: italic;
+}
+.close-panel-btn {
+    float: right;
+    color: #666;
+    background: transparent;
+    font-size: 21px;
+}
+.close-panel-btn:hover {
+    background: transparent;
+    color: #444;
+}
+.user-goal-manager-editor-form-header,
+.user-task-manager-editor-form-header,
+.user-goal-manager-create-task-header
+{
+    font-size: 24px;
+    font-weight: bold;
+    padding-bottom: 15px;
+}
+.user-goal-manager-editor-form,
+.user-task-manager-editor-form,
+.user-goal-manager-create-task-form
+{
+    background-color: rgba(240, 240, 240, 1);
+    padding: 15px; 
+}
+.user-goal-manager-data-label_info {
+    font-weight: bold;
+}
+.metric-box {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+.metric-box .user-goal-manager-form_row {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.user-goal-manager-form_row .user-goal-manager-data-label,
+.user-goal-manager-form_row .user-goal-manager-data-label_info,
+.user-task-manager-form_row .user-task-manager-data-label 
+{
+    display: inline-block;
+    margin-bottom: 10px;
+}
+.user-goal-manager-form_row input,
+.user-task-manager-form_row input {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    height: 15px;
+    width: 60%;
+    max-width: 100%;
+    padding: 5px;
+}
+.user-goal-manager-form_row select,
+.user-task-manager-form_row  select {
+    height: 27px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    width: 62%;
+    max-width: 100%;
+}
+.user-goal-manager-data-label,
+.user-task-manager-data-label {
+    width: 120px;
+}
+.user-task-manager-editor-buttons-holder button,
+.user-goal-manager-editor-buttons-holder button,
+.user-task-manager-button-options-holder button,
+.user-goal-manager-button-options-holder button {
+    font-size: 15px;
+    padding: 8px 15px;
+}
+.user-goal-manager-button-holder button,
+.user-task-manager-button-holder button {
+    padding: 6px 10px;
+}
+.user-task-manager-filter-holder,
+.user-goal-manager-filter-holder {
+    display: inline-block;
+    font-weight: normal;
+    font-size: 14px;
+    margin-left: 20px;
+}
+.user-task-manager-filter-holder input[type=checkbox],
+.user-goal-manager-filter-holder  input[type=checkbox]{
+    margin-right: 5px;
+    position: relative;
+    top: 1px;
+}
+.user-task-manager-editor-buttons-holder button:hover,
+.user-goal-manager-editor-buttons-holder button:hover,
+.user-goal-manager-button-holder button:hover,
+.user-task-manager-button-holder button:hover {
+    background: #017bad;
+    cursor: pointer;
+}
+.user-task-manager-form_row textarea,
+.user-goal-manager-form_row textarea  {
+    webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    height: 15px;
+    width: 100%;
+    max-width: 82%;
+    padding: 5px;
+    margin-bottom: 12px;
+    min-width: 0;
+    line-height: 19px;
+}
+.user-task-manager-form_row input[type=checkbox],
+.user-goal-manager-form_row input[type=checkbox] {
+    margin-right: 2px;
+    width: auto;
+    margin-top: 10px;
+    position: relative;
+    top: 2px;
+}
+
+.user-goal-manager-editor-buttons-holder,
+.user-task-manager-editor-buttons-holder
+{
+    margin-top:10px;
+    text-align:center;
+    vertical-align: middle;
+    width:100%;
+    padding:2px;
+}
+.user-task-manager-user-task-row-item-holder 
+{
+    vertical-align: text-top;
+}
+.user-task-manager-user-task-row-item-holder div
+{
+    display: inline-block;    
+}
+.user-task-manager-task-desc-holder
+{
+    max-width:600px;
+    min-width:600px;
+    width:600px;    
+    vertical-align: top;
+}
+.user-task-manager-task-desc
+{
+    font-size: 12px;
+    width: 80%;
+    padding: 0 5px;
+    line-height: 19px;
+    margin-bottom: 5px;
+}
+SPAN.user-goal-metric-name-auto-include
+{
+    font-size: .8em;
+    font-style: italic;
+    margin-top: 8px;
+    display: inline-block;
+    font-weight: normal;
+} 
+.widget-display {
+    overflow-y: auto;
+    min-height:80vh;
+    max-height:80vh;
+    vertical-align: top;
+    background: #eee;
+}
+.widget-display-container {
+    padding: 20px;
+    margin: 0 auto
+}
+.widget-display-container h2 {
+    font-size: 20px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 11px; 
+}
+.widget-display-container h3 {
+    margin-top: 0;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+.widget {
+    background: #fff;
+    -webkit-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+    -moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+    box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+    vertical-align: top;
+    margin-bottom: 20px;
+}
+.width-2col {
+    width: 49%;
+    display: inline-block;
+}
+@media only screen and (max-width: 800px) {
+    .width-2col {
+        width: 100%;
+        display: block;
+    }
+}
+.width-2col:first-of-type {
+    margin-right: 1%;
+}
+.button--red {
+    background: #b00303;
+}
+.button--red:hover {
+    background:#8a0101;
+    cursor: pointer;
+}
+.button--green {
+    background: #32ab0a;
+}
+.button--green:hover {
+    background: #248204;
+    cursor: pointer;
+}
+@media only screen and (max-width: 800px) {
+    .goal-name {
+        width:20%;
+        max-width:20%;
+        min-width:20%;  
+    }
+    .goal-start-value, .goal-end-value, .goal-current-value, .task-start-value, .task-end-value, .task-current-value {
+        width: 10%;
+    }
+ 
+    .goal-button-holder, .task-button-holder {
+        width: auto !important;
+        float: right;
+        top: 0;
+    }
+    .task-button-holder.data-item-header {
+        top: 5px;
+    }
+    .user-task-manager-task-desc {
+        width: 50% !important;
+    }
+    .goal-end-date, .task-end-date, .task-due-date {
+        width: auto !important;
+    }
+    .task-name {
+        width: 34%;
+        max-width: 34%;
+        min-width: 34%;
+    }
+}

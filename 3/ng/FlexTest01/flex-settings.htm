@@ -1,0 +1,226 @@
+
+<div class="pure-u-1-1 overlay" id="flex_loading" ng-if="overlay_show">
+    <div class="inner-wrap flex-overlay-message animation">
+        <div class="sk-circle" ng-hide="overlay_buttons">
+            <div class="sk-circle1 sk-child"></div>
+            <div class="sk-circle2 sk-child"></div>
+            <div class="sk-circle3 sk-child"></div>
+            <div class="sk-circle4 sk-child"></div>
+            <div class="sk-circle5 sk-child"></div>
+            <div class="sk-circle6 sk-child"></div>
+            <div class="sk-circle7 sk-child"></div>
+            <div class="sk-circle8 sk-child"></div>
+            <div class="sk-circle9 sk-child"></div>
+            <div class="sk-circle10 sk-child"></div>
+            <div class="sk-circle11 sk-child"></div>
+            <div class="sk-circle12 sk-child"></div>
+        </div>
+        <h2>{{overlay_message}}</h2>
+        <button ng-if="overlay_buttons" ng-click="cancel_create_update()" class="pure-button flex-button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Game List</button>
+        <button ng-if="overlay_buttons" ng-click="overlay_close()" class="pure-button flex-button">Close</button>
+
+    </div>
+</div>
+
+<div class="content-container">
+  <div class="pure-u-1-1" id="header">
+      <a href="#" class="flex-backlink" ng-click="cancel_create_update()" id="back-to-list"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Game List</a>
+      <h1>{{page_title}}</h1>
+  </div>
+  <form class="pure-form pure-form-stacked flex-form" id="flex-settings" name="flex-settings" novalidate ng-if="flex_settings_loaders.players">
+
+      <flex-set title="Game Theme" class="pure-u-1-1">
+          <select ng-model="flex.selected.theme" ng-options="option.name for option in flex_theme track by option.id" ng-required="true">
+              <option value="" disabled>Select Game</option>
+          </select>
+      </flex-set>
+      <flex-set title="Game Name" class="pure-u-1-1">
+          <label for="game_name" ng-show="false">Game Name</label>
+          <input type="text" name="game_name" ng-model="flex.selected.theme.name" required />
+      </flex-set>
+      <flex-set title="Game Dates" class="pure-u-1-1">
+          <div class="inline-block">
+              <label for="game-date-start">Start</label>
+              <input type="text" name="game-date-start" ng-model="flex.selected.date_start" datepicker />
+          </div>
+          <div class="inline-block">
+              <label for="game-date-end">End</label>
+              <input type="text" name="game-date-end" ng-model="flex.selected.date_end" datepicker />
+          </div>
+      </flex-set>
+      <flex-set title="Game KPI" class="pure-u-1-1">
+          <select ng-model="flex.selected.game_kpi" ng-options="option.kpi for option in flex_kpi track by option.id">
+              <option value="" disabled>Select Game KPI</option>
+          </select>
+          <div class="addkpi-container">
+            <p>
+              Need more KPI's?
+              <button class="flex-addKPI-btn" ng-click="flex.selected.game_kpi.modal_show = true">Add a KPI</button>
+            </p>
+          </div>
+          <div class="overlay" id="add_kpi" ng-if="flex.selected.game_kpi.modal_show">
+              <div class="inner-wrap">
+                  <div ng-if="flex.selected.game_kpi.added_success">
+                      <img src="images/succes-icon.png" class="success-icon" />
+                      <label>KPI Added</label>
+                      <div class="flex-inline-btns">
+                        <button ng-click="close_add_flex_kpi()" style="margin: 0 auto;display: block;">Close</button>
+                      </div>
+                  </div>
+                  <div ng-if="!flex.selected.game_kpi.added_success">
+                      <label for="add_kpi">New KPI Name</label>
+                      <input class="flex-input-fullwidth large-input" type="text" name="add_kpi" placeholder="Input Custom KPI Here" ng-model="flex.kpi_new" />
+                      <div class="flex-inline-btns">
+                        <button class="pure-button cancel-btn" ng-click="cancel_add_flex_kpi()">Cancel</button>
+                        <button class="pure-button pure-button-primary" ng-click="add_flex_kpi()">Add KPI</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </flex-set>
+      <flex-set title="KPI Ranges" class="pure-u-1-1" ng-if="flex_settings_loaders.kpi_range">
+          <div class="range-area-container">
+            <div class="ranges-btns">
+              <button ng-disabled="!flex.kpi_ranges.changed" ng-click="flex.kpi_ranges.load_last()">Load Last Ranges</button>
+              <button ng-click="flex.kpi_ranges.modal_show = true">{{flex.kpi_ranges.values.length > 0 ? 'Edit' : 'Create'}} Ranges</button>
+            </div>
+            <table class="pure-table pure-table-striped flex-ranges-table" ng-if="flex.kpi_ranges.values.length > 0">
+                <thead>
+                    <tr>
+                        <th ng-repeat="name in flex.kpi_ranges.header" class="align-right">{{name}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="val in flex.kpi_ranges.values | orderBy:'-Score'">
+                        <td class="align-right">{{val.Score}}</td>
+                        <td class="align-right">{{val.Low | number:4}}</td>
+                        <td class="align-right">{{val.High | number:4}}</td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+
+          <div class="overlay" id="edit_kpi_ranges" ng-if="flex.kpi_ranges.modal_show">
+              <div class="inner-wrap">
+                  <div ng-if="flex.kpi_ranges.saved">
+
+                      <img src="images/succes-icon.png" class="success-icon" />
+                      <label>KPI Range Values Saved</label>
+                      <div class="flex-inline-btns">
+                        <button ng-click="flex.kpi_ranges.close()" style="margin: 0 auto;display: block;">Close</button>
+                      </div>
+                  </div>
+                  <div ng-if="!flex.kpi_ranges.saved">
+                      <label>Edit KPI Ranges</label>
+                      <table class="pure-table pure-table-striped">
+                          <thead>
+                              <tr>
+                                  <th ng-repeat="name in flex.kpi_ranges.header" class="align-right">{{name}}</th>
+                                  <th>&nbsp;</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr ng-repeat="val in flex.kpi_ranges.values_modal">
+                                  <td class="align-right">
+                                      <input type="number" name="Score{{$index}}" required ng-model="val.Score" />
+                                      <small><span class="error" ng-show="flex-settings['Score' +$index].$invalid">Numbers Only</span></small>
+                                  </td>
+                                  <td class="align-right">
+                                      <input type="number" name="Low{{$index}}" required ng-model="val.Low" />
+                                      <small><span class="error" ng-show="val.Low.$invalid">Numbers Only</span></small>
+                                  </td>
+                                  <td class="align-right">
+                                      <input type="number" name="High{{$index}}" required ng-model="val.High" />
+                                      <small><span class="error" ng-show="val.High.$invalid">Numbers Only</span></small>
+                                  </td>
+                                  <td class="align-center no-padding">
+                                      <a href="#" class="remove" ng-click="flex.kpi_ranges.remove($index)" title="Remove KPI Values"><i
+                                              class="fa fa-minus-circle" aria-hidden="true"></i></a>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td class="align-right no-padding" colspan="4">
+                                      <a href="#" class="add" ng-click="flex.kpi_ranges.add()" title="Add KPI Values"><i
+                                              class="fa fa-plus-circle" aria-hidden="true"></i></a>
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                      <div class="flex-inline-btns">
+                        <button class="pure-button cancel-btn" ng-click="flex.kpi_ranges.cancel_edit()">Cancel</button>
+                        <button class="pure-button pure-button-primary" title="Save KPI Ranges" ng-click="flex.kpi_ranges.save_edit()">Save</button>
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+      </flex-set>
+      <flex-set title="Players" class="pure-u-1-1" ng-if="flex_settings_loaders.players">
+              <button class="pure-button" title="Remove All Players from Game" ng-click="removeAllPlayers()" ng-disabled="flex.selected.players.length <= 0"><i class="fa fa-minus-circle" aria-hidden="true"></i> Remove All Players</button>
+          <button class="pure-button" title="Add Player to Game" ng-click="flex.players.modal_show = true" ng-disabled="flex.players.modal_available.length <= 0"><i
+                  class="fa fa-plus-circle" aria-hidden="true"></i> Add Players</button>
+          <table class="pure-table pure-table-striped allplayers-table" ng-if="flex.selected.players.length > 0">
+              <thead>
+                  <tr>
+                      <th ng-repeat="title in flex.players.header">{{title}}</th>
+                      <th>&nbsp;</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr ng-repeat="val in flex.selected.players | orderBy:'last_name'">
+                      <td title="User ID">{{val.user_id}}</td>
+                      <td title="User Name">{{val.last_name}}, {{val.first_name}}</td>
+                      <td title="Remove Player from Game" style="text-align: center;font-size: 17px;width: 20px;">
+                          <a href="#" ng-click="removePlayer($index,val.user_id, val.last_name,val.first_name)"><i class="fa fa-minus-circle" aria-hidden="true"></i></a>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+          <div class="overlay" id="add_players" ng-if="flex.players.modal_show">
+            <div class="inner-wrap inner-wrap_addplayers">
+              <table class="pure-table pure-table-striped" >
+                  <thead>
+                      <tr>
+                          <th><a href="#" class="btn-close" ng-click="flex.players.cancel()"><i class="fa fa-times-circle" aria-hidden="true"></i></a></th>
+                          <th ng-repeat="title in flex.players.header">{{title}}</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr ng-if="flex.players.modal_available.length > 0">
+                          <td colspan="3" class="align-center">
+                              <button class="addall-btn" title="Add All Players to Game" ng-click="addAllPlayers()"><i
+                                      class="fa fa-plus-circle" aria-hidden="true"></i> Add All Players</button>
+                          </td>
+                      </tr>
+                      <tr ng-repeat="val in flex.players.modal_available | orderBy:'last_name'" ng-if="flex.players.modal_available.length > 0">
+                          <td>
+                              <a href="#" ng-click="addPlayer($index,val.user_id, val.last_name,val.first_name)"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+                              <!-- <a href="#" ng-click="removePlayer($index)">Remove</a> -->
+                          </td>
+                          <td title="User ID">{{val.user_id}}</td>
+                          <td title="User Name">{{val.last_name}}, {{val.first_name}}</td>
+                      </tr>
+                      <tr>
+                          <td colspan="3" class="align-center" ng-if="flex.players.modal_available.length <= 0">
+                              <h2>All Players in the Game</h2>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td colspan="3" class="align-center" style="background: white;">
+                            <div class="flex-inline-btns">
+                              <button class="cancel-btn" ng-click="flex.players.cancel()">Cancel</button>
+                              <button class="pure-button-primary" title="Add Player(s) to Game" ng-click="flex.players.save()">Save</button>
+                            </div>
+
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+            </div>
+          </div>
+      </flex-set>
+      <button class="cancel-btn flex-large-btn" ng-click="cancel_create_update()">Cancel</button>
+      <button type="submit" class="flex-large-btn" ng-if="flex_game_create" ng-click="save_create()">Create Game</button>
+      <button type="submit" class="flex-large-btn" ng-if="flex_game_update" ng-click="save_update()">Save Game</button>
+  </form>
+</div>

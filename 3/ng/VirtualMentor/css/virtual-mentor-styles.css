@@ -1,0 +1,274 @@
+* {
+   vertical-align: top;
+}
+.virtual-mentor_container {
+   padding: 20px;
+}
+.virtual-mentor-information-loading-message
+{
+   z-index:9999;
+   height:99vh;
+   width:99vw;
+   background-color:lightblue;
+   color:darkblue;
+}
+.button-holder {
+   text-align: center;
+}
+
+.column1of3 {
+   display: inline-block;
+   width: 25%;
+}
+
+.column2of3 {
+   display: inline-block;
+   width: 37%;
+}
+
+.column3of3 {
+   display: inline-block;
+   width: 37%;
+}
+
+.column2and3of3 {
+   width: 74%;
+   display: inline-block;
+}
+
+.header-holder {
+   background-color: darkgray;
+}
+
+.header-item {
+   display: inline-block;
+   font-weight: bold;
+}
+
+.footer-holder {
+   background-color: lime;
+   color: darkgreen;
+}
+
+.list-holder {
+   max-height: calc(100vh - 150px);
+   min-height: 150px;
+   overflow: auto;
+}
+
+.virtual-mentor-list-row {
+   display: block;
+   padding: 2px;
+}
+
+.virtual-mentor-list-row:nth-child(even) {
+   background-color: lightgray;   
+}
+
+.virtual-mentor-list-item {
+   display: inline-block;
+}
+
+.virtual-mentor-kpi-suggestion-holder
+{
+   width:90%;
+   padding:5px;
+   margin-left:10px;
+   border:1px dotted lime;
+}
+
+.virtual-mentor-suggestion-row {
+   border:1px solid hotpink;
+   padding: 5px;
+   width: 49%;
+   display:inline-block;
+}
+.virtual-mentor-user-kpi-current-scores
+{
+   border:1px solid cyan;
+   padding:5px;   
+   width:49%;
+   display:inline-block;
+}
+.calculation-area-list-row {
+   width: 98%;   
+}
+
+.calculation-area-list-row:nth-child(even) {
+   background-color: lightgray;   
+}
+
+.calculation-area-list-item {
+   display: inline-block;
+}
+
+.suggestion-rank
+{
+   text-align:center;
+   width:10%;
+}
+.user-name
+{
+   width: 25%;
+}
+.balanced-score-rank
+{
+   text-align:center;
+   width:15%;
+}
+.attrition-score-rank
+{
+   text-align:center;
+   width:15%;
+}
+.last-touch-date
+{
+   width:15%;   
+   text-align:center;
+}
+
+.area-name {
+   width: 33%;
+}
+
+.area-slider {
+   width: 40%;
+}
+
+.area-weight {
+   width: 25%;
+}
+
+.area-weight-input {
+   border: 1px solid lightblue;
+   border-radius: 5px;
+   background-color: white;
+   width: 35px;
+}
+
+.virtual-mentor-slider-holder {
+   padding:2px;
+   width: 90%;   
+}
+
+.virtual-mentor-background-bar {
+   min-height:5px;
+   max-height:5px;
+   min-width:100%;   
+   max-width:100%;   
+   z-index: 0;   
+}
+
+.empty-bar {
+   border:1px solid gray;
+}
+
+.virtual-mentor-filled-bar {
+   min-height:5px;
+   max-height:5px;
+   z-index: 50;   
+}
+.progress-bar
+{
+   background-color:plum;
+}
+
+.virtual-mentor-tick-bar {
+   z-index: 100;
+}
+
+.tick-item {
+   max-width: 10px;
+   min-width: 10px;
+   max-height: 10px;
+   min-height: 10px;
+   border-radius: 2px;
+   border: 1px solid green;
+}
+.form-holder
+{
+   min-width: 80vw;
+   max-width: 80vw;
+   position: absolute;
+   right: 0;
+   left: 0;
+   top: 150px;
+   border-radius: 10px;
+   padding: 20px;
+   color: black;
+   overflow-y: auto;
+   margin: 0 auto;
+   background: white;
+   -webkit-box-shadow: 0px 0px 9px 1000px rgba(0, 0, 0, 0.75);
+   -moz-box-shadow: 0px 0px 9px 1000px rgba(0, 0, 0, 0.75);
+   box-shadow: 0px 0px 9px 1000px rgba(0, 0, 0, 0.75);
+   z-index: 8000;
+}
+.suggest-actions li
+{
+   margin-top:2px;
+   margin-bottom:2px;
+   margin-left:10px;
+}
+
+.goodbalscore
+{
+   font-weight:bold;
+   border:1px solid green;   
+}
+.lowattr,
+.maxbalscore
+{
+   font-weight:bold;
+   background-color:lime;
+   color:darkgreen;
+   border:1px solid green;
+   font-size:1.25em;   
+}
+.midattr
+{
+   border:1px solid slategray;
+   color:lightyellow;
+   background-color:goldenrod;
+}
+.highattr,
+.notouch,
+.lowbalscore
+{
+   font-weight:bold;
+   border:1px solid red;
+}
+
+.maxattr
+{
+   font-weight:bold;
+   color:red;
+   background-color: darkred;
+   font-size:1.25em;
+}
+.virtual-mentor-format-holder
+{
+   font-style: italic;
+}
+.format-item
+{
+   font-weight:bold;   
+}
+.format-item.kpi-name
+{
+   border:none;
+}
+.option-scoring-data
+{
+   width:30%;
+}
+.virtual-mentor-item-label
+{
+   font-weight:bold;
+   color:deeppink;
+   display:inline-block;
+}
+.virtual-mentor-item-data-holder
+{
+   display:inline-block;   
+}

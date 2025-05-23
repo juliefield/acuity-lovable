@@ -1,0 +1,911 @@
+@import url("../../../../applib/css/variables.css");
+ 
+div.basic-directive-holder {
+   overflow: hidden;
+   height: calc(100vh - 155px);
+   padding: 20px;
+}
+.filter-input-group {
+   display: inline-block;
+}
+.btn-large {
+	padding: 10px 20px !important;
+  	font-size: 16px;
+}
+
+.right-align {
+   text-align: right;
+   padding-right: 5px;
+}
+
+ 
+.basic-directive-holder input,
+.basic-directive-holder select {
+   webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   border-radius: 5px;
+   border: 1px solid var(--border-color-gray);
+   max-width: 100%;
+   padding: 5px;
+   margin-right: 20px;
+   margin-left: 5px;
+   margin-bottom: 5px;
+}
+
+button:hover {
+   cursor: pointer;
+   background: var(--brand-blue-hover);
+}
+ 
+.button,
+.btn {}
+ 
+.button--red {
+   background-color: var(--red);
+}
+.badge-rule-row {
+   clear:both;
+   display: block;
+   width: 100%;
+}
+.badge-item-holder.badge-rule-holder  {
+   margin-left: 10%;
+   width: 100%;
+   max-width: 900px;
+}
+
+.badge-item-holder.badge-rule-holder .badgeRulesHolder-box {
+   padding: 15px;
+   border: 1px solid var(--gray);
+   margin-bottom: 20px;
+   width: 100%;
+}
+.badgeRulesHolder-box {
+   display: flex;
+   flex-wrap: wrap;
+}
+.badgeRulesHolder-box span {
+   font-weight: bold;
+}
+.badgeRulesHolder-box div {
+   width: 46%;
+   display: inline-block;
+   margin-bottom: 8px;
+   position: relative;
+   padding-left: 20px;
+}
+.badgeRulesHolder-box div:before {
+   content: '\2022';
+   position: absolute;
+   top: -4px;
+   left: 0;
+   color: var(--brand-blue);
+   font-size: 22px;
+}
+
+.points-to-award {
+   margin-left: 30px;
+} 
+.button--red:hover {
+   background-color: var(--red-hover);
+}
+ 
+.errorField {
+   border: 2px solid var(--red) !important;
+}
+.badge-rule-edtior-badge-name-holder {
+   margin-top: 10px;
+} 
+.user-badge-row-item-holder {
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+}
+      
+.header-holder {
+   padding: 12px 0;
+   font-weight: bold;
+   font-size: 15px;
+   background: var(--table-topper);
+   color: white;
+   margin-top: 0;
+   position: relative;
+   display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+}
+.inline-error-holder,
+.error-information-holder {
+   padding: 15px;
+   margin-bottom: 20px;
+   border: 1px solid var(--red);
+   background-color: var(--error-bg);
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   border-radius: 5px;
+   display: none;
+}
+
+.text-red {
+   color: var(--red);
+}
+
+
+.list-holder {
+   overflow: auto;
+   max-height: calc(100vh - 353px);
+}
+.list-holder-rules {
+   overflow: auto;
+   height: calc(100vh - 295px);
+}
+ 
+.badge-list-holder {}
+ 
+.badge-row-item-holder {
+   font-size: 15px;
+   display: flex;
+   align-items: center;
+   flex-wrap: wrap;
+   justify-content: space-around;
+}
+
+ 
+.badge-row-item-holder:nth-child(odd) {
+
+}
+ 
+.badge-row-item-holder:nth-child(even) {
+   background: var(--lighter-gray);
+}
+ 
+.header-item,
+.badge-item-holder {
+   display: inline-block;
+   margin: 2px;
+}
+.header-item {
+   margin-top: 0;
+   width: 25%;
+} 
+.header-item.badge-image {
+   padding: 0;
+}
+.badge-item-holder.badge-image {
+   padding: 10px 0;
+}
+.badge-image {
+   width: 10%;
+   text-align: center;
+}
+.badge-group-name,
+.badge-grouping-name {
+   width: 15%;
+   text-align: center;
+}
+.related-kpi {
+   width: 10%;
+   text-align: center;
+}
+
+.badgeCounter-box {
+   font-weight: bold;
+   color: #fff;
+   font-size: 20px;
+   display: inline-block;
+    margin-right: 30px;
+}
+.badge-name {
+   width: 15%;
+   text-align: left;
+   font-weight: bold;
+}
+.badge-desc {
+   display: block;
+   font-weight: normal;
+   margin-top: 5px;
+}
+.badge-level {
+   width: 10%;
+   text-align: center;
+}
+.badge-button-holder {
+   text-align: center;
+   width: 20%;
+}
+.badge-active {
+   text-align: center;
+   width: 15%;
+}
+.btn-block {
+   margin: 0 0 5px 0;
+}
+ 
+.badge-button-holder {}
+ 
+.badge-button {}
+ 
+.badge-preview-manager-header,
+.badge-preview-manager-footer {
+   max-height: 30px;
+   min-height: 30px;
+}
+ 
+.badge-preview-manager-holder {
+   overflow: auto;
+    max-height: 470px;
+    padding-top: 11px;
+}
+.badge-preview-image-holder.preview-item {
+   border: 6px solid #fff;
+   position: relative;
+}
+.badge-preview-image-holder.preview-item.badge-preview-image-selected {
+   border: 6px solid var(--brand-blue);
+}
+.badge-preview-image-holder.preview-item.badge-preview-image-selected:after {
+   content: '\f00c';
+    font-family: 'FontAwesome';
+    position: absolute;
+    top: -13px;
+    right: -16px;
+    width: 40px;
+    height: 16px;
+    background: var(--brand-blue);
+    color: #fff;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    padding: 12px 0;
+    z-index: 1;
+    font-size: 17px;
+}
+button {
+   padding: 5px 10px;
+}
+ 
+.badge-preview-image-holder {
+   text-align: center;
+    padding: 15px;
+    width: 20%;
+    background: var(--light-gray);
+}
+.badge-preview-image-holder.preview-item .badge-preview-image {
+   max-width: 100%;
+   object-fit: contain;
+}
+.badge-preview-image-holder.preview-item .badge-preview-image:hover {
+   cursor: pointer;
+}
+.badge-preview-image {}
+ 
+.badge-preview-image-name {
+   font-size: 14px;
+   margin-top: 10px;
+}
+.badgeAdminForm_form-fieldgroup input[type='text'] {
+   width: 97%;
+}
+.badgeAdminForm_form-fieldgroup {
+   display: block;
+   margin-bottom: 6px;
+}
+.badgeAdminForm_form-fieldgroup input[type='checkbox'] {
+   width: auto;
+}
+.badgeAdminForm_form-fieldgroup button {
+   margin-bottom: 10px;
+}
+
+.badge-rules-label {
+   font-size: 20px;
+   border-bottom: 1px solid var(--light-gray);
+   display: block;
+   padding-bottom: 8px;
+}
+.basic-directive-holder .editor-form_rules input, 
+.basic-directive-holder .editor-form_rules select {
+   margin-bottom: 15px;
+}
+#badgeAdminForm_BadgeEditorContainer {
+   max-height: 50vh;
+   overflow: auto;
+}
+
+.badge-row-item-holder.inactive-badge-row .badge-button {
+   /* opacity: 0.5; */
+   /* mix-blend-mode: luminosity; */
+}
+.badge-row-item-holder.inactive-badge-row .badge-name,
+.badge-row-item-holder.inactive-badge-row .badge-group-name,
+.badge-row-item-holder.inactive-badge-row .related-kpi,
+.badge-row-item-holder.inactive-badge-row .badge-level {
+   font-style:italic;
+}
+.inactive-badge-row .badge-image{
+   mix-blend-mode: luminosity;
+   opacity: .5;
+}
+.user-holder {
+   background: #fff;
+}
+.form-holder {
+   padding: 20px;
+   /* height: 400px; */
+   max-width: 800px;
+   width: 100%;
+   -webkit-border-radius: 15px;
+   -moz-border-radius: 15px;
+   border-radius: 15px;
+   z-index: 90000000;
+   position: absolute;
+   margin: 0 auto;
+   left: 0;
+   right: 0;
+   top: 10%;
+   background-color: #fff;
+}
+
+.editor-form:after {
+   content: '';
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background:rgba(0,0,0, 0.6);
+}
+.badgeImageManagement_ImageOptionHolder {
+   display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    padding-right: 15px;
+}
+.preview-form .form-holder {
+   height: 560px;
+   max-width: 1000px;
+   width: 90%;
+}
+.preview-form:after {
+   content: '';
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background:rgba(0,0,0, 0.6);
+   z-index: 100000;
+}
+ 
+/* .sub-form {
+   z-index: 90000001;
+   position: absolute;
+   left: 25vw;
+   top: 25vh;
+   background-color: cornflowerblue;
+}
+ 
+.preview-form {
+   height: 55%;
+   width: 55%;
+   border-radius: 10px;
+   overflow: auto;
+   background-color: darkcyan;
+} */
+ 
+.user-information-display {
+   display: inline-block;
+   font-weight: bold;
+   width: 400px;
+}
+ 
+.grouping-form {
+   height: 55%;
+   width: 55%;
+   border-radius: 10px;
+   overflow: auto;
+}
+.btn-close-grouping {
+   display: inline-block;
+   color: var(--brand-blue);
+} 
+.btn-close-grouping:hover {
+   color: var(--brand-blue-hover);
+   cursor: pointer;
+}
+.badge-rule-editor-item-holder {
+   vertical-align: top;
+   padding: 15px;
+   display: flex;
+}
+.badge-rule-editor-item-holder:nth-child(even) {
+   background: var(--light-gray);
+}
+.badgeAdmin_AddGroupingNameHolder {
+   background: var(--light-gray);
+   padding: 15px;
+   margin-top: 3px;
+}
+#badgeAdminForm_BadgeLevel {
+   width: 150px;
+   margin-left: 10px;
+}
+.badge-rule-editor-row-holder {
+   display: inline-block;
+   padding: 3px;
+}
+ 
+.badge-rule-inline-editor-row-holder {
+   padding: 3px;
+}
+.rules-section-holder {
+   padding: 0 20px;
+}
+.badge-rule-inline-editor-row-holder:nth-child(even) {}
+ 
+.badge-rule-inline-editor-row-holder:nth-child(odd) {}
+ 
+.left-holder {
+   text-align: center;
+   width: 10%;
+   min-width: 190px;
+   border: 1px solid var(--gray);
+   padding-top: 30px;
+   padding-bottom: 30px;
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   border-radius: 5px;
+   background: rgba(255,255,255, 0.4);
+}
+.badge-rule-editor-badge-image-holder .badge-image-item {
+   height: 120px !important;
+   max-width: 100%;
+   object-fit: contain;
+}
+ 
+.right-holder {
+   display: flex;
+}
+ 
+input.small-box {
+   width: 25px;
+}
+ 
+.user-popup-holder {
+   padding: 15px;
+   display: block;
+   color: black;
+   background: var(--green);
+   position: relative;
+   transition: all .2s ease-in-out;
+}
+.user-popup-holder p {
+   color: #fff;
+    font-size: 20px;
+    display: inline-block;
+    margin: 0 15px;
+}
+.user-popup-close {
+   background: #fff;
+   color: var(--font-color);
+   font-weight: bold;
+}
+.user-popup-close:hover {
+   background: #fff;
+   color: var(--font-color);
+   font-weight: bold;
+   opacity: 0.7;
+}
+.user-popup-close.user-popup-dismiss {
+   position: absolute;
+   top: 0px;
+   right: 10px;
+   background: transparent;
+   color: #fff;
+   font-size: 15px;
+    bottom: 0;
+}
+.user-popup-close.user-popup-dismiss:hover {
+   opacity: 0.7;
+   background: transparent;
+   color: #fff;
+}
+ 
+.user-popup-message {}
+
+/* Style the tab */
+.badgeadmin_tabs {}
+.badgeadmin_tabs .tab {
+   overflow: hidden;
+   font-size: 16px;
+   font-weight: bold;
+   background: var(--table-topper);
+   color: #fff;
+   padding: 0;
+}
+.top-filters {
+   padding: 20px;
+   background: var(--light-gray);
+}
+/* Style the buttons that are used to open the tab content */
+.badgeadmin_tabs .tab button {
+   background-color: inherit;
+   float: left;
+   border: none;
+   outline: none;
+   cursor: pointer;
+   transition: 0.3s;
+   font-size: 16px;
+   font-weight: bold;
+   color: #fff;
+   padding: 10px 15px !important;
+   margin: 0;
+   border-radius: 0;
+}
+/* Change background color of buttons on hover */
+.badgeadmin_tabs .tab button:hover {
+   background-color: var(--brand-blue-hover);
+   cursor: pointer;
+}
+/* Create an active/current tablink class */
+.badgeadmin_tabs .tab button.active {
+   background-color: var(--brand-blue);
+}
+/* Style the tab content */
+.badgeadmin_tabs .tabcontent {
+   display: none;
+   padding: 0;
+   border-top: none;
+   position: relative;
+}
+.badgeadmin_tabs .tabcontent.active {
+   display: block;
+   padding: 20px;
+}
+button.btn-close-x {
+   float: right;
+   color: var(--dark-gray);
+   background: transparent;
+   font-size: 21px;
+}
+button.btn-close-x:hover {
+   color: var(--dark-gray);
+   background: transparent;
+   opacity: 0.6;
+}
+.badgeAdminForm_btns {
+   border-top: 1px solid var(--light-gray);
+   display: block;
+   margin-top: 20px;
+   padding-top: 20px;
+}
+.badge-preview-image {
+   height: 130px !important;
+}
+.badgeAdminForm_form {
+   display: table;
+    vertical-align: top;
+    width: 100%;
+}
+#badgeAdminGroupingNameForm_GroupingName {
+   margin: 14px 0;
+}
+.badge-admin-editor-rule-holder input, 
+.badge-admin-editor-rule-holder select {
+   margin-bottom: 18px
+}
+.badgeAdminForm_image-preview {
+   text-align: center;
+   width: 40%;
+   background: #eee;
+   margin-right: 20px;
+   padding: 20px;
+   display: table-cell;
+   vertical-align: middle;
+}
+.tab-holder {
+   margin-left: 20px;
+   border-bottom: 1px solid var(--gray);
+}
+#badgeAdminForm_ConsecutiveMonthHolder {
+   display: inline-block;
+}
+#badgeAdminForm_HasPoints {
+   margin-right: 20px;
+}
+.tab-holder-item {
+   display: inline-block;
+   width: 125px;
+   text-align: center;
+   padding: 8px;
+   font-size: 18px;
+   -webkit-border-top-left-radius: 5px;
+   -webkit-border-top-right-radius: 5px;
+   -moz-border-radius-topleft: 5px;
+   -moz-border-radius-topright: 5px;
+   border-top-left-radius: 5px;
+   border-top-right-radius: 5px;
+   color: var(--font-color);
+   background: var(--gray);
+}
+.form-holder-big .tab-holder-item {
+   background: var(--light-gray) !important;
+}
+.tab-holder-item.active {
+   background: var(--brand-blue)  !important;
+   color: #fff;
+}
+.tab-holder-item:hover {
+   cursor: pointer;
+   background: var(--brand-blue-hover);
+   color: #fff;
+}
+.badgeAdminForm_image-preview button {
+   width: 80%;
+   margin: 5px auto;
+   display: block;
+}
+.badgeAdminForm_image-preview input {
+   margin: 5px auto;
+   display: block;
+   width: 100%;
+}
+.badgeAdminForm_form-preview {
+   width: 100%;
+   display: table-cell;
+}
+
+.badgeAdminForm_form-preview, 
+.badge-admin-editor-rule-holder {
+   padding: 20px;
+}
+.badgeAdminForm_form-preview input,
+.badgeAdminForm_form-preview select {
+   width: 100%;
+   margin: 5px 0;
+}
+button {
+   padding: 5px 10px !important;
+}
+.filter-input-group a {
+   color: var(--brand-blue);
+}
+.filter-input-group a:hover {
+    color: var(--brand-blue-hover);
+    cursor: pointer;
+ }
+.bottom-buttons {
+   border-top: 1px solid var(--light-gray);
+   background: var(--brand-blue-hover);
+   padding: 20px;
+   width: calc(100% - 40px);
+   display: block;
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   /* text-align: center; */
+} 
+.bottom-buttons button {
+   border:1px solid  var(--brand-blue);
+}
+.bottom-buttons button:hover {
+   border:1px solid #fff;
+   background: transparent;
+}
+.bottom-buttons .btn-green {
+   background: var(--green);
+   border-color: var(--green);
+}
+
+/* BUTTON TOGGLE */
+.badge-active .toggle-button-cover {
+    position: relative;
+    width: 200px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.badge-active .button-cover {
+
+}
+
+.badge-active .button-cover:before {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: #d7e3e3;
+    font-size: 12px;
+    line-height: 1;
+    padding: 5px;
+}
+
+
+.badge-active .button-cover, 
+.badge-active .knobs, 
+.badge-active .layer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.badge-active .button {
+    position: relative;
+    top: 50%;
+    width: 74px;
+    height: 36px;
+    margin: -20px auto 0 auto;
+    overflow: hidden;
+    padding: 0;
+}
+
+.badge-active .button.r, 
+.badge-active .button.r .layer {
+    border-radius: 100px;
+}
+
+.badge-active .button.b2 {
+    border-radius: 2px;
+}
+
+.badge-active .checkbox {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.badge-active .knobs {
+    z-index: 2;
+}
+
+.badge-active .layer {
+    width: 100%;
+    background-color: var(--light-gray);
+    transition: 0.3s ease all;
+    z-index: 1;
+}
+
+.badge-active .button .knobs:before {
+    content: 'OFF';
+    position: absolute;
+    top: 4px;
+    left: 42px;
+    width: 20px;
+    height: 10px;
+    color: var(--font-color);
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1;
+    padding: 9px 4px;
+    background-color: var(--gray);
+    border-radius: 50%;
+    transition: 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15) all;
+}
+
+.badge-active .button .checkbox:checked + .knobs:before {
+    content: 'ON';
+    left: 4px;
+    background-color: #e9fae3;
+    color: var(--font-color);
+}
+
+.badge-active .button .checkbox:checked ~ .layer {
+    background-color: var(--green);
+}
+
+.badge-active .button .knobs, 
+.badge-active .button .knobs:before, 
+.badge-active .button .layer {
+    transition: 0.3s ease all;
+}
+ /*END BUTTON TOGGLE */
+
+
+@media only screen and (max-width: 1000px) {
+   .badge-preview-image-holder {
+      width: 26.333%;
+   }
+}
+@media only screen and (max-width: 720px) {
+   .badge-preview-image-holder {
+      width: 39.333%;
+   }
+}
+
+@media only screen and (max-width: 600px) {
+   .badge-preview-image-holder {
+      width: 39.333%;
+   }
+   .header-holder {
+      display: none;
+   }
+   .form-holder {
+      width: 80%;
+   }
+   .badge-row-item-holder {
+      display: block;
+      position: relative;
+      padding: 10px 0;
+      clear: both;
+      min-height: 103px;
+   }
+   .badge-image {
+      width: 122px;
+      text-align: center;
+      border-right: 1px solid #eee;
+      margin-right: 12px;
+      float: left;
+      height: 138px
+  }
+  .badge-name,
+  .badge-group-name,
+  .related-kpi,
+  .badge-level,
+  .badge-button-holder {
+      width: 100%;
+      display: block;
+      text-align: left;
+  }
+  
+  .badge-button-holder {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 60px;
+  }
+  .filter-input-group {
+     display: flex;
+     flex-wrap: nowrap;
+     justify-content: space-between;
+  }
+  .basic-directive-holder input, 
+  .basic-directive-holder select {
+     min-width: 60%;
+     margin-right: 0;
+  }
+  .filter-input-group button {
+     width: 100%;
+  }
+
+  .badgeAdminForm_image-preview {
+     display: block;
+     margin-right: 0;
+     width: auto;
+     margin-bottom: 15px;
+  }
+  #badgeAdminForm_ConsecutiveMonthHolder {
+     display: block;
+  }
+  #badgeAdminForm_ConsecutiveDaysHolder input[type=checkbox] {
+     width: auto;
+  }
+  .badge-button-holder {
+     display: block;
+     width: 100%;
+     position: relative;
+     right: 0;
+     left: 0;
+     top: 0;
+  }
+  .badge-active {
+      width: 100%;
+      display: block;
+      text-align: left;
+      height: 40px;
+   }
+   .badge-active .button {
+      margin: 0;
+   }
+}

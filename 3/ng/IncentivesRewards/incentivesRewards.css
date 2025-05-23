@@ -1,0 +1,668 @@
+@import url("../../../applib/css/variables.css?r=12");
+
+.column1 {
+	width: 25%;
+	overflow: auto;
+}
+.column2 {
+	width: 45%;
+	overflow: auto;
+	margin: 0 20px;
+	border: 1px solid var(--border-color-light);
+	padding: 20px;
+}
+.column1-tangocard {
+	width: 35%;
+	overflow: auto;
+	padding-right: 30px;
+}
+.column2-tangocard {
+	width: 65%;
+	overflow: auto;
+	margin: 0 20px;
+	border: 1px solid var(--border-color-light);
+	padding: 20px;
+}
+.column3 {
+	width: 25%;
+	overflow: auto;
+}
+.small-line-avatar-image {
+	max-height: 15px;
+	min-height: 15px;
+}
+.inline-chart-holder {
+	display: inline-block;
+	width: 100%;
+	border-top: 1px solid var(--light-gray);
+	padding-top: 40px;
+	margin-bottom: 30px;
+}
+.p-20 {
+	padding: 20px;
+}
+.header-w-btn {
+	display: flex;
+	border-bottom: 1px solid var(--border-color-light);
+	align-items: center;
+	justify-content: space-between;
+}
+.header-w-btn h2 {
+	font-size: 22px;
+	font-weight: 700;
+}
+.btn-large {
+	padding: 10px 20px !important;
+	font-size: 16px;
+}
+.btn-large:hover {
+	background: var(--brand-blue-hover);
+}
+.settings-directive-holder {
+	display: flex;
+	padding: 27px;
+	background: var(--inactive-tab);
+	gap: 18px;
+	/* justify-content: center; */
+	font-size: 15px;
+	justify-content: center;
+}
+.settings-directive-holder_item {
+	display: flex;
+	border-right: 1px solid var(--border-color);
+	padding-right: 20px;
+	text-align: center;
+	flex-direction: column;
+	padding: 0 20px;
+	font-size: 16px
+}
+.settings-directive-holder_item span {
+	font-size: 20px;
+}
+.settings-directive-holder_item:last-child {
+	border-right: 0;
+}
+.flex {
+	display: flex;
+}
+.border-2 {
+	border: 2px solid var(--border-color-light);
+}
+.mt-20 {
+	margin-top: 20px;
+}
+.incentivesRewards_table-container {
+	max-height: calc(100vh - 400px);
+	-webkit-box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.35);
+	-moz-box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.35);
+	box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.35);
+	margin: 0 30px;
+}
+.tangocard_table-container {
+	max-height: calc(100vh - 200px);
+	-webkit-box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.35);
+	-moz-box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.35);
+	box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.35);
+	margin: 20px;
+}
+.table-topper,
+.user-rewards-list-base-display-holder h3 {
+	padding: 8px;
+	background-color: var(--table-topper-color);
+	display: flex;
+	color: #fff;
+	justify-content: space-between;
+	align-items: center;
+	font-weight: bold;
+	margin: 0;
+}
+.user-rewards-list-base-display-holder,
+.user-awarded-points_table {
+	position: relative;
+}
+.table-topper h3 {
+	margin: 0;
+}
+.current-points-list-item {
+	display: inline-block;
+	text-align: center;
+}
+.header-item {
+	font-weight: bold;
+}
+.editor-form-header-holder {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-bottom: 1px solid #eee;
+	margin-bottom: 30px;
+}
+.current-points-list-item-row,
+.user-awarded-items-list-holder .user-awarded-points-list-item-row {
+	background-color: white;
+	padding: 5px;
+	display: flex;
+	align-items: center;
+}
+.current-points-list-item-row:nth-child(even),
+.user-awarded-items-list-holder .user-awarded-points-list-item-row:nth-child(even) {
+	background-color: var(--light-gray);
+}
+.reoccurring-amount {
+	background-color: yellow !important;
+}
+.area-name {
+	width: 100px;
+}
+.interval-type {
+	width: 75px;
+}
+.interval-number {
+	width: 120px;
+}
+.award-amount {
+	width: 125px;
+}
+.shadow-sm {
+	-webkit-box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.35);
+	-moz-box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.35);
+	box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.35);
+}
+.button-holder {
+	width: 100px;
+}
+.current-points-list-body-holder {
+	min-height: 200px;
+	max-height: 200px;
+	overflow: auto;
+}
+.editor-form-label-holder {
+	display: inline-block;
+	width: 200px;
+	font-weight: bold;
+}
+.editor-form-input-holder {
+	display: inline-block;
+	min-width: 300px;
+}
+.current-points-list-header-row,
+.claimed-items-list-header-row,
+.claimed-items-display-header-holder,
+.user-rewards-display-header-holder,
+.top-user-points-list-header-row,
+.user-awarded-points-item-header-holder {
+	padding: 5px;
+	display: flex;
+	background: var(--light-blue);
+}
+.btn-delete {
+	background: var(--red);
+	padding-right: 10px;
+	padding-left: 10px;
+}
+.btn-delete:hover {
+	background: var(--red-hover);
+}
+.edit-award {
+	padding: 5px 8px;
+}
+.claimed-items-list-body-row {
+	display: flex;
+	align-items: center;
+	padding: 5px;
+}
+.claimed-items-list-body-row:nth-child(even) {
+	background-color: var(--light-gray);
+}
+.claimed-items-list-item {
+	display: inline-block;
+	text-align: center;
+}
+.header-item {
+	font-weight: bold;
+	font-size: 13px !important;
+}
+.claimed-items-list-item-row {
+	background-color: white;
+}
+.claimed-items-list-item-row:nth-child(even) {
+	background-color: white;
+}
+.claimed-items-list-body-holder {
+	height: 310px;
+	overflow: auto;
+}
+.claimed-items-list-item.user-name {
+	display: flex;
+	align-items: center;
+	width: 110px;
+}
+.claimed-items-list-item.item-name {
+	font-size: 11px;
+	width: 130px;
+}
+.claimed-items-list-item.claim-date {
+	width: 100px;
+}
+.claimed-items-list-item.claim-value {
+	width: 100px;
+}
+.claimed-items-list-item.total-claim-value {
+	width: 110px;
+}
+.claimed-items-list-item.number-claimed {
+	width: 80px;
+}
+.top-user-points-list-item {
+	display: inline-block;
+	text-align: center;
+}
+.top-user-points-list-item-row:nth-child(even) {
+	border-top: 1px solid #c0c0c0;
+	border-bottom: 1px solid #c0c0c0;
+}
+.top-user-points-list-body-holder {
+	min-height: 200px;
+	max-height: 200px;
+	overflow: auto;
+}
+.top-user-points-list-item.user-name {
+	min-width: 66%;
+	max-width: 66%;
+	text-align: left !important;
+}
+.top-user-points-list-item.user-total-points {
+	min-width: 33%;
+	max-width: 33%;
+}
+.user-rewards-list-item {
+	display: inline-block;
+	text-align: center;
+}
+.user-rewards-list-item-row.header-item {
+	font-weight: bold;
+	background-color: blueviolet;
+	color: burlywood;
+}
+.user-rewards-list-item-row,
+.top-user-points-list-item-row {
+	padding: 5px;
+	display: flex;
+	align-items: center;
+}
+.user-rewards-list-item-row:nth-child(even) {
+	border-top: 1px solid #c0c0c0;
+	border-bottom: 1px solid #c0c0c0;
+
+}
+.user-rewards-list-body-holder {
+	height: 160px;
+	overflow: auto;
+}
+.user-rewards-list-item.user-name {
+	width: 180px;
+	display: flex;
+	align-items: center;
+	text-align: left !important;
+}
+.user-rewards-list-item.area-name {
+	width: 80px;
+	text-align: center;
+}
+.user-rewards-list-item.days-until {
+	width: 145px;
+}
+.user-rewards-list-item.award-amount {
+	min-width: 10%;
+	max-width: 10%;
+}
+.user-rewards-list-footer-holder {
+	padding: 5px;
+	font-size: 12px;
+	color: white;
+	position: absolute;
+	top: 4px;
+	right: 7px;
+}
+.flex {
+	display: flex;
+}
+.flex-align-center {
+	align-items: center;
+}
+.justify-space-between {
+	justify-content: space-between
+}
+.p-5 {
+	padding: 5px;
+}
+.form-holder {
+	padding: 20px;
+	max-width: 800px;
+	width: 100%;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	z-index: 90000000;
+	position: absolute;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+	top: 10%;
+	background-color: #fff;
+}
+.editor-form:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.6);
+	z-index: 1000;
+}
+.editor-form select,
+.editor-form input {
+	webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid var(--border-color-gray);
+	max-width: 100%;
+	padding: 5px;
+	margin-right: 20px;
+	margin-left: 5px;
+	margin-bottom: 5px;
+	min-width: 150px;
+}
+.editor-form input[type=checkbox] {
+	min-width: auto;
+	margin: 10px 5px;
+}
+.editor-form-button-holder {
+	display: block;
+	text-align: center;
+	bottom: 0;
+	left: 0;
+	border: none;
+	width: 100%;
+	box-sizing: border-box;
+	border-top: 1px solid #eee;
+	margin-top: 30px;
+	padding-top: 30px;
+}
+.user-awarded-points-item-header-holder {
+	font-weight: bold;
+}
+.user-awarded-points-item-body-holder {
+	max-height: 25vh;
+	min-height: 25vh;
+	overflow: auto;
+}
+.user-awarded-points-item-footer-holder {
+	position: absolute;
+	top: 10px;
+	color: white;
+	right: 50px;
+}
+.user-awarded-points-list-item-row:nth-child(even) {
+	background-color: lightgray;
+}
+.user-awarded-points-list-item {
+	display: inline-block;
+	text-align: center;
+}
+.award-on-date {
+	width: 100px;
+}
+.award-quantity {
+	width: 100px;
+}
+.award-points {
+	width: 100px;
+}
+.award-for {
+	width: 122px;
+}
+.award-for-big {
+	min-width:125px;
+	max-width: calc(100% - 400px);
+}
+.tango-card-integration-list-options-holder {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	justify-content: center;
+}
+.claim-info span {
+	width: 110px;
+	display: inline-block;
+	font-weight: bold;
+}
+.border {
+	height: 1px;
+	border: 0;
+	background: var(--border-color-light);
+	margin: 20px 0;
+}
+.tango-card-integration-list-option-item {
+	background-color: white;
+	border: 1px solid var(--light-gray);
+	border-radius: 10px;
+	/* margin: 5px; */
+	padding: 10px;
+	/* min-width: 300px; */
+	/* max-width: 300px; */
+	text-align: center;
+	width: 20%;
+	transition: all .2s ease-in-out;
+}
+.tango-card-integration-list-option-item img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+.btn-green {
+	background: var(--green);
+	border-color: var(--green);
+}
+.tango-card-integration-list-option-item:hover {
+	transform: scale(1.1);
+	-webkit-box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.25);
+	-moz-box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.25);
+	box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.25);
+}
+.tango-card-option-item-cost-holder {
+	min-width: 115px;
+}
+.tango-card-available-item-options-holder {
+	margin-top: 20px;
+	margin-bottom: 30px;
+	background: var(--light-background);
+	padding: 8px 15px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+.tango-card-option-item-flex-value-holder input {
+	width: 50px !important;
+	min-width: auto !important;
+	margin: 0 !important;
+}
+.tc-option-description-holder {
+	position: absolute;
+	top: 25vh;
+	left: 25vw;
+	z-index: 8000;
+	border: 3px solid black;
+	border-radius: 25px;
+	background: #f0f0f0 !important;
+	color: black;
+	padding: 10px;
+	font-size: 0.95em;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	max-width: 40vw;
+	min-width: 40vw;
+	max-height: 30vh;
+	min-height: 30vh;
+	overflow: auto;
+	text-align: left;
+}
+.tc-option-image {
+	min-height: 75px;
+}
+.tc-option-image:hover {
+	cursor: pointer;
+}
+.tc-option-image .tc-option-description-holder {
+	min-height: 75px;
+}
+.tc-option-name {
+	font-weight: bold;
+	font-size: 16px;
+	margin-top: 8px;
+}
+.tc-option-cost {
+	font-style: italic;
+	min-height: 30px;
+	max-height: 30px;
+	font-size: 0.9em;
+}
+.tc-option-button {
+	padding: 8px;
+	margin-top: -4px;
+}
+.tc-option-button:hover {
+	background-color: var(--brand-blue-hover);
+	cursor: pointer;
+}
+.tango-card-integration-items-available-count {
+	font-size: 0.75em;
+	font-weight: bold;
+}
+.tango-card-option-item {
+	margin: 4px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 10px;
+}
+.tango-card-option-item input {
+	min-width: auto !important;
+	padding: 0;
+	margin: 0 !important;
+}
+.tango-card-option-item-full-line {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+	justify-content: space-between;
+}
+.close-button-holder {
+	width: 99%;
+	text-align: right;
+}
+.tango-card-display-image-points-use-holder {
+	display: flex;
+	gap: 30px;
+	align-items: flex-start;
+}
+.tango-card-display-header-brand-image {
+	display: inline-block;
+}
+.tango-card-display-header-points-to-use {
+	display: flex;
+}
+.tango-card-points-to-use-label {
+	font-weight: bold;
+	font-size: 25px;
+}
+.tango-card-points-to-use-value {
+	font-size: 25px;
+	color: var(--green);
+	font-weight: bold;
+	margin-left: 20px;
+}
+.tango-card-brand-description-information-holder {
+	max-height: 260px;
+	overflow-y: auto;
+}
+.not-enough-user-points {
+	color: gray;
+}
+.current-user-points-balance {
+	font-weight: bold;
+	font-size: 20px;
+}
+#lblCurrentUserPointsTotal {
+	color: var(--green);
+}
+.current-user-points_details {
+	font-size: 16px;
+	line-height: 28px;
+}
+@media only screen and (max-width: 1020px) {
+	.column1-tangocard {
+		width: 100%;
+		overflow: auto;
+		padding-right: 0;
+	}
+	.column2-tangocard {
+		width: 100%;
+		overflow: auto;
+		margin: 0;
+		border: 0;
+		padding: 0;
+	}
+	.tangocard_table-container {
+		display: block !important;
+		overflow: auto;
+	}
+}
+
+.tango-card-header-holder {
+}
+.tango-card-header-item
+{
+	display:inline-flex;
+}
+.option-holder-right {	
+	min-width:20vw;
+	max-width:20vw;
+	float:right;
+	text-align:right;
+	padding:2px;
+}
+.tango-card-body-list-holder {
+	overflow:auto;
+	max-height:65vh;
+	min-height:65vh;
+}
+.award-to-role-option-holder
+{
+	margin:2px;
+	min-width:30%;
+	max-width:30%;
+	display:inline-flex;
+}
+.award-to-roles-description-notes-holder
+{
+	margin:0;
+	padding:4px;
+}
+.award-to-role-name-holder {
+	display:inline;
+}
+.award-to-role-description-holder
+{
+	font-size:0.8em;
+}
+.award-to-role-desc-name-holder
+{
+	font-weight:bold;
+	display:inline-flex;
+}
+.award-to-role-desc-text-holder
+{
+	font-style: italic;
+	display:inline-flex;
+}

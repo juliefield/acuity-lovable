@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <div style="display:none;" id="longpollerOnline">Long Poller is On-Line</div>
+    <div id="poller_message_com">READY</div>
+</head>
+<body>
+
+<script src="https://poller.acuityapmr.com/socket.io/socket.io.js"></script>
+
+<script language="javascript">
+
+    function WindowTop() {
+        var win = window.self;
+        while (win != window.top) {
+            if (win.document.AcuityMainFrame) break;
+            win = win.parent;
+        }
+        return win;
+    }
+    window.appLib = {
+        WindowTop: WindowTop
+    };
+    var a$ = appLib;
+
+    // Poller node code
+    var user = 77698; //jeffgack in KM2 (id in usr table in goldencrm, retrievable as member idusr from "getmessages"
+    var client = 60;  // idclient from "getmessages"
+    var idlastmsg = 0; //ID of last message retrieved.  If 0, it will trigger on any newly sent message.
+
+    function callOnReady() {
+        if (a$.WindowTop().document.getElementById('poller_message_com').innerHTML == "READY") runService();
+        else setTimeout(callOnReady, 500);
+    }
+    callOnReady();
+
+
+    function runService() {
+        user = user.toString();
+        var socket = io.connect('https://poller.acuityapmr.com', { query: 'user=' + user + "_" + client });
+        socket.on("server_out", function (data) {
+            console.log('Got announcement:', data);
+            if (data.status_code == true) {
+                //alert('New Message');
+                a$.WindowTop().document.getElementById('poller_message_com').innerHTML = "true"; //Tell the parent frame that you have a message (poller_message_com = true)
+                socket.close();
+                setTimeout(callOnReady, 0); //Don't Re-Call the socket service until "READY" is found again in poller_message_com.
+            }
+            else if (data.status_code == 'reconnect') {
+                setTimeout(runService, 0);  //If you return false, then call your service again immediately (Assuming you're checking to be sure the browser hasn't closed).
+            } else if (data.status_code == 'default') {
+                if (data.message == "(Online)") {
+                    a$.WindowTop().document.getElementById('longpollerOnline').style.display = "block";
+                }
+                else {
+                    a$.WindowTop().document.getElementById('longpollerOnline').style.display = "none";
+                    //a$.WindowTop().document.getElementById('header_userID_lbl').innerHTML = title + data.message; // // Default online notification
+                }
+            }
+        });
+    }
+
+</script>
+
+</body>
+</html>

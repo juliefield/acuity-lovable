@@ -1,0 +1,734 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title></title>
+  </head>
+<body>
+<script src="https://poller.acuityapmr.com/socket.io/socket.io.js"></script>
+<script src="https://poller.acuityapmr.com/assets/js/jquery-3.5.1.js"></script>
+<script>
+    // RTC
+  //const { RTCPeerConnection, RTCSessionDescription } = window;
+//   const iceServers = {
+//     iceServers: [
+//   {
+//       urls: ["turn:ubuntu1.acuityapmr.com:3489"],
+//       username: "guest",
+//       credential: "somepassword"
+//     },
+//     { urls: 'stun:ubuntu1.acuityapmr.com:3489' }
+//   ],
+// }
+const iceServers = {
+    iceServers: [
+    { urls: 'stun:ubuntu3.acuityapmr.com:3478' }
+  // {
+  //   urls:["stun:ubuntu3.acuityapmr.com:3478","turn:ubuntu3.acuityapmr.com:3478?transport=udp","turn:ubuntu3.acuityapmr.com:80?transport=udp","turn:ubuntu3.acuityapmr.com:3478?transport=tcp","turn:ubuntu3.acuityapmr.com:80?transport=tcp","turn:ubuntu3.acuityapmr.com:443?transport=tcp","turn:ubuntu3.acuityapmr.com:5349?transport=tcp"],
+  //     username: "Welcome",
+  //     credential: "Welcome@12345"
+  //   },
+  //   { urls: 'stun:ubuntu3.acuityapmr.com:3478' }
+  ],
+}
+	//const peerConnection = new RTCPeerConnection(iceServers);
+  
+var getCalled = false;
+var roomId;
+let isRoomCreator;
+let localStream;
+let remoteStream;
+let rtcPeerConnection; // Connection between the local device and the remote peer.
+var localTrack;
+var stream;
+
+
+    function WindowTop() {
+        var win = window.self;
+        while (win != window.top) {
+            if (win.document.AcuityMainFrame) break;
+            win = win.parent;
+        }
+        return win;
+    }
+    window.appLib = {
+        WindowTop: WindowTop
+    };
+    var a$ = appLib;
+
+	 // get title 
+      var title = a$.WindowTop().document.getElementById("header_userID_lbl")
+        .innerHTML;
+      var socket = "";
+	// check for READY and run the Runservice method
+      function callOnReady() {
+        if (
+          a$.WindowTop().document.getElementById("poller_message_com").innerHTML ==
+          "READY"
+        )
+          runService();
+        else setTimeout(callOnReady, 500);
+      }
+      callOnReady();
+	
+      function runService() {
+        // Poller node code
+        var user = a$.WindowTop().document.getElementById("poller_idusr").innerHTML;
+        var client = a$.WindowTop().document.getElementById("poller_client")
+          .innerHTML;
+        var userid = a$.WindowTop().document.getElementById("poller_userid")
+          .innerHTML; //Added 2021-03-01
+        var idlastmsg = a$.WindowTop().document.getElementById("poller_idlastmsg")
+          .innerHTML;
+        user = user.toString();
+        var combined_id = user + "_" + client + "_" + userid;
+        combined_id = combined_id.toString();
+		//connect to socket and send the query
+        socket = io.connect("https://poller.acuityapmr.com", {
+          query: "user=" + combined_id,
+		});
+    //console.log(socket)
+
+    socket.on('hello', async data => {
+      console.log(data.data)
+    })
+
+  // video call    
+    socket.on("call-made", async data => {
+      //console.log('call from ', data);
+     // console.log('room id',data.currentRoomId)
+      a$.WindowTop().document.getElementById('callStatus').style.display = "block";
+      a$.WindowTop().document.getElementById('callStatus').innerHTML="Call from"+data.callFrom;
+      a$.WindowTop().document.getElementById('callButtons').style.display ="block";
+      a$.WindowTop().document.getElementById('callAccept').style.display ="block";
+      a$.WindowTop().document.getElementById('callReject').style.display ="block";
+      a$.WindowTop().document.getElementById('callAcceptingUserId').value = data.callFromId;
+      a$.WindowTop().document.getElementById('callAccept').onclick = function(){
+      
+      // join video room 
+      joinRoom(data.currentRoomId,data.callFromId,data.socket);
+        
+      a$.WindowTop().document.getElementById('callStatus').innerHTML="Call connected";
+      a$.WindowTop().document.getElementById("localUserVideo").style.display = "block";
+      a$.WindowTop().document.getElementById("remoteUserVideo").style.display = "block";
+      a$.WindowTop().document.getElementById('callReject').innerHTML ="End call";
+      a$.WindowTop().document.getElementById('callAccept').style.display ="none";
+      
+      setTimeout(() => {
+        socket.emit("call-accpeted", {
+          calledBy: data.callFromId,
+          current:data.socket,
+          currentRoomId : data.currentRoomId
+        });
+
+           }, 1000); 
+        };
+
+        a$.WindowTop().document.getElementById('callReject').onclick = function(){
+          a$.WindowTop().document.getElementById("localUserVideo").style.display = "none";
+          a$.WindowTop().document.getElementById("remoteUserVideo").style.display = "none";
+          a$.WindowTop().document.getElementById("callButtons").style.display = "none";
+          a$.WindowTop().document.getElementById('callStatus').innerHTML="Call Ended";
+          a$.WindowTop().document.getElementById('callAcceptingUserId').value = 0;
+
+          stream.getTracks().forEach(function(track) {
+          if (track.readyState == 'live') {
+              track.stop();
+          }
+        });
+        rtcPeerConnection.removeTrack(localTrack);
+        rtcPeerConnection.close();
+          var sendCallersId = [data.callFromId,data.socket];
+          socket.emit("reject-call", {
+            callersData: sendCallersId,
+            });
+              return false;
+          };
+    
+    });
+
+
+    socket.on("call-accpeted-show-video", async data => {
+      a$.WindowTop().document.getElementById('callStatus').style.display = "block";
+      a$.WindowTop().document.getElementById('callButtons').style.display ="block";
+      a$.WindowTop().document.getElementById('callReject').innerHTML ="End call";
+      a$.WindowTop().document.getElementById('callReject').style.display ="block";
+
+      a$.WindowTop().document.getElementById('callStatus').innerHTML="Call connected";
+      a$.WindowTop().document.getElementById("localUserVideo").style.display = "block";
+      a$.WindowTop().document.getElementById("remoteUserVideo").style.display = "block";
+
+      a$.WindowTop().document.getElementById('callReject').onclick = function(){
+          a$.WindowTop().document.getElementById("localUserVideo").style.display = "none";
+          a$.WindowTop().document.getElementById("remoteUserVideo").style.display = "none";
+          a$.WindowTop().document.getElementById("callButtons").style.display = "none";
+          a$.WindowTop().document.getElementById('callStatus').innerHTML="Call Ended";
+          stream.getTracks().forEach(function(track) {
+            if (track.readyState == 'live') {
+                track.stop();
+            }
+          });
+          rtcPeerConnection.removeTrack(localTrack);
+          rtcPeerConnection.close();
+          var sendCallersId = [data.callAttendBy,data.calledBy];
+          socket.emit("reject-call", {
+            callersData: sendCallersId,
+            });
+              return false;
+          };
+
+    });
+
+    socket.on("call-rejected", async data => {  
+      console.log(data)
+      stream.getTracks().forEach(function(track) {
+        if (track.readyState == 'live') {
+            track.stop();
+        }
+    });
+      rtcPeerConnection.removeTrack(localTrack);
+      rtcPeerConnection.close();
+      
+      console.log(rtcPeerConnection)
+          a$.WindowTop().document.getElementById("localUserVideo").style.display = "none";
+          a$.WindowTop().document.getElementById("remoteUserVideo").style.display = "none";
+         a$.WindowTop().document.getElementById("callButtons").style.display = "none";
+          a$.WindowTop().document.getElementById('callStatus').innerHTML="Call Ended";
+
+  });
+
+  socket.on("answer-made", async data => {  console.log('call again answer',data)});
+
+
+  
+  
+socket.on('webrtc_answer', function (event) {
+  console.log('Socket event callback: webrtc_answer')
+
+  rtcPeerConnection.setRemoteDescription(new RTCSessionDescription(event))
+})
+
+socket.on('webrtc_ice_candidate', (event) => {
+  console.log('Socket event callback: webrtc_ice_candidate')
+
+  // ICE candidate configuration.
+  var candidate = new RTCIceCandidate({
+    sdpMLineIndex: event.label,
+    candidate: event.candidate,
+  })
+  rtcPeerConnection.addIceCandidate(candidate)
+})
+
+// peerConnection.ontrack = function({ streams: [stream] }) {
+//   const remoteVideo = a$.WindowTop().document.getElementById("remote-video");
+//   console.log('remotevideo',stream)
+//   if (remoteVideo) { console.log('remotevideo',stream)
+//     remoteVideo.srcObject = stream;
+//   }
+// };
+
+ // video call end
+  
+		// get announcemnet data from sever 
+        socket.on("server_out", function (data) {
+          console.log("Got announcement:", data);
+          if (data.status_code == true) {
+            //alert('New Message');
+            a$.WindowTop().document.getElementById("poller_message_com").innerHTML =
+              "true"; //Tell the parent frame that you have a message (poller_message_com = true)
+            socket.close();
+            setTimeout(callOnReady, 0); //Don't Re-Call the socket service until "READY" is found again in poller_message_com.
+          } else if (data.status_code == "reconnect") {
+            setTimeout(runService, 0); //If you return false, then call your service again immediately (Assuming you're checking to be sure the browser hasn't closed).
+          } else if (data.status_code == "default") {
+            if (data.message == "(Online)") {
+              a$.WindowTop().document.getElementById('longpollerOnline').style.display = "block";
+              /*
+              a$.WindowTop().document.getElementById(
+                "header_userID_lbl"
+              ).innerHTML = title + data.message;
+              */
+            } else {
+              a$.WindowTop().document.getElementById('longpollerOnline').style.display = "none";
+              a$.WindowTop().document.getElementById('header_userID_lbl').innerHTML = title + data.message; // // Default online notification
+            }
+          }
+        });
+
+        	// get announcemnet data from sever for group chat
+          socket.on("group_chat_out", function (data) { //duck
+          console.log("Got announcement:", data);
+          if (data.status_code == true) {
+            console.log('New group notification');
+            a$.WindowTop().document.getElementById(
+                "poller_chat_com"
+              ).innerHTML = data.message;
+
+            //enter your group chat code starts
+          //enter your group chat code end
+             } 
+          
+        });
+
+        // recevie msg from users if have any
+        socket.on("chat_out_notification", function (data) {
+          console.log("Chat announcement:", data);
+
+          if (data.status_code == true) {
+            // call your api
+          }
+        });
+
+
+      socket.on('room_joined', async data => {
+      console.log('Socket event callback: room_joined',roomId + data.room)
+
+      await setLocalStream();
+      socket.emit('start_call', {
+        roomId : roomId,
+        userId : data.caller,
+        receiverId: data.receiverId
+      })
+    })
+
+      socket.on('start_call', async data => {
+      console.log('Socket event callback: start_call',isRoomCreator)
+
+      if (isRoomCreator) {
+        //console.log(iceServers)
+        rtcPeerConnection = new RTCPeerConnection(iceServers)
+        
+        addLocalTracks(rtcPeerConnection)
+        rtcPeerConnection.ontrack = setRemoteStream
+        rtcPeerConnection.onicecandidate = sendIceCandidate
+        console.log(rtcPeerConnection)
+        await createOffer(rtcPeerConnection,data.receiverId,data.userId)
+      }
+      })
+
+      socket.on('webrtc_offer', async (event) => {
+  console.log('Socket event callback: webrtc_offer',isRoomCreator)
+
+  if (!isRoomCreator) {
+    rtcPeerConnection = new RTCPeerConnection(iceServers)
+    addLocalTracks(rtcPeerConnection)
+    rtcPeerConnection.ontrack = setRemoteStream
+    rtcPeerConnection.onicecandidate = sendIceCandidate
+    rtcPeerConnection.setRemoteDescription(new RTCSessionDescription(event.sdp))
+    await createAnswer(rtcPeerConnection,event.caller)
+  }
+})
+
+      
+
+      socket.on('roomData',  function (data) { 
+    console.log(data)
+  })
+
+  socket.on('group-call-invite', function(data){
+      console.log(data)
+      a$.WindowTop().document.getElementById('callStatus').style.display = "block";
+      a$.WindowTop().document.getElementById('callStatus').innerHTML="Call from "+data.callCreaterName+" you will be redirect to new url for group video call";
+      a$.WindowTop().document.getElementById('callButtons').style.display ="block";
+      a$.WindowTop().document.getElementById('callAccept').style.display ="block";
+      a$.WindowTop().document.getElementById('callReject').style.display ="block";
+      a$.WindowTop().document.getElementById('callAccept').onclick = function(){
+        if(data.callCreaterId == user){
+      a$.WindowTop().document.getElementById('callAccept').style.display ="none";
+      a$.WindowTop().document.getElementById('callReject').style.display ="none";
+      }
+        var redirectWindow = window.open(data.roomLink, '_blank');
+        redirectWindow.location;
+      }
+      
+      a$.WindowTop().document.getElementById('callReject').onclick = function(){
+        if(data.callCreaterId == user){
+      a$.WindowTop().document.getElementById('callAccept').style.display ="none";
+      a$.WindowTop().document.getElementById('callReject').style.display ="none";
+        }
+      }
+  })
+
+
+      }
+
+  // video call    
+  setTimeout(() => {
+           //create video html element
+        
+        /* CLIP 
+        var liOne = a$.WindowTop().document.createElement("div");
+        liOne.id = "localVideo";
+        var local = a$.WindowTop().document.createTextNode("Local");
+        liOne.appendChild(local);
+        var liTwo = a$.WindowTop().document.createElement("div");
+        liTwo.id = "remoteVideo";
+        var remote = a$.WindowTop().document.createTextNode("Remote");
+        liTwo.appendChild(remote);
+        var ulElement = a$.WindowTop().document.getElementsByClassName("poller-video")[0];
+      
+        ulElement.appendChild(liOne);
+        ulElement.appendChild(liTwo);
+
+        a$.WindowTop().document.getElementById('localVideo').innerHTML = `<div id="callStatus" style="display : none;">
+          </div>
+          <input type="hidden" id="callAcceptingUserId" value="0">
+          <div id="callButtons" style="display : none;">
+          <button id="callAccept" class="callAccept" style="display: none;">Accept</button>
+		      <button id="callReject" class="callReject" style="display: none;">Reject</button>
+          </div>
+          <div id="localUserVideo" style="display:none"><video width="150" autoplay muted class="local-video" id="local-video"></video></div>`;
+        a$.WindowTop().document.getElementById('remoteVideo').innerHTML = '<div id="remoteUserVideo" style="display:none"><video width="150" autoplay class="remote-video" id="remote-video"></video>';
+
+        var my_elem = a$.WindowTop().document.getElementsByClassName('chat-video')[0];
+        my_elem.addEventListener("click", callToUser, false);
+        var span = a$.WindowTop().document.createElement('div');
+            span.style.marginTop  = "-20px";
+            span.style.marginLeft  = "220px";
+            span.style.cursor = "pointer";
+            span.addEventListener("click", createGroupCallLink, false);
+            span.innerHTML = '<i class="fas fa-phone-alt" aria-hidden="true"></i>';
+            span.className = 'groupCallUser';
+
+        my_elem.parentNode.insertBefore(span, my_elem);
+        //create video html element end
+        END CLIP */
+  }, 1000);
+      
+
+      function callShow(data){
+      if(data == 1){
+        document.getElementById("localUserVideo").style.display = "block";
+        document.getElementById("remoteUserVideo").style.display = "block";
+        document.getElementById('callStatus').innerHTML="Call connected";
+      }else{
+        document.getElementById("localUserVideo").style.display = "none";
+        document.getElementById("remoteUserVideo").style.display = "none";
+        document.getElementById('callStatus').innerHTML="Call Rejected";
+      }
+    }
+
+    createGroupCallLink = () => {
+      
+        const crypto = window.crypto || window.msCrypto;
+        let array = new Uint32Array(1);
+        let roomName = Math.random().toString(36).substring(9);
+        console.log(crypto.getRandomValues(array));
+        let roomLink = `https://groupcall.acuityapmr.com?room=${ roomName.trim().replace( ' ', '_' ) }_${ crypto.getRandomValues(array) }`;
+        var getCallingUserIdFromSeconduser = a$.WindowTop().document.getElementById('callAcceptingUserId').value;
+       console.log('calltouser',getCallingUserIdFromSeconduser)
+        if(getCallingUserIdFromSeconduser == 0){
+        var getCountUser = a$.WindowTop().document.getElementsByClassName('search-choice').length;
+        if(getCountUser < 1){
+          alert('No person(s) selected');
+        } else {
+       
+          var getMultipleUserIdGroupCall = Array.from(
+          a$.WindowTop().document.getElementById("chatparties").options
+        )
+          .filter((option) => option.selected)
+          .map((option) => olineusers[option.value]);
+
+          var getMultipleUserIdGroupCallName = Array.from(
+          a$.WindowTop().document.getElementById("chatparties").options
+        )
+          .filter((option) => option.selected)
+          .map((option) => option.text);
+          console.log(getMultipleUserIdGroupCallName);
+          if (getMultipleUserIdGroupCall != null && getMultipleUserIdGroupCall.length != undefined && getMultipleUserIdGroupCall.length != 0) {
+            console.log(getMultipleUserIdGroupCall);
+        var poller_useridNewGrp = a$.WindowTop().document.getElementById("poller_userid").innerHTML.toString();
+        var poller_frmUserIdGrp = a$.WindowTop().document.getElementById("poller_idusr").innerHTML;
+         sendGroupCallLink(getMultipleUserIdGroupCall,roomLink,poller_useridNewGrp,poller_frmUserIdGrp,getMultipleUserIdGroupCallName);
+        }
+        console.log(roomLink);
+        }
+      }
+    }
+
+      callToUser = () => {
+        //new 
+        let uniqueId = Math.random().toString(36).substring(9);
+         //console.log("random", uniqueId);
+        //new end
+        a$.WindowTop().document.getElementById('callStatus').style.display = "block";
+        a$.WindowTop().document.getElementById('callStatus').innerHTML = "Calling... Please wait till user accpect your call..";
+        var getCallingUserIdFromSeconduser = a$.WindowTop().document.getElementById('callAcceptingUserId').value;
+       console.log('calltouser',getCallingUserIdFromSeconduser)
+        if(getCallingUserIdFromSeconduser == 0){
+        var getCountUser = a$.WindowTop().document.getElementsByClassName('search-choice').length;
+        if(getCountUser < 1){
+          alert('No person(s) selected');
+        } else {
+          var clientId = a$.WindowTop().document.getElementById("poller_client")
+              .innerHTML.toString();
+          var getSelectedUserId = a$.WindowTop().document.getElementById("poller_idusr")
+              .innerHTML.toString();
+              var userid = a$.WindowTop().document.getElementById("poller_userid")
+          .innerHTML.toString();
+
+          var getMultipleUserId = Array.from(
+          a$.WindowTop().document.getElementById("chatparties").options
+        )
+          .filter((option) => option.selected)
+          .map((option) => olineusers[option.value]);
+          console.log(getMultipleUserId);
+          if (getMultipleUserId != null && getMultipleUserId.length != undefined && getMultipleUserId.length != 0) {
+            sendCallRequestToSecondUser(getMultipleUserId[0],uniqueId,getMultipleUserId);
+        }
+             
+        }
+        } else {
+          sendCallRequestToSecondUser(getCallingUserIdFromSeconduser,uniqueId);
+        }
+      }
+
+      
+    async function sendCallRequestToSecondUser(selectedUserId,uniqueId,getMultipleUserId) {
+      var poller_useridNew = a$.WindowTop().document.getElementById("poller_userid").innerHTML.toString();
+      var poller_frmUserId = a$.WindowTop().document.getElementById("poller_idusr").innerHTML;
+      await joinRoom(uniqueId,0,0)
+      await frstCallerTocaller('offer',selectedUserId,poller_useridNew,poller_frmUserId,uniqueId,getMultipleUserId)
+     
+    }
+    
+
+
+    // FUNCTIONS ==================================================================
+
+    
+async function setLocalStream() {
+
+  try {
+    stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+  } catch (error) {
+    console.error('Could not get user media', error)
+  }
+  const localVideo = a$.WindowTop().document.getElementById("local-video");
+  localStream = stream
+  localVideo.srcObject = stream
+
+
+}
+
+async function joinRoom(room,callerId,recevierId) { //console.log('join Room',room);
+  if (room === '') {
+    console.log('No room initiated');
+  } else {
+    roomId = room
+    socket.emit('join', {room:room,userId:callerId,recevierId:recevierId})
+  }
+}
+
+async function sendGroupCallLink(getMultipleUserIdGroupCall,roomLink,poller_useridNewGrp,poller_frmUserIdGrp,getMultipleUserIdGroupCallName){
+  if (getMultipleUserIdGroupCall != null && getMultipleUserIdGroupCall.length != undefined && getMultipleUserIdGroupCall.length != 0) {
+    console.log({roomLink:roomLink,callCreaterName:poller_useridNewGrp,callCreaterId:poller_frmUserIdGrp,recevierData:getMultipleUserIdGroupCall})
+    socket.emit('sendGroupCallLink', {roomLink:roomLink,callCreaterName:poller_useridNewGrp,callCreaterId:poller_frmUserIdGrp,recevierData:getMultipleUserIdGroupCall,recevierDataName:getMultipleUserIdGroupCallName})
+    
+    //create iframe
+
+    var ulElement = a$.WindowTop().document.getElementsByClassName("poller-video")[0];
+
+		// create iframe
+		var substack = a$.WindowTop().document.createElement("iframe");
+		// Add attributes
+		substack.src = roomLink+'&userName='+poller_useridNewGrp;
+		// Set size and hide iframe border
+		substack.width = "300";
+		substack.height = "150";
+		substack.frameBorder ="0";
+		substack.scrolling = "0";
+		substack.style.border= "none";
+		substack.style.background = "white";
+    ulElement.appendChild(substack);
+    //var redirectWindowAdmin = window.open(roomLink+'&userName='+poller_useridNewGrp, '_blank');
+       // redirectWindow.location;
+  } else {
+    console.log('No users selected');
+  }
+}
+
+async function frstCallerTocaller(offer,selectedUserId,poller_useridNew,poller_frmUserId,uniqueId,getMultipleUserId){
+  socket.on('room_created', async () => {
+  console.log('Socket event callback: room_created')
+
+  await setLocalStream();
+  isRoomCreator = true
+  })
+
+
+
+  socket.emit("call-user", {
+        offer,
+        to: selectedUserId, // recevier user id
+        from: poller_useridNew,
+        fromId: poller_frmUserId,
+        uniqueKey : uniqueId,
+        receiversArry : getMultipleUserId
+      });
+
+}
+
+
+          
+
+function showVideoConference() {
+  roomSelectionContainer.style = 'display: none'
+  videoChatContainer.style = 'display: block'
+}
+
+
+function addLocalTracks(rtcPeerConnection) {
+  localStream.getTracks().forEach((track) => {
+    localTrack = rtcPeerConnection.addTrack(track, localStream)
+  })
+}
+
+async function createOffer(rtcPeerConnection,receiverId,userId) {
+  let sessionDescription
+  try {
+    sessionDescription = await rtcPeerConnection.createOffer()
+    rtcPeerConnection.setLocalDescription(sessionDescription)
+  } catch (error) {
+    console.error(error)
+  }
+  console.log('createOffer',rtcPeerConnection)
+  socket.emit('webrtc_offer', {
+    type: 'webrtc_offer',
+    sdp: sessionDescription,
+    roomId,
+    receiverId:receiverId,
+    caller:userId
+  })
+}
+
+async function createAnswer(rtcPeerConnection,userid) {
+  let sessionDescription
+  try {
+    sessionDescription = await rtcPeerConnection.createAnswer()
+    rtcPeerConnection.setLocalDescription(sessionDescription)
+  } catch (error) {
+    console.error(error)
+  }
+
+  socket.emit('webrtc_answer', {
+    type: 'webrtc_answer',
+    sdp: sessionDescription,
+    roomId,
+    userId:userid
+  })
+}
+
+function setRemoteStream(event) {
+  const remoteVideo = a$.WindowTop().document.getElementById("remote-video");
+  remoteVideo.srcObject = event.streams[0];
+  remoteStream = event.stream
+}
+
+function sendIceCandidate(event) { console.log('sendIceCandidate')
+  if (event.candidate) {
+    socket.emit('webrtc_ice_candidate', {
+      roomId,
+      label: event.candidate.sdpMLineIndex,
+      candidate: event.candidate.candidate,
+    })
+  }
+}
+
+
+//FUNCTIONS end
+
+
+     //video call end
+
+      var olineusers = [];
+	  // fetch users based on client id
+      fetchusers = () => {
+        if (
+          a$.WindowTop().document.getElementById("poller_message_com").innerHTML ==
+          "READY"
+        ) {
+		// send client id to server
+          socket.emit("getUsersList", {
+            clientId: a$.WindowTop().document.getElementById("poller_client")
+              .innerHTML,
+            userId: a$.WindowTop().document.getElementById("poller_idusr")
+          .innerHTML
+		  });
+		  // get users list that currently connected to client
+        
+          socket.once("user_list", function (data) {
+            console.log("Got announcement:", data);
+            var getUsers = data.users_available.split(",");
+			// append the users list in option values that in select element 
+            var select = a$.WindowTop().document.getElementById("chatparties");
+			//a$.WindowTop().document.getElementById("chatparties").multiple = true;
+			// avoid current user and show other users that are in online and append
+            if (getUsers.length != 1) {
+              olineusers = [];
+              getUsers.map((res, index) => {
+                var splitUser = res.split("_");
+                if (
+                  a$.WindowTop().document.getElementById("poller_idusr")
+                    .innerHTML != splitUser[0]
+                ) {
+                  var opt = document.createElement("option");
+                  opt.value = splitUser[0];
+                  olineusers[splitUser[1]] = splitUser[0];
+                  opt.innerHTML = splitUser[1];
+                  select.appendChild(opt);
+                }
+              });
+            } else {
+              var opt = document.createElement("option");
+              opt.value = "";
+              opt.innerHTML = "No users online";
+              select.appendChild(opt);
+            }
+          });
+        }
+      };
+      function getonlineusers() {
+        fetchusers();
+      }
+
+      // send msg to users
+      function sendMsgToUser() {
+        //var getUserMsg = a$.WindowTop().document.getElementsByClassName('chat-inputline').value;
+        var getClientId = a$.WindowTop().document.getElementById("poller_client").innerHTML;
+        var getMultipleUserId = Array.from(
+          a$.WindowTop().document.getElementById("chatparties").options
+        )
+          .filter((option) => option.selected)
+          .map((option) => olineusers[option.value]);
+          //console.log('getClientId',getClientId)
+          //console.log('getUserData',getMultipleUserId)
+        if (getMultipleUserId != null && getMultipleUserId.length != undefined && getMultipleUserId.length != 0) {
+          sendMsgUser(getMultipleUserId,getClientId);
+        }
+      }
+	  // send the msg to user 
+      function sendMsgUser(getUserId,getClientId) {
+        console.log(getUserId);
+        socket.emit("sendMsgTouser", {
+          userId: getUserId,
+          clientId:getClientId
+        });
+      }
+	  // get the users list when click on chat icon
+      $(document).ready(function () {
+        window.parent.$(".headericon-chat").on("click", function () {
+          getonlineusers();
+        });
+		// send the msg to user if enter the button
+        window.parent.$(".chat-inputline").on("keyup", function (e) {
+          if (e.key === "Enter" || e.keyCode === 13) {
+            sendMsgToUser();
+          }
+        });
+      });
+
+
+    </script>
+    
+  </body>
+</html>

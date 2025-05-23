@@ -1,0 +1,93 @@
+.col1of2
+{
+    display:inline-block;
+    width:49%;
+    vertical-align: top;
+}
+.col2of2
+{
+    display:inline-block;
+    width:49%;
+    vertical-align: top;
+}
+.score-manager-holder
+{
+    border:1px dashed darkblue;
+}
+
+.score-mangaer-header-holder
+{
+    border:1px solid lime;
+}
+
+.score-manager-item-holder
+{    
+    border:1px solid hotpink;
+    max-height: 30vh;
+    overflow-y:auto;
+    vertical-align: top;
+    
+}
+.score-manager-chart-holder
+{
+    min-height:25vh;
+    height:25vh;
+    border:1px dashed darkorange;
+}
+.score-manager-high-low-editor-holder
+{
+    overflow-x:auto;
+    max-height:50rem;
+}
+.scoring-range-data-holder
+{
+    border-bottom:1px solid darkgray;
+}
+.data-header-holder
+{
+    background-color:darkgray;
+    font-weight:bold;
+}
+.scoring-manager-header-item
+{
+    font-weight:bold;
+    display:inline-block;
+}
+.data-row-holder
+{
+    background-color:lightgray;    
+}
+.scoring-manager-data-item,
+.scoring-manager-data-item-add
+{
+    display:inline-block;
+}
+.scoring-manager-data-item-edit-range
+{
+    width:50px;    
+    display:inline-block;
+}
+.scoring-range-data-point 
+{
+    width:75px;
+    text-align:center;
+}
+.scoring-range-data-low 
+{
+    width:100px;
+    text-align:center;
+}
+.scoring-range-data-high 
+{
+    width:100px;
+    text-align:center;
+}
+.scoring-range-data-buttons
+{
+    width:150px;    
+    text-align:center;
+}
+.score-manager-footer-holder
+{
+    border:1px solid cyan;
+}

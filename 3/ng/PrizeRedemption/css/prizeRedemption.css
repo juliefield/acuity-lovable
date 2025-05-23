@@ -1,0 +1,276 @@
+@import url("../../../../applib/css/variables.css");
+
+.clearfix {
+   clear: both;
+}
+.prize-directive-holder {
+   padding: 20px;
+   overflow: auto;
+    height: calc(100vh - 48px);
+    max-height: 100%;
+}
+.top-filters {
+   padding: 20px;
+   background: var(--light-gray);
+}
+.btn-redeem-prize-back {
+   color: var(--brand-blue);
+   font-size: 14px;
+}
+.btn-redeem-prize-back:hover {
+   cursor: pointer;
+   color: var(--brand-blue-hover);
+}
+.red-ledger {
+   color:var(--red);
+}
+.all-prize-header-holder {
+   background: var(--table-topper);
+   color: white;
+   text-align: center;
+   padding: 12px !important;
+}
+
+.header-holder {
+   font-weight: bold;
+   font-size: 15px;
+   background: var(--table-topper);
+   color: white;
+   margin-top: 0;
+   position: relative;
+   display: flex;
+    align-content: center;
+}
+.user-points-header-item {
+   display:inline-block;
+   width: 20%;
+   text-align: center;
+   vertical-align: top;
+   padding: 8px;
+}
+.user-points-item-holder {
+   width: 20%;
+   padding: 8px;
+   text-align: center;
+}
+.user-points-item-holder.user-points-award-reason,
+.user-points-header-item.user-points-award-reason {
+   width: 30%;
+}
+.possible-prize-holder {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+}
+.prize-redeem-layout {
+   display: block;
+   max-width: 95%;
+   margin: 15px auto;
+}
+.column-1-of-2 {
+   vertical-align:top;
+   display:block;
+   width:100%;
+}
+.user-points_container {
+   transition: all .4s ease-in-out;
+   height: 0;
+   opacity: .8;
+   overflow: hidden;
+}
+.user-points_container.active {
+   height: auto;
+   opacity: 1;
+   display: block;
+   padding-bottom: 20px;
+}
+.user-points_historybtn {
+   float: right;
+}
+.column-2-of-2 {
+   vertical-align:top;
+   display:block;
+   width:100%;
+} 
+button.btn-close-x {
+   float: right;
+   color: var(--dark-gray);
+   background: transparent;
+   font-size: 21px;
+}
+button.btn-close-x:hover {
+   color: var(--dark-gray);
+   background: transparent;
+   opacity: 0.6;
+}
+.user-points-list-footer {
+   background-color:var(--tablecell-bg);
+   padding: 8px;
+   font-size: 15px;
+}
+.user-points-list-holder {
+   width:100%;
+}
+.all-user-points-item-listing-holder {
+   width:100%;
+   backgroung: #fff;
+}
+.user-points-all-holder {
+   max-height: 300px;
+   overflow: auto;
+}
+.user-points-line-item {
+   clear:both;
+   display: flex;
+}
+.user-points-line-item:nth-child(even) {
+   background-color:var(--light-gray);
+}
+.all-prize-holder {
+   border:1px solid var(--light-gray);
+}
+.available-prize-item-image-holder {
+   max-width: 55%;
+    float: left;
+    text-align: center;
+    height: 100%;
+    margin-right: 15px;
+}
+.available-prize-item-name-holder {
+   font-size: 16px;
+   font-weight: bold;
+   margin-bottom: 7px;
+}
+.available-prize-item-image-holder img {
+   max-height: 110px;
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   border-radius: 5px;
+   overflow: hidden;
+   margin-bottom: 15px;
+   margin-right: 10px;
+   max-width: 100%;
+   height: 100%;
+}
+.prize-list-holder {
+   padding-top: 20px;
+   max-height:600px;
+   height:600px;
+   overflow:auto;
+}
+.balance-label,
+.all-prize-header-holder {
+   padding: 8px;
+   font-size: 18px;
+}
+.balance-label label {
+   font-weight: bold;
+}
+.balance-label {
+   font-size: 24px;
+}
+.user-points-item-holder.user-points-awarded-points {
+   font-weight: bold;
+}
+.user-points-header-item, .user-points-item-holder {
+   display:inline-block;
+}
+#confirmPrize_PrizePointCostLabel,
+#confirmPrize_PrizeName {
+   font-weight: bold;
+}
+.form-holder {
+   padding: 20px;
+  /* height: 400px;
+   */
+   max-width: 800px;
+   width: 100%;
+   -webkit-border-radius: 15px;
+   -moz-border-radius: 15px;
+   border-radius: 15px;
+   z-index: 90000000;
+   position: absolute;
+   margin: 0 auto;
+   left: 0;
+   right: 0;
+   top: 10%;
+   background-color: #fff;
+   text-align: center;
+}
+.editor-form:after {
+   content: '';
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background:rgba(0,0,0, 0.6);
+}
+.confirmPrize_PrizeImage {
+   width: 218px;
+   height: auto;
+   margin: 0 auto;
+   margin-bottom: 10px;
+}
+.btn-redeem-prize {
+   padding: 7px 10px;
+    display: block;
+    margin-top: 7px;
+}
+.btn-redeem-prize:hover,
+button:hover {
+   background: var(--brand-blue-hover);
+   cursor: pointer;
+}
+.pointsredeem-confirmation {
+   text-align: center;
+    font-size: 17px;
+}
+.available-prize-item-holder {
+   display: inline-block;
+    background-color: white;
+    padding: 15px;
+    margin: 10px;
+    width: 21%;
+    border: 1px solid var(--light-gray);
+    text-align: left;
+    line-height: 20px;
+}
+.available-prize-item-name-holder {
+   font-weight:bold;
+}
+.prize-item-cost-label {
+   font-style: italic ;
+}
+.prize-item-money-value-label {
+ 
+}
+.btn-large {
+   padding: 10px 20px !important;
+   font-size: 16px;
+}
+.btn-large:hover {
+   cursor: pointer;
+}
+.availablePrizeForm_btns {
+   border-top: 1px solid var(--light-gray);
+   display: block;
+   margin-top: 20px;
+   padding-top: 20px;
+   text-align: center;
+}
+@media only screen and (max-width: 1100px) {
+   .available-prize-item-holder {
+      width: 41%;
+   }
+   .available-prize-item-image-holder img {
+      height: 100% !important;
+   }
+}
+
+@media only screen and (max-width: 700px) {
+   .available-prize-item-holder {
+      width: 90%;
+   }
+}
+

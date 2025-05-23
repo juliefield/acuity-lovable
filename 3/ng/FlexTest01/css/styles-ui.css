@@ -1,0 +1,243 @@
+body {
+  background: #E4E8EB url('../images/flex-settings-bg.jpg') top center / cover no-repeat !important;
+}
+.content-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.flex-table {
+  width: 100%;
+}
+.flex-btn {
+  float: right;
+  margin-top: 5px;
+  padding: 8px;
+}
+.app-header .heading {
+  margin: 0 20px !important;
+}
+.logo {
+  top: 7px !important;
+}
+.app-header {
+  border-bottom: 8px solid #0092CE;
+}
+.flex-table thead,
+.flex-ranges-table thead,
+.inner-wrap_addplayers thead,
+.allplayers-table thead {
+  background: #2D3A48;
+  color: #fff;
+  font-size: 15px;
+}
+.allplayers-table {
+  width: 400px;
+  margin-top: 10px;
+}
+.flex-table thead tr th {
+  line-height: 18px;
+}
+.content-container a {
+  color: #0092CE;
+}
+.content-container h2 {
+  margin: 2px 0;
+}
+#flex-settings #header #back-to-list {
+  float: right;
+}
+.flex-form {
+  background: #fff;
+  padding: 0 20px 40px 20px;
+}
+.flex-backlink {
+  float: right;
+  margin-top: 32px;
+}
+.pure-form select {
+  width: 330px;
+  height: 33px !important;
+}
+.pure-form input[type=text] {
+  width: 330px;
+  height: 34px;
+}
+.addkpi-container {
+
+}
+.pure-table td {
+  background-color: white;
+}
+.pure-table-odd td,
+.pure-table-striped tr:nth-child(2n-1) td {
+  background-color: #ebeff2;
+}
+.addkpi-container p {
+  color: gray;
+  font-weight: normal;
+  font-style: italic;
+}
+.flex-addKPI-btn {
+  padding: 3px 8px;
+  margin-left: 10px;
+}
+#flex-settings > flex-set {
+  padding: 20px 0;
+}
+.overlay {
+  background: rgba(0, 0, 0, 0.8);
+}
+.inner-wrap {
+  width: 400px;
+  min-height: 300px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+.flex-input-fullwidth {
+  width: 100% !important;
+}
+.inner-wrap label {
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+.flex-inline-btns button {
+  display: inline-block;
+  width: 46%;
+  padding: 10px;
+  font-size: 16px;
+  margin: 10px 5px;
+}
+.pure-button-primary, .pure-button-selected, a.pure-button-primary, a.pure-button-selected {
+  background-color: #0092CE;
+}
+.cancel-btn {
+  background-color: #E6E6E6;
+  color: black;
+}
+.cancel-btn:hover {
+  background: transparent;
+  color: #0092CE;
+}
+.large-input {
+  font-size: 20px;
+  height: 50px !important;
+}
+button[disabled] {
+  color: #000;
+}
+input.hasDatepicker {
+  background-image:url(../images/calendar-icon.png);
+  background-position: 98% 4px;
+  background-repeat: no-repeat;
+}
+.ui-datepicker-calendar .ui-state-active, .ui-widget-content .ui-state-active {
+  background: #0092CE !important;
+  text-align: center;
+  color: white !important;
+  border-radius: 100%;
+  padding: 1px;
+  width: 20px;
+  margin: 0 auto;
+  float: right;
+}
+.success-icon {
+  margin: 20px auto;
+  display: block;
+}
+.ranges-btns {
+  float: right;
+  width: 200px;
+}
+.ranges-btns button {
+  display: block;
+  width: 100%;
+  margin-bottom: 5px;
+}
+.flex-ranges-table {
+  width: 400px;
+}
+.range-area-container {
+  max-width: 630px;
+  min-height: 80px;
+}
+.flex-large-btn {
+  font-size: 17px;
+  padding: 10px 40px;
+  margin-right: 8px;
+}
+.flex-overlay-message {
+  text-align: center;
+  border: none;
+  -webkit-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.75);
+  min-height: auto;
+  padding-bottom: 40px;
+}
+.flex-button {
+  background: #0092CE;
+  color: White;
+  display: block;
+  width: 300px;
+  margin: 3px auto;
+}
+.flex-button i {
+  font-size: 8px;
+  top: -2px;
+  position: relative;
+}
+.inner-wrap_addplayers {
+  padding: 30px;
+}
+#add_players table {
+  width: 100%;
+  position: initial;
+}
+#add_players table a.btn-close {
+  top: -9px;
+  right: -11px;
+  color: #ccc;
+  background: white;
+  padding: 3px 5px;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+}
+#add_players table .fa-plus-circle {
+  font-size: 20px;
+}
+#add_players table td:first-child, #add_players table th:first-child {
+  text-align: center;
+}
+.addall-btn {
+  margin: 8px 0;
+  padding: 5px 12px;
+}
+.addall-btn i {
+  font-size: 17px !important;
+  color: white !important;
+}
+
+@media screen and (max-width: 48em) {
+  .ranges-btns {
+    width: 100%;
+    float: none;
+    margin: 10px 0;
+  }
+  .flex-ranges-table {
+    width: 100%;
+  }
+  .app-header {
+    height: 105px !important;
+  }
+  .app-header .header-tile, .app-header .app-header-tile {
+    float: right;
+    display: inline-block;
+    margin: 0 auto;
+    width: auto !important;
+    top: 47px;
+  }
+}

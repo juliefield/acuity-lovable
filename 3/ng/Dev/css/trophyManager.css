@@ -1,0 +1,113 @@
+* {
+    font-family:'Verdana';
+    font-size:10pt;
+}
+#currentTrophyList {
+    border:1px solid red;
+    max-height:80vh;
+    min-height:80vh;
+    overflow:auto;
+}
+.trophy-list-data-holder {
+    max-height:90vh;
+    min-height:90vh;
+    border:1px dotted gray;
+    overflow:auto;
+}
+.trophy-item-data-row-holder {
+    border:1px solid black;
+    margin:2px;
+    height:150px;
+    max-width:24%;
+    min-width:24%;
+    height:150px;
+    display:inline-block;
+    z-index:5;
+    position:relative;
+    top:0;
+    left:0;
+}
+.trophy-item-background-holder {
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index:0;
+    width:100%;
+    height:100%;
+    position: relative;
+    overflow:hidden;
+}
+.trophy-item-all-data-holder
+{
+    color: black;
+    border-radius:15px;
+    margin:10px;
+    background-color:white;
+}
+.trophy-list-data-holder {
+    border:1px solid black;
+    opacity:1.0;
+}
+.trophy-inline-item-holder {
+    display:inline-block;
+    border:1px dotted green;
+}
+.trophy-manager-trophy-image {
+    max-height:75px;
+    min-height:75px;
+}
+.trophy-item-data-holder {
+    border:1px dashed gray;
+}
+.column1of4
+{
+    display:inline-block;
+    width:23%;
+    border:1px dotted hotpink;
+    margin:2px;
+}
+.column234of4
+{
+    display:inline-block;
+    width:73%;
+    border:1px dotted lime;
+    margin:2px;
+}
+.form-holder
+{
+    position:absolute;
+    top:10vh;
+    left:10vw;
+    z-index:9000;
+}
+.editor-form
+{
+    background:white;
+    border:5px solid black;
+    width:75vw;
+    height:75vh;
+    padding:5px;
+    border-radius:25px;
+}
+.editor-form-column-holder
+{
+    width:99%;
+    vertical-align:top;
+}
+.editor-form-column-1of2
+{
+    display:inline-block;
+    max-width:29%;
+    min-width:29%;
+}
+.editor-form-column-2of2
+{
+    display:inline-block;
+    max-width:68%;
+    min-width:68%;
+}
+.editor-form-input-row
+{
+    margin:2px;
+    padding:2px;
+}

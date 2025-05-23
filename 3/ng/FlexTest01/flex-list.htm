@@ -1,0 +1,45 @@
+<div class="pure-u-1-1 overlay" id="flex_loading" ng-if="overlay_show">
+    <div class="animation">
+        <div class="sk-circle">
+            <div class="sk-circle1 sk-child"></div>
+            <div class="sk-circle2 sk-child"></div>
+            <div class="sk-circle3 sk-child"></div>
+            <div class="sk-circle4 sk-child"></div>
+            <div class="sk-circle5 sk-child"></div>
+            <div class="sk-circle6 sk-child"></div>
+            <div class="sk-circle7 sk-child"></div>
+            <div class="sk-circle8 sk-child"></div>
+            <div class="sk-circle9 sk-child"></div>
+            <div class="sk-circle10 sk-child"></div>
+            <div class="sk-circle11 sk-child"></div>
+            <div class="sk-circle12 sk-child"></div>
+        </div>
+        <h2>{{overlay_message}}</h2>
+    </div>
+</div>
+<div class="pure-u-1-1">
+  <div class="content-container">
+    <button class="flex-btn" ng-click="create_game()">Create New Game</button>
+    <h1>Games Created by {{me.person.uid}}</h1>
+    <table class="pure-table pure-table-horizontal pure-table-striped flex-table">
+        <thead>
+            <tr>
+                <th ng-repeat="title in flex.game_list.headers">{{title}}</th>
+                <th>Actions</th>
+                <!-- <th>&nbsp;</th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="r in flex.game_list.values | orderBy:'id'">
+                <td>{{r.name}}</td>
+                <td>{{r.game_finish_type}}</td>
+                <td>{{r.game_startdate}}</td>
+                <td>{{r.game_enddate}}</td>
+                <td>{{r.game_kpi_name}}</td>
+                <td><a href="#" ng-click="load_game(r.id)">View/Edit</a></td>
+                <!-- <td><a href="#" ng-click="delete_game(r.id)" disabled>Delete</a></td> -->
+            </tr>
+        </tbody>
+    </table>
+  </div>
+</div>

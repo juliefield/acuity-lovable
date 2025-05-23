@@ -1,0 +1,658 @@
+.pa-holder {
+    background:#542781 url('../images/contest-bg.jpg') bottom center / cover no-repeat;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    overflow-y: auto;
+}
+.header-text {
+    width: 70%;
+    margin-bottom: 20px;
+}
+.header-text p {
+    color: #fff;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: normal;
+    margin-top: 2px;
+}
+.header-text .avatar {
+    float: left;
+    width: 70px;
+    height: 70px;
+    overflow: hidden;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    margin-right: 20px;
+    border: 4px solid white;
+}
+.header-text .avatar img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+.pa-holder-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.spinner-column-left div {
+    display: inline-block;
+    color: white;
+    left: 75px;
+    right: 0;
+    position: relative;
+    width: 100%;
+    top: 5px;
+    line-height: 19px;
+}
+.header-text h2 {
+    color: #fff;
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+
+
+.pa-show-spinner-button {
+    float: right;
+    padding: 15px 20px;
+    font-size: 26px;
+    color: #fff;
+    background: rgb(240,82,33);
+    background: linear-gradient(180deg, rgba(240,82,33,1) 0%, rgba(199,68,27,1) 100%);
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    margin-top: 10px;
+}
+.pa-show-spinner-button:hover {
+    cursor: pointer;
+    background: rgb(240,82,33);
+    background: linear-gradient(0deg, rgba(240,82,33,1) 0%, rgba(199,68,27,1) 100%);
+}
+.pa-show-spinner-button span {
+    margin-top: 2px;
+    display: inline-block;
+}
+.btn-present-icon {
+    float: left;
+    margin-right: 14px;
+    background:transparent url('../images/spin-present-icon.png') center center no-repeat;
+    width: 53px;
+    height: 35px;
+}
+.pa-data-listing-body {
+    background: #fff;
+    padding: 15px;
+    -webkit-box-shadow: 0px 0px 39px 0px rgba(225,225,225,0.75);
+    -moz-box-shadow: 0px 0px 39px 0px rgba(225,225,225,0.75);
+    box-shadow: 0px 0px 39px 0px rgba(225,225,225,0.75);
+}
+.inline-item
+{
+    display:inline-block;    
+}
+.header-tab
+{
+    padding: 2px 20px;
+    font-weight:bold;
+    font-size:18px;
+    background-color: #F0F4F6;
+    color:#16222F;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    padding-left: 50px;
+}
+.header-tab p {
+    margin: 13px 0px;
+}
+.header-tab:hover {
+    cursor: pointer;
+    background-color:#048BC3;
+    color: #fff;
+}
+.active 
+{
+    background-color:#048BC3;
+    color: #fff;
+}
+.header-tab_leaderboard {
+    background-image: url('../images/leaderboard-icon.png');
+    background-position: 8px 9px;
+    background-size: 34px;
+}
+.header-tab_leaderboard:hover,
+.header-tab_leaderboard.active {
+    background-image: url('../images/leaderboard-icon-active.png');
+}
+.header-tab_history {
+    background-image: url('../images/history-icon.png');
+    background-position: 11px 9px;
+    padding-left: 57px;
+    background-size: 37px;
+}
+.header-tab_history:hover,
+.header-tab_history.active {
+    background-image: url('../images/history-icon-active.png');
+}
+.header-tab_chat {
+    background-image: url('../images/chat-icon.png');
+    background-position: 15px 13px;
+}
+.header-tab_chat:hover,
+.header-tab_chat.active {
+    background-image: url('../images/chat-icon-active.png');
+}
+.header-tab_scores {
+    background-image: url('../images/scores-icon.png');
+    background-position: 13px 11px;
+    background-size: 24px;
+}
+.header-tab_scores:hover,
+.header-tab_scores.active {
+    background-image: url('../images/scores-icon-active.png');
+}
+
+.header-tab_prizes {
+    background-image: url('../images/prizes-icon.png');
+    background-position: 10px 13px;
+    padding-left: 58px;
+}
+.header-tab_prizes:hover,
+.header-tab_prizes.active {
+    background-image: url('../images/prizes-icon-active.png');
+}
+.pa-division-holder
+{
+    width:100%;
+}
+.pa-division-name-header
+{
+    font-weight:bold;
+    font-size:1.1em;
+    border-bottom: 2px solid #16222F;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+}
+.pa-team-name-holder
+{
+    width: 12%;
+    font-size: 17px;
+    font-weight: bold; 
+    padding:5px;
+    position: relative;
+    top: -4px;
+    margin-left: 14px;
+}
+.pa-leader-holder
+{
+    width:13%;  
+    padding:5px;
+    font-weight: bold;
+    position: relative;
+    top: -5px;
+}
+.pa-scoring-holder
+{ 
+    padding:5px;
+}
+.pa-team-row-holder
+{
+    background-color:white;
+}
+.pa-team-row-holder:nth-child(even)
+{
+    background-color:#F0F4F6;    
+}
+
+.pa-scoring-holder-team
+{
+    font-weight:normal;
+}
+
+.pa-base-score-item {
+    border: 1px solid #eee;
+    background-color: #fff;
+    color:#D1D1D1;
+    padding: 7px;
+    margin: 0;
+    font-weight: bold;
+    display: inline-block;
+    height: 15px;
+    font-size: 25px;
+    width: 26px;
+    text-align: center;
+    height: 27px;
+}
+.pa-base-space-item {
+    padding:5px;
+    margin:5px;
+}
+.pa-scoring-current-score-number
+{
+    margin-left: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    font-style: italic; 
+    position: relative;
+    top: -5px;  
+}
+.pa-score-item-active {
+    background-color: #09A6B8;
+    color: #fff;
+    border: 1px solid white
+}
+.pa-spinner-close-button {
+    position: relative;
+    z-index: 100;
+    color: white;
+    font-size: 30px;
+    background: none;
+    padding: 20px;
+}
+.pa-spinner-close-button:hover {
+    cursor: pointer;
+}
+button.pa-spinner-spin-button {
+    position: absolute;
+    top: 23px;
+    border: 3px solid white;
+    font-size: 27px;
+    padding: 15px 40px;
+    font-size: 26px;
+    color: #fff;
+    background: rgb(240,82,33);
+    background: linear-gradient(180deg, rgba(240,82,33,1) 0%, rgba(199,68,27,1) 100%);
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    margin-top: 10px;
+    min-width: 180px;
+    margin: 10px auto;
+    left: 0;
+    right: 0;
+    -webkit-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.75);
+}
+.button.pa-spinner-spin-button:focus {
+    outline: none;
+}
+.pa-spinner-holder
+{
+    background-color: #fff;
+    z-index: 9500;
+    color: white;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    max-width: 920px;
+    color: #000;
+    -webkit-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.75);
+    width: 100%;
+}
+.pa-user-winnings-display
+{
+    border: 1px solid #eee;   
+}
+.pa-user-winnings-list p,
+.pa-my-score-list-holder p {
+    margin-left: 15px;
+}
+.pa-user-winnings-list div {
+    display: flex;
+    width: 100%;
+    flex-flow: wrap;
+}
+.pa-my-score-row-header {
+    display: flex;
+    width: 100%;
+    flex-flow: wrap;
+}
+.pa-user-winnings-list div:first-child div div {
+    flex: 1;
+    flex-flow: wrap;
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 15px;
+}
+
+.pa-user-winnings-list div div:nth-child(odd) {
+    background: #eee;
+}
+.pa-user-winnings-list div div div:nth-child(odd) {
+    background: initial;
+}
+.pa-user-winnings-list .header-item {
+    background: #1F2B39 !important;
+    color: #fff;
+    font-size: 18px !important;
+    font-weight: bold;
+    flex: 1;
+    padding: 10px 15px;
+}
+.pa-prize-possible-item-holder{
+    width: 18%;
+    margin: 10px 10px 20px 10px;
+    -webkit-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.35);
+}
+.pa-prize-possible-all-holder {
+    display: flex;
+    flex-wrap: wrap;
+}
+.pa-prize-item-image {
+    height: 130px;
+    background: #eee;
+    text-align: center;
+    background:#eee url('../images/game-bg-default.jpg') center center / cover no-repeat;
+    width: 100%;
+    overflow: hidden;
+}
+.pa-prize-item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover
+}
+.pa-prize-item-name {
+    text-align: center;
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 14px;
+}
+/*.spinner-column-left
+{
+    border:1px solid lime;
+    display:inline-block;
+    width:33%;
+    text-align:right;
+}*/
+.spinner-column-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #0092CE;
+    z-index: 1;
+    height: 70px;
+}
+.spinner-column-right
+{
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+}
+.pa-team-member-data-holder
+{
+    padding-left: 140px;
+    padding: 20px 20px 0px 170px;  
+    background: #005D91 url('../images/rollcall-graphic.png') 16px 20px no-repeat;
+    border-top: 1px solid #387192;
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-shadow: inset 0px 0px 9px 0px rgba(0,0,0,0.55);
+    -moz-box-shadow: inset 0px 0px 9px 0px rgba(0,0,0,0.55);
+    box-shadow: inset 0px 0px 9px 0px rgba(0,0,0,0.55);
+}
+
+.pa-team-member-expander {
+    width: 100%;
+}
+.pa-team-member-item-holder
+{
+    margin: 0 12px 25px 12px;
+    width: 100px;
+    position: relative;
+    vertical-align: top;
+    text-align: center;
+}
+.pa-team-member-item-status .fa.bad,
+.bad
+{
+    color:red;
+}
+.good
+{
+    color:green;
+}
+.pa-team-member-item-status .fa.unknown
+{
+    color: goldenrod;
+}
+.pa-my-score-row
+{
+    background-color:white;
+    padding: 10px 15px;
+    display: flex;
+}
+.pa-my-score-row:nth-child(even)
+{
+    background-color:#eee;
+}
+.pa-my-score-row-header {
+    display: flex;
+}
+.pa-my-score-data-item-header
+{
+    background: #1F2B39 !important;
+    color: #fff;
+    font-size: 18px !important;
+    font-weight: bold;
+    flex: 1;
+    flex-flow: wrap;
+    padding: 10px 15px;
+}
+.pa-my-score-data-item
+{
+    display: inline-block;
+    flex: 1;
+    flex-wrap: wrap;  
+    font-size: 15px; 
+}
+
+.my-score-date
+{
+    width:100px;
+}
+.my-score-value,
+.my-score-possible
+{
+    width:75px;
+    text-align:center;
+}
+.my-score-status
+{
+    width:50px;
+    text-align:center;
+    font-size: 20px;
+}
+.pa-team-member-item-avatar
+{
+    text-align:center;
+    width:100%;
+}
+.pa-member-avatar-holder
+{
+    border: 3px solid #fff;
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    margin: 0 auto;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    background: #fff;
+}
+.pa-team-member-avatar
+{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+
+
+/*SPINNER STYLE START*/
+.pa-spinner-user-prize-holder
+{
+    z-index: 9000;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    /* width: 70%; */
+    height: 100%;
+    margin: 0 auto;
+    padding: 40px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    background: transparent url(../images/animated-confetti.gif) top center repeat-y;
+    background-size: 110%;
+    margin: 0 auto;
+    right: 0;
+}
+.pa-spinner-user-prize-holder div {
+    background: rgba(255,255,255, 0.7);
+    padding: 30px;
+}
+.pa-spinner-winning-prize-image-holder img {
+    width: 400px;
+    margin-top: -30px;
+    -webkit-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.75);
+}
+.pa-spinner-object
+{
+  margin-top: 20px;
+  max-height: 750px;
+  overflow-y: auto;
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.pa-spinner-item-holder
+{
+    display: inline-block;
+    margin: 5px;
+    -webkit-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+    -moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+    box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.35);
+    border: 8px solid #eee;
+    width: 21%;
+}
+.pa-spinner-item-name
+{
+    display: block;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 4px;
+    padding: 9px 0 0 0;
+}
+.pa-spinner-item-image
+{
+    height: 100px;
+    background: #eee;
+    text-align: center;
+    background: #eee url(../images/game-bg-default.jpg) center center / cover no-repeat;
+    width: 100%;
+    overflow: hidden   
+}
+.pa-spinner-item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.active-spinner-item
+{
+    border:8px solid #ffbe08;
+}
+.selected-prize-item
+{
+    border:8px solid #2C9B2D;
+}
+button.pa-spinner-spin-button.grand-prize-button-selected {
+    background: rgb(44,155,45);
+    background: linear-gradient(180deg, rgba(44,155,45,1) 0%, rgba(28,122,29,1) 100%);
+    padding: 15px 22px;
+}
+
+/*SPINNER STYLE END*/
+.pa-loading-panel
+{
+    background:darkblue;
+    color:white;
+    z-index:9500;
+    position:absolute;
+    top:0px;
+    left:0px;
+    text-align:center;
+    vertical-align: middle;
+    font-size:24pt;
+    border:3px solid snow;
+    min-height:100%;
+    min-width:100%;
+    max-height:100%;
+    min-height:100%;
+}
+.pa-team-member-item-status {
+    width: 19px;
+    height: 17px;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    background: white;
+    padding: 3px;
+    position: absolute;
+    top: 41px;
+    right: 15px;
+}
+.pa-team-member-item-status .fa {
+    color: green;
+    font-size: 20px;
+}
+.pa-team-member-item-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    margin-top: 12px;
+}
+.pa-prize-winning-holder-small {
+    width: 60px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+}
+.pa-prize-winning-holder-small img {
+    max-width: 100%;
+}
+.pa-team-row-holder.team-active {
+    background: #005D91;
+    color: white;
+}
+@media only screen and (max-width: 1070px) {
+    .pa-prize-possible-item-holder{
+        width: 30%;
+    }
+}
+
+
+@media only screen and (max-width: 900px) {
+    .pa-prize-possible-item-holder{
+        width: 45%;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .pa-prize-possible-item-holder{
+        width: 100%;
+    }
+}

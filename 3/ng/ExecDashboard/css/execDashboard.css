@@ -1,0 +1,219 @@
+@import url("../../../../applib/css/variables.css");
+
+.containers {
+   text-align: center;
+}
+.tabContainer {
+   background: var(--border-color-light);
+   height: calc(100vh - 75px);
+}
+.tab-item {
+   display: inline-block;
+   border: 1px solid black;
+   background-color: darkgray;
+   color: cyan;
+   height: 25px;
+   min-height: 25px;
+   max-height: 25px;
+   vertical-align: middle;
+   text-align: center;
+   font-weight: bold;
+   width: 10%;
+}
+.active {
+   background-color: cyan;
+   color: darkgray;
+}
+.top-stats-holder {
+ display: flex;
+ padding: 20px;
+}
+.middle-stats-holder {
+   display: flex;
+   padding: 0 20px 20px 20px;
+}
+.stats-holder {
+   display: inline-block;
+   width: 19vw;
+   border: 1px solid var(--border-color-light);
+   margin: 5px;
+   height: 230px;
+   overflow-y: auto;
+   background: #fff;
+}
+
+.stats-holder-large {
+   display: inline-block;
+   width: 100%;
+   border: 1px solid var(--border-color-light);
+   margin: 5px;
+   height: 445px;
+   overflow-y: auto;
+   background: #fff;
+}
+.rpt-title {
+   background-color: var(--table-topper-color);
+   font-weight: bold;
+   font-size: 16px;
+}
+.chartDisplayOptions_holder {
+   display: flex;
+}
+.chartDisplayOptions {
+   width: 20%;
+   background-color: var(--table-topper-color);
+   padding: 20px 20px 0;
+   color: #fff;
+}
+.chartDisplayOptions select {
+   padding: 6px;
+   border: 0;
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   border-radius: 5px;
+   margin-bottom: 8px;
+   width: 100%;
+}
+.chartDisplayOptions h3 {
+   margin-top: 0;
+}
+.value-display_header {
+   padding: 10px;
+   border-bottom: 1px solid #eee;
+   display: block;
+   background-color: #c9cfd3;
+   font-size: 16px;
+   font-weight: bold;
+}
+.value-display_header select {
+   padding: 4px;
+   border: 0;
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   border-radius: 5px;
+   font-size: 14px;
+}
+.chartDisplayOptions_checkbox {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin: 5px;
+   gap: 5px;
+}
+.stats-holder table {
+   width: 100%;
+   border-collapse: collapse;
+}
+.stats-holder table th {
+   padding: 5px;
+   background-color: #c9cfd3;
+}
+.stats-holder table td {
+   padding: 5px;
+}
+.stats-holder table tr:nth-child(odd) {
+   background: var(--light-gray)
+}
+.stats-holder table .acuity-table__top-th {
+   display: none;
+}
+.chartDisplayChart {
+   width: 100%;
+}
+.chartDisplayOptions_checkbox input:hover,
+.chartDisplayOptions select:hover {
+   cursor: pointer;
+}
+.chartDisplayOptions_buttons {
+   margin: 25px 10px 0;
+}
+.chartDisplayOptions_buttons button {
+   padding: 8px 15px;
+}
+.chartDisplayOptions_buttons button:hover {
+   background: var(--brand-blue-hover);
+   cursor: pointer;
+}
+
+.stats-holder-medium {
+   display: inline-block;
+   width: 85%;
+   border: 1px dashed slategray;
+   margin: 3px;
+   min-height: 45%;
+   max-height: 45%;
+   overflow: auto;
+}
+.executive-dashboard-all-project-data-holder
+{
+   max-height:200px;
+   overflow:auto;
+   border:1px solid hotpink;
+}
+.exec-dashboard-project-info-holder
+{
+   display:inline-block;
+   width:30%;
+   margin:5px;
+   padding:5px;
+   border:1px solid lime;
+}
+.exec-dashboard-data-item-holder
+{
+   border:1px dotted gray;
+   display:inline-block;
+}
+.exec-dashboard-data-item-holder.project-name
+{
+   font-weight:bold;
+   width:99%;
+   color:gray;
+}
+.exec-dashboard-data-item-holder.project-bal-score
+{
+   font-weight:bold;
+   color:black;
+   background-color:lightgray;
+   width:99%;
+}
+
+.exec-dashboard-data-item-holder.group-stats-holder
+{
+   background-color:orange;
+   color:navy;
+}
+
+.exec-dashboard-data-item-holder.team-stats-holder
+{
+   background-color:navy;
+   color: goldenrod;
+}
+.exec-dashboard-sub-item-holder
+{
+   width:99%;
+   display:inline-block;
+}
+.exec-dashboard-sub-item-holder.location-name
+{
+   width:75%;
+}
+.exec-dashboard-sub-item-holder.location-bal-score
+{
+   width:24%;
+}
+.exec-dashboard-sub-item-holder.group-name
+{
+   width:75%;
+}
+.exec-dashboard-sub-item-holder.group-bal-score
+{
+   width:24%;
+}
+.exec-dashboard-sub-item-holder.team-name
+{
+   width:75%;
+}
+.exec-dashboard-sub-item-holder.team-bal-score
+{
+   width:24%;
+}

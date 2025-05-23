@@ -1,0 +1,341 @@
+/*Should be part of a base/common styling system*/
+/*Start common styles here*/
+*
+{
+    box-sizing:border-box;
+    font-family: 'Share Tech Mono', 'Courier New', Courier, monospace;
+    font-size:11pt;
+}
+.col1of2,
+.col2of2
+{
+    display:inline-block;
+    position: relative;
+    width:49%;
+    margin:1px;
+    vertical-align: top;
+}
+.inline-item
+{
+    display:inline-block;
+    margin-left:2px;
+    margin-right:2px;
+}
+.button-holder
+{
+    padding:3px;
+    margin:0 auto;
+    text-align:center;
+    min-width:50px;
+}
+.popup-header
+{
+    font-weight:bold;
+    font-size:14pt;
+}
+/*End common styles here*/
+.data-list-header-item
+{
+    font-weight:bold;
+    font-size:larger;
+    padding:3px;
+}
+.data-list-footer-item
+{
+    font-weight:bold;
+    font-size:normal;
+    padding:3px;
+}
+.data-list-item
+{
+    display:inline-block;    
+}
+.data-list-item-desc
+{
+    display:block;
+    padding: 10px 25px;
+    width:90%;
+}
+.message-manager-header-close-button
+{
+    float:right;
+    margin:3px;
+}
+.message-type
+{
+    width:10%;
+}
+.message-name
+{
+    width:25%;
+}
+.message-template-name
+{
+    width:15%;    
+}
+.message-template-name:hover
+{
+    cursor:pointer;
+    text-decoration: underline;
+    color:darkgreen;    
+    font-weight:bold;
+}
+.delivery-options
+{
+    width:15%
+}
+.button-holder-inline
+{
+    width:20%;
+    margin:0 auto;
+}
+
+div.message-manager-holder,
+div.message-manager-editor-forms-all-holder
+{
+    font-size:10pt;
+    height:85%;
+    min-height:50%;
+}
+.message-manager-header-holder
+{
+    height:5%;
+    min-height:5%;
+}
+.message-manager-body-holder
+{
+    min-height:25%;    
+    max-height:98%;
+    overflow: auto;
+}
+.message-manager-footer-holder
+{
+    height:5%;
+    min-height:5%;
+}
+.message-manager-editor-forms-all-holder
+{
+    background-color:white;
+}
+.message-manager-editor-form-holder
+{
+    border-radius:5px;
+}
+
+.message-manager-editor-form
+{
+    border:2px solid black;
+    border-radius:5px;
+    background-color:white;
+    z-index:8500;
+    position: absolute;
+    top:10vh;
+    left:10vw;
+    height:80vh;
+    min-height:80vh;
+    max-height:80vh;
+    width:80vw;
+    min-width:80vw;
+    max-width:80vw;
+    margin: 0 auto;
+}
+.message-manager-editor-form-header
+{
+    height:5%;
+}
+.message-manager-editor-form-body
+{
+    border:1px solid lightgray;
+    height:90%;
+}
+.message-manager-editor-form-footer
+{
+    height:5%;
+    margin:0 auto;
+}
+.message-manager-list
+{
+    width:99%;
+    margin:0 auto;
+}
+.message-manager-list-header,
+.message-manager-list-footer
+{
+    background:darkseagreen;
+    color:green;
+    height:5%;
+    min-height:5%;
+    margin:0 auto;
+    padding:3px;
+}
+.message-manager-list-holder
+{
+    width:99%;
+}
+.message-manager-list-body
+{
+    height:90%;
+    min-height:90%;
+}
+.message-manger-data-item-row
+{
+    padding:3px;
+    background-color:white;    
+}
+.message-manger-data-item-row:nth-child(even)
+{
+    background-color:lightgray; 
+}
+
+.message-manager-preview-display-holder
+{
+    background-color:white;
+    border:2px solid black;
+    z-index:9000;
+    border-radius: 5px;
+    min-width:50vw;
+    max-width:50vw;
+    width:50vw;
+    min-height:80vh;
+    max-height:80vh;
+    height:80vh;
+    position: absolute;
+    right:2vw;
+    top:10vh;
+}
+.message-manager-preview-header
+{
+    height:5%;
+
+}
+.message-manager-preview-footer
+{
+    height:5%;
+    margin:0 auto;
+}
+.message-manager-preview-body
+{
+    border:1px solid lightgray;
+    min-height:90%;
+    max-height:90%;
+    height:90%;
+    overflow-y:auto;
+}
+
+.message-manager-history-display-holder
+{
+    background-color:white;
+    border:2px solid black;
+    border-radius: 5px;
+    min-width:50vw;
+    max-width:50vw;
+    width:50vw;
+    min-height:80vh;
+    max-height:80vh;
+    height:80vh;
+    position: absolute;
+    right:2vw;
+    top:10vh;
+}
+
+.message-manager-history-header
+{
+    height:5%;
+
+}
+.message-manager-history-footer
+{
+    height:5%;
+    margin:0 auto;
+}
+.message-manager-history-body
+{
+    border:1px solid lightgray;
+    min-height:90%;
+    max-height:90%;
+    height:90%;
+    overflow-y:auto;
+}
+
+.editor-row-holder
+{
+    width:100%;
+    margin:0 auto;    
+    background-color:white;
+    margin-top:5px;
+    margin-bottom:5px;
+    display: block;
+}
+.editor-row-holder:nth-child(even)
+{
+    background-color:lightgray;
+}
+.section
+{
+    width:100%;
+    border:1px solid darkblue;    
+    vertical-align: top;
+}
+.section-header
+{
+    background-color:darkblue;
+    color:whitesmoke;
+    font-weight:bold;
+    font-size:larger;
+    padding:3px;
+}
+.section-body
+{
+    padding:3px;
+}
+.editor-form-row
+{
+    display:block;
+    width:100%;
+    padding:3px;
+}
+.editor-form-field-label
+{
+    min-width:45%;
+    max-width:45%;
+    font-weight:bold;
+    display:inline-block;    
+}
+.editor-delivery-option-list-row
+{
+    width:50%;
+    display:inline-block;
+    min-height:30px;
+    max-height:50px;
+    vertical-align: middle;
+}
+.green-check
+{
+    color:limegreen;
+}
+.foundOption
+{
+    background-color:green;
+    color:limegreen;
+}
+.delivery-option-list-name
+{
+    min-height:100%;
+    max-height:100%;    
+    min-width:74%;
+    max-width:74%;
+    position:relative;
+    text-align:center;
+    vertical-align: middle;
+    font-size:12pt;
+}
+.delivery-option-list-button-holder
+{
+    min-height:100%;
+    max-height:100%;
+    min-width:24%;
+    max-width:24%;
+    text-align:center;
+    position:relative;
+    vertical-align: middle;
+}
