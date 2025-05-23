@@ -1,0 +1,110 @@
+.easycom
+{
+}
+
+.ec-loc-filters
+{
+    position:relative;
+    margin:15px;
+    padding:6px;
+    background-color:lightgray;
+    color:darkgray;
+    display:none;
+}
+
+.ec-loc-topbar
+{
+    position:absolute;
+    left:290px;top:0px;
+    padding:6px;
+    background-color:lightgray;
+    color:darkgray;
+    display:none;
+}
+
+.ec-loc-messagebar
+{
+    position:relative;
+    margin: 20px;
+    padding:6px;
+    text-align: center;
+    background-color:lightgray;
+    color:darkgray;
+    display:none;
+}
+
+.ec-loc-agame
+{
+    position:absolute;
+    right:20px;
+    top:20px;
+    padding:6px;
+    background-color:lightgray;
+    color:darkgray;
+    display:none;
+}
+
+.ec-loc-notification
+{
+    position: absolute;
+    z-index: 400;
+    width: calc(100% - 30px);
+    min-height: 110px;
+    font-size: 11px;
+    /* Specified in style attribute.
+    right: -2000px;
+    bottom: -2000px;
+    */
+    padding:15px;
+    /* background-color:lightgray; */
+    background: #D0021B url(images/arrows-slice.png) center center / cover no-repeat;
+    color:darkgray;
+    display:none;
+}
+
+.ec-loc-notification .ec-dismiss
+{
+    font-size: 32px;
+    font-weight:normal;
+}
+
+
+.ec-dismiss
+{
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    cursor: pointer;    
+    font-weight: normal;
+    z-index: 100;
+}
+
+.ec-message
+{
+    font-weight:bold;
+    font-size:14px;
+    padding: 4px;
+}
+
+a.ec-button-wizard
+{
+	padding: 8px 16px;
+	font-size: 13px;
+	border: 0px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	outline: none;
+	/*
+	position: absolute;
+	top: 12px;
+	right: 60px;
+    */
+	color: white;
+	border: 2px solid white;
+	color: white;
+}
+
+a.ec-button-wizard:hover {
+	cursor: pointer;
+}

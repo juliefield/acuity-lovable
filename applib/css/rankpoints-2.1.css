@@ -1,0 +1,973 @@
+#tabs-13 {
+  padding-top: 30px;
+}
+#tabs-14 {
+  background: #eee url('images/th-background.jpg') top center repeat-x;
+  padding-top: 30px;
+}
+
+.ers-th_bg
+{
+  background: #eee url('images/th-background.jpg') top center repeat-x  !important;
+}
+
+.headericon-points-youhave {
+    font-size: 11px;
+    color: White;
+    background-color: Blue;
+    padding: 2px;
+}
+
+.headericon-points-balance {
+    font-family: Courier New;
+    padding-top: 3px;
+    color: Black;
+    border-left: 2px solid blue;
+    border-right: 2px solid blue;
+    background-color: White;
+}
+
+.headericon-points-points {
+    font-size: 15px;
+    color: White;
+    background-color: Blue;
+    padding: 2px;
+}
+
+.headericon-points {
+    position: relative;
+    height: 40px;
+    width: 60px;
+    float: left;
+    margin-top: -14px;
+    cursor: pointer;
+    margin-right: 20px;
+    text-align: center;
+    color: Blue;
+    display: none;
+}
+
+.CEPointsRegister {
+    margin: 0px;
+    padding: 0px;
+    border: 1px solid #D3DADF;
+    -moz-border-radius-bottomleft: 0px;
+    -webkit-border-bottom-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    -moz-border-radius-bottomright: 0px;
+    -webkit-border-bottom-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    -moz-border-radius-topright: 0px;
+    -webkit-border-top-right-radius: 0px;
+    border-top-right-radius: 0px;
+    -moz-border-radius-topleft: 0px;
+    -webkit-border-top-left-radius: 0px;
+    border-top-left-radius: 0px;
+}
+
+.CEPointsRegister table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.CEPointsRegister tr:last-child td:last-child {
+    -moz-border-radius-bottomright: 0px;
+    -webkit-border-bottom-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.CEPointsRegister table tr:first-child td:first-child {
+    -moz-border-radius-topleft: 0px;
+    -webkit-border-top-left-radius: 0px;
+    border-top-left-radius: 0px;
+}
+
+.CEPointsRegister table tr:first-child td:last-child {
+    -moz-border-radius-topright: 0px;
+    -webkit-border-top-right-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+.CEPointsRegister tr:last-child td:first-child {
+    -moz-border-radius-bottomleft: 0px;
+    -webkit-border-bottom-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.CEPointsRegister tr:hover td {}
+
+.CEPointsRegister tr:nth-child(odd) {
+    background-color: #F4F7F9;
+}
+
+.CEPointsRegister tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+.CEPointsRegister td {
+    vertical-align: middle;
+    border: 1px solid #D3DADF;
+    border-width: 0px 1px 1px 0px;
+    text-align: center;
+    padding: 10px;
+    font-size: 12px;
+    font-family: Arial;
+    font-weight: normal;
+    color: #000000;
+}
+
+.CEPointsRegister tr:last-child td {
+    border-width: 0px 1px 0px 0px;
+}
+
+.CEPointsRegister tr td:last-child {
+    border-width: 0px 0px 1px 0px;
+}
+
+.CEPointsRegister tr:last-child td:last-child {
+    border-width: 0px 0px 0px 0px;
+}
+
+.CEPointsRegister tr:first-child td {
+  background-color: #061633;
+  border: 1px solid #2B497B;
+  text-align: center;
+  border-width: 0px 0px 1px 1px;
+  font-size: 18px;
+  font-family: Arial;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.CEPointsRegister tr:first-child td:first-child {
+    border-width: 0px 0px 1px 0px;
+}
+
+.CEPointsRegister tr:first-child td:last-child {
+    border-width: 0px 0px 1px 1px;
+}
+
+.CEPointsRegister td:nth-child(1) {
+    width: 100px;
+    text-align: center;
+}
+
+.CEPointsRegister td:nth-child(3) {
+    width: 100px;
+    text-align: center;
+}
+
+.CEPointsRegister td:nth-child(4) {
+    width: 100px;
+    text-align: center;
+}
+
+.CEPointsRegister-wrapper {
+    position: relative;
+    margin-left: 300px;
+    text-align: center;
+    width: 1240px;
+    min-height: 280px;
+}
+
+#cepointsarea h1, #cepointsmgrarea h1 {
+    font-size: 16px;
+    text-align: center;
+    margin-top: 50px;
+    text-shadow: 0px 0px 2px #fff;
+}
+
+.CEPointsLegend-wrapper {
+    position: absolute;
+    top: 0px;
+    left: 20px;
+}
+
+.CEPointsLegend-wrapper p {
+    font-size: 14px;
+    text-align: center;
+    line-height: 25px;
+}
+
+.CEPointsLegend {
+    margin: 0px;
+    padding: 0px;
+    width: 200px;
+    box-shadow: 10px 10px 5px #888888;
+    border: 1px solid #000000;
+    -moz-border-radius-bottomleft: 25px;
+    -webkit-border-bottom-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    -moz-border-radius-bottomright: 25px;
+    -webkit-border-bottom-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    -moz-border-radius-topright: 25px;
+    -webkit-border-top-right-radius: 25px;
+    border-top-right-radius: 25px;
+    -moz-border-radius-topleft: 25px;
+    -webkit-border-top-left-radius: 25px;
+    border-top-left-radius: 25px;
+}
+
+.CEPointsLegend table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.CEPointsLegend tr:last-child td:last-child {
+    -moz-border-radius-bottomright: 25px;
+    -webkit-border-bottom-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.CEPointsLegend table tr:first-child td:first-child {
+    -moz-border-radius-topleft: 25px;
+    -webkit-border-top-left-radius: 25px;
+    border-top-left-radius: 25px;
+}
+
+.CEPointsLegend table tr:first-child td:last-child {
+    -moz-border-radius-topright: 25px;
+    -webkit-border-top-right-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+.CEPointsLegend tr:last-child td:first-child {
+    -moz-border-radius-bottomleft: 25px;
+    -webkit-border-bottom-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+.CEPointsLegend tr:hover td {}
+
+
+/*.CEPointsLegend tr:nth-child(odd){ background-color:#aad4ff; }
+.CEPointsLegend tr:nth-child(even)    { background-color:#ffffff; }*/
+
+.CEPointsLegend td {
+    vertical-align: middle;
+    border: 1px solid #000000;
+    border-width: 0px 1px 1px 0px;
+    text-align: center;
+    padding: 7px;
+    font-size: 14px;
+    font-family: Arial;
+    font-weight: bold;
+    color: #000000;
+}
+
+.CEPointsLegend tr:last-child td {
+    border-width: 0px 1px 0px 0px;
+}
+
+.CEPointsLegend tr td:last-child {
+    border-width: 0px 0px 1px 0px;
+}
+
+.CEPointsLegend tr:last-child td:last-child {
+    border-width: 0px 0px 0px 0px;
+}
+
+.CEPointsLegend tr:first-child td {
+    background-color: white;
+    border: 0px solid #000000;
+    text-align: center;
+    border-width: 0px 0px 1px 1px;
+    font-size: 14px;
+    font-family: Arial;
+    font-weight: bold;
+    color: black;
+}
+
+
+/* Blue Series
+.CEPointsLegend tr:nth-child(2) td { background-color: #221177; color:White; }
+.CEPointsLegend tr:nth-child(3) td { background-color: #1100BB; color:White; }
+.CEPointsLegend tr:nth-child(4) td { background-color: #0033EE; color:White; }
+.CEPointsLegend tr:nth-child(5) td { background-color: #5588EE; color:White; }
+.CEPointsLegend tr:nth-child(6) td { background-color: #88AAFF; color:White; }
+*/
+
+
+/* Colored Series */
+
+.CEPointsLegend tr:nth-child(2) td {
+    background-color: #019F01;
+    color: White;
+}
+
+.CEPointsLegend tr:nth-child(3) td {
+    background-color: #82d370;
+    color: White;
+}
+
+.CEPointsLegend tr:nth-child(4) td {
+    background-color: #EBE40C;
+    color: White;
+}
+
+.CEPointsLegend tr:nth-child(5) td {
+    background-color: #FF6600;
+    color: White;
+}
+
+.CEPointsLegend tr:nth-child(6) td {
+    background-color: #990101;
+    color: White;
+}
+
+.CEPointsLegend tr:first-child td:first-child {
+    border-width: 0px 0px 1px 0px;
+}
+
+.CEPointsLegend tr:first-child td:last-child {
+    border-width: 0px 0px 1px 1px;
+}
+
+.CEPointsPrizes-wrapper {
+    position: relative;
+    margin-top: 50px;
+    max-width: 1240px;
+}
+.CEPointsPrizes-wrapper p {
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.CEPointsPrizes {
+    height: 355px;
+    overflow-y: scroll;
+    margin: 0px 0px 50px 0px;
+    padding: 0px;
+    width: 1240px;
+    border: 1px solid #D3DADF;
+    -moz-border-radius-bottomleft: 0px;
+    -webkit-border-bottom-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    -moz-border-radius-bottomright: 0px;
+    -webkit-border-bottom-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    -moz-border-radius-topright: 0px;
+    -webkit-border-top-right-radius: 0px;
+    border-top-right-radius: 0px;
+    -moz-border-radius-topleft: 0px;
+    -webkit-border-top-left-radius: 0px;
+    border-top-left-radius: 0px;
+}
+
+.CEPointsPrizes table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.CEPointsPrizes tr:last-child td:last-child {
+    -moz-border-radius-bottomright: 0px;
+    -webkit-border-bottom-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.CEPointsPrizes table tr:first-child td:first-child {
+    -moz-border-radius-topleft: 0px;
+    -webkit-border-top-left-radius: 0px;
+    border-top-left-radius: 0px;
+}
+
+.CEPointsPrizes table tr:first-child td:last-child {
+    -moz-border-radius-topright: 0px;
+    -webkit-border-top-right-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+.CEPointsPrizes tr:last-child td:first-child {
+    -moz-border-radius-bottomleft: 0px;
+    -webkit-border-bottom-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.CEPointsPrizes tr:hover td {}
+
+.CEPointsPrizes tr:nth-child(odd) {
+    background-color: #F4F7F9;
+}
+
+.CEPointsPrizes tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+.CEPointsPrizes td {
+    vertical-align: middle;
+    border: 1px solid #D3DADF;
+    border-width: 0px 1px 1px 0px;
+    text-align: right;
+    padding: 10px;
+    font-size: 14px;
+    font-family: Arial;
+    font-weight: bold;
+    color: #000000;
+}
+
+.CEPointsPrizes tr:last-child td {
+    border-width: 0px 1px 0px 0px;
+}
+
+.CEPointsPrizes tr td:last-child {
+    border-width: 0px 0px 1px 0px;
+}
+
+.CEPointsPrizes tr:last-child td:last-child {
+    border-width: 0px 0px 0px 0px;
+}
+
+.CEPointsPrizes tr:first-child td {
+    background-color: #061633;
+    border: 1px solid #2B497B;
+    text-align: center;
+    border-width: 0px 0px 1px 1px;
+    font-size: 18px;
+    font-family: Arial;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.CEPointsPrizes tr:first-child td:first-child {
+    border-width: 0px 0px 1px 0px;
+}
+
+.CEPointsPrizes tr:first-child td:last-child {
+    border-width: 0px 0px 1px 1px;
+}
+input#CEPointsRedeem {
+  background: #1F4280;
+  border: 0px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  color: white;
+  padding: 8px 25px;
+}
+input#CEPointsRedeemAmount {
+  width: 70px;
+  padding: 6px;
+}
+
+/*
+.CEPointsPrizes tr td:nth-child(1)
+{
+    width: 15%;
+}
+
+.CEPointsPrizes tr td:nth-child(2),.CEPointsPrizes tr td:nth-child(4)
+{
+    width: 18%;
+}
+.CEPointsPrizes tr td:nth-child(3),.CEPointsPrizes tr td:nth-child(5)
+{
+    width: 8%;
+}
+*/
+
+.CEPointsPrizes tr td {
+    width: 31%;
+    text-align: center;
+}
+#cepointsmgrarea {
+  width: 1250px !important;
+}
+
+.CEPointsMgrLedger {
+    margin: 0px;
+    padding: 0px;
+    overflow-y: scroll;
+    height: 285px;
+    width: 1240px;
+    border: 1px solid #D3DADF;
+    -moz-border-radius-bottomleft: 0px;
+    -webkit-border-bottom-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    -moz-border-radius-bottomright: 0px;
+    -webkit-border-bottom-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    -moz-border-radius-topright: 0px;
+    -webkit-border-top-right-radius: 0px;
+    border-top-right-radius: 0px;
+    -moz-border-radius-topleft: 0px;
+    -webkit-border-top-left-radius: 0px;
+    border-top-left-radius: 0px;
+}
+
+.CEPointsMgrLedger table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.CEPointsMgrLedger tr:last-child td:last-child {
+    -moz-border-radius-bottomright: 0px;
+    -webkit-border-bottom-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.CEPointsMgrLedger table tr:first-child td:first-child {
+    -moz-border-radius-topleft: 0px;
+    -webkit-border-top-left-radius: 0px;
+    border-top-left-radius: 0px;
+}
+
+.CEPointsMgrLedger table tr:first-child td:last-child {
+    -moz-border-radius-topright: 0px;
+    -webkit-border-top-right-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+.CEPointsMgrLedger tr:last-child td:first-child {
+    -moz-border-radius-bottomleft: 0px;
+    -webkit-border-bottom-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.CEPointsMgrLedger tr:hover td {}
+
+.CEPointsMgrLedger tr:nth-child(odd) {
+  background-color: #F4F7F9;
+}
+
+.CEPointsMgrLedger tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+.CEPointsMgrLedger td {
+    vertical-align: middle;
+    border: 1px solid #D3DADF;
+    border-width: 0px 1px 1px 0px;
+    text-align: center;
+    padding: 9px;
+    font-size: 13px;
+    font-family: Arial;
+    font-weight: normal;
+    color: #000000;
+}
+
+.CEPointsMgrLedger tr:last-child td {
+    border-width: 0px 1px 0px 0px;
+}
+
+.CEPointsMgrLedger tr td:last-child {
+    border-width: 0px 0px 1px 0px;
+}
+
+.CEPointsMgrLedger tr:last-child td:last-child {
+    border-width: 0px 0px 0px 0px;
+}
+
+.CEPointsMgrLedger tr:first-child td {
+  background-color: #061633;
+  border: 1px solid #2B497B;
+  text-align: center;
+  border-width: 0px 0px 1px 1px;
+  font-family: Arial;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+
+.CEPointsMgrLedger tr:first-child td:first-child {
+    border-width: 0px 0px 1px 0px;
+}
+
+.CEPointsMgrLedger tr:first-child td:last-child {
+    border-width: 0px 0px 1px 1px;
+}
+
+.CEPointsMgrLedger-wrapper {
+    margin-bottom: 20px;
+}
+
+.CEPoints-message {
+    cursor: pointer;
+    height: 14px;
+    width: 14px;
+    background-image: url(images/envelope-icon.png);
+    background-repeat: no-repeat;
+    float: right;
+}
+
+.CEPointsTCLink {
+    margin-top: 18px;
+    font-size: 12px;
+}
+.CEPointsMgrLedger td:nth-child(4) {
+  text-align: left;
+}
+.CEPointsLegend-TreasureHunt {
+    /* background: url(images/TreasureHuntGenWidth500.png) no-repeat; */
+    background: url(images/th-map-bg.jpg) no-repeat;
+    background-color: rgba(255,255,255, 0.8);
+    background-position: 60px 79px;
+    position: relative;
+    height: 648px;
+    width: 1260px;
+    margin-top: 2px;
+    margin-left: -1px;
+    box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.75);
+}
+
+.CEPointsLegend-TreasureHunt-backsplash {
+    /*background: url(images/yellowy.jpg);*/
+    position: absolute;
+    top: 0px;
+    left: 500px;
+    height: 600px;
+    width: 800px;
+}
+
+
+/*
+
+.CEPointsLegend-TreasureHunt-scoreboard
+{
+    position: absolute;
+    top: 300px;
+    left: 0px;
+    font-size: 20px;
+    font-weight: bold;
+    color: White;
+    font-family: 'Lucida Bright', Georgia, serif;
+}
+
+.CEPointsLegend-TreasureHunt-score-1-left
+{
+    position: absolute;
+    top: 0px;
+    left: 100px;
+    width: 400px;
+}
+.CEPointsLegend-TreasureHunt-score-1-right
+{
+    position: absolute;
+    top: 0px;
+    left: 410px;
+    width: 200px;
+}
+
+.CEPointsLegend-TreasureHunt-score-2-left
+{
+    position: absolute;
+    top: 43px;
+    left: 100px;
+    width: 400px;
+}
+.CEPointsLegend-TreasureHunt-score-2-right
+{
+    position: absolute;
+    top: 43px;
+    left: 410px;
+    width: 200px;
+}
+
+.CEPointsLegend-TreasureHunt-score-3-left
+{
+    position: absolute;
+    top: 86px;
+    left: 100px;
+    width: 400px;
+}
+.CEPointsLegend-TreasureHunt-score-3-right
+{
+    position: absolute;
+    top: 86px;
+    left: 410px;
+    width: 200px;
+}
+
+.CEPointsLegend-TreasureHunt-score-4-left
+{
+    position: absolute;
+    top: 129px;
+    left: 100px;
+    width: 400px;
+}
+.CEPointsLegend-TreasureHunt-score-4-right
+{
+    position: absolute;
+    top: 129px;
+    left: 410px;
+    width: 200px;
+}
+
+.CEPointsLegend-TreasureHunt-score-5-left
+{
+    position: absolute;
+    top: 172px;
+    left: 100px;
+    width: 400px;
+}
+.CEPointsLegend-TreasureHunt-score-5-right
+{
+    position: absolute;
+    top: 172px;
+    left: 410px;
+    width: 200px;
+}
+
+*/
+.CEPoints-redeem-TreasureHunt {
+  text-align: center;
+}
+.CEPointsLegend-TreasureHunt-scoreboard {
+    position: absolute;
+    top: 300px;
+    left: 180px;
+    font-size: 16px;
+    font-weight: bold;
+    color: White;
+    font-family: Arial;
+    text-shadow: 2px 1px 1px #000000;
+}
+
+.CEPointsLegend-TreasureHunt-score-1-left {
+    position: absolute;
+    top: 81px;
+    left: 0;
+    width: 400px;
+}
+
+.CEPointsLegend-TreasureHunt-score-1-right {
+    position: absolute;
+    top: 81px;
+    left: 250px;
+    width: 200px;
+}
+
+.CEPointsLegend-TreasureHunt-score-2-left {
+    position: absolute;
+    top: 117px;
+    left: 0;
+    width: 400px;
+}
+
+.CEPointsLegend-TreasureHunt-score-2-right {
+    position: absolute;
+    top: 117px;
+    left: 250px;
+    width: 200px;
+}
+
+.CEPointsLegend-TreasureHunt-score-3-left {
+    position: absolute;
+    top: 154px;
+    left: 0;
+    width: 400px;
+}
+
+.CEPointsLegend-TreasureHunt-score-3-right {
+    position: absolute;
+    top: 154px;
+    left: 250px;
+    width: 200px;
+}
+
+.CEPointsLegend-TreasureHunt-score-4-left {
+    position: absolute;
+    top: 191px;
+    left: 0;
+    width: 400px;
+}
+
+.CEPointsLegend-TreasureHunt-score-4-right {
+    position: absolute;
+    top: 191px;
+    left: 250px;
+    width: 200px;
+}
+
+.CEPointsLegend-TreasureHunt-score-5-left {
+    position: absolute;
+    top: 229px;
+    left: 0;
+    width: 400px;
+}
+
+.CEPointsLegend-TreasureHunt-score-5-right {
+    position: absolute;
+    top: 229px;
+    left: 250px;
+    width: 200px;
+}
+
+.CEPointsLegend-TreasureHunt-gemsRegister {
+    text-align: center;
+    display: block;
+    max-height: 120px;
+    overflow-y: auto;
+    width: 640px;
+    margin: 0 auto;
+}
+
+.CEPointsLegend-TreasureHunt-gem-tip {
+    text-align: center;
+    display: block;
+    font-size: 12px;
+    color: #bd0000;
+}
+
+.CEPoints-gem {
+    display: inline-block;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+
+/*
+.CEPoints-gem-crown
+{
+    background: url(images/gem_crown.png) no-repeat;
+    height: 52px;
+    width: 70px;
+    color: Black;
+    font-size: 12px;
+    margin-top: 4px;
+    padding-top:25px;
+}
+
+.CEPoints-gem-crown span
+{
+    background-color: Yellow;
+    line-height: 18px;
+}
+*/
+
+.CEPoints-gem-crown {
+    background: url(images/gem_crown.png) no-repeat;
+    height: 32px;
+    width: 59px;
+    color: white;
+    margin-top: 4px;
+    padding-top: 25px;
+    font-size: 12px;
+    background-size: 100%;
+}
+
+.CEPoints-gem-crown span {
+    /* background-color: Yellow; */
+    line-height: 18px;
+}
+
+.CEPoints-gem-crown-icon {
+    margin-top: -2px;
+    padding-top: 46px;
+}
+
+.CEPoints-icon-reduced {
+    background: url(images/gem_crown_reduced.png) no-repeat center top;
+    /* background-size: 50%; */
+    height: 52px;
+    width: 70px;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 4px;
+    padding-top: 25px;
+    font-size: 12px;
+}
+
+.CEPoints-icon-reduced span {
+    /* background-color: Yellow; */
+    color: Yellow;
+    font-weight: bold;
+    line-height: 18px;
+}
+
+.CEPoints-gem-diamond {
+    background: url(images/gem_diamond.png) no-repeat;
+    height: 35px;
+    width: 55px;
+    color: Black;
+    margin-top: 0;
+    padding-top: 14px;
+    background-size: 100%;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.CEPoints-gem-ruby {
+    background: url(images/gem_ruby.png) no-repeat;
+    height: 25px;
+    width: 41px;
+    color: White;
+    margin-top: 8px;
+    padding-top: 11px;
+    background-size: 100%;
+    margin-left: 5px;
+}
+
+.CEPoints-gem-emerald {
+    background: url(images/gem_emerald.png) no-repeat;
+    height: 23px;
+    width: 59px;
+    color: White;
+    margin-top: 9px;
+    padding-top: 11px;
+    background-size: 100%;
+}
+
+.CEPoints-gem-sapphire {
+    background: url(images/gem_sapphire.png) no-repeat;
+    height: 42px;
+    width: 79px;
+    color: Black;
+    margin-top: 9px;
+    padding-top: 11px;
+}
+
+.CEPoints-gem-coin {
+    background: url(images/gem_coin.png) no-repeat;
+    height: 30px;
+    width: 30px;
+    color: Black;
+    margin-top: 16px;
+    padding-top: 7px;
+}
+
+.CEPoints-gem-tip {
+    display: none;
+}
+.CEPointsRegister-expand {
+  text-align: center !important;
+}
+a.CEPointsRegisterExpand {
+  background: #1F4280;
+  border: 0px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  color: white;
+  padding: 8px 0;
+  text-decoration: none;
+  width: 419px;
+  margin-top: 20px;
+  display: inline-block;
+  text-align: center;
+}
+
+.CEPoints-peak {
+    text-align: center;
+    font-size: 14px;
+    margin: 8px;
+    line-height: 25px;
+}

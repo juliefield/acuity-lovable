@@ -1,0 +1,259 @@
+.ui-setup-form 
+{
+  position:fixed;
+  top: 0px;
+  left: calc(50% - 300px);
+  width: 600px;
+  opacity: 0.5;
+  z-index: 999;
+  padding:10px;
+  margin-bottom:20px;
+  display:block;
+  background-color:Yellow;
+  color:Red;
+  text-align:center;
+}
+
+.ui-orphan-qst-list 
+{
+    margin: 10px;
+    padding: 10px;
+    font-weight:bold;
+    background-color: White;
+    color: Black;
+}
+
+.ac-cds-hideshow 
+{
+    color: Blue;
+    font-weight: normal;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.ac-cds-left,.ac-cds-right
+{
+    font-weight:bold;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.ac-cds-date
+{
+   width:190px;
+   text-align:center;
+}
+
+.cds-editors span 
+{
+    display: inline-block;
+}
+
+.cds-edit-add-question, .cds-edit-remove-question, .cds-edit-add-section, .cds-edit-remove-section
+{
+    padding: 8px;
+}
+
+.cds-edit-stag, .cds-edit-qname, .cds-edit-score
+{
+    width: 300px;
+}
+
+.cds-fiddle
+{
+    display:none;
+    position:absolute;
+    cursor:pointer;
+    z-index:999;
+    top:60px;
+    right:20px;
+    background-image: url(images/violin-svgrepo-com.svg);
+    background-color:White;
+    height:30px;
+    width:30px;
+    border: 2px solid red;
+    border-radius: 50%;
+    opacity:70%;
+}
+
+.cds-editors
+{
+    display:none;
+}
+
+.cds-save
+{
+    background-color: Red!important;
+}
+
+.ac-cdsprompt-hideshow 
+{
+    color: Blue;
+    font-weight: normal;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-right: 20px;
+}
+      
+ac-cdsprompt-left,.ac-cdsprompt-right
+{
+    font-weight:bold;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.ac-cdsprompt-date
+{
+    width:190px;
+    text-align:center;
+}
+
+.cdsprompt-fiddle 
+{
+    display:none;
+    position:absolute;
+    cursor:pointer;
+    z-index:999;
+    top:40px;
+    right:-10px;
+    height:20px;
+    width:100px;
+}
+
+.cdsprompt-editors 
+{
+    display:none;
+    min-height: 325px;
+    z-index: 1000000;
+    position: absolute;
+    width: calc(100% - 120px);
+    background-color:lightgray;
+    padding: 10px;
+}
+
+.cdsprompt-editors span 
+{
+    display: inline-block;
+}
+
+.cdsprompt-save
+{
+    cursor: pointer;
+}
+
+.ai-stg-editor
+{
+    border 1px solid gray;
+    margin:5px;
+    height:80px;
+    width:188px;
+}
+
+.ai-step-subdiv
+{
+    width:600px;
+    text-align:center;
+}
+
+.ai-step-label
+{
+    margin: 3px 0 0 0;
+    background-color:lightblue;
+}
+
+.ai-step-flow
+{
+    margin: 0 0 5px 0;
+    background-color:lightblue;
+    font-weight: bold;
+    font-style:italic;
+    font-size: 10px;
+}
+
+.ai-settings-label
+{
+    display:block;
+    width:100%;
+    background-color:lightblue;
+}
+
+.ai-setting-block
+{
+    width: calc( 100% / 3.0 );
+    float:right;
+}
+
+.ai-setting-block-label
+{
+    display:block;
+}
+
+.ai-setting-provider
+{
+    width:100%;
+}
+
+.ac-ai-settings-default
+{
+    font-size: 10px;
+}
+
+.ac-ai-run
+{
+}
+
+.ai-datafield-link
+{
+    cursor:pointer;
+    text-decoration:underline;
+    font-size:9px;
+}
+
+.ai-audio-link
+{
+    width: 150px;
+    height: 20px;
+    margin-bottom: 5px;
+}
+
+.datafield-dialog
+{
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  max-height: 80vh; /* Limit height to 80% of viewport height */
+  z-index: 1000000000; /* Ensure dialog appears above other content */
+  display:none;
+}
+
+.datafield-dialog-close
+{
+    position:absolute;
+    right:25px;
+    top:35px;
+    cursor: pointer;
+}
+
+.ai-nav-div
+{
+    font-weight: bold;
+    font-size: 10px;
+}
+
+.ai-tokens-div
+{
+    font-size: 10px;
+    margin: 0 0 5px 0;
+}
+
+.ac-ai-prev,.ac-ai-next
+{
+    cursor:pointer;
+    padding: 0 3px 0 3px;
+}
+
+.ac-showfullprompt
+{
+    margin-bottom: 5px;
+}

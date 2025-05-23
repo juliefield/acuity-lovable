@@ -1,0 +1,445 @@
+.draft-wrapper
+{
+    position: relative;
+    height: -moz-calc(100vh - 95px);
+    height: -webkid-calc(100vh - 95px);
+    height: calc(100vh - 95px);
+}
+
+.draft-wrapper h1
+{
+    color: Red;
+}
+
+.draft-desc
+{
+    position: absolute;
+    top: 0px;
+    left:0px;
+    padding: 10px;
+    height: 100px;
+    border: 1px solid #cccccc;
+    margin: 5px;
+    display: block;
+    text-align: center;
+    width: 300px;
+    line-height: 20px;
+}
+
+.draft-desc-name
+{
+    font-size: 20px;
+}
+
+.draft-desc-begintime
+{
+}
+.draft-desc-mock
+{
+}
+
+.draft-opp-wrapper
+{
+    position: absolute;
+    top: 130px;
+    left: 0px;
+    margin: 5px;
+    padding: 10px;
+    width: 300px;
+    overflow-y: scroll;
+    border: 1px solid #cccccc;
+    height: calc(50vh - 144px);
+}
+
+.draft-pending
+{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: Red;
+    padding: 2px 10px 2px 10px;
+    z-index: 100;
+    font-weight:bold;
+    color: White;
+}
+
+
+.draft-opp-table td
+{
+    text-align: center;
+}
+
+.draftOppInit td,.draftOppInit th
+{
+    color: lightgray;
+}
+
+.draft-chat
+{
+    position: absolute;
+    padding: 10px;
+    bottom: 0px;
+    left: 0px;
+    padding: 10px;
+    height: calc(50vh - 144px);
+    border: 1px solid #cccccc;
+    margin: 5px;
+    width: 300px;
+}
+
+.draft-chatstream-wrapper
+{
+    position: relative;
+    height: calc(50vh - 164px);
+    width: auto;
+}
+
+.draft-chatstream-wrapper label
+{
+    font-weight: bold;
+}
+
+.draft-chat-send
+{
+    position: relative;
+}
+
+.draft-chatstream
+{   position: relative;
+    overflow-y: scroll;
+    height: calc(50vh - 184px);
+}
+
+.draft-chatstream-received
+{
+    border: 1px solid black;
+    margin: 3px;
+    padding: 4px;
+    display: inline-block;
+    max-width: 200px;
+    border-radius: 10px;    
+}
+
+.draft-chatstream-sent
+{
+    border: 1px solid black;
+    margin: 3px 3px 3px 90px;
+    padding: 4px;
+    display: inline-block;\    
+    max-width: 200px;
+    float: right;
+    border-radius: 10px;    
+}
+
+.draft-detail-wrapper
+{
+    position: absolute;
+    top: 0px;
+    margin: 5px;
+    left: 335px;
+    width: 300px;
+    height: 150px;
+    border: 1px solid #cccccc;
+}
+
+.draft-detail,.draft-detail-prompt
+{
+    padding: 20px;
+}
+
+.draft-detail-prompt
+{
+    font-weight:bold;
+    color: Red;
+    text-align: center;
+}
+
+.draft-detail-wrapper label
+{
+    font-weight: bold;
+}
+
+.draft-detail-buttons
+{
+    position: absolute;
+    bottom: 10px;
+    left: 15px;
+}
+
+.draft-ers-wrapper
+{
+    position: absolute;
+    top: 0px;
+    left: 650px;
+    margin: 5px;
+    height: 150px;
+    width: calc(100vw - 800px);
+    border: 1px solid #cccccc;
+    overflow-x: scroll;    
+}
+
+.draft-ers-wrapper label
+{
+    font-weight: bold;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.draft-ers-subwrapper
+{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 130px;
+    width: 5000px;
+}
+
+.draft-er-image
+{
+    margin-top: 20px;
+    height: 80px;    
+    width: 150px;
+    background: url(images/Football-Icon-40px.png) no-repeat center center;       
+}
+
+.draft-er-move
+{
+    margin-top: 20px;
+    height: 80px;
+    display: block;
+    width: 150px;
+    cursor: pointer;
+    color: Blue;
+    text-decoration: underline;
+    text-align: center;
+}
+
+
+.draft-er-name
+{
+    font-size: 12px;
+    text-align: center;
+    display:block;
+}
+
+.draft-er-order
+{
+    display:block;
+    text-align: center;
+    color: brown;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.draft-obs-select-wrapper label
+{
+    font-size: 10px;
+    padding-left: 5px;
+    vertical-align: middle;
+}
+
+.draft-er
+{
+    float: left;
+}
+
+.draft-table-q-wrapper
+{
+    position: absolute;
+    top: 160px;
+    margin: 5px;
+    right: 0px;
+    width: 300px;
+    overflow-y: scroll;
+    border: 1px solid #cccccc;
+    height: calc(50vh - 140px);
+}
+
+.draft-q-save
+{
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 10px;
+    position: absolute;
+    right: 110px;
+    top: 4px;
+}
+
+.draft-q-saved
+{
+    display:none;
+    font-size: 10px;
+    color: Blue;
+    position: absolute;
+    right: 10px;
+    top: 4px;
+}
+
+.draft-q-uid
+{
+    display: none;
+}
+
+.draft-table-drafted-wrapper
+{
+    position: absolute;
+    bottom: 0px;
+    margin: 5px;
+    right: 0px;
+    border: 1px solid #cccccc;
+    width: 300px;
+    overflow-y: scroll;
+    border: 1px solid #cccccc;
+    height: calc(50vh - 140px);
+    
+}
+
+
+.draft-selected-uid
+{
+    display: none;
+}
+
+
+.draft-obs-select-wrapper
+{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    margin: 5px;
+    padding: 10px;
+    width: 110px;
+    height: 130px;
+    border: 1px solid #cccccc;
+}
+
+.draft-obs-wrapper
+{
+    position: absolute;
+    top: 30px;
+    right: 0px;
+    margin: 0px;
+    overflow-y: scroll;
+    height: auto;
+}
+
+.draft-table-wrapper
+{
+    position: absolute;
+    top: 165px;
+    left: 340px;
+    border: 1px solid #cccccc;
+    overflow-y: scroll;
+    padding: 10px;
+    width: calc(100vw - 680px);
+    height: calc(100vh - 270px);
+}
+
+.draft-table-menu-player,.draft-table-menu-teams,.draft-table-menu-results
+{
+    position: relative;
+    font-weight: bold;
+    cursor: pointer;
+    height: 20px;
+    padding: 0 100px 0 100px;
+    text-decoration: underline;
+}
+
+.draft-table-drafted-wrapper label,.draft-table-q-wrapper label,.draft-opp-wrapper label
+{
+    font-weight: bold;
+}
+
+.draft-table,.draft-table-drafted
+{
+    margin-top: 15px;
+}
+
+.draft-table th,.draft-table td,.draft-table-drafted th,.draft-table-drafted td
+{
+    padding: 0 5px 0 5px;
+}
+
+.draft-detail-highlight
+{
+    background-color: orange;
+}
+
+.draft-table td,.draft-table-q td
+{
+    cursor: pointer;
+}
+
+.draft-q-remove
+{
+    cursor: pointer;
+    color: Gray;
+    padding: 3px;
+}
+
+.centered
+{
+    text-align: center;
+}
+
+.menu-disabled
+{
+    color: lightgray;
+    cursor: auto;
+}
+
+.draft-opp-table-body tr td
+{
+    cursor: pointer;
+}
+
+.draft-desc-closetime
+{
+    font-weight: bold;
+    color: Red;
+}
+
+table
+{
+    width: 100%;
+}
+table th
+{
+    padding-right: 10px;
+}
+
+table td, table th
+{
+    font-size: 12px;
+    text-align: center;
+}
+
+.draft-team-table-header
+{
+    padding: 15px;
+}
+
+.draft-q-up,.draft-q-down
+{
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.draft-table-menu
+{
+    
+}
+
+.menu-disabled
+{
+    color: lightgray;
+    cursor: auto;
+}
+
+.draft-table th,.draft-table-drafted th,.draft-team-table th,.final-team-table th
+{
+    padding-bottom: 4px;
+    cursor: pointer;
+}

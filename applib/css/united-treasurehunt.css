@@ -1,0 +1,193 @@
+.united-th_bg {
+  background: #fff url('images/united-th-bg.jpg') top center no-repeat !important;
+  border: 0;
+  background-size: 100% auto !important;
+}
+html {
+  height: 100%;
+}
+.united-th_logo {
+  text-align: center;
+  padding: 20px 0;
+  margin: 20px 0 40px 0;
+  background: rgb(255,255,255);
+  background: linear-gradient(90deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,1) 27%,
+    rgba(255,255,255,1) 69%,
+    rgba(255,255,255,0) 100%);
+  border-top: 10px solid #fff;
+  border-bottom: 10px solid #fff;
+}
+.united-th_bg .tabarea {
+  width: 100% !important;
+}
+.united-th_left {
+  float: left;
+  width: 264px;
+  margin-right: 30px;
+}
+.united-th_right {
+  width: 700px;
+  float: left;
+  background: #DDE5EB;
+  border:1px solid #C0CBD3;
+}
+.united-th_container {
+  width: 1000px;
+  margin: 0 auto;
+}
+.united-th_top-label {
+  padding: 15px;
+  background: #1B2937;
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-topright: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  color: #fff;
+  font-size: 16px;
+}
+.united-th_avatar {
+  float: left;
+  margin-right: 10px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius:  50%;
+  border-radius:  50%;
+  width: 58px;
+  height: 58px;
+  border: 3px solid #EEF1F5;
+  overflow: hidden;
+  margin-top: -5px;
+}
+.united-th_avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.united-th_kpibox {
+  background: #EDF1F5;
+  border:1px solid #D8D8D8;
+}
+.united-th_kpibox p {
+  margin-left: 90px;
+}
+.united-th_kpis {
+  background: #D3DADF;
+  padding: 15px;
+  border-top: 1px solid #D3DADF;
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+.united-th_kpis table {
+  width: 100%;
+  margin-top: 15px;
+}
+.united-th_kpis table td {
+  padding: 5px;
+  font-weight: normal;
+}
+.united-th_kpis table td:first-child {
+  text-align: left;
+}
+.united-th_kpis table td:last-child {
+  text-align: right;
+}
+.united-th_kpis table tr:last-child td {
+  font-weight: bold;
+}
+.united-th_kpi-dot {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  height: 12px;
+  width: 12px;
+  background: #666;
+  display: block;
+  float: right;
+  margin-top: 2px;
+  margin-left: 8px;
+}
+.dot-green {
+  background: #81BE1E;
+}
+.dot-yellow {
+  background: #fff531;
+}
+.dot-orange {
+  background: #FF8729;
+}
+.dot-red {
+  background: #da090d;
+}
+.united-th_row {
+  background:transparent url('images/united-th-diagonal.png') top left no-repeat !important;
+  background-size: auto 100%;
+}
+.united-th_row-left {
+  float: left;
+  width: 50%;
+  text-align: center;
+}
+.united-th_row-right {
+  float: left;
+  text-align: center;
+  width: 50%;
+}
+.united-th_row-right p {
+  font-size: 15px;
+  line-height: 20px;
+}
+.united-th_row-right h2 {
+  font-size: 45px;
+  font-weight: bold;
+  margin: 0;
+}
+.united-th_row-right h2 span {
+  font-size: 15px;
+  font-weight: normal;
+  margin-left: 10px;
+}
+.united-th_count-label {
+  display: block;
+}
+.united-th_row-left img {
+  padding: 20px 20px 0 20px;
+}
+.united-th_row-right-content {
+  padding: 0 20px;
+  max-width: 260px;
+  margin: 0 auto;
+}
+.united-th_row-btn {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background: #015DA4;
+  font-size: 18px;
+  color: #fff !important;
+  padding: 10px;
+  display: block;
+  margin-top: 15px;
+  font-weight: 400;
+  text-decoration: none;
+}
+.united-th_row-btn:hover {
+  background: #014579;
+}
+.united-th_row:first-child {
+  border-bottom: 1px solid #D8D8D8;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .united-th_logo img {
+    max-width: 100%;
+  }
+  .united-th_bg {
+    background: #fff url('images/united-th-bg.jpg') top center no-repeat !important;
+    background-size: 100% auto !important;
+  }
+}

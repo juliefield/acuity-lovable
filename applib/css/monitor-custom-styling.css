@@ -1,0 +1,199 @@
+.supervisor-acknowledgement,
+.sup-coaching2,
+.qa-acknowledgement,
+.sup-coaching,
+.agent-review,
+.hr-acknowledgement {
+    background:#004538 url('https://www.km2solutions.com/wp-content/uploads/2020/08/horizontalblocksbackgroundgreen.jpg') center center / cover no-repeat; 
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    font-size: 15px !important;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+.supervisor-acknowledgement h5,
+.sup-coaching2 h5,
+.qa-acknowledgement h5,
+.sup-coaching h5,
+.agent-review h5,
+.hr-acknowledgement h5  {
+    margin-top: 0;
+    border-bottom: 1px solid rgba(255,255,255, 0.2);
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+}
+
+.questiongroup2 {
+    margin-left: 0 !important;
+    margin-top: 0 !important;
+}
+.questiongroup {
+    margin: 5px !important;
+    font-weight: normal;
+    margin-bottom: 30px !important;
+}
+input[type='radio'] {
+    box-shadow: none;
+    margin-right: 10px !important;
+    background-color: white;
+    color: white;
+    border: 0;
+    position: relative;
+    top: 5px;
+}
+input[type='date'] {
+    padding: 4px;
+    border: 0;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+.supervisor-acknowledgement label:first-of-type {
+    margin-right: 30px;
+}
+.question label,
+.LOA label,
+.inputDecision label {
+    margin-right: 0 !important;
+}
+.ui-review-body select {
+    padding: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 0px;
+    margin-left: 20px;
+}
+input[type='radio']:hover {
+    box-shadow: none;
+}
+input[type='radio']:before {
+    content: '';
+    display: block;
+    width: 14px;
+    height: 14px;
+    margin: 1px auto;
+    border-radius: 50%;
+}
+input[type='radio']:checked:before {
+    background: #EBB414;
+}
+#IsAgentOnLOA {
+    margin: 0 35px 0 5px;
+}
+.timestamp-supervisoragree,
+.LOA {
+    display: inline-block;
+    margin-right: 30px;
+    margin-bottom: 15px;
+}
+select:disabled {
+    background: #fff;
+    opacity: 1;
+    border: 0;
+    margin-left: 20px;
+}
+input:not([type=radio]):disabled {
+    background: transparent;
+    opacity: 1;
+    border: 1px solid #fff;
+    color: #eee;
+    margin-left: 15px;
+    padding: 5px;
+}
+input:disabled:hover {
+    cursor: not-allowed;
+    background: unset !important;
+}
+select:disabled:hover,
+textarea[disabled]:hover,
+input[type=radio]:disabled:hover {
+    cursor: not-allowed;
+    background: #fff !important;
+}
+textarea[disabled] {
+    background: #fff;
+    color: black;
+    border: 0;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding: 15px;
+}
+.timestamp-supervisoragree {
+    margin-left: 0 !important;
+}
+.ui-view {
+    margin-bottom: 100px;
+}
+.qst-comments {
+    background: #fff;
+    color: black;
+    border: 0;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding: 15px;
+}
+.qst-supcoaching-complete {
+    margin-left: 0 !important;
+}
+.qst-timestamp-agentreviewed {
+    margin-left: 10px;
+}
+.qst-agent-reviewed {
+    margin-right: 10px !important;
+}
+.agent-review .qst-comments,
+.qa-acknowledgement .qst-comments,
+.supervisor-acknowledgement .qst-comments,
+.sup-coaching .qst-comments,
+.hr-acknowledgement .qst-comments,
+.sup-coaching2 .qst-comments {
+    margin-left: 0px !important;
+}
+.ac-submit,
+.ac-delete,
+.ac-close {
+    padding: 8px 15px !important;
+}
+
+.ac-submit:hover,
+.ac-delete:hover,
+.ac-close:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+.timestamp-supervisoragree {
+    display: inline-block;
+    width: 430px;
+    vertical-align: top;
+}
+.LOA-block {
+    vertical-align: top;
+    display: inline-block;    
+    width: 540px;
+}
+#floatbar {
+    padding-bottom: 22px;
+    margin-top: 55px;
+    border-top: 1px solid rgba(255,255,255, 0.4);
+}
+body.ui-review-body {
+    padding-top: 108px;
+}
+input[type=submit].ac-submit {
+    background: #004538 !important; 
+}
+input[type=submit].ac-close {
+    background: #EBB414 !important;
+}
+input[type=submit].ac-delete {
+    background:#6A0000 !important;
+}
+.submit-btn-holder {
+    margin: 15px;
+    display: block;
+}

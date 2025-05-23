@@ -1,0 +1,30 @@
+.agent-settings-collapsed {
+    color: White;
+    text-align: center;
+    padding-top: 4px;
+    background-color: Gray;
+    width: 20px;
+    padding-top: 4px;
+    cursor: pointer;
+}
+
+.o-drop-hover
+{
+  font-weight:bold;
+  font-size:25px;
+}
+.o-drag {
+  cursor: pointer;
+}
+.agent-outline li {
+  /* font-size: 11px; */
+}
+
+.agent-settings-expanded {
+    border: 2px solid Gray;
+    padding: 6px;
+    width: 300px;
+    color: Black;
+    background-color: White;
+    cursor: default;
+}

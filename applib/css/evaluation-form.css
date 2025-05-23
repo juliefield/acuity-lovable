@@ -1,0 +1,403 @@
+html {
+  overflow: auto;
+}
+body.monitor-review-body {
+  font-size: 14px;
+  overflow: auto;
+  background: #eee;
+  padding-top: 56px;
+}
+.monitor-review-body .top-monitor-label {
+  text-transform: uppercase;
+  margin-left: 10px;
+}
+.monitor-review-body .add-link.call-add {
+  display: inline;
+  background: #1f2b38;
+  padding: 5px 10px;
+  color: white;
+  text-decoration: none;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  font-size: 14px;
+  padding-left: 20px;
+  position: relative;
+}
+.monitor-review-body .add-link.call-add:before {
+  content: '+';
+  position: absolute;
+  top: 5px;
+  left: 7px;
+  font-weight: bold;
+}
+.monitor-review-body .dispute-finding,
+.monitor-review-body .dispute-finding-select {
+  display: none;
+}
+.monitor-review-body .call  {
+  font-weight: bold;
+}
+.monitor-review-body .call select.qst-multiple:first-child {
+  width: 244px !important;
+}
+.monitor-review-body .call select.qst-multiple {
+  margin-bottom: 20px;
+}
+.monitor-review-body .audit-types div {
+  margin-right: 10px;
+  display: inline-block;
+}
+.monitor-review-body .ac-irshide {
+  padding-bottom: 5px;
+  display: inline-block;
+}
+.monitor-review-body textarea.qst-multiple {
+  resize: none;
+  height: 60px !important;
+  padding: 20px !important;
+  width: 90% !important;
+}
+.monitor-review-body .finding td {
+  padding: 8px;
+}
+.monitor-review-body .finding td b {
+  display: inline-block;
+    margin-bottom: 5px;
+}
+.monitor-review-body .finding-table th {
+  padding-bottom: 5px;
+  padding-left: 8px;
+}
+.monitor-review-body .audit-types div input {
+  margin-top: 1px;
+  float: left;
+  margin-right: 5px;
+}
+.monitor-review-body .add-link {
+  cursor: pointer;
+  text-decoration: underline;
+  color: #009ad9;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+.monitor-review-body .delete-link {
+  cursor: pointer;
+  text-decoration: none;
+  color: rgb(181, 3, 3);
+}
+.monitor-review-body .table-margin td {
+  padding: 8px 0;
+}
+.monitor-review-body input, textarea, select {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  box-shadow: none;
+  border: 1px solid #afafaf;
+  padding: 5px;
+  border:0;
+}
+.monitor-review-body .finding td {
+  vertical-align: top;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #999;
+}
+.monitor-review-body html input[disabled]:hover {
+  background: lightgray;
+}
+.monitor-review-body html input[type="button"] {
+  background-color: white;
+}
+.monitor-review-body input[type="submit" i]:disabled {
+  color: GrayText !important;
+  cursor: default;
+  background-color: ButtonFace !important;
+}
+.monitor-review-body .page-wrapper {
+  width: 910px;
+  margin: 0px auto 0 auto;
+  position: relative;
+  border: 1px solid gray;
+}
+.monitor-review-body .mon-wrapper {
+  position: relative;
+}
+.monitor-review-body .mon-stats {
+  position: absolute;
+  top: 70px;
+  right: 30px;
+  background-color: Green;
+  width: 250px;
+  z-index: 50;
+}
+.monitor-review-body .mon-stats ul {
+  list-style: none;
+  padding: 10px;
+  margin: 0;
+}
+.monitor-review-body .mon-stats ul li {
+  color: White;
+  font-size: 12px;
+}
+.monitor-review-body .mon-stats li label {
+  font-weight: bold;
+  width: 60px;
+}
+.monitor-review-body .mon-stats li span {
+  padding-left: 15px;
+  float: right;
+}
+
+.monitor-review-body .mon-content {
+  position: relative;
+  padding: 10px;
+  margin-top: 10px;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.monitor-review-body .mon-content li {
+  padding: 5px;
+}
+
+.monitor-review-body .mon-answer {
+  float: right;
+  min-width: 200px;
+  /* padding-right: 300px; */
+}
+.monitor-review-body .multiplier {
+  padding-left: 20px;
+}
+.monitor-review-body .disposition {
+  text-align: left !important;
+  padding-left: 70px;
+}
+.monitor-review-body .mp-lt,
+.monitor-review-body .mp-gt {
+  cursor: pointer;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-weight: bold;
+}
+.monitor-review-body .mp-val {
+  color: green;
+  font-weight: bold;
+}
+.monitor-review-body .mon-subtotal {
+  width: 40px;
+  float: right;
+  text-align: right;
+  color: Blue;
+  font-weight: bold;
+  font-size: 20px;
+  vertical-align: middle;
+}
+.monitor-review-body .mon-submit {
+  clear: both;
+}
+.monitor-review-body .mon-comments {
+  clear: both;
+}
+.monitor-review-body .mon-comments label {
+  vertical-align: middle;
+}
+.monitor-review-body .mon-comments textarea {
+  margin-left: 10px;
+  vertical-align: middle;
+}
+.monitor-review-body textarea {
+  overflow: visible;
+}
+.monitor-review-body .mon-fields {
+  margin-left: 5px;
+}
+.monitor-review-body .mon-field {
+  clear both;
+  min-height: 30px;
+}
+.monitor-review-body .mon-field label {
+  color: White;
+  float: left;
+}
+.monitor-review-body .mon-field-input,
+.monitor-review-body .mon-field select {
+  width: 120px;
+  padding-right: 5px;
+  float: right;
+}
+.monitor-review-body .sel_time {
+  width: 30px;
+}
+.monitor-review-body .mon-address textarea {
+  margin-left: 0px;
+}
+.monitor-review-body .mon-section {
+  font-weight: bold;
+}
+.monitor-review-body .mon-desc {
+  margin-top: 8px;
+  margin-left: 25px;
+  font-size: 12px;
+  width: 60%;
+}
+.monitor-review-body .highlight-hover {
+  background: white;
+  color: black;
+  border: none;
+  margin-left: 12px;
+  margin-right: 2px;
+}
+.monitor-review-body .finding-table tr:nth-child(2) td {
+  padding-top: 0;
+}
+.monitor-review-body .finding td {
+  padding-top: 22px;
+}
+.monitor-review-body .monitor-table {
+  margin-top: 20px;
+  border: 1px solid #eee;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+.monitor-review-body .monitor-table td {
+  font-size: 11px;
+  text-align: center;
+  border: 1px solid black;
+}
+.monitor-review-body .monitor-table th {
+  text-align: center;
+  border: 1px solid black;
+  color: white;
+  background: black;
+}
+.monitor-review-body .highlight-hover {
+  background: white !important;
+  color: black !important;
+  margin-left: 12px;
+  margin-right: 2px;
+}
+.monitor-review-body .highlight {
+  background: green !important;
+  color: white !important;
+}
+.monitor-review-body button, html input[type=button], input[type=reset], input[type=submit] {
+  padding: 8px 15px;
+}
+.monitor-review-body button:hover,
+.monitor-review-body html input[type=button]:hover, 
+.monitor-review-body input[type=reset]:hover, 
+.monitor-review-body input[type=submit]:hover {
+  background:#016b96;
+  cursor: pointer;
+}
+.monitor-review-body textarea.qst-comments {
+  display: block;
+  width: 95% !important;
+  min-height: 40px;
+  font-size: 14px;
+  resize: none;
+  overflow: visible;
+  max-height: 100%;
+  margin: 10px 0;
+  padding: 20px;
+}
+.monitor-review-body textarea.qst-comments:focus {
+  outline: none;
+}
+.monitor-review-body .parameters-col {
+  width: 5%;
+}
+.monitor-review-body .checklist-col {
+  width: 25%;
+}
+.monitor-review-body .points-col {
+  width: 5%;
+}
+.monitor-review-body .disposition-col {
+  width: 5%;
+  text-align: center;
+  padding: 0;
+}
+.monitor-review-body .comments-col {
+  width: 55%;
+}
+.monitor-review-body .monitor-state {
+  text-align: center;
+  text-transform: uppercase;
+}
+.monitor-review-body .monitor-review-body {
+  height: calc(100% - 25px);
+  padding-bottom: 50px;
+  overflow-y: auto;
+  background-color: #eee;
+}
+.monitor-review-body .monitor-review-title {
+  color: white;
+  background-color: #1f2b38;
+  padding: 10px 10px 10px 10px;
+  font-weight: bold;
+  font-size: 14px;
+  display: block;
+  position: fixed !important;
+  width: 100%;
+  top: 0;
+}
+.monitor-review-body .monitor-review-title a {
+  color: white;
+  margin-right: 20px;
+  font-weight: normal;
+}
+.monitor-review-body td label {
+  padding: 3px 0;
+  display: inline-block;
+}
+.monitor-review-body .qst-draft {
+  padding:15px;
+  margin-bottom: 0px;
+  display:block;
+  background-color:#00699C;
+  color:#fff;
+  text-align:center;  
+  font-weight: bold;
+}
+.monitor-review-body .monitor-view table {
+  border-collapse: collapse;
+}
+.monitor-review-body .qst-draft em {
+  font-weight: normal;
+  margin-top: 8px;
+  display: block;
+}
+.monitor-review-body .monitor-top-close {
+  position: absolute;
+}
+.monitor-review-body .monitor-view {
+  max-width: 1230px;
+  margin: 0 auto;
+  padding-top: 30px;
+}
+.monitor-review-body .call-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.monitor-review-body .call-list li ul {
+  margin: 20px 0;
+  list-style: none;
+}
+.monitor-review-body .monitor-title-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 10px 0;
+  text-align: center;
+  position: relative;
+}
+.monitor-review-body .monitor-title-container button {
+  position: absolute;
+  right: 0;
+  top: 2px;
+}
+.monitor-review-body select:disabled {
+  background-color: #e0e0e0;
+}

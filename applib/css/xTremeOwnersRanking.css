@@ -1,0 +1,338 @@
+@import url("../../applib/css/variables.css");
+
+body {
+  background: transparent !important;
+}
+.column1of4 {
+  display:inline-block;
+  width:24%;
+}
+.column2of4 {
+  display:inline-block;
+  width:49%;
+}
+.column3of4 {
+  display:inline-block;
+  width:74%;
+}
+.xtremeOwners-container {
+  max-width: 90%;
+  width: 100%;
+  margin: 20px auto;
+  position: relative;
+}
+.xo-buttons-container {
+  position: absolute;
+  top: 20px;
+    right: 20px;
+  display: flex;
+  gap: 8px;
+}
+.xo-buttons-container button {
+  padding: 5px 8px;
+}
+.avatar-holder {
+  display: inline-block;
+  width: 50px;
+}
+.block-name-holder {
+  display: inline-block;
+}
+.ranking-header-holder {
+  background-color: var(--table-topper);
+  color: white;
+  display: flex;
+    align-items: center;
+}
+.ranking-body-holder {
+  border: 1px solid var(--light-gray);
+  margin-bottom: 200px;
+}
+.agame-xtreme-leaderboard-iframe body {
+  background: transparent !important;
+}
+.centered {
+  text-align: center;
+}
+.xtreme-owner-ranking-data-holder {
+  /*background: white;*/
+  background: url("/applib/css/images/powerrank-blue-bg.jpg");
+  border-radius:15px;
+  background-size: cover;
+}
+.xtreme-owner-ranking-row {
+  display: flex;
+  align-items: center;
+  flex-flow: row wrap;
+  background-color:white;
+}
+.xo-fine-print {
+  max-width: 550px;
+  position: absolute;
+    top: 0;
+    right: 0;
+    background: white;
+    height: 100%;
+    padding: 20px;
+    text-align: left;
+    -webkit-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+-moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+z-index: 100;
+}
+.xo-fine-print ul li {
+  margin-bottom: 20px;
+}
+.xtreme-owner-ranking-item .avatar-holder {
+  width: 30px;
+    height: 30px;
+    overflow: hidden;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    margin-right: 11px;
+}
+.xtreme-owner-ranking-item .avatar-holder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.xtreme-owner-league-details-list-row {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #cacaca;
+}
+.xtreme-owner-ranking-row:nth-child(odd) {
+  background-color: var(--light-gray);
+}
+.xtreme-owner-ranking-item {
+  padding: 10px 5px;
+}
+.header-item {
+  font-weight: bold;
+}
+.expander {
+  width: 50px;
+  text-align: center;
+}
+.ranking {
+  width: 100px;
+  text-align: center;
+}
+.owner-name {
+  width: 200px;
+}
+.owner-name-2 {
+  font-weight: bold;
+}
+.perf-rating-count {
+  width: 50px;
+  text-align: center;
+}
+.perf-rating-score {
+  width: 145px;
+  text-align: center;
+}
+.attrit-score {
+  width: 120px;
+  text-align: center;
+}
+.engage-score {
+  width: 130px;
+  text-align: center;
+}
+.team-score {
+  width: 130px;
+  text-align: center;
+}
+.total-score {
+  width: 140px;
+  text-align: center;
+  font-weight: bold;
+}
+.xtreme-league-header-owner-avatar-holder img {
+  -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    height: 60px;
+    width: 60px;
+    object-fit: cover;
+}
+.detail-padding {
+  width: 10px;
+}
+.week-number {
+  width: 57px;
+  text-align: right;
+}
+.week-dates {
+  width: 200px;
+  text-align: center;
+}
+.xtreme-owner-league-name {
+  font-size: 17px;
+  font-weight: bold;
+  /* background-color: var(--brand-blue); */
+  color: white;
+  padding: 25px 12px;
+  width: 100%;
+}
+.xtreme-owner-league-details {
+  width: 100%;
+  background: #fff;
+  -webkit-box-shadow:inset 0px 0px 9px 0px rgba(0, 0, 0, 0.35);
+    -moz-box-shadow:inset 0px 0px 9px 0px rgba(0, 0, 0, 0.35);
+    box-shadow: inset 0px 0px 9px 0px rgba(0, 0, 0, 0.35);
+}
+.xtreme-owner-league-details.active {
+  background:var(--bright-green);
+}
+.xtreme-owner-team-name-holder {
+  font-size: 0.75em;
+}
+.response-section {
+  text-align: left;
+}
+.response-section p {
+  font-weight: bold;
+  font-size: 16px;
+  background: #f9f9f9;
+    display: inline-block;
+    margin: 6px 0;
+    padding: 5px 15px;
+}
+.response-section.agent-response p {
+  color: #0055FE;
+}
+.response-section.customer-response p {
+  text-align: right;
+}
+
+.leaderboardDetailsHolder {
+  width: 100%;
+  margin: 0 auto;
+}
+.xtreme-owner-ranking-item.ranking {
+  display: none;
+}
+.xtreme-owner-ranking-item.header-item.ranking {
+  display: block;
+}
+.xtreme-owner-ranking-item.expander {
+  width: 50px;
+  text-align: center;
+  font-size: 30px;
+  color: var(--brand-blue);
+}
+.xtreme-owner-ranking-row:first-child {
+  background: #FFCA0A;
+}
+.xtreme-owner-ranking-item.trophy-holder {
+  width: 100px;
+  text-align: center;
+  font-weight:bold;
+  /*font-size: 27px;
+   color: transparent; */
+   padding: 0;
+}
+
+.xtreme-owner-ranking-item.trophy-holder .color-rank-1 {
+  color: var(--yellow);
+}
+.xtreme-owner-ranking-item.trophy-holder .color-rank-2 {
+  color: var(--gray);
+}
+.xtreme-owner-ranking-item.trophy-holder .color-rank-3 {
+  color: var(--bronze);
+}
+
+.ranking-leaderboard-league-header-holder
+{
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+.ranking-leaderboard-extra-teams-found-count-holder
+{
+  display:flex;
+  background-color: var(--brand-blue);
+    color: white;
+    border-radius: 100%;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 70px;
+    width: 70px;
+    align-items: center;
+    margin: 30px 15px;
+}
+.extra-team-count-label
+{
+  margin-top:5px;
+  font-size:16pt;
+  font-weight:bold;
+}
+.xtreme-owner-ranking-item.trophy-holder img {
+  width: 38px;
+}
+.xtreme-league-header-owner-scoring-column
+{
+  display: flex;
+    max-width: 10%;
+    min-height: 250px;
+    max-height: 250px;
+    vertical-align: bottom;
+    text-align: center;
+    margin-left: 5px;
+    margin-right: 5px;
+    flex: 1;
+    gap: 7px;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.xtreme-league-header-owner-name-holder
+{
+  color: white;
+  font-size:8pt;
+}
+.xtreme-league-header-owner-scoring-bar
+{
+  background:rgba(255,255,255, 0.4);
+  padding-top:13px;
+  -webkit-border-top-left-radius: 5px;
+-webkit-border-top-right-radius: 5px;
+-moz-border-radius-topleft: 5px;
+-moz-border-radius-topright: 5px;
+border-top-left-radius: 5px;
+border-top-right-radius: 5px;
+}
+.xtreme-league-header-owner-ranking-holder
+{
+  font-weight:bold;
+}
+.xTremeRankingsHolder {
+  max-width: 1200px;
+  margin: 20px auto;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+.xtremeOwners-top-btns {
+  max-width: 1200px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-between;
+}
+.xtreme-owner-empty {
+  background: url("/applib/css/images/powerrank-blue-bg.jpg");
+  border-radius:15px;
+  background-size: cover;
+  padding: 20px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+}

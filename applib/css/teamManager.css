@@ -1,0 +1,358 @@
+@import url("variables.css");
+
+.team-manager_container {
+    max-height: calc(100vh - 90px);
+    overflow: auto;
+    padding:5px;
+    display: flex;
+}
+.team-manager_container button {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.team-manager_container .userMessageHolder {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100000;
+}
+.team-manager_container .userMessageHolder:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:rgba(0,0,0, 0.8);
+}
+.team-manager_container .userMessageHolder_popup {
+    background-color: white;
+    padding: 15px;
+    z-index: 100;
+    position: absolute;
+    top: 10%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+    -moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+    box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+}
+.team-manager_container .userMessageHolder_popup img {
+    display: block;
+    margin: 0 auto 20px auto;
+    height: 100px;
+}
+.team-manager_container .teamManager_top-selects {
+    background: var(--light-gray);
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.team-manager_container hr {
+    height: 0;
+    border-top: 1px solid  var(--light-gray);
+}
+.team-manager_container .filter-option-header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 11px;
+}
+.team-manager_container .otherTeams .user-full-name,
+.team-manager_container .otherTeams .team-name,
+.team-manager_container .otherTeams .future-move-holder,
+.team-manager_container .otherTeams .button-holder {
+    width: 25%;
+}
+.team-manager_container .otherTeams .button-holder {
+    text-align: right;
+    width: 10%;
+}
+.team-manager_container .otherTeams .future-move-holder {
+    text-align: left;
+    width: 30%;
+}
+.team-manager_container .otherTeams .team-name {
+    text-align: center;
+}
+
+.team-manager_container .join,
+.team-manager_container .leave {
+    position: relative;
+    padding-left: 20px;
+}
+.team-manager_container .join:before {
+    content: "\f356";
+    font-family: "Font Awesome 6 sharp";
+    font-size: 19px;
+    color: var(--green);
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-weight: 900;
+}
+.team-manager_container .leave:before {
+    content: "\f355";
+    font-family: "Font Awesome 6 sharp";
+    font-size: 19px;
+    color: var(--red);
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-weight: 900;
+}
+
+.team-manager_container .page-title {
+    font-size: 18px;
+    font-weight: bold;
+    min-width: 120px;
+}
+.team-manager_container .text-center {
+    text-align: center;
+}
+.team-manager_container .team-manager_container select,
+.team-manager_container .team-manager_container input {
+    padding: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid var(--light-gray);
+    max-width: 170px;
+}
+.team-manager_container .user-listing-item {
+    display: flex;
+    padding: 5px 15px;
+    border-bottom: 1px solid var(--light-gray);
+    justify-content: space-between;
+    align-items: center;
+    background: var(--table-labels);
+}
+.team-manager_container .user-full-name {
+    display: flex;
+    align-items: center;
+}
+.team-manager_container .user-full-name img {
+    margin-right: 8px;
+}
+.team-manager_container .user-listing-item button:hover,
+.team-manager_container button:hover {
+    cursor: pointer;
+    background: var(--brand-blue-hover);
+}
+.team-manager_container .btn-close-x:hover {
+    background: transparent;
+}
+.team-manager_container .user-listing-item:nth-child(even) {
+    background: var(--light-blue);
+}
+.team-manager_container .myteam_col {
+    border: 10px solid var(--brand-blue);
+    width: 50%;
+    padding: 15px;
+    min-height:75vh;
+    overflow: auto;
+}
+.team-manager_container .myTeamHolder {
+    max-height:60vh;
+    overflow:auto;
+    min-height:50vh;
+}
+.team-manager_container .table-topper {
+    background: var(--table-topper);
+    display: flex;
+    padding: 5px 15px;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    margin-top: 15px;
+    font-size: 15px;
+}
+.team-manager_container .table-footer {
+    background: var(--light-gray);
+    display: flex;
+    padding: 5px 15px;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--brand-blue);
+    margin-top: 5px;
+    font-size: 10px;
+}
+.team-manager_container .avatar-holder {
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    overflow: hidden;
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+.team-manager_container .user-bottom-buttons {
+	padding: 20px;
+	text-align: center;
+    border-top: 1px solid var(--light-gray);
+}
+
+.team-manager_container .user-bottom-buttons button.btm-btn {
+	padding: 11px;
+    font-size: 15px;
+}
+.team-manager_container .user-bottom-buttons a {
+    color: var(--brand-blue);
+}
+.team-manager_container .user-bottom-buttons a:hover {
+    color: var(--brand-blue-hover);
+}
+.team-manager_container .user-information-message {
+    padding: 15px;
+    border: 1px solid var(--light-gray);
+}
+.team-manager_container .btn-close-x {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 5px 7px;
+}
+.team-manager_container .effective-date {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    align-items: center;
+}
+.team-manager_container .effective-date input {
+    padding: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid var(--light-gray);
+    max-width: 170px;
+}
+.team-manager_container .instructions {
+    font-size: 14px;
+    margin-left: 10px;
+    font-weight: normal;
+    color: var(--brand-blue);
+}
+.team-manager_container .instructions:hover {
+    color: var(--brand-blue-hover);
+}
+.team-manager_container .instructions_popup-content {
+    padding: 10px 15px 15px 15px;
+    font-size: 15px;
+}
+.team-manager_container .instructions_popup_container {
+    background-color: white;
+    padding: 15px;
+    z-index: 100;
+    position: absolute;
+    top: 10%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    text-align: left;
+    width: 100%;
+    max-width: 500px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+    -moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+    box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+    animation: slideDown .5s;
+}
+.team-manager_container .instructions_popup {
+    transition: all .2s ease-in-out;
+    display: none;
+}
+.team-manager_container .instructions_popup:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background:rgba(0,0,0, 0.8);
+    animation: fadeIn 1s;
+}
+.team-manager_container .teamManager_form-holder:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:rgba(0,0,0, 0.8);
+}
+.team-manager_container .teamManager_form-container {
+    background-color: white;
+    padding: 15px;
+    z-index: 100;
+    position: absolute;
+    top: 10%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+    -moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+    box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+}
+.team-manager_container .addTeam_col {
+    width:49%;
+    display:inline-block;
+    min-height:75vh;
+    padding: 20px;
+    overflow: auto;
+}
+.team-manager_container .userPool_col,
+.team-manager_container .otherTeam_col {
+    /* max-height:280px;
+    overflow:auto; */
+}
+.userPool_col {
+    max-height: 280px;
+    overflow-y: auto;  
+}
+.team-manager_container .otherTeam_message {
+    padding: 20px;
+    text-align: center;
+}
+.team-manager_container .form-holder {
+    width: 100% !important;
+    height: 100% !important;
+    top: 0 !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    background: transparent !important;
+}
+.team-manager_container .ui-datepicker {
+    z-index: 1010000000 !important;
+}
+
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @-webkit-keyframes slideDown {
+	0% {
+		-webkit-transform: translateY(-100%);
+	}			
+	100% {
+		-webkit-transform: translateY(0%);
+	}	
+}  

@@ -1,0 +1,649 @@
+.easycom
+{
+}
+
+.ec-loc-filters
+{
+    position:relative;
+    margin:15px;
+    padding:6px;
+    background-color:lightgray;
+    color:darkgray;
+    display:none;
+}
+
+.ec-loc-topbar
+{
+    position:absolute;
+    left:290px;top:0px;
+    padding:6px;
+    background-color:lightgray;
+    color:darkgray;
+    display:none;
+}
+
+.ec-loc-messagebar
+{
+    position:relative;
+    margin: 20px;
+    padding:6px;
+    text-align: center;
+    background-color:lightgray;
+    color:darkgray;
+    display:none;
+}
+
+.ec-loc-agame
+{
+    position:absolute;
+    right:20px;
+    top:20px;
+    padding:6px;
+    background-color:lightgray;
+    color:darkgray;
+    display:none;
+}
+
+.ec-loc-notification
+{
+    position: absolute;
+    z-index: 400;
+    width: calc(100% - 30px);
+    min-height: 110px;
+    font-size: 11px;
+    /* Specified in style attribute.
+    right: -2000px;
+    bottom: -2000px;
+    */
+    padding:15px;
+    /* background-color:lightgray; */
+    background: #D0021B url(images/arrows-slice.png) center center / cover no-repeat;
+    color:darkgray;
+    display:none;
+}
+
+.ec-loc-notification .ec-dismiss
+{
+    font-size: 22px;
+    font-weight:normal;
+}
+
+.easycom-recognition {
+    position: absolute;
+    z-index: 400;
+    width: calc(100% - 30px);
+    font-size: 11px;
+    padding: 50px 15px;
+    background: #019ADA url(images/recognition-banner-bg.png) left center / cover no-repeat;
+    color:#fff;
+    bottom: 0;
+}
+
+.easycom-recognition_avatar.fan-avatar {
+    height: 100px;
+    width: 100px;
+    position: initial;
+    margin: -30px auto 0 auto;
+}
+.easycom-recognition_avatar.fan-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.easycom-recognition_avatar-box {
+    background: white;
+    width: 200px;
+    text-align: center;
+    color: #000;
+    display: inline-block;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-left: 90px;
+    -webkit-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+-moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+}
+
+.easycom-recognition .ec-message {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    margin-left: 300px;
+}
+
+.easycom-recognition_message {
+    margin-left: 30px;
+    display: inline-block;
+}
+
+.easycom-recognition h2 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+.easycom-recognition p {
+    font-weight: normal;
+    font-style: italic;
+    font-size: 17px;
+}
+
+.easycom-recognition .ec-dismiss
+{
+    font-size: 22px;
+    font-weight:normal;
+}
+.easycom-recognition .ec-dismiss:hover
+{
+    opacity: .8;
+}
+
+/* birthday THEME */
+.easycom-recognition.ecr-theme-birthday {
+    background: #fff url(images/recognition-banners/birthday-bg.jpg) left center / cover no-repeat;
+}
+.easycom-recognition.ecr-theme-birthday .ec-message {
+    background: rgb(0,0,0);
+    background: linear-gradient(101deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3169642857142857) 100%);
+    padding: 20px;
+}
+
+/* celebration THEME */
+.easycom-recognition.ecr-theme-celebration {
+    background: #fff url(images/recognition-banners/celebration-bg.jpg) left center / cover no-repeat;
+}
+.easycom-recognition.ecr-theme-celebration .ec-message {
+    background: rgb(0,0,0);
+    background: linear-gradient(101deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3169642857142857) 100%);
+    padding: 20px;
+}
+
+/* medal of excellance THEME */
+.easycom-recognition.ecr-theme-excellence {
+    background: #fff url(images/recognition-banners/medal-excellence-bg.jpg) left center / cover no-repeat;
+}
+.easycom-recognition.ecr-theme-excellence .ec-message {
+    background:rgba(255,255,255, 0.9);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 9px 0px rgb(0 0 0 / 35%);
+    -moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+    box-shadow: 0px 0px 9px 0px rgb(0 0 0 / 35%);
+    color: #000;
+    padding: 20px;
+    max-width: 1350px;
+    padding-left: 200px;
+}
+.easycom-recognition.ecr-theme-excellence .easycom-recognition_avatar-box {
+    background: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow:  none;
+    box-shadow: none;
+    margin-left: 0px;
+}
+
+.easycom-recognition.ecr-theme-excellence .ec-message:before {
+    content: '';
+    position: absolute;
+    background: transparent url(images/recognition-banners/medal-excellence-before.png) center center no-repeat; 
+    height: 163px;
+    width: 163px;
+    top: 49px;
+    left: 26px;
+    z-index: 1;
+    background-size: 140px;
+}
+
+/* Holiday THEME */
+.easycom-recognition.ecr-theme-holiday {
+    background: #fff url(images/recognition-banners/winterfest-bg.jpg) left center / cover no-repeat;
+}
+.easycom-recognition.ecr-theme-holiday .ec-message {
+    background:rgba(255,255,255, 0.9);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 9px 0px rgb(0 0 0 / 35%);
+    -moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+    box-shadow: 0px 0px 9px 0px rgb(0 0 0 / 35%);
+    color: #000;
+    padding: 20px;
+    max-width: 1350px;
+}
+.easycom-recognition.ecr-theme-holiday .easycom-recognition_avatar-box {
+    background: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow:  none;
+    box-shadow: none;
+    margin-left: 0px;
+}
+
+/* Tiki THEME */
+.easycom-recognition.ecr-theme-tiki {
+    background: #fff url(images/recognition-banners/tiki-bg.jpg) left center / cover no-repeat;
+}
+.easycom-recognition.ecr-theme-tiki .ec-message {
+    background: #fff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 9px 0px rgb(0 0 0 / 35%);
+    -moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+    box-shadow: 0px 0px 9px 0px rgb(0 0 0 / 35%);
+    color: #000;
+    padding: 20px;
+    max-width: 1350px;
+    margin-left: 110px;
+}
+
+.easycom-recognition.ecr-theme-tiki .ec-message:before {
+    content: '';
+    position: absolute;
+    background: transparent url(images/recognition-banners/tiki-before.png) center center no-repeat; 
+    height: 160px;
+    width: 158px;
+    top: 41px;
+    left: 20px;
+    z-index: 1;
+}
+.easycom-recognition.ecr-theme-tiki .easycom-recognition_avatar-box {
+    background: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow:  none;
+    box-shadow: none;
+    margin-left: 50px;
+}
+
+/* donuts THEME */
+.easycom-recognition.ecr-theme-donuts {
+    background: #fff url(images/recognition-banners/donuts-bg.jpg) left center / cover no-repeat;
+}
+.easycom-recognition.ecr-theme-donuts .ec-message {
+    background: #fff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 9px 0px rgb(0 0 0 / 35%);
+    -moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+    box-shadow: 0px 0px 9px 0px rgb(0 0 0 / 35%);
+    color: #000;
+    padding: 20px;
+    max-width: 1350px;
+    margin-left: 110px;
+}
+
+.easycom-recognition.ecr-theme-donuts .ec-message:before {
+    content: '';
+    position: absolute;
+    background: transparent url(images/recognition-banners/donut-before.png) center center no-repeat; 
+    height: 223px;
+    width: 173px;
+    top: 25px;
+    left: 14px;
+    z-index: 1;
+    background-size: 161px;
+}
+.easycom-recognition.ecr-theme-donuts .easycom-recognition_avatar-box {
+    background: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow:  none;
+    box-shadow: none;
+    margin-left: 50px;
+}
+
+/* tacos THEME */
+.easycom-recognition.ecr-theme-tacos {
+    background: #fff url(images/recognition-banners/taco-bg.jpg) left center / cover no-repeat;
+}
+.easycom-recognition.ecr-theme-tacos .ec-message {
+    background: #fff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 9px 0px rgb(0 0 0 / 35%);
+    -moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+    box-shadow: 0px 0px 9px 0px rgb(0 0 0 / 35%);
+    color: #000;
+    padding: 20px;
+    max-width: 1350px;
+    margin-left: 110px;
+}
+
+.easycom-recognition.ecr-theme-tacos .ec-message:before {
+    content: '';
+    position: absolute;
+    background: transparent url(images/recognition-banners/taco-after.png) center center no-repeat; 
+    height: 180px;
+    width: 244px;
+    top: 25px;
+    left: 0px;
+    z-index: 1;
+    background-size: 161px;
+}
+.easycom-recognition.ecr-theme-tacos .easycom-recognition_avatar-box {
+    background: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow:  none;
+    box-shadow: none;
+    margin-left: 50px;
+}
+
+/* Pizza THEME */
+.easycom-recognition.ecr-theme-pizza {
+    background: #fff url(images/recognition-banners/pizza-bg.jpg) left center / cover no-repeat;
+}
+.easycom-recognition.ecr-theme-pizza .ec-message {
+    background: #fff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 9px 0px rgb(0 0 0 / 35%);
+    -moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+    box-shadow: 0px 0px 9px 0px rgb(0 0 0 / 35%);
+    color: #000;
+    padding: 20px;
+    max-width: 1350px;
+    margin-left: 110px;
+}
+
+.easycom-recognition.ecr-theme-pizza .ec-message:before {
+    content: '';
+    position: absolute;
+    background: transparent url(images/recognition-banners/pizza-after.png) center center no-repeat; 
+    height: 200px;
+    width: 211px;
+    top: 25px;
+    left: 0px;
+    z-index: 1;
+    background-size: 161px;
+}
+.easycom-recognition.ecr-theme-pizza .easycom-recognition_avatar-box {
+    background: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow:  none;
+    box-shadow: none;
+    margin-left: 50px;
+}
+
+/* Hoops THEME */
+.easycom-recognition.ecr-theme-hoops {
+    background: #fff url(images/recognition-banners/hoops-bg.jpg) left center / cover no-repeat;
+}
+.easycom-recognition.ecr-theme-hoops .ec-message {
+    background: #fff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 9px 0px rgb(0 0 0 / 35%);
+    -moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+    box-shadow: 0px 0px 9px 0px rgb(0 0 0 / 35%);
+    color: #000;
+    padding: 20px;
+    max-width: 1350px;
+    margin-left: 110px;
+}
+
+.easycom-recognition.ecr-theme-hoops .ec-message:before {
+    content: '';
+    position: absolute;
+    background: transparent url(images/recognition-banners/hoops-before.png) center center no-repeat; 
+    height: 180px;
+    width: 150px;
+    top: 25px;
+    left: 20px;
+    z-index: 1;
+    background-size: 120px;
+}
+.easycom-recognition.ecr-theme-hoops .easycom-recognition_avatar-box {
+    background: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow:  none;
+    box-shadow: none;
+    margin-left: 50px;
+}
+
+
+/* Hits THEME */
+.easycom-recognition.ecr-theme-hits {
+    background: #fff url(images/recognition-banners/hits-bg.jpg) left center / cover no-repeat;
+}
+.easycom-recognition.ecr-theme-hits .ec-message {
+    background: #fff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 9px 0px rgb(0 0 0 / 35%);
+    -moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+    box-shadow: 0px 0px 9px 0px rgb(0 0 0 / 35%);
+    color: #000;
+    padding: 20px;
+    max-width: 1350px;
+    margin-left: 110px;
+}
+
+.easycom-recognition.ecr-theme-hits .ec-message:before {
+    content: '';
+    position: absolute;
+    background: transparent url(images/recognition-banners/hitz-before.png) center center no-repeat; 
+    height: 220px;
+    width: 200px;
+    top: 25px;
+    left: 0px;
+    z-index: 1;
+    background-size: 136px;
+}
+.easycom-recognition.ecr-theme-hits .easycom-recognition_avatar-box {
+    background: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow:  none;
+    box-shadow: none;
+    margin-left: 50px;
+}
+
+/* Gridiron THEME */
+.easycom-recognition.ecr-theme-gridiron {
+    background: #fff url(images/recognition-banners/gridiron-bg.jpg) left center / cover no-repeat;
+}
+.easycom-recognition.ecr-theme-gridiron .ec-message {
+    background: #fff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 9px 0px rgb(0 0 0 / 35%);
+    -moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+    box-shadow: 0px 0px 9px 0px rgb(0 0 0 / 35%);
+    color: #000;
+    padding: 20px;
+    max-width: 1350px;
+    margin-left: 110px;
+}
+
+.easycom-recognition.ecr-theme-gridiron .ec-message:before {
+    content: '';
+    position: absolute;
+    background: transparent url(images/recognition-banners/gridiron-before.png) center center no-repeat; 
+    height: 220px;
+    width: 200px;
+    top: 25px;
+    left: 0px;
+    z-index: 1;
+    background-size: 136px;
+}
+.easycom-recognition.ecr-theme-gridiron .easycom-recognition_avatar-box {
+    background: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow:  none;
+    box-shadow: none;
+    margin-left: 50px;
+}
+
+/* Goals THEME */
+.easycom-recognition.ecr-theme-goals {
+    background: #fff url(images/recognition-banners/goalz-bg.jpg) left center / cover no-repeat;
+}
+.easycom-recognition.ecr-theme-goals .ec-message {
+    background: #fff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 9px 0px rgb(0 0 0 / 35%);
+    -moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+    box-shadow: 0px 0px 9px 0px rgb(0 0 0 / 35%);
+    color: #000;
+    padding: 20px;
+    max-width: 1350px;
+    margin-left: 110px;
+}
+
+.easycom-recognition.ecr-theme-goals .ec-message:before {
+    content: '';
+    position: absolute;
+    background: transparent url(images/recognition-banners/goalz-before.png) center center no-repeat; 
+    height: 183px;
+    width: 152px;
+    top: 25px;
+    left: 45px;
+    z-index: 1;
+}
+.easycom-recognition.ecr-theme-goals .easycom-recognition_avatar-box {
+    background: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow:  none;
+    box-shadow: none;
+    margin-left: 50px;
+}
+
+/* DRAGONS THEME */
+.easycom-recognition.ecr-theme-dragons {
+    background: #fff url(images/recognition-banners/dragons-bg.jpg) left center / cover no-repeat;
+}
+.easycom-recognition.ecr-theme-dragons .ec-message {
+    background: #fff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 9px 0px rgb(0 0 0 / 35%);
+    -moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+    box-shadow: 0px 0px 9px 0px rgb(0 0 0 / 35%);
+    color: #000;
+    padding: 20px;
+    max-width: 1350px;
+    margin-left: 110px;
+    
+}
+.easycom-recognition.ecr-theme-dragons .easycom-recognition_message {
+    padding-right: 225px;
+}
+.easycom-recognition.ecr-theme-dragons .ec-message:before {
+    content: '';
+    position: absolute;
+    background: transparent url(images/recognition-banners/dragons-before.png) center center no-repeat; 
+    height: 196px;
+    width: 130px;
+    top: 25px;
+    left: 80px;
+    z-index: 1;
+}
+.easycom-recognition.ecr-theme-dragons .ec-message:after {
+    content: '';
+    position: absolute;
+    background: transparent url(images/recognition-banners/dragons-after.png) center center no-repeat; 
+    height: 176px;
+    width: 221px;
+    top: 45px;
+    right: 20px;
+    z-index: 1;
+}
+.easycom-recognition.ecr-theme-dragons .easycom-recognition_avatar-box {
+    background: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow:  none;
+    box-shadow: none;
+    margin-left: 50px;
+}
+.easycom-recognition.ecr-theme-dragons {
+    color: #000;
+}
+
+@media only screen and (max-width: 800px) {
+    .easycom-recognition .ec-message {
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .easycom-recognition_avatar-box {
+        margin-left: 0;
+    }
+
+    .easycom-recognition {
+        background: #019ADA url(images/arrows-slice.png) left center / cover no-repeat;
+    }
+    .easycom-recognition_message {
+        margin-left: 0;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    /* DRAGONS THEME */
+    .easycom-recognition.ecr-theme-dragons .ec-message:after,
+    .easycom-recognition.ecr-theme-dragons .ec-message:before,
+    .easycom-recognition.ecr-theme-goals .ec-message:after,
+    .easycom-recognition.ecr-theme-goals .ec-message:before,
+    .easycom-recognition .ec-message:after,
+    .easycom-recognition .ec-message:before {
+        display: none;
+    }
+    .easycom-recognition.ecr-theme-dragons .ec-message,
+    .easycom-recognition.ecr-theme-goals .ec-message,
+    .easycom-recognition .ec-message  {
+        padding: 0px !important;
+        margin-left: 0 !important;
+    }
+}
+
+
+.ec-dismiss
+{
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    cursor: pointer;    
+    font-weight: normal;
+    z-index: 100;
+}
+
+.ec-message
+{
+    font-weight:bold;
+    font-size:14px;
+    padding: 4px;
+}
+
+a.ec-button-wizard
+{
+	padding: 8px 16px;
+	font-size: 13px;
+	border: 0px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	outline: none;
+	/*
+	position: absolute;
+	top: 12px;
+	right: 60px;
+    */
+	color: white;
+	border: 2px solid white;
+	color: white;
+}
+
+a.ec-button-wizard:hover {
+	cursor: pointer;
+}
