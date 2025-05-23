@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head id="Head1" runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<title>Date Interval Control</title>
+
+		<asp:PlaceHolder runat="server">
+			<link rel="stylesheet" href="../../../lib/jquery/ui/development-bundle/themes/base/jquery.ui.all.css" />
+			<script type="text/javascript" src="../../../lib/jquery/jquery-1.7.2.min.js"></script>
+			<script type="text/javascript" src="../../../lib/jquery/ui/js/jquery-ui-1.8.16.custom.min.js"></script>
+			<script src="../../../lib/jquery/plugins/jquery.cookie.js" type="text/javascript"></script>
+
+			<!-- Date Range Picker Suite -->
+			<link rel="stylesheet" href="../../applib/jquery-date-range-picker-0.0.8/daterangepicker.css" />
+			<script type="text/javascript" src="../../applib/moment/moment.min.js"></script>
+			<script type="text/javascript" src="../../applib/jquery-date-range-picker-0.0.8/jquery.daterangepicker.js"></script>
+
+            <script type="text/javascript" src="dateintervaltest.js"></script>
+	</head>
+
+	<body>
+        <dl>
+			<dt id="projectlabel"><span class="scaname">Project</span></dt>
+			<dd id="projectfilter"><select class="chosen" id="selProjects"><option value="">..loading</option></select></dd>
+        </dl>
+        <p style="display:block;border-top: 1px solid black;text-align:center;">Existing date picker system</p>
+        <dl>
+			<dt class="date-display">Score View:</dt>
+			<dd class="date-display" style="width: 300px;"><select class="chosen" id="selPayperiods"><option value="">..loading</option></select></dd>
+			<dt class="date-display">Date Interval:</dt>
+			<dd class="date-display"><span id="spanDatefrom"></span> - <span id="spanDateto"></span></dd>
+		</dl>
+        <p style="display:block;border-top: 1px solid black;text-align:center;margin-top: 230px;">New Date Interval Picker</p>
+
+        <div>
+            <p>Build dateIntervalPicker here</p>
+            <p>Current Intervals: <span class="current-intervals"></span></p>          
+        </div>
+
+
+
+<script language="javascript">
+    $(document).ready(function () {
+        dateintervaltest.init();
+        $("#selProjects").val("1").trigger("change");
+    });
+</script>
+
+
+
+</body>

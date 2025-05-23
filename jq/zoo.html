@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <!--
+    <link rel="apple-touch-icon" href="apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-startup-image" href="apple-touch-startup-image-320x460.png" />
+    <link rel="apple-touch-startup-image" sizes="768x1004" href="apple-touch-startup-image-768x1004.png" />
+    -->
+    <title>Zoo</title>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b2/jquery.mobile-1.0b2.min.css" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/mobile/1.0b2/jquery.mobile-1.0b2.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="appZoo/js/appZoo.js"></script>
+</head>
+<body id="zoobody">
+    <div data-role="page" id="page0" data-theme="b" data-add-back-btn="true">
+    	<div data-role="header" data-theme="b"><h1>Zoo</h1><a href="#options" data-icon="gear" onclick="appZoo.optionset(0);" class="ui-btn-right">&nbsp;</a></div>
+    	<div data-role="content">
+            <h3>Zoo - A GREAT GAME!<br />Think of an animal and I will guess what it is!</h3>
+		    <h3 id="page0question"></h3>
+            <div id="page0ui">
+                <ul data-role="listview" id="page0list">
+                    <li><a id="page0yes" onclick="" href="">Yes</a></li>
+                    <li><a id="page0no" onclick="" href="">No</a></li>
+                </ul>
+            </div>
+	    </div>
+    </div>
+    <div data-role="page" id="newquestion" data-theme="b" data-add-back-btn="true">
+    	<div data-role="header" data-theme="b"><h1>Zoo</h1></div>
+    	<div data-role="content">
+		    <h3 id="newquestionprompt1"></h3>
+		    <h3 id="newquestionprompt2"></h3>
+            <div data-role="fieldcontain">
+                <input type="text" name="newquestionquestion" id="newquestionquestion" value=""  />
+            </div>
+            <a onclick="appZoo.newquestion();" href="#playagain" data-role="button">Submit</a>
+        </div>
+    </div>
+    <div data-role="page" id="newanimal" data-theme="b" data-add-back-btn="true">
+    	<div data-role="header" data-theme="b"><h1>Zoo</h1></div>
+    	<div data-role="content">
+		    <h3 id="newanimalprompt">hmmm.  I give up.  What was your animal?</h3>
+		    <h3 id="H2"></h3>
+            <div data-role="fieldcontain">
+                <input type="text" name="newanimalquestion" id="newanimalquestion" value=""  />
+            </div>
+            <a onclick="appZoo.newanimal();" href="#newquestion" data-role="button">Submit</a>';
+
+        </div>
+    </div>
+    <div data-role="page" id="options" data-theme="b" data-add-back-btn="true">
+    	<div data-role="header" data-theme="b"><h1>Zoo</h1></div>
+    	<div data-role="content">
+            <div data-role="fieldcontain">
+                <span id="lblqora"></span>
+                <input type="text" name="editqora" id="editqora" value=""  />
+            </div>
+            <div id="showswap">
+                <div><b>If Yes:</b></div>
+                <div id="optyes"></div>
+                <div><b>If No:</b></div>
+                <div id="optno"></div>
+                <a id="optswap" href="#" data-role="button" data-icon="forward">Swap</a>
+            </div>
+        </div>
+    </div>
+    <div data-role="page" id="playagain" data-theme="b" data-add-back-btn="true">
+    	<div data-role="header" data-theme="b"><h1>Zoo</h1></div>
+    	<div data-role="content">
+            <h3 id="playagainprompt1"></h3>
+            <h3 id="playagainprompt2"></h3>
+            <h3>Would you like to play again?</h3>
+            <ul data-role="listview" id="Ul1">
+                <li><a href="#page0">Yes</a></li>
+            </ul>
+	    </div>
+    </div>
+  <script language="javascript">
+      //alert("Useragent="+navigator.userAgent);
+      //alert("width=" + screen.width + ",height=" + screen.height);
+  </script>
+
+</body>
+</html>

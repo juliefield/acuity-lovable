@@ -1,0 +1,40 @@
+﻿        <div class="login-wrapper">
+            <!-- Login Modal -->
+            <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header login-modal-image">
+                            <h4 class="modal-title login-modal-title" id="loginModalLabel">Log In</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="pure-form pure-form-aligned" id="loginForm">
+                                <fieldset>
+                                    <div class="pure-control-group">
+                                        <label for="usernameId">User Name:</label>
+                                        <input type="text" id="usernameId" data-bind="value: newloginusername" name="F:username/R:nonblank:0" />
+                                    </div>
+                                    <div class="pure-control-group">
+                                        <label for="passwordId">Password:</label>
+                                        <input type="text" id="passwordId" data-bind="value: newloginpassword" name="F:password/R:nonblank:1" />
+                                    </div>
+                                    <div><span class="login-validation" id="loginvalidation"></span></div>
+                                </fieldset>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" data-bind="click: closeLogin" class="pure-button pure-button-default" data-dismiss="modal">Close</button>
+                            <button type="button" data-bind="click: doLogin" class="pure-button pure-button-primary">Log In</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="login-welcome">
+                <span class="login-notloggedin">
+                    <a href="#loginModal" role="button" data-toggle="modal">Log In</a><span class="login-lock"></span>
+                </span>
+                <span class="login-loggedin">
+                    Logged in as<br /><span class="login-username"></span><br />
+                    <a href="#loginModal" role="button" data-toggle="modal">Log Out</a><span class="login-lock"></span>
+                </span>
+            </div>
+        </div>

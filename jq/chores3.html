@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+<!--
+        <script src="http://jsconsole.com/remote.js?"></script>
+        <script src="http://192.168.1.2:8080/target/target-script-min.js"></script>
+-->
+        <title>Allowance</title>
+        <style type="text/css" media="screen">@import "jqtouch/jqtouch/jqtouch.css";</style>
+        <style type="text/css" media="screen">@import "jqtouch/themes/apple/theme.css";</style>
+        <script src="jqtouch/jqtouch/jquery-1.4.2.js" type="text/javascript" charset="utf-8"></script>
+        <script src="jqtouch/jqtouch/jqtouch.js" type="application/x-javascript" charset="utf-8"></script>
+        <script type="text/javascript" src="appLib/js/appLib.js"></script>
+        <script type="text/javascript" charset="utf-8" src="appChores/js/appChores.js"></script>
+
+        <style type="text/css" media="screen">
+            #jqt.fullscreen #home .info {
+                display: none;
+            }
+            div#jqt #about {
+                padding: 100px 10px 40px;
+                /*text-shadow: rgba(255, 255, 255, 0.3) 0px -1px 0;*/
+                font-size: 13px;
+                text-align: center;
+                background: gray;
+            }
+            div#jqt #about p {
+                color: #fff;
+                margin-bottom: 8px;
+            }
+            div#jqt #about a {
+                color: #fff;
+                font-weight: bold;
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="jqt">
+            <div id="about" class="selectable">
+                    <p><strong>Allowance</strong><br /><br />Version 0.2 beta<br />
+                        <a href="http://www.jeffgack.com">By Jeff Gackenheimer</a></p>
+                    <p><br /><br /><a href="#" class="grayButton goback">Close</a></p>
+            </div>
+            <div id="home" class="current">
+                <div class="toolbar">
+                    <h1>Allowance</h1>
+                    <a href="#about" class="button slideup">About</a>
+                </div>
+                <h1 id="workername"></h1>
+                <h2>Chores</h2>
+                <ul class="rounded">
+                    <li class="arrow"><a href="#todo">To Do</a> <small id="todocount"></small></li>
+                    <li class="arrow"><a href="#cmp">Complete</a> <small id="completecount"></small></li>
+                </ul>
+                <div style="margin: 10px;">
+                    <br /><a id="paybutton" href="#" onclick="appChores.payme();"></a><br />
+                </div>
+                <ul class="rounded">
+                    <li class="arrow"><a id="historylbl" href="#history">History</a></li>
+                </ul>
+                <div class="info">
+                    <p>Add this page to your home screen to view the custom icon, startup screen, and full screen mode.</p>
+                </div>
+            </div>
+            <div id="todo">
+                <div class="toolbar">
+                    <h1>To Do</h1>
+                    <a href="#" class="back">Back</a>
+                </div>
+                <h2>Not Started</h2>
+                <ul id="todoN"></ul>
+                <h2>In Progress</h2>
+                <ul id="todoW"></ul>
+                <h2>Ready for Review</h2>
+                <ul id="todoR"></ul>
+            </div>
+            <div id="cmp">
+                <div class="toolbar">
+                    <h1>Complete</h1>
+                    <a href="#" class="back">Back</a>
+                </div>
+                <br />
+                <ul id="cmpC"></ul>
+                <h2 id="cmptotal"></h2>
+            </div>
+            <div id="history">
+                <div class="toolbar">
+                    <h1>History</h1>
+                    <a href="#" class="back">Back</a>
+                </div>
+                <ul id="historyul"></ul>
+            </div>
+            <div id="todoDesc">
+                <div class="toolbar">
+                    <a href="#" class="back">Back</a>
+                </div>
+                <br />
+                <h2 id="todoDesctitle"></h2>
+                <div id="todoDescdesc" class="info"></div>
+                <br />
+                <h2>Status</h2>
+                <ul class="rounded">
+                  <li>
+                    <select id="todoDescstatus" onchange="appChores.changestatus();">
+                       <option value ="N">Not Started</option>
+                       <option value ="W">In Progress</option>
+                       <option value ="R">Ready for Review</option>
+                    </select>
+                  </li>
+                </ul>
+            </div>
+            <div id="cmpDesc">
+                <div class="toolbar">
+                    <a href="#" class="back">Back</a>
+                </div>
+                <br />
+                <h2 id="cmpDesctitle"></h2>
+                <div id="cmpDescnotes" class="info"></div>
+                <br />
+                <div id="cmpDescdesc" class="info"></div>
+                <br />
+            </div>
+            <div id="historyQued">
+                <div class="toolbar">
+                    <h1>Pending Pmt</h1>
+                    <a href="#" class="back">Back</a>
+                </div>
+                <br />
+                <ul id="historyQuedQ"></ul>
+                <h2 id="historyQuedtotal"></h2>
+            </div>
+            <div id="historyPaid">
+                <div class="toolbar">
+                    <h1>Payments Made</h1>
+                    <a href="#" class="back">Back</a>
+                </div>
+                <br />
+                <ul id="ulHistory"></ul>
+                <h2 id="historyTotal"></h2>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,113 @@
+﻿<div class="io-wrapper">
+    <div style="overflow: scroll;">
+            <form class="jf-form jf-form-aligned" style="float:left;">
+                <fieldset>
+                    <legend>Settings</legend>
+                    <div class="jf-control-group">
+                        <label>format:</label>
+                        <select data-bind="options: formats, value: selectedFormat"></select>
+                    </div>
+                    <div class="jf-control-group">
+                        <label>editmode:</label>
+                        <select data-bind="options: editmodes, value: selectedEditmode"></select>
+                    </div>
+                    <div class="jf-control-group">
+                        <label>classprefix:</label>
+                        <input type="text" style="width: 60px;" data-bind="value: textClassPrefix" />
+                    </div>
+                    <fieldset>
+                        <legend>dev</legend>                        
+                        <input type="checkbox" data-bind="checked: showTags, click: changeShowTags" /><label>Show Data Tags</label>
+                    </fieldset>
+                </fieldset>
+            </form>
+            <div style="float: left;">
+                <form class="jf-form jf-form-aligned" style="float:left;">
+                    <fieldset>
+                        <legend>schema</legend>
+                        <div class="jf-control-group">
+                            <textarea class="io-schema" rows="13" cols="100" style="width: 330px"></textarea>
+                        </div>
+                        <div class="jf-control-group" style="margin-left:35px; font-size: 13px;">
+                            <div style="float:left;margin-top: 20px;">
+                                <label>Disable:</label>
+                                <input type="radio" name="schemaMode" value="">
+                            </div>
+                            <div style="float:left;margin-left: 20px;">
+                                <table style="text-align: center;">
+                                    <thead><tr><td>&nbsp;</td><td>&nbsp;Sent&nbsp;</td><td>&nbsp;Received&nbsp;</td></tr></thead>
+                                    <tbody>
+                                        <tr>
+                                            <td style="text-align: right;">Validate:</td>
+                                            <td><input type="radio" name="schemaMode" value="validate_in" checked></td>
+                                            <td><input type="radio" name="schemaMode" value="validate_out"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">Generate:</td>
+                                            <td><input type="radio" name="schemaMode" value="generate_in"></td>
+                                            <td><input type="radio" name="schemaMode" value="generate_eout"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+                <form class="jf-form jf-form-aligned" style="float:left;">
+                    <fieldset>
+                        <legend>action: "init"</legend>
+                        <div class="jf-control-group">
+                            <label>data:</label>
+                            <textarea rows="14" cols="100" style="width: 330px" data-bind="value: jsonInitData"></textarea>
+                        </div>
+                        <div class="jf-controls">
+                            <button data-bind="click: sendInit" class="jf-button">Send</button>
+                        </div>
+                    </fieldset>
+                </form>
+                <form class="jf-form jf-form-aligned" style="clear:left;">
+                    <fieldset>
+                        <legend>Validation</legend>
+                        <div class="jf-control-group io-validation">
+                        </div>
+                    </fieldset>
+                </form>
+
+            </div>
+            <form class="jf-form jf-form-aligned" style="float:left;">
+                <fieldset>
+                    <legend>action: "serve"</legend>
+                    <div class="jf-control-group">
+                        <label>service:</label>
+                        <input type="radio" name="serveService" value="JScript" checked>JScript&nbsp;
+                        <input type="radio" name="serveService" value="VB">VB&nbsp;
+                        <input type="radio" name="serveService" value="C#">C#&nbsp;
+                    </div>
+                    <div class="jf-control-group">
+                        <label>data:</label>
+                        <input type="text" style="width: 330px" data-bind="value: jsonServeData" value="" />
+                    </div>
+                    <div class="jf-control-group">
+                        <label>member:</label>
+                        <input type="text" style="width: 200px" data-bind="value: jsonServeMember" value="" />
+                    </div>
+                    <div class="jf-controls">
+                        <button data-bind="click: sendServe" class="jf-button jf-button-primary">Send</button>
+                    </div>
+                </fieldset>
+            </form>
+            <form class="jf-form jf-form-aligned" style="float:left;">
+                <fieldset>
+                    <legend>output</legend>
+                    <div class="jf-control-group">
+                        <textarea rows="7" cols="100" style="width: 330px" data-bind="value: jsonOutputData"></textarea>
+                    </div>
+                </fieldset>
+            </form>
+    </div>
+    <div style="display:block; border-bottom:2px solid gray; margin-bottom: 5px; padding-bottom: 5px;clear:both;"></div>
+
+    <div class="jf-wrapper">
+        <div class="io-jsonform" style="overflow: scroll;"></div>
+    </div>
+</div>

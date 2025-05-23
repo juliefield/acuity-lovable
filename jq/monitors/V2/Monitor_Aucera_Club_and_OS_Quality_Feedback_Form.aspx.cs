@@ -1,0 +1,1022 @@
+﻿using System;
+using System.Text;
+using System.IO;
+using System.Security.Cryptography;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data;
+using jglib;
+
+public partial class _Monitor_Aucera_Club_and_OS_Quality_Feedback_Form : SitePage
+{
+    String _connection = "";
+    String _connection1 = "";
+    Boolean isnew = false;
+
+
+    // V2 MONITOR System Specs
+    // N/A included in numerator and denominator.
+    //   NOTE: National Grid is the only prototype that has N/A's (I screwed up CarePayment, but that's ok... ...).
+    //TODO: Add this as an option?
+    //Boolean stgInclude_NA_In_Calculation = true; //Include N/A in the numerator/denominator - This is National Grid only, but should be a generalized setting.
+    // Autofail.
+    // Inclusion of additional info with monitor.
+    // Points by questions, grouping a separate matter.
+    // N/A functionality intact (applies to both Monitors and Surveys).
+    // Answers can be anything.
+    // Comments allowed overall and also with any question.
+
+
+    protected override void OnPreInit(EventArgs e)
+    {
+        Page.Theme = "Monitors";
+        _connection1 = CONFMGR.ConnectionStrings(/*urlprefix()*/"bgr." + "Connection").ConnectionString; // +";Provider=SQLOLEDB;";
+        _connection = CONFMGR.ConnectionStrings(/*urlprefix()*/"bgr." + "Connection20").ConnectionString; // +";Provider=SQLOLEDB;";
+    }
+
+    protected void Page_PreInit(object sender, EventArgs e)
+    {
+    }
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        Page.Header.DataBind();
+        String uid = Context.Request.QueryString["uid"];
+        if (!IsPostBack) {
+            using (DbBaseSql db1 = new DbBaseSql(_connection1, "")) {
+                using (DbBaseSql db = new DbBaseSql(_connection, ""))
+                {
+                    using (DataTable dt = db.GetDataTable("select field,val from PRT where guid='" + uid + "'"))
+                    {
+                        foreach (DataRow row in dt.Rows)
+                        {
+                            switch (row["field"].ToString())
+                            {
+                                case "agent":
+                                    lblAgent.Text = row["val"].ToString();
+                                    break;
+                                case "callid":
+                                    lblCallid.Text = row["val"].ToString();
+                                    break;
+                                case "calldate":
+                                    lblCalldate.Text = row["val"].ToString();
+                                    break;
+                                case "sup":
+                                    lblSupervisor.Text = row["val"].ToString();
+                                    break;
+                                case "mode":
+                                    isnew = row["val"].ToString() == "new";
+                                    break;
+                                case "viewer":
+                                    lblViewer.Text = row["val"].ToString();
+                                    break;
+                                case "MONITOR_ID":
+                                    lblMonitorId.Text = row["val"].ToString();
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                        if (isnew)
+                        {
+                            lblMode.Text = "new";
+                        }
+                        else
+                        {
+                            lblMode.Text = "update";
+                        }
+                        if (lblSupervisor.Text == lblAgent.Text)
+                        {
+                            selReviewType.Value = "Self-Observation";
+                        }
+
+                    }
+                    if (lblMode.Text == "update")
+                    {
+                        using (DataTable dtmh = db1.GetDataTable("select * from monitor_hstry where monitor_id='" + lblMonitorId.Text + "'"))
+                        {
+                            foreach (DataRow rowmh in dtmh.Rows)
+                            {
+                                lblAgent.Text = rowmh["user_id"].ToString();
+                                lblCallid.Text = rowmh["call_id"].ToString();
+                                lblCalldate.Text = rowmh["call_date"].ToString();
+                                lblSupervisor.Text = rowmh["entby"].ToString();
+                            }
+                        }
+                        Boolean found_eligible = false;
+                        Boolean found_validtransfer = false;
+                        Boolean found_category = false;
+                        using (DataTable dtup = db1.GetDataTable("select * from monitor_resp_v2prototype where monitor_id='" + lblMonitorId.Text + "'"))
+                        {
+                            foreach (DataRow rowup in dtup.Rows)
+                            {
+                                switch (rowup["question"].ToString())
+                                {
+                                    case "Q1":
+                                        txtQ1.Value = rowup["answer"].ToString();
+                                        txtQ1text.Value = rowup["answertext"].ToString();
+                                        break;
+                                    case "Q2":
+                                        txtQ2.Value = rowup["answer"].ToString();
+                                        txtQ2text.Value = rowup["answertext"].ToString();
+                                        break;
+                                    case "Q3":
+                                        txtQ3.Value = rowup["answer"].ToString();
+                                        txtQ3text.Value = rowup["answertext"].ToString();
+                                        break;
+                                    case "Q4":
+                                        txtQ4.Value = rowup["answer"].ToString();
+                                        txtQ4text.Value = rowup["answertext"].ToString();
+                                        break;
+                                    case "Q5":
+                                        txtQ5.Value = rowup["answer"].ToString();
+                                        txtQ5text.Value = rowup["answertext"].ToString();
+                                        break;
+                                    case "Q6":
+                                        txtQ6.Value = rowup["answer"].ToString();
+                                        txtQ6text.Value = rowup["answertext"].ToString();
+                                        break;
+                                    case "Q7":
+                                        txtQ7.Value = rowup["answer"].ToString();
+                                        txtQ7text.Value = rowup["answertext"].ToString();
+                                        break;
+                                    case "Q8":
+                                        txtQ8.Value = rowup["answer"].ToString();
+                                        txtQ8text.Value = rowup["answertext"].ToString();
+                                        break;
+                                    case "Q9":
+                                        txtQ9.Value = rowup["answer"].ToString();
+                                        txtQ9text.Value = rowup["answertext"].ToString();
+                                        break;
+                                    case "Q10":
+                                        txtQ10.Value = rowup["answer"].ToString();
+                                        txtQ10text.Value = rowup["answertext"].ToString();
+                                        break;
+                                    case "Q11":
+                                        txtQ11.Value = rowup["answer"].ToString();
+                                        txtQ11text.Value = rowup["answertext"].ToString();
+                                        break;
+                                    case "Q12":
+                                        txtQ12.Value = rowup["answer"].ToString();
+                                        txtQ12text.Value = rowup["answertext"].ToString();
+                                        break;
+                                    case "Q13":
+                                        txtQ13.Value = rowup["answer"].ToString();
+                                        txtQ13text.Value = rowup["answertext"].ToString();
+                                        break;
+                                    case "Q14":
+                                        txtQ14.Value = rowup["answer"].ToString();
+                                        txtQ14text.Value = rowup["answertext"].ToString();
+                                        break;
+                                    case "Q15":
+                                        txtQ15.Value = rowup["answer"].ToString();
+                                        txtQ15text.Value = rowup["answertext"].ToString();
+                                        break;
+                                    case "Q16":
+                                        txtQ16.Value = rowup["answer"].ToString();
+                                        txtQ16text.Value = rowup["answertext"].ToString();
+                                        break;
+                                    case "Q17":
+                                        txtQ17.Value = rowup["answer"].ToString();
+                                        txtQ17text.Value = rowup["answertext"].ToString();
+                                        break;
+                                    case "Q18":
+                                        txtQ18.Value = rowup["answer"].ToString();
+                                        txtQ18text.Value = rowup["answertext"].ToString();
+                                        break;
+                                    case "Q19":
+                                        txtQ19.Value = rowup["answer"].ToString();
+                                        txtQ19text.Value = rowup["answertext"].ToString();
+                                        break;
+                                    case "Q20":
+                                        txtQ20.Value = rowup["answer"].ToString();
+                                        txtQ20text.Value = rowup["answertext"].ToString();
+                                        break;
+                                    case "Q21":
+                                        txtQ21.Value = rowup["answer"].ToString();
+                                        txtQ21text.Value = rowup["answertext"].ToString();
+                                        break;
+                                    case "Q22":
+                                        txtQ22.Value = rowup["answer"].ToString();
+                                        txtQ22text.Value = rowup["answertext"].ToString();
+                                        break;
+                                    case "Q22a":
+                                        txtQ22a.Value = rowup["answer"].ToString();
+                                        txtQ22atext.Value = rowup["answertext"].ToString();
+                                        break;
+                                    case "Q22b":
+                                        txtQ22b.Value = rowup["answer"].ToString();
+                                        txtQ22btext.Value = rowup["answertext"].ToString();
+                                        break;
+                                    case "Q23":
+                                        txtQ23.Value = rowup["answer"].ToString();
+                                        txtQ23text.Value = rowup["answertext"].ToString();
+                                        break;
+                                    case "Q23a":
+                                        txtQ23a.Value = rowup["answer"].ToString();
+                                        txtQ23atext.Value = rowup["answertext"].ToString();
+                                        break;
+                                    case "Q23b":
+                                        txtQ23b.Value = rowup["answer"].ToString();
+                                        txtQ23btext.Value = rowup["answertext"].ToString();
+                                        break;
+                                    case "Q24":
+                                        txtQ24.Value = rowup["answer"].ToString();
+                                        txtQ24text.Value = rowup["answertext"].ToString();
+                                        break;
+                                    case "Q25":
+                                        txtQ25.Value = rowup["answer"].ToString();
+                                        txtQ25text.Value = rowup["answertext"].ToString();
+                                        break;
+                                    case "Q26":
+                                        txtQ26.Value = rowup["answer"].ToString();
+                                        txtQ26text.Value = rowup["answertext"].ToString();
+                                        break;
+                                    case "Q27":
+                                        txtQ27.Value = rowup["answer"].ToString();
+                                        txtQ27text.Value = rowup["answertext"].ToString();
+                                        break;
+                                    case "Q28":
+                                        txtQ28.Value = rowup["answer"].ToString();
+                                        txtQ28text.Value = rowup["answertext"].ToString();
+                                        break;
+                                    case "Q29":
+                                        txtQ29.Value = rowup["answer"].ToString();
+                                        txtQ29text.Value = rowup["answertext"].ToString();
+                                        break;                                    
+                                    case "Q1Comments":
+                                        txtQ1Comments.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "Q2Comments":
+                                        txtQ2Comments.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "Q3Comments":
+                                        txtQ3Comments.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "Q4Comments":
+                                        txtQ4Comments.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "Q5Comments":
+                                        txtQ5Comments.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "Q6Comments":
+                                        txtQ6Comments.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "Q7Comments":
+                                        txtQ7Comments.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "Q8Comments":
+                                        txtQ8Comments.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "Q9Comments":
+                                        txtQ9Comments.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "Q10Comments":
+                                        txtQ10Comments.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "Q11Comments":
+                                        txtQ11Comments.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "Q12Comments":
+                                        txtQ12Comments.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "Q13Comments":
+                                        txtQ13Comments.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "Q14Comments":
+                                        txtQ14Comments.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "Q15Comments":
+                                        txtQ15Comments.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "Q16Comments":
+                                        txtQ16Comments.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "Q17Comments":
+                                        txtQ17Comments.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "Q18Comments":
+                                        txtQ18Comments.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "Q19Comments":
+                                        txtQ19Comments.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "Q20Comments":
+                                        txtQ20Comments.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "Q21Comments":
+                                        txtQ21Comments.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "Q22Comments":
+                                        txtQ22Comments.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "Q23Comments":
+                                        txtQ23Comments.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "Q24Comments":
+                                        txtQ24Comments.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "Q25Comments":
+                                        txtQ25Comments.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "Q26Comments":
+                                        txtQ26Comments.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "Q27Comments":
+                                        txtQ27Comments.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "Q28Comments":
+                                        txtQ28Comments.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "Q29Comments":
+                                        txtQ29Comments.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "Q22aComments":
+                                        txtQ22aComments.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "Q22bComments":
+                                        txtQ22bComments.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "Q23aComments":
+                                        txtQ23aComments.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "Q23bComments":
+                                        txtQ23bComments.Value = rowup["answer"].ToString();
+                                        break;                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                                    case "Comments":
+                                        txtComments.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "calllength":
+                                        String cl = rowup["answer"].ToString();
+                                        String[] cls = cl.Split(':');
+                                        if (cls.Length == 3)
+                                        {
+                                            inpCalllength_HH.Value = cls[0];
+                                            inpCalllength_MM.Value = cls[1];
+                                            inpCalllength_SS.Value = cls[2];
+                                        }
+                                        break;
+                                    case "sitelocation":
+                                        selSitelocation.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "jurisdiction":
+                                        selJurisdiction.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "reviewtype":
+                                        selReviewType.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "callpartytype":
+                                        selCallpartyType.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "IntType":
+                                        selIntType.Value = rowup["answer"].ToString();
+                                        break;                                        
+                                    case "reviewname":
+                                        inpReviewName.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "calltype":
+                                        selCalltype.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "category":
+                                        if (rowup["answer"].ToString() != "") found_category = true;
+                                        selCategory_collections.Value = rowup["answer"].ToString(); //Sloppy, but safe to do this.
+                                        selCategory_move.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "language":
+                                        selLanguage.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "eligible":
+                                        if (rowup["answer"].ToString()!="") found_eligible = true;
+                                        selEligible.Value = rowup["answer"].ToString();
+                                        break;
+                                    case "validtransfer":
+                                        if (rowup["answer"].ToString()!="") found_validtransfer = true;
+                                        selValidtransfer.Value = rowup["answer"].ToString();
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                        }
+                        if (!found_eligible)
+                        {
+                            selEligible.Items.Add(new ListItem("-SELECT-", ""));
+                            selEligible.SelectedIndex = selEligible.Items.Count - 1;
+                        }
+                        if (!found_validtransfer)
+                        {
+                            selValidtransfer.Items.Add(new ListItem("-SELECT-", ""));
+                            selValidtransfer.SelectedIndex = selValidtransfer.Items.Count - 1;
+                        }
+                        if (!found_category)
+                        {
+                            selCategory_collections.Items.Add(new ListItem("-SELECT-", ""));
+                            selCategory_collections.SelectedIndex = selCategory_collections.Items.Count - 1;
+                            selCategory_move.Items.Add(new ListItem("-SELECT-", ""));
+                            selCategory_move.SelectedIndex = selCategory_move.Items.Count - 1;
+                        }
+                    }
+                    using (DataTable dtan = db1.GetDataTable("select lastnm,firstnm from usr where user_id='" + lblAgent.Text + "'"))
+                    {
+                        if (dtan.Rows.Count >= 1)
+                        {
+                            lblAgentName.Text = dtan.Rows[0]["lastnm"] + ", " + dtan.Rows[0]["firstnm"];
+                        }
+                    }
+                    using (DataTable dtan = db1.GetDataTable("select lastnm,firstnm from usr where user_id='" + lblSupervisor.Text + "'"))
+                    {
+                        if (dtan.Rows.Count >= 1)
+                        {
+                            lblSupervisorName.Text = dtan.Rows[0]["lastnm"] + ", " + dtan.Rows[0]["firstnm"];
+                        }
+                    }
+                    using (DataTable dtan = db1.GetDataTable("select lastnm,firstnm from team tm inner join usr_team ut on ut.team_id=tm.team_id inner join usr on usr.user_id=tm.spvr_user_id where ut.user_id='" + lblAgent.Text + "'"))
+                    {
+                        if (dtan.Rows.Count >= 1)
+                        {
+                            lblAgentTeamLeaderName.Text = dtan.Rows[0]["lastnm"] + ", " + dtan.Rows[0]["firstnm"];
+                        }
+                    }
+                    using (DataTable dtan = db1.GetDataTable("select lastnm,firstnm,group_name from grp gp inner join team tm on tm.group_id=gp.group_id inner join usr_team ut on ut.team_id=tm.team_id left outer join usr on usr.user_id=gp.spvr_user_id where ut.user_id='" + lblAgent.Text + "'"))
+                    {
+                        if (dtan.Rows.Count >= 1)
+                        {
+                            if (dtan.Rows[0]["lastnm"].ToString()!="") {
+                              lblAgentGroupLeaderName.Text = dtan.Rows[0]["lastnm"] + ", " + dtan.Rows[0]["firstnm"];
+                            }
+                            lblAgentGroupName.Text = dtan.Rows[0]["group_name"].ToString();
+                        }
+                    }
+
+                    if (lblViewer.Text != "")
+                    {
+                        using (DataTable dtrl = db1.GetDataTable("select role from usr where user_id='" + lblViewer.Text + "'"))
+                        {
+                            if (dtrl.Rows.Count >= 1)
+                            {
+                                lblRole.Text = dtrl.Rows[0]["role"].ToString();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        lblRole.Text="NEW";
+                    }
+                }
+            }
+        }
+    }
+
+    protected void submitme_click(object sender, EventArgs e)
+    {
+        String uid = Context.Request.QueryString["uid"];
+        String monitorid = "";
+        using (DbBaseSql db1 = new DbBaseSql(_connection1, ""))
+        {
+            if (lblMode.Text == "new")
+            {
+                //Get aux fields
+                using (DataTable dtaux = db1.GetDataTable("select tm.team_id,tm.group_id,grp.loc_id from usr_team ut inner join team tm on tm.team_id=ut.team_id inner join grp on grp.group_id=tm.group_id where ut.user_id='" + lblAgent.Text + "'")) {
+                    if (dtaux.Rows.Count > 0) {
+                        //Get a new monitor ID
+                        //duck stgInclude_NA_In_Calculation
+                        using (DataTable dtins = db1.GetDataTable("insert into MONITOR_HSTRY (sqf_code,user_id,team_id,group_id,loc_id,project_id,call_id,call_date,call_time,form_value,na_score,net_value,raw_score,pct_score,entdt,entby) values " +
+                        "(25/*HARDCODED*/,'" + lblAgent.Text + "','" + dtaux.Rows[0]["team_id"].ToString() + "','" + dtaux.Rows[0]["group_id"].ToString() + "','" + dtaux.Rows[0]["loc_id"].ToString() + "',1/*HARDCODED*/,'" + lblCallid.Text + "','" + lblCalldate.Text + "','" + lblCalldate.Text + "',100,0,100," + txtSuccessRate.Value.Replace("%","") + "," + txtSuccessRate.Value.Replace("%","") + ",getdate(),'" + lblSupervisor.Text + "');select scope_identity();"))
+                        {
+                            if (dtins.Rows.Count > 0) {
+                                monitorid = dtins.Rows[0][0].ToString();
+                            }
+                        }
+                        //I need the kpi_score and kpi_weight factor before calling this.
+                        //DONE: Add new KPI HSTRY/RESP
+
+                        //agent - lblAgent.Text
+                        //supervisor - lblSupervisor.Text
+                        Boolean saveme = true;
+
+                        if (lblAgent.Text == lblSupervisor.Text)
+                        {
+                            using (DataTable dtan = db1.GetDataTable("select role from usr where user_id='" + lblAgent.Text + "'"))
+                            {
+                                if (dtan.Rows.Count >= 1)
+                                {
+                                    if (dtan.Rows[0]["role"].ToString() == "CSR")
+                                    {
+                                        saveme = false;
+                                    }
+                                }
+                            }
+                        }
+                        if (saveme)
+                        {
+                            int kpi_score = 0;
+                            double kpi_weight = 0.0;
+                            //BLUEGREEN EXCEPTION:  Store the monitors on the REVIEW DATE (for all others it's by call date (which actually should be revisited).  WAS: '" + lblCalldate.Text.Split(' ')[0] + "' for respdt
+                            using (DataTable dtkins = db1.GetDataTable("insert into KPI_HSTRY (user_id,team_id,respdt,entdt,entby,project_id,reference_id) values " +
+                                "('" + lblAgent.Text + "','" + dtaux.Rows[0]["team_id"].ToString() + "',cast(floor(cast(getdate() as float)) as datetime),cast(floor(cast(getdate() as float)) as datetime),'" + lblSupervisor.Text + "',1/*HARDCODED*/,'" + monitorid + "');select scope_identity();"))
+                            {
+                                String qmqf = "29"; //Quality
+                                using (DataTable dtos = db1.GetDataTable("select usr.user_id from usr inner join usr_team ut on ut.user_id=usr.user_id inner join team tm on tm.team_id=ut.team_id where tm.group_id='16' and usr.user_id='" + lblAgent.Text + "'"))
+                                {
+                                    if (dtos.Rows.Count > 0)
+                                    {
+                                        qmqf = "31"; //Quality (OS)
+                                    }
+                                }
+                                using (DataTable dtos = db1.GetDataTable("select usr.user_id from usr inner join usr_team ut on ut.user_id=usr.user_id inner join team tm on tm.team_id=ut.team_id where tm.team_id='31' and usr.user_id='" + lblAgent.Text + "'"))
+                                {
+                                    if (dtos.Rows.Count > 0)
+                                    {
+                                        qmqf = "32"; //Quality (Chat)
+                                    }
+                                }
+                                //Call Transfer Group (28) > mqf# "Quality (CT)" (48)
+                                // using (DataTable dtos = db1.GetDataTable("select usr.user_id from usr inner join usr_team ut on ut.user_id=usr.user_id inner join team tm on tm.team_id=ut.team_id where tm.group_id='28' and usr.user_id='" + lblAgent.Text + "'"))
+                                // {
+                                //     if (dtos.Rows.Count > 0)
+                                //     {
+                                //         qmqf = "48"; //Quality (CT)
+                                //     }
+                                // }
+                                //BVSC Customer Experience 1 (24) > mqf# "Quality (CX1)" (90)
+                                // using (DataTable dtos = db1.GetDataTable("select usr.user_id from usr inner join usr_team ut on ut.user_id=usr.user_id inner join team tm on tm.team_id=ut.team_id where tm.group_id in (24) and usr.user_id='" + lblAgent.Text + "'"))
+                                // {
+                                //     if (dtos.Rows.Count > 0)
+                                //     {
+                                //         qmqf = "90"; //Quality (CX)
+                                //     }
+                                // }
+                                //BVSC Customer Experience 2 (25) > mqf# "Quality (CX2)" (135)
+                                // using (DataTable dtos = db1.GetDataTable("select usr.user_id from usr inner join usr_team ut on ut.user_id=usr.user_id inner join team tm on tm.team_id=ut.team_id where tm.group_id in (25) and usr.user_id='" + lblAgent.Text + "'"))
+                                // {
+                                //     if (dtos.Rows.Count > 0)
+                                //     {
+                                //         qmqf = "135"; //Quality (CX)
+                                //     }
+                                // }
+                                //BVSC Tour Delivery Group (43) > mqf# "Quality (CT)" (108)
+                                // using (DataTable dtos = db1.GetDataTable("select usr.user_id from usr inner join usr_team ut on ut.user_id=usr.user_id inner join team tm on tm.team_id=ut.team_id where tm.group_id in ('43','22') and usr.user_id='" + lblAgent.Text + "'"))
+                                // {
+                                //     if (dtos.Rows.Count > 0)
+                                //     {
+                                //         qmqf = "108"; //Quality (TD)
+                                //     }
+                                // }
+                                //BVSC Reservation Support (31) > mqf# "Quality (Res Support)" (127)
+                                //using (DataTable dtos = db1.GetDataTable("select usr.user_id from usr inner join usr_team ut on ut.user_id=usr.user_id inner join team tm on tm.team_id=ut.team_id where tm.group_id in ('31') and usr.user_id='" + lblAgent.Text + "'"))
+                                //{
+                                //    if (dtos.Rows.Count > 0)
+                                //    {
+                                //        qmqf = "127"; //Quality (Res Support)
+                                //    }
+                                //}
+                                //New 2020-09-03 - Reservations.
+                                // using (DataTable dtos = db1.GetDataTable("select usr.user_id from usr inner join usr_team ut on ut.user_id=usr.user_id inner join team tm on tm.team_id=ut.team_id where tm.group_id in ('33','45') and usr.user_id='" + lblAgent.Text + "'"))
+                                // {
+                                //     if (dtos.Rows.Count > 0)
+                                //     {
+                                //         qmqf = "78"; //Quality (Res)
+                                //     }
+                                // }
+                                //New 2021-07-13 - Quality based on filters and quality (ACT)
+                                // using (DataTable dtos = db1.GetDataTable("select usr.user_id from usr inner join usr_team ut on ut.user_id=usr.user_id inner join team tm on tm.team_id=ut.team_id where tm.group_id='23' and usr.user_id='" + lblAgent.Text + "'"))
+                                // {
+                                //     if (dtos.Rows.Count > 0)
+                                //     {
+                                //         qmqf = "125"; //Quality (Act)
+                                //     }
+                                // }
+                                // using (DataTable dtos = db1.GetDataTable("select usr.user_id from usr inner join usr_filter uf on uf.user_id=usr.user_id where filter_id='4' and usr.user_id='" + lblAgent.Text + "'"))
+                                // {
+                                //     if (dtos.Rows.Count > 0)
+                                //     {
+                                //         qmqf = "108"; //Quality (Conf)
+                                //     }
+                                // }
+                                // using (DataTable dtos = db1.GetDataTable("select usr.user_id from usr inner join usr_filter uf on uf.user_id=usr.user_id where filter_id='5' and usr.user_id='" + lblAgent.Text + "'"))
+                                // {
+                                //     if (dtos.Rows.Count > 0)
+                                //     {
+                                //         qmqf = "127"; //Quality (Res Support)
+                                //     }
+                                // }
+                                getscoreandweight(qmqf, txtSuccessRate.Value.Replace("%", ""), ref kpi_score, ref kpi_weight);
+                                //2021-09-01 - MQF is "Quality (NS)" if the role of the reviewer is not in the Quality Assurance role.
+                                // 2021-11-11 - Owner Services no longer wants Quality(NS) for any case.
+                                //   NOTE:  This was set up for ONLY 31, now changed to all EXCEPT 31.  Not sure why OS was the ONLY one here previously.                               
+                                // if (qmqf != "31") 
+                                // {
+                                //     using (DataTable dtrole = db1.GetDataTable("select role from usr where user_id='" + lblSupervisor.Text + "' and role in ('Quality Assurance')"))
+                                //     {
+                                //         if (dtrole.Rows.Count <= 0)
+                                //         {
+                                //             qmqf = "130"; //Always Project 1 (I don't think this will ever be reached).
+                                //         }
+                                //     }
+                                // }
+                                db1.Update("insert into KPI_RESP (kpi_id,mqf#,line#,level#,range,kpi_score,kpi_weight_factor,entdt,entby,project_id) values " +
+                                    "('" + dtkins.Rows[0][0].ToString() + "'," + qmqf + "/*HARDCODED*/,1,1,'" + txtSuccessRate.Value.Replace("%","") + "','" + kpi_score.ToString() + "','" + kpi_weight.ToString() + "',cast(floor(cast(getdate() as float)) as datetime),'" + lblSupervisor.Text + "',1/*HARDCODED*/)");
+                            }
+                        }
+                    }
+                }
+                fillv2resp(monitorid);
+            }
+else {
+                //update
+                monitorid = lblMonitorId.Text;
+                //duck
+                //stgInclude_NA_In_Calculation
+                db1.Update("update monitor_hstry set raw_score='" + txtSuccessRate.Value.Replace("%","") + "',pct_score='" + txtSuccessRate.Value.Replace("%","") + "',upddt=getdate(),updby='" + lblSupervisor.Text + "' where monitor_id='" + monitorid + "'");
+                if (true)
+                {
+                    //DONE: Update KPI HSTRY/RESP
+                    int kpi_score = 0;
+                    double kpi_weight = 0.0;
+
+                    String qmqf = "29"; //Quality
+                    using (DataTable dtos = db1.GetDataTable("select usr.user_id from usr inner join usr_team ut on ut.user_id=usr.user_id inner join team tm on tm.team_id=ut.team_id where tm.group_id='16' and usr.user_id='" + lblAgent.Text + "'"))
+                    {
+                        if (dtos.Rows.Count > 0)
+                        {
+                            qmqf = "31"; //Quality (OS)
+                        }
+                    }
+                    using (DataTable dtos = db1.GetDataTable("select usr.user_id from usr inner join usr_team ut on ut.user_id=usr.user_id inner join team tm on tm.team_id=ut.team_id where tm.team_id='31' and usr.user_id='" + lblAgent.Text + "'"))
+                    {
+                        if (dtos.Rows.Count > 0)
+                        {
+                            qmqf = "32"; //Quality (Chat)
+                        }
+                    }
+                    // using (DataTable dtos = db1.GetDataTable("select usr.user_id from usr inner join usr_team ut on ut.user_id=usr.user_id inner join team tm on tm.team_id=ut.team_id where tm.group_id='44' and usr.user_id='" + lblAgent.Text + "'"))
+                    // {
+                    //     if (dtos.Rows.Count > 0)
+                    //     {
+                    //         qmqf = "31"; //Quality (OS)
+                    //     }
+                    // }
+                    //Call Transfer Group (28) > mqf# "Quality (CT)" (48)
+                    // using (DataTable dtos = db1.GetDataTable("select usr.user_id from usr inner join usr_team ut on ut.user_id=usr.user_id inner join team tm on tm.team_id=ut.team_id where tm.group_id='28' and usr.user_id='" + lblAgent.Text + "'"))
+                    // {
+                    //     if (dtos.Rows.Count > 0)
+                    //     {
+                    //         qmqf = "48"; //Quality (CT)
+                    //     }
+                    // }
+                    //BVSC Customer Experience 1 (24) > mqf# "Quality (CX1)" (90)
+                    // using (DataTable dtos = db1.GetDataTable("select usr.user_id from usr inner join usr_team ut on ut.user_id=usr.user_id inner join team tm on tm.team_id=ut.team_id where tm.group_id in (24) and usr.user_id='" + lblAgent.Text + "'"))
+                    // {
+                    //     if (dtos.Rows.Count > 0)
+                    //     {
+                    //         qmqf = "90"; //Quality (CX1)
+                    //     }
+                    // }
+                    //BVSC Customer Experience 2 (25) > mqf# "Quality (CX2)" (135)
+                    // using (DataTable dtos = db1.GetDataTable("select usr.user_id from usr inner join usr_team ut on ut.user_id=usr.user_id inner join team tm on tm.team_id=ut.team_id where tm.group_id in (25) and usr.user_id='" + lblAgent.Text + "'"))
+                    // {
+                    //     if (dtos.Rows.Count > 0)
+                    //     {
+                    //         qmqf = "135"; //Quality (CX2)
+                    //     }
+                    // }
+                    //BVSC JUST BVSC Confirmation Group - Tour Delivery Group (43) > mqf# "Quality (CT)" (108)
+                    // using (DataTable dtos = db1.GetDataTable("select usr.user_id from usr inner join usr_team ut on ut.user_id=usr.user_id inner join team tm on tm.team_id=ut.team_id where tm.group_id in ('43','22') and usr.user_id='" + lblAgent.Text + "'"))
+                    // {
+                    //     if (dtos.Rows.Count > 0)
+                    //     {
+                    //         qmqf = "108"; //Quality (TD)
+                    //     }
+                    // }
+                    //BVSC Reservation Support (31) > mqf# "Quality (Res Support)" (127)
+                    //using (DataTable dtos = db1.GetDataTable("select usr.user_id from usr inner join usr_team ut on ut.user_id=usr.user_id inner join team tm on tm.team_id=ut.team_id where tm.group_id in ('31') and usr.user_id='" + lblAgent.Text + "'"))
+                    //{
+                    //    if (dtos.Rows.Count > 0)
+                    //    {
+                    //        qmqf = "127"; //Quality (Res Support)
+                    //    }
+                   //}
+                    //New 2020-09-03 - Reservations.
+                    // using (DataTable dtos = db1.GetDataTable("select usr.user_id from usr inner join usr_team ut on ut.user_id=usr.user_id inner join team tm on tm.team_id=ut.team_id where tm.group_id in ('33','45') and usr.user_id='" + lblAgent.Text + "'"))
+                    // {
+                    //     if (dtos.Rows.Count > 0)
+                    //     {
+                    //         qmqf = "78"; //Quality (Res)
+                    //     }
+                    // }
+                    //New 2021-07-13 - Quality based on filters, plus Quality (Act)
+                    // using (DataTable dtos = db1.GetDataTable("select usr.user_id from usr inner join usr_team ut on ut.user_id=usr.user_id inner join team tm on tm.team_id=ut.team_id where tm.group_id='23' and usr.user_id='" + lblAgent.Text + "'"))
+                    // {
+                    //     if (dtos.Rows.Count > 0)
+                    //     {
+                    //         qmqf = "125"; //Quality (Act)
+                    //     }
+                    // }
+                    /*
+                    using (DataTable dtos = db1.GetDataTable("select usr.user_id from usr inner join usr_filter uf on uf.user_id=usr.user_id where filter_id='4' and usr.user_id='" + lblAgent.Text + "'"))
+                    {
+                        if (dtos.Rows.Count > 0)
+                        {
+                            qmqf = "108"; //Quality (Conf)
+                        }
+                    }
+                    using (DataTable dtos = db1.GetDataTable("select usr.user_id from usr inner join usr_filter uf on uf.user_id=usr.user_id where filter_id='5' and usr.user_id='" + lblAgent.Text + "'"))
+                    {
+                        if (dtos.Rows.Count > 0)
+                        {
+                            qmqf = "127"; //Quality (Res Support)
+                        }
+                    }
+                    */
+                    getscoreandweight(qmqf, txtSuccessRate.Value.Replace("%", ""), ref kpi_score, ref kpi_weight);
+                    using (DataTable dtkpi = db1.GetDataTable("select kh.kpi_id from kpi_hstry kh inner join kpi_resp kr on kr.kpi_id=kh.kpi_id where mqf#=" + qmqf + " and reference_id='" + monitorid + "'"))
+                    {
+                        if (dtkpi.Rows.Count > 0)
+                        {
+                            db1.Update("update kpi_resp set range='" + txtSuccessRate.Value.Replace("%", "") + "',kpi_score='" + kpi_score.ToString() + "',kpi_weight_factor='" + kpi_weight.ToString() + "',upddt=getdate(),updby='" + lblSupervisor.Text + "' where kpi_id='" + dtkpi.Rows[0][0].ToString() + "'");
+                        }
+                    }
+
+                    fillv2resp(monitorid);
+                }
+                if (true) // Update QUALITY ASSURANCE KPI
+                {
+                    //DONE: Update KPI HSTRY/RESP
+                    int kpi_score = 0;
+                    double kpi_weight = 0.0;
+                    getscoreandweight("29",txtSuccessRate.Value.Replace("%", ""), ref kpi_score, ref kpi_weight);
+                    using (DataTable dtkpi = db1.GetDataTable("select kh.kpi_id from kpi_hstry kh inner join kpi_resp kr on kr.kpi_id=kh.kpi_id where mqf#=29 and reference_id='" + monitorid + "'"))
+                    {
+                        if (dtkpi.Rows.Count > 0)
+                        {
+                            db1.Update("update kpi_resp set range='" + txtSuccessRate.Value.Replace("%", "") + "',kpi_score='" + kpi_score.ToString() + "',kpi_weight_factor='" + kpi_weight.ToString() + "',upddt=getdate(),updby='" + lblSupervisor.Text + "' where kpi_id='" + dtkpi.Rows[0][0].ToString() + "'");
+                        }
+                    }
+                    fillv2resp(monitorid);
+                }
+
+
+            }
+        }
+        closeme_click(sender, e);
+    }
+
+    protected void deleteme_click(object sender, EventArgs e)
+    {
+        using (DbBaseSql db1 = new DbBaseSql(_connection1, ""))
+        {
+            String monitorid = lblMonitorId.Text;
+            db1.Update("delete from monitor_hstry where monitor_id='" + db1.reap(monitorid) + "'");
+            //DONE: Delete KPI HSTRY/RESP
+            using (DataTable dtkpi = db1.GetDataTable("select kpi_id from kpi_hstry where reference_id='" + db1.reap(monitorid) + "'"))
+            {
+                if (dtkpi.Rows.Count > 0)
+                {
+                    db1.Update("delete from kpi_resp where kpi_id='" + dtkpi.Rows[0][0].ToString() + "'");
+                    db1.Update("delete from kpi_hstry where kpi_id='" + dtkpi.Rows[0][0].ToString() + "'");
+                }
+            }
+            db1.Update("delete from monitor_resp_v2prototype where monitor_id='" + db1.reap(monitorid) + "'");
+
+            //MIRROR DELETE
+            using (DataTable dtqa = db1.GetDataTable("select id from qa_hstry where monitor_id='" + db1.reap(monitorid) + "'"))
+            {
+                if (dtqa.Rows.Count > 0)
+                {
+                    db1.Update("delete from qa_resp where idqa='" + dtqa.Rows[0][0].ToString() + "'");
+                    db1.Update("delete from qa_hstry where monitor_id='" + db1.reap(monitorid) + "'");
+                }
+            }
+
+        }
+        closeme_click(sender, e);
+    }
+
+    protected void closeme_click(object sender, EventArgs e)
+    {
+        if (lblMode.Text == "new")
+        {
+            Response.Redirect("//bgr.acuityapm.com/monitor/monitor.aspx");
+        }
+        else
+        {
+            Response.Redirect("//bgr.acuityapm.com/monitor/monitor_review.aspx");
+        }
+    }
+
+    protected void fillv2resp(String monitorid)
+    {
+        using (DbBaseSql db1 = new DbBaseSql(_connection1, ""))
+        {
+            monitorid = db1.reap(monitorid); //NOTE: Don't do an additional reap on monitorid for the statements below.
+
+            db1.Update("delete from monitor_resp_v2prototype where monitor_id='" + monitorid + "'");
+
+            //MIRROR DELETE
+            using (DataTable dtqa = db1.GetDataTable("select id from qa_hstry where monitor_id='" + monitorid + "'"))
+            {
+                if (dtqa.Rows.Count > 0)
+                {
+                    db1.Update("delete from qa_resp where idqa='" + dtqa.Rows[0][0].ToString() + "'");
+                    db1.Update("delete from qa_hstry where monitor_id='" + monitorid + "'");
+                }
+            }
+
+            //MIRROR INSERT
+            using (DataTable dtqa = db1.GetDataTable("insert into qa_hstry (monitor_id,examiner,examinee,idform,score,value,client,entby) " +
+                   "values ('" + monitorid + "','" + db1.reap(lblSupervisor.Text) + "','" + db1.reap(lblAgent.Text) + "','-1','" +  txtSuccessRate.Value.Replace("%", "") + "','0','29','" + db1.reap(lblSupervisor.Text) + "');select scope_identity() as id"))
+            {
+                if (dtqa.Rows.Count > 0)
+                {
+                    db1.Update("insert into qa_resp(qstname,answertext,answertext_oldV2,idqa,idform,idquestion,client,entby,version,value,score) values('Q1','" + txtQ1.Value + "','" + txtQ1text.Value + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,answertext_oldV2,idqa,idform,idquestion,client,entby,version,value,score) values('Q1','" + txtQ1.Value + "','" + txtQ1text.Value + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,answertext_oldV2,idqa,idform,idquestion,client,entby,version,value,score) values('Q2','" + txtQ2.Value + "','" + txtQ2text.Value + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,answertext_oldV2,idqa,idform,idquestion,client,entby,version,value,score) values('Q3','" + txtQ3.Value + "','" + txtQ3text.Value + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,answertext_oldV2,idqa,idform,idquestion,client,entby,version,value,score) values('Q4','" + txtQ4.Value + "','" + txtQ4text.Value + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,answertext_oldV2,idqa,idform,idquestion,client,entby,version,value,score) values('Q5','" + txtQ5.Value + "','" + txtQ5text.Value + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,answertext_oldV2,idqa,idform,idquestion,client,entby,version,value,score) values('Q6','" + txtQ6.Value + "','" + txtQ6text.Value + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,answertext_oldV2,idqa,idform,idquestion,client,entby,version,value,score) values('Q7','" + txtQ7.Value + "','" + txtQ7text.Value + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,answertext_oldV2,idqa,idform,idquestion,client,entby,version,value,score) values('Q8','" + txtQ8.Value + "','" + txtQ8text.Value + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,answertext_oldV2,idqa,idform,idquestion,client,entby,version,value,score) values('Q9','" + txtQ9.Value + "','" + txtQ9text.Value + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,answertext_oldV2,idqa,idform,idquestion,client,entby,version,value,score) values('Q10','" + txtQ10.Value + "','" + txtQ10text.Value + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,answertext_oldV2,idqa,idform,idquestion,client,entby,version,value,score) values('Q11','" + txtQ11.Value + "','" + txtQ11text.Value + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,answertext_oldV2,idqa,idform,idquestion,client,entby,version,value,score) values('Q12','" + txtQ12.Value + "','" + txtQ12text.Value + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,answertext_oldV2,idqa,idform,idquestion,client,entby,version,value,score) values('Q13','" + txtQ13.Value + "','" + txtQ13text.Value + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,answertext_oldV2,idqa,idform,idquestion,client,entby,version,value,score) values('Q14','" + txtQ14.Value + "','" + txtQ14text.Value + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,answertext_oldV2,idqa,idform,idquestion,client,entby,version,value,score) values('Q15','" + txtQ15.Value + "','" + txtQ15text.Value + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,answertext_oldV2,idqa,idform,idquestion,client,entby,version,value,score) values('Q16','" + txtQ16.Value + "','" + txtQ16text.Value + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,answertext_oldV2,idqa,idform,idquestion,client,entby,version,value,score) values('Q17','" + txtQ17.Value + "','" + txtQ17text.Value + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,answertext_oldV2,idqa,idform,idquestion,client,entby,version,value,score) values('Q18','" + txtQ18.Value + "','" + txtQ18text.Value + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,answertext_oldV2,idqa,idform,idquestion,client,entby,version,value,score) values('Q19','" + txtQ19.Value + "','" + txtQ19text.Value + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,answertext_oldV2,idqa,idform,idquestion,client,entby,version,value,score) values('Q20','" + txtQ20.Value + "','" + txtQ20text.Value + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,answertext_oldV2,idqa,idform,idquestion,client,entby,version,value,score) values('Q21','" + txtQ21.Value + "','" + txtQ21text.Value + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,answertext_oldV2,idqa,idform,idquestion,client,entby,version,value,score) values('Q22','" + txtQ22.Value + "','" + txtQ22text.Value + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,answertext_oldV2,idqa,idform,idquestion,client,entby,version,value,score) values('Q23','" + txtQ23.Value + "','" + txtQ23text.Value + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,answertext_oldV2,idqa,idform,idquestion,client,entby,version,value,score) values('Q24','" + txtQ24.Value + "','" + txtQ24text.Value + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,answertext_oldV2,idqa,idform,idquestion,client,entby,version,value,score) values('Q25','" + txtQ25.Value + "','" + txtQ25text.Value + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,answertext_oldV2,idqa,idform,idquestion,client,entby,version,value,score) values('Q26','" + txtQ26.Value + "','" + txtQ26text.Value + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,answertext_oldV2,idqa,idform,idquestion,client,entby,version,value,score) values('Q27','" + txtQ27.Value + "','" + txtQ27text.Value + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,answertext_oldV2,idqa,idform,idquestion,client,entby,version,value,score) values('Q28','" + txtQ28.Value + "','" + txtQ28text.Value + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,answertext_oldV2,idqa,idform,idquestion,client,entby,version,value,score) values('Q29','" + txtQ29.Value + "','" + txtQ29text.Value + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,answertext_oldV2,idqa,idform,idquestion,client,entby,version,value,score) values('Q22a','" + txtQ22a.Value + "','" + txtQ22atext.Value + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,answertext_oldV2,idqa,idform,idquestion,client,entby,version,value,score) values('Q22b','" + txtQ22b.Value + "','" + txtQ22btext.Value + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,answertext_oldV2,idqa,idform,idquestion,client,entby,version,value,score) values('Q23a','" + txtQ23a.Value + "','" + txtQ23atext.Value + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,answertext_oldV2,idqa,idform,idquestion,client,entby,version,value,score) values('Q23b','" + txtQ23b.Value + "','" + txtQ23btext.Value + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+
+                    db1.Update("insert into qa_resp(qstname,answertext,idqa,idform,idquestion,client,entby,version,value,score) values('Q1Comments','" + db1.reap(txtQ1Comments.Value) + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,idqa,idform,idquestion,client,entby,version,value,score) values('Q2Comments','" + db1.reap(txtQ2Comments.Value) + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,idqa,idform,idquestion,client,entby,version,value,score) values('Q3Comments','" + db1.reap(txtQ3Comments.Value) + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,idqa,idform,idquestion,client,entby,version,value,score) values('Q4Comments','" + db1.reap(txtQ4Comments.Value) + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,idqa,idform,idquestion,client,entby,version,value,score) values('Q5Comments','" + db1.reap(txtQ5Comments.Value) + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,idqa,idform,idquestion,client,entby,version,value,score) values('Q6Comments','" + db1.reap(txtQ6Comments.Value) + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,idqa,idform,idquestion,client,entby,version,value,score) values('Q7Comments','" + db1.reap(txtQ7Comments.Value) + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,idqa,idform,idquestion,client,entby,version,value,score) values('Q8Comments','" + db1.reap(txtQ8Comments.Value) + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,idqa,idform,idquestion,client,entby,version,value,score) values('Q9Comments','" + db1.reap(txtQ9Comments.Value) + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,idqa,idform,idquestion,client,entby,version,value,score) values('Q10Comments','" + db1.reap(txtQ10Comments.Value) + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,idqa,idform,idquestion,client,entby,version,value,score) values('Q11Comments','" + db1.reap(txtQ11Comments.Value) + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,idqa,idform,idquestion,client,entby,version,value,score) values('Q12Comments','" + db1.reap(txtQ12Comments.Value) + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,idqa,idform,idquestion,client,entby,version,value,score) values('Q13Comments','" + db1.reap(txtQ13Comments.Value) + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,idqa,idform,idquestion,client,entby,version,value,score) values('Q14Comments','" + db1.reap(txtQ14Comments.Value) + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,idqa,idform,idquestion,client,entby,version,value,score) values('Q15Comments','" + db1.reap(txtQ15Comments.Value) + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,idqa,idform,idquestion,client,entby,version,value,score) values('Q16Comments','" + db1.reap(txtQ16Comments.Value) + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,idqa,idform,idquestion,client,entby,version,value,score) values('Q17Comments','" + db1.reap(txtQ17Comments.Value) + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,idqa,idform,idquestion,client,entby,version,value,score) values('Q18Comments','" + db1.reap(txtQ18Comments.Value) + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,idqa,idform,idquestion,client,entby,version,value,score) values('Q19Comments','" + db1.reap(txtQ19Comments.Value) + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,idqa,idform,idquestion,client,entby,version,value,score) values('Q20Comments','" + db1.reap(txtQ20Comments.Value) + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,idqa,idform,idquestion,client,entby,version,value,score) values('Q21Comments','" + db1.reap(txtQ21Comments.Value) + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,idqa,idform,idquestion,client,entby,version,value,score) values('Q22Comments','" + db1.reap(txtQ22Comments.Value) + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,idqa,idform,idquestion,client,entby,version,value,score) values('Q22aComments','" + db1.reap(txtQ22aComments.Value) + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,idqa,idform,idquestion,client,entby,version,value,score) values('Q22bComments','" + db1.reap(txtQ22bComments.Value) + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,idqa,idform,idquestion,client,entby,version,value,score) values('Q23Comments','" + db1.reap(txtQ23Comments.Value) + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,idqa,idform,idquestion,client,entby,version,value,score) values('Q23aComments','" + db1.reap(txtQ23aComments.Value) + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,idqa,idform,idquestion,client,entby,version,value,score) values('Q23bComments','" + db1.reap(txtQ23bComments.Value) + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,idqa,idform,idquestion,client,entby,version,value,score) values('Q24Comments','" + db1.reap(txtQ24Comments.Value) + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,idqa,idform,idquestion,client,entby,version,value,score) values('Q25Comments','" + db1.reap(txtQ25Comments.Value) + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,idqa,idform,idquestion,client,entby,version,value,score) values('Q26Comments','" + db1.reap(txtQ26Comments.Value) + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,idqa,idform,idquestion,client,entby,version,value,score) values('Q27Comments','" + db1.reap(txtQ27Comments.Value) + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,idqa,idform,idquestion,client,entby,version,value,score) values('Q28Comments','" + db1.reap(txtQ28Comments.Value) + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,idqa,idform,idquestion,client,entby,version,value,score) values('Q29Comments','" + db1.reap(txtQ29Comments.Value) + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,idqa,idform,idquestion,client,entby,version,value,score) values('Comments','" + db1.reap(txtComments.Value) + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,idqa,idform,idquestion,client,entby,version,value,score) values('reviewtype','" + db1.reap(txtReviewType.Value) + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,idqa,idform,idquestion,client,entby,version,value,score) values('callpartytype','" + db1.reap(txtCallpartyType.Value) + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,idqa,idform,idquestion,client,entby,version,value,score) values('Total','" + txtSuccessRate.Value.Replace("%", "") + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,idqa,idform,idquestion,client,entby,version,value,score) values('reviewname','" + db1.reap(txtReviewName.Value) + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+                    db1.Update("insert into qa_resp(qstname,answertext,idqa,idform,idquestion,client,entby,version,value,score) values('IntType','" + db1.reap(txtIntType.Value) + "'," + dtqa.Rows[0][0].ToString() + ",'-1','-2','29','" + db1.reap(lblSupervisor.Text) + "','0','0','0')");
+
+                }
+            }
+
+
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer,answertext) values ('" + monitorid + "',25/*HARDCODED*/,'Q1','" + txtQ1.Value + "','" + txtQ1text.Value + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer,answertext) values ('" + monitorid + "',25/*HARDCODED*/,'Q2','" + txtQ2.Value + "','" + txtQ2text.Value + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer,answertext) values ('" + monitorid + "',25/*HARDCODED*/,'Q3','" + txtQ3.Value + "','" + txtQ3text.Value + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer,answertext) values ('" + monitorid + "',25/*HARDCODED*/,'Q4','" + txtQ4.Value + "','" + txtQ4text.Value + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer,answertext) values ('" + monitorid + "',25/*HARDCODED*/,'Q5','" + txtQ5.Value + "','" + txtQ5text.Value + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer,answertext) values ('" + monitorid + "',25/*HARDCODED*/,'Q6','" + txtQ6.Value + "','" + txtQ6text.Value + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer,answertext) values ('" + monitorid + "',25/*HARDCODED*/,'Q7','" + txtQ7.Value + "','" + txtQ7text.Value + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer,answertext) values ('" + monitorid + "',25/*HARDCODED*/,'Q8','" + txtQ8.Value + "','" + txtQ8text.Value + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer,answertext) values ('" + monitorid + "',25/*HARDCODED*/,'Q9','" + txtQ9.Value + "','" + txtQ9text.Value + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer,answertext) values ('" + monitorid + "',25/*HARDCODED*/,'Q10','" + txtQ10.Value + "','" + txtQ10text.Value + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer,answertext) values ('" + monitorid + "',25/*HARDCODED*/,'Q11','" + txtQ11.Value + "','" + txtQ11text.Value + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer,answertext) values ('" + monitorid + "',25/*HARDCODED*/,'Q12','" + txtQ12.Value + "','" + txtQ12text.Value + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer,answertext) values ('" + monitorid + "',25/*HARDCODED*/,'Q13','" + txtQ13.Value + "','" + txtQ13text.Value + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer,answertext) values ('" + monitorid + "',25/*HARDCODED*/,'Q14','" + txtQ14.Value + "','" + txtQ14text.Value + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer,answertext) values ('" + monitorid + "',25/*HARDCODED*/,'Q15','" + txtQ15.Value + "','" + txtQ15text.Value + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer,answertext) values ('" + monitorid + "',25/*HARDCODED*/,'Q16','" + txtQ16.Value + "','" + txtQ16text.Value + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer,answertext) values ('" + monitorid + "',25/*HARDCODED*/,'Q17','" + txtQ17.Value + "','" + txtQ17text.Value + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer,answertext) values ('" + monitorid + "',25/*HARDCODED*/,'Q18','" + txtQ18.Value + "','" + txtQ18text.Value + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer,answertext) values ('" + monitorid + "',25/*HARDCODED*/,'Q19','" + txtQ19.Value + "','" + txtQ19text.Value + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer,answertext) values ('" + monitorid + "',25/*HARDCODED*/,'Q20','" + txtQ20.Value + "','" + txtQ20text.Value + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer,answertext) values ('" + monitorid + "',25/*HARDCODED*/,'Q21','" + txtQ21.Value + "','" + txtQ21text.Value + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer,answertext) values ('" + monitorid + "',25/*HARDCODED*/,'Q22','" + txtQ22.Value + "','" + txtQ22text.Value + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer,answertext) values ('" + monitorid + "',25/*HARDCODED*/,'Q23','" + txtQ23.Value + "','" + txtQ23text.Value + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer,answertext) values ('" + monitorid + "',25/*HARDCODED*/,'Q24','" + txtQ24.Value + "','" + txtQ24text.Value + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer,answertext) values ('" + monitorid + "',25/*HARDCODED*/,'Q25','" + txtQ25.Value + "','" + txtQ25text.Value + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer,answertext) values ('" + monitorid + "',25/*HARDCODED*/,'Q26','" + txtQ26.Value + "','" + txtQ26text.Value + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer,answertext) values ('" + monitorid + "',25/*HARDCODED*/,'Q27','" + txtQ27.Value + "','" + txtQ27text.Value + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer,answertext) values ('" + monitorid + "',25/*HARDCODED*/,'Q28','" + txtQ28.Value + "','" + txtQ28text.Value + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer,answertext) values ('" + monitorid + "',25/*HARDCODED*/,'Q29','" + txtQ29.Value + "','" + txtQ29text.Value + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer,answertext) values ('" + monitorid + "',25/*HARDCODED*/,'Q22a','" + txtQ22a.Value + "','" + txtQ22atext.Value + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer,answertext) values ('" + monitorid + "',25/*HARDCODED*/,'Q22b','" + txtQ22b.Value + "','" + txtQ22btext.Value + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer,answertext) values ('" + monitorid + "',25/*HARDCODED*/,'Q23a','" + txtQ23a.Value + "','" + txtQ23atext.Value + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer,answertext) values ('" + monitorid + "',25/*HARDCODED*/,'Q23b','" + txtQ23b.Value + "','" + txtQ23btext.Value + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer) values ('" + monitorid + "',25/*HARDCODED*/,'Q1Comments','" + db1.reap(txtQ1Comments.Value) + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer) values ('" + monitorid + "',25/*HARDCODED*/,'Q2Comments','" + db1.reap(txtQ2Comments.Value) + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer) values ('" + monitorid + "',25/*HARDCODED*/,'Q3Comments','" + db1.reap(txtQ3Comments.Value) + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer) values ('" + monitorid + "',25/*HARDCODED*/,'Q4Comments','" + db1.reap(txtQ4Comments.Value) + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer) values ('" + monitorid + "',25/*HARDCODED*/,'Q5Comments','" + db1.reap(txtQ5Comments.Value) + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer) values ('" + monitorid + "',25/*HARDCODED*/,'Q6Comments','" + db1.reap(txtQ6Comments.Value) + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer) values ('" + monitorid + "',25/*HARDCODED*/,'Q7Comments','" + db1.reap(txtQ7Comments.Value) + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer) values ('" + monitorid + "',25/*HARDCODED*/,'Q8Comments','" + db1.reap(txtQ8Comments.Value) + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer) values ('" + monitorid + "',25/*HARDCODED*/,'Q9Comments','" + db1.reap(txtQ9Comments.Value) + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer) values ('" + monitorid + "',25/*HARDCODED*/,'Q10Comments','" + db1.reap(txtQ10Comments.Value) + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer) values ('" + monitorid + "',25/*HARDCODED*/,'Q11Comments','" + db1.reap(txtQ11Comments.Value) + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer) values ('" + monitorid + "',25/*HARDCODED*/,'Q12Comments','" + db1.reap(txtQ12Comments.Value) + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer) values ('" + monitorid + "',25/*HARDCODED*/,'Q13Comments','" + db1.reap(txtQ13Comments.Value) + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer) values ('" + monitorid + "',25/*HARDCODED*/,'Q14Comments','" + db1.reap(txtQ14Comments.Value) + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer) values ('" + monitorid + "',25/*HARDCODED*/,'Q15Comments','" + db1.reap(txtQ15Comments.Value) + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer) values ('" + monitorid + "',25/*HARDCODED*/,'Q16Comments','" + db1.reap(txtQ16Comments.Value) + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer) values ('" + monitorid + "',25/*HARDCODED*/,'Q17Comments','" + db1.reap(txtQ17Comments.Value) + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer) values ('" + monitorid + "',25/*HARDCODED*/,'Q18Comments','" + db1.reap(txtQ18Comments.Value) + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer) values ('" + monitorid + "',25/*HARDCODED*/,'Q19Comments','" + db1.reap(txtQ19Comments.Value) + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer) values ('" + monitorid + "',25/*HARDCODED*/,'Q20Comments','" + db1.reap(txtQ20Comments.Value) + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer) values ('" + monitorid + "',25/*HARDCODED*/,'Q21Comments','" + db1.reap(txtQ21Comments.Value) + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer) values ('" + monitorid + "',25/*HARDCODED*/,'Q22Comments','" + db1.reap(txtQ22Comments.Value) + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer) values ('" + monitorid + "',25/*HARDCODED*/,'Q22aComments','" + db1.reap(txtQ22aComments.Value) + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer) values ('" + monitorid + "',25/*HARDCODED*/,'Q22bComments','" + db1.reap(txtQ22bComments.Value) + "')");            
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer) values ('" + monitorid + "',25/*HARDCODED*/,'Q23Comments','" + db1.reap(txtQ23Comments.Value) + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer) values ('" + monitorid + "',25/*HARDCODED*/,'Q23aComments','" + db1.reap(txtQ23aComments.Value) + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer) values ('" + monitorid + "',25/*HARDCODED*/,'Q23bComments','" + db1.reap(txtQ23bComments.Value) + "')");            
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer) values ('" + monitorid + "',25/*HARDCODED*/,'Q24Comments','" + db1.reap(txtQ24Comments.Value) + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer) values ('" + monitorid + "',25/*HARDCODED*/,'Q25Comments','" + db1.reap(txtQ25Comments.Value) + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer) values ('" + monitorid + "',25/*HARDCODED*/,'Q26Comments','" + db1.reap(txtQ26Comments.Value) + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer) values ('" + monitorid + "',25/*HARDCODED*/,'Q27Comments','" + db1.reap(txtQ27Comments.Value) + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer) values ('" + monitorid + "',25/*HARDCODED*/,'Q28Comments','" + db1.reap(txtQ28Comments.Value) + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer) values ('" + monitorid + "',25/*HARDCODED*/,'Q29Comments','" + db1.reap(txtQ29Comments.Value) + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer) values ('" + monitorid + "',25/*HARDCODED*/,'Comments','" + db1.reap(txtComments.Value) + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer) values ('" + monitorid + "',25/*HARDCODED*/,'reviewtype','" + db1.reap(txtReviewType.Value) + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer) values ('" + monitorid + "',25/*HARDCODED*/,'callpartytype','" + db1.reap(txtCallpartyType.Value) + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer) values ('" + monitorid + "',25/*HARDCODED*/,'Total','" + txtSuccessRate.Value.Replace("%","") + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer) values ('" + monitorid + "',25/*HARDCODED*/,'reviewname','" + db1.reap(txtReviewName.Value) + "')");
+            db1.Update("insert into monitor_resp_v2prototype (monitor_id,sqf_code,question,answer) values ('" + monitorid + "',25/*HARDCODED*/,'IntType','" + db1.reap(txtIntType.Value) + "')");
+
+
+        }
+
+    }
+
+    protected void getscoreandweight(String KPI, String raw,ref int kpi_score, ref double kpi_weight)
+    {
+        using (DbBaseSql db1 = new DbBaseSql(_connection1, ""))
+        {
+            //TODO: Test for OS - 2
+            String qmqf = KPI;
+            using (DataTable dt = db1.GetDataTable("select score from kpi_scoring where mqf#=" + qmqf + "/*HARDCODED*/ and " + raw + " >= range1low and " + raw + " <= range1high"))
+            {
+                kpi_score = Convert.ToInt32(dt.Rows[0][0]);
+            }
+            using (DataTable dt2 = db1.GetDataTable("select weight_factor from kpi_mqf where mqf#=" + qmqf + "/*HARDCODED*/ and txt<>''"))
+            {
+                kpi_weight = Convert.ToDouble(dt2.Rows[0][0]);
+            }
+            //2021-09-01 - Weight=0 (and KPI change elsewhere) if the role of the reviewer is not in the Quality Assurance role.
+            if ((qmqf == "29"))
+            {
+                using (DataTable dtrole = db1.GetDataTable("select role from usr where user_id='" + lblSupervisor.Text + "' and role in ('Quality Assurance')"))
+                {
+                    if (dtrole.Rows.Count <= 0)
+                    {
+                        kpi_weight = 0;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+/*
+50 -> 56 -> 81
+132 -> 95 -> 268
+21 -> 17 -> 51
+*/

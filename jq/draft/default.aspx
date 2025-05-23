@@ -1,0 +1,79 @@
+<%@ Page Language="C#"  AutoEventWireup="true" CodeFile="default.aspx.cs" EnableTheming="false" StylesheetTheme="AcuityMV" Theme="" ValidateRequest="false" Inherits="agame_default" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+  <head id="head" runat="server">
+    <title>A-GAME</title>
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1" />
+    <asp:PlaceHolder runat="server">
+      <link rel="stylesheet" type="text/css" media="screen" href="../../lib/jquery/plugins/qtip2dev/dist/jquery.qtip.css"  />
+      <link rel="stylesheet" type="text/css" media="screen" href="../../lib/harvesthq-chosen-12a7a11/chosen/chosen.css"  />
+      <link rel="stylesheet" type="text/css" media="screen" href="../../lib/modal/css/modal.css"  />
+      <!-- <script type="text/javascript" src="../../lib/jquery/jquery-1.7.2.min.js"></script> -->
+        <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css"/>
+ <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+      <script src="../../lib/jquery/plugins/jquery.cookie.js" type="text/javascript"></script>
+      <script src="../../lib/jquery/plugins/qtip2dev/dist/jquery.qtip.min.js" type="text/javascript"></script>
+      <script src="../../lib/harvesthq-chosen-12a7a11/chosen/chosen.jquery.js"></script>
+      <script src="../../lib/knockout/knockout-3.2.0.js" type="text/javascript"></script>
+      <script src="../../lib/knockout/ko.mapping.js"></script>
+      <script src="../../lib/knockout/ko-postbox.js"></script>
+      <script type="text/javascript" src="../../lib/raphael/raphael-2.1.0.js"></script>
+      <script type="text/javascript" src="../../lib/modal/js/modal.js"></script>
+      <script type="text/javascript" src="../../appLib/js/applib-1.1.15.js"></script>
+      <script src="../../appLib/js/logoanimation-1.0.0.js" type="text/javascript"></script>
+      <script type="text/javascript" src="../../applib/anothercolorpicker/src/jquery.simple-color.js"></script>
+      <script type="text/javascript" src="../../appLib/js/viewmodels/login.js"></script>
+      <script type="text/javascript" src="../../applib/jquery-tablesorter/jquery.tablesorter.js"></script>
+      <script type="text/javascript" src="../../appLib/js/viewmodels/draft-2.0.1.js?r=2"></script>
+    </asp:PlaceHolder>
+    <!-- see purecss.io for docs -->
+    <link rel="stylesheet" href="//yui.yahooapis.com/pure/0.6.0/pure-min.css" />
+    <link rel="stylesheet" href="//yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/styles.css"  />
+    <link rel="stylesheet" type="text/css" media="screen" href="../../appLib/css/tablesorter-1.1.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../../appLib/css/base.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../../appLib/css/fan-2.0.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../../appLib/css/draft-2.0-julie.css" />
+  </head>
+  <body>
+    <div class="app-header" style="min-width: 1200px;">
+      <div class="app-logo"><img src="css/images/xtremelogo.png" alt="A-GAME Xtreme" /></div>
+      <div class="app-heading">A-GAME XTREME - DRAFT ROOM</div>
+      <div class="app-header-tile">
+        <div class="err-icon"> test
+        </div>
+      </div>
+      <!-- #Include virtual="../../applib/html/views/login-julie.htm" -->
+      <div class="err-container">
+        <div class="err-hide">Done with this error</div>
+        <div class="err-text">Acuity Error:</div>
+        <div class="err-content">&nbsp;</div>
+        <div class="err-text">
+          This notice has already been submitted to technical services.  If
+          you would like to add more information, please enter it below and
+          submit.
+        </div>
+        <div>
+          <input id="errinput" type="text" style="width: 500px;" value="" />
+          <input id="errsubmit" type="button" value="Submit" />
+        </div>
+        <div class="err-text">
+          We will work diligently to correct this problem.  You will be
+          notified when we have a solution or work-around for you.
+        </div>
+      </div>
+    </div>
+    <div class="content" style="min-width: 1200px;">
+      <div class="auth-hide">
+        Welcome Back! Please login.<br /><br /><br />
+        <a href="#loginModal" class="btn-blue btn-login" role="button" data-toggle="modal">Log In</a>
+      </div>
+      <div class="auth-show" style="display:none;" >
+        <!-- #Include virtual="../../appLib/html/views/draft-2.0.htm" -->
+      </div>
+    </div>
+    <script src="js/init.js"></script>
+  </body>
+</html>

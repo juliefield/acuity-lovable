@@ -1,0 +1,330 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+<!--
+        <script src="http://jsconsole.com/remote.js?"></script>
+        <script src="http://192.168.1.2:8080/target/target-script-min.js"></script>
+-->
+        <title>Allowance</title>
+        <style type="text/css" media="screen">@import "jqtouch/jqtouch/jqtouch.css";</style>
+        <style type="text/css" media="screen">@import "jqtouch/themes/apple/theme.css";</style>
+        <script src="jqtouch/jqtouch/jquery-1.4.2.js" type="text/javascript" charset="utf-8"></script>
+        <script src="jqtouch/jqtouch/jqtouch.js" type="application/x-javascript" charset="utf-8"></script>
+        <script type="text/javascript" charset="utf-8">
+            var jQT = new $.jQTouch({
+                //icon: 'needanicon.png',
+                //icon4: 'needanicon4.png',
+                addGlossToIcon: false,
+                startupScreen: 'chores_startup.png',
+                statusBar: 'gray',
+                preloadImages: [
+                    'jqtouch/themes/apple/img/activeButton.png',
+                    'jqtouch/themes/apple/img/back_button.png',
+                    'jqtouch/themes/apple/img/back_button_clicked.png',
+                    'jqtouch/themes/apple/img/button.png',
+                    'jqtouch/themes/apple/img/button_clicked.png',
+                    'jqtouch/themes/apple/img/grayButton.png',
+                    'jqtouch/themes/apple/img/greenButton.png',
+                    'jqtouch/themes/apple/img/loading.gif'
+                    ]
+            });
+            var workername = "Hannah Gackenheimer";
+            //Test loading, will be an ajax thing, most likely.
+            var icch = new Array(); //icch = incomplete chores
+            icch[0] = new Object();
+            icch[0].id = "1";
+            icch[0].status = "N";
+            icch[0].title = "04/04 Laundry BONUS - $6";
+            icch[0].desc = "This is a test description that says: Get the laundry current by mid-week (on either Wediesnday or Thursday), and receive a $6 bonus.  This is in addition to the regular laundry completion which is due on Sunday.";
+            icch[1] = new Object();
+            icch[1].id = "2";
+            icch[1].status = "N";
+            icch[1].title = "04/07 Laundry - $12";
+            icch[1].desc = "Have the laundry complete, including folding, by the end of day every Sunday.";
+            icch[2] = new Object();
+            icch[2].id = "3";
+            icch[2].status = "R";
+            icch[2].title = "04/05 Base Chores - $5";
+            icch[2].desc = "Base chores include feeding the rabbits and other things Mom might have.";
+            icch[3] = new Object();
+            icch[3].id = "4";
+            icch[3].status = "N";
+            icch[3].title = "06/05 Base Chores - $5";
+            icch[3].desc = "Base chores include feeding the rabbits and other things Mom might have.";
+            icch[4] = new Object();
+            icch[4].id = "5";
+            icch[4].status = "N";
+            icch[4].title = "07/05 Base Chores - $5";
+            icch[4].desc = "Base chores include feeding the rabbits and other things Mom might have.";
+
+
+            var cch = new Array(); //cch = completed chores
+            cch[0] = new Object();
+            cch[0].id = "6";
+            cch[0].status = "C";
+            cch[0].amount = 5.00; //float
+            cch[0].title = "03/30 Base Chores - $5";
+            cch[0].desc = "Base chores include feeding the rabbits and other things Mom might have.";
+
+            var currentid;
+            $(document).ready(function () {
+                $("#workername").html(workername);
+                if (icch.length > 0) {
+                    $("#todocount").html(icch.length);
+                    $("#todocount").addClass("counter");
+                }
+                if (cch.length > 0) {
+                    $("#completecount").html(cch.length);
+                    $("#completecount").addClass("counter");
+                    $("#paybutton").html("Pay Me!");
+                    $("#paybutton").addClass("greenButton");
+                    $("#paybutton").css("display", "block");
+                }
+                else {
+                    $("#paybutton").css("display", "none");
+                }
+                setttd();
+                setcomplete();
+            });
+
+            function setttd() {
+                var i;
+                var bld;
+                $("#ttd ul").empty();
+                for (i = 0; i < icch.length; i++) {
+                    bld = '<li class="arrow"><a href="#c1" onclick="setupc1(';
+                    bld += "'" + icch[i].id + "'";
+                    bld += ');">' + icch[i].title + '</a></li>';
+                    $("#ttd" + icch[i].status).append(bld);
+                }
+                setttdlistclass("N");
+                setttdlistclass("W");
+                setttdlistclass("R");
+            }
+
+            function setupc1(id) {
+                var i;
+                currentid = id;
+                for (i = 0; i < icch.length; i++) {
+                    if (id == icch[i].id) {
+                        $("#c1title").html(icch[i].title);
+                        $("#c1desc").html(icch[i].desc);
+                        $("#c1status").val(icch[i].status);
+                        break;
+                    }
+                }
+                return true;
+            }
+
+            function setcomplete() {
+                var i;
+                var bld;
+                var tot = 0.00;
+                for (i = 0; i < cch.length; i++) {
+                    if (cch[i].status == "C") {
+                        tot += cch[i].amount;
+                        bld = '<li class="arrow"><a href="#c2" onclick="setupc2(';
+                        bld += "'" + cch[i].id + "'";
+                        bld += ');">' + cch[i].title + '</a></li>';
+                        $("#completeul").append(bld);
+                        break;
+                    }
+                }
+                if ($("#completeul").children().length > 0) {
+                    $("#completeul").removeClass("info");
+                    $("#completeul").addClass("rounded");
+                    $("#completetotal").html("Total Money Earned: $" + tot);
+                }
+                else {
+                    $("#completeul").append("<li><b>You don't have any chores marked as completed.</b>  When you're done with a chore, change it's status to 'Ready for Review', then ask Mom/Dad to review it.  Once they change the status to 'Completed', a button will appear so you can request to be paid.</li>");
+                    $("#completeul").removeClass("rounded");
+                    $("#completeul").addClass("info");
+                    $("#completetotal").html("");
+                }
+
+
+                return true;
+            }
+
+            function setupc2() {
+            }
+
+            function changestatus() {
+                var i;
+                for (i = 0; i < icch.length; i++) {
+                    if (currentid == icch[i].id) {
+                        icch[i].status = $("#c1status").val();
+                        setttd();
+                        break;
+                        //TODO: Post the changed status back to the server.
+                    }
+                }
+            }
+
+            function setttdlistclass(mychar) {
+                var id = "#ttd" + mychar;;
+                if ($(id).children().length > 0) {
+                    $(id).removeClass("info");
+                    $(id).addClass("rounded");
+                }
+                else {
+                    $(id).append("<li>None Found</li>");
+                    $(id).removeClass("rounded");
+                    $(id).addClass("info");
+                }
+            };
+
+            // Some sample Javascript functions:
+            $(function () {
+            /*
+                // Show a swipe event on swipe test
+                $('#swipeme').swipe(function(evt, data) {
+                    $(this).html('You swiped <strong>' + data.direction + '/' + data.deltaX +':' + data.deltaY + '</strong>!');
+                    $(this).parent().after('<li>swiped!</li>')
+
+                });
+                $('#tapme').tap(function(){
+                    $(this).parent().after('<li>tapped!</li>')
+                })
+                $('a[target="_blank"]').click(function() {
+                    if (confirm('This link opens in a new window.')) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                });
+                // Page animation callback events
+                $('#pageevents').
+                    bind('pageAnimationStart', function(e, info){ 
+                        $(this).find('.info').append('Started animating ' + info.direction + '&hellip; ');
+                    }).
+                    bind('pageAnimationEnd', function(e, info){
+                        $(this).find('.info').append(' finished animating ' + info.direction + '.<br /><br />');
+                    });
+                // Page animations end with AJAX callback event, example 1 (load remote HTML only first time)
+                $('#callback').bind('pageAnimationEnd', function(e, info){
+                    // Make sure the data hasn't already been loaded (we'll set 'loaded' to true a couple lines further down)
+                    if (!$(this).data('loaded')) {
+                        // Append a placeholder in case the remote HTML takes its sweet time making it back
+                        // Then, overwrite the "Loading" placeholder text with the remote HTML
+                        $(this).append($('<div>Loading</div>').load('ajax.html .info', function() {        
+                            // Set the 'loaded' var to true so we know not to reload
+                            // the HTML next time the #callback div animation ends
+                            $(this).parent().data('loaded', true);  
+                        }));
+                    }
+                });
+                // Orientation callback event
+                $('#jqt').bind('turn', function(e, data){
+                    $('#orient').html('Orientation: ' + data.orientation);
+                });
+                $('#play_movie').bind('tap', function(){
+                    $('#movie').get(0).play();
+                    $(this).removeClass('active');
+                });
+                
+                $('#video').bind('pageAnimationStart', function(e, info){
+                    $('#movie').css('display', 'none');
+                }).bind('pageAnimationEnd', function(e, info){
+                    if (info.direction == 'in')
+                    {
+                        $('#movie').css('display', 'block');
+                    }
+                })
+            */
+            });
+        </script>
+        <style type="text/css" media="screen">
+            #jqt.fullscreen #home .info {
+                display: none;
+            }
+            div#jqt #about {
+                padding: 100px 10px 40px;
+                /*text-shadow: rgba(255, 255, 255, 0.3) 0px -1px 0;*/
+                font-size: 13px;
+                text-align: center;
+                background: gray;
+            }
+            div#jqt #about p {
+                color: #fff;
+                margin-bottom: 8px;
+            }
+            div#jqt #about a {
+                color: #fff;
+                font-weight: bold;
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="jqt">
+            <div id="about" class="selectable">
+                    <p><strong>Gackenheimer<br />Allowance</strong><br />Version 1.0 beta<br />
+                        <a href="http://www.jeffgack.com">By Jeff Gackenheimer</a></p>
+                    <p><br /><br /><a href="#" class="grayButton goback">Close</a></p>
+            </div>
+            <div id="home" class="current">
+                <div class="toolbar">
+                    <h1>Allowance</h1>
+                    <a class="button slideup" id="infoButton" href="#about">About</a>
+                </div>
+                <h1 id="workername"></h1>
+                <h2>Chores</h2>
+                <ul class="rounded">
+                    <li class="arrow"><a href="#ttd">To Do</a> <small id="todocount"></small></li>
+                    <li class="arrow"><a href="#complete">Complete</a> <small id="completecount"></small></li>
+                </ul>
+                <div style="margin: 10px;">
+                    <br /><a id="paybutton" href="#"></a><br />
+                </div>
+                <ul class="rounded">
+                    <li class="arrow"><a href="#history">History</a></li>
+                </ul>
+                <div class="info">
+                    <p>Add this page to your home screen to view the custom icon, startup screen, and full screen mode.</p>
+                </div>
+            </div>
+            <div id="ttd">
+                <div class="toolbar">
+                    <h1>To Do</h1>
+                    <a href="#" class="back">Back</a>
+                </div>
+                <h2>Not Started</h2>
+                <ul id="ttdN"></ul>
+                <h2>In Progress</h2>
+                <ul id="ttdW"></ul>
+                <h2>Ready for Review</h2>
+                <ul id="ttdR"></ul>
+            </div>
+            <div id="complete">
+                <div class="toolbar">
+                    <h1>Complete</h1>
+                    <a href="#" class="back">Back</a>
+                </div>
+                <br />
+                <ul id="completeul"></ul>
+                <h2 id="completetotal"></h2>
+            </div>
+            <div id="c1">
+                <div class="toolbar">
+                    <a href="#" class="back">Back</a>
+                </div>
+                <br />
+                <h2 id="c1title"></h2>
+                <div id="c1desc" class="info"></div>
+                <br />
+                <h2>Status</h2>
+                <ul class="rounded">
+                  <li>
+                    <select id="c1status" onchange="changestatus();">
+                       <option value ="N">Not Started</option>
+                       <option value ="W">In Progress</option>
+                       <option value ="R">Ready for Review</option>
+                    </select>
+                  </li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,225 @@
+﻿<div class="qasetup-wrapper">
+    <div class="qasetup-lib-wrapper">
+        <div class="qasetup-lib-filterbar">
+            <form class="qasetup-form qasetup-checklists" style="float:left;">
+                <fieldset>
+                    <legend>Question Type</legend>
+                    <div class="qasetup-control-group qasetup-checklist">
+                        <ul data-bind="foreach: formTypes">
+                            <li>
+                                <input type="radio" value="" name="qasetup_formtype" data-bind="click: radioCheck, checkedValue: id, checked: formTypeValue" ><span data-bind="text: name"></span>
+                            </li>
+                        </ul>                    
+                    </div>
+                    <div class="jf-controls">
+                        <!-- <button data-bind="click: sendInit" class="jf-button">Send</button> -->
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Scope</legend>
+                    <div class="qasetup-boxclear qasetup-boxclear-scope"></div>
+                    <div class="qasetup-control-group qasetup-checklist">
+                        <ul data-bind="foreach: scopes">
+                            <li>
+                                <input type="checkbox" value="" data-bind="click: boxCheck, checkedValue: id, checked: checked" ><span data-bind="text: name"></span>
+                            </li>
+                        </ul>                    
+                    </div>
+                    <div class="jf-controls">
+                        <!-- <button data-bind="click: sendInit" class="jf-button">Send</button> -->
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Topics</legend>
+                    <div class="qasetup-boxclear qasetup-boxclear-topic"></div>
+                    <div class="qasetup-control-group qasetup-checklist">
+                        <ul data-bind="foreach: topics">
+                            <li>
+                                <input type="checkbox" value="" data-bind="click: boxCheck, checkedValue: id, checked: checked" ><span data-bind="text: name"></span>
+                            </li>
+                        </ul>                    
+                    </div>
+                    <div class="jf-controls">
+                        <!-- <button data-bind="click: sendInit" class="jf-button">Send</button> -->
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Sections</legend>
+                    <div class="qasetup-boxclear qasetup-boxclear-section"></div>
+                    <div class="qasetup-control-group qasetup-checklist">
+                        <ul data-bind="foreach: sections">
+                            <li>
+                                <input type="checkbox" value="" data-bind="click: boxCheck, checkedValue: id, checked: checked" ><span data-bind="text: name"></span>
+                            </li>
+                        </ul>                    
+                    </div>
+                    <div class="jf-controls">
+                        <!-- <button data-bind="click: sendInit" class="jf-button">Send</button> -->
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Forms</legend>
+                    <div class="qasetup-boxclear qasetup-boxclear-form"></div>
+                    <div class="qasetup-control-group qasetup-checklist">
+                        <ul data-bind="foreach: forms">
+                            <li>
+                                <input type="checkbox" value="" data-bind="click: boxCheck, checkedValue: id, checked: checked" ><span data-bind="text: name"></span>
+                            </li>
+                        </ul>                    
+                    </div>
+                    <div class="jf-controls">
+                        <!-- <button data-bind="click: sendInit" class="jf-button">Send</button> -->
+                    </div>
+                </fieldset>
+            </form>            
+        </div>
+        <div class="qasetup-lib-questionlist-wrapper">
+            <div class="qasetup-lib-questionlist">
+                <div id="qasetuplibtabs">
+                    <ul>
+                        <li><a href="#qasetuplibtabs-2">Question</a>
+                        </li>
+                        <li><a href="#qasetuplibtabs-3">Section</a>
+                        </li>
+                        <li><a href="#qasetuplibtabs-4">Form</a>
+                        </li>
+                        <li><a href="#qasetuplibtabs-1">Raw</a>
+                        </li>
+                    </ul>
+                    <div class="qasetup-lib-tab" id="qasetuplibtabs-1">
+                        <div class="qasetup-lib-questionlist-panel-raw" data-bind="visible: true /*(selectedQuestionPanel() === 'raw')*/">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Qst ID</th>
+                                        <th>Question</th>
+                                        <th>Form ID</th>
+                                        <th>Section</th>
+                                    </tr>
+                                </thead>
+                                <tbody data-bind="foreach: questions().qstTable">
+                                    <tr>
+                                        <td data-bind="text:idqst"></td>
+                                        <td data-bind="text:text"></td>
+                                        <td data-bind="text:idform"></td>
+                                        <td data-bind="text:idsec"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="qasetup-lib-tab" id="qasetuplibtabs-2">
+                        <div class="qasetup-lib-questionlist-panel-question" data-bind="visible: true /*(selectedQuestionPanel() === 'questions')*/">
+                            <ul class="qasetup-lib-list" data-bind="foreach: questions().questions">
+                                <li class="draggable qasetup-drag-question">
+                                    <span class="qasetup-expand-link">+</span>
+                                    <span style="display:none;" class="qasetup-drag-idqst" data-bind="text: idqst"></span>
+                                    <span data-bind="text: text"></span>
+                                    <ul class="qasetup-lib-sublist">
+                                        <li data-bind="visible: sections.length > 0">Sections:
+                                            <ul class="qasetup-lib-subitem" data-bind="foreach: sections">
+                                                <li><span data-bind="text: sectionLookup(id)"></span></li>
+                                            </ul>
+                                        </li>
+                                        <li data-bind="visible: forms.length > 0">Forms:
+                                            <ul class="qasetup-lib-subitem" data-bind="foreach: forms">
+                                                <li><span data-bind="text: formLookup(id)"></span></li>
+                                            </ul>
+                                        </li>
+                                        <li data-bind="visible: previousversions.length > 0">Previous Versions:
+                                            <ul class="qasetup-lib-subitem" data-bind="foreach: previousversions">
+                                                <li><span data-bind="text: text"></span></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>            
+                    </div>
+                    <div class="qasetup-lib-tab" id="qasetuplibtabs-3">
+                        <div class="qasetup-lib-questionlist-panel-section" data-bind="visible: true /*(selectedQuestionPanel() === 'questions')*/">
+                            <ul class="qasetup-lib-list" data-bind="foreach: questions().sections">
+                                <li class="draggable qasetup-drag-section">
+                                    <span class="qasetup-expand-link">+</span>
+                                    <span style="display:none;" class="qasetup-drag-idsec" data-bind="text: id"></span>
+                                    Section:&nbsp;<span data-bind="text: sectionLookup(id)"></span>
+                                    <ul class="qasetup-lib-questionlist">
+                                        <li data-bind="visible: questions.length > 0">Questions:
+                                            <ul class="qasetup-lib-questionsubitem" data-bind="foreach: questions">
+                                                <li class="draggable qasetup-drag-question"><span style="display:none;" class="qasetup-drag-idqst" data-bind="text: id"></span><span data-bind="text: text"></span></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <ul class="qasetup-lib-sublist">
+                                        <li class="qasetup-draggable-lop" data-bind="visible: forms.length > 0">Forms:
+                                            <ul class="qasetup-lib-subitem" data-bind="foreach: forms">
+                                                <li><span data-bind="text: formLookup(id)"></span></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>            
+                    </div>
+                    <div class="qasetup-lib-tab" id="qasetuplibtabs-4">
+                        <div class="qasetup-lib-questionlist-panel-form" data-bind="visible: true /*(selectedQuestionPanel() === 'questions')*/">
+                            <ul class="qasetup-lib-list" data-bind="foreach: questions().forms">
+                                <li>
+                                    <span class="qasetup-expand-link">+</span>
+                                    <span style="display:none;" class="qasetup-drag-idform" data-bind="text: id"></span>
+                                    Form Guide:&nbsp;<span data-bind="text: formLookup(id)"></span>
+                                    <span class="qasetup-newform-link" data-bind="visible: (id != 0)">new<span style="display:none;" data-bind="text: id"></span></span>
+                                    <ul class="qasetup-lib-sectionlist" data-bind="foreach: sections">
+                                        <li class="draggable qasetup-drag-section">
+                                            <span style="display:none;" class="qasetup-drag-idsec qasetup-lib-sectionsubitem" data-bind="text: id"></span>
+                                            Section:&nbsp;<span data-bind="text: sectionLookup(id)"></span>
+                                            <ul class="qasetup-lib-questionlist">
+                                                <li data-bind="visible: questions.length > 0">Questions:
+                                                    <ul class="qasetup-lib-questionsubitem" data-bind="foreach: questions">
+                                                        <li class="draggable qasetup-drag-question"><span style="display:none;" class="qasetup-drag-idqst" data-bind="text: id"></span><span data-bind="text: text"></span>
+                                                            <span class="qasetup-expand-link" style="color:Red;text-decoration:underline;" data-bind="visible: (formquestion.length > 0)">Version Changed</span>
+                                                            <ul class="qasetup-lib-questionsubitem" style="display:none;" data-bind="foreach: formquestion">
+                                                                <li style="color:Red;"><span style="font-weight:bold;">Version in form:&nbsp;</span><span data-bind="text: text"></span>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>            
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="qasetup-outline-questionlist-wrapper">
+            <div class="qasetup-outline-questionlist">
+                <div id="qasetupoutlinetabs">
+                    <ul>
+                        <li><a href="#qasetupoutlinetabs-2">Outline</a>
+                        </li>
+                        <li><a href="#qasetupoutlinetabs-3">Settings</a>
+                        </li>
+                    </ul>
+                    <div class="qasetup-outline-tab droppable" id="qasetupoutlinetabs-2">
+                        <p style="text-align: center;">Drag/Drop Sections &amp; Questions Here</p>
+                        <ul style="margin-top: 30px;margin-left:10px;" class="qasetup-outline-droptarget">
+                        </ul>
+                    </div>
+                    <div class="qasetup-outline-tab" id="qasetupoutlinetabs-3">
+                        <p>Settings</p>
+                        <div class="jf-wrapper">
+                            <div class="qasetup-outline-settings-jsonform" style="overflow: scroll;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,482 @@
+﻿
+.customRecordHighlight
+{
+    background-color: #aaaaaa;
+}
+
+.customFanRecordHighlight
+{
+    background-color: Yellow;
+}
+
+.customIneligible
+{   
+    background-color: Black;
+    color: White;
+}
+
+.fan-content
+{
+    overflow: scroll;
+    /* padding-bottom: 40px;  Enough room for the scroll bar (if present) + 10px */
+}
+
+.fan-bottom-padding
+{
+    height: 10px;
+}
+
+.fan-table
+{
+    font-size: 14px;
+    overflow: visible;
+}
+
+.fan-position-draggable
+{
+    cursor: move;
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+    font-weight: bold;
+}
+
+.fan-position-droppable
+{
+    border: 2px solid black;
+}
+
+.fan-position-xtra-box
+{
+    margin-top: -5px;
+    border: 1px solid black;
+    padding: 8px;
+    width: 100px;
+}
+
+.fan-position-xtra-box span
+{
+    padding: 4px;
+}
+
+.fan-av-color-wrapper2
+{
+    position: absolute;
+    top: 20px;
+    left: 440px;
+}
+
+.fan-av-color-wrapper
+{
+    padding: 10px 0 5px 0;
+}
+
+.fan-av
+{
+    padding: 20px;
+}
+
+.fan-av-footer
+{
+    text-align: center;
+    width: 320px;
+    padding-top: 10px;
+}
+
+.fan-matchup
+{
+    margin-top: 10px;    
+    width: auto;
+}
+
+.fan-matchup-sidebyside
+{
+    position: relative;
+}
+
+.fan-matchup-homeside
+{
+    position: relative;
+    margin-right: 0px;
+}
+
+.fan-matchup-visitorside
+{
+    float: right;
+    width: 50%;
+}
+
+.fan-matchup-visitorside table tr
+{
+    border-left: 3px solid black;
+}
+
+.fan-matchup-footer
+{
+    clear: left;
+    position: relative;
+}
+
+.fan-matchup-sidebyside td
+{
+    white-space: nowrap;
+}
+
+.fan-table.center
+{
+    margin-left: auto;
+    margin-right:auto;
+}
+
+.fan-wrapper
+{
+    margin: -15px -15px -15px -20px;
+}
+
+/**** Backgrounds ****/
+
+.bgHome
+{
+ 	background: url(images/Agame_Logo_1300x650.gif) top left;
+}
+
+
+.bgMatchup
+{
+ 	background: url(images/Agame_Lights_1300x650.gif) top center;
+}
+
+.bgCloseup
+{
+    position: relative;
+}
+
+.bgCloseup::after 
+{
+    content : "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+ 	background: url(images/Agame_Closeup_1300x650.gif) top left;
+    width: 100%;
+    height: 100%;
+    opacity : 0.4;
+    z-index: -1;
+
+}
+
+.bgTeamStandings
+{
+    position: relative;
+}
+
+.bgTeamStandings::after 
+{
+    content : "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+ 	background: url(images/Agame_Logo_1300x650.gif) top left;
+    width: 100%;
+    height: 100%;
+    opacity : 0.4;
+    z-index: -1;
+}
+
+.bgRoster
+{
+    position: relative;
+}
+
+.bgRoster::after 
+{
+    content : "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+ 	background: url(images/Agame_Plays_1300x650.gif) top left;
+    width: 100%;
+    height: 100%;
+    opacity : 0.4;
+    z-index: -1;
+}
+
+.bgSchedule
+{
+    position: relative;
+}
+
+.bgSchedule::after 
+{
+    content : "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+ 	background: url(images/Agame_Field_1300x650.gif) top left;
+    width: 100%;
+    height: 100%;
+    opacity : 0.2;
+    z-index: -1;
+}
+
+.bgTeamSetup::after 
+{
+    content : "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+ 	background: url(images/Agame_Closeup_1300x650.gif) top left;
+    width: 100%;
+    height: 100%;
+    opacity : 0.2;
+    z-index: -1;
+}
+
+.bgLeagueSetup
+{
+    position: relative;
+}
+
+.bgLeagueSetup::after 
+{
+    content : "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+ 	background: url(images/Agame_Closeup_1300x650.gif) top left;
+    width: 100%;
+    height: 100%;
+    opacity : 0.2;
+    z-index: -1;
+}
+
+.bgTV
+{
+    position: relative;    
+ 	/* background: url(images/Agame_Closeup_1300x650.gif) center center;  */
+    background-color: Black;
+}
+
+
+/** MENUS **/
+
+.customMenuActive
+{
+    color: yellow;
+    background-color: #444444;
+}
+
+.custom-menu
+{
+}
+
+.custom-menu-list
+{
+    background-color: Black;
+    opacity: 0.75;
+    width: auto;
+    min-width: 2000px;
+    color: yellow;
+    margin-top: -10px;
+    padding: 10px 0 10px 0;
+}
+
+.custom-menu-item
+{
+    color: Yellow;
+}
+
+.custom-menu-link span
+{
+    color: Yellow;
+    font-size: 11px;
+}
+
+.custom-menu-link span:hover
+{
+/*    background-color: yellow; */
+    color: Black;
+}
+
+.customTVIcon
+{
+ 	background: url(images/television2-30px.png) center center;
+ 	background-size: 25px 25px;
+ 	background-repeat: no-repeat;
+    height: 30px;
+    width: 30px;
+}
+
+.customHomeIcon
+{
+ 	background: url(images/home_icon.png) center center;
+ 	background-size: 20px 20px;
+ 	background-repeat: no-repeat;
+    height: 30px;
+    width: 30px;
+}
+
+.customHomeIcon span,.customTVIcon span
+{
+    font-size: 0px;    
+}
+
+/** Pure Overrides **/
+
+.pure-menu-link:hover
+{
+    font-weight: bold;
+    background-color: #444444;
+}
+
+.fan-matchup-table tbody,.fan-matchup-table tfoot
+{
+    background-color: Gray;
+    opacity: 0.7;
+    color: Yellow;
+}
+
+
+.fan-matchup-banner 
+{
+    width: 100%;
+    text-align: center;
+    padding: 2px 0 2px 0;
+    clear left;
+    color: White;
+}
+
+.fan-home-main
+{
+    padding: 20px;
+    margin: 30px;
+    position: relative;
+    height:50px;
+    width: 400px;
+    color: Yellow;
+    background-color: Black;
+ -khtml-opacity:.70; 
+ -moz-opacity:.70; 
+ -ms-filter:”alpha(opacity=70)”;
+  filter:alpha(opacity=70);
+  filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0.7);
+  opacity:.70; 
+}
+
+.fan-home-main h1
+{
+    font-size: 16px;
+}
+
+.fan-home-table
+{
+    margin-left: 10px;
+    font-size: 9px;
+}
+
+.fan-home-table tbody
+{
+    background-color: Gray;
+    opacity: 0.8;
+    color: Yellow;
+    font-size: 12px;
+}
+
+.fan-matchup-banner a, fan-roster-banner a
+{
+    color: Yellow;
+    font-weight: bold;
+    margin: 0 3px 0 3px;
+    cursor: pointer;
+}
+
+
+.fan-position-edit
+{
+ 	background: url(images/edit2.png) center center;
+ 	text-align: right;
+ 	cursor: pointer;
+ 	height: 16px;
+ 	width: 16px;
+
+}
+
+.fan-roster-contextmenu
+{
+    z-index:10000;
+    position:absolute;
+    border-width: 0px;
+}
+
+-fan-roster-contextmenu-hover
+{
+}
+
+.fan-roster-contextmenu td
+{
+    height: 35px;
+}
+.fan-roster-contextmenu a
+{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    background-color: #019F01;
+    padding: 10px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.fan-roster-contextmenu a:hover
+{
+    background-color: #005C00;
+}
+
+.fan-tv-logo
+{
+     	background: url(images/AGame_4cLogo.gif) no-repeat center center;
+     	background-size: 400px 400px;
+     	height: 400px;
+     	width: 400px;
+}
+
+.fan-form-group
+{
+    padding: 10px 0 5px 0;
+}
+
+.fan-roster-table
+{
+    position: relative;
+    margin-top: 5px;
+}
+
+.fan-roster
+{
+    position: relative;
+}
+
+.fan-roster-banner 
+{
+    width: auto;
+    text-align: center;
+    padding: 2px 0 2px 0;
+    clear left;
+}
+
+.fan-roster-sidebyside
+{
+    
+}
+
+.fan-roster-sidebyside.center
+{
+    margin-left: auto;
+    margin-right:auto;
+}

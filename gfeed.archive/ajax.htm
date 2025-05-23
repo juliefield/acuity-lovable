@@ -1,0 +1,38 @@
+<html>
+
+<head>
+<script type="text/javascript" src="ajaxroutine.js">
+/***********************************************
+* Basic Ajax Routine- © Dynamic Drive DHTML code library (www.dynamicdrive.com)
+* This notice MUST stay intact for legal use
+* Visit Dynamic Drive at http://www.dynamicdrive.com/ for full source code
+***********************************************/
+</script>
+</head>
+
+<body>
+
+<script type="text/javascript">
+	//Step 2: Define a "callback" function to process the data returned by the Ajax request:
+	function processGetPost()
+	{
+		var myajax=ajaxpack.ajaxobj;
+		var myfiletype=ajaxpack.filetype;
+		if (myajax.readyState == 4) //if request of file completed
+		{ 
+			if (myajax.status==200 || window.location.href.indexOf("http")==-1) //if request was successful or running script locally
+			{
+				if (myfiletype=="txt")
+					alert(myajax.responseText);
+				else
+					alert(myajax.responseXML);
+			}
+		}
+	}
+	alert(ajaxpack.basedomain);
+	ajaxpack.getAjaxRequest("example.htm", "", processGetPost, "txt");
+</script>
+
+</body>
+
+</html>

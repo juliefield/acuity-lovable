@@ -1,0 +1,27 @@
+﻿using System;
+using System.Text;
+using System.IO;
+using System.Security.Cryptography;
+using System.Web.UI;
+using jglib;
+
+public partial class _AcuityBlank : SitePage {
+
+    protected override void OnPreInit(EventArgs e)
+    {
+        Page.Theme = "Acuity3";
+    }
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        //Content Manager
+        if (true)
+        {
+            using (VirtualStorage cds = new VirtualStorage())
+            {
+                String bodyid = (!string.IsNullOrEmpty(Request.QueryString["cid"])) ? Request.QueryString["cid"] : "";
+                Page mp = (Page)this;
+                cds.Register(ref mp, bodyid, false, ""); //true injects jquery (which we don't need here because it's loaded manually).
+            }
+        }
+    }
+}

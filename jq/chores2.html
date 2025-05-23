@@ -1,0 +1,480 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+<!--
+        <script src="http://jsconsole.com/remote.js?"></script>
+        <script src="http://192.168.1.2:8080/target/target-script-min.js"></script>
+-->
+        <title>Allowance</title>
+        <style type="text/css" media="screen">@import "jqtouch/jqtouch/jqtouch.css";</style>
+        <style type="text/css" media="screen">@import "jqtouch/themes/apple/theme.css";</style>
+        <script src="jqtouch/jqtouch/jquery-1.4.2.js" type="text/javascript" charset="utf-8"></script>
+        <script src="jqtouch/jqtouch/jqtouch.js" type="application/x-javascript" charset="utf-8"></script>
+        <script type="text/javascript" charset="utf-8">
+            var jQT = new $.jQTouch({
+                //icon: 'needanicon.png',
+                //icon4: 'needanicon4.png',
+                addGlossToIcon: false,
+                startupScreen: 'chores_startup.png',
+                statusBar: 'gray',
+                preloadImages: [
+                    'jqtouch/themes/apple/img/activeButton.png',
+                    'jqtouch/themes/apple/img/back_button.png',
+                    'jqtouch/themes/apple/img/back_button_clicked.png',
+                    'jqtouch/themes/apple/img/button.png',
+                    'jqtouch/themes/apple/img/button_clicked.png',
+                    'jqtouch/themes/apple/img/grayButton.png',
+                    'jqtouch/themes/apple/img/greenButton.png',
+                    'jqtouch/themes/apple/img/loading.gif'
+                    ]
+            });
+            /*
+            var jqAp = new $.jqAp({
+                workername: 'Hannah Gackenheimer',
+                ch: [ id: '1', status:'N', amount: 6.00, title: '04/04 Laundry BONUS' ]
+            });
+            */
+            var workername = "Hannah Gackenheimer";
+            //Test loading, will be an ajax thing, most likely.
+            //Status:  N, W, R, C, Q, P
+            /* OLD WAY
+            var ch = new Array(); //ch = incomplete chores
+            ch[0] = new Object();
+            ch[0].id = "1";
+            ch[0].status = "N";
+            ch[0].amount = 6.00;
+            ch[0].title = "04/04 Laundry BONUS";
+            ch[0].desc = "This is a test description that says: Get the laundry current by mid-week (on either Wediesnday or Thursday), and receive a $6 bonus.  This is in addition to the regular laundry completion which is due on Sunday.";
+            ch[1] = new Object();
+            ch[1].id = "2";
+            ch[1].status = "N";
+            ch[1].amount = 12.00;
+            ch[1].title = "04/07 Laundry";
+            ch[1].desc = "Have the laundry complete, including folding, by the end of day every Sunday.";
+            ch[2] = new Object();
+            ch[2].id = "3";
+            ch[2].status = "R";
+            ch[2].amount = 5.00;
+            ch[2].title = "04/05 Base Chores";
+            ch[2].desc = "Base chores include feeding the rabbits and other things Mom might have.";
+            ch[3] = new Object();
+            ch[3].id = "4";
+            ch[3].status = "N";
+            ch[3].amount = 5.00;
+            ch[3].title = "06/05 Base Chores";
+            ch[3].desc = "Base chores include feeding the rabbits and other things Mom might have.";
+            ch[4] = new Object();
+            ch[4].id = "5";
+            ch[4].status = "N";
+            ch[4].amount = 5.00;
+            ch[4].title = "07/05 Base Chores";
+            ch[4].desc = "Base chores include feeding the rabbits and other things Mom might have.";
+            ch[5] = new Object();
+            ch[5].id = "6";
+            ch[5].status = "C";
+            ch[5].amount = 5.00; //float
+            ch[5].title = "03/30 Base Chores";
+            ch[5].desc = "Base chores include feeding the rabbits and other things Mom might have.";
+            ch[6] = new Object();
+            ch[6].id = "7";
+            ch[6].status = "C";
+            ch[6].amount = 5.00; //float
+            ch[6].title = "02/30 Base Chores";
+            ch[6].desc = "Base chores include feeding the rabbits and other things Mom might have.";
+            ch[7] = new Object();
+            ch[7].id = "8";
+            ch[7].payid = "101";
+            ch[7].status = "P";
+            ch[7].amount = 5.00; //float
+            ch[7].title = "02/30 Base Chores";
+            ch[7].desc = "Base chores include feeding the rabbits and other things Mom might have.";
+            ch[8] = new Object();
+            ch[8].id = "9";
+            ch[8].payid = "101";
+            ch[8].status = "P";
+            ch[8].amount = 5.00; //float
+            ch[8].title = "02/30 Base Chores";
+            ch[8].desc = "Base chores include feeding the rabbits and other things Mom might have.";
+            */
+            /* NEW WAY */
+            var ch = [{ id: '1', status: 'N', amount: 6.00, title: '04/04 Laundry BONUS'}];
+
+            var pd = new Array();
+            pd[0] = new Object();
+            pd[0].payid = "101";
+            pd[0].date = "05/21/2011";
+            pd[0].amount = 10.00;
+
+            var currentid;
+            $(document).ready(function () {
+                $("#workername").html(workername);
+                var cnt;
+                cnt = setttd();
+                if (cnt > 0) {
+                    $("#todocount").html(cnt);
+                    $("#todocount").addClass("counter");
+                }
+                cnt = setcmp();
+                if (cnt > 0) {
+                    $("#completecount").html(cnt);
+                    $("#completecount").addClass("counter");
+                    $("#paybutton").html("Pay Me!");
+                    $("#paybutton").addClass("greenButton");
+                    $("#paybutton").css("display", "block");
+                }
+                else {
+                    $("#paybutton").css("display", "none");
+                }
+                sethst();
+            });
+
+            function payme() {
+                var i;
+                var cnt = 0;
+                var tot = 0.0;
+                for (i = 0; i < ch.length; i++) {
+                    if (ch[i].status == "C") {
+                        ch[i].status = "Q";
+                        cnt += 1;
+                        tot += ch[i].amount;
+                    }
+                }
+                alert("Request sent for payment for " + cnt + " chores, total amount = $" + tot);
+                $("#paybutton").css("display", "none");
+                $("#completecount").html("");
+                $("#completecount").removeClass("counter");
+                setcmp();
+                sethst();
+            }
+
+            function setttd() {
+                var i;
+                var bld;
+                var st;
+                var cnt = 0;
+                $("#ttd ul").empty();
+                for (i = 0; i < ch.length; i++) {
+                    st = ch[i].status;
+                    if ((st == "N") || (st == "W") || (st == "R")) {
+                        bld = '<li class="arrow"><a href="#ttdDesc" onclick="setupttdDesc(';
+                        bld += "'" + ch[i].id + "'";
+                        bld += ');">' + ch[i].title + ' - $' + ch[i].amount +  '</a></li>';
+                        $("#ttd" + st).append(bld);
+                        cnt += 1;
+                    }
+                }
+                setttdlistclass("N");
+                setttdlistclass("W");
+                setttdlistclass("R");
+                return cnt;
+            }
+
+            function setcmp() {
+                var i;
+                var bld;
+                var cnt = 0;
+                var tot = 0.00;
+                $("#cmpC").empty();
+                for (i = 0; i < ch.length; i++) {
+                    if (ch[i].status == "C") {
+                        tot += ch[i].amount;
+                        bld = '<li class="arrow"><a href="#cmpDesc" onclick="setupcmpDesc(';
+                        bld += "'" + ch[i].id + "'";
+                        bld += ');">' + ch[i].title + ' - $' + ch[i].amount + '</a></li>';
+                        $("#cmpC").append(bld);
+                        cnt += 1;
+                    }
+                }
+                if ($("#cmpC").children().length > 0) {
+                    $("#cmpC").removeClass("info");
+                    $("#cmpC").addClass("rounded");
+                    $("#cmptotal").html("Total Money Earned: $" + tot);
+                }
+                else {
+                    $("#cmpC").append("<li><b>You don't have any chores marked as completed.</b>  When you're done with a chore, change it's status to 'Ready for Review', then ask Mom/Dad to review it.  Once they change the status to 'Completed', a button will appear so you can request to be paid.</li>");
+                    $("#cmpC").removeClass("rounded");
+                    $("#cmpC").addClass("info");
+                    $("#cmptotal").html("");
+                }
+                return cnt;
+            }
+
+            function sethst() {
+                var i;
+                var bld;
+                var qcnt = 0;
+                var qamount = 0.0;
+                $("#hst ul").empty();
+                for (i = 0; i < ch.length; i++) {
+                    if (ch[i].status == "Q") {
+                        qcnt += 1;
+                        qamount += ch[i].amount;
+                    }
+                }
+                if (qcnt) {
+                    bld = '<li class="arrow"><a href="#hstQued" onclick="setuphstQued();">' + qcnt + ' chores pending pmt of $' + qamount + '</a></li>';
+                    $("#hstul").append(bld);
+                    $("#hstlbl").html("History (Payments Pending)");
+                }
+                else {
+                    $("#hstlbl").html("History");
+                }
+                if (pd.length) {
+                    bld = '<li class="arrow"><a href="#hstPaid" onclick="setuphstPaid();">Payment History</a><small class="counter">' + pd.length + '</small></li>';
+                    $("#hstul").append(bld);
+                }
+            }
+
+            function setuphstQued() {
+                var i;
+                var bld;
+                var cnt = 0;
+                var tot = 0.00;
+                $("#hstQuedQ").empty();
+                for (i = 0; i < ch.length; i++) {
+                    if (ch[i].status == "Q") {
+                        tot += ch[i].amount;
+                        bld = '<li class="arrow"><a href="#hstQuedDesc" onclick="setuphstQuedDesc(';
+                        bld += "'" + ch[i].id + "'";
+                        bld += ');">' + ch[i].title + ' - $' + ch[i].amount + '</a></li>';
+                        $("#hstQuedQ").append(bld);
+                        cnt += 1;
+                    }
+                }
+                if ($("#hstQuedQ").children().length > 0) {
+                    $("#hstQuedQ").removeClass("info");
+                    $("#hstQuedQ").addClass("rounded");
+                    $("#hstQuedtotal").html("Total Payment Amount: $" + tot);
+                }
+            }
+
+            function setupttdDesc(id) {
+                var i;
+                currentid = id;
+                for (i = 0; i < ch.length; i++) {
+                    if (id == ch[i].id) {
+                        $("#ttdDesctitle").html(ch[i].title);
+                        $("#ttdDescdesc").html(ch[i].desc);
+                        $("#ttdDescstatus").val(ch[i].status);
+                        break;
+                    }
+                }
+                return true;
+            }
+
+            function setupcmpDesc(id) {
+                var i;
+                for (i = 0; i < ch.length; i++) {
+                    if (id == ch[i].id) {
+                        $("#cmpDesctitle").html(ch[i].title);
+                        $("#cmpDescdesc").html(ch[i].desc);
+                        break;
+                    }
+                }
+                return true;
+            }
+
+            function changestatus() {
+                var i;
+                for (i = 0; i < ch.length; i++) {
+                    if (currentid == ch[i].id) {
+                        ch[i].status = $("#ttdDescstatus").val();
+                        setttd();
+                        break;
+                        //TODO: Post the changed status back to the server.
+                    }
+                }
+            }
+
+            function setttdlistclass(mychar) {
+                var id = "#ttd" + mychar;;
+                if ($(id).children().length > 0) {
+                    $(id).removeClass("info");
+                    $(id).addClass("rounded");
+                }
+                else {
+                    $(id).append("<li>None Found</li>");
+                    $(id).removeClass("rounded");
+                    $(id).addClass("info");
+                }
+            };
+
+            // Some sample Javascript functions:
+            $(function () {
+            /*
+                // Show a swipe event on swipe test
+                $('#swipeme').swipe(function(evt, data) {
+                    $(this).html('You swiped <strong>' + data.direction + '/' + data.deltaX +':' + data.deltaY + '</strong>!');
+                    $(this).parent().after('<li>swiped!</li>')
+
+                });
+                $('#tapme').tap(function(){
+                    $(this).parent().after('<li>tapped!</li>')
+                })
+                $('a[target="_blank"]').click(function() {
+                    if (confirm('This link opens in a new window.')) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                });
+                // Page animation callback events
+                $('#pageevents').
+                    bind('pageAnimationStart', function(e, info){ 
+                        $(this).find('.info').append('Started animating ' + info.direction + '&hellip; ');
+                    }).
+                    bind('pageAnimationEnd', function(e, info){
+                        $(this).find('.info').append(' finished animating ' + info.direction + '.<br /><br />');
+                    });
+                // Page animations end with AJAX callback event, example 1 (load remote HTML only first time)
+                $('#callback').bind('pageAnimationEnd', function(e, info){
+                    // Make sure the data hasn't already been loaded (we'll set 'loaded' to true a couple lines further down)
+                    if (!$(this).data('loaded')) {
+                        // Append a placeholder in case the remote HTML takes its sweet time making it back
+                        // Then, overwrite the "Loading" placeholder text with the remote HTML
+                        $(this).append($('<div>Loading</div>').load('ajax.html .info', function() {        
+                            // Set the 'loaded' var to true so we know not to reload
+                            // the HTML next time the #callback div animation ends
+                            $(this).parent().data('loaded', true);  
+                        }));
+                    }
+                });
+                // Orientation callback event
+                $('#jqt').bind('turn', function(e, data){
+                    $('#orient').html('Orientation: ' + data.orientation);
+                });
+                $('#play_movie').bind('tap', function(){
+                    $('#movie').get(0).play();
+                    $(this).removeClass('active');
+                });
+                
+                $('#video').bind('pageAnimationStart', function(e, info){
+                    $('#movie').css('display', 'none');
+                }).bind('pageAnimationEnd', function(e, info){
+                    if (info.direction == 'in')
+                    {
+                        $('#movie').css('display', 'block');
+                    }
+                })
+            */
+            });
+        </script>
+        <style type="text/css" media="screen">
+            #jqt.fullscreen #home .info {
+                display: none;
+            }
+            div#jqt #about {
+                padding: 100px 10px 40px;
+                /*text-shadow: rgba(255, 255, 255, 0.3) 0px -1px 0;*/
+                font-size: 13px;
+                text-align: center;
+                background: gray;
+            }
+            div#jqt #about p {
+                color: #fff;
+                margin-bottom: 8px;
+            }
+            div#jqt #about a {
+                color: #fff;
+                font-weight: bold;
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="jqt">
+            <div id="about" class="selectable">
+                    <p><strong>Gackenheimer<br />Allowance</strong><br />Version 1.0 beta<br />
+                        <a href="http://www.jeffgack.com">By Jeff Gackenheimer</a></p>
+                    <p><br /><br /><a href="#" class="grayButton goback">Close</a></p>
+            </div>
+            <div id="home" class="current">
+                <div class="toolbar">
+                    <h1>Allowance</h1>
+                    <a class="button slideup" id="infoButton" href="#about">About</a>
+                </div>
+                <h1 id="workername"></h1>
+                <h2>Chores</h2>
+                <ul class="rounded">
+                    <li class="arrow"><a href="#ttd">To Do</a> <small id="todocount"></small></li>
+                    <li class="arrow"><a href="#cmp">Complete</a> <small id="completecount"></small></li>
+                </ul>
+                <div style="margin: 10px;">
+                    <br /><a id="paybutton" href="#" onclick="payme();"></a><br />
+                </div>
+                <ul class="rounded">
+                    <li class="arrow"><a id="hstlbl" href="#hst">History</a></li>
+                </ul>
+                <div class="info">
+                    <p>Add this page to your home screen to view the custom icon, startup screen, and full screen mode.</p>
+                </div>
+            </div>
+            <div id="ttd">
+                <div class="toolbar">
+                    <h1>To Do</h1>
+                    <a href="#" class="back">Back</a>
+                </div>
+                <h2>Not Started</h2>
+                <ul id="ttdN"></ul>
+                <h2>In Progress</h2>
+                <ul id="ttdW"></ul>
+                <h2>Ready for Review</h2>
+                <ul id="ttdR"></ul>
+            </div>
+            <div id="cmp">
+                <div class="toolbar">
+                    <h1>Complete</h1>
+                    <a href="#" class="back">Back</a>
+                </div>
+                <br />
+                <ul id="cmpC"></ul>
+                <h2 id="cmptotal"></h2>
+            </div>
+            <div id="hst">
+                <div class="toolbar">
+                    <h1>History</h1>
+                    <a href="#" class="back">Back</a>
+                </div>
+                <ul id="hstul"></ul>
+            </div>
+            <div id="ttdDesc">
+                <div class="toolbar">
+                    <a href="#" class="back">Back</a>
+                </div>
+                <br />
+                <h2 id="ttdDesctitle"></h2>
+                <div id="ttdDescdesc" class="info"></div>
+                <br />
+                <h2>Status</h2>
+                <ul class="rounded">
+                  <li>
+                    <select id="ttdDescstatus" onchange="changestatus();">
+                       <option value ="N">Not Started</option>
+                       <option value ="W">In Progress</option>
+                       <option value ="R">Ready for Review</option>
+                    </select>
+                  </li>
+                </ul>
+            </div>
+            <div id="cmpDesc">
+                <div class="toolbar">
+                    <a href="#" class="back">Back</a>
+                </div>
+                <br />
+                <h2 id="cmpDesctitle"></h2>
+                <div id="cmpDescdesc" class="info"></div>
+                <br />
+            </div>
+            <div id="hstQued">
+                <div class="toolbar">
+                    <h1>Pending Pmt</h1>
+                    <a href="#" class="back">Back</a>
+                </div>
+                <br />
+                <ul id="hstQuedQ"></ul>
+                <h2 id="hstQuedtotal"></h2>
+            </div>
+        </div>
+    </body>
+</html>

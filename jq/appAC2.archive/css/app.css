@@ -1,0 +1,570 @@
+﻿body 
+{
+    position: relative;
+    font-family:"HelveticaNeue",Helvetica,Arial,Verdana,sans-serif; 
+    font-size:12px;
+    margin: 0px;    
+    zoom: 100%;
+}
+
+div 
+{
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+
+p
+{
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+
+.menuheader, .menuheader-drop
+{
+    float: right;
+    display: block;
+    height: 32px;
+    font-size: 14px;
+    margin-top: 10px;    
+    padding-right: 19px;
+    cursor: pointer;
+}
+
+.gear 
+{
+    float: right;
+    height: 32px;
+    width: 32px;
+    margin: 3px 0 0 10px;
+    cursor: pointer;
+}
+
+#sections
+{
+    position:absolute;
+    top: 40px;
+    left: 150px;
+    display:block;
+}
+
+.section
+{
+    position:absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.sectionheader
+{
+    padding: 0px;
+    margin: 0px;
+    font-size: 18px;
+    font-weight: bold;
+
+}
+
+.container
+{
+    width: 100%;
+    display: block;
+    min-height: 500px;
+    position:relative;
+}
+
+.content
+{
+    padding: 20px;
+    font-size: 20px;
+    background: transparent;
+}
+
+.submenu
+{
+    position: absolute;
+    top: 40px;
+    right: 0px;
+    border-top: none;
+    display: block;
+    padding: 0 0 10px 0px;
+}
+
+.submenu ul{
+    margin: 0; padding: 0;
+    display: block;
+    list-style: none;
+    }
+ 
+.submenu ul li
+{
+    padding: 3px;
+  
+}
+ 
+.submenu ul li a
+{
+   font-weight: bold;
+   text-decoration: none;
+   padding: 3px 11px;
+}
+
+.menupanel
+{
+    /*
+    float:left;
+    position:relative;
+    */
+    width: 105px; 
+    padding: 15px 0px 15px 10px;
+    margin-right: 50px;
+    border-right: 3px solid #564500;
+    font-size: 14px;
+    position: absolute;
+    top: 40px;
+    left: 0px;
+}
+    
+
+.menupanel ul{
+    margin: 0; padding: 0;
+    display: block;
+    list-style: none;
+    }
+ 
+.menupanel ul li
+{
+    padding: 3px;  
+}
+ 
+.menupanel ul li a
+{
+    font-weight: bold;
+    text-decoration: none;
+    width: 100px;
+    display: block;
+    padding: 3px 11px;    
+}
+
+.formhoriz
+{
+    float: left;
+    margin: 5px 8px 0 0;
+}
+
+.formvert
+{
+    clear: left;
+    padding-top: 7px;
+}
+
+.formvert label
+{
+    width: 130px;
+    display: inline-block;
+}
+
+.formvert input
+{
+    width: 343px;
+}
+
+.formvert select
+{
+    width: 348px;
+}
+
+.formbutton
+{
+    font-weight: bold;
+    text-decoration: none;
+    padding: 3px 8px 3px 8px;
+    padding: 3px 11px;
+    font-size: 14px;
+    text-align: center;
+}
+
+dl.accountsettings
+{
+	float: left;
+	width: 420px;
+	margin: 1em 0;
+	padding: 0;
+	border-bottom: 1px solid #999;
+	font-size: 14px;
+}
+
+.accountsettings dt
+{
+	clear: left;
+	float: left;
+	width: 150px;
+	margin: 0;
+	padding: 5px;
+	border-top: 1px solid #999;
+	font-weight: bold;
+}
+
+.accountsettings dd
+{
+	float: left;
+	width: 250px;
+	margin: 0;
+	padding: 5px;
+	border-top: 1px solid #999;
+}
+
+.clientstats 
+{
+    margin-top: 25px;
+    font-size: 11px;
+    text-align: center;
+}
+
+.clientstats dt
+{
+    margin-top: 5px;
+}
+
+.clientstats dd
+{
+    margin-top: 5px;
+}
+
+.bgr
+{
+}
+
+.bgr thead
+{
+
+}
+
+.bgr thead td
+{
+    color:Black;
+    text-align: center;
+    padding: 0 10px 0 10px;
+}
+
+.bgr tbody td
+{
+    text-align: center;
+    text-decoration: none;
+}
+
+.bgr tbody td
+{
+    color: Black;
+}
+
+.bgr-selected
+{
+    background-color: Green;
+    color: White;    
+}
+
+.bgr-hover
+{
+    background-color: Orange;
+    color: White;
+}
+
+.bgr-hdr-hover
+{
+    background-color: Blue;
+    color: White;
+    text-align: right;
+    padding: 0 10px 0 10px;
+}
+
+.bgr-hdr
+{
+    background-color: Gray;
+    color:White;
+    text-align: right;
+    padding: 0 10px 0 10px;
+}
+
+.bgr-axis
+{
+    background-color: #FFFFD0;
+    font-weight: bold;
+    text-align: center;
+    color: Black;
+}
+.selectiongridheader
+{
+    font-weight: bold;
+}
+#selectiongrid thead
+{
+    background-color: Gray;
+}
+
+#selectiongrid tfoot
+{
+    background-color: Gray;
+    color: White;
+    text-align: right;
+}
+
+#selectiongrid thead td
+{
+    padding: 0 10px 0 10px;
+}
+
+#recordsviewSearch
+{
+    position:absolute;
+    left: 0px;
+    top: 3px;
+}
+
+#recordsviewSearch-results
+{
+    position: absolute;
+    top: 25px;
+    left: 0px;
+    z-index:2;
+}
+
+#listSearch
+{
+    position:absolute;
+    left: 0px;
+    top: 3px;
+}
+
+#listSearch-results
+{
+    position: absolute;
+    top: 25px;
+    left: 0px;
+    z-index:2;
+}
+
+#campaignSearch
+{
+    position:absolute;
+    left: 0px;
+    top: 3px;
+}
+
+#campaignSearch-results
+{
+    position: absolute;
+    top: 25px;
+    left: 0px;
+    z-index:2;
+}
+
+#querybuilderSearch
+{
+    position:relative;
+}
+
+#querybuilderSearch-results
+{
+    position: relative;
+    width: 400px;
+}
+
+#recordsviewTable
+{
+    margin-top: 10px;
+    position:absolute;
+    top: 30px;
+    left: 0px;
+    width:auto;
+}
+
+#recordsviewRecord
+{
+    position:absolute;
+    top: 40px;
+    left: 0px;
+    width:auto;
+    display:none;
+}
+
+#listTable
+{
+    margin-top: 10px;
+    position:absolute;
+    top: 30px;
+    left: 0px;
+    width:auto;
+}
+
+#listRecord
+{
+    position:absolute;
+    top: 40px;
+    left: 0px;
+    width:auto;
+    display:none;
+}
+
+#campaignTable
+{
+    margin-top: 10px;
+    position:absolute;
+    top: 30px;
+    left: 0px;
+    width:auto;
+}
+
+#campaignRecord
+{
+    position:absolute;
+    top: 40px;
+    left: 0px;
+    width:auto;
+    display:none;
+}
+
+
+.sectiontable
+{
+    position: absolute;
+    top: 35px;
+    left: 0px;
+    z-index:1;    
+}
+
+.liopener
+{
+    font-weight: bold;
+    text-decoration: none;
+    /* background-color: #FFDC00; 
+    padding: 3px 8px 3px 8px;
+    padding: 3px 11px;*/
+    font-size: 14px;
+    text-align: center;
+}
+
+.liopener:visited{
+    /*color: #564500;*/
+    }
+ 
+.liopener:hover{
+    /*color: White;
+    background-color: #564500;*/
+    }
+
+.dtopen
+{
+}
+
+.dtclosed
+{
+    display:none;
+}
+
+.hiddenfield
+{
+    display:none;
+}
+
+.asmlist
+{
+    margin: 0;
+    padding: 0;
+}
+
+.asmlist-hover 
+{
+    background-color: Blue;
+    color: White;
+}
+.asmlist dt
+{
+    margin-bottom: 10px;
+    padding: 3px 0 6px 5px;
+    vertical-align: middle;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+}
+
+.dl-link
+{
+    display:none;
+}
+
+.asmcomplist
+{
+    margin: 0;
+    padding: 0;
+}
+
+.asmtarget-hover
+{
+    background-color: Blue;
+}
+
+.asmcomplist dt
+{
+    margin: 0;
+    padding: 0;
+}
+.asmcomplist dt span
+{
+    display:none;
+}
+
+.asmcomplist ul li span
+{
+    display:none;
+}
+
+.asmHeader
+{
+    height:25px;
+    padding-top:6px;
+    padding-left: 5px;
+}
+
+.wizard
+{
+}
+
+
+/* jqxBUG */
+.wiztab ul
+{
+    margin-left: 30px;
+    height: 15px;
+    left: 0px;
+}
+
+
+/* jqxBUG */
+.wiztab ul li
+{
+    height: 15px;
+}
+
+.wizButton0
+{
+    position: absolute;
+    bottom: 15px;
+    right: 10px;
+    width: 100px;
+}
+
+/*
+      var colorselected = "green";
+      var colorselectedtext = "white";
+
+      var colorhover = "orange";
+      var colorhovertext = "white";
+      var colorout = "";
+      var colorouttext = "black";
+
+      var coloroutheader = "gray";
+      var coloroutheadertext = "black";
+
+      var colorhoverheader = "blue";
+      var colorhoverheadertext = "white";
+*/
+

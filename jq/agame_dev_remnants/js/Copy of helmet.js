@@ -1,0 +1,103 @@
+﻿//This is a helmet in Raphael.
+//TODO: Plot it with a black backdrop to see what you have.  Are there fill areas that are well-defined?
+
+var rsr = Raphael(0,0, '675.21332', '514.33331');
+//var helmet = Raphael('helmet', '675.21332', '514.33331');
+
+var g10 = rsr.set();
+g10.attr({'id': 'g10','name': 'g10'});
+g10.transform("m1.3333333,0,0,-1.3333333,0,514.33333");
+
+var g12 = rsr.set(); 
+
+var path14 = rsr.path("m 3572.76,2401.17 13.53,7.62 c 127.8,46.53 277.74,90.26 451.94,132.18 -96.37,248.84 -216.6,453.42 -353.44,620.19 237.13,-15.36 412.18,-475.5 412.18,-475.5 43.62,-60.27 75.83,-39.86 149.76,-29.48 77.89,-14.79 87.98,-111.93 29.12,-155.99 -134.63,-65.2 -187.15,-73.66 -347.15,-113.82 l -355.94,14.8").attr(
+    {
+        id: 'path14',
+        parent: 'g10',
+        fill: 'red',
+        "fill-opacity": '1',
+        "fill-rule": 'evenodd',
+        stroke: 'none',
+        'stroke-width':'1',
+        'stroke-opacity':'1'
+    }).transform("m1.3333333,0,0,-1.3333333,0,514.33333").data('id', 'path14');
+        
+var path16 = rsr.path("m 3572.76,2401.17 13.53,7.62 c 127.8,46.53 277.74,90.26 451.94,132.18 -96.37,248.84 -216.6,453.42 -353.44,620.19 237.13,-15.36 412.18,-475.5 412.18,-475.5 43.62,-60.27 75.83,-39.86 149.76,-29.48 77.89,-14.79 87.98,-111.93 29.12,-155.99 -134.63,-65.2 -187.15,-73.66 -347.15,-113.82 l -355.94,14.8 z").attr(
+    {
+        id: 'path16',
+        parent: 'g10',
+        fill: 'none',
+        stroke: '#211c1d',
+        "stroke-width": '40',
+        "stroke-linecap": 'butt',
+        "stroke-linejoin": 'miter',
+        "stroke-miterlimit": '3.8636899',
+        "stroke-dasharray": 'none',
+        "stroke-opacity": '1'
+    }).transform("m1.3333333,0,0,-1.3333333,0,514.33333").data('id', 'path16');
+        
+var path18 = rsr.path("m 4000.08,2884.18 c 26.41,23.73 61.32,38.16 99.61,38.16 82.34,0 149.08,-66.74 149.08,-149.07 0,-54.74 -29.49,-102.58 -73.45,-128.5 -29.78,-2.5 -51.98,4.45 -78.35,40.89 0,0 -35.77,94.05 -96.89,198.52 z m -26.44,-190.53 c -6.56,10.37 -11.9,21.62 -15.76,33.52 5.31,-11.07 10.56,-22.24 15.76,-33.52").attr(
+    {
+        id: 'path18',
+        parent: 'g10',
+        fill: '#ffffff',
+        "fill-opacity": '1',
+        "fill-rule": 'nonzero',
+        stroke: 'none',
+        'stroke-width':'1',
+        'stroke-opacity':'1'
+    }).transform("m1.3333333,0,0,-1.3333333,0,514.33333").data('id', 'path18');
+    
+var path20 = rsr.path("m 4000.08,2884.18 c 26.41,23.73 61.32,38.16 99.61,38.16 82.34,0 149.08,-66.74 149.08,-149.07 0,-54.74 -29.49,-102.58 -73.45,-128.5 -29.78,-2.5 -51.98,4.45 -78.35,40.89 0,0 -35.77,94.05 -96.89,198.52 z m -26.44,-190.53 c -6.56,10.37 -11.9,21.62 -15.76,33.52 5.31,-11.07 10.56,-22.24 15.76,-33.52 z").attr(
+    {
+        id: 'path20',
+        parent: 'g10',
+        fill: 'none',
+        stroke: '#211c1d',
+        "stroke-width": '40',
+        "stroke-linecap": 'butt',
+        "stroke-linejoin": 'miter',
+        "stroke-miterlimit": '3.8636899',
+        "stroke-dasharray": 'none',
+        "stroke-opacity": '1'
+    }).transform("m1.3333333,0,0,-1.3333333,0,514.33333").data('id', 'path20');
+    
+var path22 = rsr.path("M 1119.15,3596.94 C -370.855,2813.66 -205.289,1256.52 778.617,180.84 c 451.623,346.629 565.263,254.488 982.033,46.101 760,-380 1585,285 1260,1269.999 -171.41,519.51 45,810 1017.58,1044.03 C 3418.55,4141.15 1780.3,3944.5 1119.15,3596.94").attr(
+    {
+        id: 'path22',
+        parent: 'g10',
+        fill: '#ffffff',
+        "fill-opacity": '1',
+        "fill-rule": 'evenodd',
+        stroke: 'none',
+        'stroke-width':'1',
+        'stroke-opacity':'1'
+    }).transform("m1.3333333,0,0,-1.3333333,0,514.33333").data('id', 'path22'); 
+    
+var path24 = rsr.path("M 1119.15,3596.94 C -370.855,2813.66 -205.289,1256.52 778.617,180.84 c 451.623,346.629 565.263,254.488 982.033,46.101 760,-380 1585,285 1260,1269.999 -171.41,519.51 45,810 1017.58,1044.03 C 3418.55,4141.15 1780.3,3944.5 1119.15,3596.94 Z").attr(
+    {
+        id: 'path24',
+        parent: 'g10',
+        fill: 'none',
+        stroke: '#211c1d',
+        "stroke-width": '40',
+        "stroke-linecap": 'butt',
+        "stroke-linejoin": 'miter',
+        "stroke-miterlimit": '3.8636899',
+        "stroke-dasharray": 'none',
+        "stroke-opacity": '1'
+    }).transform("m1.3333333,0,0,-1.3333333,0,514.33333").data('id', 'path24'); var path26 = rsr.path("m 1643.96,1097 c 0,150.95 122.36,273.32 273.32,273.32 150.94,0 273.31,-122.37 273.31,-273.32 0,-150.949 -122.37,-273.301 -273.31,-273.301 -150.96,0 -273.32,122.352 -273.32,273.301").attr({id: 'path26',parent: 'g10',fill: '#ffffff',"fill-opacity": '1',"fill-rule": 'nonzero',stroke: 'none','stroke-width':'1','stroke-opacity':'1'}).transform("m1.3333333,0,0,-1.3333333,0,514.33333").data('id', 'path26'); var path28 = rsr.path("m 1643.96,1097 c 0,150.95 122.36,273.32 273.32,273.32 150.94,0 273.31,-122.37 273.31,-273.32 0,-150.949 -122.37,-273.301 -273.31,-273.301 -150.96,0 -273.32,122.352 -273.32,273.301 z").attr({id: 'path28',parent: 'g10',fill: 'none',stroke: '#211c1d',"stroke-width": '40',"stroke-linecap": 'butt',"stroke-linejoin": 'miter',"stroke-miterlimit": '3.8636899',"stroke-dasharray": 'none',"stroke-opacity": '1'}).transform("m1.3333333,0,0,-1.3333333,0,514.33333").data('id', 'path28'); var path30 = rsr.path("M 3008.69,2224.91 C 3417.84,1604.92 3649.92,1335.41 3926.16,601.602 3994.67,419.621 4417.01,269.711 4871,614 l -305.88,777.7 c -34.16,86.86 96.13,138.1 130.29,51.24 l 324.9,-826.061 C 5095.64,425.352 4011.68,-22.9609 3795.13,552.27 c -271.67,721.7 -500.41,985.04 -903.29,1595.53 -51.41,77.9 65.44,155.01 116.85,77.11").attr({id: 'path30',parent: 'g10',fill: '#ffffff',"fill-opacity": '1',"fill-rule": 'nonzero',stroke: 'none','stroke-width':'1','stroke-opacity':'1'}).transform("m1.3333333,0,0,-1.3333333,0,514.33333").data('id', 'path30'); var path32 = rsr.path("M 3008.69,2224.91 C 3417.84,1604.92 3649.92,1335.41 3926.16,601.602 3994.67,419.621 4417.01,269.711 4871,614 l -305.88,777.7 c -34.16,86.86 96.13,138.1 130.29,51.24 l 324.9,-826.061 C 5095.64,425.352 4011.68,-22.9609 3795.13,552.27 c -271.67,721.7 -500.41,985.04 -903.29,1595.53 -51.41,77.9 65.44,155.01 116.85,77.11 z").attr({id: 'path32',parent: 'g10',fill: 'none',stroke: '#211c1d',"stroke-width": '40',"stroke-linecap": 'butt',"stroke-linejoin": 'miter',"stroke-miterlimit": '3.8636899',"stroke-dasharray": 'none',"stroke-opacity": '1'}).transform("m1.3333333,0,0,-1.3333333,0,514.33333").data('id', 'path32'); var path34 = rsr.path("m 1073.56,809.75 c 0,39.469 31.99,71.461 71.46,71.461 39.46,0 71.45,-31.992 71.45,-71.461 0,-39.461 -31.99,-71.449 -71.45,-71.449 -39.47,0 -71.46,31.988 -71.46,71.449").attr({id: 'path34',parent: 'g10',fill: '#ffffff',"fill-opacity": '1',"fill-rule": 'nonzero',stroke: 'none','stroke-width':'1','stroke-opacity':'1'}).transform("m1.3333333,0,0,-1.3333333,0,514.33333").data('id', 'path34'); var path36 = rsr.path("m 1073.56,809.75 c 0,39.469 31.99,71.461 71.46,71.461 39.46,0 71.45,-31.992 71.45,-71.461 0,-39.461 -31.99,-71.449 -71.45,-71.449 -39.47,0 -71.46,31.988 -71.46,71.449 z").attr({id: 'path36',parent: 'g10',fill: 'none',stroke: '#211c1d',"stroke-width": '40',"stroke-linecap": 'butt',"stroke-linejoin": 'miter',"stroke-miterlimit": '3.8636899',"stroke-dasharray": 'none',"stroke-opacity": '1'}).transform("m1.3333333,0,0,-1.3333333,0,514.33333").data('id', 'path36'); var path38 = rsr.path("m 1889.74,434.609 c 0,39.461 31.99,71.45 71.46,71.45 39.46,0 71.46,-31.989 71.46,-71.45 0,-39.468 -32,-71.461 -71.46,-71.461 -39.47,0 -71.46,31.993 -71.46,71.461").attr({id: 'path38',parent: 'g10',fill: '#ffffff',"fill-opacity": '1',"fill-rule": 'nonzero',stroke: 'none','stroke-width':'1','stroke-opacity':'1'}).transform("m1.3333333,0,0,-1.3333333,0,514.33333").data('id', 'path38'); var path40 = rsr.path("m 1889.74,434.609 c 0,39.461 31.99,71.45 71.46,71.45 39.46,0 71.46,-31.989 71.46,-71.45 0,-39.468 -32,-71.461 -71.46,-71.461 -39.47,0 -71.46,31.993 -71.46,71.461 z").attr({id: 'path40',parent: 'g10',fill: 'none',stroke: '#211c1d',"stroke-width": '40',"stroke-linecap": 'butt',"stroke-linejoin": 'miter',"stroke-miterlimit": '3.8636899',"stroke-dasharray": 'none',"stroke-opacity": '1'}).transform("m1.3333333,0,0,-1.3333333,0,514.33333").data('id', 'path40'); var path42 = rsr.path("M 4128.29,2714.57 C 3218.05,2488.39 2874.07,2146.94 2695.33,1560.09 c 303.49,-64.32 551.04,-248.88 668.93,-525.69 476.04,114.93 930.03,276.37 1362.05,484.26 84.11,40.47 144.81,-85.69 60.71,-126.16 -131.49,-63.28 -1463.95,-629.672 -1531.54,-463.98 -107.07,262.5 -317.22,438.73 -597.52,496.28 -40.38,-161.24 -71.74,-339.49 -100.98,-537.019 590.7,-246.09 1534.02,-291.429 2383.6,158.969 82.46,43.71 148.04,-79.988 65.58,-123.699 C 4145.67,466.879 3175.03,491.289 2536.55,744.672 l -2.57,-18.633 c -12.72,-92.457 -151.42,-73.379 -138.7,19.082 l 8.08,58.039 c -120.93,58.641 -226.48,126.211 -312.77,200.5 -70.74,60.89 20.6,166.99 91.34,106.09 67.31,-57.95 149.09,-112 242.87,-160.551 31.12,202.951 65.57,386.821 110.01,553.671 -0.15,14.42 3.71,28.94 11.26,41.14 188.59,670.35 553.29,1059.14 1548.46,1306.43 90.57,22.51 124.33,-113.36 33.76,-135.87").attr({id: 'path42',parent: 'g10',fill: '#ffffff',"fill-opacity": '1',"fill-rule": 'nonzero',stroke: 'none','stroke-width':'1','stroke-opacity':'1'}).transform("m1.3333333,0,0,-1.3333333,0,514.33333").data('id', 'path42'); var path44 = rsr.path("M 4128.29,2714.57 C 3218.05,2488.39 2874.07,2146.94 2695.33,1560.09 c 303.49,-64.32 551.04,-248.88 668.93,-525.69 476.04,114.93 930.03,276.37 1362.05,484.26 84.11,40.47 144.81,-85.69 60.71,-126.16 -131.49,-63.28 -1463.95,-629.672 -1531.54,-463.98 -107.07,262.5 -317.22,438.73 -597.52,496.28 -40.38,-161.24 -71.74,-339.49 -100.98,-537.019 590.7,-246.09 1534.02,-291.429 2383.6,158.969 82.46,43.71 148.04,-79.988 65.58,-123.699 C 4145.67,466.879 3175.03,491.289 2536.55,744.672 l -2.57,-18.633 c -12.72,-92.457 -151.42,-73.379 -138.7,19.082 l 8.08,58.039 c -120.93,58.641 -226.48,126.211 -312.77,200.5 -70.74,60.89 20.6,166.99 91.34,106.09 67.31,-57.95 149.09,-112 242.87,-160.551 31.12,202.951 65.57,386.821 110.01,553.671 -0.15,14.42 3.71,28.94 11.26,41.14 188.59,670.35 553.29,1059.14 1548.46,1306.43 90.57,22.51 124.33,-113.36 33.76,-135.87 z").attr({id: 'path44',parent: 'g10',fill: 'none',stroke: '#211c1d',"stroke-width": '40',"stroke-linecap": 'butt',"stroke-linejoin": 'miter',"stroke-miterlimit": '3.8636899',"stroke-dasharray": 'none',"stroke-opacity": '1'}).transform("m1.3333333,0,0,-1.3333333,0,514.33333").data('id', 'path44'); var path46 = rsr.path("m 2388.15,1306.94 345,-67.5 c 181.65,-54.12 117.29,-241.499 -40,-207.5 l -327.5,57.5 c -101.65,24.35 -46.68,214.79 22.5,217.5").attr({id: 'path46',parent: 'g10',fill: '#ffffff',"fill-opacity": '1',"fill-rule": 'evenodd',stroke: 'none','stroke-width':'1','stroke-opacity':'1'}).transform("m1.3333333,0,0,-1.3333333,0,514.33333").data('id', 'path46'); var path48 = rsr.path("m 2388.15,1306.94 345,-67.5 c 181.65,-54.12 117.29,-241.499 -40,-207.5 l -327.5,57.5 c -101.65,24.35 -46.68,214.79 22.5,217.5 z").attr({id: 'path48',parent: 'g10',fill: 'none',stroke: '#211c1d',"stroke-width": '40',"stroke-linecap": 'round',"stroke-linejoin": 'miter',"stroke-miterlimit": '3.8636899',"stroke-dasharray": 'none',"stroke-opacity": '1'}).transform("m1.3333333,0,0,-1.3333333,0,514.33333").data('id', 'path48'); var path50 = rsr.path("m 2649.09,1133.8 c 0,28.94 23.44,52.38 52.37,52.38 28.93,0 52.37,-23.44 52.37,-52.38 0,-28.92 -23.44,-52.38 -52.37,-52.38 -28.93,0 -52.37,23.46 -52.37,52.38").attr({id: 'path50',parent: 'g10',fill: '#ffffff',"fill-opacity": '1',"fill-rule": 'nonzero',stroke: 'none','stroke-width':'1','stroke-opacity':'1'}).transform("m1.3333333,0,0,-1.3333333,0,514.33333").data('id', 'path50'); var path52 = rsr.path("m 2649.09,1133.8 c 0,28.94 23.44,52.38 52.37,52.38 28.93,0 52.37,-23.44 52.37,-52.38 0,-28.92 -23.44,-52.38 -52.37,-52.38 -28.93,0 -52.37,23.46 -52.37,52.38 z").attr({id: 'path52',parent: 'g10',fill: 'none',stroke: '#211c1d',"stroke-width": '40',"stroke-linecap": 'butt',"stroke-linejoin": 'miter',"stroke-miterlimit": '3.8636899',"stroke-dasharray": 'none',"stroke-opacity": '1'}).transform("m1.3333333,0,0,-1.3333333,0,514.33333").data('id', 'path52'); var path54 = rsr.path("m 2300.6,863.91 c -12.91,-20.738 -27.4,-40.379 -43.27,-58.711").attr({id: 'path54',parent: 'g10',fill: 'none',stroke: '#211c1d',"stroke-width": '40',"stroke-linecap": 'butt',"stroke-linejoin": 'miter',"stroke-miterlimit": '3.8636899',"stroke-dasharray": 'none',"stroke-opacity": '1'}).transform("m1.3333333,0,0,-1.3333333,0,514.33333").data('id', 'path54'); var path56 = rsr.path("m 2369.01,1082.42 c -1.54,-31.92 -6.41,-62.98 -14.23,-92.85").attr({id: 'path56',parent: 'g10',fill: 'none',stroke: '#211c1d',"stroke-width": '40',"stroke-linecap": 'butt',"stroke-linejoin": 'miter',"stroke-miterlimit": '3.8636899',"stroke-dasharray": 'none',"stroke-opacity": '1'}).transform("m1.3333333,0,0,-1.3333333,0,514.33333").data('id', 'path56'); var path58 = rsr.path("m 2257.33,805.199 c -83.92,-95.508 -206.1,-155.84 -342.87,-155.84 -251.34,0 -455.08,203.75 -455.08,455.081 0,251.35 203.74,455.08 455.08,455.08 177.45,0 331.17,-101.56 406.22,-249.72").attr({id: 'path58',parent: 'g10',fill: 'none',stroke: '#211c1d',"stroke-width": '40',"stroke-linecap": 'round',"stroke-linejoin": 'round',"stroke-miterlimit": '3.8636899',"stroke-dasharray": 'none',"stroke-opacity": '1'}).transform("m1.3333333,0,0,-1.3333333,0,514.33333").data('id', 'path58'); var path60 = rsr.path("m 2597.71,561.469 c 0,39.461 31.98,71.453 71.46,71.453 39.46,0 71.44,-31.992 71.44,-71.453 0,-39.457 -31.98,-71.457 -71.44,-71.457 -39.48,0 -71.46,32 -71.46,71.457").attr({id: 'path60',parent: 'g10',fill: '#ffffff',"fill-opacity": '1',"fill-rule": 'nonzero',stroke: 'none','stroke-width':'1','stroke-opacity':'1'}).transform("m1.3333333,0,0,-1.3333333,0,514.33333").data('id', 'path60'); var path62 = rsr.path("m 2597.71,561.469 c 0,39.461 31.98,71.453 71.46,71.453 39.46,0 71.44,-31.992 71.44,-71.453 0,-39.457 -31.98,-71.457 -71.44,-71.457 -39.48,0 -71.46,32 -71.46,71.457 z").attr({id: 'path62',parent: 'g10',fill: 'none',stroke: '#211c1d',"stroke-width": '40',"stroke-linecap": 'butt',"stroke-linejoin": 'miter',"stroke-miterlimit": '3.8636899',"stroke-dasharray": 'none',"stroke-opacity": '1'}).transform("m1.3333333,0,0,-1.3333333,0,514.33333").data('id', 'path62'); var path64 = rsr.path("m 1045.4,354.789 17.58,-70.141 C 926.387,189.301 819.719,101.09 742.98,20 L 539.871,180 366.035,580 422.504,646.762 C 524.418,484.57 643.844,328.191 778.617,180.84 882.949,260.91 969.242,317.582 1045.4,354.789").attr({id: 'path64',parent: 'g10',fill: '#ffffff',"fill-opacity": '1',"fill-rule": 'evenodd',stroke: 'none','stroke-width':'1','stroke-opacity':'1'}).transform("m1.3333333,0,0,-1.3333333,0,514.33333").data('id', 'path64');
+    
+    
+    var path66 = rsr.path("m 1045.4,354.789 17.58,-70.141 C 926.387,189.301 819.719,101.09 742.98,20 L 539.871,180 366.035,580 422.504,646.762 C 524.418,484.57 643.844,328.191 778.617,180.84 882.949,260.91 969.242,317.582 1045.4,354.789 Z").attr(
+    {
+        id: 'path66',
+        parent: 'g10',
+        fill: 'none',stroke: '#211c1d',"stroke-width": '40',"stroke-linecap": 'round',"stroke-linejoin": 'round',"stroke-miterlimit": '3.8636899',"stroke-dasharray": 'none',"stroke-opacity": '1'
+    }).transform("m1.3333333,0,0,-1.3333333,0,514.33333").data('id', 'path66'); g12.attr({'id': 'g12','transformG': 'matrix(1.3333333,0,0,-1.3333333,0,514.33333)','parent': 'g10','name': 'g12'});
+    
+    //  Bad Syntax Found, hope it's not important: g12.;
+    
+    var rsrGroups = [g10,g12];
+    g10.push( ); 
+    g12.push( path14 , path16 , path18 , path20 , path22 , path24 , path26 , path28 , path30 , path32 , path34 , path36 , path38 , path40 , path42 , path44 , path46 , path48 , path50 , path52 , path54 , path56 , path58 , path60 , path62 , path64 , path66 );

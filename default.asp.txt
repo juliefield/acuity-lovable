@@ -1,0 +1,42 @@
+<!--#include FILE ="incs/inc_global_top.asp" -->
+<% 
+strPage = "Home"
+strPageDescription = "JeffGack Home" 
+strPageKeywords = "Jeff Gackenheimer, Jeffrey Gackenheimer" 
+strtitle = "JeffGack"
+
+%>
+<!--#include FILE ="incs/inc_global_head.asp" -->
+<body>
+<!--#include FILE ="incs/inc_global_frame.asp" -->
+<!--#include FILE ="incs/inc_benefits.asp" -->
+<div class="jgcolumn" style="float:right;">
+	<h1>
+		Welcome!
+	</h1>
+	<br>
+	<ul>
+		<li>
+			<h1>Printers</h1>
+			<p>Please Log In (upper right).</p>
+			<br>
+			<br>
+			<div id="ym"style="border:1px solid #DDDDDD;width:297px"><table bgcolor="white"><tr><td><a href="http://www.youmail.com/?src=embed"><img src="http://www.youmail.com/youmail/ymui/img/logo_embed.jpg"border=0/></a></td><td align="right"style="font-size:8pt;font-family:Arial,Helvetica"><b>Voicemail&nbsp;You'll&nbsp;Love</b><br><a href="http://www.youmail.com/youmail/voicemail/message.do?mk=W0JAMTc2NDU5MTk2Njc4fDF8b3B0LXVuaXF1ZS1ob3N0LWlk"style="font-size:8pt;font-family:Arial,Helvetica">Share this ...</a></td></tr><tr><td colspan=2><embed src="http://www.youmail.com/youmail/ymui/flash/player/player.swf" width="290" height="24" quality="high" menu="false" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="playerID=1&text=0xf89144&righticonhover=0xece6e1&rightbghover=0xe7c8af&bg=0xfff9f4&rightbg=0xe1d1c4&leftbg=0xece6e1&soundFile=http://www.youmail.com/youmail/voicemail/getDataStream.do?mk=W0JAMTc2NDU5MTk2Njc4fDF8b3B0LXVuaXF1ZS1ob3N0LWlk" type="application/x-shockwave-flash"></embed></td></tr></table></div>
+		</li>
+		<br>
+<% 'keep for example:
+'		<li>
+'			<h1>You received a message (or advertisement) with an AdGriller Label.</h1>
+'			<br><p><i>There are a variety of styles, but<br>the label looks something like this:</i></p><br>
+'			<div style="text-align: center;">
+'				<form name=createaccount language="JavaScript" action="http://www.mapmyprogress.biz/CreateAccount.asp" method=post>
+'					<img src="images/adgrillerlabel.jpg" /><br>
+'					<br><input name="submitlogin" type="submit" value="Create Free Account"/>
+'				</form>
+'			</div>
+'			<br>
+%>
+		</li>
+	</ul>
+</div>
+<!--#include FILE ="incs/inc_global_footer.asp" -->

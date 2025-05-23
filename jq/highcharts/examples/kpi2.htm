@@ -1,0 +1,132 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Highcharts Example</title>
+		
+		
+		<!-- 1. Add these JavaScript inclusions in the head of your page -->
+   	    <script src="http://code.jquery.com/jquery-latest.js" type="text/javascript"></script>
+		<script type="text/javascript" src="../js/highcharts.js"></script>
+		
+		<!-- 1a) Optional: add a theme file -->
+        <!--
+			<script type="text/javascript" src="../js/themes/gray.js"></script>
+        -->
+		
+		<!-- 1b) Optional: the exporting module -->
+		<script type="text/javascript" src="../js/modules/exporting.js"></script>
+				
+		<!-- 2. Add the JavaScript to initialize the chart on document ready -->
+		
+	</head>
+	<body>
+		
+		<!-- 3. Add the container -->
+		<div id="container" style="width: 800px; height: 400px; margin: 0 auto"></div>
+        <input id="btnPlot" type="button" value="plot" />
+        <input id="btnAdd" type="button" value="add" />
+		
+        		<script type="text/javascript">
+
+        		    var chart;
+                    var plotcnt;
+                    var op = {
+        		            chart: {
+        		                renderTo: 'container',
+        		                defaultSeriesType: 'column'
+        		            },
+        		            title: {
+        		                text: 'KPI Static Test'
+        		            },
+        		            xAxis: {
+                                categories: [
+        		                'Attendance', 'Productivity', 'Quality', 'Transfer Rate<br />5%', 'Utilization',
+                                ]
+        		            },
+        		            yAxis: {
+        		                min: 0,
+        		                max: 10,
+                                plotBands: [{ color: '#FFAAAD', from: 0, to: 4 },
+                                            { color: '#FFFFD1', from: 4, to: 8 },
+                                            { color: '#EBFFE7', from: 8, to: 10 }
+                                           ],
+                                tickInterval: 2,
+        		                title: {
+        		                    text: 'Score'
+        		                }
+        		            },
+        		            tooltip: {
+        		                formatter: function () {
+        		                    return  this.series.name + '<br/>' + 
+                                    '<b>' + this.x + '</b><br/>' +
+								 'Score: ' + this.point.y;
+        		                }
+        		            },
+        		            plotOptions: {
+        		                column: {
+        		                    stacking: null
+        		                },
+        		            },
+        		            /* colors: ['blue'], */
+        		            credits: {
+        		                enabled: false
+        		            },
+/*        		            series: [
+                    {
+
+                        type: 'column',
+                        name: '(selection)',
+                        data: [5, 3, 4, 7, 2],
+                        showInLegend: false
+                    }
+                    ] */
+        		        };
+
+        		    $(document).ready(function () {
+        		        //chart = new Highcharts.Chart(op);
+        		    });
+                    var testplot = function() {
+                        op.series[plotcnt] = new Array();
+                        op.series[plotcnt].showInLegend = new Object();
+                        op.series[plotcnt].showInLegend = false;
+                        op.series[plotcnt].name = new Object();
+                        op.series[plotcnt].name = 'name of series ' + plotcnt;
+                        op.series[plotcnt].data = new Array();
+                        op.series[plotcnt].data.length = 0;
+                        op.series[plotcnt].data.push(1);
+                        op.series[plotcnt].data.push(3);
+                        op.series[plotcnt].data.push(5);
+                        op.series[plotcnt].data.push(7);
+                        if (plotcnt==1)
+                        {
+                            op.xAxis.categories.push('a5');
+                            op.series[plotcnt].data.push(9);
+                        }
+        		        chart = new Highcharts.Chart(op);
+                    };
+
+                    $('#btnPlot').click(function(){
+                        try {
+                            op.series.length = 0;
+                        }
+                        catch(err) {
+                            op.series = new Array();
+                        };
+                        op.xAxis.categories.length = 0;
+                        op.xAxis.categories.push('a1');
+                        op.xAxis.categories.push('a2');
+                        op.xAxis.categories.push('a3');
+                        op.xAxis.categories.push('a4');
+                        plotcnt=0;
+                        testplot();
+                    });
+                    $('#btnAdd').click(function(){
+                        plotcnt+=1;
+                        testplot();
+                    });
+		</script>
+
+				
+	</body>
+</html>

@@ -1,0 +1,658 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<title>KPI Charts</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <!--This is ERS-Specific -->
+    	<link href="css/filters.css" type="text/css" rel="stylesheet" />	
+
+        <link rel="stylesheet" type="text/css" media="screen" href="jqgrid40/themes/redmond/jquery-ui-1.8.2.custom.css"  />	
+    	<link rel="stylesheet" type="text/css" media="screen" href="jqgrid40/css/ui.jqgrid.css"  />
+
+		
+		<!-- 1. Add these JavaScript inclusions in the head of your page -->
+        <script type="text/javascript" src="jquery-ui/js/jquery-1.5.1.min.js"></script>
+   	    <!--  <script src="http://code.jquery.com/jquery-latest.js" type="text/javascript"></script> -->
+		<script type="text/javascript" src="highcharts/js/highcharts.js"></script>
+        <script src="jqgrid40/js/grid.locale-en.js" type="text/javascript"></script>
+        <script src="jqgrid40/js/jquery.jqGrid.min.js" type="text/javascript"></script>
+      	<script src="jquery-ui/development-bundle/ui/jquery.ui.core.js"></script>
+    	<script src="jquery-ui/development-bundle/ui/jquery.ui.widget.js"></script>
+	    <script src="jquery-ui/development-bundle/ui/jquery.ui.mouse.js"></script>
+	    <script src="jquery-ui/development-bundle/ui/jquery.ui.draggable.js"></script>
+
+
+		<!-- 1a) Optional: add a theme file -->
+			<script type="text/javascript" src="highcharts/js/themes/ERS.js"></script>
+		
+		<!-- 1b) Optional: the exporting module -->
+		<script type="text/javascript" src="highcharts/js/modules/exporting.js"></script>
+				
+		<!-- 2. Add the JavaScript to initialize the chart on document ready -->
+	</head>
+	<body style="position:relative;">
+		
+		<!-- 3. Add the container -->
+        <div class="filters">
+            <dl>
+                <dt>Project:</dt>
+                <dd><select id="selProjects" onchange="refreshboxes('KPI');setboxbypartialvalue('selKPIs','Quality');"><option value="">..loading</option></select></dd>
+                <dt>Date Range:</dt>
+                <dd><select id="selPayperiods" onchange="splitdates(this,document.getElementById('spanDatefrom'),document.getElementById('spanDateto'));"><option value="">..loading</option></select></dd>
+                <dt>Date From:</dt>
+                <dd><span id="spanDatefrom"></span></dd>
+                <dt>Date To:</dt>
+                <dd><span id="spanDateto"></span></dd>
+                <dt>X Axis:</dt>
+                <dd><select id="selXaxiss" onchange=""><option value="">..loading</option></select></dd>
+            </dl>
+            <div style="display:none;">
+                <select id="selKPIs" onchange=""><option value="">..loading</option></select>
+            </div>
+            <input id="btnPlot" type="button" value="plot" />
+            <input id="btnAdd" type="button" value="add" /><br />
+            <!--<input id="btnTable" type="button" value="table" />-->
+        </div>
+        <div id="mycontainer" style="position:absolute;top:10; left:300px; z-index:1">
+             <div id="container" style="width: 950px; height: 570px;"></div>
+        </div>
+      <div id="set">
+        <div id="mytable1" style="position:absolute;top: 340px; left:30px; z-index:1;">
+             <table id="list1"></table>
+             <div id="plist1"></div>
+         </div>
+         <div id="mytable2" style="position:absolute;top: 375px; left:85px; z-index:1;">
+             <table id="list2"></table>
+             <div id="plist2"></div>
+         </div>
+         <div id="mytable3" style="position:absolute;top: 410px; left:140px; z-index:1;">
+             <table id="list3"></table>
+             <div id="plist3"></div>
+         </div>
+         <div id="mytable4" style="position:absolute;top: 445px; left:195px; z-index:1;">
+             <table id="list4"></table>
+             <div id="plist4"></div>
+         </div>
+         <div id="mytable5" style="position:absolute;top: 480px; left:250px; z-index:1;">
+             <table id="list5"></table>
+             <div id="plist5"></div>
+         </div>
+      </div>
+  </div>
+
+    		<script type="text/javascript">
+        		    var chart;
+                    var plotcnt;
+                    var tablecnt = 0;
+                    var tablemax = 5;
+                    var xxref = new Array();
+                    var sxref = new Array();
+                    var op = {
+        		            chart: {
+        		                renderTo: 'container',
+        		                defaultSeriesType: 'column'
+        		            },
+        		            title: {
+        		                text: 'KPI Charts'
+        		            },
+        		            xAxis: {
+                                categories: [
+        		                "Select Criteria and 'plot'"
+                                ]
+        		            },
+        		            yAxis: {
+        		                min: 0,
+        		                max: 10,
+                                plotBands: [{ color: '#FFAAAD', from: 0, to: 4 },
+                                            { color: '#FFFFD1', from: 4, to: 8 },
+                                            { color: '#EBFFE7', from: 8, to: 10 }
+                                           ],
+                                tickInterval: 2,
+        		                title: {
+        		                    text: 'Score'
+        		                }
+        		            },
+        		            tooltip: {
+        		                formatter: function () {
+        		                    return  this.series.name + '<br/>' + 
+                                    '<b>' + this.x + '</b><br/>' +
+								 'Score: ' + this.point.y;
+        		                }
+        		            },
+        		            plotOptions: {
+        		                column: {
+        		                    stacking: null
+        		                }
+        		            },
+        		            /* colors: ['blue'], */
+        		            credits: {
+        		                enabled: false
+        		            },
+        		            series: [
+                    {
+
+                        type: 'column',
+                        name: '(selection)',
+                        data: [0],
+                        showInLegend: false
+                    }
+                    ] 
+        		        };
+
+        		    $(document).ready(function () {
+        		        chart = new Highcharts.Chart(op);
+                        document.getElementById('btnAdd').disabled='disabled';
+                        refreshboxes('Project');
+                        refreshboxes('KPI,Payperiod,Xaxis'); //This will set the project to the first project.
+                        setboxbypartialvalue('selKPIs', 'Quality');
+                        //refreshboxes('Location,Group,Team,CSR,KPI,Payperiod');
+               	        $("#container").draggable();
+                   		$( "#set div" ).draggable({ stack: "#set div" });
+        		    });
+                    var plotme = function() {
+                        var urlbld = "Query.ashx?qid=KPIChart&" + boxvalparams(true);
+                        alert("debug:queryurl="+urlbld);
+                        $.ajax({
+                            type: "GET",
+                            url: urlbld,
+                            async: false,
+                            dataType: "xml",
+                            cache: false,  //make true for live site
+                            error: function (request, textStatus, errorThrown) {
+                                alert('Error loading ListConfig XML Document:' + request.status + ' / ' + textStatus + ' / ' + errorThrown);
+                            },
+                            success: loadQueryFromXML
+                        });
+   	                    var i;
+	                    for (i = 1; i <= tablecnt; i++) {
+                            jQuery("#list"+i).GridUnload();
+	                    }
+
+
+                        function loadQueryFromXML(xml) {
+                            var foundresults;
+                            var foundanyresults;
+                            var foundseries;
+                            var found;
+                            var x;
+                            var y;
+                            var i;
+                            var s;
+                            var sb;
+                            var pj;
+                            var series = new Array();
+                            var seriesname = "unknown";
+                            var seriesparams = "unknown";                            
+                            sb = document.getElementById('selProjects');
+                            pj=sb.options[sb.selectedIndex].value;
+
+                          foundanyresults = false;
+                          $(xml).find('Communication').each(function () {
+                                $(this).find('Alert').each(function () {
+                                    alert($(this).find("Message").text());
+                                    foundanyresults = true; //A message is a result.
+                                });
+                          });
+                          for (s=0;s>=0;s++) {
+                            foundseries=false;
+                            $(xml).find('Series'+s).each(function () {                                
+                                foundresults = false;
+                                foundseries = true;
+                                $(this).find('Spec').each(function () {
+                                    seriesname = $(this).find("Name").text();
+                                    seriesparams = $(this).find("Params").text();
+                                });
+                                $(this).find('Point').each(function () {
+                                    foundresults = true;
+                                    x = $(this).find("x").text();
+                                    found = false;
+                                    for (i = 0;i < op.xAxis.categories.length;i++)
+                                    {
+                                        if (op.xAxis.categories[i]==x)
+                                        {
+                                            found=true;
+                                            break;
+                                        }
+                                    }
+                                    if (!found)
+                                    {
+                                        op.xAxis.categories.push(x);
+                                    }
+                                    found = false;
+                                    var proj = document.getElementById('selProjects');
+                                    for (i=0;i < xxref.length;i++)
+                                    {
+                                        if ((xxref[i].category==x)&&(xxref[i].project==pj))
+                                        {
+                                            found = true;
+                                        }
+                                        
+                                    }
+                                    if (!found)
+                                    {
+                                        xxref[xxref.length] = new Object();
+                                        xxref[xxref.length-1].category=x;
+                                        xxref[xxref.length-1].project=pj;
+                                        xxref[xxref.length-1].xval=$(this).find("key").text();
+                                    }
+                                });
+                                for (i=0;i<op.xAxis.categories.length;i++)
+                                { 
+                                    series[i]=0;
+                                }
+                                $(this).find('Point').each(function () {
+                                    x = $(this).find("x").text();
+                                    y = $(this).find("y").text();
+                                    var found = false;
+                                    for (i = 0;i < op.xAxis.categories.length;i++)
+                                    {
+                                        if (op.xAxis.categories[i]==x)
+                                        {
+                                            series[i]=y;
+                                            break;
+                                        }
+                                    }
+                                });
+                                sxref[plotcnt]=new Object();
+                                sxref[plotcnt].project=pj;
+                                sxref[plotcnt].name=seriesname;
+                                sxref[plotcnt].params= seriesparams;
+                                op.series[plotcnt] = new Object();
+                                op.series[plotcnt].project = new Object();
+                                op.series[plotcnt].project = pj; //will this work?  No, it didn't. TODO:
+                                op.series[plotcnt].showInLegend = true;
+                                op.series[plotcnt].name = seriesname;
+                                op.series[plotcnt].data = new Array();
+                                op.series[plotcnt].data.length = 0;
+                                op.series[plotcnt].point = new Object();
+                                op.series[plotcnt].point.events = new Object();
+                                op.series[plotcnt].point.events.click = chartclick;
+                                for (i=0;i<op.xAxis.categories.length;i++)
+                                {
+                                    op.series[plotcnt].data.push(parseFloat(series[i]));
+                                }
+                                plotcnt+=1;
+                            });
+                            if (foundresults) foundanyresults = true;
+                            if (!foundseries) break;
+                          }
+                          if (!foundanyresults)
+                          {
+                               alert("No Results Found (check your date range, that's the usual culprit).");
+                          }
+                        }
+        		        chart = new Highcharts.Chart(op);
+                    };
+                    function chartclick()
+                    {
+                        var i;
+                        var pj = "not found";
+                        var params = "not found";
+                        var xval = "not found";
+                        var name="not found";
+                        for (i=0;i<sxref.length;i++) {
+                            if (sxref[i].name==this.series.name) {
+                                pj=sxref[i].project;
+                                params=sxref[i].params;
+                                name=sxref[i].name;
+                                break;
+                            }
+                        }
+                        for (i=0;i<xxref.length;i++) {
+                            if ((xxref[i].category==this.category)&&(xxref[i].project==pj)) {
+                                xval=xxref[i].xval;
+                                break
+                            }
+                        }                        
+                        //alert('YESx='+this.x+', y='+this.y+', category='+this.category+', xval='+xval+', project='+pj+', params='+params+', name='+name);
+                        maketable(xval + params);
+                    };
+
+                    $('#btnPlot').click(function(){
+                        try {
+                            op.series.length = 0;
+                        }
+                        catch(err) {
+                            op.series = new Array();
+                        };
+                        op.xAxis.categories.length = 0;
+                        plotcnt=0;
+                        document.getElementById('btnAdd').disabled='';
+                        plotme();
+                    });
+                    $('#btnAdd').click(function(){
+                        plotme();
+                    });
+
+function splitdates(me, from, to) {
+    var datesplit = me.options[me.selectedIndex].value.split(",");
+    if (datesplit.length > 0) {
+        from.innerHTML= datesplit[0];
+    }
+    if (datesplit.length > 1) {
+        to.innerHTML = datesplit[1];
+    }
+}
+
+function addOption(elSel, text, val) {
+    elSel.options[elSel.options.length] = new Option(text, val);
+}
+
+function setOption(sb, val) {
+    for (i = 0; i < sb.options.length; i++) {
+        if (sb.options[i].value == val) {
+            sb.options[i].selected = true;
+            return;
+        }
+    }
+    return "";
+}
+
+function boxvalparams(includexaxis) {
+    var bld="";
+    var sb = document.getElementById('selProjects');
+    bld += "Project=" + sb.options[sb.selectedIndex].value;
+    //sb = document.getElementById('selLocations');
+    bld += "&Location=each";//  + sb.options[sb.selectedIndex].value;
+    //sb = document.getElementById('selGroups');
+    bld += "&Group=";//  + sb.options[sb.selectedIndex].value;
+    //sb = document.getElementById('selTeams');
+    bld += "&Team=";//  + sb.options[sb.selectedIndex].value;
+    //sb = document.getElementById('selCSRs');
+    bld += "&CSR=";//  + sb.options[sb.selectedIndex].value;
+    sb = document.getElementById('selKPIs');
+    bld += "&KPI=" + sb.options[sb.selectedIndex].value; //TODO: KPI is always Quality, but need to return the value not the text.
+    sb = document.getElementById('selXaxiss');
+    bld += "&Xaxis=" + sb.options[sb.selectedIndex].value;
+    sb = document.getElementById('selPayperiods');
+    var mydate = sb.options[sb.selectedIndex].value;
+    if (mydate != '') {
+        if (mydate == 'each') mydate='each,each';
+        var datesplit = mydate.split(",");
+        if (datesplit.length > 0) {
+            bld += "&StartDate=" + datesplit[0];
+        }
+        if (datesplit.length > 1) {
+            bld += "&EndDate=" + datesplit[1];
+        }
+    }
+    return bld;
+}
+
+function setboxbypartialvalue(id, pval) {
+    var sb = document.getElementById(id);
+    var i;
+    for (i = 0; i < sb.options.length; i++) {
+        if (sb.options[i].text.indexOf(pval) >= 0) {
+            sb.options[i].selected = true;
+            return;
+        }
+    }
+}
+
+
+var WHICHValue = "";
+
+function refreshboxes(which) {
+    WHICHValue = which;
+    var urlbld = "Combofilters.ashx?" + boxvalparams(true);
+    urlbld += "&reload=" + which;
+    $.ajax({
+        type: "GET",
+        url: urlbld,
+        async: false,
+        dataType: "xml",
+        error: function (request, textStatus, errorThrown) {
+            alert('Error loading ListConfig XML Document:' + request.status + ' / ' + textStatus + ' / ' + errorThrown);
+        },
+        success: loadCombosFromXML
+    });
+    splitdates(document.getElementById('selPayperiods'), document.getElementById('spanDatefrom'), document.getElementById('spanDateto'));
+}
+
+function loadCombosFromXML(xml) {
+    var whichsplit = WHICHValue.split(",");
+    var myi;
+    var c;
+    for (myi = 0; myi < whichsplit.length; myi++) {
+        c=whichsplit[myi];
+        loadComboFromXML(xml, whichsplit[myi],
+                (c!='Payperiod')&&(c!='Project')&&(c!='Xaxis'), //all at top
+                false,          //all at bottom
+                (c!='Project')&&(c!='Payperiod')&&(c!='Xaxis'),          //each at top
+                c=='Payperiod');          //each at bottom
+    }
+}
+
+function loadComboFromXML(xml, which,allattop,allatbottom,eachattop,eachatbottom) {
+    try {
+        var sb = document.getElementById('sel' + which + 's');
+        var found = false;
+        var SBValue = "";
+        $(xml).find(which + 's').each(function () {
+            sb.disabled='';
+            $(this).find(which).each(function () {
+                if (!found) {
+                    SBValue = sb.options[sb.selectedIndex].value;
+                    sb.options.length = 0;
+                    if (allattop) addOption(sb, "(All)", "");
+                    if (eachattop) addOption(sb, "(Each)", "each");
+                    found = true;
+                };
+                //alert("debug:box:"+which+" key:"+$(this).find("key").text());
+                if ($(this).find("key").text()=="disabled") {
+                    setOption(sb, "");
+                    SBValue="";
+                    sb.disabled='disabled';
+                    //alert("debug:disabling"+which);
+                }
+                else
+                {
+                    addOption(sb, $(this).find("desc").text(), $(this).find("key").text());
+                }
+            });
+            if (allatbottom) addOption(sb, "(All)", "");
+            if (eachatbottom) addOption(sb, "(Each)", "each");
+        });
+        setOption(sb, SBValue);
+    }
+    catch (err) {
+        alert(err);
+    }
+}
+
+/*
+    var tbl = [
+		{ id: "1", invdate: "2010-05-24", name: "test", note: "note", tax: "10.00", total: "2111.00" },
+		{ id: "2", invdate: "2010-05-25", name: "test2", note: "note2", tax: "20.00", total: "320.00" },
+		{ id: "3", invdate: "2007-09-01", name: "test3", note: "note3", tax: "30.00", total: "430.00" },
+		{ id: "4", invdate: "2007-10-04", name: "test", note: "note", tax: "10.00", total: "210.00" },
+		{ id: "5", invdate: "2007-10-05", name: "test2", note: "note2", tax: "20.00", total: "320.00" },
+		{ id: "6", invdate: "2007-09-06", name: "test3", note: "note3", tax: "30.00", total: "430.00" },
+		{ id: "7", invdate: "2007-10-04", name: "test", note: "note", tax: "10.00", total: "210.00" },
+		{ id: "8", invdate: "2007-10-03", name: "test2", note: "note2", amount: "300.00", tax: "21.00", total: "320.00" },
+		{ id: "9", invdate: "2007-09-01", name: "test3", note: "note3", amount: "400.00", tax: "30.00", total: "430.00" },
+		{ id: "11", invdate: "2007-10-01", name: "test", note: "note", amount: "200.00", tax: "10.00", total: "210.00" },
+		{ id: "12", invdate: "2007-10-02", name: "test2", note: "note2", amount: "300.00", tax: "20.00", total: "320.00" },
+		{ id: "13", invdate: "2007-09-01", name: "test3", note: "note3", amount: "400.00", tax: "30.00", total: "430.00" },
+		{ id: "14", invdate: "2007-10-04", name: "test", note: "note", amount: "200.00", tax: "10.00", total: "210.00" },
+		{ id: "15", invdate: "2007-10-05", name: "test2", note: "note2", amount: "300.00", tax: "20.00", total: "320.00" },
+		{ id: "16", invdate: "2007-09-06", name: "test3", note: "note3", amount: "400.00", tax: "30.00", total: "430.00" },
+		{ id: "17", invdate: "2007-10-04", name: "test", note: "note", amount: "200.00", tax: "10.00", total: "210.00" },
+		{ id: "18", invdate: "2007-10-03", name: "test2", note: "note2", amount: "300.00", tax: "20.00", total: "320.00" },
+		{ id: "19", invdate: "2007-09-01", name: "test3", note: "note3", amount: "400.00", tax: "30.00", total: "430.00" },
+		{ id: "21", invdate: "2007-10-01", name: "test", note: "note", amount: "200.00", tax: "10.00", total: "210.00" },
+		{ id: "22", invdate: "2007-10-02", name: "test2", note: "note2", amount: "300.00", tax: "20.00", total: "320.00" },
+		{ id: "23", invdate: "2007-09-01", name: "test3", note: "note3", amount: "400.00", tax: "30.00", total: "430.00" },
+		{ id: "24", invdate: "2007-10-04", name: "test", note: "note", amount: "200.00", tax: "10.00", total: "210.00" },
+		{ id: "25", invdate: "2007-10-05", name: "test2", note: "note2", amount: "300.00", tax: "20.00", total: "320.00" },
+		{ id: "26", invdate: "2007-09-06", name: "test3", note: "note3", amount: "400.00", tax: "30.00", total: "430.00" },
+		{ id: "27", invdate: "2007-10-04", name: "test", note: "note", amount: "200.00", tax: "10.00", total: "210.00" },
+		{ id: "28", invdate: "2007-10-03", name: "test2", note: "note2", amount: "300.00", tax: "20.00", total: "320.00" },
+		{ id: "29", invdate: "2007-09-01", name: "test3", note: "note3", amount: "400.00", tax: "30.00", total: "430.00" }
+	];
+    */
+
+        var opt = {
+        datatype: "local",
+        height: 'auto',
+        rowNum: 1000,
+        /* rowList: [10, 20, 30], */
+        /*colNames: ['Inv No', 'Date', 'Client', 'Amount', 'Tax', 'Total', 'Notes'],
+        colModel: [
+   		{ name: 'id', index: 'id', width: 60, sorttype: "int" },
+   		{ name: 'invdate', index: 'invdate', width: 90, sorttype: "date", formatter: "date" },
+   		{ name: 'name', index: 'name', width: 100, editable: true },
+   		{ name: 'amount', index: 'amount', width: 80, align: "right", sorttype: "float", formatter: "number", editable: true },
+   		{ name: 'tax', index: 'tax', width: 80, align: "right", sorttype: "float", editable: true },
+   		{ name: 'total', index: 'total', width: 80, align: "right", sorttype: "float" },
+   		{ name: 'note', index: 'note', width: 150, sortable: false }
+   	    ],*/
+        pager: "#plist48",
+        viewrecords: true,
+        sortname: 'Name',        
+        grouping: true,
+        groupingView: {
+            groupField: ['Name'],
+            groupCollapse: true
+        },
+        caption: "Grouping Array Data"
+    }
+    var tbl;
+/*    tbl= new Array();
+    tbl[0] = new Array();
+    tbl[0].id = new Object();
+    tbl[0].id = "1";
+    //Making a dynamically-named object:
+    var strinvdate='invdate';
+    tbl[0][strinvdate] = new Object();
+    tbl[0][strinvdate] ="2024-01-01";
+    //alert("debug:test:"+tbl[0].invdate);
+    tbl[0].name = new Object();
+    tbl[0].name="test";
+    tbl[0].note = new Object();
+    tbl[0].note="what";
+    tbl[0].amount = new Object();
+    tbl[0].amount="100.00";
+    tbl[0].tax = new Object();
+    tbl[0].tax="7.00";
+    tbl[0].total = new Object();
+    tbl[0].total="107.00";
+
+//    opt.data=new Object();
+//    opt.data=tbl;
+*/
+
+    //$('#btnTable').click(function(){
+    function maketable(params) {
+      //var urlbld = "Query.ashx?qid=KPITable&" + boxvalparams(true);
+      var urlbld = "Query.ashx?qid=KPITable&" + params;
+      $.ajax({
+        type: "GET",
+        url: urlbld,
+        async: false,
+        dataType: "xml",
+        cache: false,  //make true for live site
+        error: function (request, textStatus, errorThrown) {
+        alert('Error loading ListConfig XML Document:' + request.status + ' / ' + textStatus + ' / ' + errorThrown);
+        },
+        success: loadTableFromXML
+      });
+    };
+    //});
+
+      function loadTableFromXML(xml) {
+        var foundresults;
+        var foundanyresults;
+        var foundseries;
+        var found;
+        var x;
+        var y;
+        var i;
+        var s;
+        var n;
+        var sb;
+        tbl = new Array();
+
+        var series = new Array();
+        var seriesname = "unknown";
+        var schemanames = new Array();
+        var v;
+        foundanyresults = false;
+        $(xml).find('Communication').each(function () {
+          $(this).find('Alert').each(function () {
+            alert($(this).find("Message").text());
+            foundanyresults = true; //A message is a result.
+          });
+        });        
+        for (s=0;s>=0;s++) { //There is only one series for now, but keeping for future possibilities.
+          foundseries = false;
+          $(xml).find('Series'+s).each(function () {
+            foundresults = false;
+            foundseries = true;
+            $(this).find('Spec').each(function () {
+              seriesname = $(this).find("Name").text();
+            });
+            $(this).find('Schema').each(function () {
+              schemanames.push($(this).find("Name").text());
+              //alert("debug:found schema");
+            });
+/*
+        colNames: ['Inv No', 'Date', 'Client', 'Amount', 'Tax', 'Total', 'Notes'],
+        colModel: [
+   		{ name: 'id', index: 'id', width: 60, sorttype: "int" },
+   		{ name: 'invdate', index: 'invdate', width: 90, sorttype: "date", formatter: "date" },
+   		{ name: 'name', index: 'name', width: 100, editable: true },
+   		{ name: 'amount', index: 'amount', width: 80, align: "right", sorttype: "float", formatter: "number", editable: true },
+   		{ name: 'tax', index: 'tax', width: 80, align: "right", sorttype: "float", editable: true },
+   		{ name: 'total', index: 'total', width: 80, align: "right", sorttype: "float" },
+   		{ name: 'note', index: 'note', width: 150, sortable: false }
+   	    ],
+        */
+            opt.colNames = new Array();
+            opt.colModel = new Array();
+            for (n = 0;n<schemanames.length;n++)
+            {
+                opt.colNames.push(schemanames[n]);
+                opt.colModel[n]=new Object();
+                opt.colModel[n].name = new Object();
+                opt.colModel[n].name = schemanames[n];
+                opt.colModel[n].index = new Object();
+                opt.colModel[n].index = schemanames[n];
+                opt.colModel[n].width = 100;
+            }
+
+            $(this).find('Point').each(function () {
+              foundresults = true;
+              tbl[tbl.length]=new Object();
+              for (n=0;n<schemanames.length;n++) {
+                v = $(this).find(schemanames[n]).text();
+                tbl[tbl.length-1][schemanames[n]] = new Object();
+                tbl[tbl.length-1][schemanames[n]] = v;
+              }
+            });
+            opt.data=new Object();
+            opt.data=tbl;
+            opt.caption=seriesname;
+            sb = document.getElementById('selXaxiss');
+            opt.sortname=sb.options[sb.selectedIndex].value;
+            opt.groupingView.groupField[0]=sb.options[sb.selectedIndex].value;
+          });
+          if (foundresults) foundanyresults = true;
+          if (!foundseries) break;
+        }
+        if (!foundanyresults)
+        {
+          alert("No Table Results Found (check your date range, that's the usual culprit).");
+        }
+        if (tablecnt >= tablemax) tablecnt = 0;
+        tablecnt +=1;
+        jQuery("#list"+tablecnt).GridUnload();
+        jQuery("#list"+tablecnt).jqGrid(opt);
+      };
+</script>
+				
+	</body>
+</html>

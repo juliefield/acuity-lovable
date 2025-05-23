@@ -1,0 +1,13 @@
+<div class="helloworld-wrapper">
+    <div data-bind="with: hw">
+        <h1 class="helloworld-headerstyle">Hello World</h1>
+
+        <div data-bind="visible: CSR() == ''">
+            <p>View for non-csr, role=<span data-bind="text:Role()"></span></p>
+        </div>
+        <div  data-bind="visible: CSR() != ''">
+            <p>CSR <span data-bind="text:CSR()"></span></p>
+            <p>Build out the view here...</p>
+        </div>
+    </div>
+</div>

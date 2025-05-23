@@ -1,0 +1,176 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+	<head id="Head1" runat="server">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=8,chrome=1" />
+    <title>Beacon</title>
+
+    <!--[if IE 8]>    <html lang="en-us" class="isie8"> <![endif]-->
+    <!--[if gt IE 8]>    <html lang="en-us" class="isgtie8"> <![endif]-->
+
+    	<link href="appApmClient/themes/default/theme.css" type="text/css" rel="stylesheet" />
+		<!-- 1. Add these JavaScript inclusions in the head of your page -->
+        <script type="text/javascript" src="../lib/jquery/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="../lib/jquery/ui/js/jquery-ui-1.8.16.custom.min.js"></script>
+   	    <script src="../lib/jquery/plugins/jquery.cookie.js" type="text/javascript"></script>
+        <script type="text/javascript" src="../appLib/js/applib-1.1.15.js?r=2"></script>
+
+	</head>
+<body id="Body1" style="overflow:visible;" runat="server">
+
+<form id="form2" runat="server">
+<div style="width:600px;border: 1px solid black;margin: auto;min-height:600px;">
+  <div style="text-align:center;padding:10px;">Acuity Connection Status</div>
+  <div class="display-tokenstate" style="font-size:40px;text-align:center;padding:10px;"></div>
+  <div style="padding:5px;font-size:20px;margin-top:10px;">Username: <span class="display-username" style="font-weight:bold;"></span></div>
+  <div class="div-monitorcount" style="padding:5px;font-size:30px;">Monitors Completed Today: <span class="display-monitorcount" style="font-weight:bold;"></span></div>
+  <div style="padding:5px;margin-top:20px;">Your IP (as seen by Acuity): <span class="display-ip" style="font-weight:bold;"></span></div>
+  <div class="display-failsafe" style="color:Red;"></div>
+  <div style="padding:5px;">Current Token: <span class="display-token" style="font-weight:bold;"></span></div>
+  <div style="padding:5px;">Latest Beacon Update: <span class="display-serverdate" style="font-weight:bold;"></span></div>
+  <div style="padding:5px;">Logs Last Sent: <span class="display-logs" style="font-weight:bold;">None Yet</span></div>
+  <div class="display-error" style="color:Red;"></div>
+</div>
+
+</form>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        var refresh_seconds = 20;  //Really quick for testing.
+        var wait_seconds = 60;
+
+        var log_seconds = 120;  //Every minute
+        var breadcrumb = 17;
+
+        var beaconreturned = false;
+
+        var logs = [];
+
+        var spinstate = 0;
+
+        function callbeacon() {
+            beaconreturned = false;
+            $(".display-username").html($.cookie("TP1Username"));
+            $(".display-token").html($.cookie("uid"));
+            a$.ajax({ type: 'POST', service: 'JScript', async: true, data: { lib: 'public', cmd: 'beaconPing', beaconid: a$.gup("beaconid"), countmonitors: true, token: $.cookie("uid"), userid: $.cookie("TP1Username") }, dataType: 'json', cache: false, error: a$.ajaxerror,
+                success: function (json) {
+                    //Put these first in case something errors out.
+                    clearTimeout(failsafeid);
+                    failsafeid = setTimeout(failsafe, wait_seconds * 1000);
+                    callbeaconid = setTimeout(callbeacon, refresh_seconds * 1000);
+
+                    logs.push(json);
+                    beaconreturned = true;
+                    if (json.msg != "") {
+                        $(".display-error").html(json.msg);
+                    }
+                    else {
+                        $(".display-error").html("");
+                    }
+
+                    //Verbose for flexibility
+                    if ((json.version != a$.gup("version")) && (json.beaconid != a$.gup("beaconid"))) {
+                        window.location = "//" + a$.urlprefix(true) + "acuityapmr.com/jq/Beacon.html?prefix=" + a$.urlprefix().replace(".", "") + "&beaconid=" + json.beaconid + "&version=" + json.version;
+                    }
+                    else if (json.version != a$.gup("version")) {
+                        window.location = "//" + a$.urlprefix(true) + "acuityapmr.com/jq/Beacon.html?prefix=" + a$.urlprefix().replace(".", "") + "&beaconid=" + a$.gup("beaconid") + "&version=" + json.version;
+                    }
+                    else if (json.beaconid != a$.gup("beaconid")) {
+                        window.location = "//" + a$.urlprefix(true) + "acuityapmr.com/jq/Beacon.html?prefix=" + a$.urlprefix().replace(".", "") + "&beaconid=" + json.beaconid + "&version=" + json.version;
+                    }
+                    else {
+
+                        $(".display-failsafe").html("");
+                        if (a$.exists(json.ip)) {
+                            $(".display-ip").html(json.ip);
+                        }
+                        else {
+                            $(".display-ip").html("Not Returned");
+                        }
+                        if (a$.exists(json.health)) {
+                            if (json.health >= 10) {
+                                $(".display-tokenstate").css("color", "white").css("background-color", "green");
+                            }
+                            else if (json.health > 0) {
+                                $(".display-tokenstate").css("color", "black").css("background-color", "yellow");
+                            }
+                            else {
+                                $(".display-tokenstate").css("color", "white").css("background-color", "red");
+                            }
+                        }
+                        if (a$.exists(json.tokenstate)) {
+                            $(".display-tokenstate").html(json.tokenstate);
+                        }
+                        else {
+                            $(".display-tokenstate").html("Not Returned");
+                        }
+                        if (a$.exists(json.monitorcount)) {
+                            $(".div-monitorcount").show();
+                            $(".display-monitorcount").html(json.monitorcount);
+                        }
+                        else {
+                            $(".div-monitorcount").hide();
+                        }
+                        if (a$.exists(json.serverdate)) {
+                            $(".display-serverdate").html(json.serverdate + " EST");
+                        }
+
+                    }
+                    /*
+                    if (json.killed) {
+                    $.cookie("uid", "");
+                    $.cookie("TP1Username", "");
+                    $.cookie("username", "");
+                    alert("Kill Successful");
+                    }
+                    else {
+                    alert("Kill Failed");
+                    }
+                    */
+                }
+            });
+        }
+
+        function failsafe() {
+            clearTimeout(callbeaconid);
+            clearTimeout(failsafeid);
+            $(".display-tokenstate").html("CONNECTION TIMEOUT! Do not save!").css("color", "white").css("background-color", "red");
+            //$(".display-failsafe").html("Connection Not Found");
+            $(".display-ip").html("none");
+            failsafeid = setTimeout(failsafe, wait_seconds * 1000);
+            callbeaconid = setTimeout(callbeacon, refresh_seconds * 1000);
+        }
+
+        function sendlogs() {
+            breadcrumb += 1;
+            a$.ajax({ type: 'POST', service: 'JScript', async: true, data: { lib: 'public', cmd: 'beaconLog', beaconid: a$.gup("beaconid"), breadcrumb: breadcrumb, logs: logs, token: $.cookie("uid"), userid: $.cookie("TP1Username") }, dataType: 'json', cache: false, error: a$.ajaxerror,
+                success: function (json) {
+                    if (json.msg != "") {
+                        $(".display-logs").html(json.msg);
+                    }
+                    else {
+                        //It's possible to lose a log if callbeacon is called while this is posting.
+                        //BUT- that's not what I'm looking for.  I'm looking for logs that are duplicates, indicating a post reflection.
+                        if (json.breadcrumb == breadcrumb) {
+                            logs.length = 0;
+                            $(".display-logs").html(json.serverdate + " EST");
+                        }
+                        else {
+                            $(".display-logs").html("Reflecting");
+                        }
+                    }
+                    sendlogsid = setTimeout(sendlogs, log_seconds * 1000);
+                }
+            });
+        }
+        var failsafeid = setTimeout(failsafe, wait_seconds * 1000);
+        var callbeaconid = setTimeout(callbeacon, 0);
+
+        var sendlogsid = setTimeout(sendlogs, log_seconds * 1000);
+
+
+    });
+</script>
+	</body>
+</html>

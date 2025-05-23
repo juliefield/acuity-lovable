@@ -1,0 +1,14 @@
+<div class="treasurehunt-ers treasurehunt-wrapper" style="display:none;">
+    <div data-bind="with: th">
+        <h1 class="treasurehunt-headerstyle">Treasure Hunt</h1>
+
+        <div data-bind="visible: CSR() == ''">
+            <p>View for non-csr, role=<span data-bind="text:Role()"></span></p>
+        </div>
+        <div  data-bind="visible: CSR() != ''">
+            <p>Treasure Hunt for CSR <span data-bind="text:CSR()"></span></p>
+            <p>Register Balance for CSR = <span data-bind="text:Balance()"></span></p>
+            <p>Build out the game here...</p>
+        </div>
+    </div>
+</div>

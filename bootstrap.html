@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>BS</title>
+    <script type="text/javascript" src="lib/jquery/jquery-1.7.2.min.js"></script>
+
+<style>
+#qac_contextmenu {
+  z-index: 1000;
+  position: absolute;
+  background-color: #C0C0C0;
+  border: 1px solid blue;
+  padding: 2px;
+  display: block;
+  margin: 0;
+  list-style-type: none;
+  list-style: none;
+  display: none;
+}
+
+#qac_contextmenu ul {
+  
+}
+
+#qac_contextmenu li {
+  list-style: none;
+  margin-left: 0px;
+  padding-left: 0px;
+}
+
+#qac_contextmenu a {
+  border: 0 !important;
+  text-decoration: none;
+}
+
+#qac_contextmenu a:hover {
+  text-decoration: underline !important;
+}
+</style>
+
+</head>
+<body oncontextmenu="contextmenu();">
+<div contenteditable="true" style="cursor:pointer;">
+  <div>
+    <p>Edit Me
+        <span>Me too</span>
+    </p>
+  </div>
+
+  <div id="test1">
+    <a href="www.google.com" class="test">Google</a>
+    <a href="www.google.com" class="test">Link 2</a>
+    <a href="www.google.com" class="test">Link 3</a>
+    <a contenteditable="true" href="www.google.com" class="test">Link 4</a>
+  </div>
+
+  <ol>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+    <li>Item 4</li>
+</ol>
+
+<div style="border: 4px solid purple;">
+    <iframe src="https://coda.io/embed/UrXDrwQ9Jf/_suD6_?viewMode=embedplay" width=900 height=500 style="max-width: 100%;" allow="fullscreen"></iframe>
+</div>
+
+  <!-- initially hidden right-click menu -->
+  <div id="qac_contextmenu">
+    <ul>
+        <!--
+        <li class="qac_InsertBefore">Insert Before
+        </li>
+        -->
+        <li class="qac_InsertAfter">Duplicate
+        </li>
+        <li class="qac_Copy">Copy
+        </li>
+        <li class="qac_Paste">Paste
+        </li>
+          <li>
+        <a href="C:\">C</a>
+      </li>      
+    </ul>
+  </div>
+
+</body>
+<script language="javascript">
+    var qac_currentelement = null;
+    var qac_buffer = null;
+    $(document).ready(function() {        
+        if ($("body").addEventListener) {
+            $("body").addEventListener('contextmenu', function(e) {
+            alert("You've tried to open context menu"); //here you draw your own menu
+            e.preventDefault();
+            }, false);
+        } else {
+            //document.getElementById("test").attachEvent('oncontextmenu', function() {
+            //$(".test").bind('contextmenu', function() {
+            $('div,a,span,p,li,ul').on('contextmenu', function(event) {
+              //alert("contextmenu"+event);
+                event.stopPropagation();
+                var t = this;
+                while ($(t).prop("tagName") != "BODY") {
+                    //alert("debug: class:" + $(t).attr("class") + " elem:" + $(t).html());
+                    if ($(t).attr("ID") == "qac_contextmenu") {
+                        //alert("right clicked in the menu");
+                        return;
+                    }
+                    t = $(t).parent();
+                }
+                $(".qac_currentelement").remove();
+
+                qac_currentelement = this;
+                $("#qac_contextmenu").append('<li class="qac_currentelement">Current: ' + $(this).html() + "</li>");
+
+                $("#qac_contextmenu").show().css("top", mouseY(event) + 'px').css("left", mouseX(event) + 'px');
+
+                window.event.returnValue = false;
+            });
+        }
+        // this is from another SO post...  
+        $(document).bind("click", function(event) {
+            $("#qac_contextmenu").hide();
+        });
+        $(".qac_InsertBefore").on("click", function() {
+            if (qac_currentelement != null) {
+                $(qac_currentelement).before($(qac_currentelement).clone());
+            }
+        });
+        $(".qac_InsertAfter").on("click", function() {
+            if (qac_currentelement != null) {
+                $(qac_currentelement).after($(qac_currentelement).clone());
+            }
+        });
+        $(".qac_Copy").on("click", function() {
+            qac_buffer = qac_currentelement;
+        });
+        $(".qac_Paste").on("click", function() {
+            if (qac_buffer != null) {
+                $(qac_currentelement).before($(qac_buffer).clone());
+            }
+        });
+
+    });
+
+
+
+
+function mouseX(evt) {
+  if (evt.pageX) {
+    return evt.pageX;
+  } else if (evt.clientX) {
+    return evt.clientX + (document.documentElement.scrollLeft ?
+      document.documentElement.scrollLeft :
+      document.body.scrollLeft);
+  } else {
+    return null;
+  }
+}
+
+function mouseY(evt) {
+  if (evt.pageY) {
+    return evt.pageY;
+  } else if (evt.clientY) {
+    return evt.clientY + (document.documentElement.scrollTop ?
+      document.documentElement.scrollTop :
+      document.body.scrollTop);
+  } else {
+    return null;
+  }
+}
+
+</script>
+</html>

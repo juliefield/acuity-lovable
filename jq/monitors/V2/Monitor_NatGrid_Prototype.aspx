@@ -1,0 +1,575 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Monitor_NatGrid_Prototype.aspx.cs" ValidateRequest="false" Inherits="_Monitor_NatGrid_Prototype" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>National Grid QA</title>
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1" />
+    <script type="text/javascript" src='<%# ResolveUrl("~/lib/jquery/ui/js/jquery-1.6.2.min.js") %>'></script>
+    <script src="<%# ResolveUrl("~/lib/jquery/plugins/jquery.cookie.js") %>" type="text/javascript"></script>
+    <script src="<%# ResolveUrl("~/lib/jquery/plugins/jquery.dump.js") %>" type="text/javascript"></script>
+    <script type="text/javascript" src="<%# ResolveUrl("~/applib/js/appLib-1.1.15.js") %>"></script>
+<style type="text/css">
+    .mon-wrapper
+    {
+        position:relative;
+    }
+    .mon-stats
+    {
+        position:absolute;
+        top: 60px;
+        right: 30px;
+        background-color: Green;
+        width: 250px;
+        z-index: 50;
+    }
+    .mon-stats ul
+    {
+        list-style: none;
+        padding: 10px;
+        margin: 0;
+    }
+    .mon-stats ul li
+    {
+        color: White;
+        font-size: 12px;
+    }
+    .mon-stats li label
+    {
+        font-weight: bold;
+        width: 60px;
+    }
+    .mon-stats li span
+    {
+        padding-left: 15px;
+        float:right;
+    }
+    .mon-content
+    {
+        position:relative;
+        padding: 10px;
+        margin-top: 10px;
+        width: 100%;
+        overflow-y:scroll;
+    }
+    .mon-content li
+    {
+        padding: 5px;
+    }
+    .mon-answer
+    {
+        float:right;
+        padding-right: 300px;
+    }
+    .mon-subtotal
+    {
+        width: 40px;
+        float:right;
+        text-align: right;
+        color: Blue;
+        font-weight: bold;
+        font-size: 20px;
+        vertical-align:middle;
+    }
+    .mon-submit
+    {
+        clear:both;
+    }
+    .mon-comments
+    {
+        clear: both;
+    }
+    .mon-comments label
+    {
+        vertical-align:middle;
+    }
+    .mon-comments textarea
+    {
+        margin-left: 10px;
+        vertical-align:middle;
+    }
+    textarea
+    {
+        overflow: visible;
+    }
+    .mon-fields
+    {
+        margin-left: 5px;
+    }
+
+    .mon-field
+    {
+        clear both;
+        min-height: 30px;
+    }
+
+    .mon-field label
+    {
+        color:White;
+        float: left;
+    }
+
+    .mon-field-input, .mon-field select
+    {
+        width: 120px;
+        padding-right: 5px;
+        float: right;
+    }
+
+    .sel_time
+    {
+        width: 30px;
+    }
+
+    .mon-address textarea
+    {
+        margin-left: 0px;
+    }
+
+    .mon-question
+    {
+        /* font-weight: bold; */
+    }
+    .mon-section
+    {
+        font-weight: bold;
+    }
+    .mon-desc
+    {
+        margin-top: 8px;
+        margin-left: 25px;
+        font-size: 12px;
+        width: 60%;
+    }
+</style>
+</head>
+<body runat="server" style="overflow-y:scroll;">
+
+
+    <div class="header gradient-lightest">
+        <div class="logo" style="margin-left:0px;"><h1><span>Acuity &reg;</span></h1></div>
+        <div class="heading" style="margin-left:0px;">National Grid Quality Form</div>
+    </div>
+    <div style="display:none;">
+        <asp:Label ID="lblMode" runat="server"></asp:Label>
+        <asp:Label ID="lblMonitorId" runat="server"></asp:Label>
+        <asp:Label ID="lblAcknowledgementRequired" runat="server"></asp:Label>
+        <asp:Label ID="lblSqfcode" runat="server"></asp:Label>
+    </div>
+
+    <div class="mon-wrapper">
+        <div class="mon-stats">
+            <ul>
+                <li><label>Agent:</label><span><asp:Label id="lblAgentName" runat="server"></asp:Label> <asp:Label style="display:none;" id="lblAgent" runat="server"></asp:Label></span></li>
+                <li><label>Call ID:</label><span><asp:Label ID="lblCallid" runat="server"></asp:Label></span></li>
+                <li><label>Call Date:</label><span><asp:Label ID="lblCalldate" runat="server"></asp:Label></span></li>
+                <li><label>Supervisor:</label><span><asp:Label id="lblSupervisorName" runat="server"></asp:Label> <asp:Label style="display:none;" id="lblSupervisor" runat="server"></asp:Label><asp:Label style="display:none;" id="lblViewer" runat="server"></asp:Label><asp:Label style="display:none;" id="lblRole" runat="server"></asp:Label></span></li>
+            </ul>
+            <ul class="mon-fields">
+                <li class="mon-field" style="height: 40px;"><label>Call&nbsp;Length (hh:mm:ss):</label><span style="float: right;padding-top: 8px;"><input type="text" class="sel_time" id="inpCalllength_HH" value="" maxlength="2" runat="server" />:<input class="sel_time" type="text" id="inpCalllength_MM" maxlength="2" runat="server" />:<input type="text" class="sel_time" id="inpCalllength_SS" maxlength="2" runat="server" /></span><span id="errmsg"></span></li>
+                <li class="mon-field"><label>Site&nbsp;Location:</label><select id="selSitelocation" runat="server"><option selected="selected" value="San Antonio">San Antonio</option></select></li>
+                <li class="mon-field"><label>Jurisdiction:</label><select id="selJurisdiction" runat="server"><option selected="selected" value="MECO">MECO</option><option value="NANT">NANT</option><option value="RI">RI</option><option value="New York">New York</option><option value="Mass Gas">Mass Gas</option></select></li>
+            </ul>
+            <ul class="mon-fields">
+                <li class="mon-field select-call-type"><label>Call Type:</label><select id="selCalltype" runat="server"><option selected="selected" value="Collections">Collections</option><option value="Move">Move</option></select></li>
+                <li class="mon-field"><label>Category:</label>
+                    <select id="selCategory_collections" runat="server">
+                        <option selected="selected" value="Payment Agreement">Payment Agreement</option>
+                        <option value="DPA Reinstate">DPA Reinstate</option>
+                        <option value="Collection Arrangement">Collection Arrangement</option>
+                        <option value="Notice Response - Credit Bureau">Notice Response - Credit Bureau</option>
+                        <option value="Notice Response - Disconnect Notice">Notice Response - Disconnect Notice</option>
+                        <option value="Field Activity Check">Field Activity Check</option>
+                        <option value="Medical">Medical</option>
+                        <option value="Outbound Call Response">Outbound Call Response</option>
+                        <option value="Payment Inquiry">Payment Inquiry</option>
+                        <option value="Making a Payment">Making a Payment</option>
+                        <option value="Status of Work">Status of Work</option>
+                        <option value="Service Orders">Service Orders</option>
+                    </select>
+                    <select id="selCategory_move" style="display:none;" runat="server">
+                        <option selected="selected" value="Start">Start</option>
+                        <option value="Stop">Stop</option>
+                        <option value="Transfer">Transfer</option>
+                        <option value="Start with AI">Start with AI</option>
+                        <option value="Stop with AI">Stop with AI</option>
+                    </select>
+                </li>
+                <li class="mon-field"><label>Language:</label><select id="selLanguage" runat="server"><option selected="selected" value="English">English</option><option value="Spanish">Spanish</option></select></li>
+                <li class="mon-field"><label>Eligible:</label><select id="selEligible" runat="server"><option selected="selected" value="Yes">Yes</option><option value="No">No</option></select></li>
+                <li class="mon-field"><label>Valid&nbspXfr:</label><select id="selValidtransfer" runat="server"><option selected="selected" value="Yes">Yes</option><option value="No">No</option><option value="N/A">N/A</option></select></li>
+            </ul>
+
+
+                    <div class="mon-show-acknowledgementrequired" style="display:none;border: 2px solid red;background-color:white;padding:8px;text-align: center;">
+                        <span class="mon-show-isagent" style="font-weight:bold;display:none;"><br />Click the button below to acknowledge<br />that you have seen this monitor.<br />
+                                                        <br /><input id="acknowledgeme" class="mon-acknowledge" type="button" value="Acknowledge Monitor" /></span>
+                        <span class="mon-show-isnotagent" style="color:Red;display:none;">The agent must log in to acknowledge this monitor.</span>
+                    </div>
+                    <span class="mon-show-acknowledgementreceived" style="display:none;color:White;width: 100%;text-align: center;">
+                        &nbsp;This monitor was acknowledged by the &nbsp;Agent: <asp:Label ID="lblAcknowledgementDate" runat="server"></asp:Label>
+                    </span>
+
+
+
+
+
+        </div>
+        <div class="mon-content">
+
+            <ul style="list-style:none;">
+                <li style="border-bottom: 1px solid gray;">
+                    <span class="mon-question">&nbsp;</span>
+                    <span class="mon-answer" style="padding-right: 290px;">Answer<span class="mon-subtotal" style="width: 100px;font-weight:normal;color:Black;font-size:14px;">Points</span></span>
+                </li>
+            </ul>
+
+            <div class="mon-section">Treated Like a Valued Customer</div>
+            <ol>
+                <li>
+                    <span class="mon-question">Appropriately greeted customer</span>
+                    <span class="mon-answer"><select id="Q1"><option value="">--select--</option><option value="3">Yes</option><option value="0">Partial</option><option value="0">No</option><option value="3">N/A</option></select><span class="mon-subtotal">&nbsp;</span></span>
+                    <p class="mon-comments"><label>Comments:</label><textarea id="Q1Comments" cols="90" rows="1"></textarea></p>
+                </li>
+                <li>
+                    <span class="mon-question">Appropriately closed call</span>
+                    <span class="mon-answer"><select id="Q2"><option value="">--select--</option><option value="3">Yes</option><option value="0">No</option><option value="3">N/A</option></select><span class="mon-subtotal">&nbsp;</span></span>
+                    <p class="mon-comments"><label>Comments:</label><textarea id="Q2Comments" cols="90" rows="1"></textarea></p>
+                </li>
+                <li>
+                    <span class="mon-question">Used reflective and/ or supportive phrases with caller</span>
+                    <span class="mon-answer"><select id="Q3"><option value="">--select--</option><option value="3">Yes</option><option value="0">No</option><option value="3">N/A</option></select><span class="mon-subtotal">&nbsp;</span></span>
+                    <p class="mon-comments"><label>Comments:</label><textarea id="Q3Comments" cols="90" rows="1"></textarea></p>
+                </li>
+                <li>
+                    <span class="mon-question">Avoided unexplained Dead Air</span>
+                    <span class="mon-answer"><select id="Q4"><option value="">--select--</option><option value="3">Yes</option><option value="0">No</option><option value="3">N/A</option></select><span class="mon-subtotal">&nbsp;</span></span>
+                    <p class="mon-comments"><label>Comments:</label><textarea id="Q4Comments" cols="90" rows="1"></textarea></p>
+                </li>
+            </ol>
+
+            <div class="mon-section">Helped Schedule an Appointment</div>
+            <ol start="5">
+                <li>
+                    <span class="mon-question">Agent assisted customer in selecting day (time) appointment setting</span>
+                    <span class="mon-answer"><select id="Q5"><option value="">--select--</option><option value="2">Yes</option><option value="0">No</option><option value="2">N/A</option></select><span class="mon-subtotal">&nbsp;</span></span>
+                    <p class="mon-comments"><label>Comments:</label><textarea id="Q5Comments" cols="90" rows="1"></textarea></p>
+                </li>
+                <li>
+                    <span class="mon-question">CBYG offered and all steps followed</span>
+                    <span class="mon-answer"><select id="Q6"><option value="">--select--</option><option value="10">Yes</option><option value="0">No</option><option value="10">N/A</option></select><span class="mon-subtotal">&nbsp;</span></span>
+                    <p class="mon-comments"><label>Comments:</label><textarea id="Q6Comments" cols="90" rows="1"></textarea></p>
+                </li>
+            </ol>
+
+            <div class="mon-section">Friendly and Courteous</div>
+            <ol start="7">
+                <li>
+                    <span class="mon-question">Used Common Courtesy Phrases</span>
+                    <span class="mon-answer"><select id="Q7"><option value="">--select--</option><option value="4">Yes</option><option value="0">No</option><option value="4">N/A</option></select><span class="mon-subtotal">&nbsp;</span></span>
+                    <p class="mon-comments"><label>Comments:</label><textarea id="Q7Comments" cols="90" rows="1"></textarea></p>
+                </li>
+                <li>
+                    <span class="mon-question">Used Caller's Name</span>
+                    <span class="mon-answer"><select id="Q8"><option value="">--select--</option><option value="3">Yes</option><option value="0">No</option><option value="3">N/A</option></select><span class="mon-subtotal">&nbsp;</span></span>
+                    <p class="mon-comments"><label>Comments:</label><textarea id="Q8Comments" cols="90" rows="1"></textarea></p>
+                </li>
+                <li>
+                    <span class="mon-question">Professionalism</span>
+                    <span class="mon-answer"><select id="Q9"><option value="">--select--</option><option value="5">Yes</option><option value="0">No</option><option value="5">N/A</option></select><span class="mon-subtotal">&nbsp;</span></span>
+                    <p class="mon-comments"><label>Comments:</label><textarea id="Q9Comments" cols="90" rows="1"></textarea></p>
+                </li>
+            </ol>
+
+            <div class="mon-section">Well Informed</div>
+            <ol start="10">
+                <li>
+                    <span class="mon-question">Communicates Ownership</span>
+                    <span class="mon-answer"><select id="Q10"><option value="">--select--</option><option value="8">Yes</option><option value="0">No</option><option value="8">N/A</option></select><span class="mon-subtotal">&nbsp;</span></span>
+                    <p class="mon-comments"><label>Comments:</label><textarea id="Q10Comments" cols="90" rows="1"></textarea></p>
+                </li>
+            </ol>
+
+            <div class="mon-section">Answered Question</div>
+            <ol start="11">
+                <li>
+                    <span class="mon-question">Confirmed questions answered</span>
+                    <span class="mon-answer"><select id="Q11"><option value="">--select--</option><option value="4">Yes</option><option value="0">No</option><option value="4">N/A</option></select><span class="mon-subtotal">&nbsp;</span></span>
+                    <p class="mon-comments"><label>Comments:</label><textarea id="Q11Comments" cols="90" rows="1"></textarea></p>
+                </li>
+            </ol>
+
+            <div class="mon-section">Solved Problem</div>
+            <ol start="12">
+                <li>
+                    <span class="mon-question">Summarize to ensure customer understands resolution or steps identified to achieve resolution</span>
+                    <span class="mon-answer"><select id="Q12"><option value="">--select--</option><option value="8">Yes</option><option value="0">No</option><option value="8">N/A</option></select><span class="mon-subtotal">&nbsp;</span></span>
+                    <p class="mon-comments"><label>Comments:</label><textarea id="Q12Comments" cols="90" rows="1"></textarea></p>
+                </li>
+            </ol>
+
+            <div class="mon-section">FACTA / Verification / Experian Adherence</div>
+            <ol start="13">
+                <li>
+                    <span class="mon-question">Verified accurate customer information resulting in FACTA Adherence</span>
+                    <span class="mon-answer"><select id="Q13"><option value="">--select--</option><option value="15">Yes</option><option value="0">No</option><option value="15">N/A</option></select><span class="mon-subtotal">&nbsp;</span></span>
+                    <p class="mon-comments"><label>Comments:</label><textarea id="Q13Comments" cols="90" rows="1"></textarea></p>
+                </li>
+                <li>
+                    <span class="mon-question">Where required, confirmed customer information in Experian</span>
+                    <span class="mon-answer"><select id="Q14"><option value="">--select--</option><option value="5">Yes</option><option value="0">No</option><option value="5">N/A</option></select><span class="mon-subtotal">&nbsp;</span></span>
+                    <p class="mon-comments"><label>Comments:</label><textarea id="Q14Comments" cols="90" rows="1"></textarea></p>
+                </li>
+            </ol>
+
+            <div class="mon-section">FCR / Customer Impact</div>
+            <ol start="15">
+                <li>
+                    <span class="mon-question">Did the agent review previous contacts, orders and make updates to the customer record as appropriate</span>
+                    <span class="mon-answer"><select id="Q15"><option value="">--select--</option><option value="4">Yes</option><option value="0">No</option><option value="4">N/A</option></select><span class="mon-subtotal">&nbsp;</span></span>
+                    <p class="mon-comments"><label>Comments:</label><textarea id="Q15Comments" cols="90" rows="1"></textarea></p>
+                </li>
+                <li>
+                    <span class="mon-question">Did the agent follow the proper procedure(s) associated with the call type?</span>
+                    <span class="mon-answer"><select id="Q16"><option value="">--select--</option><option value="10">Yes</option><option value="0">No</option><option value="10">N/A</option></select><span class="mon-subtotal">&nbsp;</span></span>
+                    <p class="mon-comments"><label>Comments:</label><textarea id="Q16Comments" cols="90" rows="1"></textarea></p>
+                </li>
+                <li>
+                    <span class="mon-question">Did the agent fully educate the customer based on the call type?</span>
+                    <span class="mon-answer"><select id="Q17"><option value="">--select--</option><option value="10">Yes</option><option value="0">No</option><option value="10">N/A</option></select><span class="mon-subtotal">&nbsp;</span></span>
+                    <p class="mon-comments"><label>Comments:</label><textarea id="Q17Comments" cols="90" rows="1"></textarea></p>
+                </li>
+            </ol>
+            <div class="mon-section">Field Force Comments</div>
+            <ul style="list-style:none;">
+                <li>
+                    <p class="mon-comments"><textarea id="Comments" cols="90" rows="10"></textarea></p>
+                </li>
+            </ul>
+
+            <ol style="list-style:none;padding-top: 40px;">
+                <li>
+                    <span class="mon-question"></span>
+                    <span class="mon-answer" style="font-weight: bold;font-size:20px;" >Monitor Total<span class="mon-subtotal mon-total" id="montotal">0</span></span>
+                  	<form method="post" runat="server">
+                        <input type="hidden" id="txtQ1" runat="server" value="" /><input type="hidden" id="txtQ1text" runat="server" value="" /><input type="hidden" id="txtQ1Comments" runat="server" value="" />
+                        <input type="hidden" id="txtQ2" runat="server" value="" /><input type="hidden" id="txtQ2text" runat="server" value="" /><input type="hidden" id="txtQ2Comments" runat="server" value="" />
+                        <input type="hidden" id="txtQ3" runat="server" value="" /><input type="hidden" id="txtQ3text" runat="server" value="" /><input type="hidden" id="txtQ3Comments" runat="server" value="" />
+                        <input type="hidden" id="txtQ4" runat="server" value="" /><input type="hidden" id="txtQ4text" runat="server" value="" /><input type="hidden" id="txtQ4Comments" runat="server" value="" />
+                        <input type="hidden" id="txtQ5" runat="server" value="" /><input type="hidden" id="txtQ5text" runat="server" value="" /><input type="hidden" id="txtQ5Comments" runat="server" value="" />
+                        <input type="hidden" id="txtQ6" runat="server" value="" /><input type="hidden" id="txtQ6text" runat="server" value="" /><input type="hidden" id="txtQ6Comments" runat="server" value="" />
+                        <input type="hidden" id="txtQ7" runat="server" value="" /><input type="hidden" id="txtQ7text" runat="server" value="" /><input type="hidden" id="txtQ7Comments" runat="server" value="" />
+                        <input type="hidden" id="txtQ8" runat="server" value="" /><input type="hidden" id="txtQ8text" runat="server" value="" /><input type="hidden" id="txtQ8Comments" runat="server" value="" />
+                        <input type="hidden" id="txtQ9" runat="server" value="" /><input type="hidden" id="txtQ9text" runat="server" value="" /><input type="hidden" id="txtQ9Comments" runat="server" value="" />
+                        <input type="hidden" id="txtQ10" runat="server" value="" /><input type="hidden" id="txtQ10text" runat="server" value="" /><input type="hidden" id="txtQ10Comments" runat="server" value="" />
+                        <input type="hidden" id="txtQ11" runat="server" value="" /><input type="hidden" id="txtQ11text" runat="server" value="" /><input type="hidden" id="txtQ11Comments" runat="server" value="" />
+                        <input type="hidden" id="txtQ12" runat="server" value="" /><input type="hidden" id="txtQ12text" runat="server" value="" /><input type="hidden" id="txtQ12Comments" runat="server" value="" />
+                        <input type="hidden" id="txtQ13" runat="server" value="" /><input type="hidden" id="txtQ13text" runat="server" value="" /><input type="hidden" id="txtQ13Comments" runat="server" value="" />
+                        <input type="hidden" id="txtQ14" runat="server" value="" /><input type="hidden" id="txtQ14text" runat="server" value="" /><input type="hidden" id="txtQ14Comments" runat="server" value="" />
+                        <input type="hidden" id="txtQ15" runat="server" value="" /><input type="hidden" id="txtQ15text" runat="server" value="" /><input type="hidden" id="txtQ15Comments" runat="server" value="" />
+                        <input type="hidden" id="txtQ16" runat="server" value="" /><input type="hidden" id="txtQ16text" runat="server" value="" /><input type="hidden" id="txtQ16Comments" runat="server" value="" />
+                        <input type="hidden" id="txtQ17" runat="server" value="" /><input type="hidden" id="txtQ17text" runat="server" value="" /><input type="hidden" id="txtQ17Comments" runat="server" value="" />
+                        <input type="hidden" id="txtComments" runat="server" value="" />
+                        <input type="hidden" id="txtTotal" runat="server" value="" />
+                        <input type="hidden" id="txtCalllength_HH" runat="server" value="" />
+                        <input type="hidden" id="txtCalllength_MM" runat="server" value="" />
+                        <input type="hidden" id="txtCalllength_SS" runat="server" value="" />
+                        <input type="hidden" id="txtSitelocation" runat="server" value="" />
+                        <input type="hidden" id="txtJurisdiction" runat="server" value="" />
+                        <input type="hidden" id="txtCalltype" runat="server" value="" />
+                        <input type="hidden" id="txtCategory_collections" runat="server" value="" />
+                        <input type="hidden" id="txtCategory_move" runat="server" value="" />
+                        <input type="hidden" id="txtLanguage" runat="server" value="" />
+                        <input type="hidden" id="txtEligible" runat="server" value="" />
+                        <input type="hidden" id="txtValidtransfer" runat="server" value="" />
+                        <asp:Button id="submitme" runat="server" class="mon-submit" disabled="disabled" type="submit" Text="Submit Monitor" OnClick="submitme_click" />
+                        <asp:Button id="deleteme" runat="server" class="mon-delete" hidden="true" type="submit" Text="Delete" OnClientClick="return confirm('Are you sure you want to delete this monitor?');" OnClick="deleteme_click" />
+                        <asp:Button id="closeme" runat="server" class="mon-close" hidden="true" type="submit" Text="Close" OnClick="closeme_click" />
+                    </form>
+                </li>
+            </ol>
+        </div>
+    </div>
+  <script type="text/javascript" language="javascript">
+
+      $(".mon-submit").bind("click", function () {
+          $("#txtTotal").val($("#montotal").html());
+          $("#txtComments").val($("#Comments").val());
+
+          for (var i = 1; i <= 17; i++) {
+              $("#txtQ" + i).val($("#Q" + i).val());
+              $("#txtQ" + i + "text").val($("#Q" + i + " option:selected").text());
+              $("#txtQ" + i + "Comments").val($("#Q" + i + "Comments").val());
+          }
+          $("#txtCalllength_HH").val($("#inpCalllength_HH").val());
+          $("#txtCalllength_MM").val($("#inpCalllength_MM").val());
+          $("#txtCalllength_SS").val($("#inpCalllength_SS").val());
+          $("#txtSitelocation").val($("#selSitelocation").val());
+          $("#txtJurisdiction").val($("#selJurisdiction").val());
+          $("#txtCalltype").val($("#selCalltype").val());
+          $("#txtCategory_collections").val($("#selCategory_collections").val());
+          $("#txtCategory_move").val($("#selCategory_move").val());
+          $("#txtLanguage").val($("#selLanguage").val());
+          $("#txtEligible").val($("#selEligible").val());
+          $("#txtValidtransfer").val($("#selValidtransfer").val());
+      });
+
+      $(document).ready(function () {
+          if ($("#lblSqfcode").html() == "129") {
+              $(".heading").html("National Grid Sup Quality Form");
+          }
+          $(".mon-acknowledge").bind("click", function () {
+              var data = {
+                  lib: "qa",
+                  cmd: "acknowledgeComplianceMonitor",
+                  monitorid: $("#lblMonitorId").html() //Note the lower case on id
+              };
+              a$.ajax({
+                  type: "POST",
+                  service: "JScript",
+                  async: true,
+                  data: data,
+                  dataType: "json",
+                  cache: false,
+                  error: a$.ajaxerror,
+                  success: monitoracknowledged
+              });
+              function monitoracknowledged(json) {
+                  if (a$.jsonerror(json)) {
+                      alert("ERROR:" + json.msg);
+                  }
+                  else {
+                      alert("Monitor Acknowledged, Thank You.");
+                      //return_to_v1();
+                  }
+              }
+              return false;
+          });
+
+          var colors = ["#eeeeee", "#dddddd"];
+          var tgl = 0;
+          $(".mon-content ol li").each(function () {
+              $(this).css("background", colors[tgl]);
+              if (!tgl) tgl = 1; else tgl = 0;
+          });
+
+          $("#Comments").val($("#txtComments").val());
+          $("#Comments").autogrow();
+
+          for (var i = 1; i <= 17; i++) {
+              $("#Q" + i).val($("#txtQ" + i).val());
+              $("#Q" + i + "Comments").val($("#txtQ" + i + "Comments").val());
+              $("#Q" + i + "Comments").autogrow();
+          }
+          for (var i = 1; i <= 17; i++) {
+              if ($("#Q" + i).val() == "") {
+                  $("#Q" + i + " option:eq(1)").attr('selected', 'selected')
+              }
+              else {
+                  $("#Q" + i + ' option:contains("' + $("#txtQ" + i + "text").val() + '")').attr('selected', 'selected');
+              }
+          }
+          $(".sel_time").keypress(function (e) {
+              if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                  //display error message
+                  $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                  return false;
+              }
+          });
+
+          $("#Address").val($("#txtAddress").val());
+
+          $(".mon-answer select").each(function () {
+              $(this).trigger("change");
+          });
+
+          if ($("#lblRole").html() == "NEW") {
+              $("#submitme").show();
+              $("#closeme").show();
+          }
+          else if ($("#lblRole").html() == "CSR") {
+              $("#submitme").hide();
+              $("select").attr("disabled", "disabled");
+              $("textarea").attr("disabled", "disabled");
+              $("#closeme").show();
+              $("#deleteme").hide();
+              if ($("#lblAcknowledgementDate").html() != "") {
+                  $(".mon-show-acknowledgementreceived").show();
+              }
+              else if (($("#lblAcknowledgementRequired").html() == "Yes") || ($("#lblAcknowledgementRequired").html() == "CES")) {
+                  $(".mon-show-acknowledgementrequired").show();
+                  $(".mon-show-isagent").show();
+              }
+          }
+          else {
+              $("#submitme").attr("value", "Update");
+              $("#submitme").show();
+              $("#deleteme").show();
+              $("#closeme").show();
+              if ($("#lblAcknowledgementDate").html() != "") {
+                  $(".mon-show-acknowledgementreceived").show();
+              }
+              else if (($("#lblAcknowledgementRequired").html() == "Yes") || ($("#lblAcknowledgementRequired").html() == "CES")) {
+                  $(".mon-show-acknowledgementrequired").show();
+                  $(".mon-show-isnotagent").show();
+              }
+          }
+          setCategory($(".select-call-type select").val());
+      });
+
+      function testblanks(me) {
+
+          var tot = 0;
+          var p;
+          var v;
+          var blanksfound = false;
+          if (me != null) {
+              p = $(me).parent();
+              v = $(me).val();
+              if (v == "") v = "&nbsp;"
+              $("span", p).html(v);
+          }
+          $(".mon-answer select").each(function () {
+              var val = $(this).val()
+              if (val != "") {
+                  tot += parseInt(val);
+              }
+              else {
+                  blanksfound = true;
+              }
+          });
+          if ($("#lblAgent").html() == "") blanksfound = true;
+          if (!blanksfound) {
+              $(".mon-submit").removeAttr("disabled");
+          }
+          else {
+              $(".mon-submit").attr("disabled", "disabled");
+          }
+          $(".mon-total").html(tot);
+      }
+      $(".mon-answer select").bind("change", function () {
+          testblanks(this);
+      });
+
+      function setCategory(cat) {
+        if (cat == "Collections") {
+            $("#selCategory_collections").show();
+            $("#selCategory_move").hide();
+        }
+        else {
+            $("#selCategory_collections").hide();
+            $("#selCategory_move").show();
+        }
+      }
+
+      $(".select-call-type select").bind("change", function () {
+          setCategory($(this).val());
+      });
+
+    function exists(me) {
+        return (typeof me != 'undefined');
+    }
+  </script>
+</body>
+</html>

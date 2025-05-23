@@ -1,0 +1,46 @@
+﻿.mobile-hide { display:none;}
+.mobile-show { display:none;}
+
+input.text
+{
+    width: 200px;
+    height: 17px;
+    padding: 3px 0 0 3px;
+    border: 3px solid #eoeoeo;
+}
+
+input.button
+{
+    width: 205px;
+    height: 30px;
+    font-weight: bold;
+}
+
+.logo a
+{ 
+    text-decoration:none;
+}
+
+.validation
+{
+    color: Red;
+    display: none;
+}
+
+.header
+{
+    position: absolute;
+    top: 0px;
+    left: 0px;    
+    height: 45px;
+    width: 100%;
+}
+
+.logo
+{
+    margin: 10px 0 0 20px;
+    float: left;
+    font-size: 18px;
+}
+
+

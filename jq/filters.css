@@ -1,0 +1,28 @@
+﻿.filters
+{
+    float: left;
+    padding-top: 10px;
+    padding-left: 10px;
+    font-size: 12px;
+    width: 280px;
+/*    background-color: #e0e0e0; */
+    display: block;
+}
+.filters dl dt
+{
+    float: left;
+    clear: left;
+    width: 70px;
+    font-weight: normal;
+}
+.filters dl dd
+{
+    margin: 0 0 0 80px;
+    padding: 0 0 0.5em 0;
+}
+
+.filters dl dd select
+{
+    width: 180px;
+    font-size: 12px;
+}

@@ -1,0 +1,41 @@
+.login-form,.login-welcome
+{
+    position:absolute;
+    top:5px;
+    right:20px;
+    text-align:right;
+}
+
+.login-welcome
+{
+    margin-top:25px;
+    display:none;
+}
+
+.login-form label
+{
+    font-size: 12px;
+    margin-right: 3px;
+}
+
+.login-form input
+{
+    font-size: 12px;
+}
+
+.login-validation
+{
+    font-size: 11px;
+    font-weight: bold;
+    color: Red;
+}
+
+.login-lock
+{
+    background-image: url(images/lock-16.png);
+    vertical-align: top;
+    background-repeat: no-repeat;
+    margin-left: 4px;
+    padding: 0 20px 20px 0;
+    display:inline-block;
+}

@@ -1,0 +1,321 @@
+body {
+  background: #FFDF21 url("../images/sprint-bg.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.container {
+  width: 960px;
+  margin:20px auto;
+}
+
+/* NAVIGATION CSS --------------- */
+
+ul.navigation {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  opacity: 0.85;
+  padding: 15px;
+  min-width: 500px;
+}
+
+ul.navigation li {
+  list-style: none;
+  display: inline-block;
+}
+
+ul.navigation a {
+  color: #FFDF21;
+  font-size: 11px;
+  text-decoration: none;
+  padding: 5px 10px;
+  margin-right: 20px;
+}
+
+ul.navigation a:hover {
+  background-color: #E1CC8B;
+  color: #000;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+ul.navigation a.active {
+  background-color: #E1CC8B;
+  color: #000;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+/* SUB-NAVIGATION CSS --------------- */
+
+ul.sub-navigation {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  opacity: 0.95;
+  width: auto;
+  min-width: 500px;
+  padding: 15px;
+  overflow: hidden;
+}
+
+ul.sub-navigation li {
+  list-style: none;
+  display: inline-block;
+}
+
+ul.sub-navigation a {
+  color: #FFDF21;
+  font-size: 11px;
+  text-decoration: none;
+  padding: 5px 10px;
+  margin-right: 20px;
+  position: relative;
+  width: auto;
+  text-align: center;
+}
+
+ul.sub-navigation a.active {
+  color: #E1CC8B;
+}
+
+ul.sub-navigation a.active :after {
+  content: '';
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid #FFDF21;
+  top: 29px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+ul.sub-navigation a:hover {
+  color: #E1CC8B;
+}
+
+ul.sub-navigation a:hover :after {
+  content: '';
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid #FFDF21;
+  top: 29px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* TABLE CSS --------------- */
+.top-five-table {
+  width: 700px;
+}
+
+table {
+  width: 100%;
+  border: 1px solid #D3DADF;
+  background: white;
+  margin: 0 auto 30px auto;
+}
+table, th, td {
+  border-collapse: collapse;
+  font-size: 15px;
+}
+th, td {
+    padding: 8px 10px;
+    border: 1px solid #D3DADF;
+    text-align: left;
+}
+
+tr:nth-child(odd) {
+  background: #F8FAFC;
+}
+
+th {
+  background: #E5ECF2;
+}
+
+.table_topper {
+  margin: 30px auto 0 auto;
+  padding: 15px 0;
+  background: black;
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-topright: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  color: white;
+  font-size: 18px;
+  text-align: center;
+}
+
+/* AVATAR CSS --------------- */
+
+.avatar-circle {
+  border-radius: 50%;
+	width: 30px;
+	height: 30px;
+  overflow: hidden;
+  float: left;
+  margin-right: 10px;
+}
+
+.avatar-name {
+  margin-top: 4px;
+}
+
+.avatar-number {
+  border-radius: 50%;
+	width: 28px;
+	height: 25px;
+  float: left;
+  margin-right: 10px;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 3px;
+}
+
+.clearfix {
+  clear: both;
+}
+
+/* MEDALS STYLES --------------- */
+
+.medals-tracker {
+  width: 865px;
+  margin: 0 auto;
+}
+
+.medals_container {
+  background: #fff;
+  padding: 30px 45px;
+}
+
+.medals-title {
+  margin: 0;
+  text-align: center;
+  height: 40px;
+}
+
+.medal-item {
+  text-align: center;
+  width: 170px;
+  float: left;
+  margin-bottom: 10px;
+  margin-right: 23px;
+}
+
+.gold-medal {
+  width: 150px;
+  height: 80px;
+  padding-top: 70px;
+  border: 8px solid #F3E320;
+  background: #fff url("../images/gold-trophy.png") center 30px no-repeat;
+  text-align: center;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  color: #000;
+  font-weight: bold;
+  font-size: 45px;
+  margin: 10px auto;
+}
+
+.silver-medal {
+  width: 150px;
+  height: 80px;
+  padding-top: 70px;
+  border: 8px solid #C9CFD4;
+  background: #fff url("../images/silver-trophy.png") center 30px no-repeat;
+  text-align: center;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  color: #000;
+  font-weight: bold;
+  font-size: 45px;
+  margin: 10px auto;
+}
+
+.bronze-medal {
+  width: 150px;
+  height: 80px;
+  padding-top: 70px;
+  border: 8px solid #C0722D;
+  background: #fff url("../images/bronze-trophy.png") center 30px no-repeat;
+  text-align: center;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  color: #000;
+  font-weight: bold;
+  font-size: 45px;
+  margin: 10px auto;
+}
+
+.all-medal {
+  width: 170px;
+  height: 95px;
+  padding-top: 70px;
+  background: #fff url("../images/all-color-circle.png") center -10px no-repeat;
+  text-align: center;
+  color: #000;
+  font-weight: bold;
+  font-size: 45px;
+  margin: 10px auto;
+}
+
+.gold,
+.silver,
+.bronze {
+  width: 70px;
+}
+
+.gold {
+  background: #F3E320;
+}
+
+.silver {
+  background: #C9CFD4;
+}
+
+.bronze {
+  background: #C0722D;
+}
+
+.place {
+  width: 78px;
+}
+
+.partner {
+  width: 300px;
+}
+
+td.partner {
+  font-size: 12px;
+}
+
+td.partner img {
+  mix-blend-mode: multiply;
+}
+
+.centered {
+  text-align: center;
+}

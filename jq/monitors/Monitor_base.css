@@ -1,0 +1,256 @@
+﻿      .page-wrapper {
+        width: 100%;
+        margin: 0px auto 0 auto;
+        position: relative;
+        border: 1px solid gray;
+      }
+      .error-category,
+      .error-anchor {
+      /*        vertical-align: middle;*/
+      }
+      .mon-category {
+        font-size: 14px;
+        font-weight: bold;
+        border-bottom: 2px;
+        padding: 5px;
+        background-color: #15323E;
+        color: White;
+        border-left: 0px !important;
+        border-right: 0px !important;
+        padding-top: 8px !important;
+        padding-bottom: 8px !important;
+        border-color: #15323E !important;
+      }
+      .mon-wrapper {
+        position: relative;
+      }
+      .mon-stats {
+        position: absolute;
+        top: 70px;
+        right: 30px;
+        background-color: Green;
+        width: 250px;
+        z-index: 50;
+      }
+      .mon-stats ul {
+        list-style: none;
+        padding: 10px;
+        margin: 0;
+      }
+      .mon-stats ul li {
+        color: White;
+        font-size: 12px;
+      }
+      .mon-stats li label {
+        font-weight: bold;
+        width: 60px;
+      }
+
+      .mon-stats li span {
+        padding-left: 15px;
+        float: right;
+      }
+      .mon-content {
+        position: relative;
+        padding: 10px;
+        margin-top: 10px;
+        width: 100%;
+        /* overflow-y:scroll; */
+      }
+      .mon-content li {
+        padding: 5px;
+      }
+      .mon-answer {
+        float: right;
+        padding-right: 300px;
+      }
+      .mon-subtotal {
+        width: 40px;
+        float: right;
+        text-align: right;
+        color: Blue;
+        font-weight: bold;
+        font-size: 20px;
+        vertical-align: middle;
+      }
+      .mon-submit {
+        clear: both;
+      }
+      .mon-comments {
+        clear: both;
+      }
+      .mon-comments label {
+        vertical-align: middle;
+      }
+      .mon-comments textarea {
+        margin-left: 10px;
+        vertical-align: middle;
+      }
+      textarea {
+        overflow: visible;
+      }
+      .mon-fields {
+        margin-left: 5px;
+      }
+      .mon-field {
+        clear both;
+        min-height: 30px;
+      }
+      .mon-field label {
+        color: White;
+        float: left;
+      }
+      .mon-field-input,
+      .mon-field select {
+        width: 120px;
+        padding-right: 5px;
+        float: right;
+      }
+      .mon-table tbody td:first-child {
+        border-color: #fff;
+      }
+      input.qst {
+        width: 80%;
+        margin: 0 auto;
+      }
+      .sel_time {
+        width: 30px;
+      }
+      .mon-address textarea {
+        margin-left: 0px;
+      }
+      .mon-question {
+      /* font-weight: bold; */
+      }
+      .mon-section {
+        font-weight: bold;
+      }
+      .mon-desc {
+        margin-top: 8px;
+        margin-left: 25px;
+        font-size: 12px;
+        width: 60%;
+      }
+      .highlight-hover {
+        background: white;
+        color: black;
+        border: none;
+        margin-left: 12px;
+        margin-right: 2px;
+      }
+      .highlight {
+        background: green;
+        color: white;
+      }
+      .mon-table {
+        font-weight: normal;
+        font-size: 13px;
+        width: 100%;
+        border-spacing: 0;
+      }
+      .mon-table tbody {
+        display: block;
+        overflow-y: scroll;
+      }
+      .mon-table tbody td {
+        min-height: 14px;
+        border-bottom: 1px solid #ddd;
+        padding: 5px;
+      }
+      .mon-table thead {
+        display: block;
+        overflow-y: scroll;
+        font-size: 12px;
+      }
+      .mon-table tbody tr:nth-child(odd) {
+        background: #F8FAFC;
+      }
+      .mon-table tbody tr.last-row {
+        background: #0091D0;
+        color: White;
+        font-weight: bold;
+        border-color: #0091D0;
+        font-size: 16px;
+      }
+      .mon-table tbody tr.last-row td {
+        background: #0091D0;
+        color: White;
+        font-weight: bold;
+        border-color: #0091D0;
+        padding: 20px 10px 100px 30px;
+      }
+      .mon-table td {
+        border: 0px;
+        margin: 0px;
+        padding: 1px 0 1px 0;
+      }
+      .mon-table tbody td:last-child {
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        text-align: center;
+      }
+      .mon-table select {
+        width: 80%;
+        margin: 0 auto;
+      }
+      .mon-table input[type=text],
+      .mon-table textarea {
+        width: 98%;
+      }
+      .mon-table textarea {
+        font-size: 13px;
+        padding: 8px;
+        border: none;
+        height: 60px;
+      }
+      .mon-table-header {
+        text-align: left;
+      }
+      .mon-table-header thead {
+        padding: 15px;
+      }
+      .mon-table-columnheader {
+        background-color: #15323E;
+        color: White;
+        font-weight: normal;
+      }
+      .mon-table-columnheader th {
+        padding: 10px 5px;
+        font-size: 14px;
+      }
+      .sel-red {
+        background-color: #C42020;
+        color: white !important;
+      }
+      .sel-green {
+        background-color: #7ED321;
+      }
+      .sel-yellow {
+        background-color: #eee;
+      }
+      .sel-autofail {
+        background-color: #FFDE05;
+
+        font-weight: bold;
+        border: 1px solid black;
+      }
+      .centered {
+        text-align: center;
+      }
+      .mon-close {
+        background: none;
+        color: white;
+        border: none;
+        font-size: 12px;
+        text-decoration: underline;
+        position: relative;
+        margin-left: 15px;
+      }
+      .mon-close:hover,
+      .mon-submit:hover {
+        cursor: pointer;
+      }
+      .logo {
+        left: 14px !important;
+        top: 10px !important;
+      }

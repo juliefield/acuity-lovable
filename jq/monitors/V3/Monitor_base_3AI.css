@@ -1,0 +1,380 @@
+/* AI Monitor rendering styles here */
+.autoqa-wrapper {
+    padding: 50px;
+    font-size: 16px;
+    background: #f5f8fb;
+}
+.autoqa-overallscore {
+    display: block;
+    width: 100%;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+.autoqa-agentname {
+    display: block;
+    width: 100%;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 16px;
+    font-weight: bold;
+}
+.autoqa-sections-summary-wrapper {
+    margin: 30px;
+}
+.autoqa-section-link {
+    margin-right: 0 !important;
+    display: block;
+    color: #0055FE !important;
+}
+.autoqa-sections-summary {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+    justify-content: center;
+    /* flex-wrap: wrap; */
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.autoqa-sections-summary .autoqa-section-score,
+.autoqa-sections-summary .autoqa-sentiment span {
+    display: inline-block;
+    padding: 8px 15px;
+    background: #0055FE;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+}
+.autoqa-section .autoqa-sections-summary .autoqa-section-name,
+.autoqa-section .autoqa-sections-summary .autoqa-sentiment label,
+.autoqa-section .autoqa-section-name,
+.autoqa-section .autoqa-dialog-wrapper label,
+.autoqa-sentiment-wrapper label,
+.autoqa-sections-summary .autoqa-sentiment label,
+.autoqa-dialog-wrapper label  {
+    font-weight: bold;
+    font-size: 19px;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+.autoqa-section .autoqa-section-score,
+.autoqa-sentiment-score span {
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 19px;
+}
+.autoqa-qa-comments {
+    font-size: 16px;
+    margin: 15px;
+}
+.autoqa-qa-comments label {
+    font-weight: bold;
+    margin-right: 5px;
+}
+.ui-review-title .autoqa-sentiment span {
+    margin-right: 0 !important;
+}
+.autoqa-callsummary,
+.autoqa-coachingguidance,
+.autoqa-section,
+.autoqa-sentiment-wrapper,
+.autoqa-dialog-wrapper {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding-bottom: 20px;
+}
+.autoqa-callsummary label,
+.autoqa-coachingguidance label {
+    display: block;
+    font-weight: bold;
+    margin-bottom:5px;
+    font-size: 18px;
+}
+.autoqa-question {
+    display: flex;
+    margin: 0 20px;
+    font-size: 18px;
+    padding: 10px;
+}
+.autoqa-question-number {
+    width: 60px;
+    font-weight: bold;
+    text-align: center;
+}
+.autoqa-questions-wrapper {
+    margin: 20px 0;
+    margin-bottom: 50px;
+}
+.autoqa-question:nth-child(odd) {
+    background: #eee;
+}
+.autoqa-question-text {
+    width: 100%;
+}
+.autoqa-question-answer {
+    width: 100px;
+    text-align: center;
+}
+.autoqa-question-answer[title]:hover::after 
+{
+    content: attr(title);
+    position: absolute;
+    top: -20px;
+    right: 0px;
+    right: 0px;
+}
+.autoqa-dialog-Agent,
+.autoqa-dialog-Customer {
+    margin: 10px auto;
+    max-width: 800px;
+}
+.autoqa-dialog-Agent label,
+.autoqa-dialog-Customer label {
+    display: block !important;
+}
+.autoqa-dialog-Customer {
+    text-align:right;
+    background: #c8e9fc;
+    padding: 15px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+.autoqa-dialog-Agent {
+    background: #f4f4f4;
+    padding: 15px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+.ui-review-title .autoqa-dialog-Customer span {
+    margin-right: 0 !important;
+}
+
+.autoqa-column-question 
+{
+    width: 600px;
+    text-align: left !important;
+}
+
+.autoqa-sections-summary .autoqa-section,
+.autoqa-sections-summary .autoqa-sentiment {
+    padding: 20px;
+    border: 6px solid #0055FE;
+    width: 25%;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.35);
+    -moz-box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.35);
+    box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.35);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.autoqa-section .autoqa-section-name,
+.autoqa-sentiment label {
+	min-height: 54px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+.autoqa-overallscore label, 
+.autoqa-agentname label {
+    margin-right: 10px;
+}
+.autoqa-callsummary,
+.autoqa-coachingguidance {
+	text-align: left;
+}
+.autoqa-dialog-Customer {
+	margin-right: 0;
+}
+.autoqa-dialog-Agent {
+	margin-left: 0;
+	text-align: left;
+}
+.commentsContainer {
+	margin: 20px;
+    font-size: 14px;
+    border: 1px solid #eee;
+    padding: 10px;
+    text-align: left;
+    padding-left: 50px;
+	position: relative;
+}
+.commentsContainer:before {
+	content: '💬';
+	position: absolute;
+    top: 6px;
+    left: 15px;
+    font-size: 23px;
+}
+
+.autoqa-section .autoqa-section-score, .autoqa-sentiment-score span {
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 19px;
+    display: inline-block;
+    padding: 8px 15px;
+    background: #0055FE;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    margin-top: -10px;
+}
+.autoqa-question {
+	text-align: left;
+}
+.autoqa-qa-comments {
+    font-size: 16px;
+    margin: 15px;
+    text-align: left;
+}
+.autoqa-sections-summary .autoqa-section, .autoqa-sections-summary .autoqa-sentiment {
+	min-height: 150px !important;
+    background: white;
+}
+table.autoqa-table-score {
+    width: 700px;
+    text-align: center;
+    margin: 0 auto;
+    border-collapse: collapse;
+    font-size: 18px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+table.autoqa-table-score th {
+    background: #0055FE;
+}
+table.autoqa-table-score td:nth-child(2) {
+    width: auto;
+}
+table.autoqa-table-questions {
+    width: 100%;
+    border: 0px;
+}
+table.autoqa-table-questions td {
+    padding: 8px;
+    text-align: center;
+}
+table.autoqa-table-questions th {
+    background: #0055ff;
+    color: white;
+}
+.autoqa-sections .autoqa-section .autoqa-section-name,
+.autoqa-sentiment-score label {
+    margin-top: 0;
+    margin-bottom: 20px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    min-height: auto;
+    border-bottom: 1px solid #d4d4d4;
+    font-size: 21px;
+    background: #2c414b;
+    padding: 10px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    display: block !important;
+}
+.ui-review-title span {
+    margin-right: auto !important;
+}
+.autoqa-sections .autoqa-section .autoqa-section-score,
+.autoqa-sentiment-score span {
+    display: inline-block;
+    /* margin-left: auto !important; */
+    margin: auto;
+    display: block;
+    text-align: center;
+    max-width: 200px;
+    margin-top: -10px;
+}
+.autoqa-sentiment-wrapper label {
+    display: block;
+}
+.autoqa-sections .autoqa-section-comment-ai {
+    margin-bottom: 15px;
+}
+.autoqa-sections .autoqa-section-comment-name,
+.autoqa-sections .autoqa-section-comment-name {
+    font-weight: bold;
+}
+.autoqa-sections-wrapper {
+    max-width: 1180px;
+    margin: 15px auto;
+    -webkit-box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.35);
+    -moz-box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.35);
+    box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.35);
+    padding: 20px;
+    background: white;
+    margin-top: 60px;
+}
+
+.autoqa-callsummary,
+.autoqa-coachingguidance {
+    max-width: 1200px;
+    margin: 15px auto;
+    margin-bottom: 30px;
+}
+.ac-audio {
+    text-align:center;
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);    
+    
+}
+.autoqa-dialog-wrapper {
+    position: relative;
+    max-width: 780px;
+    margin-top: 50px;
+}
+
+.autoqa-answer-different 
+{
+    font-weight: bold;
+}
+
+.promptdialog,.transcriptiondialog,.diarizationdialog,.returndialog {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  max-height: 80vh; /* Limit height to 80% of viewport height */
+  z-index: 1000000000; /* Ensure dialog appears above other content */
+  display:none;
+}
+
+
+
+.promptdialog {
+  top: 10%; /* Adjust this value to control vertical positioning */
+}
+
+.transcriptiondialog {
+  top: 12%; /* Adjust this value to control vertical positioning */
+}
+
+.diarizationdialog {
+  top: 14%; /* Adjust this value to control vertical positioning */
+}
+
+.returndialog {
+  top: 16%; /* Adjust this value to control vertical positioning */
+}

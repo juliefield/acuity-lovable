@@ -1,0 +1,35 @@
+.apl-wrapper
+{
+}
+
+.apl-command
+{
+    width: 600px;
+    margin: 5px;
+}
+
+.apl-output
+{
+    display:block;
+    background-color: #c0c0c0;
+    height: 200px;
+    width: 90%;
+    overflow-y: scroll;
+    margin-left: 5px;
+}
+
+.apl-wrapper label
+{
+    width: 80px;
+    display: inline-block;
+    text-align: right;
+    margin-left: 5px;
+    
+}
+
+.apl-status
+{
+    font-size: 12px;
+    font-weight: bold;
+    padding-left: 20px;
+}
