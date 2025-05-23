@@ -1,0 +1,243 @@
+<style>
+   .errorField {
+      border: 2px solid red !important;
+   }
+   .user-promotion-inline-item
+   {
+      display:inline-block;
+   }
+   .display-holder {
+      max-height:750px;
+      min-height:600px;
+      overflow:auto;
+   }
+   .all-holder {
+      max-height:750px;
+      min-height:600px;
+   }
+   .filter-holder {
+      min-height:50px;
+      max-height:50px;
+   }
+   .do-action-button-holder
+   {
+      min-height:50px;
+      max-height:50px;
+   }
+   .list-overall-holder
+   {
+      overflow:auto;
+   }
+   .header-row
+   {
+      padding:2px;
+   }
+   .header-item
+   {
+      display:inline-block;
+      font-weight:bold;
+      padding:2px;
+   }
+   .user-promotion-user-row-holder
+   {
+      width:99%;
+      padding:2px;
+   }
+   .user-avatar-holder
+   {
+      max-width:50px;
+      min-width:50px;
+   }
+   .user-full-name-holder
+   {
+      width:45%;
+   }
+   .user-current-position-holder
+   {
+      width:28%;
+   }
+   .user-positions-holder
+   {
+      width:20%;
+   }
+   .user-promotion-date-holder
+   {
+      width:8%;
+   }
+   .user-promotion-button-holder
+   {
+      width:15%;
+      text-align:center;
+   }
+   .user-promotion-list-holder
+   {
+      max-height:500px;
+      min-height:500px;
+      overflow:auto;
+   }
+   .filter-option-header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 11px;
+   }
+   .user-messaging-holder
+   {
+      min-height:50px;
+      font-weight:bold;
+      color:black;
+   }
+</style>
+<div>
+   <div id="userMessagingHolder_OverallPage" class="user-messaging-holder">
+      <div>
+         <img src="../../../applib/css/images/acuity-loading.gif" alt="Loading Info" height="50px">
+         <span id="usermessageLabel_Overall"></span>
+      </div>
+   </div>
+   <div style="display:inline-block;width:49%;vertical-align:top;">
+      <div class="display-holder">
+         <div class="all-holder">
+            <div class="filter-option-header">
+               <div class="filter-option-holder"">
+                  <span>Project</span>
+                  <select id="currentListProjectIdFilter">
+                     <option value=""></option>
+                  </select>
+               </div>
+               <div class="filter-option-holder">
+                     <span>Location</span>
+                     <select id="currentListLocationIdFilter">
+                        <option value=""></option>
+                     </select>
+                  </div>
+                  <div class="filter-option-holder">
+                     <span>Group</span>
+                     <select id="currentListGroupIdFilter">
+                        <option value=""></option>
+                     </select>
+                  </div>
+               <div class="filter-option-holder">
+                  <span>First Name</span>
+                  <input type="text" id="currentListFilterFirstName" />
+               </div>
+               <div class="filter-option-holder">
+                  <span>Last Name</span>
+                  <input type="text" id="currentListFilterLastName" />
+               </div>
+               <div class="filter-option-holder"">
+                  <span>Role</span>
+                  <select id="currentListFilterPosition">
+                     <option value=""></option>
+                  </select>
+               </div>
+               <div class="filter-option-holder"">
+                  <button id="btnCurrentListApplyFilter">Apply Filter</button>
+                  &nbsp;
+                  <button id="btnCurrentListClearFilter">Clear Filter</button>
+   
+               </div>
+            </div>
+            <div class="list-overall-holder">
+               <div id="userMessagingHolder_CurrentArea" class="user-messaging-holder">
+                  <div>
+                     <img src="../../../applib/css/images/acuity-loading.gif" alt="Loading Info" height="50px">
+                     <span id="usermessageLabel_Current"></span>
+                  </div>
+               </div>
+               <div class="user-promotion-user-row-holder header-row">
+                  <div class="header-item user-avatar-holder">&nbsp;</div>
+                  <div class="header-item user-full-name-holder">Name</div>
+                  <div class="header-item user-current-position-holder">Current Role</div>
+                  <div class="header-item user-promotion-button-holder">Actions</div>
+               </div>
+               <div class="user-promotion-list-holder">
+                  <div id="currentUsersList"></div>
+               </div>
+            </div>
+            <div>
+               <div id="userCountDisplayHolder">
+                  <label id="currentUserListCount"></label> Users Found
+               </div>
+               
+            </div>   
+         </div>
+      </div>
+   </div>
+   <div style="display:inline-block;width:49%;vertical-align:top;">
+      <div class="display-holder">
+         <div class="all-holder">
+            <!-- <div>
+               <button id="btnPromotionListApplyFilter">Apply Filter</button>
+               &nbsp;
+               <button id="btnPromotionListClearFilter">Clear Filter</button>
+            </div> -->
+            <div class="do-action-button-holder">
+               <button id="btnDoPromotions">Apply Promotions</button>
+            </div>
+            <div class="list-overall-holder">
+               <div id="userMessagingHolder_PromoteArea" class="user-messaging-holder">
+                  <div>
+                     <img src="../../../applib/css/images/acuity-loading.gif" alt="Loading Info" height="50px">
+                     <span id="usermessageLabel_Promote"></span>
+                  </div>
+               </div>
+               <div class="user-promotion-user-row-holder header-row">
+                  <div class="header-item user-avatar-holder">&nbsp;</div>
+                  <div class="header-item user-full-name-holder">Name</div>
+                  <div class="header-item user-positions-holder">From <i class="fa fa-arrow-right-long"></i> To Role</div>
+                  <div class="header-item user-promotion-date-holder">Date</div>
+                  <div class="header-item user-promotion-button-holder">Actions</div>
+               </div>
+               <div id="currentPromotionList"></div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<div id="promotionFormHolder" class="editor-form">
+   <div id="promotionForm" class="form-holder">      
+      <button class="btn-close btn-close-x"><i class="fa fa-close"></i></button>
+      <div>
+         <div>User Promotion Editor</div>
+      </div>
+      <div class="error-information-holder"></div>
+      <div class="configuEditor-fields">
+         <div class="configuEditor-fields_group">
+            <label>User Name</label>
+            <label id="lblUserNameToPromote"></label>
+            <input type=hidden id="txtUserNameToPromote">
+         </div>
+         <div class="configuEditor-fields_group">
+            <label>Current Position:</label>
+            <span id="lblCurrentPosition"></span>
+         </div>
+         <div class="configuEditor-fields_group">
+            <label>New Position:</label>
+            <select id="userNewPosition"></select>
+         </div>
+         <div class="configuEditor-fields_group">
+            <label>Start Date of New Position:</label>
+            <input id="promotionDate" class="new-position-date">
+         </div>
+         <div class="configuEditor-fields_group">
+            <label>Project:</label>
+            <select id="newPositionProjectId"></select>
+         </div>
+         <div class="configuEditor-fields_group">
+            <label>Location:</label>
+            <select id="newPositionLocationId"></select>
+         </div>         
+         <div class="configuEditor-fields_group">
+            <label>New Supervisor:</label>
+            <select id="newPositionSupervisorUserId"></select>
+         </div>
+      </div>
+      <hr />
+      <div class="formButtonHolder">
+         <button id="btnSavePromotion">Save</button>
+         &nbsp;
+         <button id="btnCancelPromotion" class="btn-close">Cancel</button>
+         
+      </div>
+   </div>
+</div>

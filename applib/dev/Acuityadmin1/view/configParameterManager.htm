@@ -1,0 +1,56 @@
+<div class="basic-directive-holder">
+    <div class="top-filters">
+        <div class="filter-input-group">
+            Name: <input type="text" id="configManager_nameFilter">
+        </div>
+        <div class="filter-input-group">
+            <a id="configmanager_clearFilter">Clear Filter</a>
+        </div>
+    </div>
+    <br>
+    <div class="bottom-buttons">
+        <div class="filter-input-group">
+            <button id="btnAddNewParameter" class="btn button btn-add-new btn-large btn-green"><i class="fas fa-plus"></i> Add New Parameter</button>
+        </div>
+    </div>
+    <div id="configParameterDataHolder">        
+        <div class="selection-holder large-holder">
+            <div id="configManagerLoadingHolder" class="config-manager-information-loading-message">
+                <img src="../../../../applib/css/images/acuity-loading.gif" height="25px"><span
+                    id="configManagerLoadingMessage"></span>
+            </div>
+            <div id="configParametersList" class="config-param-list-holder"></div>
+        </div>
+        
+    </div>
+    <div id="configParameterFormPanel" class="editor-form">
+        <div class="form-holder-small">
+            <button class="btn-close btn-close-x"><i class="fa fa-times"></i></button>
+        <div class="error-information-holder"></div>
+            <div class="configuEditor-fields">
+                <div class="configuEditor-fields_group">
+                    <label>Name:</label> 
+                    <input type="text" id="configEditor_ParamName">
+                </div>
+                <div class="configuEditor-fields_group">
+                    <label>Value:</label> 
+                    <input type="text" id="configEditor_ParamValue">
+                </div>
+                <div class="configuEditor-fields_group">
+                    <label>Validation Expression:</label> 
+                    <input type="text" id="configEditor_RegEx">
+                </div>
+                <div class="configuEditor-fields_group">
+                    <label>Description:</label> 
+                    <input type="text" id="configEditor_Desc">
+                </div>
+            </div>
+            <div class="badgeAdminForm_btns">
+                <input type="hidden" id="configEditor_Id" value="-1">
+                <button id="btnSaveConfigParameter" class="btn-large">Save</button>
+                &nbsp;&nbsp;
+                <button class="btn-close btn-large">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

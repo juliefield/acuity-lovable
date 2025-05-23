@@ -1,0 +1,248 @@
+.blocker {
+	z-index: 9998 !important;
+}
+
+.button-large {
+	font-size: 125%;
+}
+@mixin rounded($amount) {
+	border-top-right-radius: $amount;
+	border-bottom-right-radius: $amount;
+	border-bottom-left-radius: $amount;
+	border-top-left-radius: $amount;
+	-webkit-border-radius: $amount;
+	-moz-border-radius: $amount;
+	-o-border-radius: $amount;
+	-ms-border-radius: $amount;
+}
+.modal a.close-modal {
+	top: -10px;
+	right: -10px;
+	width: 20px;
+	height: 20px;
+	color: #fff;
+	line-height: 1.25;
+	text-align: center;
+	text-decoration: none;
+	text-indent: 0;
+	background: #0078AA;
+	@include rounded(26px);
+	-moz-box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+	-webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+	box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+	background-image: none !important;
+	overflow: hidden;
+	
+	&:before {
+		// content: "\2716";
+		content: "X";
+		display: block;
+		width: 30px;
+		height: 30px;
+		text-indent: 0;
+		line-height: 30px;
+		font-size: 1.333em;
+		font-weight: bold;
+	}
+
+}
+// #Dashboard {
+	.dialog-confirm-modal, .delete-confirm-modal {
+		z-index: 9999 !important;
+		button {
+			background-color: rgba(0, 120, 231,.666) !important;
+			&:hover, &:focus {
+				background-color: rgba(0, 120, 231,1) !important;
+			}
+		}
+	}
+	.ui-widget-overlay {
+		z-index: 9998 !important;
+		opacity: .666;
+	}
+// }
+
+#listMessages {
+	#rowAdd {
+		text-align: right;
+		padding: .83em 0;
+
+		#btnAddMessage {
+			font-weight: bold;
+			margin-top:3px;
+		}
+
+	}
+	#change-list {
+		font-size:85%;
+		text-align: center;
+		padding:1em 0;
+		background-color:rgba(0,0,0,.05);
+		p, button {
+			display: inline-block;
+			vertical-align: -webkit-baseline-middle;
+		}
+		p:not(#msg-warning) {font-size:110%;}
+		.button-warning {
+			color:#fff;
+			font-weight:bold;
+			background-color:#f0ad4e;
+			margin-left:12px;
+			text-shadow: 1px 1px 1px rgba(0,0,0,.333);
+		}
+		#msg-warning {
+			margin:0;
+			display: block; 			
+			i {
+				color:#f0ad4e;
+			}
+		}
+	}
+	#rowListMessages {
+		ul {
+			li {
+				margin-top: 1em;
+				padding-top: 2em;
+
+				&:first-child {
+					margin-top: 0;
+					padding-top: 0;
+				}
+
+				.renderedMessage {
+					padding: 0em 1em;
+					display: block;
+					border: 1px solid rgb(150, 150, 150);
+				}
+
+				.notes {
+				}
+
+				.btnsEditDelete {
+					padding: 1em 0;
+					text-align: right;
+
+					.btnEditRow,
+					.btnDeleteRow {
+					}
+
+					.btnEditRow {
+					}
+
+					.btnDeleteRow {
+					}
+
+				}
+				&.zero-records {
+					text-align: center;
+					margin:0;
+					padding:0;
+					margin-bottom:1em;
+					> p {
+						margin-top:0;
+						font-size:1.2em;
+					}
+					#user-lists {
+						background:rgba(0,0,0,.1);
+						font-size:1em;
+						-webkit-border-radius: 8px;
+						-moz-border-radius: 8px;
+						-o-border-radius: 8px;
+						-ms-border-radius: 8px;
+						border-radius: 8px;
+						padding:0 .5em;
+						.user-list {
+							padding-bottom: 2.5em;
+							.wrapper {
+								position: relative;
+								height:100%;
+								margin:0 .5em;
+								background:rgba(255,255,255,.666);
+								-webkit-border-radius: 8px;
+								-moz-border-radius: 8px;
+								-o-border-radius: 8px;
+								-ms-border-radius: 8px;
+								border-radius: 8px;
+								padding:.5em;
+								padding-bottom: 1.1em;
+								.header {
+									font-weight: bold;
+								}
+								ul {
+									padding:0;
+									margin:0;
+									list-style:none;
+									li {
+										padding:0;
+										margin:.5em 0;										
+										text-align: left;										
+									}
+								}
+								#btnAddMessage {
+									position: absolute;
+									right:.5em;
+									bottom:.5em;
+									left:.5em;
+								}
+							}
+						}
+					}
+				}
+
+			}
+
+		}
+
+	}
+
+}
+
+#formAddEdit {
+	.close-modal {
+		display: none;
+	}
+
+	.pure-g {
+		h2 {
+			letter-spacing: 0;
+		}
+
+		&> div {
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+
+		.one-box {
+			padding: .75em 0;
+		}
+
+		#roleSelect {
+			width: 100%;
+			// overflow: hidden;
+
+			option {
+				padding: .5em;
+			}
+
+		}
+
+		.notes {
+			width: 100%;
+		}
+
+		.buttons {
+			text-align: right;
+		}
+
+	}
+
+	label {
+		font-weight: bold;
+		span {
+			font-weight: normal;
+			color:rgba(0,0,0,.5);
+		}
+	}
+
+}

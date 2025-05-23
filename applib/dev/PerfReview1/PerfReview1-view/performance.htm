@@ -1,0 +1,160 @@
+<div class="pure-u-1-1 pure-u-md-1-3">
+  <h2>Performance</h2>
+</div>
+<div class="pure-u-1-1 pure-u-md-1-3 pure-u-md-align-center">
+  <!-- <p><strong>Balanced Score for Performance Period:</strong> {{review.performance.period_date}} <span class="error">Where does this date come from?</span></p> -->
+  <p id="team-leader"><strong>Team Leader:</strong> {{review.performance.supervisor_full_name}}</p>
+</div>
+<div class="pure-u-1-1 pure-u-md-1-3 pure-u-md-align-right balanced-score">
+  <h3>Current Balanced Score: {{decimalNumber(review.profile.score,2)}} <i class="fa fa-circle"
+    ng-style="{color: getColor(review.profile.score)} " aria-hidden="true"></i></h3>
+</div>
+<div ng-hide="viewFlag || otherFlag" id="targets-goals">
+  <div class="pure-u-1-1 pure-u-md-11-24 focus-target">
+    <!-- <button type="button" id="btn-set-goal"
+        ng-click="set_goals_modal = !set_goals_modal; modal_underlay = !modal_underlay;" ng-disabled="viewFlag"
+        class="pure-button pure-button-primary">Set New Focus & Target Goals</button> -->
+    <div class="head pure-g">
+      <div class="pure-u-11-12">
+        <h3>Create New Focus and Target Goals</h3>
+      </div>
+      <div class="pure-u-1-12 align-right">
+        <button type="button" ng-init="toggle_goals_new = false" ng-click="toggle_goals_new = !toggle_goals_new"
+          class="align-right"><i ng-class="toggle_goals_new ? 'fa fa-caret-square-o-up' : 'fa fa-caret-square-o-down'"
+            aria-hidden="true"></i></button>
+      </div>
+    </div>
+    <div class="pure-form pure-form-stacked" ng-show="toggle_goals_new">
+      <label for="new-goal">Goal/Target</label>
+      <input type="text" id="new-goal" name="new-goal" ng-model="review.selected_user.evaluation.goals.goal" />
+      <label for="new-from-date">From(x)</label>
+      <input type="text" id="new-from-date" name="new-from-date"
+        ng-model="review.selected_user.evaluation.goals.from_x" />
+      <label for="new-to-date">To(x)</label>
+      <input type="text" id="new-to-date" name="new-to-date" ng-model="review.selected_user.evaluation.goals.to_x" />
+      <label for="new-when-date">When(date)</label>
+      <input type="text" id="new-when-date" name="new-when-date"
+        ng-model="review.selected_user.evaluation.goals.when_date" placeholder="mm/dd/yyyy" />
+      <label for="new-how">How?</label>
+      <textarea name="new-how" id="new-how" ng-model="review.selected_user.evaluation.goals.how"></textarea>
+      <label for="new-celebrate">Celebrate Improvements and Accomplishments</label>
+      <textarea name="new-celebrate" id="new-celebrate"
+        ng-model="review.selected_user.evaluation.goals.celebrate"></textarea>
+      <label for="new-metric-focus-area">Does the area of focus or metric change from the previous month? Or is there a
+        new focus area?</label>
+      <textarea name="new-metric-focus-area" id="new-metric-focus-area"
+        ng-model="review.selected_user.evaluation.goals.notes"></textarea>
+      <button type="button" class="cancel pure-button" ng-click="goals_reset();">Reset</button>
+      <button type="button" class="save pure-button pure-button-primary"
+        ng-click="goals_save(review.selected_user.evaluation.goals);">Save</button>
+    </div>
+  
+  </div>
+  <div class="pure-u-1-1 pure-u-md-2-24">&nbsp;</div>
+  <div class="pure-u-1-1 pure-u-md-11-24 focus-target" ng-show="last_review_flag">
+    <!-- <button type="button" id="btn-view-last-review"
+      ng-click="getLastReview(new_review.agent_id); view_last_review_modal = !view_last_review_modal; modal_underlay = !modal_underlay;"
+      class="pure-button pure-button-primary" ng-disabled="!last_review_flag">View Last Review</button> -->
+    
+    <div class="head pure-g">
+      <div class="pure-u-11-12">
+        <h3>Focus Areas from Last Review</h3>
+      </div>
+      <div class="pure-u-1-12 align-right">
+        <button type="button" ng-init="toggle_goals_last = false" ng-click="toggle_goals_last = !toggle_goals_last"
+          class="align-right"><i ng-class="toggle_goals_last ? 'fa fa-caret-square-o-up' : 'fa fa-caret-square-o-down'"
+            aria-hidden="true"></i></button>
+      </div>
+    </div>
+    <dl ng-show="toggle_goals_last">
+      <dd>Goal/Target</dd>
+      <dt>{{review.last.goals.goal}}</dt>
+      <dd>From(x)</dd>
+      <dt>{{review.last.goals.from_x}}</dt>
+      <dd>To(x)</dd>
+      <dt>{{review.last.goals.to_x}}</dt>
+      <dd>When(date)</dd>
+      <dt>{{review.last.goals.when_date}}</dt>
+      <dd>How?</dd>
+      <dt>{{review.last.goals.how}}</dt>
+      <dd>Celebrate Improvements and Accomplishments</dd>
+      <dt>{{review.last.goals.celebrate}}</dt>
+      <dd>Does the area of focus or metric change from the previous month? Or is there a new focus area?</dd>
+      <dt>{{review.last.goals.notes}}</dt>
+    </dl>
+  </div>
+</div>
+<div class="pure-u-1" id="all-kpi">
+  <div class="wrapper">
+    <div class="section-header">
+      <h3 class="float-left">All KPIs</h3>
+      <div class="float-right">
+        <!-- View Toggle and Download Buttons -->
+        <div id="toggle-group" ng-init="toggle_group = true;" ng-show="toggle_group">
+          <!-- Raw Value | Balanced Score Toggle -->
+          <div id="toggle-table-view" ng-show="table_view">
+            <a href="#performance-review" id="btn-raw-value" class="btn-toggle"
+              ng-click="table_view_toggle = !table_view_toggle">
+              <span class="label left">Raw Value</span>
+              <span ng-class="table_view_toggle ? 'btn-img left' : 'btn-img right'"><i class="fa fa-circle"></i></span>
+              <span class="label right">Balanced Score</span>
+            </a>
+          </div>
+          <!-- Bar Chart View | Table View Toggle -->
+          <div id="toggle-bar-chart">
+            <a href="#performance-review" id="btn-bar-table" class="btn-toggle"
+              ng-click="table_view = !table_view; bar_chart_toggle = !bar_chart_toggle">
+              <span class="label left">Bar Chart View</span>
+              <span ng-class="bar_chart_toggle ? 'btn-img right' : 'btn-img left'"><i class="fa fa-circle"></i></span>
+              <span class="label right">Table View</span>
+            </a>
+          </div>
+          <!-- Download Button -->
+          <div id="toggle-download">
+            <a href="#performance-review" id="btn-download"><i class="fa fa-download" aria-hidden="true"></i></a>
+          </div>
+        </div>
+        <!-- Show/Hide All KPIs Button -->
+        <div id="toggle-view">
+          <a href="#performance-review" class="expand-compress"
+            ng-click="chart_table_wrapper = !chart_table_wrapper; toggle_group = !toggle_group;"><i
+              ng-class="toggle ? 'fa fa-expand' : 'fa fa-compress'" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <div class="clear-all"></div>
+    </div>
+    <!-- All KPI Charts -->
+    <div id="chart-table-wrapper" ng-init="chart_table_wrapper = true; table_view = false; table_view_toggle = true;"
+      ng-show="chart_table_wrapper">
+      <!-- Bar Chart View -->
+      <div id="bar-chart" ng-hide="table_view" style="height:400px;width:100%;position:relative;">
+        <!-- <img src="https://via.placeholder.com/960x400?text=Bar+Chart+Graph" class="placeholder"/> -->
+        <ng-acuity-report text="Process Percentage" details="test details for test panel 1" hidetopper="true"
+          filters="StartDate=8/1/2018&EndDate=10/15/2018" cid="sk-performance-current" cidclient="all">
+        </ng-acuity-report>
+      </div>
+      <!-- Table View -->
+      <div id="table-view" ng-show="table_view">
+        <!-- Raw Value View -->
+        <div id="raw-value" ng-show="table_view_toggle">
+          <img src="https://via.placeholder.com/960x400.png?text=Table+View+Raw+Value" class="placeholder" />
+        </div>
+        <!-- Balanced Score View -->
+        <div id="balanced-score" ng-hide="table_view_toggle">
+          <img src="https://via.placeholder.com/960x400.png?text=Table+Balanced+Score" class="placeholder" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pure-u-1">
+    <div class="wrapper">
+      <div class="section-header">
+        <h3>Trend of Balanced Score (by pay period)</h3>
+      </div>
+      <div>
+        <img src="https://via.placeholder.com/960x400.png?text=Trend+of+Balanced+Score" class="placeholder" />
+      </div>
+    </div>
+  </div>
+</div>
+<button type="button" class="pure-button pure-button-primary btn-next">Next: Goals & Objectives</button>

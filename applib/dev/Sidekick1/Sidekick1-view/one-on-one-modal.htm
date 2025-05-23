@@ -1,0 +1,59 @@
+<div class="pure-g header">
+	<div class="pure-u-3-5" id="title">
+		<h3>One-on-One with {{agentName}}</h3>
+	</div>
+	<div class="pure-u-2-5" id="identity">
+			<img src="{{one_on_one_agent_avatar}}" alt="{{agentName}} Avatar" />
+		<span class="name">{{agentName}}</span>
+	</div>
+	<div class="pure-u-1-1">
+		<p>Select and schedule one-on-one details for {{agentName}}.</p>
+	</div>
+</div>
+<div class="pure-g content">
+	<div class="pure-u-1-2">
+		<div id="datepicker" ng-model="meetingDate"></div>
+	</div>
+	<div class="pure-u-1-2 pure-form pure-form-horizontal">
+		<div>
+			<!-- <p>Date: {{meetingDate}}</p> -->
+			<label for="ooo-date">Date: </label>
+			<input type="text" id="ooo-date" name="ooo-date" ng-model="meetingDate" readonly>
+		</div>
+		<div>
+			<label for="">Time: </label>
+			<input type="text" class="timepicker pure-u-2-5" id="start-time" placeholder="Start Time" name="start-time"
+				ng-model="startTime" required>
+			to
+			<input type="text" class="timepicker pure-u-2-5" id="end-time" placeholder="End Time" name="end-time"
+				ng-model="endTime" required>
+		</div>
+		<div>
+			<label for="ooo-location">Location: </label>
+			<select name="ooo-location" id="ooo-location" name="ooo-location" ng-model="meetingLocation" required>
+				<option value="" selected>Choose a Location</option>
+				<option value="Supervisor's Office">Supervisor's Office</option>
+				<option value="Main Conference Room">Main Conference Room</option>
+				<option value="Other Conference Room">Other Conference Room</option>
+			</select>
+		</div>
+		<!-- <p ng-bind="meetingDate"></p>
+			<p ng-bind="startTime"></p>
+			<p ng-bind="endTime"></p>
+			<p ng-bind="meetingLocation"></p> -->
+	</div>
+	<div class="pure-u-1-1" id="buttons">
+		<!-- <button type="button" class="pure-button cancel" ng-click="$close();">Cancel</button> -->
+		<button type="button" class="pure-button cancel" id="ooo-cancel"
+			ng-click="one_on_one_modal = !one_on_one_modal; modal_underlay = !modal_underlay">Cancel</button>
+		<button type="button" class="pure-button pure-button-primary" id="ooo-submit"
+			ng-click="one_on_one_modal = !one_on_one_modal; modal_underlay = !modal_underlay">Submit</button>
+	</div>
+</div>
+<div class="pure-g confirmation-message" style="display:none;">
+	<div class="pure-u-1-1">
+		<h1>Meeting Created</h1>
+		<button type="button" class="pure-button pure-button-primary btn-modal-close"
+			ng-click="one_on_one_modal = !one_on_one_modal; modal_underlay = !modal_underlay">Close</a>
+	</div>
+</div>

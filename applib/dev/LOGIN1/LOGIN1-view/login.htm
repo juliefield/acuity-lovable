@@ -1,0 +1,48 @@
+<form name="loginForm" ng-submit="submitLogin(loginForm.$valid)" novalidate>
+  <div id="loginfv"></div>
+  <div class="err-container" ng-show="error">
+    <p class="err-message"><i class="fa-solid fa-triangle-exclamation"></i> {{ error }}</p>
+  </div>
+  <div class="acuity-form-group">
+    <span id="userID_lbl" runat="server">Username or email address: </span>
+    <input
+      type="email"
+      ng-model="creds.email"
+      name="email"
+      id="userEmail_txt"
+      class="acuity-form-input"
+      placeholder="Username or email"
+      username-or-email
+      required
+      autofocus
+    />
+    <div ng-show="loginForm.$submitted && loginForm.email.$invalid">
+      <div ng-show="loginForm.email.$error.required" class="err-message-inline">Please enter your username or email address</div>
+      <div ng-show="loginForm.email.$error.email" class="err-message-inline">Please enter a valid email address</div>
+    </div>
+  </div>
+  <div class="acuity-form-group">
+    <span id="pwrd_lbl" runat="server">Password: </span>
+    <input
+      type="password"
+      ng-model="creds.password"
+      name="password"
+      id="pwrd_txt"
+      class="acuity-form-input"
+      placeholder="Password"
+      required
+    />
+    <div ng-show="loginForm.$submitted && loginForm.password.$invalid">
+      <div ng-show="loginForm.password.$error.required" class="err-message-inline">Please enter your password</div>
+    </div>
+  </div>
+  <div class="acuity-form-group">
+    <input
+      type="submit"
+      id="userLogin"
+      class="acuity-form-input btn-blue"
+      value="Login"
+      ng-disabled="loginForm.$submitted && loginForm.$invalid"
+    />
+  </div>
+</form>

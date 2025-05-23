@@ -1,0 +1,78 @@
+<div class="basic-directive-holder" style="height: calc(100vh - 263px);overflow-y: auto;">
+   <div class="title-and-instructions">
+        <h1>Text Management</h1>
+        <div class="instruction-holder">
+            <p><strong>Instructions:</strong><br>
+                To create a client specific value, the best way to do so is to edit the "All Clients" value for the language that you wish to edit.
+                Once the editor is displayed, change the client from "All Clients" to the client name you wish to use and click "Save".
+                <br>
+                Only on (1) value is allowed for any Key, Language, and Client combination.
+            </p>
+        </div>
+    </div>    
+   <div class="top-filters">
+      <div class="filter-input-group">
+         Key: <input type="text" id="resourceText_KeyFilter">
+      </div>
+      <div class="filter-input-group">
+         Language: <select id="resourceText_LanguageFilter"></select>
+      </div>
+      <div class="filter-input-group">
+         Client: <select id="resourceText_ClientFilter"></select>
+      </div>
+      <div class="filter-input-group">
+        Text: <input type="text" id="resourceText_TextFilter">
+      </div>
+      <div class="filter-input-group">
+         <button id="resourceText_Refresh"><i class="fa fa-filter"></i>Apply Filter</button>
+         &nbsp;&nbsp;
+         <button id="resourceText_clearFilter">Clear Filter</button>
+      </div>
+  </div>
+  <br>
+  <div class="bottom-buttons">
+      <div class="filter-input-group">
+          <button id="btnAddResourceText" class="btn button btn-add-new btn-large btn-green"><i class="fas fa-plus"></i> Add New Text</button>
+      </div>
+  </div>
+  <div id="resourceTextDataHolder">        
+   <div class="selection-holder large-holder">
+       <div id="resourceTextLoadingHolder" class="resource-text-information-loading-message">
+           <img src="../../../../applib/css/images/acuity-loading.gif" height="25px"><span
+               id="resourceTextLoadingMessage"></span>
+       </div>
+       <div id="resourceTextList" class="resource-text-list-holder"></div>
+   </div>
+   
+</div>
+</div>
+<div id="resourceTextFormPanel" class="editor-form">
+      <div class="form-holder-small">
+         <button class="btn-close btn-close-x"><i class="fa fa-times"></i></button>
+     <div class="error-information-holder"></div>
+         <div class="resourceEditor-fields">            
+             <div class="resourceEditor-fields_group">
+                 <label>Key:</label> 
+                 <input type="text" id="resourceText_ResourceKey">
+             </div>
+             <div class="resourceEditor-fields_group">
+                 <label>Language:</label> 
+                 <select id="resourceText_ResourceLanguage"></select>
+             </div>
+             <div class="resourceEditor-fields_group">
+                 <label>Client:</label> 
+                 <select id="resourceText_Client"></select>
+             </div>
+             <div class="resourceEditor-fields_group">
+               <label>Text:</label> 
+               <input type="text" id="resourceText_ResourceText">
+           </div>
+         </div>
+         <div class="badgeAdminForm_btns">             
+             <button id="btnSaveResourceText" class="btn-large">Save</button>
+             &nbsp;&nbsp;
+             <button class="btn-close btn-large">Close</button>
+         </div>
+     </div>
+   </div>
+</div>

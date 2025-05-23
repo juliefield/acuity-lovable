@@ -1,0 +1,175 @@
+<style>
+   .option-holder {
+      display:inline-block;
+      max-width:10vw;
+      min-width:10vw;
+      max-height:10vw;
+      min-height:10vw;
+      border:2px solid gray;
+      background-color:lightblue;
+      color:gray;
+      margin: 3px;
+      padding:2px;
+   }
+   .tango-card-columnA
+   {
+      display:inline-block;
+      margin:2px;
+      max-width:60vw;
+      min-width:60vw;
+      max-height:50vh;
+      min-height:50vh;
+      vertical-align: top;
+      overflow:auto;
+   }
+   .tango-card-columnB
+   {
+      display:inline-block;
+      margin:2px;
+      max-width:30vw;
+      min-width:30vw;
+      max-height:30vh;
+      min-height:30vh;
+      vertical-align: top;
+   }
+   .tango-card-option-data-holder {
+      display:block;
+      text-align:center;
+      margin:1px;
+   }
+   .option-image-holder {
+      max-height:60px;
+      min-height:60px;
+      padding:3px;
+   }
+   .option-image {
+      max-height:50px;
+      min-height:50px;
+      aspect-ratio: inherit;
+      background-color:whitesmoke;
+   }
+   .option-name-holder {
+      font-weight:bold;
+   }
+   .option-price-holder {
+      font-style: italic;
+   }
+   .option-value-holder {
+      font-style: italic;
+      font-size: 0.75em;
+   }
+   .cart-list-header-holder
+   {
+      min-height: 2vh;
+      max-height: 2vh;
+      background-color:darkblue;
+      color:white;
+   }
+   .cart-list-body-holder
+   {
+      min-height: calc(26vh - 2px);
+      max-height: calc(26vh - 2px);
+   }
+   .cart-item-body-list-holder
+   {
+      min-height: calc(26vh - 40px);
+      max-height: calc(26vh - 40px);
+      overflow: auto;
+      background-color:lightgreen;
+   }
+   .cart-list-footer-holder
+   {
+      min-height: 2vh;
+      max-height: 2vh;
+      background-color:darkblue;
+      color:white;
+   }
+   .cart-item-row {
+      width:99%;
+      min-height:35px;
+      max-height:35px;
+      vertical-align: middle;
+   }
+   .cart-item-holder {
+      display:inline-block;
+      border:1px solid white; 
+   }
+   .header-item {
+      font-weight:bold;
+   }
+   .cart-button {
+      max-height:25px;
+      min-height:25px;
+   }
+   .cart-button.remove {
+      background-color:darkred;
+      color:white;
+   }
+   .item-name {
+      max-width:30%;
+      min-width:30%;
+   }
+   .item-qty {
+      max-width:10%;
+      min-width:10%;
+   }
+   .item-qty-input
+   {
+      max-width:40px;
+      min-width:40px;
+      min-height:30px;
+      max-height:30px;
+
+   }
+   .item-cost {
+      max-width:15%;
+      min-width:15%;
+   }
+   .item-total-cost {
+      max-width:15%;
+      min-width:15%;
+   }
+   .item-buttons {
+      max-width:20%;
+      min-width:20%;
+   }
+</style>
+<div>
+   <div>
+      <button id="btnTester">Test</button>
+      <div>
+         <b>TODO:</b>
+         <ul>
+            <li>Ensure we have the proper information for Tango Card ordering (name, address, etc.)</li>
+            <li>Ensure user has enough points to order item selected</li>
+         </ul>
+      </div>
+   </div>
+   <div>
+      <div class="tango-card-columnA">
+         <div id="tangoCardOptionsList"></div>
+      </div>
+      <div class="tango-card-columnB">
+         <div class="cart-list-header-holder">
+            <div>Header</div>            
+         </div>
+         <div class="cart-list-body-holder">
+            <div>
+               <div class="cart-item-row header-item">
+                  <div class="cart-item-holder header-item item-name">Item</div>
+                  <div class="cart-item-holder header-item item-qty">Qty</div>
+                  <div class="cart-item-holder header-item item-cost">Cost</div>
+                  <div class="cart-item-holder header-item item-total-cost">Total Cost</div>
+                  <div class="cart-item-holder header-item item-buttons">&nbsp;</div>
+               </div>
+            </div>
+            <div class="cart-item-body-list-holder">
+               <div id="userSelectedOptionsList"></div>
+            </div>
+         </div>
+         <div class="cart-list-footer-holder">
+            <div>Footer</div>
+         </div>
+      </div>
+   </div>
+</div>

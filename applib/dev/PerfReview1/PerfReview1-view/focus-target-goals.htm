@@ -1,0 +1,34 @@
+<div class="pure-form pure-form-stacked" ng-hide="viewFlag">
+    <label for="new-goal">Goal/Target</label>
+    <input type="text" id="new-goal" name="new-goal" ng-model="review.selected_user.evaluation.goals.goal" />
+    <label for="new-from-date">From(x)</label>
+    <input type="text" id="new-from-date" name="new-from-date" ng-model="review.selected_user.evaluation.goals.from_x" />
+    <label for="new-to-date">To(x)</label>
+    <input type="text" id="new-to-date" name="new-to-date" ng-model="review.selected_user.evaluation.goals.to_x" />
+    <label for="new-when-date">When(date)</label>
+    <input type="text" id="new-when-date" name="new-when-date" ng-model="review.selected_user.evaluation.goals.when_date" />
+    <label for="new-how">How?</label>
+    <textarea name="new-how" id="new-how" ng-model="review.selected_user.evaluation.goals.how"></textarea>
+    <label for="new-celebrate">Celebrate Improvements and Accomplishments</label>
+    <textarea name="new-celebrate" id="new-celebrate" ng-model="review.selected_user.evaluation.goals.celebrate"></textarea>
+    <label for="new-metric-focus-area">Does the area of focus or metric change from the previous month? Or is there a new focus area?</label>
+    <textarea name="new-metric-focus-area" id="new-metric-focus-area" ng-model="review.selected_user.evaluation.goals.notes"></textarea>
+</div>
+<div class="view-only" ng-show="viewFlag">
+    <dl>
+        <dd>Goal/Target</dd>
+        <dt>{{review.selected.evaluation.goals.goal}}</dt>
+        <dd>From(x)</dd>
+        <dt>{{review.selected.evaluation.goals.from_x}}</dt>
+        <dd>To(x)</dd>
+        <dt>{{review.selected.evaluation.goals.to_x}}</dt>
+        <dd>When(date)</dd>
+        <dt>{{review.selected.evaluation.goals.when_date}}</dt>
+        <dd>How?</dd>
+        <dt>{{review.selected.evaluation.goals.how}}</dt>
+        <dd>Celebrate Improvements and Accomplishments</dd>
+        <dt>{{review.selected.evaluation.goals.celebrate}}</dt>
+        <dd>Does the area of focus or metric change from the previous month? Or is there a new focus area?</dd>
+        <dt>{{review.selected.evaluation.goals.notes}}</dt>
+    </dl>
+</div>

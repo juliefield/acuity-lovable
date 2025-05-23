@@ -1,0 +1,65 @@
+<div class="dashboard-awardsbox">
+   <div class="dashboard-awardsbox_nav">
+      <ul id="availableOptions">
+         <li id="customPointsbtn">Custom Credits: <span id="totalCustomPoints"></span></li>
+         <li id="pointsbtn">Acuity Credits: <span id="totalPointsHolder"></span></li>
+         <li id="badgesbtn">My Badges: <span id="totalBadges"></span></li>
+         <li id="trophybtn">My Trophies: <span id="totalTrophies"></span></li>
+      </ul>
+   </div>
+   <div class="dashboard-awardsbox_content">
+      <div id="points-content" class="dashboard-awardsbox_points">
+        
+         <div class="points-holder-header">
+            <span class="points-item-assigned-date-holder">Date</span>
+            <span class="points-item-assigned-by-holder">Awarded By</span>
+            <span class="points-item-game-data">Item</span>
+            <span class="points-item-points-value-holder">Credits</span>
+         </div>
+         <div id="myPointsHolder"></div>
+         <div class="awards-top-btns-container">
+            <button id="btnRedeemPoints" class="awards-btn btn btn-green"><i class="fa-solid fa-hand-holding-dollar"></i> Redeem</button>
+            &nbsp;
+            <button id="btnRefreshPoints" class="refresh-awards-btn"><i class="fa-solid fa-rotate"></i> Refresh</button>
+            <div class="total-credits"><span id="totalPointsHolder"></span></div>
+         </div>
+      </div>
+      <div id="badges-content" class="dashboard-awardsbox_badges">
+         <button id="showAllAvailableBadges" class="viewall-badges-btn">
+            View All Badges
+         </button>
+         <div id="myBadgesHolder"></div>
+      </div>
+      <div id="trophies-content" class="dashboard-awardsbox_trophies">
+         <div id="myTrophiesHolder"></div> 
+      </div>
+      <div id="custom-points-content" class="dashboard-awardsbox_custompoints">
+         <div class="dashboard-awardsbox_select">
+            <span>Select Season: </span>
+            <span><select id="customPointsSeasonSelector"></select></span>
+         </div>
+         <div>
+            <div class="custom-points-display-holder-header">
+               <span class="custom-points-item-date-holder">Date</span>
+               <span class="custom-points-item-season-holder">Season</span>
+               <span class="custom-points-item-award-for-holder">Award For</span>
+               <span class="custom-points-item-points-value-holder">Credits</span>
+            </div>   
+            <div id="myCustomPointsHolder"></div>
+         </div>
+         
+      </div>
+   </div>  
+</div>
+<div id="allAvailableBadgesPanel" class="allAvailableBadgesPanel" >
+   <div class="allAvailableBadgesPanel_content">
+      <button id="closeAvailableBadgesPanel" class="close-panel-btn"><i class="fa fa-times"></i></button>
+      <div id="allAvailableBadgesHolder"></div>
+   </div>
+</div>
+<div id="userTrophyEarnedDisplayPanel" class="allAvailableTrophyPanel">
+   <div class="allAvailableTrophyPanel_content">
+      <button id="closeAvailableTrophyPanel" class="close-panel-btn"><i class="fa fa-times"></i></button>
+      <div id="trophyDisplayHolder"></div>
+   </div>
+</div>

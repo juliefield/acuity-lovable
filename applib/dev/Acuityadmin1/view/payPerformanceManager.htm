@@ -1,0 +1,840 @@
+<style>
+    @import url("../../../../applib/css/variables.css");
+    input,
+    textarea,
+    select {
+        font-size: 13px !important;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        border: 1px solid var(--border-color);
+        padding: 5px;
+    }
+    td {
+        padding: 5px;
+    }
+    .header-item {
+        background-color: var(--table-topper-color);
+        color: white;
+        font-weight: bold;
+        font-size: 14px;
+        padding-left: 10px;
+        min-height: 20px;
+        width: 90%;
+        padding: 8px 10px;
+        width: 97%;
+    }
+    .columnInfoHolder
+    {
+        overflow: auto;
+        height: 500px;
+        min-height: 500px;
+        -webkit-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+        -moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+        box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+        border: 8px solid white;
+        padding: 15px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        background-color: white;
+    }
+    .table-header-row
+    {
+        background-color:var(--table-topper-color);
+        font-weight:bold;
+        color: white;        
+    }
+    .totals-row
+    {
+        background-color: var(--brand-dark-blue);
+        color: white;
+        font-weight:bold;
+        text-align:center;
+    }
+    .yearly-totals-row
+    {
+        background-color: var(--light-yellow);
+        color: var(--dark-gray);
+        font-weight:bold;
+        text-align:center;
+    }
+    .table-header-row TD
+    {
+        text-align:center;
+        padding: 8px;
+    }
+    .table-row td,
+    .current-row td
+    {
+        text-align:center;
+        padding: 5px;
+    }
+    td.leftAlign
+    {
+        text-align:left !important;
+    }
+    td.rightAlign
+    {
+        text-align:right !important;
+    }
+    .columnInfoHolder .form-row {
+        position: relative;
+    }
+    .user-instructions-information
+    {
+        border:1px solid var(--gray);
+        border-radius:15px;
+        font-size:0.9em;
+        background-color:white;
+        padding:3px;
+        margin:2px;
+        position: absolute;
+        bottom: 38px;
+        background: rgba(0,0,0, 0.8);
+        color: white;
+        left: 0;
+    right: 0;
+    }
+    .stats-holder-stats-section-holder
+    {
+        display:inline-block;
+        width: 50%;
+    }
+    .warning-information-holder
+    {
+        font-weight:bold;
+        background-color: var(--light-blue);
+        color: black;
+        padding: 15px 15px 0 15px;
+    }
+    .warning-information-list
+    {
+        max-height: 70px;
+        overflow: auto;
+        color: black;
+        padding-bottom: 0;
+        font-weight: normal;
+    }
+    .current-stats-holder
+    {
+
+    }
+    .stats-grouping
+    {
+        width:100%;
+        display:inline-block;
+    }
+    .stat-holder
+    {
+        width:49%;
+        min-height: 35px;
+    }
+    .stats-item-label
+    {
+        display: inline;
+        font-size: 15px;
+    }
+    .stats-item-display {
+        min-width:25%;
+        font-weight:bold;
+        font-size: 15px;
+    }
+    .tier-data-input-holder {
+        display: inline-block;
+        border-radius: 5px;
+        width: 48%;
+        -webkit-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+        -moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+        box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+    }
+    .tier-header
+    {
+        width:100%;
+        background-color:var(--table-topper-color);
+        color:var(--table-labels);
+        border-radius:3px 3px 0px 0px;
+        height:25px;        
+    }    
+    .tier-header-label
+    {
+        padding-top: 3px;
+        padding-left:10px;
+        font-weight:bold;
+    }
+    .tier-data-input-body
+    {
+        padding:10px;
+        background-color:white;
+        border-radius:0px 0px 5px 5px;
+    }
+    .tier-data-input-agent-row,
+    .tier-data-input-row-item {
+        display: flex;
+        align-items: center;
+    }
+    .tier-data-input-agent-row {
+        border-bottom: 1px solid var(--light-gray);
+        margin-bottom: 6px;
+        padding-bottom: 6px;
+    }
+    .form-row
+    {
+        padding:5px;
+        background-color:transparent;
+    }
+    .form-row:nth-child(even)
+    {
+        background-color: var(--light-gray);
+    }    
+    .tier-data-input-row-item
+    {
+        background-color:transparent;
+    }
+    .tier-data-input-text
+    {
+        width:50px;
+    }
+    .inline-item
+    {
+        display:inline-block;
+    }
+    .text-holder
+    {
+        width:74%;
+    }
+    .input-holder
+    {
+        width:25%;
+    }
+    div.label-holder
+    {
+        width: max(250px, 40%);
+    }
+    .calculation-result-holder
+    {
+      
+        background-color:white;
+     
+    }
+    .results-table TR.current-row
+    {
+        background-color:var(--green);
+        color:white;
+    }
+    .results-table TR.table-row:nth-child(even)
+    {
+        background-color:var(--light-gray);
+    }
+    .fullWidth {
+        width: 97%;
+        margin: 10px;
+    }
+    .chart-holder{
+        overflow: auto;
+        min-height: 300px;
+        padding: 8px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        -webkit-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+        -moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+        box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+    }
+    .highcharts-background {
+        fill: white !important;
+    }
+    .p4p-container {
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0 40px;
+        background: var(--light-blue);
+        overflow-y: auto;
+        height: calc(100vh - 125px);
+        padding-bottom: 50px !important;
+    }
+    .p4p-container h1 {
+        display: inline-block;
+        font-size: 22px !important;
+    }
+    .form-button-holder {
+        display: inline-block;
+        margin-left: 20px;
+    }
+    .form-row-tierlist {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        padding: 15px 0;
+    }
+    .input-dollar-symbol {
+        display: inline-block;
+        margin-left: -10px;
+        margin-right: 4px;
+    }
+    .column1of2 {
+        width: 40%;
+    }
+    .column2of2 {
+        width: 56%;
+    }
+    .column1of2, .column2of2 {
+        margin: 10px;
+    }
+    .current-stats-body {
+        padding: 10px;
+    }
+    .yearly-total-block {
+        margin-left: 20px;
+    }
+</style>
+<div class="p4p-container">
+   <h1>Pay for Performance Calculator</h1>
+    <div class="form-button-holder">
+        <button id="btnClearForm">Clear Form</button>
+        <button id="btnCalculate">Calculate</button>
+        <button id="btnSaveForm">Save</button>
+        <button id="btnRefreshP4P"><i class="fa fa-refresh"></i></button>
+    </div>
+    <br />
+    <div class="column1of2">
+        <div class="columnInfoHolder">
+            <div class="form-row">
+                <div class="inline-item label-holder">
+                    <label>Project</label>
+                </div>
+                <div class="inline-item">
+                    <select id="projectSelected"></select>
+                    <button id="btnReset">Reset</button>
+                    &nbsp;&nbsp;
+                    <button id="btnCreateNew">Create New</button>
+                </div>    
+            </div>
+            <div class="form-row">
+                <div class="inline-item label-holder">
+                    <label>Current Number of Assigned Agents:</label>
+                </div>
+                <div class="inline-item">
+                    <span id="currentAgentCount"></span>
+                    <button id="useCurrentNumberAgents" style="margin-left: 10px;">Use</button><input type="hidden" id="curAgentCountHolder" value="0">    
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="inline-item label-holder">
+                    <label>Total Agent Count on Project</label>
+                </div>
+                <div class="inline-item">
+                    <input input="text" id="agentCount" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="inline-item label-holder">
+                    <label>Hours per Agent per Payout</label>
+                </div>
+                <div class="inline-item">
+                    <input type="text" id="agentHoursPerPayout" placeholder="40" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="inline-item label-holder">
+                    <label>Current Base Pay Per Agent </label>
+                </div>
+                <div class="inline-item">
+                    <span class="input-dollar-symbol">$</span><input type="text" id="currentAgentBasePay" placeholder="10.00" />
+                    &nbsp;
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="inline-item label-holder">
+                    <label>New Base Pay Per Agent </label>
+                </div>
+                <div class="inline-item">
+                    <span class="input-dollar-symbol">$</span><input type="text" id="newAgentBasePay" placeholder="10.00" />
+                    &nbsp;
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="inline-item label-holder">
+                    <label>Start Date </label>
+                </div>
+                <div class="inline-item">
+                    <input type="text" id="implementationStartDate" class="datepicker"/>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="inline-item label-holder">
+                    <label>End Date </label>
+                </div>
+                <div class="inline-item">
+                    <input type="text" id="implementationEndDate" class="datepicker"/>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="inline-item label-holder">
+                    <label>Payout Tiers</label>
+                </div>
+                <div class="inline-item">
+                    <select id="payoutTiers">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>    
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="inline-item label-holder">
+                    <label>Tier Payout Type</label>
+                </div>
+                <div class="inline-item">
+                    <select id="tierPayoutType">
+                        <option></option>
+                        <option value="percentage">Percentage</option>
+                        <option value="additionalrate">Additional Rate</option>
+                        <option value="flatrate">Flat Rate</option>
+                    </select>
+                    <button id="btnShowPayoutInformation"><i class="fa-regular fa-circle-question"></i></button>
+                </div>
+                <div id="payoutTypeInfo" class="user-instructions-information">
+                    <ul>
+                        <li>Percentage = % increase based on pay rate (ex: base: $10 per agent per hour, new @50% = $15 per agent per hour)</li>
+                        <li>Additional Rate = increase pay rate per hour by that amount (ex: 0.25 = 25 cents per hour per agent.  Base pay = $10, agents at this tier = $10.25)</li>
+                        <li>Flat Rate = Amount paid per agent in that tier.  (ex: 15.72 = pay each at that tier that $15.72 per hour)</li>
+    
+                    </ul>
+                </div>    
+            </div>
+            <div class="form-row">
+                <div class="inline-item label-holder">
+                    <label>Agents in Tier</label>
+                </div>
+                <div class="inline-item">
+                    <select id="tierType">
+                        <option></option>
+                        <option value="percentage">Percentage of Total Agents</option>
+                        <option value="hardcount">Exact Number of Agents</option>
+                    </select>
+                    <button id="btnShowTierTypeInformation"><i class="fa-regular fa-circle-question"></i></button>                
+                </div>
+                <div id="tierTypeInfo" class="user-instructions-information">
+                    <div>
+                        <ul>
+                            <li>Percentage = % of total agents that will be in tier</li>
+                            <li>Exact Number = specific number of agents that will be in tier</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row form-row-tierlist">
+                <div id="tierList_1" class="tier-data-input-holder">
+                    <div class="tier-header">
+                        <div class="tier-header-label">Tier 1</div>
+                    </div>
+                    <div class="tier-data-input-body">
+                        <div class="tier-data-input-agent-row">
+                            <div class="inline-item text-holder">
+                                <span class="totalAgentsInTierLabel">Total Agents</span> in Tier 1
+                            </div>
+                            <div class="inline-item input-holder">
+                                <input type="text" id="totalAgentsInTier1" class="tier-data-input-text" />
+                            </div>
+                        </div>
+                        <div class="form_input-holder-percentage tier-data-input-percentage-row">
+                            <div class="inline-item text-holder">
+                                <span>Tier 1 Percentage Increase</span>
+                            </div>
+                            <div class="inline-item input-holder">
+                                <input type="text" id="tier1AmountInceasePercentage" class="tier-data-input-text" placeholder="10" /> %
+                            </div>
+                        </div>
+                        <div class="form_input-holder-flatrate tier-data-input-flat-row">
+                            <div class="inline-item text-holder">
+                                <span>Tier 1 Flat Amount</span>
+                            </div>
+                            <div class="inline-item input-holder">
+                                <span class="input-dollar-symbol">$</span><input type="text" id="tier1AmountInceaseFlat" class="tier-data-input-text" placeholder="10.00"  />
+                            </div>
+                        </div>
+                        <div class="form_input-holder-additionalrate tier-data-input-row-item">
+                            <div class="inline-item text-holder">
+                                <span>Tier 1 Additional Rate Amount</span>
+                            </div>
+                            <div class="inline-item input-holder">
+                                <span class="input-dollar-symbol">$</span><input type="text" id="tier1AmountInceaseAdditional" class="tier-data-input-text" placeholder="0.10"  />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="tierList_2" class="tier-data-input-holder">
+                    <div class="tier-header">
+                        <div class="tier-header-label">Tier 2</div>
+                    </div>
+                    <div class="tier-data-input-body">
+                        <div class="tier-data-input-agent-row">
+                            <div class="inline-item text-holder">
+                                <span class="totalAgentsInTierLabel">Total Agents</span> in Tier 2
+                            </div>
+                            <div class="inline-item input-holder">
+                                <input type="text" id="totalAgentsInTier2" class="tier-data-input-text" />
+                            </div>
+                        </div>
+                        <div class="form_input-holder-percentage tier-data-input-percentage-row">
+                            <div class="inline-item text-holder">
+                                <span>Tier 2 Percentage Increase</span>
+                            </div>
+                            <div class="inline-item input-holder">
+                                <input type="text" id="tier2AmountInceasePercentage" class="tier-data-input-text" placeholder="10" /> %
+                            </div>
+                        </div>
+                        <div class="form_input-holder-flatrate tier-data-input-flat-row">
+                            <div class="inline-item text-holder">
+                                <span>Tier 2 Flat Amount</span>
+                            </div>
+                            <div class="inline-item input-holder">
+                                <span class="input-dollar-symbol">$</span><input type="text" id="tier2AmountInceaseFlat" class="tier-data-input-text" placeholder="10.00"  />
+                            </div>
+                        </div>
+                        <div class="form_input-holder-additionalrate tier-data-input-row-item">
+                            <div class="inline-item text-holder">
+                                <span>Tier 2 Additional Rate Amount</span>
+                            </div>
+                            <div class="inline-item input-holder">
+                                <span class="input-dollar-symbol">$</span><input type="text" id="tier2AmountInceaseAdditional" class="tier-data-input-text" placeholder="0.10"  />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="tierList_3" class="tier-data-input-holder">
+                    <div class="tier-header">
+                        <div class="tier-header-label">Tier 3</div>
+                    </div>
+                    <div class="tier-data-input-body">
+                        <div class="tier-data-input-agent-row">
+                            <div class="inline-item text-holder">
+                                <span class="totalAgentsInTierLabel">Total Agents</span> in Tier 3
+                            </div>
+                            <div class="inline-item input-holder">
+                                <input type="text" id="totalAgentsInTier3" class="tier-data-input-text" />
+                            </div>
+                        </div>
+                        <div class="form_input-holder-percentage tier-data-input-percentage-row">
+                            <div class="inline-item text-holder">
+                                <span>Tier 3 Percentage Increase</span>
+                            </div>
+                            <div class="inline-item input-holder">
+                                <input type="text" id="tier3AmountInceasePercentage" class="tier-data-input-text" placeholder="10" /> %
+                            </div>
+                        </div>
+                        <div class="form_input-holder-flatrate tier-data-input-flat-row">
+                            <div class="inline-item text-holder">
+                                <span>Tier 3 Flat Amount</span>
+                            </div>
+                            <div class="inline-item input-holder">
+                                <span class="input-dollar-symbol">$</span><input type="text" id="tier3AmountInceaseFlat" class="tier-data-input-text" placeholder="10.00"  />
+                            </div>
+                        </div>
+                        <div class="form_input-holder-additionalrate tier-data-input-row-item">
+                            <div class="inline-item text-holder">
+                                <span>Tier 3 Additional Rate Amount</span>
+                            </div>
+                            <div class="inline-item input-holder">
+                                <span class="input-dollar-symbol">$</span><input type="text" id="tier3AmountInceaseAdditional" class="tier-data-input-text" placeholder="0.10"  />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="tierList_4" class="tier-data-input-holder">
+                    <div class="tier-header">
+                        <div class="tier-header-label">Tier 4</div>
+                    </div>
+                    <div class="tier-data-input-body">
+                        <div class="tier-data-input-agent-row">
+                            <div class="inline-item text-holder">
+                                <span class="totalAgentsInTierLabel">Total Agents</span> in Tier 4
+                            </div>
+                            <div class="inline-item input-holder">
+                                <input type="text" id="totalAgentsInTier4" class="tier-data-input-text" />
+                            </div>
+                        </div>
+                        <div class="form_input-holder-percentage tier-data-input-percentage-row">
+                            <div class="inline-item text-holder">
+                                <span>Tier 4 Percentage Increase</span>
+                            </div>
+                            <div class="inline-item input-holder">
+                                <input type="text" id="tier4AmountInceasePercentage" class="tier-data-input-text" placeholder="10" /> %
+                            </div>
+                        </div>
+                        <div class="form_input-holder-flatrate tier-data-input-flat-row">
+                            <div class="inline-item text-holder">
+                                <span>Tier 4 Flat Amount</span>
+                            </div>
+                            <div class="inline-item input-holder">
+                                <span class="input-dollar-symbol">$</span><input type="text" id="tier4AmountInceaseFlat" class="tier-data-input-text" placeholder="10.00"  />
+                            </div>
+                        </div>
+                        <div class="form_input-holder-additionalrate tier-data-input-row-item">
+                            <div class="inline-item text-holder">
+                                <span>Tier 4 Additional Rate Amount</span>
+                            </div>
+                            <div class="inline-item input-holder">
+                                <span class="input-dollar-symbol">$</span><input type="text" id="tier4AmountInceaseAdditional" class="tier-data-input-text" placeholder="0.10"  />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="tierList_5" class="tier-data-input-holder">
+                    <div class="tier-header">
+                        <div class="tier-header-label">Tier 5</div>
+                    </div>
+                    <div class="tier-data-input-body">
+                        <div class="tier-data-input-agent-row">
+                            <div class="inline-item text-holder">
+                                <span class="totalAgentsInTierLabel">Total Agents</span> in Tier 5
+                            </div>
+                            <div class="inline-item input-holder">
+                                <input type="text" id="totalAgentsInTier5" class="tier-data-input-text" />
+                            </div>
+                        </div>
+                        <div class="form_input-holder-percentage tier-data-input-percentage-row">
+                            <div class="inline-item text-holder">
+                                <span>Tier 5 Percentage Increase</span>
+                            </div>
+                            <div class="inline-item input-holder">
+                                <input type="text" id="tier5AmountInceasePercentage" class="tier-data-input-text" placeholder="10" /> %
+                            </div>
+                        </div>
+                        <div class="form_input-holder-flatrate tier-data-input-flat-row">
+                            <div class="inline-item text-holder">
+                                <span>Tier 5 Flat Amount</span>
+                            </div>
+                            <div class="inline-item input-holder">
+                                <span class="input-dollar-symbol">$</span><input type="text" id="tier5AmountInceaseFlat" class="tier-data-input-text" placeholder="10.00"  />
+                            </div>
+                        </div>
+                        <div class="form_input-holder-additionalrate tier-data-input-row-item">
+                            <div class="inline-item text-holder">
+                                <span>Tier 5 Additional Rate Amount</span>
+                            </div>
+                            <div class="inline-item input-holder">
+                                <span class="input-dollar-symbol">$</span><input type="text" id="tier5AmountInceaseAdditional" class="tier-data-input-text" placeholder="0.10"  />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="column2of2">
+        <div class="columnInfoHolder">
+            <div style="vertical-align:top;display: flex;gap: 20px;">
+                <div class="stats-holder-stats-section-holder">
+                    <div id="calculationWarningsHolder" class="warning-information-holder">
+                        <div><i class="fa fa-warning"></i> Possible problems with your current calculation setup:</div>
+                        <ul id="calculationWarningsList" class="warning-information-list">
+                        </ul>
+                        &nbsp;
+                    </div>
+                </div>
+                <div class="stats-holder-stats-section-holder">
+                    <div class="current-stats-holder">
+                        <div class="header-item">
+                            <div class="inline-item">Current Project Stats</div>
+                        </div>
+                        <div class="current-stats-body">
+                            <div class="stats-grouping">
+                                <div class="inline-item stat-holder">
+                                    <span class="stats-item-label">Location(s):</span>
+                                    <span id="selectProjectStatsCount_Locations" class="stats-item-display"></span>
+                                </div>
+                                <div class="inline-item stat-holder">
+                                    <span class="stats-item-label">Team(s):</span>
+                                    <span id="selectProjectStatsCount_Teams" class="stats-item-display"></span>
+                                </div>
+                            </div>
+                            <div class="stats-grouping">
+                                <div class="inline-item stat-holder">
+                                    <span class="stats-item-label">Group(s):</span>
+                                    <span id="selectProjectStatsCount_Groups" class="stats-item-display"></span>
+                                </div>
+                                <div class="inline-item stat-holder">
+                                    <span class="stats-item-label">Agent(s):</span>
+                                    <span id="selectProjectStatsCount_Agents" class="stats-item-display"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="calculation-result-holder">
+                
+                <table border="0" cellspacing="1" cellpadding="2" width="100%" class="results-table">
+                    <thead>
+                    <tr class="table-header-row">
+                        <td>Area</td>
+                        <td>Agent Count</td>
+                        <td>Base Amount</td>
+                        <td>Bonus Amount Per Agent</td>
+                        <td>Total Per Hour Agent</td>
+                        <td>Total Bonus Amount Per Payout</td>
+                        <td>Total Amount Per Payout</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="current-row">
+                        <td>Current (No P4P)</td>
+                        <td><div id="originalAgentCount"></div></td>
+                        <td><div class="agent-base-pay-amount-original" id="originalTotalAgentBasePay"></div></td>
+                        <td><div id="originalTotalAgentBonusPay"></div></td>
+                        <td><div class="agent-base-pay-amount-original"></div></td>
+                        <td><div id="originalTotalAgentBonusOnlyPay"></div></td>
+                        <td><div id="originalTotal"></div></td>
+                    </tr>
+                    <tr class="table-row">
+                        <td>New (No P4P)</td>
+                        <td><div id="newAgentCount"></div></td>
+                        <td><div class="agent-base-pay-amount" id="newTotalAgentBasePay"></div></td>
+                        <td><div id="newTotalAgentBonusPay"></div></td>
+                        <td><div class="agent-base-pay-amount"></div></td>
+                        <td><div id="newTotalAgentBonusOnlyPay"></div></td>
+                        <td><div id="newTotal"></div></td>
+                    </tr>
+                    <tr class="totals-row">
+                        <td colspan="6" class="rightAlign">Diff</td>
+                        <td><div id="currentVsNewDiff"></div></td>
+                    </tr>
+                    <tr>
+                        <td colspan="7"><hr /></td>
+                    </tr>
+                    <tr class="table-row">
+                        <td>No Bonus Payout</td>                        
+                        <td><div id="baseAgentCount"></div></td>
+                        <td><div class="agent-base-pay-amount" id="baseAgentBasePay"></div></td>
+                        <td><div id="baseAgentBonusPay"></div></td>
+                        <td><div id="basePayPer"></div></td>
+                        <td><div id="baseAgentBonusOnlyTotal"></div></td>
+                        <td><div id="basePayoutTotal"></div></td>
+                    </tr>
+                    <tr class="table-row" id="PayoutRow_Tier1">
+                        <td>Tier 1 Payout</td>
+                        <td><div id="tier1AgentCount"></div></td>
+                        <td><div class="agent-base-pay-amount" id="tier1AgentBasePay"></div></td>
+                        <td><div id="tier1AgentBonusPay"></div></td>
+                        <td><div id="tier1PayPer"></div></td>
+                        <td><div id="tier1AgentBonusOnlyTotal"></div></td>
+                        <td><div id="tier1PayoutTotal"></div></td>
+                    </tr>
+                    <tr class="table-row" id="PayoutRow_Tier2">
+                        <td>Tier 2 Payout</td>
+                        <td><div id="tier2AgentCount"></div></td>
+                        <td><div class="agent-base-pay-amount" id="tier2AgentBasePay"></div></td>
+                        <td><div id="tier2AgentBonusPay"></div></td>
+                        <td><div id="tier2PayPer"></div></td>
+                        <td><div id="tier2AgentBonusOnlyTotal"></div></td>
+                        <td><div id="tier2PayoutTotal"></div></td>
+                    </tr>
+                    <tr class="table-row" id="PayoutRow_Tier3">
+                        <td>Tier 3 Payout</td>
+                        <td><div id="tier3AgentCount"></div></td>
+                        <td><div class="agent-base-pay-amount" id="tier3AgentBasePay"></div></td>
+                        <td><div id="tier3AgentBonusPay"></div></td>
+                        <td><div id="tier3PayPer"></div></td>
+                        <td><div id="tier3AgentBonusOnlyTotal"></div></td>
+                        <td><div id="tier3PayoutTotal"></div></td>
+                    </tr>
+                    <tr class="table-row" id="PayoutRow_Tier4">
+                        <td>Tier 4 Payout</td>
+                        <td><div id="tier4AgentCount"></div></td>
+                        <td><div class="agent-base-pay-amount" id="tier4AgentBasePay"></div></td>
+                        <td><div id="tier4AgentBonusPay"></div></td>
+                        <td><div id="tier4PayPer"></div></td>
+                        <td><div id="tier4AgentBonusOnlyTotal"></div></td>
+                        <td><div id="tier4PayoutTotal"></div></td>
+                    </tr>
+                    <tr class="table-row" id="PayoutRow_Tier5">
+                        <td>Tier 5 Payout</td>
+                        <td><div id="tier5AgentCount"></div></td>
+                        <td><div class="agent-base-pay-amount" id="tier5AgentBasePay"></div></td>
+                        <td><div id="tier5AgentBonusPay"></div></td>
+                        <td><div id="tier5PayPer"></div></td>
+                        <td><div id="tier5AgentBonusOnlyTotal"></div></td>
+                        <td><div id="tier5PayoutTotal"></div></td>
+                    </tr>
+                    <tr>
+                        <td colspan="7"><hr /></td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr class="totals-row">
+                            <td>Total Per Payout</td>
+                            <td><div id="totalAgentCount"></div></td>
+                            <td><div class="agent-base-pay-amount" id="totalAgentBasePay"></div></td>
+                            <td><div id="totalAgentBonusPay"></div></td>
+                            <td><div id="avgPayPer"></div></td>
+                            <td><div id="diffTotal"></div></td>
+                            <td><div id="grandTotal"></div></td>
+                        </tr>
+                        <tr class="yearly-totals-row">
+                            <td rowspan="4" colspan="5" class="leftAlign">
+                               <span class="yearly-total-block">
+                                Total Estimates (based on 2000 hours per agent per year)
+                               </span> 
+                            </td>
+                            <td class="rightAlign"># of Payouts</td>
+                            <td><div id="yearlyPayoutCount"></div></td>
+                        </tr>
+                        <tr class="yearly-totals-row">
+                            <td class="rightAlign">Current Without Payouts</td>
+                            <td><div id="yearlyPayoutTotalNoBonus"></div></td>
+                        </tr>
+                        <tr class="yearly-totals-row">
+                            <td class="rightAlign">New With Payouts</td>
+                            <td><div id="yearlyPayoutTotal"></div></td>
+                        </tr>
+                        <tr class="yearly-totals-row">
+                            <td class="rightAlign">Yearly Total Difference</td>
+                            <td><div id="yearlyPayoutDifference"></div></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+    </div>
+        <div>
+            <input type="hidden" id="currentExtendedId">
+            <input type="hidden" id="tier1PayoutId" class="tier-data-input-hidden">
+            <input type="hidden" id="tier2PayoutId" class="tier-data-input-hidden">
+            <input type="hidden" id="tier3PayoutId" class="tier-data-input-hidden">
+            <input type="hidden" id="tier4PayoutId" class="tier-data-input-hidden">
+            <input type="hidden" id="tier5PayoutId" class="tier-data-input-hidden">
+        </div>
+    </div>
+    <br />
+    <div class="fullWidth">
+        <div class="chart-holder">
+            <div id="chartLoadingHolder">
+                <img id="payChartLoadingImage" height="25" alt="Loading pay for performance Data">
+                <span id="payChartLoadingMessage">Loading...</span>
+            </div>
+            <div id="BalScoreAttritionBandChart"></div>    
+        </div>
+        <!-- <div style="overflow:auto;max-height:250px;min-height:250px;border:2px solid lightslategray;">
+            <div style="background-color:gray;">
+                <div style="border:1px solid lime;background-color:black;color:whitesmoke;font-weight:bold;font-size:1.1em;padding-left:1%;">
+                    <p>Charts n' Things:</p>
+                </div>
+                <div style="display:inline-block;background-color:#f1f1f1;width:max(30%, 300px);min-height:150px;height:max(99%, 150px);border:1px solid blue;">
+                    <div id="balancedScoreTrendChart"></div>
+                </div>
+                <div style="display:inline-block;background-color:#f1f1f1;width:max(30%, 300px);min-height:150px;height:max(99%, 150px);border:1px solid red;">
+                    <div id="attritionScoreTrendChart"></div>
+                </div>
+                <div style="display:inline-block;background-color:#f1f1f1;width:max(30%, 300px);min-height:150px;height:max(99%, 150px);border:1px solid white;">
+                    Some Other Trend?
+                </div>
+            </div>
+        </div> -->
+    </div>
+</div>

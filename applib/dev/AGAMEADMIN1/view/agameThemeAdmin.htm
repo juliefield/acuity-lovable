@@ -1,0 +1,385 @@
+<style>
+    .directive-holder {
+        max-height: 75%;
+        min-height: 75%;
+        border: 1px dotted dodgerblue;
+    }
+
+    .body-holder {
+        max-height: 700px;
+        min-height: 700px;
+        overflow: auto;
+    }
+
+    .agame-theme-listing-item-holder {
+        display: block;
+    }
+
+    .agame-theme-data-item-holder {
+        display: inline-flex;
+    }
+
+    .agame-theme-data-background-holder {
+        border: 1px solid black;
+    }
+
+    .agame-theme-background-image {
+        height: 200px;
+        width: 400px;
+    }
+
+    .agame-theme-icon-image,
+    .agame-theme-image {
+        height: 50px;
+        width: 50px;
+    }
+
+    .left-column,
+    .right-column {
+        max-width: 49%;
+        min-width: 49%;
+        display: inline-flex;
+        border: 1px solid lime;
+    }
+
+    .editor-form-body-holder {
+        min-height: 90%;
+        max-height: 90%;
+        background-color: lightgray;
+        overflow: auto;
+    }
+
+    .form-item-label {
+        font-weight: bold;
+        display: inline-block;
+    }
+
+    DIV.form-item-input-holder {
+        display: inline-block;
+    }
+
+    .agame-theme-editor-color-selector {
+        max-height: 50px;
+        min-height: 50px;
+        max-width: 50px;
+        min-width: 50px;
+        border: 1px solid gray;
+        border-radius: 25px;
+        font-size: 6pt;
+        color: gray;
+    }
+
+    .agame-theme-editor-list-holder-position {
+        min-width: 250px;
+        max-width: 250px;
+        max-height: 400px;
+        min-height: 400px;
+        overflow: auto;
+        border: 1px dotted gray;
+    }
+
+    .agame-theme-editor-list-holder-destination {
+        min-width: 250px;
+        max-width: 250px;
+        max-height: 400px;
+        min-height: 400px;
+        overflow: auto;
+        border: 1px dotted gray;
+    }
+
+    .sub-form .agame-editor-form-holder {
+        height: 560px;
+        max-width: 1000px;
+        width: 90%;
+    }
+
+    .sub-form {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 100000;
+    }
+</style>
+<div class="directive-holder">
+    <div>
+        <div>
+            <h4>A-GAME Theme Manager</h4>
+            <div>
+                <button id="btnAddNewTheme" class="button btn">Add New Theme</button>
+            </div>
+        </div>
+        <div class="body-holder">
+            <div>
+                <div id="agameThemeListing"></div>
+            </div>
+        </div>
+        <div>
+            <span id="agameThemeFoundCount"></span> Themes Found.
+        </div>
+    </div>
+    <div id="editorFormsHolder">
+        <div id="themeEditorForm" class="editor-form">
+            <div class="agame-editor-form-holder">
+                <div class="editor-form-header-holder">
+                    <h3>Add/Edit Theme</h3>
+                    <button class="button btn btn-close"><i class="fa fa-close"></i></button>
+                </div>
+                <div class="editor-form-body-holder">
+                    <div class="left-column">
+                        <div class="form-items">
+                            <div class="form-row">
+                                <div class="form-item-label">Name</div>
+                                <div class="form-item-input-holder"><input type="text" id="agameThemeEditor_Name"></div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-item-label">Game Type</div>
+                                <div class="form-item-input-holder">
+                                    <select id="agameThemeEditor_GameType">
+                                        <option></option>
+                                        <option value="T">Team</option>
+                                        <option value="I">Individual</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-item-label">Theme Tag</div>
+                                <div class="form-item-input-holder"><input type="text" id="agameThemeEditor_ThemeTag">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-item-label">Theme Short Name</div>
+                                <div class="form-item-input-holder"><input type="text" id="agameThemeEditor_ShortName">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-item-label">Theme Logo Image</div>
+                                <div>
+                                    <input type="hidden" id="agameThemeEditor_ThemeLogo">
+                                    <div class="form-item-input-holder">
+                                        <img class="agame-theme-editor-logo-image-holder"
+                                            id="agameThemeEditor_ThemeLogo_ImageHolder" height="50px" width="100px">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-item-label">Theme Image</div>
+                                <div>
+                                    <input type="hidden" id="agameThemeEditor_ThemeImage">
+                                    <div class="form-item-input-holder">
+                                        <img class="agame-theme-editor-logo-image-holder"
+                                            id="agameThemeEditor_ThemeImage_ImageHolder" height="25px">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-item-label">Background Image</div>
+                                <div>
+                                    <input type="hidden" id="agameThemeEditor_ThemeBackgroundImage">
+                                    <div class="form-item-input-holder">
+                                        <img class="agame-theme-editor-logo-image-holder"
+                                            id="agameThemeEditor_ThemeBackgroundImage_ImageHolder" height="50px"
+                                            width="100px">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-item-label">Default Team Icon</div>
+                                <div>
+                                    <input type="hidden" id="agameThemeEditor_ThemeDefaultTeamIcon">
+                                    <div class="form-item-input-holder">
+                                        <img class="agame-theme-editor-logo-image-holder"
+                                            id="agameThemeEditor_ThemeDefaultTeamIcon_ImageHolder" height="25px">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-item-label">Default Icon Colors</div>
+                                <div class="form-item-input-holder">
+                                    <div id="agameThemeEditor_DefaultColor1Selector"
+                                        class="agame-theme-editor-color-selector"></div>
+                                </div>
+                                <div class="form-item-input-holder">
+                                    <div id="agameThemeEditor_DefaultColor2Selector"
+                                        class="agame-theme-editor-color-selector"></div>
+                                </div>
+                                <div class="form-item-input-holder">
+                                    <div id="agameThemeEditor_DefaultColor3Selector"
+                                        class="agame-theme-editor-color-selector"></div>
+                                </div>
+                                <!--
+                                <div class="form-item-input-holder">
+                                    <div id="agameThemeEditor_DefaultColor4Selector"  class="agame-theme-editor-color-selector"></div>
+                                </div>
+                                <div class="form-item-input-holder">
+                                    <div id="agameThemeEditor_DefaultColor5Selector"  class="agame-theme-editor-color-selector"></div>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right-column">
+                        <div>
+                            <div>Positions <span id="agameThemeEditor_PositionListCount"></span></div>
+                            <div class="agame-theme-editor-list-holder-position">
+                                <div>
+                                    <div id="themeEditorPositionList"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <button id="btnAddNewPositionOption">Add Position</button>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <div><input type="checkbox" id="agameThemeEditor_HasDestinations"> Has Desitinations
+                                </div>
+                            </div>
+                            <div class="agame-theme-editor-list-holder-destination">
+                                <div id="themeEditorDestinationList"></div>
+                            </div>
+                            <div>
+                                <button id="btnAddNewDestinationOption">Add Destination</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="editor-form-foot-holder">
+                    <div>
+                        <button id="btnSaveEditorForm">Save</button>
+                        <button class="button btn btn-close">Cancel</button>
+                        <input type="hidden" id="agameThemeEditor_ThemeId">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="positionEditorForm" class="sub-form">
+            <div class="agame-editor-form-holder">
+                <div>
+                    <h3>Add/Edit Position</h3>
+                    <button class="button btn btn-close-position-editor"><i class="fa fa-close"></i></button>
+                </div>
+                <div>
+                    <div>
+                        <div class="form-row">
+                            <div class="form-item-label">Position Name</div>
+                            <div>
+                                <input type="textbox" id="agameThemeEditor_PositionName">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-item-label">Default Quanity</div>
+                            <div>
+                                <input type="textbox" id="agameThemeEditor_PositionDefaultQuantity">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-item-label">Default X Factor</div>
+                            <div>
+                                <input type="textbox" id="agameThemeEditor_PositionDefaultMultiplier" maxlength="1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <button id="btnSavePositionEditorForm">Save</button>
+                        <button class="button btn btn-close-position-editor">Cancel</button>
+                        <input type="hidden" id="agameThemeEditor_PositionId">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="destinationEditorForm" class="sub-form">
+            <div class="agame-editor-form-holder">
+                <div>
+                    <h3>Add/Edit Destination</h3>
+                    <button class="button btn btn-close-destination-editor"><i class="fa fa-close"></i></button>
+                </div>
+                <div>
+                    <div>
+                        <div class="form-row">
+                            <div class="form-item-label">Destination Name</div>
+                            <div>
+                                <input type="textbox" id="agameThemeEditor_DestinationName">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-item-label">Destination Number</div>
+                            <div>
+                                <select id="agameThemeEditor_DestinationNumber">
+                                    <option value=""></option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8 (Playoff #1)</option>
+                                    <option value="9">9 (Playoff #2)</option>
+                                    <option value="10">10 (Playoff #3)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-item-label">Type</div>
+                            <div>
+                                <input type="radio" name="agameThemeEditor_DestinationReferenceType" value="nonfile">No
+                                File</input>
+                                <input type="radio" name="agameThemeEditor_DestinationReferenceType"
+                                    value="file">File</input>
+                            </div>
+                        </div>
+                        <div id="formSection_Destination_NonFile">
+                            <div class="form-row">
+                                <div class="form-item-label">Header Image</div>
+                                <div>
+                                    <input type="textbox" id="agameThemeEditor_HeaderImage">
+                                    <img id="agameThemeEditor_HeaderImagePreview" height="25">
+                                    <button id="btnAGameThemeEditorHeaderImageSelector"><i class="fa fa-edit"></i></button>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-item-label">Destination Token</div>
+                                <div>
+                                    <input type="textbox" id="agameThemeEditor_DestinationTokenUrl">
+                                    <img id="agameThemeEditor_DestinationTokenPreview" height="25">
+                                    <button id="btnAGameThemeEditorTokenImageSelector"><i class="fa fa-edit"></i></button>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-item-label">Destination Text</div>
+                                <div>
+                                    <textarea id="agameThemeEditor_DestinationHtml" class="html-editor"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="formSection_Destination_File">
+                            <div>
+                                <div class="form-row">
+                                    <div class="form-item-label">Destination File</div>
+                                    <div>
+                                        <input type="textbox" id="agameThemeEditor_DestinationFileUrl">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <button id="btnSaveDestinationEditorForm">Save</button>
+                        <button class="button btn btn-close-destination-editor">Cancel</button>
+                        <input type="hidden" id="agameThemeEditor_DestinationId">
+                        <input type="hidden" id="agameThemeEditor_DestinationThemeId">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

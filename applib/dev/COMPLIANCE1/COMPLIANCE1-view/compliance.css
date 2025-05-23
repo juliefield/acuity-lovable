@@ -1,0 +1,96 @@
+    .form-box-group
+    {
+        width: 380px;
+        float: left;
+    }
+    .form-box-item
+    {
+    }
+    .form-box-item label
+    {
+        width: 150px;
+        display:inline-block;
+        text-align: right;
+    }
+
+    .form-box-item input,.form-box-item select
+    {
+        width: 200px;
+        margin-left: 4px;
+    }
+    
+    .form-box-item input[disabled]
+    {
+        background-color: lightblue;
+    }
+    
+    .form-complaint
+    {
+        padding: 10px;
+        display: block;
+        background-color: red;
+        color: White;
+    }
+
+    .form-box-item input,.form-box-item select,.form-violations input,.form-violations select
+    {
+        background-color: lightblue;
+        border-style: solid;
+        border: 0px;
+        margin-bottom: 6px;
+        text-align: center;
+    }
+    
+    .form-violations th,.form-violations td
+    {
+        width: 200px;
+    }
+    
+    .form-monitor button,.form-complaint2 button, .form-setup button
+    {
+        background-color: #0092CE;
+    }
+
+    .form-violations
+    {
+        border-spacing: 4px;
+        border-collapse: separate;
+        width: calc(100% - 40px);
+        table-layout: fixed;
+    }
+
+    .form-violations tbody td
+    {
+        max-width: 250px;
+        word-wrap: break-word;
+        background-color: lightblue;
+    }
+
+    .form-violations input,.form-violations select
+    {
+        font-size: 11px;
+        overflow: visible;
+        width: 100%;
+        border: none;
+
+    }
+
+    .form-violations textarea
+    {
+        font-size: 11px;
+        overflow: visible;
+        width: 100%;
+        border: none;
+    }
+
+    .form-violations tfoot td
+    {
+        font-weight: bold;
+    }
+    
+    .form-box-required
+    {
+        padding-left: 6px;
+        font-size: 10px;
+    }
+

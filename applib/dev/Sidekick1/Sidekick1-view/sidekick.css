@@ -1,0 +1,245 @@
+[nv=";sidekick;sidekick/summary"] {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+[nv=";sidekick;sidekick/summary"] .table-topper_toggle a,
+[nv=";sidekick;sidekick/summary"] .table-topper_toggle span {
+  display: inline-block;
+  text-decoration: none;
+}
+[nv=";sidekick;sidekick/summary"] .table-topper_toggle .btn-img {
+  width: 50px;
+  top: -16px;
+  left: 6px;
+  position: relative;
+  float: none;
+}
+[nv=";sidekick;sidekick/summary"] .table-topper_toggle .btn-img:after {
+  content: "";
+  background-color: #fff;
+  height: 24px;
+  width: 42px;
+  position: absolute;
+  z-index: 2;
+  -webkit-border-radius: 12px;
+  border-radius: 12px;
+  top: -1px;
+  left: -2px;
+}
+[nv=";sidekick;sidekick/summary"] .table-topper_toggle .btn-img .fa {
+  position: absolute;
+  z-index: 3;
+  color: #0092ce;
+  font-size: 21px;
+  top: 1px;
+  left: 1px;
+}
+[nv=";sidekick;sidekick/summary"] .table-topper_toggle .btn-img.left .fa {
+  left: 1px;
+}
+[nv=";sidekick;sidekick/summary"] .table-topper_toggle .btn-img.right .fa {
+  right: 13px;
+}
+[nv=";sidekick;sidekick/summary"] [nv="default:;default:sidekick;default:sidekick/summary;sidekick/summary/process"] {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+[nv=";sidekick;sidekick/summary"] [nv="default:;default:sidekick;default:sidekick/summary;sidekick/summary/process"] #summary-process-wrap {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+[nv=";sidekick;sidekick/summary"] [nv="default:;default:sidekick;default:sidekick/summary;sidekick/summary/process"] #summary-process-wrap [id^="acuity-report"] {
+  width: 100%;
+  height: 400px;
+  position: relative;
+}
+[nv=";sidekick;sidekick/summary"] #agent-selection {
+  padding: 1em;
+}
+[nv=";sidekick;sidekick/summary"] #agent-selection #recommendations,
+[nv=";sidekick;sidekick/summary"] #agent-selection #sortBy {
+  display: inline-block;
+}
+[nv=";sidekick;sidekick/summary"] #agent-selection #recommendations #number,
+[nv=";sidekick;sidekick/summary"] #agent-selection #recommendations p {
+  display: inline-block;
+  vertical-align: middle;
+}
+[nv=";sidekick;sidekick/summary"] #agent-selection #recommendations #number {
+  background-color: #d0021b;
+  color: #fff;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  -webkit-border-radius: 32px;
+  border-radius: 32px;
+  text-align: center;
+  font-weight: bold;
+  margin-right: 8px;
+}
+[nv=";sidekick;sidekick/summary"] #agent-selection #recommendations p {
+  font-size: 1.5em;
+}
+[nv=";sidekick;sidekick/summary"] #agent-selection #sortBy {
+  float: right;
+  content: "";
+}
+[nv=";sidekick;sidekick/summary"] #agent-selection #sortBy label {
+  margin-block-end: 20px;
+  margin-block-start: 20px;
+  display: inline-block;
+  font-weight: bold;
+}
+[nv=";sidekick;sidekick/summary"] #agent-selection:after {
+  clear: both;
+}
+[nv=";sidekick;sidekick/summary"] [nv="sidekick/summary/performance"] {
+  width: 100%;
+  height: 400px;
+  position: relative;
+}
+[nv=";sidekick;sidekick/summary"] #agent-selection {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+[nv=";sidekick;sidekick/summary"] #one-on-one-modal .header #identity {
+  text-align: right;
+}
+[nv=";sidekick;sidekick/summary"] #one-on-one-modal .header #identity img,
+[nv=";sidekick;sidekick/summary"] #one-on-one-modal .header #identity span {
+  vertical-align: middle;
+  margin: .333em;
+  margin-right: 0;
+}
+[nv=";sidekick;sidekick/summary"] #one-on-one-modal .header #identity img {
+  width: 32px;
+}
+[nv=";sidekick;sidekick/summary"] #one-on-one-modal .content #buttons {
+  text-align: right;
+}
+[nv=";sidekick;sidekick/summary"] #one-on-one-modal .content #datepicker [data-tooltip]:before,
+[nv=";sidekick;sidekick/summary"] #one-on-one-modal .content #datepicker [data-tooltip]:after {
+  display: none;
+}
+[nv=";sidekick;sidekick/summary"] #one-on-one-modal .confirmation-message {
+  text-align: center;
+}
+[nv=";sidekick;sidekick/summary"] #one-on-one-modal .confirmation-message h1 {
+  padding: 3em;
+}
+[nv="self-evaluation"] {
+  border: none;
+  display: block;
+  width: 100%;
+  height: 1px;
+}
+[nv="self-evaluation"] .ng-hide:not(.ng-hide-animate) {
+  transition: all linear 500ms;
+  opacity: 0;
+  /*display: block !important;*/
+  height: 0px;
+  padding: 0px !important;
+  margin: 0px !important;
+}
+[nv="self-evaluation"] .wrapper .content .row {
+  margin-bottom: 1em;
+}
+[nv="self-evaluation"] .wrapper .content #selfEvalForm,
+[nv="self-evaluation"] .wrapper .content #agent-list {
+  /*display: none;*/
+}
+[nv="self-evaluation"] .wrapper .content #selfEvalForm {
+  margin: 1.4em 1em;
+}
+[nv="self-evaluation"] .wrapper .content #selfEvalForm .avatar {
+  width: 32px;
+  vertical-align: middle;
+  margin-right: .333em;
+}
+[nv="self-evaluation"] .wrapper .content #selfEvalForm label,
+[nv="self-evaluation"] .wrapper .content #selfEvalForm textarea,
+[nv="self-evaluation"] .wrapper .content #selfEvalForm select {
+  display: block;
+}
+[nv="self-evaluation"] .wrapper .content #selfEvalForm textarea[disabled] {
+  color: #000;
+}
+[nv="self-evaluation"] .wrapper .content #selfEvalForm label {
+  margin-top: 0;
+}
+[nv="self-evaluation"] .wrapper .content #selfEvalForm textarea {
+  width: 100%;
+  height: 8em;
+}
+[nv="self-evaluation"] .wrapper .content #selfEvalForm #head-peer-recognition td,
+[nv="self-evaluation"] .wrapper .content #selfEvalForm #sub-peer-recognition td {
+  vertical-align: top;
+}
+[nv="self-evaluation"] .wrapper .content #selfEvalForm #sub-peer-recognition > .row:first-child {
+  margin-bottom: 0;
+}
+[nv="self-evaluation"] .wrapper .content #selfEvalForm #sub-peer-recognition > .row h3,
+[nv="self-evaluation"] .wrapper .content #selfEvalForm #sub-peer-recognition > .row button {
+  display: inline-block;
+}
+[nv="self-evaluation"] .wrapper .content #selfEvalForm #sub-peer-recognition > .row > .col {
+  display: inline-block;
+  margin-right: .666em;
+}
+[nv="self-evaluation"] .wrapper .content #selfEvalForm #sub-peer-recognition > .row > .collast-of-type,
+[nv="self-evaluation"] .wrapper .content #selfEvalForm #sub-peer-recognition > .row > .col:nth-last-of-type(2) {
+  margin-right: 0;
+}
+[nv="self-evaluation"] .wrapper .content #selfEvalForm #sub-peer-recognition > .row > .col a.btn-delete {
+  color: inherit;
+  padding: 7.62px 9px;
+  display: block;
+  position: relative;
+  top: -1px;
+}
+[nv="self-evaluation"] .wrapper .content #selfEvalForm #supervisor-evaluation > .row {
+  margin-bottom: 0;
+}
+[nv="self-evaluation"] .wrapper .content #selfEvalForm #confirmation-message {
+  color: #fff;
+  text-align: center;
+  background-color: #019F01;
+  padding: 1em;
+  border-radius: 8px;
+  font-size: 1.5em;
+}
+[nv="self-evaluation"] .wrapper .content #selfEvalForm #confirmation-message .close {
+  position: absolute;
+  right: 30px;
+  background: none;
+  padding: 8px;
+  margin: 0;
+  border: none;
+  top: 36px;
+}
+[nv="self-evaluation"] .wrapper .content #selfEvalForm #confirmation-message .close i.fa {
+  color: #fff;
+}
+[nv="self-evaluation"] .wrapper .content #agent-list {
+  padding: 1em;
+}
+[nv="self-evaluation"] .wrapper .content #agent-list ul li {
+  margin: .5em 0;
+}
+/*temp for dev; delete later;*/
+/*
+[nv=";sidekick;sidekick/summary"],
+[nv="default:;default:sidekick;default:sidekick/summary;sidekick/summary/process"],
+[nv="sidekick/summary/performance"],
+#summary-process-wrap {
+    border: 1px solid #ccc;
+    padding: 1em;
+}
+*/
+[nv="default:;default:sidekick;default:sidekick/summary;sidekick/summary/process"] {
+  /* display: none !important; */
+}

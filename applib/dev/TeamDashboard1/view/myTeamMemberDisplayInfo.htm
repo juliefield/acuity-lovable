@@ -1,0 +1,50 @@
+<style>
+   .user-display-coaching-item
+   {
+      display:inline-block;
+   }
+   .date-holder
+   {
+      width:15%;
+   }
+   .record-type-holder
+   {
+      width:35%;
+   }
+   .coach-name-holder
+   {
+      width:35%;
+   }
+   .button-holder
+   {
+      width:10%;
+   }
+</style>
+<div>
+   <div>
+      Information for <label id="lblUserId"></label>
+      <input type="hidden" id="txtUserIdLoaded">
+   </div>
+   <div style="vertical-align: top;background-color:lightcyan;">
+      <div style="display:inline-block;width:49%;border:1px dotted coral;display:inline-block;min-height:200px;max-height:200px;overflow:auto;">
+         <div class="user-performance" id="userCurrentKpiBarChart"></div>
+      </div>
+      <div style="display:inline-block;width:49%;border:1px dotted orangered;display:inline-block;min-height:200px;max-height:200px;overflow:auto;">
+         <div>
+            <div style="float:left;max-width:60%;min-width:60%;">Coaching/Recognitions</div>
+            <div style="float:right;max-width:35%;min-width:35%;text-align:center;"><label id="userSidekickRecordsFound"></label></div>
+         </div>
+         <hr style="clear:both;" />
+         <div>
+            <div class="header-row">
+               <div class="header-item user-display-coaching-item date-holder">Date</div>
+               <div class="header-item user-display-coaching-item record-type-holder">Type</div>
+               <div class="header-item user-display-coaching-item coach-name-holder">Coach</div>
+               <div class="header-item user-display-coaching-item button-holder">&nbsp;</div>
+            </div>
+            <div id="userCoachingData"></div>
+         </div>
+         
+      </div>
+   </div>
+</div>

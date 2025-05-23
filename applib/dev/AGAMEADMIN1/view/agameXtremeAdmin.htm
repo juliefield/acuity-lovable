@@ -1,0 +1,131 @@
+<div>
+    <div id="currentXtremeGameHolder"class="current-game-holder"></div>
+    
+    <div id="xtremeAdminEditorPanel" class="editor-form">       
+        <div class="agame-editor-form-holder">
+            <div id="xtremeAdminEditorBackground">
+                <div>         
+                    <button class="button btn btn-close agame-editor-form-close-btn"><i class="fa fa-close"></i></button>
+                </div>
+                <div class="error-information-holder"></div>
+                <div id="userMessageHolder" class="agame-league-working-indicator-holder">
+                    <img src="" id="userMessageLoadingImage" alt="Loading" height="50px" class="inline-item">
+                    <div id="userMessageText"  span="display:inline-block;" class="inline-item">Loading...</div>
+                </div>
+                <div class="editor-column-overall-holder">
+                    <div class="column1">
+                        <ul>
+                            <li class="editor-item-save" step="basic">League Information</li>
+                            <li class="editor-item-save" step="divisions">Divisions</li>
+                            <li class="editor-item-save" step="owners">Owners</li>
+                            <li class="editor-item-save" step="positions">Positions</li>
+                            <li class="editor-item-save" step="weeks">Schedule Weeks</li>
+                        </ul>
+                        <input type="hidden" id="currentEditorStep">
+                    </div>
+                    <div class="column2">
+                        <div>
+                            <div id="xTremeEditorForm">
+                                <div id="LeagueEditorBasicInformationHolder" class="editor-step-item-holder">
+                                    Theme: <select id="xtremeEditorTheme"></select><img id="xtremeEditorThemeImageHolder" /><br>
+                                    Start Date: <input type="text" id="xtremeEditorStartDate" class="datepicker"><br>
+                                    Roster Visible Date: <input type="text" id="xtremeEditorRosterVisibleDate" class="datepicker"><br>
+                                    Draft Date <input type="text" id="xtremeEditorDraftDate" class="datepicker" ><br>
+                                    # of Weeks to Run League (including preseason): <input id="xtremeEditorWeeksToRun" type="text"><br>
+                                    # of Divisions in League: <input type="text" id="xtremeEditorDivisionCountExcludePlayoffs"><br>
+                                    # of Owners in League: <select id="xtremeEditorMaxOwnerCount"></select><br>
+                                    # of Players Drafted: <input type="text" id="xtremeEditorPlayerDraftCount" > <br>
+                                    # of Extra players not drafted: <input type="text" id="xtremeEditorOveragePlayerCount" ><br>
+                                    <div>
+                                        Has Playoffs: <input type="checkbox" id="xtremeEditorHasPlayoffs">
+                                        &nbsp;
+                                        Has Preseason: <input type="checkbox" id="xtremeEditorHasPreseason">
+                                    </div>
+                                    Playoff Start Date: <input type="text" id="xtremeEditorPlayoffStartDate" class="datepicker"><br>
+                                    # of Teams Making playoffs from each division: <input type="text" id="xtremeEditorPlayoffTeamsPerDivision"><br>
+                                    # of Teams in Playoffs: <label id="xtremeEditorPlayoffTeamCount"></label><br>
+                                    <div id="xtremeEditorDivisionCounterHolder">
+                                        # of Divisions in League (including playoffs): <input type="text" id="xtremeEditorDivisionsInLeague" disabled><br>
+                                    </div>
+                                </div>
+                                <div id="LeagueDivisionSetupHolder" class="editor-step-item-holder">
+                                    <div id="xtremeDivisionList"></div>
+                                </div>
+                                <div id="LeagueOwnerSetupHolder" class="editor-step-item-holder">
+                                    <div class="teamSetup_cols">
+                                        <div class="column1of2">
+                                            <div id="currentDivisionAssignments"></div>
+                                        </div>
+                                        <div class="column2of2">
+                                            <div id="xtremeOwnerList"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="LeaguePositionSetupHolder" class="editor-step-item-holder">
+                                    <div class="agame-positions-button-holder" id="positionButtonOptionsHolder">
+                                        <button id="btnResetThemePositions" class="button btn">Reset to Theme Positions</button>
+                                    </div>
+                                    <div class="header-holder agame-theme-position-header-holder">
+                                        <div class="header-item agame-theme-position-inline-item position-name">Position</div>
+                                        <div class="header-item agame-theme-position-inline-item position-quantity">Count</div>
+                                        <div class="header-item agame-theme-position-inline-item position-multiplier">Multiplier</div>                         
+                                    </div>
+                                    <div id="xTremeLeaguePositionsList"></div>
+                                    <div clas="agame-theme-position-list-row" id="addPositionRowHolder">
+                                        <div class="agame-theme-position-inline-item position-name">
+                                        <input type="text" id="addPositionToGame" />
+                                        </div>
+                                        <div class="agame-theme-position-inline-item position-quantity">
+                                        <input type="text" id="addQuantityToGame" />
+                                        </div>
+                                        <div class="agame-theme-position-inline-item position-multiplier">
+                                        <input type="text" id="addMultiplierToGame" />
+                                        </div>
+                                        <div class="agame-theme-position-inline-item position-button">
+                                        <button id="btnAddPositionToGame" class="button btn"><i class="fa fa-plus"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="LeagueWeekSetupHolder" class="editor-step-item-holder">
+                                    <div class="header-holder agame-schedul-editor-week-header-holder">
+                                        <div class="header-item agame-schedule-editor-week-row-item week-number-editor">#</div>
+                                        <div class="header-item agame-schedule-editor-week-row-item week-start-date-editor">Start Date</div>
+                                        <div class="header-item agame-schedule-editor-week-row-item week-end-date-editor">End Date</div>
+                                        <div class="header-item agame-schedule-editor-week-row-item schedule-week-button-editor">&nbsp;</div>
+                                    </div>
+                                    <div id="leagueWeekSetupList"></div>
+                                    <div id="leagueWeekAddHolder" class="agame-schedule-editor-week-row">
+                                        <div class="agame-schedule-editor-week-row-item week-number-editor">
+                                        <input type="text" id="addWeekToGame" />
+                                        </div>
+                                        <div class="header-item agame-schedule-editor-week-row-item week-start-date-editor">
+                                        <input type="text" id="addStartDateToGame" class="datepicker popup-editor-datepicker" />
+                                        </div>
+                                        <div class="header-item agame-schedule-editor-week-row-item week-end-date-editor">
+                                        <input type="text" id="addEndDateToGame" class="datepicker popup-editor-datepicker" />
+                                        </div>
+                                        <div class="header-item agame-schedule-editor-week-row-item schedule-week-button-editor">
+                                        <button id="btnAddWeekToGame" class="button btn"><i class="fa fa-plus"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" id="originalxTremeGameStorage" />
+                </div>
+                <div class="editor-button-holder">
+                    <div class="acuityAdminForm_btns">
+                        <input type="hidden" id="xtremeEditor_LeagueId" />
+                        <input type="hidden" id="xtremeEditor_InfoIsDirty" value="N" />                        
+                        <button id="btnSaveEditorExtreme" class="btn-large agame-editor-form-save-btn">Save</button>
+                        &nbsp;&nbsp;
+                        <button id="btnSaveAndCloseEditorExtreme" class="btn-large agame-editor-form-save-btn">Save & Close</button>
+                        &nbsp;&nbsp;
+                        <button class="btn-close agame-editor-form-close-btn cancel-btn">Cancel</button>
+                    </div>   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

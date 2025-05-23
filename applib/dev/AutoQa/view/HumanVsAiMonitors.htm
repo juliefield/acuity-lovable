@@ -1,0 +1,45 @@
+<div class="human-v-ai-directive-holder">
+   <div class="human-v-ai-display-holder">
+      <div class="human-v-ai-display-header">
+         <div class="directive-header-column1">
+            <div>
+               <button id="btnRefreshHumanVsAI" class="directive-refresh-button"><i class="fa fa-refresh"></i></button>
+            </div>
+         </div>
+         <div class="directive-header-column2">
+            <div class="directive-title-holder">
+               Team Members vs. AI
+            </div>   
+         </div>
+         <div class="directive-header-column3">
+            <div id="directiveLoading" class="directive-loading-information-holder">
+               <img alt="Human v AI Loading" class="directive-information-loading-image" >
+            </div>   
+         </div>
+      </div>
+      <div class="human-v-ai-display-body">
+         <div class="human-v-ai-chart-holder">
+            <div id="humanVsAiChart" class="human-v-ai-chart-container"></div>
+         </div>
+         <div class="human-v-ai-stats-holder">
+            <div class="human-v-ai-scoring-header-row header-row">
+               <div class="human-v-ai-stats-item scorer-type header-item">Scorer</div><div class="human-v-ai-stats-item score header-item">Avg. Score</div><div class="human-v-ai-stats-item monitor-count header-item"># Monitor</div><div class="human-v-ai-stats-item plus-minus header-item">&nbsp;</div>
+            </div>
+            <div>
+               <div id="humanVsAiScoringList"></div>
+            </div>
+            <div class="human-v-ai-scoring-footer-row footer-row">
+               <div class="human-v-ai-stats-item scorer-type footer-item">Total:</div>
+               <div class="human-v-ai-stats-item score footer-item">&nbsp;</div>
+               <div class="human-v-ai-stats-item monitor-count footer-item">
+                  <div id="lblTotalMonitors" class="human-v-ai-stats-item plus-minus footer-item"></div>
+               </div>
+               <div class="human-v-ai-stats-item plus-minus footer-item">&nbsp;</div>
+            </div>
+         </div>
+      </div>
+      <div class="human-v-ai-display-footer">
+         <span id="directiveTimeFrame"></span>
+      </div>
+   </div>
+</div>

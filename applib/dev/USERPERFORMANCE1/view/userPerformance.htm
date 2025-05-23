@@ -1,0 +1,40 @@
+<div>
+   <div id="chartOptionsFilters" class="chartOptionsFilters">      
+      <select id="chartDisplaySelector">
+         <option value="allKpi">All KPIs</option>
+         <option value="singluarKpi">Single KPI</option>         
+      </select>
+      <span id="kpiFilterHolder">
+         <select id="kpiSelectionOption"></select>
+      </span>
+      <input type="checkbox" id="includeSubKpiInChart"> Show Sub-KPIs
+      <select id="chartTypeDisplaySelector">
+         <option value="column">Bar - Vertical</option>
+         <!-- <option value="bar">Bar - Horizontal</option> -->
+         <option value="trend">Trend</option>
+      </select>
+      <select id="displayScale">
+         <option value="Scored">Scored Value</option>
+         <option value="Standard">Standard Value</option>
+      </select>      
+      &nbsp;
+      <span id="includePreviousMonthHolder">
+         <input type="checkbox" id="includePreviousMonth"> Include Previous
+      </span>
+      <span id="connectBreaksOptionHolder">
+         <input type="checkbox" id="connectNullBreaks"> Connect breaks
+      </span>
+      <input type="hidden" id="projectIdToLoad">
+      <input type="hidden" id="subKpiToShow">
+      <input type="hidden" id="groupIdToLoad">
+   </div>
+   <div id="userMessageHolder">
+      <br />
+      <img id="userPerformanceLoadingImage" height="25" alt="Loading User Performance Data">
+      <span id="userPerformanceLoadingMessage">Loading Performance Data...</span>
+      <br />
+   </div>
+   <div>
+      <div id="chartHolder"></div>
+   </div>
+</div>

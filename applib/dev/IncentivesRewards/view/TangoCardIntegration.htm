@@ -1,0 +1,97 @@
+<div class="tango-card-integration-holder">
+      <div class="tango-card-header-holder table-topper">
+         <div class="tango-card-header-item table-topper">Available Items</div>
+         <div class="tango-card-header-item option-holder-right table-topper">
+            <select id="tangoCardAvailableCatalogSelector"></select>
+         </div>
+      </div>
+      <hr>
+      <div class="tango-card-body-list-holder">
+         <div id="tangoCardItemsListHolder">&nbsp;</div>
+      </div>
+      <hr>
+      <div class="tango-card-footer-holder">
+         <div>
+            &nbsp;
+         </div>
+      </div>
+   </div>
+
+<div id="tangoCardItemSelectionForm" class="editor-form">
+   <div class="form-holder">
+      <div class="editor-form-header-holder">
+         <h2>Redeem Reward</h2>
+         <button class="button btn btn-close"><i class="fa fa-close"></i></button>
+      </div>
+      
+
+      <div class="tango-card-display-image-points-use-holder">
+         <div id="optionBrandImageHolder" class="tango-card-display-header-brand-image"></div>
+         <div>
+            <div class="tango-card-display-header-points-to-use">
+               <div class="tango-card-points-to-use-label">Points Cost:</div>
+               <div id="tcIntegrationPointsToUse" class="tango-card-points-to-use-value">Select Below 👇</div>
+            </div>
+            <div id="optionBrandDescriptionInformationHolder" class="tango-card-brand-description-information-holder"></div>
+            <div id="optionBrandAvailableItemsHolder"></div>
+         </div>
+      </div>
+      <h3>Claim Information</h3>
+      <hr class="border" />
+      <!-- <div class="claim-info">
+         <span>Full Name</span>
+         <input type="textbox" id="tcIntegrationUserName" class="tango-card-input-option tc-textbox">
+      </div> -->
+      <div class="claim-info">
+         <span>First Name</span>
+         <input type="textbox" id="tcIntegrationUserFirstName" class="tango-card-input-option tc-textbox">
+      </div>
+      <div class="claim-info">
+         <span>Last Name</span>
+         <input type="textbox" id="tcIntegrationUserLastName" class="tango-card-input-option tc-textbox">
+      </div>
+      <div class="claim-info">
+         <span>Email Address</span>
+         <input type="textbox" id="tcIntegrationEmailToSendTo" class="tango-card-input-option tc-textbox">
+      </div>
+      <div id="tcIntegration_PhysicalAddressInputHolder">
+         <div class="claim-info">
+            <span>Address Line 1</span>
+            <input type="textbox" id="tcIntegrationAddressLine1" class="tango-card-input-option tc-textbox">
+         </div>
+         <div class="claim-info">
+            <span>Address Line 2</span>
+            <input type="textbox" id="tcIntegrationAddressLine2" class="tango-card-input-option tc-textbox">
+         </div>
+         <div class="claim-info">
+            <span>City</span>
+            <input type="textbox" id="tcIntegrationAddressCity" class="tango-card-input-option tc-textbox">
+         </div>
+         <div class="claim-info">
+            <span>State/Province</span>
+            <input type="textbox" id="tcIntegrationAddressState" class="tango-card-input-option tc-textbox">
+         </div>
+         <div class="claim-info">
+            <span>Postal Code</span>
+            <input type="textbox" id="tcIntegrationAddressPostalCode" class="tango-card-input-option tc-textbox">
+         </div>
+         <div class="claim-info">
+            <span>Country</span>
+            <input type="textbox" id="tcIntegrationAddressCountry" class="tango-card-input-option tc-textbox">
+         </div>
+      </div>
+      <div class="editor-form-button-holder">
+         <button id="btnDoRedeemItem" class="button btn-green btn-large btn">Redeem</button>
+         <button class="button btn btn-large btn-close">Cancel</button>
+         <input type="hidden" id="tcProductCodeSelected" placeholder="productCode" />
+         <input type="hidden" id="tcProductCodeDollarValueToRedeem" placeholder="DollarValue" />
+         <input type="hidden" id="tcProductCodePointsToUse" placeholder="points required" />
+         <input type="hidden" id="tcProductCodeMinValue" placeholder="MinValue" />
+         <input type="hidden" id="tcProductCodeMaxValue" placeholder="MaxValue" />
+         <input type="hidden" id="tcProductCodeBrandName" />
+         <input type="hidden" id="tcProductCodeSelectedProductName" />
+      </div>
+   </div>
+</div>
+   
+   

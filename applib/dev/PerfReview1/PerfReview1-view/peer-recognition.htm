@@ -1,0 +1,14 @@
+<table class="pure-table pure-table-horizontal">
+    <thead>
+        <tr>
+            <td ng-repeat="r in peerRecognitionHead">{{r}}</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="q in peerRecognition">
+            <td>{{ getUserName(q.to_user_id, "agent") }}</td>
+            <td>{{q.rec_type}}</td>
+            <td>{{q.rec_val}}</td>
+        </tr>
+    </tbody>
+</table>

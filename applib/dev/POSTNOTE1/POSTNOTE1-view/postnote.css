@@ -1,0 +1,18 @@
+.postnote-sticker
+{
+    background-color:Yellow;
+    border 1px solid gray;
+    width: 300px;
+    padding: 30px;
+    margin: 30px;
+    position: relative;
+    display: block;
+}
+
+.postnote-details-link
+{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+

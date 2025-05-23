@@ -1,0 +1,132 @@
+<div>
+   <div id="currentGameInformationHolder" class="current-game-holder"></div>
+
+   <div id="pastGameInformationHolder" class="past-game-holder"></div>
+   
+   <div id="agameAdminEditorPanel" class="editor-form">
+      <div class="agame-editor-form-holder">
+         <div id="agameAdminEditorBackground"> 
+            <div>
+               <button class="agame-editor-form-close-btn"><i class="fa fa-close"></i></button>
+            </div>
+            <div class="error-information-holder"></div>
+            <div class="editor-column-overall-holder">
+               <div class="column1">
+                  <ul>
+                     <li class="editor-item-save" step="basic">League Information</li>
+                     <li class="editor-item-save" step="divisions">Divisions</li>
+                     <li class="editor-item-save" step="teams">Team Assignments</li>
+                     <li class="editor-item-save" step="positions">Positions</li>
+                     <li class="editor-item-save" step="weeks">Schedule Weeks</li>
+                  </ul>
+                  <input type="hidden" id="currentEditorStep">
+               </div>
+               <div class="column2">
+                  <div>
+                     <div id="AGameEditorForm">
+                        <div id="LeagueEditorBasicInformationHolder" class="editor-step-item-holder">
+                           Theme: <select id="leagueEditorTheme"></select><img id="leagueEditorThemeImageHolder" /><br>
+                           Start Date:<input type="text" id="leagueEditorStartDate" class="datepicker"><br>
+                           Roster Visible Date:<input type="text" id="leagueEditorRosterVisibleDate" class="datepicker"><br>
+                           # of Weeks to Run League(including preseason): <input type="text" id="leagueEditorWeeksToRun"><br> 
+                           # of Divisions in League: <input type="text" id="leagueEditorDivisionCountExcludePlayoffs"><br>                           
+                           <div>
+                              Has Playoffs:<input type="checkbox" id="leagueEditorHasPlayoffs">
+                              &nbsp;
+                              Has Preseason:<input type="checkbox" id="leagueEditorHasPreseason">   
+                           </div>
+                           Playoff Start Date: <input type="text" id="leagueEditorRosterPlayoffStartDate" class="datepicker"><br>
+                           # of Teams Making playoffs from each division: <input type="text" id="leagueEditorPlayoffTeamsPerDivision"><br>
+                           # of Teams in Playoffs: &nbsp;<label id="leagueEditorPlayoffTeamCount"></label><br>
+                           <div id="leagueDivisionCounterHolder">
+                              # of Divisions in League (including playoffs): <input type="text" id="leagueEditorDivisionCount" disabled><br>
+                           </div>
+                           
+                        </div>
+                        <div id="LeagueDivisionOptionsSetupHolder" class="editor-step-item-holder">
+                           <div id="divisionsList"></div>
+                        </div>
+                        <div id="LeagueTeamSetupInformationHolder" class="editor-step-item-holder">
+                           <div class="teamSetup_cols">
+                              <div class="column1of2">
+                                 <div id="teamDivisionAssignments"></div>
+                              </div>
+                              <div class="column2of2">
+                                 <div class="teamFilterHolder">
+                                   Search Teams: <input type="text" id="teamListFilter" placeholder="Search Team">
+                                   &nbsp;
+                                   Locations: <select id="teamListLocationFilter"></select>
+                                 </div>
+                                 <div id="teamsList"></div>
+                              </div>
+                           </div>
+                        </div>
+                        <div id="LeaguePositionsSetupHolder" class="editor-step-item-holder">
+                           <div class="agame-positions-button-holder" id="positionButtonOptionsHolder">
+                              <button id="btnResetThemePositions" class="button btn">Reset to Theme Positions</button>
+                           </div>
+                           <div class="header-holder agame-theme-position-header-holder">
+                              <div class="header-item agame-theme-position-inline-item position-name">Position</div>
+                              <div class="header-item agame-theme-position-inline-item position-quantity">Count</div>
+                              <div class="header-item agame-theme-position-inline-item position-multiplier">Multiplier</div>                         
+                           </div>
+                           <div id="positionsList"></div>
+                           <div clas="agame-theme-position-list-row" id="addPositionRowHolder">
+                              <div class="agame-theme-position-inline-item position-name">
+                                 <input type="text" id="addPositionToGame" />
+                              </div>
+                              <div class="agame-theme-position-inline-item position-quantity">
+                                 <input type="text" id="addQuantityToGame" />
+                              </div>
+                              <div class="agame-theme-position-inline-item position-multiplier">
+                                 <input type="text" id="addMultiplierToGame" />
+                              </div>
+                              <div class="agame-theme-position-inline-item position-button">
+                                 <button id="btnAddPositionToGame" class="button btn"><i class="fa fa-plus"></i></button>
+                              </div>
+                           </div>
+                        </div>
+                        <div id="LeagueWeeksSetupHolder" class="editor-step-item-holder">                           
+                           <div class="header-holder agame-schedul-editor-week-header-holder">
+                              <div class="header-item agame-schedule-editor-week-row-item week-number-editor">#</div>
+                              <div class="header-item agame-schedule-editor-week-row-item week-start-date-editor">Start Date</div>
+                              <div class="header-item agame-schedule-editor-week-row-item week-end-date-editor">End Date</div>
+                              <div class="header-item agame-schedule-editor-week-row-item schedule-week-button-editor">&nbsp;</div>
+                           </div>
+                           <div id="leagueWeekSetupList"></div>
+                           <div id="leagueWeekAddHolder" class="agame-schedule-editor-week-row">
+                              <div class="agame-schedule-editor-week-row-item week-number-editor">
+                                 <input type="text" id="addWeekToGame" />
+                              </div>
+                              <div class="header-item agame-schedule-editor-week-row-item week-start-date-editor">
+                                 <input type="text" id="addStartDateToGame" class="datepicker popup-editor-datepicker" />
+                              </div>
+                              <div class="header-item agame-schedule-editor-week-row-item week-end-date-editor">
+                                 <input type="text" id="addEndDateToGame" class="datepicker popup-editor-datepicker" />
+                              </div>
+                              <div class="header-item agame-schedule-editor-week-row-item schedule-week-button-editor">
+                                 <button id="btnAddWeekToGame" class="button btn"><i class="fa fa-plus"></i></button>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>               
+               <input type="hidden" id="originalGameStorage" />
+            </div>
+            <div class="editor-button-holder">
+               <div class="acuityAdminForm_btns">
+                  <input type="hidden" id="leagueEditor_LeagueId" />
+                  <input type="hidden" id="leagueEditor_InfoIsDirty" value="N" />
+                  <button id="btnSaveLeague" class="btn-large agame-editor-form-save-btn">Save</button>
+                  &nbsp;&nbsp;
+                  <button id="btnSaveandCloseLeague" class="btn-large agame-editor-form-save-btn">Save & Close</button>
+                  &nbsp;&nbsp;
+                  <button class="agame-editor-form-close-btn cancel-btn">Cancel</button>
+                  <!-- &nbsp;&nbsp;<button id="checkData"><i class="fa fa-check"></i></button> -->
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>   
+</div>

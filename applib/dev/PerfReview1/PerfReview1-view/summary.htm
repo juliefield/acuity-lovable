@@ -1,0 +1,103 @@
+<div class="pure-g">
+  <div class="pure-u-1-1">
+    <h2>Summary</h2>
+  </div>
+  <!-- <div class="pure-u-1-2 align-right"> -->
+  <!-- <a href="#performance-review" id="btn-download" title="Download"><i class="fa fa-download" aria-hidden="true"></i></a> -->
+  <!-- <a href="#" id="">Delete</a> -->
+  <!-- </div> -->
+  <div class="pure-u-1-1">
+    <div id="confirmation-message" ng-init="evalSaved = false" ng-show="evalSaved" class="fade">
+      Review Saved <button type="button" ng-click="evalSaved = false" class="close"><i class="fa fa-times-circle"
+          aria-hidden="true"></i></button>
+    </div>
+    <!-- <div id="confirmation-message" class="fade">
+      Review Saved <button type="button" ng-click="evalSaved = false" class="close"><i class="fa fa-times-circle"
+          aria-hidden="true"></i></button>
+    </div> -->
+  </div>
+  <div class="pure-u-1-1">
+    <div class="pure-g">
+      <!-- <div class="pure-u-1-1">
+        <pre>
+          <small>self_eval_toggle: {{self_eval_toggle | json}}</small>
+          <small>agentFlag: {{agentFlag | json}}</small>
+          <small>$scope.supervisorFlag: {{supervisorFlag | json}}</small>
+          <small>viewFlag: {{viewFlag | json}}</small>
+          <small>editFlag: {{editFlag | json}}</small>
+          <small>$scope.otherFlag: {{otherFlag | json}}</small>
+          <small>createFlag: {{createFlag | json}}</small>
+          <small>review.selected_user: {{review.selected_user | json}}</small>
+        </pre>
+      </div> -->
+      <div class="pure-u-1-2">
+        <h3>Performance Review for {{review.profile.agent_full_name}}</h3>
+      </div>
+      <div class="pure-u-1-2 align-right">
+        <!-- <button type="button" id="btn-edit-profile" ng-click="tab_select(0)">Edit Profile Information</button> -->
+        <h3>Current Total Score: {{decimalNumber(review.profile.score,2)}} <i class="fa fa-circle" aria-hidden="true"
+          ng-style="{color: getColor(review.profile.score)} "></i></h3>
+      </div>
+      <div class="pure-u-1-1">
+        <!--#include virtual="profile.htm" -->
+      </div>
+    </div>
+  </div>
+  <div class="pure-u-1-1">
+    <h3>{{review.profile.agent_full_name}}'s Self Evaluation</h3>
+    <div ng-repeat="r in review.selected.evaluation.self">
+      <dd>{{r.ques}}</dd>
+      <dt>{{r.ans ? r.ans : "Currently unanswered."}}</dt>
+    </div>
+  </div>
+  <div class="pure-u-1-1" ng-show="peerRecognition.length > 0">
+    <h3>Peer Recognition</h3>
+    <!--#include virtual="peer-recognition.htm" -->
+  </div>
+  <div class="pure-u-1-1">
+    <h3>{{review.performance.supervisor_full_name}}'s Evaluation for {{review.profile.agent_full_name}}</h3>
+    <div ng-repeat="r in review.selected.evaluation.supervisor">
+      <dd>{{r.ques}}</dd>
+      <dt>{{r.ans ? r.ans : "Currently unanswered."}}</dt>
+    </div>
+  </div>
+  <div class="pure-u-1-1">
+    <h3>Focus Areas & Target Goals</h3>
+    <dl>
+      <dd>Goal/Target</dd>
+      <dt>
+        {{review.selected_user.evaluation.goals.goal ? review.selected_user.evaluation.goals.goal : "Currently unanswered."}}
+      </dt>
+      <dd>From(x)</dd>
+      <dt>
+        {{review.selected_user.evaluation.goals.from_x ? review.selected_user.evaluation.goals.from_x : "Currently unanswered."}}
+      </dt>
+      <dd>To(x)</dd>
+      <dt>
+        {{review.selected_user.evaluation.goals.to_x ? review.selected_user.evaluation.goals.to_x : "Currently unanswered."}}
+      </dt>
+      <dd>When(date)</dd>
+      <dt>
+        {{review.selected_user.evaluation.goals.when_date ? review.selected_user.evaluation.goals.when_date : "Currently unanswered."}}
+      </dt>
+      <dd>How?</dd>
+      <dt>
+        {{review.selected_user.evaluation.goals.how ? review.selected_user.evaluation.goals.how : "Currently unanswered."}}
+      </dt>
+      <dd>Celebrate Improvements and Accomplishments</dd>
+      <dt>
+        {{review.selected_user.evaluation.goals.celebrate ? review.selected_user.evaluation.goals.celebrate : "Currently unanswered."}}
+      </dt>
+      <dd>Does the area of focus or metric change from the previous month? Or is there a new focus area?</dd>
+      <dt>
+        {{review.selected_user.evaluation.goals.notes ? review.selected_user.evaluation.goals.notes : "Currently unanswered."}}
+      </dt>
+    </dl>
+  </div>
+</div>
+<div class="pure-u-1-1" ng-hide="viewFlag">
+  <button type="button" class="pure-button pure-button-primary" ng-click="save_evaluation();">Save Review</button>
+  <button type="button" class="pure-button pure-button-primary" ng-click="complete_evaluation()">Complete
+    Review</button>
+  <!-- <pre>{{review.selected.evaluation | json}}</pre> -->
+</div>

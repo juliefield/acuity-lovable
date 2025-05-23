@@ -1,0 +1,73 @@
+<div ng-click="show()" ng-show="showicon" style="height:30px;">
+    <span class="rpt-tableicon">&nbsp;&nbsp;</span><span class="rpt-tableicontext">{{icontext}}</span>
+</div>
+
+<div style="position:relative; background-color: #fff; overflow-y: auto;" ng-show="showeditor">
+    <!--  For reference:
+    <div class="table-responsive" style="width: calc(70%);overflow-x:auto;" ng-show="showtable">
+    -->
+    <div class="table-size-CLUGUE" ng-class="tableclasses()" ng-show="showtable" style="max-width:1000px;"> <!-- BGR Clugue -->
+        <div class="rpt-table-topper" ng-show="showheader">
+            <button type="button" class="btn btn-top-right btn-blue btn-small btn-noborder" ng-click="launchreport('OverallCoachingCritique')"
+                ng-show="showlaunchbutton('OverallCoachingCritique')">
+                IQA-Critique all Coaching
+            </button>
+            <button type="button" class="btn btn-top-right btn-blue btn-small btn-noborder" ng-click="launchreport('AgentCoachingCritique')"
+                ng-show="showlaunchbutton('AgentCoachingCritique')">
+                IQA-Critique my Coaching
+            </button>
+            <button type="button" class="btn btn-top-right btn-blue btn-small btn-noborder" ng-click="launchreport('AgentCoaching')"
+                ng-show="showlaunchbutton('AgentCoaching')">
+                IQA-Coach this Agent
+            </button>
+            <button type="button" class="btn btn-top-right btn-blue btn-small btn-noborder addnewrecord-btn" ng-click="addrow()"
+                ng-show="formadd">
+                Add New Record
+            </button>
+            <div class="rpt-title journal-table-top">{{headertext}}</div>
+        </div>
+        <table class="acuity-table acuity-tablesorter journal-table">
+            <thead>
+                <tr>
+                    <th ng-repeat="col in table.columns" ng-show="col.display == 'Y'">{{formatColHead(col.name)}}</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="r in table.records">
+                    <td ng-repeat="col in table.columns" ng-show="col.display == 'Y'">
+                        <input type="text"
+                            style="border: none;width: 100%;text-align:center;vertical-align:middle;padding:0;margin:0;"
+                            edit="edit" ng-model="r[col.name]" dynamic-ui ng-change="onInputChange($event)"                            
+                            disabled="disabled" />
+                    </td>
+                    <td nowrap>
+                        <span ng-click="editrow($index)" style="padding-left: 5px;cursor:pointer;" ng-show="formedit"
+                            title="Edit"><i class="fa fa-edit"></i></span>
+                        <span ng-click="editrow($index)" style="padding-left: 5px;cursor:pointer;" ng-hide="formedit"
+                            title="View">View</span>
+                        <span ng-click="deleterow($index)" style="padding-left: 5px;cursor:pointer;"
+                            ng-show="formdelete" title="Delete"><i class="fa fa-close"></i></span>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot ng-show="footer_tablesum">
+                <tr ng-show="footer_tablesum">
+                    <td ng-repeat="col in table.columns" ng-show="col.display == 'Y'">{{ts[col.name]}}</td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+        <!--<div>
+            <button type="button" class="btn btn-blue btn-xs btn-success btn-noborder" ng-click="addrow()"
+                ng-show="formadd">Add New Record</button>
+            TODO: Remove this when you get record-level adding completed
+            <button type="button" class="btn btn-xs btn-success" ng-click="save()" ng-show="(edit != 'none')&&(datasystem == 'DBS')">Save All</button>
+            <br />
+        </div>-->
+    </div>
+    <div ng-hide="showtable">Table Not Loaded</div>
+
+    <div class="form-anchor form-anchor-primary"></div>
+
+</div>

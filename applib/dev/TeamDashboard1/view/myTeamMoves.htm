@@ -1,0 +1,55 @@
+<style>
+   .user-move-list-row
+   {
+      min-height:15px;
+   }
+   .user-move-list-row.join
+   {
+      background-color:lightgreen;
+   }
+   .user-move-list-row.leave
+   {
+      background-color:pink;
+   }
+   
+   .user-move-icon.join
+   {
+      color:darkgreen;
+   }
+   .user-move-icon.leave
+   {
+      color:red;
+   }
+   .user-move-icon.past-request-incomplete
+   {
+      color:var(--brand-blue);
+   }
+</style>
+<div id="teamMovesModuleHolder">
+   <div>
+      <div style="display:inline-block;width:45%;">
+         <h4>Team Moves</h4>
+      </div>
+      <div style="display:inline-block;width:45%;">
+         <a href="#" onclick="javascript:alert('Navigate to Team Management');">Team Management</a>
+      </div>
+   </div>   
+   <div id="teamMovesModuleUserMessaging">
+      <img id="userMessageLoadingImage" src="../../../applib/css/images/acuity-loading.gif" alt="Loading Team Moves Info" height="50px">
+      <div id="teamMovesModuleUserMessage"></div>
+   </div>
+   <div style="font-size:.95em;">
+      <div style="background-color:var(--table-topper-color); font-weight:bold;color:var(--table-labels);">
+         <div style="display:inline-block;width:50%;text-align:left;">Name</div>
+         <div style="display:inline-block;width:10%;text-align:center;">Action</div>
+         <div style="display:inline-block;width:35%;text-align:center;">Effective Date</div>
+      </div>
+      <div style="overflow:auto;max-height:125px;min-height:125px;background-color:lightgray;">
+         <div id="userMoveListHolder"></div>
+      </div>
+      <div>
+         &nbsp;
+      </div>
+   </div>
+   
+</div>

@@ -1,0 +1,192 @@
+<div class="content">
+  <div id="agentList" ng-hide="showCreateReview">
+    <div class="header">
+      <div class="pure-g">
+        <div class="pure-u-1-2"><h1>Performance Review</h1></div>
+        <div class="pure-u-1-2 align-right">
+          <button class="pure-button btn-back-to-journal" type="button" ng-click="back_to_journal()" ng-show="from_journal"><i class="fa fa-chevron-left"></i> Back to Journal</button>
+        </div>
+      </div>
+      <!-- <ul class="tabs-container">
+        <li>
+          <a href="#performance-review" rel="#tab_1_contents" class="tab pure-button">Filters</a>
+        </li>
+        <li>
+          <a href="#performance-review" rel="#tab_2_contents" class="tab pure-button">Search</a>
+        </li>
+      </ul> -->
+      <div class="clear-all"></div>
+      <div class="tab_contents_container">
+        <div id="tab_1_contents" class="tab_contents">
+          <div class="">
+            <label for="filter-role">Role</label>
+            <select name="filter-role" id="filter-role">
+              <option value="" selected>All</option>
+            </select>
+            <label for="filter-milestone">Milestone</label>
+            <select name="filter-milestone" id="filter-milestone">
+              <option value="" selected>All</option>
+            </select>
+          </div>
+          <div class="">
+            <label for="filter-location">Location</label>
+            <select name="filter-location" id="filter-location">
+              <option value="" selected>All</option>
+            </select>
+            <label for="filter-project">Project</label>
+            <select name="filter-project" id="filter-project">
+              <option value="" selected>All</option>
+            </select>
+          </div>
+          <div class="">
+            <label for="filter-hire-source">Hire Source</label>
+            <select name="filter-hire-source" id="filter-hire-source">
+              <option value="" selected>All</option>
+            </select>
+            <label for="filter-tenure">Tenure</label>
+            <select name="filter-tenure" id="filter-tenure">
+              <option value="" selected>All</option>
+            </select>
+          </div>
+          <div class="">
+            <label for="filter-review-type">Review Type</label>
+            <select name="filter-review-type" id="filter-review-type">
+              <option value="" selected>All</option>
+            </select>
+            <label>Date Range</label>
+            <label for="filter-date-start" class="ng-hide">Date Start</label>
+            <label for="filter-date-end" class="ng-hide">Date End</label>
+            <input type="text" name="filter-date-start" id="filter-date-start" placeholder="Start Date" /> to <input
+              type="text" name="filter-date-end" id="filter-date-end" placeholder="End Date" />
+          </div>
+          <div class="">
+            <button type="button">Filter Reviews</button>
+          </div>
+        </div>
+        <div id="tab_2_contents" class="tab_contents">
+          <label for="agentSearchName">Search for an agent to start a performance review.</label>
+          <input type="text" id="agentSearchName" name="agentSearchName" placeholder="Search by Name" value="" />
+          <button type="button">Search Name</button>
+        </div>
+      </div>
+      <div id="agentTable">
+        <div class="section-header">
+          <h2 ng-hide="!teammates">Find an Agent</h2>
+          <h2 ng-show="!teammates" class="align-center">No Available Agents</h2>
+        </div>
+        <table class="pure-table pure-table-horizontal" ng-hide="!teammates">
+          <thead>
+            <tr>
+              <th class="col-expand-collapse"><i class="fa fa-plus-square" aria-hidden="true"
+                  style="font-size:1.33em;opacity:0;"></i></th>
+              <th class="col-name"><a href="#performance-review" class="" ng-click="sortBy('lastnm')"
+                  id="sort-name">Name <i ng-class="reverse ? 'fa fa-caret-down' : 'fa fa-caret-up'" aria-hidden="true"
+                    ng-show="propertyName === 'lastnm'"></i></a></th>
+              <th class="col-role"><a href="#performance-review" class="" id="sort-role">Role <i
+                    ng-class="reverse ? 'fa fa-caret-down' : 'fa fa-caret-up'" aria-hidden="true"
+                    ng-show="propertyName === 'role'"></i></a></th>
+              <th class="col-tenure-milestone"><a href="#performance-review" class="" ng-click="sortBy('daystenure')"
+                  id="sort-tenure-milestone">Tenure / Milestone <i
+                    ng-class="reverse ? 'fa fa-caret-down' : 'fa fa-caret-up'" aria-hidden="true"
+                    ng-show="propertyName === 'daystenure'"></i></a></th>
+              <th class="col-date"><a href="#performance-review" class="" ng-click="sortBy('review_date')"
+                  id="sort-date">Date of Review <i ng-class="reverse ? 'fa fa-caret-down' : 'fa fa-caret-up'"
+                    aria-hidden="true" ng-show="propertyName === 'review_date'"></i></a></th>
+              <th class="col-score"><a href="#performance-review" class="" ng-click="sortBy('score')"
+                  id="sort-score">Score <i ng-class="reverse ? 'fa fa-caret-down' : 'fa fa-caret-up'" aria-hidden="true"
+                    ng-show="propertyName === 'score'"></i></a></th>
+              <th class="col-actions">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="r in teammates | orderBy:propertyName:reverse">
+              <td colspan="7">
+                <table>
+                  <tbody>
+                    <tr class="agent-row-main">
+                      <td class="col-expand-collapse">
+                        <a href="#performance-review" class="btn-expand-collapse" ng-init="toggle[index] = false"
+                          ng-click="toggle[index]=!toggle[index]" title="Expand and Collapse"><i
+                            ng-class="toggle[index] ? 'fa fa-minus-square' : 'fa fa-plus-square'"
+                            aria-hidden="true"></i></a>
+                      </td>
+                      <td class="col-name">
+                        <img src="{{r.avatarpath}}" class="agent-avatar" />
+                        <span class="name">{{ getUserName(r.uid,"agent","last") }} ({{r.uid}})</span>
+                      </td>
+                      <td class="col-role">
+                        <p>{{agentRoleLabel}}</p>
+                      </td>
+                      <td class="col-tenure-milestone">{{r.daystenure == -100 ? "Unknown" : r.daystenure + "days"}}</td>
+                      <td class="col-date">{{r.review_date}}</td>
+                      <td class="col-score">
+                        {{r.score == -100 ? "N/A " : decimalNumber(r.score,2)}} <i class="fa fa-circle" ng-style="{color: getColor(r.score)} " aria-hidden="true"></i>
+                      </td>
+                      <td class="col-actions">
+                        <!-- View and Edit Button for Supervisor Role -->
+                        <a href="#performance-review" class="btn-view-review" ng-show="r.review_date && !otherFlag"
+                          ng-click="$parent.get_agent(r.uid); get_review(r.uid, false); getLastReview(r.uid); $parent.showCreateReview = !$parent.showCreateReview"
+                          title="Edit Review">
+                          <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </a>
+                        <!-- View Only Button for Other Role -->
+                        <a href="#performance-review" class="btn-view-review" ng-show="r.review_date && otherFlag"
+                          ng-click="get_agent(r.uid); get_review(r.uid, false); $parent.showCreateReview = !$parent.showCreateReview"
+                          title="View Review">
+                          <i class="fa fa-eye" aria-hidden="true"></i>
+                        </a>
+                        <!-- <a href="#performance-review" class="btn-delete-review" title="Delete Review"><i class="fa fa-trash" aria-hidden="true"></i></a> -->
+                      </td>
+                    </tr>
+                    <tr class="agent-row-sub-head" ng-show="toggle[index]">
+                      <td class="col-expand-collapse"></td>
+                      <td class="col-name">Performance History</td>
+                      <td colspan="2">Reviewed By</td>
+                      <td class="col-date"></td>
+                      <td class="col-score"></td>
+                      <td class="col-actions"></td>
+                    </tr>
+                    <tr class="agent-row-sub-content" ng-show="toggle[index]">
+                      <td class="col-expand-collapse">&nbsp;</td>
+                      <td class="col-name">
+                        <button type="button" ng-hide="r.review_date || otherFlag"
+                          ng-click="$parent.createFlag = true; get_agent(r.uid); create_evaluation(); $parent.showCreateReview = !$parent.showCreateReview"
+                          class="pure-button pure-button-primary">Create a Review</button>
+                      </td>
+                      <td colspan="5" class="review-data">
+                        <table ng-show="!r.reviews_complete || !r.reviews_complete.length">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <p>No completed reviews available.</p>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <table class="pure-table-striped" ng-show="r.reviews_complete || r.reviews_complete.length">
+                          <tbody>
+                            <tr class="agent-row-sub-content" ng-repeat="s in r.reviews_complete | orderBy:'-review_date'">
+                              <td class="col-reviewed-by">{{ getUserName(s.supervisor_id, "sup") }}</td>
+                              <td class="col-date">{{s.review_date}}</td>
+                              <td class="col-score">{{decimalNumber(s.review_score,2)}} <i class="fa fa-circle" ng-style="{color: getColor(s.review_score)} " aria-hidden="true"></i></td>
+                              <td class="col-actions">
+                                <a href="#performance-review" class="btn-view-review" title="View Review"
+                                  ng-click="get_agent(r.uid); get_review(s.self_eval_id, true); $parent.$parent.showCreateReview = !$parent.$parent.showCreateReview"><i
+                                    class="fa fa-eye" aria-hidden="true"></i></a>
+                                <!-- <a href="#performance-review" class="btn-delete-review" title="Delete Review"><i class="fa fa-trash" aria-hidden="true"></i></a> -->
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  

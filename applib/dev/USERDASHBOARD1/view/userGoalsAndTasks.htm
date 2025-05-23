@@ -1,0 +1,53 @@
+<div>
+   <div class="tasks-container">
+    <div class="tasks-dial-container">
+      <img src="../../../../appLib/css/images/green-checkmark.png" alt="Green Checkmark" class="completed-checkmark" /> 
+      <strong><span class="tasks-complete"></span></strong> Tasks Completed!
+      <div class="clearfix"></div>
+      <div id="taskGauge" class="GaugeMeter"
+          data-size="200"
+          data-width="10"
+          data-style="Semi"
+          data-theme="Red-Gold-Green"
+          data-animate_gauge_colors="1"
+          data-animate_text_colors="1"          
+        >
+      </div>
+      <p><a id="refreshTasks"><i class="fas fa-sync-alt"></i> Refresh My Tasks</a></p>
+      <p>
+        <strong><span class="tasks-due"></span></strong> Tasks Due<br>        
+        <strong><span class="tasks-over-due"></span></strong> Overdue Tasks<br>
+        <strong><a id="ManageMyTasks">Manage My Tasks »</a></strong>
+      </p>
+    </div>
+    <div class="task-details-container">
+      <ul id="userTaskList" class="goaltask-list"></ul>
+    </div>    
+   </div>
+   <div class="goals-container">
+    <div class="goals-dial-container">
+      <img src="../../../../appLib/css/images/green-checkmark.png" alt="Green Checkmark" class="completed-checkmark" /> 
+      <strong><span class="goals-complete"></span></strong> Goals Completed!
+      <div class="clearfix"></div>
+      <div id="goalGauge" class="GaugeMeter"
+          data-size="200"
+          data-width="10"
+          data-style="Semi"
+          data-theme="Red-Gold-Green"
+          data-animate_gauge_colors="1"
+          data-animate_text_colors="1"          
+        >
+      </div>
+      <p>
+      <a id="refreshGoals"><i class="fas fa-sync-alt"></i> Refresh My Goals</a></p>
+      <p>
+        <strong><span class="goals-due"></span></strong> Goals Due<br>        
+        <strong><span class="goals-over-due"></span></strong> Overdue Goals<br>
+        <strong><a id="ManageMyGoals">Manage My Goals »</a></strong>
+      </p>
+    </div>
+    <div class="goal-details-container">
+      <ul id="userGoalList" class="goaltask-list"></ul>
+    </div>    
+   </div>
+</div>

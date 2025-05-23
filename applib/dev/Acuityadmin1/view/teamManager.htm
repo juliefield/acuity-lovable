@@ -1,0 +1,137 @@
+<div class="team-manager-app-manager-holder basic-directive-holder">
+    <div class="top-filters">
+        Team Name <input type="text" id="teamManager_teamNameFilter">
+        Supervisor <select id="teamManager_supervisorFilter"></select>
+        Project <select id="teamManager_projectFilter"></select>
+        Status <select id="teamManager_statusFilter"></select>
+        &nbsp;&nbsp;
+        <button id="btnApplyFilter"><i class="fas fa-filter"></i> Apply</button>
+        &nbsp;&nbsp;
+        <button id="btnClearFilter" b>Clear Filter</button>
+    </div>
+    <br>
+    <div class="bottom-buttons">
+        <div class="filter-input-group">
+            <button id="btnAddNewTeam" class="btn button btn-add-new btn-large btn-green">
+                <i class="fas fa-plus"></i> Add New Team
+            </button>
+        </div>
+    </div>
+    <div id="teamDataHolder">
+        <div id="teamListHeader" class="header-holder header-holder_entities header-holder_entities-team">
+            <div class="header-item project-expander">
+                <i class="fa fa-minus" id="collapseAll"></i>
+            </div>
+            <div class="header-item team-name">Team Name</div>
+            <div class="header-item team-leader-name">Team Leader</div>
+            <div class="header-item team-group-name">Group (Rollup-Group)</div>
+            <div class="header-item team-project-name">Project</div>
+            <div class="header-item team-user-count"># Users</div>
+            <div class="header-item team-status">Status</div>
+            <div class="header-item team-buttons">Actions</div>
+        </div>
+        <div class="selection-holder large-holder">
+            <div id="teamLoadingHolder" class="team-information-loading-message">
+                <img src="../../../../applib/css/images/acuity-loading.gif" height="25px"><span
+                    id="teamLoadingMessage"></span>
+            </div>
+            <div id="teamListHolder" ></div>
+        </div>
+    </div>
+    <!--Editor Form START-->
+    <div id="teamEditorFormPanel" class="editor-form">
+        <div class="form-holder-big">
+            <button class="btn-close btn-close-x"><i class="fa fa-close"></i></button>
+            <div class="error-information-holder"></div>
+            <div class="two-col-flex">
+                <div class="column1of2p">
+                    <div class="team-manager-form_row">
+                        <div id="teamColorsHolder">&nbsp;</div>
+                    </div>
+                    <div class="team-manager-form_row">
+                        <div class="user-manager-data-label inline-item">Team Name</div>
+                        <input type="text" id="teamEditor_TeamName" class="team-manager-editor-team-name" />
+                    </div>
+                    <div class="team-manager-form_row">
+                        <div class="user-manager-data-label inline-item">Supervisor</div>
+                        <select id="teamEditor_SupervisorUserId"
+                            class="team-manager-editor-supervisor-user-id"></select>
+                    </div>
+                    <div class="team-manager-form_row">
+                        <div class="user-manager-data-label inline-item">Project</div>
+                        <select id="teamEditor_ProjectId" class="team-manager-editor-project-id"></select>
+                    </div>
+                    <div class="team-manager-form_row">
+                        <div class="user-manager-data-label inline-item">Group</div>
+                        <select id="teamEditor_GroupId" class="team-manager-editor-group-id"></select>
+                    </div>
+                    <div class="team-manager-form_row">
+                        <div class="user-manager-data-label inline-item">Roll-up Group</div>
+                        <select id="teamEditor_RollupGroupId" class="team-manager-editor-rollup-group-id"></select>
+                    </div>
+                    <div class="team-manager-form_row">
+                        <div class="user-manager-data-label inline-item">Status</div>
+                        <select id="teamEditor_TeamStatus" class="team-manager-editor-team-status"></select>
+                    </div>
+                    <div class="team-manager-form_row">
+                        <div class="user-manager-data-label inline-item">Created</div>
+                        <span id="teamCreatedInfo"></span>
+                    </div>
+                    <div class="team-manager-form_row">
+                        <div class="user-manager-data-label inline-item">Updated</div>
+                        <span id="teamUpdateInfo"></span>
+                    </div>
+                    <div class="team-manager-form_row">
+                        <div class="user-manager-data-label inline-item">Coaching Sessions Per Agent Per Month</div>
+                        <input type="text" id="teamEditor_AgentCoachingSessions" class="team-manager-editor-team-coaching-sessions" />
+                    </div>
+                    <div class="team-manager-form_row">
+                        <div class="user-manager-data-label inline-item">Recognitions Per Agent Per Month</div>
+                        <input type="text" id="teamEditor_AgentRecognitions" class="team-manager-editor-team-agent-recognitions" />
+                    </div>
+                    <div class="team-manager-form_row">
+                        <div class="user-manager-data-label inline-item">Team Motto</div>
+                        <input type="text" id="teamEditor_TeamMotto" class="team-manager-editor-team-motto" />
+                    </div>
+                    <div class="team-manager-form_row">
+                        <div class="user-manager-data-label inline-item">Team Color #1</div>
+                        <input type="text" id="teamEditor_TeamColor1" class="simpleColorContainer" />
+                    </div>                    
+                    <div class="team-manager-form_row">
+                        <div class="user-manager-data-label inline-item">Team Color #2</div>
+                        <input type="text" id="teamEditor_TeamColor2" class="simpleColorContainer" />
+                    </div>
+                </div>
+                <div class="column2of2p">
+                    <div class="tab-holder">
+                        <div class="tab-holder-item" id="teamManagerFormTab_Users">Users</div>
+                        <div class="tab-holder-item" id="teamManagerFormTab_Stats">Stats</div>
+                    </div>
+                    <div class="tab-containers">
+                        <div id="teamManager_UserTabContainer">
+                            <div class="current-user-team-holder">
+                                <h5>Current Users <label id="lblCurrentUserCounter"></label></h5>
+                                <div id="currentTeamUsersHolder"></div>
+                            </div>
+                            <div class="historical-user-team-holder">
+                                <h5>Historical Users <label id="lblHistoricalUserCounter"></label></h5>
+                                <div id="historicalTeamUsersHolder"></div>
+                            </div>
+                        </div>
+                        <div id="teamManager_StatsTabContainer">
+                            <ng-entity-item-stats></ng-entity-item-stats>
+                            <!-- <div id="teamStatsHolder"></div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="badgeAdminForm_btns">
+                <input type="hidden" id="editorFormType" />
+                <input type="hidden" id="teamEditor_TeamId" />
+                <button id="btnSave" class="button btn btn-large">Save</button>
+                &nbsp;&nbsp;
+                <button class="btn-close button btn btn-large">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

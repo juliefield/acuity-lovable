@@ -1,0 +1,590 @@
+<style>
+    .directive-holder {}
+
+    .directive-header {}
+
+    .directive-filters {}
+
+    .directive-body {
+        max-height: 70vh;
+        min-height: 70vh;
+        overflow: auto;
+    }
+
+    .directive-footer {}
+
+    .directive-editor {}
+
+    .close-button-holder {
+        float: right;
+    }
+    .editor-holder {
+        overflow:auto;
+        max-height: 900px;
+    }
+    .form-holder {
+
+    }
+    .flex-theme-manager-list-holder {
+        min-height: 99%;
+        max-height: 99%;
+    }
+
+    .flex-theme-manager-row {
+        clear: both;
+        min-height: 50px;
+        padding: 3px;
+        background: transparent;
+        margin-top: 2px;
+        margin-bottom: 2px;
+    }
+
+    .flex-theme-row-background {
+        min-height: 150px;
+        min-width: 100%;
+        position: relative;
+        background-size: cover;
+        background-position: center center;
+        opacity: 50%;
+    }
+
+    .flex-theme-manager-panel {
+        padding:5px;
+        margin:2px;
+        display:inline-block;
+    }
+    .flex-theme-manager-panel.image-panel {
+        min-width:250px;
+        max-width:250px;
+
+    }
+    .flex-theme-manager-panel.data-panel {
+        min-width:400px;
+        max-width: calc(99vw - 500px);
+    }
+    .flex-theme-manager-panel.button-panel {
+        min-width:200px;
+        max-width:200px;
+    }
+    .flex-theme-manager-item {
+        display: inline-flex;
+        margin-left: 3px;
+        margin-right: 3px;
+    }
+    .flex-theme-manager-data-item {
+        clear:both;
+        display:block;
+    }
+
+    .flex-theme-manager-board-image {
+        min-height: 150px;
+        max-height: 150px;
+        min-width: 200px;
+        max-width: 200px;
+        border-radius: 6px;
+    }
+
+    .theme-image-holder {
+        min-height: 150px;
+        max-height: 150px;
+        min-width: 200px;
+        max-width: 200px;
+        border: 5px outset slategrey;
+        border-radius: 10px;
+    }
+
+    .theme-name-holder {
+        min-width: 300px;
+        border: 1px dashed gray;
+    }
+
+    .theme-type-holder {
+        min-width: 100px;
+    }
+    .flex-theme-manager-block-item-holder {
+        background-color:lightgray;
+    }
+    .filter-item-option-holder {
+        display: inline-block;
+        padding: 3px;
+        min-height: 25px;
+        min-width: 150px;
+    }
+
+    .filter-item-label {
+        font-weight: bold;
+    }
+
+    .flex-theme-color-item {
+        height: 25px;
+        width: 25px;
+        border-radius: 15px;
+        margin: 2px;
+    }
+
+    .inactive-theme-status {
+        border: 4px solid darkred !important;
+        background-color: lightcyan;
+    }
+
+    .flex-theme-manager-form-header {
+        min-height: 30px;
+        max-height: 30px;
+        border-bottom: 5px solid black;
+    }
+
+    .flex-theme-manager-form-body {
+        border: 1px solid gray;
+        max-height: 450px;
+        min-height: 400px;
+        overflow: auto;
+    }
+    .images-selection-holder {
+        max-height: 450px;
+        min-height: 400px;
+        overflow:auto;
+    }
+    .flex-theme-manager-editor-form-row {
+        border: 1px dotted darkgray;
+        min-height: 30px;
+        max-height: 30px;
+    }
+
+    .flex-theme-manager-form-label {
+        display: inline-block;
+        border: 1px dashed pink;
+    }
+    .flex-theme-manager-form-inline-item {
+        display:inline-block;
+    }
+    .flex-theme-manager-form-footer {
+        min-height: 100px;
+        max-height: 100px;
+        border-top: 5px solid black;
+    }
+
+    .flex-theme-manager-editor-board-image {
+        min-height: 24px;
+        max-height: 24px;
+        min-width: 32px;
+        max-width: 32px;
+    }
+
+    .flex-theme-manager-editor-leaderboard-image {
+        min-height: 24px;
+        max-height: 24px;
+        min-width: 32px;
+        max-width: 32px;
+    }
+    .flex-theme-manager-color-holder {
+        display: inline-flex;
+        min-width:25px;
+        max-width:25px;
+        min-height:25px;
+        max-height:25px;
+        border:1px solid darkgray;
+        border-radius:15px;
+        text-align:center;
+        vertical-align: middle;
+    }
+    .flex-theme-manager-clone-original-info
+    {
+        font-style:italic;
+        font-size:9pt;
+        font-weight:bold;
+        margin-left:3px;
+        margin-right:3px;
+        color: darkorange;
+    }
+    .flex-theme-manager-image-item-selector-holder {
+        border:1px solid gray;
+        min-height:200px;
+        max-height:200px;
+        min-width:300px;
+        max-width:300px;
+        display:inline-flex;
+        margin:3px;
+    }
+    .flex-theme-manager-image-item-selector-holder.active {
+        border:5px solid var(--brand-blue);
+        border-radius: 10px;
+    }
+    .flex-theme-manager-image-holder {
+        min-height:150px;
+        max-height:150px;
+        min-width:300px;
+        max-width:300px;
+    }
+    .flex-theme-manager-image-option {
+        min-height:150px;
+        max-height:150px;
+        min-width:300px;
+        max-width:300px;
+    }
+    .flex-theme-manager-image-name-holder {
+        clear:both;
+        font-weight:bold;
+        text-align:center;
+        background-color:lightblue;
+        min-height:40px;
+        max-height:40px;
+        width:100%;
+    }
+</style>
+<div class="directive-holder flex-theme-manager-directive">
+    <div class="directive-header">
+        <div>
+            <h3>Flex Theme Manager</h3>
+        </div>
+        <div>
+            <button id="btnAddNewTheme">Add New Theme</button>
+            &nbsp;
+            <button id="btnRefreshThemeList"><i class="fa fa-refresh"></i> Refresh</button>
+        </div>
+    </div>
+    <div class="directive-filters">
+        <div>
+            <div class="filter-item-option-holder">
+                <div class="filter-item-label">Theme Type</div>
+                <div>
+                    <select id="flexThemeFilter_ThemeType"></select>
+                </div>
+            </div>
+            <!-- <div class="filter-item-option-holder">
+                <div class="filter-item-label">Finish Type</div>
+                <div>
+                    <select id="flexThemeFilter_FinishType"></select>
+                </div>
+            </div>
+            <div class="filter-item-option-holder">
+                <div class="filter-item-label">Game Unit</div>
+                <div>
+                    <select id="flexThemeFilter_GameUnit"></select>
+                </div>
+            </div> -->
+            <div class="filter-item-option-holder">
+                <div class="filter-item-label">Status</div>
+                <div>
+                    <select id="flexThemeFilter_Status"></select>
+                </div>
+            </div>
+            <div class="filter-item-option-holder">
+                <div class="filter-item-label">Include Inactive</div>
+                <div>
+                    <input type="checkbox" id="flexThemeFilter_IncludeInactive">
+                </div>
+            </div>
+            <div class="filter-item-option-holder">
+                <div class="filter-item-label">Name</div>
+                <div>
+                    <input type="text" id="flexThemeFilter_Name">
+                </div>
+            </div>
+            <div class="filter-item-option-holder">
+                <div>
+                    <button id="btnFlexTheme_ApplyFilters">Apply Filter</button>
+                    &nbsp;
+                    <button id="btnFlexTheme_ClearFilters">Clear Filter</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="directive-body">
+        <div class="theme-list-holder">
+            <div id="flexThemeManagerThemeList">List of themes</div>
+        </div>
+    </div>
+    <div class="directive-footer">
+        <div>
+            <span id="flexThemeManagerThemeCount"></span> Themes found.
+        </div>
+    </div>
+    <div class="editor-holder" id="flexThemeManagerFormHolder_Editor">
+        <div class="form-holder" id="flexThemeManagerEditorForm">
+            <div>
+                <div class="close-button-holder"><button class="button btn btn-close-editor"><i
+                    class="fa fa-close"></i></button></div>
+
+                <div class="flex-theme-manager-form-header">
+                    <h4>Editor Form</h4>
+                </div>
+                <div class="flex-theme-manager-form-body">
+                    <div class="flex-theme-manager-editor-form-row">
+                        <div class="flex-theme-manager-form-label">Theme Type</div>
+                        <select id="editorForm_ThemeType"></select>
+                    </div>
+                    <div class="flex-theme-manager-editor-form-row">
+                        <div class="flex-theme-manager-form-label">Finish Type</div>
+                        <select id="editorForm_FinishType" class="flex-theme-manager-form-input"></select>
+                        Finish Type based on theme Type?
+
+                    </div>
+                    <div class="flex-theme-manager-editor-form-row">
+                        <div class="flex-theme-manager-form-label">Game Units</div>
+                        <select id="editorForm_GameUnit" class="flex-theme-manager-form-input"></select>
+                        Units based on theme type?
+                    </div>
+
+                    <div class="flex-theme-manager-editor-form-row">
+                        <div class="flex-theme-manager-form-label">Theme Name</div>
+                        <input type="text" id="editorForm_ThemeName" class="flex-theme-manager-form-input">
+                    </div>
+                    <div class="flex-theme-manager-editor-form-row">
+                        <div class="flex-theme-manager-form-label">Short Name (displayed in dropdowns)</div>
+                        <input type="text" id="editorForm_ShortName" class="flex-theme-manager-form-input">
+                    </div>
+                    <div class="flex-theme-manager-editor-form-row">
+                        <div class="flex-theme-manager-form-label">Max Participant Count</div>
+                        <input type="text" id="editorForm_MaxParticipantCount" class="flex-theme-manager-form-input">
+                    </div>
+                    <div class="flex-theme-manager-editor-form-row with-image">
+                        <div class="flex-theme-manager-form-label">Leaderboard Image</div>
+                        <input type="text" id="editorForm_LeaderboardImageUrl" class="flex-theme-manager-form-input">
+                        <img id="editorForm_LeaderboardImage" class="flex-theme-manager-editor-leaderboard-image">
+                        &nbsp;
+                        <button id="btnEditorFormChangeLeaderboardImage" class="button btn flex-theme-manager-button change-image">Change</button>
+                    </div>
+                    <div class="flex-theme-manager-editor-form-row">
+                        <div class="flex-theme-manager-form-label">Theme Tag Name (used for theme specific coloring)
+                        </div>
+                        <input type="text" id="editorForm_ThemeTagName" class="flex-theme-manager-form-input">
+                    </div>
+                    <div class="flex-theme-manager-editor-form-row with-image">
+                        <div class="flex-theme-manager-form-label">Board Image</div>
+                        <input type="text" id="editorForm_BoardImageUrl" class="flex-theme-manager-form-input">
+                        <img id="editorForm_BoardImage" class="flex-theme-manager-editor-board-image">
+                        &nbsp;
+                        <button id="btnEditorFormChangeBoardImage" class="button btn flex-theme-manager-button change-image">Change</button>
+                    </div>
+                    <div class="flex-theme-manager-editor-form-row">
+                        <div class="flex-theme-manager-form-label">Has Animations?</div>
+                        <input type="checkbox" id="editorForm_HasAnimation" class="flex-theme-manager-form-input">
+                    </div>
+                    <div class="flex-theme-manager-editor-form-row">
+                        <div class="flex-theme-manager-form-label">Animation Name</div>
+                        <input type="text" id="editorForm_AnimationName" class="flex-theme-manager-form-input">
+                    </div>
+                    <div class="flex-theme-manager-editor-form-row">
+                        <div class="flex-theme-manager-form-label">Requires Scoring Basis</div>
+                        <input type="checkbox" id="editorForm_RequiresScoringBasis" class="flex-theme-manager-form-input">
+                    </div>
+                    <div class="flex-theme-manager-editor-form-row">
+                        <div class="flex-theme-manager-form-label">Required Ending Point Total</div>
+                        <input type="checkbox" id="editorForm_RequiresEndingPointTotal" class="flex-theme-manager-form-input">
+                    </div>
+                    <div class="flex-theme-manager-editor-form-row">
+                        <div class="flex-theme-manager-form-label">Caculate Score Option Available</div>
+                        <input type="checkbox" id="editorForm_CalculateScoreOption" class="flex-theme-manager-form-input">
+                    </div>
+                    <div class="flex-theme-manager-editor-form-row">
+                        <div class="flex-theme-manager-form-label">Requires Phase Value</div>
+                        <input type="checkbox" id="editorForm_RequiresPhraseValue" class="flex-theme-manager-form-input">
+                    </div>
+                    <div class="flex-theme-manager-editor-form-row">
+                        <div class="flex-theme-manager-form-label">Max Phrase Length</div>
+                        <input type="text" id="editorForm_MaxPhraseLength" class="flex-theme-manager-form-input">
+                    </div>
+                    <div class="flex-theme-manager-editor-form-row">
+                        <div class="flex-theme-manager-form-label">Theme Color Selector</div>
+                        <div class="flex-theme-manager-form-inline-item">
+                            <div id="editorForm_ColorHolder1" itemNumber="1" class="flex-theme-manager-color-holder">1</div>
+                            <div id="editorForm_ColorHolder2" itemNumber="2" class="flex-theme-manager-color-holder">2</div>
+                            <div id="editorForm_ColorHolder3" itemNumber="3" class="flex-theme-manager-color-holder">3</div>
+                            <div id="editorForm_ColorHolder4" itemNumber="4" class="flex-theme-manager-color-holder">4</div>
+                            <div id="editorForm_ColorHolder5" itemNumber="5" class="flex-theme-manager-color-holder">5</div>
+                            <input type="hidden" id="editorForm_DefaultColor1">
+                            <input type="hidden" id="editorForm_DefaultColor2">
+                            <input type="hidden" id="editorForm_DefaultColor3">
+                            <input type="hidden" id="editorForm_DefaultColor4">
+                            <input type="hidden" id="editorForm_DefaultColor5">
+                        </div>
+                    </div>
+                    <div class="flex-theme-manager-editor-form-row">
+                        <div class="flex-theme-manager-form-label">Status</div>
+                        <select id="editorForm_Status" class="flex-theme-manager-form-input"></select>
+                    </div>
+
+                    <div class="flex-theme-manager-editor-form-row">
+                        <div class="flex-theme-manager-form-label">Enter Date (Enter By)</div>
+                        <span>
+                            <label id="editorForm_ThemeEnterDate"></label>
+                            <label id="editorForm_ThemeEnterBy"></label>
+                        </span>
+                    </div>
+                    <div class="flex-theme-manager-editor-form-row">
+                        <div class="flex-theme-manager-form-label">Update Date (Update By)</div>
+                        <span>
+                            <label id="editorForm_ThemeUpdateDate"></label>
+                            <label id="editorForm_ThemeUpdateBy"></label>
+                        </span>
+                    </div>
+                </div>
+                <div class="flex-theme-manager-form-footer">
+                    <button id="btnSaveEditorForm">Save</button>
+                    <button class="button btn btn-close-editor">Cancel</button>
+                    <input type="hidden" id="editorForm_ThemeId">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="editor-holder" id="flexThemeManagerFormHolder_Clone">
+        <div class="form-holder" id="flexThemeManagerCloneForm">
+            <div>
+                <div class="flex-theme-manager-form-header">
+                    <h4>Clone Form</h4>
+                    <div class="close-button-holder"><button class="button btn btn-close-clone"><i
+                                class="fa fa-close"></i></button></div>
+                </div>
+                <div class="flex-theme-manager-form-body">
+                    <div class="flex-theme-manager-editor-form-row">
+                        <div class="flex-theme-manager-form-label">Theme Type</div>
+                        <span id="cloneForm_OriginalThemeType" class="flex-theme-manager-clone-original-info"></span>
+                        <i class="fa fa-arrow-right-long"></i>
+                        <select id="cloneForm_ThemeType"></select>
+                    </div>
+                    <div class="flex-theme-manager-editor-form-row">
+                        <div class="flex-theme-manager-form-label">Finish Type</div>
+                        <span id="cloneForm_OriginalFinishType" class="flex-theme-manager-clone-original-info"></span>
+                        <i class="fa fa-arrow-right-long"></i>
+                        <select id="cloneForm_FinishType" class="flex-theme-manager-form-input"></select>
+                    </div>
+                    <div class="flex-theme-manager-editor-form-row">
+                        <div class="flex-theme-manager-form-label">Game Units</div>
+                        <span id="cloneForm_OriginalGameUnit" class="flex-theme-manager-clone-original-info"></span>
+                        <i class="fa fa-arrow-right-long"></i>
+                        <select id="cloneForm_GameUnit" class="flex-theme-manager-form-input"></select>
+                    </div>
+                    <div class="flex-theme-manager-editor-form-row">
+                        <div class="flex-theme-manager-form-label">Theme Name</div>
+                        <span id="cloneForm_OriginalThemeName" class="flex-theme-manager-clone-original-info"></span>
+                        <i class="fa fa-arrow-right-long"></i>
+                        <input type="text" id="cloneForm_ThemeName" class="flex-theme-manager-form-input">
+                    </div>
+                    <div class="flex-theme-manager-editor-form-row">
+                        <div class="flex-theme-manager-form-label">Short Name (displayed in dropdowns)</div>
+                        <span id="cloneForm_OriginalShortName" class="flex-theme-manager-clone-original-info"></span>
+                        <i class="fa fa-arrow-right-long"></i>
+                        <input type="text" id="cloneForm_ShortName" class="flex-theme-manager-form-input">
+                    </div>
+                    <div class="flex-theme-manager-editor-form-row">
+                        <div class="flex-theme-manager-form-label">Max Participant Count</div>
+                        <span id="cloneForm_OriginalMaxParticipantCount" class="flex-theme-manager-clone-original-info"></span>
+                        <i class="fa fa-arrow-right-long"></i>
+                        <input type="text" id="cloneForm_MaxParticipantCount" class="flex-theme-manager-form-input">
+                    </div>
+                    <div class="flex-theme-manager-editor-form-row with-image">
+                        <div class="flex-theme-manager-form-label">Leaderboard Image</div>
+                        <span id="cloneForm_OriginalLeaderboardImageUrl" class="flex-theme-manager-clone-original-info"></span>
+                        <i class="fa fa-arrow-right-long"></i>
+                        <input type="text" id="cloneForm_LeaderboardImageUrl" class="flex-theme-manager-form-input">
+                        <img id="cloneForm_LeaderboardImage" class="flex-theme-manager-editor-leaderboard-image">
+                    </div>
+                    <div class="flex-theme-manager-editor-form-row">
+                        <div class="flex-theme-manager-form-label">Theme Tag Name (used for theme specific coloring)</div>
+                        <span id="cloneForm_OriginalThemeTagName" class="flex-theme-manager-clone-original-info"></span>
+                        <i class="fa fa-arrow-right-long"></i>
+                        <input type="text" id="cloneForm_ThemeTagName" class="flex-theme-manager-form-input">
+                    </div>
+                    <div class="flex-theme-manager-editor-form-row with-image">
+                        <div class="flex-theme-manager-form-label">Board Image</div>
+                        <span id="cloneForm_OriginalBoardImageUrl" class="flex-theme-manager-clone-original-info"></span>
+                        <i class="fa fa-arrow-right-long"></i>
+                        <input type="text" id="cloneForm_BoardImageUrl" class="flex-theme-manager-form-input">
+                        <img id="cloneForm_BoardImage" class="flex-theme-manager-editor-board-image">
+                    </div>
+                    <div class="flex-theme-manager-editor-form-row">
+                        <div class="flex-theme-manager-form-label">Has Animations?</div>
+                        <span id="cloneForm_OriginalHasAnimation" class="flex-theme-manager-clone-original-info"></span>
+                        <i class="fa fa-arrow-right-long"></i>
+                        <input type="checkbox" id="cloneForm_HasAnimation" class="flex-theme-manager-form-input">
+                    </div>
+                    <div class="flex-theme-manager-editor-form-row">
+                        <div class="flex-theme-manager-form-label">Animation Name</div>
+                        <span id="cloneForm_OriginalAnimationName" class="flex-theme-manager-clone-original-info"></span>
+                        <i class="fa fa-arrow-right-long"></i>
+                        <input type="text" id="cloneForm_AnimationName" class="flex-theme-manager-form-input">
+                    </div>
+                    <div class="flex-theme-manager-editor-form-row">
+                        <div class="flex-theme-manager-form-label">Requires Scoring Basis</div>
+                        <span id="cloneForm_OriginalRequiresScoringBasis" class="flex-theme-manager-clone-original-info"></span>
+                        <i class="fa fa-arrow-right-long"></i>
+                        <input type="checkbox" id="cloneForm_RequiresScoringBasis" class="flex-theme-manager-form-input">
+                    </div>
+                    <div class="flex-theme-manager-editor-form-row">
+                        <div class="flex-theme-manager-form-label">Required Ending Point Total</div>
+                        <span id="cloneForm_OriginalRequiresEndingPointTotal" class="flex-theme-manager-clone-original-info"></span>
+                        <i class="fa fa-arrow-right-long"></i>
+                        <input type="checkbox" id="cloneForm_RequiresEndingPointTotal" class="flex-theme-manager-form-input">
+                    </div>
+                    <div class="flex-theme-manager-editor-form-row">
+                        <div class="flex-theme-manager-form-label">Caculate Score Option Available</div>
+                        <span id="cloneForm_OriginalCalculateScoreOption" class="flex-theme-manager-clone-original-info"></span>
+                        <i class="fa fa-arrow-right-long"></i>
+                        <input type="checkbox" id="cloneForm_CalculateScoreOption" class="flex-theme-manager-form-input">
+                    </div>
+                    <div class="flex-theme-manager-editor-form-row">
+                        <div class="flex-theme-manager-form-label">Requires Phase Value</div>
+                        <span id="cloneForm_OriginalRequiresPhraseValue" class="flex-theme-manager-clone-original-info"></span>
+                        <i class="fa fa-arrow-right-long"></i>
+                        <input type="checkbox" id="cloneForm_RequiresPhraseValue" class="flex-theme-manager-form-input">
+                    </div>
+                    <div class="flex-theme-manager-editor-form-row">
+                        <div class="flex-theme-manager-form-label">Max Phrase Length</div>
+                        <span id="cloneForm_OriginalMaxPhraseLength" class="flex-theme-manager-clone-original-info"></span>
+                        <i class="fa fa-arrow-right-long"></i>
+                        <input type="text" id="cloneForm_MaxPhraseLength" class="flex-theme-manager-form-input">
+                    </div>
+                    <div class="flex-theme-manager-editor-form-row">
+                        <div class="flex-theme-manager-form-label">Theme Color Selector</div>
+                        <div class="flex-theme-manager-form-inline-item">
+                            <div id="cloneForm_ColorHolder1" class="flex-theme-manager-color-holder">1</div>
+                            <div id="cloneForm_ColorHolder2" class="flex-theme-manager-color-holder">2</div>
+                            <div id="cloneForm_ColorHolder3" class="flex-theme-manager-color-holder">3</div>
+                            <div id="cloneForm_ColorHolder4" class="flex-theme-manager-color-holder">4</div>
+                            <div id="cloneForm_ColorHolder5" class="flex-theme-manager-color-holder">5</div>
+                            <input type="hidden" id="cloneForm_DefaultColor1">
+                            <input type="hidden" id="cloneForm_DefaultColor2">
+                            <input type="hidden" id="cloneForm_DefaultColor3">
+                            <input type="hidden" id="cloneForm_DefaultColor4">
+                            <input type="hidden" id="cloneForm_DefaultColor5">
+                        </div>
+                    </div>
+                    <div class="flex-theme-manager-editor-form-row">
+                        <div class="flex-theme-manager-form-label">Status</div>
+                        <span id="cloneForm_OriginalStatus" class="flex-theme-manager-clone-original-info"></span>
+                        <i class="fa fa-arrow-right-long"></i>
+                        <select id="cloneForm_Status" class="flex-theme-manager-form-input"></select>
+                    </div>
+                </div>
+                <div class="flex-theme-manager-form-footer">
+                    <button id="btnSaveCloneForm">Save</button>
+                    <button class="btn-close-clone">Cancel</button>
+                    <input type="hidden" id="cloneForm_ThemeId">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="editor-holder sub-form preview-form" id="flexThemeManagerImageFormSelectionHolder">
+        <div class="form-holder" id="flexThemeManagerImageSelectionForm">
+            <div>
+                <div class="flex-theme-manager-form-header">
+                    <h4>Select Image</h4>
+                    <div class="close-button-holder">
+                        <button class="button btn btn-close-image-selector"><i class="fa fa-close"></i></button>
+                    </div>
+                </div>
+                <div class="flex-theme-manager-form-body">
+                    <div id="availableImagesSelectonList" class="images-selection-holder"></div>
+                </div>
+                <div class="flex-theme-manager-form-footer">
+                    <button id="btnFlexThemeManager_SetImage">Set Image</button>
+                    <button class="btn-close-image-selector">Cancel</button>
+                    <input type="hidden" id="imageSelector_CurrentSetImage" placeholder="original Image URL">
+                    <input type="hidden" id="imageSelector_NewImage" placeholder="selected Image URL">
+                    <input type="hidden" id="imageSelector_FormItemId" placeholder="ID in the main form to render data to.">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

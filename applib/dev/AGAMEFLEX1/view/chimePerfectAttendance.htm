@@ -1,0 +1,159 @@
+<div class="pa-holder">
+    <div class="pa-loading-panel">Loading...</div>
+    <div class="pa-holder-container">
+        <div class="pa-data-full-listing-holder">
+            <div class="pa-data-listing-header">
+                <div class="inline-item header-text">
+                    <div class="avatar"><img src="images/placeholder-avatar.jpg" class="pa-user-avatar" /></div>
+                    <h2>Congrats <span class="pa-current-user-name"></span>!</h2>
+                    <p>Good Luck!</p>
+                    <!-- <p>Your Team earned a spin for a prize today!</p> -->
+                </div>
+          
+                <button class="pa-show-spinner-button"><i class="btn-present-icon"></i> <span>Spin for a Prize!</span></button>
+          
+                <div>
+                    <div class="pa-show-team-button header-tab inline-item header-tab_leaderboard">
+                        <p>Leaderboard</p>
+                    </div>
+                    <div class="pa-show-user-winnings-button header-tab inline-item header-tab_history">
+                        <p>My Winnings</p>
+                    </div>
+                    <div class="pa-show-possible-prize-button header-tab inline-item header-tab_prizes">
+                        <p>Possible Prizes</p>
+                    </div>
+                    <div class="pa-show-my-score-button header-tab inline-item header-tab_scores">
+                        <p>My Scores</p>
+                    </div>
+                    <div class="pa-show-chat-button header-tab inline-item header-tab_chat">
+                        <p>Chat</p>
+                    </div>
+                    <!-- <button class="pa-show-team-listing"><i></i>Leaderboard</button>
+                    &nbsp;&nbsp;
+                    <button class="pa-show-user-winnings-button"><i></i> My Winnings</button>
+                    &nbsp;&nbsp;
+                    <button class="pa-show-possible-prize-button"><i></i>Possible Prizes</button> -->
+                </div>
+            </div>
+            <div class="pa-data-listing-body">
+                <div class="pa-team-list-holder">
+                    <div class="pa-team-list-body"></div>
+                </div>
+                <div class="pa-spinner-holder"> 
+                    <div class="pa-spinner-form">
+                        <div>
+                            <div class="pa-spinner-form-header">
+                                <div>
+                                    <button class="pa-spinner-close-button"><i class="far fa-times"></i></button>
+                                </div>
+                                <div>
+                                    &nbsp;
+                                </div>                            
+                            </div>
+                            <div class="pa-spinner-form-body">
+                                <div>
+                                    <br>
+                                    <div class="spinner-column-left">
+                                        <div>
+                                            Level 1 Spins Available: <span class="pa-user-daily-prize-claims"></span>
+                                        </div>
+                                        <div>
+                                            Level 2 Spins Available: <span class="pa-user-weekly-prize-claims"></span>
+                                        </div>
+                                        <div>
+                                            Level 3 (Grand Prize) Choices: <span class="pa-user-grand-prize-claims"></span>
+                                        </div>
+                                        <div>
+                                            <input type="hidden" value=0 id="spinnerPrizeCount">
+                                            <input type="hidden" value=0 id="spinnerLoopNumber">
+                                            <input type="hidden" value=0 id="winningPrizeId">
+                                        </div>                                    
+                                        <button class="pa-spinner-spin-button">Take a Spin!</button>
+                                    </div>
+                                    <div class="spinner-column-right">
+                                        <div class="spinner-object-holder"></div>
+                                    </div>
+                                </div>
+                            </div>                        
+                        </div>                        
+                        <div class="pa-spinner-user-prize-holder">
+                            <div>
+                                Winning Prize Information Here!
+                            </div>
+                        </div>
+                    </div>
+                </div>            
+                <div class="pa-user-winnings-holder">
+                    <div class="pa-user-winnings-display">
+                        <div>
+                            <div>
+                                <div class="pa-user-winnings-list"></div>
+                            </div>
+                            <div>
+                                <!-- <button class="pa-user-winnings-close-button"><i></i>Closer up</button> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pa-possible-prize-holder">
+                    <div class="pa-possible-prize-display">
+                        <div>
+                            <div class="pa-prize-possible-header">
+                                &nbsp;
+                                <!-- <button class="pa-possible-prize-close-button"><i class="far fa-times"></i></button> -->
+                            </div>
+                            <div class="pa-prize-possible-body"></div>
+                            <div>
+                                <!-- <button class="pa-possible-prize-close-button"><i></i>Gimme-gimme Jim</button> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pa-my-scores-holder">
+                    <div class="pa-my-scores-display">
+                        <div>
+                            <div>
+                                &nbsp;
+                            </div>
+                            <div>
+                                <div class="pa-my-scores-list"></div>
+                            </div>
+                            <div>
+                                &nbsp;
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pa-chat-holder">
+                    <div class="pa-chat-display">
+                        <div>
+                            <div>
+                                &nbsp;
+                            </div>
+                            <div>
+                                <div class="pa-chat-list">
+                                    <ng-acuity-discussion context="PerfectAttendanceGame"></ng-acuity-discussion>
+                                </div>
+                            </div>
+                            <div>
+                                &nbsp;
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pa-data-listing-footer">
+                <div>&nbsp;</div>
+            </div>    
+        </div>
+    </div>
+    <br><br><br>
+<!--     
+    <div style="border:3px solid black;background-color:darkred;color:whitesmoke;">
+        ADMIN STUFF (will not be in final version): 
+        <BR> 
+            <input type="text" id="renderString" /> <button id="admin-renderString-change"><i class="fas fa-wrench"></i></button>
+        &nbsp;&nbsp;
+            <button id="resetAllSpins">Reset All Spins</button>
+    </div> -->
+</div>

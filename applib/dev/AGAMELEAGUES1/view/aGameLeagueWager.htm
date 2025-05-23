@@ -1,0 +1,190 @@
+<div class="base-directive-holder">
+   <div class="top-headline">
+      <h1><i class="fa-sharp fa-regular fa-money-bill-1-wave color-green"></i> A-GAME Leagues Wager</h1>
+      <div class="top-headline_btns">
+         <button id="btnLoad">Load</button>
+         <!-- &nbsp;
+         <button id="btnGenerateBook">Generate</button> -->
+      </div>
+   </div>
+   <div id="userLoadingHolder">
+      <img src="../../../../applib/css/images/acuity-loading.gif" width="250px">
+      <span id="userLoadingText"></span>
+   </div>
+
+   <div id="noWagersFoundHolder">
+      No Wager Information found.  Will need to be setup.  Click the Generate button to start the setup process.
+   </div>
+   <div id="aGameWagerHolder" class="wager-container">
+      <div class="top-wager-container">
+         <div class="top-wager_cols">
+            <div class="column1of2p">
+               <div>
+                  <div>
+                     <button id="refreshMyBalance" class="button btn btn-refresh"><i class="fa fa-refresh"></i>  Refresh</button>
+                     <h3 class="wager-balance-headline mr-20 mb-15">Balance</h3>   
+                  </div>
+                  <div class="mr-20">
+                     <div class="wager-balance-row">
+                        <div class="wager-balance-row_col">Overall Balance:</div>
+                        <label class="wager-balance-row_col" id="lblMyBalance"></label>
+                        <span class="wager-balance-row_col" id="currentWinLossRecord"></span>
+                     </div>
+                     <div class="wager-balance-row">
+                        <div class="wager-balance-row_col">Pending Balance:</div>
+                        <label class="wager-balance-row_col" id="lblMyPendingBalance"></label>                        
+                     </div>
+                     <div class="wager-balance-row">
+                        <div class="wager-balance-row_col">Available Balance:</div>
+                        <label class="wager-balance-row_col" id="lblMyAvailableBalance"></label>                        
+                     </div>
+                     <div class="wager-balance-row">
+                        <div class="wager-balance-row_col">Current League:</div>
+                        <label class="wager-balance-row_col" id="lblCurrentLeague">league name here.</label>
+                     </div>
+                     <div class="wager-balance-row">
+                        <div class="wager-balance-row_col">Current Team:</div>
+                        <label class="wager-balance-row_col" id="lblCurrentTeam">team name here</label>
+                     </div>
+                  </div>
+                  <div class="mr-20">
+                     <h3 class="wager-balance-headline">Historical Wagers</h3>
+                     <div class="wager-balance-row">
+                        <div class="wager-balance-row_col">Record:</div>
+                        <label id="allTimeStatsHolder"></label>
+                     </div>
+                     <div class="wager-balance-row">
+                        <div class="wager-balance-row_col">Total Winnings:</div>
+                        <label id="allTimeWinningsHolder"></label>
+                     </div>
+                     <div class="wager-balance-row">
+                        <div class="wager-balance-row_col">Total Losses:</div>
+                        <label id="allTimeLossesHolder"></label>
+                     </div>
+                  </div>
+               </div>
+            </div>      
+            <div class="column2of2p">
+               <div class="current-pending-wager-container">
+                  <div class="bg-lightblue">
+                     <!-- <button id="btnRefreshCurrentScore" class="button btn btn-refresh"><i class="fa fa-refresh"></i> Refresh</button> -->
+                     <div class="table-topper">Current Wager
+                     </div>
+                     <div class="p-15">
+                        <div class="currentwager-row">
+                           <div id="curWagerAgainstHolder">
+                              Wager Against:
+                              <label id="curWagerAgainstUser"></label>
+                           </div>
+                           <div id="curWagerAmountHolder">
+                              Amount:
+                              <label id="curWagerAmount"></label>
+                           </div>
+                        </div>
+                        <div class="wager-current-game-score-holder">
+                           <div class="curWagerGameScoreHolder">
+                              <div id="curWagerOpponentGameScoreHolder">
+                                 <div class="wager-current-score-data-holder">
+                                    <div class="wager-current-score-label-holder">
+                                       <span id="curWagerOponentTeamName"></span>
+                                    </div>
+                                    <div class="wager-current-score-holder">
+                                       <label id="curWagerOpponentGameScore"></label>
+                                    </div>   
+                                 </div>
+                              </div>
+                              <div id="curWagerMyGameScoreHolder">
+                                 <div class="wager-current-score-data-holder">
+                                    <div class="wager-current-score-label-holder">
+                                       <span id="curWagerMyTeamName"></span>
+                                    </div>
+                                    <div class="wager-current-score-holder">
+                                       <label id="curWagerMyGameScore"></label>
+                                    </div>   
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="column2of2p">
+                        <div class="inline-item">
+                           <div id="launchAGAMEHolder">
+                              <img id="imgLaunchAGAME" src="../../../../applib/css/images/launch-icons/launch-agame.png" alt="A-GAME Leagues" height="100px">
+                           </div>
+                        </div>                        
+                     </div>
+                  </div>
+               </div>
+               <div class="current-pending-wager-container">
+                  <div>
+                     <div class="table-topper">
+                        Pending Wagers
+                     </div>
+                     <button id="refreshMyPending" class="button btn btn-refresh"><i class="fa fa-refresh"></i>  Refresh</button>
+                  </div>
+                  <div>
+                     <div class="wager-header-row">
+                        <div class="wager-list-item wager-against-user">Opponent</div>
+                        <div class="wager-list-item wager-amount">Wager Amount</div>
+                        <div class="wager-list-item button-holder"></div>
+                     </div>
+                     <div id="pendingWagersList"></div>
+                  </div>
+               </div>
+            </div>               
+         </div>
+      </div>
+      <div class="btm-wager-container">
+         <div class="tabsHolder">
+            <div id="wagerCurrentLeagueTab" class="tab listing-tab">Current</div>
+            <div id="wagerHistoricalTab" class="tab listing-tab">History</div>
+         </div>
+
+         <div id="currentLeagueWagersTabDataHolder" style="mix-blend-mode: multiply;">
+            <div>
+               <div class="wager-header-row">
+                  <div class="wager-list-item wager-week-number">Week#</div>
+                  <div class="wager-list-item wager-week-dates">Dates</div>
+                  <div class="wager-list-item wager-against-user">Opponent</div>
+                  <div class="wager-list-item wager-opponent-score">Opponent Score</div>
+                  <div class="wager-list-item wager-my-score">My Score</div>
+                  <div class="wager-list-item wager-amount">Wager Amount</div>
+                  <div class="wager-list-item wager-status">Wager Status</div>
+                  <div class="wager-list-item wager-outcome">Outcome</div>
+               </div>
+               <div id="currentLeagueWagersList">&nbsp;</div>
+            </div>
+         </div>
+         <div id="historyLeagueWagersTabDataHolder">
+            <div id="historyLeagueWagersList" >&nbsp;</div>
+         </div>
+   </div>
+   <div id="wagerFormHolder" class="form-holder wager-form-holder">
+      <div class="editor-form wager-form-formatting">
+         <button class="button btn-close btn-close-x"><i class="fa fa-close"></i></button>
+   
+         <div class="error-information-holder"></div>
+         <div>
+            <div>
+               Wager Against:
+               <label id="lblWagerAgainstUserId"></label>
+               <input type="hidden" id="wagerAgainstUserId" />
+            </div>
+            <div>
+               Wager Amount:
+               <input type="text" id="wagerAmount" />
+            </div>
+         </div>
+         <div>
+            <div class="button-holder wager_form_btns">
+               <input type="hidden" id="wagerAgainstId" />
+               <input type="hidden" id="wagerAgainstType"/>
+               <button id="btnSaveWagerForm" class="btn-large button btn btn-save"><i class="fa fa-save"></i> Save</button>
+               &nbsp;
+               <button class="btn-large button btn-close">Close</button>
+            </div>
+         </div>
+      </div>
+   </div>
+   
+</div>

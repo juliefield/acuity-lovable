@@ -1,0 +1,103 @@
+<div class="basic-directive-holder">   
+   <!-- <div class="top-filters">
+      Filters Here.
+   </div>
+   <br> -->
+   <div class="bottom-buttons">
+      <button id="btnAddNewBudgetItem" class="btn button btn-add-new btn-large btn-green budget-manager-btn-add-new-item" class="">
+         <i class="fa fa-plus"></i> Add New Budget Assignment
+      </button>
+   </div>
+   <div id="budgetManagerListDataHolder">
+      <div class="header-holder">
+         <div class="header-item role-name">Role</div>
+         <div class="header-item dollars-per-month">$/Month</div>
+         <div class="header-item acuity-points-per-month">AC/Month</div>
+         <div class="header-item is-active">Active</div>
+         <div class="header-item item-buttons">Actions</div>
+      </div>
+      <div class="selection-holder large-holder">
+         <div id="budgetItemsList" class="budget-manager-list-holder"></div>
+         <br />
+         <div>
+            <div>
+               <h3>Budget Usage Information for <select id="monthSelector"></select></h3>
+            </div>
+            <div class="column1of2">
+               <div>
+                  <div class="budget-item-tab-section-header current-month">Current Month <label id="budgetUsageCurrentMonthLabel" class="usage-month-label"></label></div>
+                  <div class="header-row header-holder">
+                     <div class="header-item" id="collapseAllCurrentMonth"><i class="fa fa-minus"></i></div>
+                     <div class="header-item user-role-name">Role</div>
+                     <div class="header-item ledger-type">Type</div>
+                     <div class="header-item total-users">Total Users</div>
+                     <div class="header-item compare-holder">&nbsp;</div>
+                     <div class="header-item avg-per-users">Per User</div>
+                     <div class="header-item compare-holder">&nbsp;</div>
+                     <div class="header-item budget-amount">Amount</div>
+                     <div class="header-item compare-holder">&nbsp;</div>
+                  </div>
+                  <br>
+                  <div id="budgetUsageCurrentMonth"></div>
+               </div>   
+            </div>
+            <div class="column2of2">
+               <div>
+                  <div class="budget-item-tab-section-header previous-month">Previous Month <label id="budgetUsagePreviousMonthLabel" class="usage-month-label"></label></div>
+                  <div class="header-row header-holder">
+                     <div class="header-item " id="collapseAllPreviousMonth"><i class="fa fa-minus"></i></div>
+                     <div class="header-item user-role-name">Role</div>
+                     <div class="header-item ledger-type">Type</div>
+                     <div class="header-item total-users">Total Users</div>                     
+                     <div class="header-item avg-per-users">Per User</div>
+                     <div class="header-item budget-amount">Amount</div>
+                     <div class="header-item compare-holder">&nbsp;</div>
+                  </div>
+                  <br>
+                  <div id="budgetUsagePreviousMonth"></div>
+               </div>   
+            </div>
+         </div>      
+      </div>
+   </div>
+<div id="budgetManagerFormPanel" class="editor-form">
+      <div class="form-holder">
+         <div>
+            <button class="btn-close btn-close-x"><i class="fa fa-times"></i></button>
+         </div>
+         <div class="error-information-holder"></div>
+         <div class="budgetEditor-fields">
+            <div>
+               <div class="input-label">Role:</div>
+               <div class="input-holder">
+                  <select id="editRoleBudgetItemAllowance_Role"></select>
+               </div>
+            </div>
+            <div>
+               <div class="input-label">$ Per Month Allowed:</div>               
+               <div class="input-holder">
+                  <input type="text" id="editRoleBudgetItemAllowance_DollarsPerMonth">
+               </div>
+            </div>
+            <div>
+               <div class="input-label">Acuity Credits Per Month Allowed:</div>               
+               <div class="input-holder">
+                  <input type="text" id="editRoleBudgetItemAllowance_AcuityPointsPerMonth">
+               </div>
+            </div>
+            <div>
+               <div class="input-label">Active:</div>               
+               <div class="input-holder">
+                  <input type="checkbox" id="editRoleBudgetItemAllowance_IsActive">
+               </div>
+            </div>            
+         </div>
+         <div class="button-holder">
+            <input type="hidden" id="editRoleBudgetItemAllowance_Id" value="-1">
+            <button id="btnSaveBudgetItem" class="btn-large">Save</button>
+            &nbsp;&nbsp;
+            <button class="btn-close btn-large">Close</button>
+         </div>            
+      </div>      
+   </div>
+</div>

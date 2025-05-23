@@ -1,0 +1,13 @@
+<div class="report-wrapper">
+	<div style="position:absolute;background-color:orange;color:white;z-index:99997" ng-show="devshowing()">
+		{{notetext}} <span class="link" ng-click="showdetails(true)">show details</span>
+		<span><input type="checkbox" ng-click="setDevmode()" ng-model="devmode">Dev Mode</span>
+	</div>
+  <div class="ThisReport" style="height:inherit;" <!-- ng-bind-html="reporthtml()" -->></div>
+</div>
+<div class="modal1-shadow" ng-show="detailsshowing()">
+    <div class="modal1-base">
+        {{detailstext}}
+        <div class="link report-details-link" ng-click="showdetails(false)">hide details</div>
+    </div>
+</div>

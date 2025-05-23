@@ -1,0 +1,191 @@
+<div class="player-profile-card__header" ng-hide="maximized()">
+  <p>Easycom Messages</p>
+  <div class="rpt-max-link rpt-max-link-plus" ng-click="maximize(true)"></div>
+</div>
+<div class="easycom-maximized" ng-show="maximized()">
+	<div class="rpt-max-link rpt-max-link-minus" ng-click="maximize(false)"></div>
+	<div class="pure-g">
+		<div class="pure-u-1">
+			<p><pre>table.records.length: {{table.records.length}}</pre></p>
+			<button class="pure-button pure-button-primary" type="button" title="Add Message" id="btnAddMessage" ng-click="addNewRow()">Add Message</button>
+			<table class="pure-table pure-table-horizontal pure-table-striped">
+				<thead>
+					<tr>
+						<th ng-repeat="col in table.columns">{{col.name}}</th>
+						<th>&nbsp;</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="r in table.records">
+						<td><p>{{r.id}}</p></td>
+						<td><p>{{r.Allow}}</p></td>
+						<td><p>{{r.Disallow}}</p></td>
+						<td><p>{{r.Delivery}}</p></td>
+						<td><p>{{r.Position}}</p></td>
+						<td><p style="display: inline-block;">{{r.BackgroundColor}}</p> <span style="display:inline-block;width:10px;height:10px;border:1px solid #444; background-color: {{r.BackgroundColor}}"></span></td>
+						<td><p style="display: inline-block;">{{r.TextColor}}</p> <span style="display:inline-block;width:10px;height:10px;border:1px solid #444; background-color: {{r.TextColor}}"></span></td>
+						<td><span ng-bind-html="getHtml(r.Message)" style="font-size:50%;color:{{r.TextColor}};background-color:{{r.BackgroundColor}};display:block;padding:.1em .5em;"></span></td>
+						<td><p>{{r.Notes}}</p></td>
+						<td><p>{{r.client}}</p></td>
+						<td>
+							<button class="pure-button" type="button" ng-click="editThisRow($index)" id="btnEditRow" title="Edit Message" aria-label="Edit Message"><i class="fa fa-edit"></i></button><!-- Spawn Edit Modal -->
+							<button class="pure-button" type="button" ng-click="deleteThisRow($index)" id="btnDeleteRow" title="Delete" aria-label="Delete"><i class="fa fa-close"></i></button><!-- Spawn Confirm Modal -->
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="pure-g" id="modalAddEdit">
+				<!-- Header -->
+				<div class="pure-u-1">
+					<h1>Add/Edit Message</h1>
+					<p style="font-family: serif"><small>To Do: Show <em>Add</em> or <em>Edit</em> based on case.</small></p>					
+				</div>
+				<!-- end Header -->
+				<!--
+
+					Users
+
+				-->
+				<!-- Roles -->
+				<!-- <div class="pure-u-1-3" id="colRoles">
+					<h2>Roles</h2>
+					<p><code>Ctrl + Click</code>to select multiple roles to filter Users list.</p>
+					<select id="roleSelect" class="form-control" ng-model="role.selected" ng-options="role.name for role in rolesList" ng-attr-size="{{client.roles.length}}" multiple>
+					</select>
+					<p style="word-wrap: break-word;word-break: break-word;"><strong>role.selected</strong><br/>{{role.selected}}</p>
+					<p style="font-family:serif;"><small>Roles To Do List:
+						<ul>
+							<li><s>Needs to be dynamic, and not hardcoded</s></li>
+							<li>On Modal Load:
+								<ul>
+									<li>All boxes checked. Ideally all boxes checked only for <em>Add Row</em> case.</li>
+									<li>Ideally only check boxes that are represented by selected Users for <em>Edit Row</em> case.</li>
+								</ul>
+							</li>
+						</ul>
+					</small></p>
+				</div> -->
+				<!-- end Roles -->
+				<!-- Users -->
+				<div class="pure-u-1-3" id="colUsers">
+					<h2>Users</h2>
+					<p><code>Ctrl + Click</code> to select multiple users</p>
+					<!-- <select multiple size="{{client.roles.length}}" name="userSelect" id="userSelect" ng-model="data.userSelect">
+						<option ng-repeat="r in client.userlist" ng-value="r.user_id">{{$index}}. role: {{r.role}} | userName: {{r.user_id}} | fullName: {{r.name}}</option>
+					</select> -->
+					<!-- <input type="text" placeholder="Search by role" ng-model="ctrl.search"/> -->
+					<select id="userSelect" ng-options="user.name + ' | ' + user.role for user in client.userlist | orderBy:'role'" ng-model="users.selected" multiple ng-attr-size="{{client.roles.length}}"></select>
+					<p style="word-wrap: break-word;word-break: break-word;"><strong>users.selected</strong><br/>{{users.selected}}</p>
+					<p style="font-family:serif;"><small>Users To Do List:
+						<ul>
+							<li>On Modal Load:
+								<ul>
+									<li>All Users visible for <em>Add Row</em> case.</li>
+									<li>Only selected Users visible for <em>Edit Row</em> case.</li>
+								</ul>
+							</li>
+						</ul>
+					</small></p>
+				</div>
+				<!-- end User -->			
+				<!-- Allow String & Current Users -->
+				<div class="pure-u-1-3" id="colCurrentUsers">
+					<h2>Allow String</h2>
+					<p style="word-wrap: break-word;word-break: break-word;"><strong>allowString</strong><br/>{{scrubAllowString(client.number)}}</p>
+					<p style="font-family:serif;"><small>Allow String To Do List:
+						<ul>
+							<li>Hide after testing</li>
+							<li>On Modal Load:
+								<ul>
+									<li>Prepopulate with existing string for <em>Edit Row</em> case.</li>
+								</ul>
+							</li>
+						</ul>
+					</small></p>
+					<h2>Current List</h2>
+					<p>Users Who Will See This Message<br/>
+					<select multiple ng-model="allowString" ng-options="user.name + ' | ' + user.role for user in users.selected" size="{{client.roles.length}}">
+					</select>
+					<p style="font-family:serif;"><small>Current List To Do List:
+						<ul>
+							<li>On Modal Load:
+								<ul>
+									<li>Default message for <em>Add Row</em> or empty <em>Edit Row</em> case.</li>
+									<li>Prepopulate with existing list for <em>Edit Row</em> case.</li>
+								</ul>
+							</li>
+							<li>Ideally have this as a functional list that allows removing Users from the Allow String and Current List.</li>
+						</ul>
+					</small></p>
+				</div>
+				<!-- end Allow String & Current Users -->
+				<!-- 
+
+					end Users 
+
+				-->
+				<!-- Message -->
+				<div class="pure-u-1">
+					<label for="messageText">Message Text</label>
+					<textarea name="messageText" id="messageText">
+		                Add your message here.
+		            </textarea>
+				</div>
+				<!-- end Message -->
+				<!-- Colors -->
+				<div class="pure-u-1">
+					<div class="pure-g">
+						<div class="pure-u-sm-1-2 pure-u-md-1-12"><label for="colorBackground">Background Color</label><br/><input dynamic-ui ng-model="r.BackgroundColor" type="text" name="colorBackground" id="colorBackground"/></div>
+						<div class="pure-u-sm-1-2 pure-u-md-1-12"><label for="colorText">Text Color</label><br/><input dynamic-ui ng-model="r.TextColor" type="text" name="colorText" id="colorText"/></div>
+					</div>
+				</div>
+				<!-- end Colors -->
+				<!-- Cancel/Save Buttons -->
+				<div class="pure-u-1" style="margin-bottom:10em;">
+					<button type="button" class="pure-button">Cancel</button>
+					<button type="button" class="pure-button pure-button-primary" ng-click="save()">Save</button>
+				</div>
+				<!-- end Cancel/Save Buttons -->
+			</div>
+		</div>
+	</div>		
+</div>
+
+<!-- Message Display Table -->
+<!-- id:
+Allow:
+Disallow:
+Delivery:
+Position:
+BackgroundColor:
+TextColor:
+Message:
+Notes:
+client:
+Role:
+Specific Users: -->
+<!-- end Message Display Table -->
+
+
+<!-- WYSIWYG Edit Modal -->
+<!-- id:
+Allow:
+Disallow: r.client + '/' + userIdString + '/'
+//build a function to be reused with Current List to build the user_id string
+
+
+Delivery:
+Position:
+BackgroundColor:
+TextColor:
+Message:
+Notes:
+client:
+Role => User => Current List (scrollable)
+-->
+<!-- end WYSIWYG Edit Modal -->
+
+<!-- CKEditor Replace/Init Function -->
+<script>
+	CKEDITOR.replace( 'messageText' );
+</script>

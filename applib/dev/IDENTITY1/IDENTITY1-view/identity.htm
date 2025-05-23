@@ -1,0 +1,177 @@
+<div class="identity-card__avatar">
+   <img ng-src="{{obj.avatarFilename}}" />
+</div>
+<div class="identity-card__header">
+  <div class="btn btn-blue btn-small identity-card_setupbtn" ng-click="showsetup(true);">Setup</div>
+  <p>{{obj.nickname}} <span ng-hide="obj.nickname == ''">(</span>{{obj.name}}<span ng-hide="obj.nickname == ''">)</span>
+  </p>
+</div>
+<div class="identity-card__details">
+  <p class="identity-card__team-name">
+    {{myfanname}}
+    <div class="anim-test2"></div>
+  </p>
+
+  <div class="text-center" ng-if="false"> <!-- hide for now until ME object with info about competititons is available -->
+    <div class="avatar-number identity-card__number" ng-style="{ 'background-color': mybackgroundcolor, 'color': mycolor }">
+      {{obj.jersey}}
+    </div>
+    <div class="identity-card__tag-line" ng-hide="obj.slogan == ''">
+      "{{obj.slogan}}"
+    </div>
+  </div>
+</div>
+
+<div class="identity-card_setup-popup" ng-show="setupshowing()">
+  <div class="identity-card_setup-popup-content">
+    <div class="close-popup" ng-click="cancelEditing();"><i class="fa fa-close"></i></div>
+    <h2 class="identity-setup_group-label">Setup Your Player Profile</h2>
+
+    <div class="identity-setup_preview">
+      <div
+        class="identity-setup_preview-avatar"
+        ng-class="{ 'prebuilt-avatar': obj.prebuiltAvatar, 'uploaded-avatar': !obj.prebuiltAvatar }"
+      >
+        <img ng-src="{{ obj.avatarFilename }}" />
+      </div>
+      <div id="PlayerBodyId" class="identity-setup_preview-jersey"></div>
+      <div class="identity-setup_preview-jersey-name">{{obj.nickname}}</div>
+
+
+      <p class="identity-setup_preview-slogan">
+        "{{ obj.slogan == '' ? 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Nun.' : obj.slogan }}"
+      </p>
+    </div>
+
+    <div class="identity-setup_form-group">
+      <p>
+        <b>Update Your Headshot</b>
+      </p>
+      <div class="tabbed">
+        <input name="tabbed" id="tabbed1" type="radio" checked>
+        <section>
+          <h1>
+            <label for="tabbed1">Choose Your Avatar Below</label>
+          </h1>
+          <div>
+            <div class="avatars-container">
+              <div
+                ng-repeat="i in [].constructor(76) track by $index"
+                class="avatar-item"
+                ng-class="{
+                  'avatar-notselected': '../applib/css/images/avatars/avatar' + ($index + 41) + '.png' != obj.avatarFilename,
+                  'avatar-selected': '../applib/css/images/avatars/avatar' + ($index + 41) + '.png' == obj.avatarFilename
+                }"
+                ng-click="setPrebuiltAvatar('../applib/css/images/avatars/avatar' + ($index + 41) + '.png')"
+              >
+                <img ng-src="../applib/css/images/avatars/avatar{{ $index + 41 }}.png" />
+              </div>
+              <div
+                ng-repeat="i in [].constructor(40) track by $index"
+                class="avatar-item"
+                ng-class="{
+                  'avatar-notselected': '../applib/css/images/avatars/avatar' + ($index + 1) + '.png' !== obj.avatarFilename,
+                  'avatar-selected': '../applib/css/images/avatars/avatar' + ($index + 1) + '.png' === obj.avatarFilename
+                }"
+                ng-click="setPrebuiltAvatar('../applib/css/images/avatars/avatar' + ($index + 1) + '.png')"
+              >
+                <img ng-src="../applib/css/images/avatars/avatar{{ $index + 1 }}.png" />
+              </div>
+              <div
+                ng-repeat="i in [].constructor(38) track by $index"
+                class="avatar-item"
+                ng-class="{
+                  'avatar-notselected': '../applib/css/images/avatars/fantasyart/fantasyart' + ($index + 1) + '.png' != obj.avatarFilename,
+                  'avatar-selected': '../applib/css/images/avatars/fantasyart/fantasyart' + ($index + 1) + '.png' == obj.avatarFilename
+                }"
+                ng-click="setPrebuiltAvatar('../applib/css/images/avatars/fantasyart/fantasyart' + ($index + 1) + '.png')"
+              >
+                <img ng-src="../applib/css/images/avatars/fantasyart/fantasyart{{ $index + 1 }}.png" />
+              </div>
+              <div
+                ng-repeat="i in [].constructor(33) track by $index"
+                class="avatar-item"
+                ng-class="{
+                  'avatar-notselected': '../applib/css/images/avatars/people/person' + ($index + 1) + '.png' != obj.avatarFilename,
+                  'avatar-selected': '../applib/css/images/avatars/people/person' + ($index + 1) + '.png' == obj.avatarFilename
+                }"
+                ng-click="setPrebuiltAvatar('../applib/css/images/avatars/people/person' + ($index + 1) + '.png')"
+              >
+                <img ng-src="../applib/css/images/avatars/people/person{{ $index + 1 }}.png" />
+              </div>
+              <div
+                ng-repeat="i in [].constructor(40) track by $index"
+                class="avatar-item"
+                ng-class="{
+                  'avatar-notselected': '../applib/css/images/avatars/seasonal/seasonal' + ($index + 1) + '.png' != obj.avatarFilename,
+                  'avatar-selected': '../applib/css/images/avatars/seasonal/seasonal' + ($index + 1) + '.png' == obj.avatarFilename
+                }"
+                ng-click="setPrebuiltAvatar('../applib/css/images/avatars/seasonal/seasonal' + ($index + 1) + '.png')"
+              >
+                <img ng-src="../applib/css/images/avatars/seasonal/seasonal{{ $index + 1 }}.png" />
+              </div>             
+            </div>
+          </div>
+        </section>
+        <input name="tabbed" id="tabbed2" type="radio">
+        <section>
+          <h1>
+            <label for="tabbed2">Upload A Photo</label>
+          </h1>
+          <div>
+            <p>
+              <b>Select Image to Upload:</b>
+            </p>
+            <input
+              class="choose-file-uploadbtn"
+              id="fileUpload"
+              name="fileUpload"
+              type="file"
+              accept=".bmp,.gif,.jpg,.jpeg,.png"
+              avatar-upload='uploadedImage'
+              />
+            <input id="btnUploadFile" type="button" class="btn btn-blue" value="Upload File" ng-click='uploadAvatar()' />
+          </div>
+        </section>
+      </div>
+      <br />
+      <div class="identity-setup_form-group">
+        <div class="identity-setup_form-group-label">Player Info</div>
+        <p class="form-description">Please select the number for your jersey. Be sure to confer with your coach to be sure the # you choose is available.</p>
+        <p class="form-label"><b>Jersey #:</b>
+        <input id="inputJersey" type="input" class="setup-input" placeholder="00" ng-model="obj.jersey" /></p>
+
+        <p class="form-label"><b>Name on jersey:</b></p>
+        <input id="inputNickname" type="input" class="setup-input" placeholder="Name on jersey" ng-model="obj.nickname" />
+
+        <div class="identity-setup_form-two-column">
+          Your Favorite color:
+          <select ng-model='mycolor'>
+            <option ng-repeat='color in colors' ng-value='color.value'>{{ color.name }}</option>
+          </select>
+        </div>
+
+        <div class="identity-setup_form-two-column">
+          Your Favorite Music Type:
+          <select ng-model='obj.favoriteMusic'>
+            <option ng-repeat='genre in musicGenres' ng-value='genre.value'>{{ genre.name }}</option>
+          </select>
+        </div>
+
+        <div class="identity-setup_form-two-column">
+          Your Favorite Hobby:
+          <select ng-model='obj.favoriteHobby'>
+            <option ng-repeat='hobby in hobbies' ng-value='hobby.value'>{{ hobby.name }}</option>
+          </select>
+        </div>
+
+        <div class="clearfix"></div>
+        <p class="form-label"><b>What's on your mind?</b> <span class="max-characters">Max characters: 60</span></p>
+        <textarea id="inputSlogan" class="setup-input" value="" maxlength="60" ng-model="obj.slogan"></textarea>
+        <br />
+        <input id="savePlayerSetup" type="button" class="btn" data-bind="css: { btnSoccer: (theme()=='soccer'), btnFootball: (theme()=='football'), btnTiki: (theme()=='tiki'), btnBasketball: (theme()=='basketball') }" value="Save Player Information" ng-click='saveitems()' />
+        <span class="cancel-btn" ng-click="cancelEditing();">Cancel</span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,80 @@
+<style>
+   .inline-item
+   {
+      display:inline-block;      
+      border:1px dotted green;
+   }
+   .project-option-holder
+   {
+      background-color:lightgray;
+      margin:3px;
+      width:200px;
+      min-height:25px;
+      padding:2px;
+   }
+   .loading-image
+   {
+      height:50px;
+   }
+   .individual-chart-holder
+   {
+      display:inline-block;
+      width:45%;
+      border:1px dotted yellowgreen;
+   }
+   .disabled
+   {
+      background-color:lightgray;
+      color:gray;
+   }
+</style>
+<DIV>
+   <DIV>
+      <div>
+         <div id="projectListFilters"></div>
+      </div>
+      <div>
+         <button id="btnApplyFilter">Filter</button>
+         <button id="btnClearFilter">Clear</button>
+         <button id="btnSelectAll">Select All</button>
+      </div>
+      <div>
+         <div id="chartsHolder" style="min-height:550px;max-height:550px;border:1px solid black;overflow:auto;">
+            <div class="individual-chart-holder">
+               <div id="overallScoreLoadingMessage" class="loading-panel">
+                  <img src="" id="overallScoreLoadingImage" class="loading-image">
+                  <span>Loading Balanced Score Data...</span>
+               </div>
+               <div id="overallScoreChart"></div>
+            </div>            
+            <div class="individual-chart-holder">
+               <div id="leaderEffectivenessLoadingMessage" class="loading-panel">
+                  <img src="" id="leaderEffectivessLoadingImage" class="loading-image">
+                  <span>Loading Leader Effectiveness Data...</span>
+               </div>
+               <div id="leaderEffectivenessChart"></div>
+            </div>
+            <div class="individual-chart-holder">
+               <div id="touchQualityLoadingMessage" class="loading-panel">
+                  <img src="" id="touchQualityLoadingImage" class="loading-image">
+                  <span>Loading Touch Quality Data...</span>
+               </div>
+               <div id="touchQualityChart"></div>
+            </div>
+            <div class="individual-chart-holder">
+               <div id="coachingRateLoadingMessage" class="loading-panel">
+                  <img src="" id="coachingRateLoadingImage" class="loading-image">
+                  <span>Loading Coaching Rate Data...</span>
+               </div>
+               <div id="coachingRateChart"></div>
+            </div>
+            <div class="individual-chart-holder">
+               Attrition?
+            </div>
+            <div class="individual-chart-holder">
+               ???????????            
+            </div>
+         </div>
+      </div>
+   </DIV>
+</DIV>

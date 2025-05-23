@@ -1,0 +1,74 @@
+<div class="basic-directive-holder">
+   <div class="top-filters">
+      <div class="filter-input-group">
+         <span>Users <select id="userPoints_usersFilter"></select></span>
+      </div>
+   </div>
+   <div class="userdetails_holder">
+      <div class="userdetails_user">
+         <div class="user-holder">
+            <div class="user-avatar">
+               <img id="user-avatar" />
+            </div>
+            <div class="user-holder_details">
+               <div id="user-full-name"></div>
+               Total Credits for User: <b><span id="user-points-count"></span></b>
+               <button id="btnAddUserPoints" class="btn-large btn-assign-pts">Award Credits</button>
+            </div>
+
+         </div>
+      </div>
+      <div class="userdetails_content">
+         <div class="header-holder">
+            <div class="header-item user-points-date">Date</div>
+            <div class="header-item user-points-award-by">Awarded By</div>
+            <div class="header-item user-points-award-from">Award From</div>
+            <div class="header-item user-points-points">Credits</div>
+            <div class="header-item user-points-button-holder">Actions</div>
+         </div>
+         <div class="list-holder">
+            <div id="userPoints_EarnedListHolder"></div>
+         </div>
+      </div>
+   </div>
+   
+   <div id="userPointsManagementPanel" class="editor-form">
+      <div class="form-holder">
+
+         <button class="btn-close btn-close-x"><i class="fa fa-times"></i></button>
+
+         <div id="userPointsManager_ErrorsFound" class="error-information-holder"></div>
+         <div>
+            <h2>
+               Assign To: <b><span id="userPointsManager_AssignToReadOnlyLabel"></span></b>
+            </h2>
+            <hidden id="userPointsManager_AssignTo" readonly></hidden>
+            <div class="badgeAdminForm_form">
+               <div class="badgeAdminForm_image-preview">
+                  <div class="user-avatar">
+                     <img id="user-avatar" />
+                  </div>
+                  <div class="user-holder_details">
+                     <div id="user-full-name"></div>
+                  </div>
+               </div>
+               <div class="badgeAdminForm_form-preview">
+                  <strong>Credits:</strong> <input type="text" id="userPointsManager_PointsAssigned" class="user-point-manager-points" />
+                  <br />
+                  <strong>Award Date:</strong>  <input type="text" class="user-point-maanger-award-date" id="userPointsManager_AwardDate">
+                  <br />
+                  <strong>Game For:</strong>  <select id="userPointsManager_FlexGameId"></select>
+                  <br>
+                  <strong>Badge Earned:</strong>  <select id="userPointsManager_BadgeId"></select>
+               </div>    
+            </div>      
+         </div>
+         <div class="acuityAdminForm_btns">
+            <button class="btn-large" id="btnSave">Save</button>
+            &nbsp;&nbsp;
+            <button class="btn-close btn-large">Close</button>
+         </div>
+      </div>
+
+   </div>
+</div>

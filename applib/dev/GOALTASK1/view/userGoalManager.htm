@@ -1,0 +1,141 @@
+<div class="user-goal-manager-holder">
+    <div class="user-goal-manager-button-holder">
+        <button class="user-goal-manager-add-new-goal-button" title="Add a new goal"><i class="fas fa-plus"></i> Add New Goal</button>
+        <button class="user-goal-manager-refresh-goal-button" title="Refresh goals"><i class="fad fa-sync-alt"></i> Refresh Goals</button>
+    </div>
+    <div class="user-goal-manager-header">
+       <h3>
+           Goals
+            <div class="user-goal-manager-filter-holder">
+                <input type="checkbox" class="user-goal-manager-options-include-completed">Show Completed Goals
+                &nbsp;&nbsp;
+                <input type="checkbox" class="user-goal-manager-options-include-archived">Show Archived Goals
+            </div>
+       </h3>
+    </div>
+    <div class="user-goal-manager-user-stats-holder">
+        <div>
+            <label class="user-goal-manager-user-stats-completed-goals"></label> of <label class="user-goal-manager-user-stats-total-goals"></label> Goals Completed
+            &nbsp;&nbsp;|&nbsp;&nbsp;
+            <label class="user-goal-manager-user-stats-archived-goals"></label> goals archived
+        </div>
+    </div>
+
+    <div class="user-goal-manager-editor-holder">        
+        <div class="user-goal-manager-editor-form-header">
+            <button class="close-panel-btn"> 
+                <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
+           <label class="user-goal-manager-editor-header-label"></label>
+        </div>    
+        <div class="error-information-holder"></div>
+        <div class="user-goal-manager-editor-form">            
+            <div class="user-goal-manager-form_row">
+                <label class="user-goal-manager-data-label">Goal Name</label>
+                <input type="text" class="user-goal-manager-editor-goal-name" />
+            </div>
+            <div class="user-goal-manager-form_row">
+                <label class="user-goal-manager-data-label">Metric to Measure</label>
+                <select class="user-goal-manager-editor-goal-metric"></select>
+                <select class="user-goal-manager-editor-goal-sub-type"></select>
+            </div>
+            <div class="user-goal-manager-form_row">
+                <label class="user-goal-manager-data-label">Metric Basis</label>
+                <select class="user-goal-manager-editor-metric-basis">
+                    <option value="">Select Metric Basis</option>
+                    <option value="0">Balanced Score</option>
+                    <option value="1">Scored Value</option>
+                    <option value="2">Standard Value</option>
+                </select>
+            </div>
+            <div class="user-goal-manager-form_row">
+                <label class="user-goal-manager-data-label">Start Value</label>
+                <input type="text" class="user-goal-manager-editor-goal-start-value" />
+            </div>
+            <div class="user-goal-manager-form_row">
+                <label class="user-goal-manager-data-label">% increase</label>
+                <input type="text" class="user-goal-manager-editor-pct-increase" />
+            </div>
+            <div class="user-goal-manager-form_row">
+                <label class="user-goal-manager-data-label">End Value</label>
+                <input type="text" class="user-goal-manager-editor-goal-end-value" />
+            </div>            
+            <div class="user-goal-manager-form_row">
+                <label class="user-goal-manager-data-label">Completed By Date</label>
+                <input type="text" class="user-goal-manager-editor-complete-by-date" />
+            </div>
+            <div class="user-goal-manager-form_row">
+                <label class="user-goal-manager-data-label">Status</label>
+                <select class="user-goal-manager-editor-goal-status"></select>
+            </div>
+            <div  class="user-goal-manager-form_row user-goal-manager-editor-date-achieved-row">
+                <label class="user-goal-manager-data-label">Date Achieved</label>
+                <input type="text" class="user-goal-manager-editor-achieved-date" />
+            </div>            
+        </div>
+        
+        <div class="user-goal-manager-editor-buttons-holder">
+            <button class="user-goal-manager-editor-button-save">Save</button>
+            <button class="user-goal-manager-editor-button-cancel">Cancel</button>    
+            <input type="hidden" id="goalId" class="user-goal-manager-form-goal-id" />
+            <input type="hidden" id="createdBy" class="user-goal-manager-form-created-by" />
+            <input type="hidden" id="createdOn" class="user-goal-manager-form-created-on" />
+        </div>
+    </div>
+    <div class="user-goal-manager-create-task-holder">
+        <div class="user-goal-manager-create-task-header">
+            <label class="user-goal-manager-editor-header-label">Add Task for Goal</label>
+        </div>
+        <div class="error-information-holder"></div>
+        <div class="user-goal-manager-create-task-form">
+            <div class="metric-box">
+                <div class="user-goal-manager-form_row">
+                    <label class="user-goal-manager-data-label_info">Metric:</label>
+                    <label class="user-goal-manager-metric-name"></label>
+                </div>
+                <div class="user-goal-manager-form_row">
+                    <label class="user-goal-manager-data-label_info">Goal ends in: </label>
+                    <label class="user-goal-manager-goal-days-remaining"></label>                
+                </div>
+                <div class="user-goal-manager-form_row">
+                    <label class="user-goal-manager-data-label_info">Values:</label>
+                    <label class="user-goal-manager-goal-values"></label>                
+                </div>
+            </div>
+            
+            
+            <div class="user-goal-manager-form_row">
+                <label class="user-goal-manager-data-label">Task Name:</label>
+                <input type="text" class="user-goal-manager-task-name" placeholder="Task Name" />
+            </div>
+            <div class="user-goal-manager-form_row">
+                <label class="user-goal-manager-data-label">Due Date:</label>
+                <input type="text" class="user-goal-manager-task-due-date" placeholder="Due Date" />
+            </div>
+            <div class="user-goal-manager-form_row">
+                <label class="user-goal-manager-data-label">Description:</label>
+                <div class="clearfix"></div>
+                <textarea id="taskCreateDesc" class="user-goal-manager-task-desc" 
+                    maxlength="1000" placeholder="Describe your task"></textarea>
+            </div>            
+            <div class="user-goal-manager-form_row">
+                <label class="user-goal-manager-data-label">Send Reminder?</label>
+                <input type="checkbox" class="user-goal-manager-task-send-reminder" />
+            </div>
+            
+        </div>
+        <div class="user-goal-manager-editor-buttons-holder">
+            <input type="hidden" class="user-goal-manager-create-task-form-goal-id" />
+            <button class="user-goal-manager-editor-button-save-task-create">Save</button>
+            <button class="user-goal-manager-editor-button-cancel-task-create">Cancel</button>
+        </div> 
+    </div>
+    <div class="user-goal-manager-user-list-holder"> 
+        <div class="user-goal-manager-user-goals-list"></div>
+        <br>
+        <div class="user-goal-manager-button-options-holder">
+            <button class="user-goal-manager-button-remove-selected button--red" title="Remove selected goals"><i class="fas fa-trash-alt"></i> Remove Selected</button>
+            <button class="user-goal-manager-button-complete-selected button--green" title="Completed selected goals"><i class="fas fa-check"></i> Complete Selected</button>
+        </div>
+    </div>
+</div>

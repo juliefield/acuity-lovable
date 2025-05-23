@@ -1,0 +1,241 @@
+<div class="player-profile-card__header"">
+  <p>Easycom Messages</p>
+  <a class="rpt-max-link rpt-max-link-plus" href="#listMessages" rel="modal:open" ng-click="tableInit();"></a>
+</div>
+<div id="dialog-confirm" title="Change current user list?">
+  <p>All the messages will be permanently deleted and cannot be recovered. Are you sure?</p>
+</div>
+<div id="delete-confirm" title="Delete this message?">
+  <p>This message will be permanently deleted and cannot be recovered. Are you sure?</p>
+</div>
+<div class="modal" id="listMessages">
+	<!-- <div class="rpt-max-link rpt-max-link-minus"></div> -->
+	<div class="pure-g">
+		<div class="pure-u-1-2">
+			<h2>Easycom Messages</h2>
+		</div>
+		<div class="pure-u-1-2" id="rowAdd">
+			<a href="#formAddEdit" rel="modal:open" class="pure-button pure-button-primary" type="button" title="Add Message"
+				id="btnAddMessage"
+				ng-disabled="disableAddMessage()"
+				ng-click="addNewRow(client.number)"
+				ng-if="table.records.length > 0">
+				<i class="fa fa-plus" aria-hidden="true"></i> Add Message</a>
+		</div>
+		<div class="pure-u-1" ng-if="table.records.length > 0" id="change-list">
+			<p>Current User List: <strong>{{getUserRoleListLabel()}}</p></strong> <button type="button" id="change-user-list" ng-click="dialogConfirm()" class="pure-button button-warning button-small" title="Change User List">Change User List</button>
+			<p id="msg-warning"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Changing the Current User List will delete all existing messages. <i class="fa fa-exclamation-triangle" aria-hidden="true"></i></p>
+		</div>
+		
+		<div class="pure-u-1" id="rowListMessages">
+			<ul class="pure-menu-list">
+				<li ng-if="table.records.length == 0" class="zero-records">
+					<p>There are currently no messages available to any users.</p>					
+					<div class="pure-g" id="user-lists">
+						<div class="pure-u-1"><p>Choose a user list to create your new message.</p></div>
+						<div class="pure-u-1-2 user-list">	
+							<div class="wrapper">
+								<span class="header">Acuity Roles</span>
+								<ul>
+									<li ng-repeat="r in roles">{{r.name}}</li>
+								</ul>
+								<a href="#formAddEdit" rel="modal:open" class="pure-button pure-button-primary" type="button" title="Create Message"
+								id="btnAddMessage"
+								ng-disabled="disableAddMessage()"
+								ng-click="saveUserList('default');addNewRow(client.number)">
+								<i class="fa fa-plus" aria-hidden="true"></i> Create Message</a>
+							</div>
+						</div>
+						<div class="pure-u-1-2 user-list">
+							<div class="wrapper">
+								<span class="header">A-GAME</span>
+								<ul>
+									<li ng-repeat="r in altRoles">{{r.name}}</li>
+								</ul>
+								<a href="#formAddEdit" rel="modal:open" class="pure-button pure-button-primary" type="button" title="Create Message"
+								id="btnAddMessage"
+								ng-disabled="disableAddMessage()"
+								ng-click="saveUserList('agame');addNewRow(client.number)">
+								<i class="fa fa-plus" aria-hidden="true"></i> Create Message</a>
+							</div>
+						</div>
+					</div>
+					<!-- <a href="#formAddEdit" rel="modal:open" class="pure-button pure-button-primary" type="button" title="Add Message"
+						id="btnAddMessage"
+						ng-disabled="disableAddMessage()"
+						ng-click="addNewRow(client.number)">
+						<i class="fa fa-plus" aria-hidden="true"></i> Add Message</a> -->
+				</li>
+				<li ng-repeat="message in table.records" class="pure-menu-item">
+					<div ng-bind-html="getHtml(message.Message)" ng-attr-style="color:{{message.TextColor}}; background-color:{{message.BackgroundColor}};" class="renderedMessage"></div>
+					<div class="pure-g">
+						<div class="pure-u-3-5">
+							<p><strong>Roles:</strong> {{displayRoles($index)}}</p>
+							<p><strong>Notes:</strong> {{message.Notes}}</p>
+						</div>
+						<div class="pure-u-2-5 btnsEditDelete">
+							<a href="#formAddEdit" rel="modal:open" ng-click="editRow($index)" type="button" class="pure-button btnEditRow" title="Edit Message" aria-label="Edit Message"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+							<a href="#" ng-click="deleteConfirm($index)" type="button" class="pure-button btnDeleteRow" title="Delete" aria-label="Delete"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>		
+	</div>		
+</div>
+<!-- Add/Edit Modal -->
+<div class="modal" id="formAddEdit">			
+	
+	<div class="pure-g">
+		<h2>{{modeMessage()}}</h2>
+		<form class="pure-form pure-form-stacked">
+			<div class="pure-u-1 one-box">
+				<input type="hidden" name="id" id="" class="" ng-model="managementBaselineEdit.id"/>
+				<label for='roleSelect'>Recipient List<br><span>Select the role(s) that will receive this message (hold down the Ctrl key to select multiple).</span></label>
+				<!--
+				<select name="roleSelect" id="roleSelect" ng-options="r for r in activeRoles track by r" ng-model="roles.selected" ng-change="buildUsers()">
+					<option value="">---Please select---</option>
+				</select>
+				-->
+				<select multiple name="roleSelect" id="roleSelect" ng-model="selectedRoleList.selected" size="{{activeRoles.length}}">
+					<option ng-repeat="r in selectableRoles" value="{{r.role}}">{{r.role}}</option>
+				</select>
+				
+			</div>
+			<!-- <div class="pure-u-1 one-box"> -->
+				<!-- <p>{{roles.selected}}</p> -->
+				<!-- <textarea name="allow" id="stringAllow" ng-model="managementBaselineEdit.Allow" ></textarea> -->
+				<input type="hidden" name="disallow" id="" class="" ng-model="managementBaselineEdit.Disallow"/>			
+				<input type="hidden" name="delivery" id="" class="" ng-model="managementBaselineEdit.Delivery"/>			
+				<input type="hidden" name="position" id="" class="" ng-model="managementBaselineEdit.Position"/>
+			<!-- </div> -->
+			<div class="pure-u-1-2 one-box">
+				<label for="backgroundcolor">Message Background Color</label>
+				<input id="backgroundcolor" name="backgroundcolor" type="text" value="#333333"/>
+			</div>
+			<div class="pure-u-1-2 one-box">
+				<label for="textcolor">Message Text Color</label>
+				<input id="textcolor" name="textcolor" type="text" value="#ffffff" />
+			</div>
+			<div class="pure-u-1 one-box">
+				<label for="message">Message Content</label>
+				<textarea name="messageText" class="messageText"></textarea>
+			</div>
+			<div class="pure-u-1 one-box">
+				<label for="notes">Notes<br><span>Not Visible to End Users</span></label>
+				<input type="text" name="notes" class="notes" ng-model="managementBaselineEdit.Notes" />
+				<input type="hidden" name="client" id="" class="" ng-model="managementBaselineEdit.client"/>
+			</div>
+			<div class="pure-u-1 one-box buttons">
+				<a href="#listMessages" id="cancel-message" rel="modal:open" type="button" class="pure-button button-large" ng-click="cancelEditMessage()">Cancel</a>
+				<a href="#listMessages" id="save-message" rel="modal:open" type="button" class="pure-button button-large pure-button-primary" ng-disabled="!rolesSelected()" ng-click="saveEditMessage()">Save</a>
+			</div>	
+		</form>
+	</div>
+</div>
+<!-- end Add/Edit Modal -->
+
+
+<script type="text/javascript">
+	// init color pickers
+	$('#backgroundcolor, #textcolor').spectrum({
+		showInput:true,
+		preferredFormat: "hex",
+	});
+	$('#textcolor').spectrum({
+		showInput:true,
+		preferredFormat: "hex",
+	    showPaletteOnly: true,
+	    togglePaletteOnly: true,
+	    togglePaletteMoreText: 'more',
+	    togglePaletteLessText: 'less',
+	    palette: [
+	        ["#000","#444","#666","#999","#ccc","#eee","#f3f3f3","#fff"],
+	        ["#f00","#f90","#ff0","#0f0","#0ff","#00f","#90f","#f0f"],
+	        ["#f4cccc","#fce5cd","#fff2cc","#d9ead3","#d0e0e3","#cfe2f3","#d9d2e9","#ead1dc"],
+	        ["#ea9999","#f9cb9c","#ffe599","#b6d7a8","#a2c4c9","#9fc5e8","#b4a7d6","#d5a6bd"],
+	        ["#e06666","#f6b26b","#ffd966","#93c47d","#76a5af","#6fa8dc","#8e7cc3","#c27ba0"],
+	        ["#c00","#e69138","#f1c232","#6aa84f","#45818e","#3d85c6","#674ea7","#a64d79"],
+	        ["#900","#b45f06","#bf9000","#38761d","#134f5c","#0b5394","#351c75","#741b47"],
+	        ["#600","#783f04","#7f6000","#274e13","#0c343d","#073763","#20124d","#4c1130"]
+	    ],
+		change: function(color) {
+ 			txtClr = color.toHexString();
+            tinymce.activeEditor.getBody().style.color = txtClr;
+		}
+	});
+	$('#backgroundcolor').spectrum({
+		showInput:true,
+		preferredFormat: "hex",
+	    showPaletteOnly: true,
+	    togglePaletteOnly: true,
+	    togglePaletteMoreText: 'more',
+	    togglePaletteLessText: 'less',
+	    palette: [
+	        ["#000","#444","#666","#999","#ccc","#eee","#f3f3f3","#fff"],
+	        ["#f00","#f90","#ff0","#0f0","#0ff","#00f","#90f","#f0f"],
+	        ["#f4cccc","#fce5cd","#fff2cc","#d9ead3","#d0e0e3","#cfe2f3","#d9d2e9","#ead1dc"],
+	        ["#ea9999","#f9cb9c","#ffe599","#b6d7a8","#a2c4c9","#9fc5e8","#b4a7d6","#d5a6bd"],
+	        ["#e06666","#f6b26b","#ffd966","#93c47d","#76a5af","#6fa8dc","#8e7cc3","#c27ba0"],
+	        ["#c00","#e69138","#f1c232","#6aa84f","#45818e","#3d85c6","#674ea7","#a64d79"],
+	        ["#900","#b45f06","#bf9000","#38761d","#134f5c","#0b5394","#351c75","#741b47"],
+	        ["#600","#783f04","#7f6000","#274e13","#0c343d","#073763","#20124d","#4c1130"]
+	    ],
+		change: function(color) {
+ 			bgClr = color.toHexString();
+            tinymce.activeEditor.getBody().style.backgroundColor = bgClr;
+		}
+	});
+	
+	// Settings for #listMessages and #formAddEdit modals
+	$.modal.defaults = {
+	  closeExisting: true, // Close existing modals. Set this to false if you need to stack multiple modal instances.
+	  escapeClose: false, // Allows the user to close the modal by pressing `ESC`
+	  clickClose: false, // Allows the user to close the modal by clicking the overlay
+	  closeText: 'Close', // Text content for the close <a> tag.
+	  closeClass: '', // Add additional class(es) to the close <a> tag.
+	  showClose: true
+	};
+
+	$('#formAddEdit').modal.defaults = {
+		showClose: false
+	};
+
+	// init TinyMCE WYSIWYG editor
+	tinymce.init({
+    	selector: '.messageText',
+    	branding: false,
+    	menubar: false,
+    	toolbar: 'styleselect bold italic alignleft bullist numlist code',
+  		plugins: 'code',
+  		body_id: 'editorPreview'
+  	});
+	
+	// This allows TinyMCE to function in a modal
+	$('#formAddEdit').on($.modal.OPEN, function(event, modal) {
+
+        for (var i = tinymce.editors.length - 1 ; i > -1 ; i--)
+        {
+            tinyMCE.execCommand("mceRemoveEditor", true, tinymce.editors[i].id);
+        }
+
+        setTimeout(function () {
+            tinymce.init({
+            	selector:'.messageText',
+                branding: false,
+		    	menubar: false,
+		    	toolbar: 'styleselect bold italic alignleft bullist numlist code',
+		  		plugins: 'code',
+		  		body_id: 'editorPreview'
+            });
+
+            bgClr = $("#backgroundcolor").spectrum("get");
+            bgClr = bgClr.toHexString();
+            tinymce.activeEditor.getBody().style.backgroundColor = bgClr;
+
+            txtClr = $("#textcolor").spectrum("get");
+            txtClr = txtClr.toHexString();
+            tinymce.activeEditor.getBody().style.color = txtClr;
+        }, 50);
+	});
+</script>

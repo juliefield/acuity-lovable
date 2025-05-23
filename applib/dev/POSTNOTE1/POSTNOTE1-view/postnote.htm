@@ -1,0 +1,10 @@
+<div class="postnote-sticker">
+  {{notetext}}
+  <div class="link postnote-details-link" ng-click="showdetails(true)">show details</div>
+</div>
+<div class="modal1-shadow" ng-show="detailsshowing()">
+    <div class="modal1-base">
+        {{detailstext}}
+        <div class="link postnote-details-link" ng-click="showdetails(false)">hide details</div>
+    </div>
+</div>

@@ -1,0 +1,156 @@
+body#login,.login-background {
+  background: url('../images/acuity-login-bg.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: normal;
+}
+
+.login-background 
+{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+}
+
+.acuity-login {
+  text-align: center;
+  margin-top: 60px;
+}
+.acuity-login h2 {
+  font-size: 20px;
+  font-weight: normal;
+}
+.acuity-login-container {
+  max-width: 560px;
+  background: white;
+  padding: 20px;
+  border: 1px solid #E5ECF2;
+  margin: 30px auto;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  -webkit-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+-moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+}
+.acuity-form-group {
+  text-align: left;
+  margin-bottom: 30px;
+}
+.acuity-form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.acuity-form-group input {
+  padding: 5px 10px;
+  font-size: 14px;
+  height: 30px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid #D3DADF;
+  width: 95%;
+  margin-top: 5px;
+}
+.acuity-logo {
+  margin: 20px 0 50px 0;
+}
+
+.acuity-logo-image
+{
+    background: url(../images/acuity-logo.png) no-repeat center center;
+    height: 90px;
+}
+
+.acuity-form-group input[type=submit]#userLogin,
+.acuity-form-group input[type=submit]#passwordChange {
+  text-align: center;
+  width: 100%;
+  border: 0px;
+  height: 50px;
+  font-size: 18px;
+  position: relative !important;
+  top: 0;
+  left: 0;
+  margin-top: 0;
+}
+.acuity-form-group input[type=submit]#userLogin:hover,
+.acuity-form-group input[type=submit]#passwordChange:hover {
+  cursor: pointer;
+  background: #036b96;
+}
+.acuity-form-checkbox {
+  text-align: left;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+.btn-blue {
+  background: #0092CE;
+  color: #fff;
+  font-size: 18px;
+}
+.acuity-form-copyright {
+  text-align: center;
+}
+.acuity-form-copyright p {
+  font-size: 12px;
+  color: #fff;
+}
+@media only screen and (max-width: 600px) {
+  .acuity-login-container {
+    margin: 30px 15px;
+  }
+}
+
+.acuity-login .err-container {
+  display: block;
+}
+
+
+
+meter {
+  /* Reset the default appearance */
+  margin: 5px auto 1em;
+  width: 99%;
+  height: .5em;
+
+  /* Applicable only to Firefox */
+  background: none;
+  background-color: rgba(0,0,0,0.1);
+}
+
+meter::-webkit-meter-bar {
+  background: none;
+  background-color: rgba(0,0,0,0.1);
+}
+
+meter[value="0"]::-webkit-meter-optimum-value,
+meter[value="1"]::-webkit-meter-optimum-value { background: red; }
+meter[value="2"]::-webkit-meter-optimum-value { background: yellow; }
+meter[value="3"]::-webkit-meter-optimum-value { background: orange; }
+meter[value="4"]::-webkit-meter-optimum-value { background: green; }
+
+meter::-webkit-meter-optimum-value {
+  transition: width .4s ease-out;
+}
+
+meter[value="1"]::-moz-meter-bar,
+meter[value="1"]::-moz-meter-bar { background: red; }
+meter[value="2"]::-moz-meter-bar { background: yellow; }
+meter[value="3"]::-moz-meter-bar { background: orange; }
+meter[value="4"]::-moz-meter-bar { background: green; }
+
+.feedback {
+  color: #9ab;
+  font-size: 90%;
+  padding: 0 .25em;
+  font-family: Courgette, cursive;
+  margin-top: 1em;
+}

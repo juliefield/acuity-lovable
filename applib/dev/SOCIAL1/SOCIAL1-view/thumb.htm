@@ -1,0 +1,23 @@
+<span
+  class="thumbup thumbup-float-left fan-playerhome-thumbclick"
+  ng-class="{ thumbupOn: thumbupOn }"
+  ng-click="toggleThumbsUp()"
+  title="Give a Thumbs Up!"
+></span>
+<div class="recognition_info">
+  <a href="" ng-click="edit()" ng-if="!editing">Edit Note</a>
+  <a href="" ng-click="cancel()" ng-if="editing">Cancel</a>
+  <a href="" ng-click="save()" ng-if="editing">Save</a>
+
+  <span
+    class="recognition_note"
+    ng-if="!editing"
+  >
+    "{{ msg.text }}"
+  </span>
+  <input
+    type="text"
+    ng-model="msg.text"
+    ng-if="editing"
+  >
+</div>

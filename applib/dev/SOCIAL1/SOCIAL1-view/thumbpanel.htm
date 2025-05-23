@@ -1,0 +1,28 @@
+<div class="player-thumbsup-list" ng-show="isActive">
+   <div class="home_message-panel-label">
+      <div class="home_message-panel-label-number" ng-if="(activeDir === 'given' && thumbs.unseenGiven) || (activeDir === 'received' && thumbs.unseenReceived)">
+         {{ activeDir === 'given' ? thumbs.unseenGiven : thumbs.unseenReceived }}
+      </div>
+      Thumbs {{ activeDir == 'given' ? "Given" : "Received" }}
+   </div>
+
+   <div class="player-thumbsup-list-either">
+      <div class="thumbup-list-row" ng-repeat="li in thumbsList" ng-class="{ 'is-new': li.seen === 'N' }">
+         <div class="player-photo-avatar avatar-circle">
+            <img ng-src="avatars/{{li.player.avatarfilename || 'empty_headshot.png'}}" width="35" />
+         </div>
+         <div class="avatar-name">
+            <div>{{ li.player.stg.nickname ? li.player.stg.nickname + '(' + li.player.name + ')' : li.player.name }}</div>
+            <div class="avatar-name--tagline" ng-show="activeDir == 'given'">
+               {{ (li.context == "agame-roster-performance") ? "Game performance was liked by you on" : ((li.context == "teammate-performance") ? "Team scores were liked by you on" : "received a thumbs-up from you on") }}
+               <br />{{li.stamp}}
+            </div>
+            <div class="avatar-name--tagline" ng-show="activeDir == 'received'">
+               {{ (li.context == "agame-roster-performance") ? "liked your game performance on" : ((li.context == "teammate-performance") ? "liked your team scores on" : "gave you a thumbs-up on") }}
+               <br />{{li.stamp}}
+            </div>
+         </div>
+      </div>
+      <!--LIST OF PEOPLE ROW END-->
+   </div>
+</div>

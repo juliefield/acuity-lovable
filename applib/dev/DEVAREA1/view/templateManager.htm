@@ -1,0 +1,213 @@
+<div>
+    <div>
+        <div>
+            <div>
+               <h3> Template Options</h3>
+            </div>
+            <div>                
+                <button id="deliverTypesHeaderButton">Delivery Types</button>
+                <button id="userMessageTypesHeaderButton">User Message Types</button>                
+                <button id="templateFieldsHeaderButton">Template Fields</button>
+                <button id="userMessageTemplateHeaderButton">Templates</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button id="addNewItem">Add New</button>
+            </div>
+        </div>
+        <div>
+            <div class="template-manager-list-type-desc-holder">
+                Select area above to manage.
+            </div>
+            <br>
+            <div class="template-manager-list-holder-header"></div>
+            <div class="template-manager-list-holder-body"></div>
+            <div class="template-manager-list-holder-footer"></div>
+        </div>
+    </div>
+
+    <!--Editors Here-->
+    <div class="template-manager-editor-holder-all">
+        <div class="template-manager-template-field-editor-holder">
+            <div class="template-manager-template-field-editor-form">
+                <div class="template-manager-template-field-editor-header">
+                    <div class="popup-header">
+                        Template Fields Editor
+                        <div class="editor-header-close-button">
+                            <button class="template-manager-template-field-editor-close-button"><i class="fas fa-times"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="error-information-holder"></div>
+                <div class="template-manager-template-field-editor-body">
+                    <div class="editor-form-row">
+                        <div class="template-manager-data-label">Template Field Key</div>
+                        <input type="text" class="template-manager-editor-field-key-value" />
+                    </div>
+                    <div class="editor-form-row">
+                        <div class="template-manager-data-label">Template Name</div>
+                        <input type="text" class="template-manager-editor-field-name-value" />
+                    </div>
+                    <div class="editor-form-row">
+                        <div class="template-manager-data-label">Database Table Mapping</div>
+                        <select class="template-manager-editor-database-table-value"></select>
+                    </div>
+                    <div class="editor-form-row">
+                        <div class="template-manager-data-label">Table Column Mapping</div>
+                        <select class="template-manager-editor-database-column-value"></select>
+                    </div>
+                    <div class="editor-form-row">
+                        <div class="template-manager-data-label">Default Value</div>
+                        <input type="text" class="template-manager-editor-field-default-value" />
+                    </div>
+                    <div class="editor-form-row">
+                        <div class="template-manager-data-label">Is Active?</div>
+                        <input type="checkbox" class="template-field-is-active-value" />
+                    </div>
+                </div>
+                <div class="template-manager-template-field-editor-footer button-holder">
+                    <button class="template-manager-template-field-editor-save-button"><i class="fas fa-save"></i> Save</button>
+                    <button class="template-manager-template-field-editor-close-button">Close</button>
+                </div>            
+            </div>
+        </div>
+        <div class="template-manager-delivery-type-editor-holder">
+            <div class="template-manager-delivery-type-editor-form">
+                <div class="template-manager-delivery-type-editor-header">
+                    <div class="popup-header">
+                        Delivery Types Editor
+                        <div class="editor-header-close-button">
+                            <button class="template-manager-delivery-type-editor-close-button"><i class="fas fa-times"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="error-information-holder"></div>
+                <div class="template-manager-delivery-type-editor-body">
+                    <div class="editor-form-row">
+                        <div class="template-manager-data-label">Name</div>
+                        <input type="text" class="template-manager-editor-delivery-type-name" />
+                    </div>
+                    <div class="editor-form-row">
+                        <div class="template-manager-data-label">Desc</div>
+                        <input type="text" class="template-manager-editor-delivery-type-desc" />
+                    </div>
+                    <div class="editor-form-row">
+                        <div class="template-manager-data-label">Is Active?</div>
+                        <input type="checkbox" class="template-manager-editor-delivery-type-is-active" />
+                    </div>
+                </div>
+                <div class="template-manager-delivery-type-editor-footer button-holder">
+                    <input type="hidden" class="template-manager-editor-delivery-type-id">
+                    <button class="template-manager-delivery-type-editor-save-button"><i class="fas fa-save"></i> Save</button>
+                    <button class="template-manager-delivery-type-editor-close-button">Close</button>
+                </div>            
+            </div>
+        </div>
+        <div class="template-manager-user-message-type-editor-holder">
+            <div class="template-manager-user-message-type-editor-form">
+                <div class="template-manager-user-message-type-editor-header">
+                    <div class="popup-header">
+                        User Message Types Editor
+                        <div class="editor-header-close-button">
+                            <button class="template-manager-user-message-type-editor-close-button"><i class="fas fa-times"></i></button>    
+                        </div>
+                    </div>
+                </div>
+                <div class="error-information-holder"></div>
+                <div class="template-manager-user-message-type-editor-body">
+                    <div class="editor-form-row">
+                        <div class="template-manager-data-label">Name</div>
+                        <input type="text" class="template-manager-editor-user-message-type-name" />
+                    </div>
+                    <div class="editor-form-row">
+                        <div class="template-manager-data-label">Desc</div>
+                        <input type="text" class="template-manager-editor-user-message-type-desc" />
+                    </div>
+                    <div class="editor-form-row">
+                        <div class="template-manager-data-label">Is Active?</div>
+                        <input type="checkbox" class="template-manager-editor-user-message-type-is-active" />
+                    </div>
+                </div>
+                <div class="template-manager-user-message-type-editor-footer button-holder">
+                    <input type="hidden" class="template-manager-editor-user-message-type-id">
+                    <button class="template-manager-user-message-type-editor-save-button"><i class="fas fa-save"></i> Save</button>
+                    <button class="template-manager-user-message-type-editor-close-button">Close</button>
+                </div>            
+            </div>
+        </div>
+        <div class="template-manager-user-message-template-editor-holder">
+            <div class="template-manager-user-message-template-editor-form">
+                <div class="template-manager-user-message-template-editor-header">
+                    <div class="popup-header">
+                        Template Editor
+                        <div class="editor-header-close-button">
+                            <button class="template-manager-user-message-template-editor-close-button"><i class="fas fa-times"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="error-information-holder"></div>
+                <div class="template-manager-user-message-template-editor-body">
+                    <div class="col1of2">
+                        <div class="editor-row-holder">
+                            <div class="section">
+                            <div class="section-header">Template Information</div>
+                            <div class="section-body">
+                                <div class="editor-form-row">
+                                    <div class="editor-item-label">Template Name</div>
+                                    <input type="text" class="template-manager-editor-template-name">
+                                </div>
+                                <div class="editor-form-row">
+                                    <div class="editor-item-label">Active?</div>
+                                    <input type="checkbox" class="template-manager-editor-is-active" >
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="editor-row-holder">
+                            <div class="section">
+                                <div class="section-header">Template Fields</div>
+                                <div class="section-body">
+                                    <div class="template-manager-editor-template-fields-list"></div>
+                                </div>
+                            </div>    
+                        </div>
+                    </div>
+                    <div class="col2of2">
+                        <div class="editor-row-holder">
+                            <div class="section">
+                                <div class="section-header">
+                                    Template Text/Html
+                                    <div class="header-button-holder">
+                                        <button class="template-manager-editor-template-field-scan-button">Scan for fields</button>    
+                                    </div>
+                                </div>
+                                <div class="section-body template-html-body-holder">                                    
+                                    <!-- <div>
+                                        <div class="editor-item-label">Template Type</div>
+                                            <input type="radio" name="templateType" id="templateType" value="Html">HTML
+                                            &nbsp;
+                                            <input type="radio" name="templateType" id="templateType" value="Text">Text
+                                            &nbsp;
+                                            <input type="radio" name="templateType" id="templateType" value="File">File
+                                    </div> -->
+                                    <div>
+                                        <div class="template-manager-editor-template-html-viewer"></div>
+                                        <br>
+                                        <textarea class="template-manager-editor-template-html"></textarea>
+                                    </div>
+                                    <div>
+                                        Found Keys
+                                        <div class="template-manager-editor-template-found-fields-holder"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+                <div class="template-manager-user-message-template-editor-footer button-holder">
+                    <input type="hidden" class="template-manager-editor-template-id">
+                    <button class="template-manager-user-message-template-editor-save-button"><i class="fas fa-save"></i> Save</button>
+                    <button class="template-manager-user-message-template-editor-close-button">Close</button>
+                </div>            
+            </div>
+        </div>
+    </div>
+</div>

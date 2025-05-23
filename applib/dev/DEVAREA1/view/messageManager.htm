@@ -1,0 +1,182 @@
+<div class="message-manager-holder">
+    <div>
+        <div class="message-manager-header-holder">
+            <div class="inline-item">
+                <h2>Message Manager</h2>
+            </div>
+            <div class="inline-item">
+                <button class="message-manager-add-new"><i class="fas fa-plus-circle"></i> Add New Message</button>
+            </div>
+        </div>
+        <div class="message-manager-body-holder">
+            <div class="message-manager-list-holder">
+                <div class="message-manager-list">
+                    <div class="message-manager-list-header">                        
+                        <div class="data-list-item data-list-header-item message-name">Name</div>
+                        <div class="data-list-item data-list-header-item message-template-name">Template</div>
+                        <div class="data-list-item data-list-header-item delivery-options">Delivery Options</div>
+                        <div class="data-list-item data-list-header-item button-holder-inline">&nbsp;</div>
+                    </div>
+                    <div class="message-manager-list-body">
+                        <div class="message-manager-list-data"></div>
+                    </div>
+                    <div class="message-manager-list-footer">
+                        <div class="data-list-item data-list-footer-item">
+                            Total Records Found: <span class="message-manager-data-list-record-count"></span>
+                        </div>
+                        <div class="data-list-item data-list-footer-item">
+                            <select class="message-manager-data-list-page-size">
+                                <option value="5">5</option>
+                                <option value="10">10</option>
+                                <option value="25">25</option>
+                                <option value="100">100</option>
+                                <option value="ALL">All</option>
+                            </select> records per page
+                        </div>
+                        <div class="data-list-item data-list-footer-item">
+                            Page <select class="message-manager-data-list-current-page"></select> of <span class="message-manager-data-list-total-page-count"></span>
+                        </div>
+                    </div>
+                </div>    
+            </div>            
+        </div>
+        <div class="message-manager-footer-holder">&nbsp;</div>
+    </div>
+</div>
+<div class="message-manager-editor-forms-all-holder">
+    <div class="message-manager-editor-form-holder">
+        <div class="message-manager-editor-form">
+            <div class="message-manager-editor-form-header">
+                <div class="popup-header">
+                    Edit Message
+                    <div class="message-manager-header-close-button">
+                        <button class="message-manager-editor-form-close-button"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="error-information-holder"></div>
+            <div class="message-manager-editor-form-body">
+                <div class="editor-row-holder">
+                    <div class="col1of2">
+                        <div class="section">
+                            <div class="section-header">
+                                Base Message Info
+                            </div>
+                            <div class="section-body">
+                                <div class="editor-form-row">
+                                    <div class="editor-form-field-label">Client</div>
+                                    <select class="message-manager-client-id">
+                                        <option value="0">All Clients</option>
+                                    </select>
+                                </div>
+                                <div class="editor-form-row">
+                                    <div class="editor-form-field-label">Message Name</div>
+                                    <input type="text" class="message-manager-editor-message-name">
+                                </div>
+                                <div class="editor-form-row">
+                                    <div class="editor-form-field-label">Message Description</div>
+                                    <input type="text" class="message-manager-editor-message-desc">
+                                </div>
+                                <div class="editor-form-row">
+                                    <div class="editor-form-field-label">Subject Line</div>
+                                    <input type="text" class="message-manager-editor-subject-line">
+                                </div>
+                                <div class="editor-form-row">
+                                    <div class="editor-form-field-label">Active?</div>
+                                    <input type="checkbox" class="message-manager-editor-is-active">
+                                </div>
+                                <div class="editor-form-row">
+                                    <div class="editor-form-field-label">Message Type</div>
+                                    <select class="message-manager-editor-message-type"></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col2of2">
+                        <div class="section">
+                            <div class="section-header">
+                                Template Information
+                            </div>
+                            <div class="section-body">
+                                <div class="editor-form-row">
+                                    <div class="editor-form-field-label">Template</div>
+                                    <select class="message-manager-editor-message-template"></select>
+                                    <button class="message-manager-editor-preview-button"><i class="fad fa-eye"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="editor-row-holder">
+                    <div class="section">
+                        <div class="section-header">Message Delivery Options</div>
+                        <div class="section-body">
+                            <div class="message-manager-editor-handling-list-holder"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="editor-row-holder">
+                    <div class="section">
+                        <div class="section-header">Message Rules</div>
+                        <div class="section-body">                            
+                            <div class="message-manager-editor-current-rules">
+                                Current MEssage rules based on the message type
+                            </div>
+                        </div>
+                    </div>    
+                </div>
+                
+            </div>
+            <div class="message-manager-editor-form-footer button-holder">                
+                <input type="hidden" class="message-manager-editor-form-user-message-id">
+                <button class="message-manager-editor-form-save-button">Save</button>
+                <button class="message-manager-editor-form-close-button">Cancel</button>
+            </div>
+            
+        </div>
+    </div>
+    <div class="message-manager-preview-holder">
+        <div class="message-manager-preview-display-holder">
+            <div class="message-manager-preview-header">
+                <div class="popup-header">
+                    Preview Message
+                    <div class="message-manager-header-close-button">
+                        <button class="message-manager-preview-close-button"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="message-manager-preview-body"></div>
+            <div class="message-manager-preview-footer button-holder">
+                <button class="message-manager-preview-close-button">Close</button>
+            </div>
+        </div>
+    </div>
+    <div class="message-manager-history-holder">
+        <div class="message-manager-history-display-holder">
+            <div class="message-manager-history-header">
+                <div class="popup-header">
+                    Message History
+                    <div class="message-manager-header-close-button">
+                        <button class="message-manager-history-close-button"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="message-manager-history-body">
+                [WIP]Display History of message assignment info (last sent to whom, etc.)
+                <br><br><br><br><br><br><br><br><br><br>
+                more text
+                <br><br><br><br><br><br><br><br><br><br>
+                mroe text 2
+                <br><br><br><br><br><br><br><br><br><br>
+                more text 3
+                <br><br><br><br><br><br><br><br><br><br>
+                yeah, this is a lot of text.
+                <br><br><br><br><br><br><br><br><br><br>                
+            </div>
+            <div class="message-manager-history-footer button-holder">
+                <button class="message-manager-history-close-button">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,556 @@
+﻿<div class="flex-game-top-level-holder">
+    <div class="header-title">
+        <div class="flex-game-display-options-buttons">
+            <a class="flex-game-reward-manager achievements-link">Rewards Manager</a>
+            <a class="flex-game-manual-entry-scoring-manager achievements-link">Manual Entry Scoring Area Manager</a>
+            <a class="flex-game-intra-team_manager achievements-link"><i class="fal fa-users-cog"></i> Intra-Team Manager</a>
+            <a class="flex-game-faq-help achievements-link"><i class="fad fa-question-circle"></i> Help/FAQ</a>
+            <a class="flex-game-btn-add-new-game achievements-link"><i class="fas fa-plus"></i> Add New Game</a>            
+            <a class="flex-game-btn-refresh-game-list achievements-link flex-game-display-options"><i class="fad fa-sync-alt"></i> Refresh Games</a>
+        </div> 
+        <a class="flex-game-btn-return-game-list">« Back to Games</a>
+        <h2>A-GAME Flex Admin</h2>
+        <div class="flex-game-user-status"></div>
+        <div class="flex-game-filter-nav-holder">
+            <div class="flex-game-display-options">
+                <b>Game Status:</b>&nbsp;
+                <input type="checkbox" value="D" name="filters" id="filterInDev" class="flex-game-display-filter" /><label>In Development</label>&nbsp;&nbsp;
+                <input type="checkbox" value="A" name="filters" id="filterActive" class="flex-game-display-filter" /><label>Pre-Game</label>&nbsp;&nbsp;
+                <input type="checkbox" value="P" name="filters" id="filterInProgress" class="flex-game-display-filter" /><label>Live</label>&nbsp;&nbsp;
+                <input type="checkbox" value="C" name="filters" id="filterComplete" class="flex-game-display-filter" /><label>In Review</label>&nbsp;&nbsp;
+                <input type="checkbox" value="F" name="filters" id="filterFinalized" class="flex-game-display-filter" /><label>Final</label>&nbsp;&nbsp;
+                <input type="checkbox" value="X" name="filters" id="filterPaused" class="flex-game-display-filter" /><label>Paused</label>&nbsp;&nbsp;
+                <input type="checkbox" value="I" name="filters" id="filterInactive" class="flex-game-display-filter" /><label>Inactive</label>&nbsp;&nbsp;
+                <input type="checkbox" value="O" name="filters" id="filterArchived" class="flex-game-display-filter" /><label>Archived</label>&nbsp;&nbsp;
+            </div>
+            <div class="flex-game-display-options flex-game_sort">
+                <b>Sort Games By:</b>&nbsp;
+                <select class="flex-game-sort-order" id="userSortOrder">
+                    <option value="">(Default)</option>
+                    <option value="status">Game Status</option>
+                    <option value="name">Game Name</option>                    
+                    <option value="startdate">Game Start Date</option>
+                    <option value="enddate">Game End Date</option>
+                    <option value="addeditdate">Date Added/Edited</option>
+                </select>
+            </div>
+            
+        </div>
+    </div>
+    <div class="flex-game-faq-holder"></div>
+    <!--GAME LIST-->
+    <div>
+        <div class="flex-game-list-panel" />
+        <br class="clearfix" />
+        <br />
+        <br />
+    </div>
+    <div>
+        <div class="flex-game-full-scoreboard">
+            <div class="flex-game-full-leaderboard-button-holder">
+                <button class="flex-game-full-leaderboard-close-btn flex-game-form-btn-close"> <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+                <input type="hidden" id="fullLeaderBoard_GameId" />
+                <div>
+
+                    <span class="select-option full-leaderboard-display-option-1">
+                        <input type="radio" name="fullLeaderBoardDisplay" class="flex-game-full-leaderboard-display-option option-1" value="user">
+                        <label><i class="fas fa-user"></i> Agent</label>
+                    </span>
+
+
+                    <span class="select-option full-leaderboard-display-option-2">
+                        <input type="radio" name="fullLeaderBoardDisplay" class="flex-game-full-leaderboard-display-option option-2" value="team">
+                        <label><i class="fad fa-users"></i> Team</label>
+                    </span>
+
+                    <!--
+                    <input type="radio" name="fullLeaderBoardDisplay" class="flex-game-full-leaderboard-display-option option-3" value="group">Group
+                    -->
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="flex-game-leaderboard">
+                Leaderboard here.
+            </div>
+
+        </div>
+    </div>
+    <!--EDITOR FORM-->
+    <div class="flex-game-editor-holder">
+        <button class="flex-game-form-btn-cancel flex-game-form-btn-close" title="Close editor" /> <i class="fas fa-times"></i>
+        </button>
+        <div class="flex-game-editor-form-header">Game Editor Form</div>
+        <div class="error-information-holder"></div>
+        <div class="flex-game-editor-tab-holder">
+            <div class="flex-game-editor-tab-item" id="game-info-tab">Game Info</div>
+            <div class="flex-game-editor-tab-item" id="scoring-tab">Scoring</div>
+            <div class="flex-game-editor-tab-item" id="participants-tab">Participants</div>
+            <div class="flex-game-editor-tab-item" id="prizes-tab">Prizes</div>                        
+            <!-- <div class="flex-game-editor-tab-item" id="dev-tab">Dev</div> -->
+            <br>
+        </div>
+        <div class="flex-game-form">
+            <div class="flex-game-editor-tab-panel" id="game-info-panel">
+                <div class="flex-game-form_topfields">
+                    <div class="flex-game-form_row">
+                        <label class="flex-game-data-label">Name:</label>
+                        <input type="text" class="flex-game-editor-name" placeholder="Game Name" />
+                    </div>
+                    <div class="flex-game-form_row">
+                        <label class="flex-game-data-label">Game Dates:</label>
+                        <input type="text" class="flex-game-editor-start-date" placeholder="Start Date" />
+                        <input type="text" class="flex-game-editor-end-date" placeholder="End Date" />
+                    </div>                    
+                    <div class="flex-game-form_row">
+                        <label class="flex-game-data-label">Theme:</label>
+                        <select class="flex-game-theme-type-list"></select>
+                        <select class="flex-game-theme-list"></select>
+                    </div>
+                    <div class="flex-game-form_row">
+                        <label class="flex-game-data-label">Game Type:</label>
+                        <select class="flex-game-editor-game-type"></select>
+                        <select class="flex-game-editor-sub-game-type"></select>
+                    </div>                    
+                    <div class="flex-game-form_row">
+                        <label class="flex-game-data-label">Game Admin:</label>
+                        <select class="flex-game-editor-supervisor-list"></select>
+                    </div>
+                    <div class="flex-game-form_row">
+                        <label class="flex-game-data-label">Scoring Metric:</label>
+                        <select class="flex-game-editor-scoring-area"></select>
+                        <select class="flex-game-editor-scoring-sub-area"></select>
+                    </div>
+                    <div class="flex-game-form_row">
+                        <label class="flex-game-data-label">Scoring Basis:</label>
+                        <select class="flex-game-editor-scoring-type"></select>
+                    </div>
+                    <div class="flex-game-form_row">
+                        <label class="flex-game-editor-has-discussion-board-label flex-game-data-label">Allow Discussion Board?</label>
+                        <select class="flex-game-editor-has-discussion-board">
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                    <div class="flex-game-form_row">
+                        <label class="flex-game-data-label">Status:</label>
+                        <select class="flex-game-editor-status">
+                            <option value="D">In Development</option>
+                            <option value="A">Pre-Game</option>
+                            <option value="C">In Review</option>
+                            <option value="F">Final</option>
+                            <option value="P">Live</option>
+                            <option value="I">Inactive</option>
+                            <option value="X">Paused</option>
+                        </select>
+                    </div>                    
+                    <div class="flex-game-form_row">
+                        <label class="flex-game-data-label flex-game-editor-ending-points-data-label">Ending Points:</label>
+                        <input type="text" class="flex-game-editor-end-points" placeholder="30" />
+                        <div class="flex-game-data-label flex-game-editor-phrase-data-label">Game Phrase:</div>
+                        <input type="text" class="flex-game-editor-phrase-value">
+                    </div>
+                    <div class="flex-game-form_row">
+                        <label class="flex-game-editor-scoring-basis-label flex-game-data-label">Scoring Model:</label>
+                        <select class="flex-game-editor-scoring-basis"></select>
+                    </div>
+                    <div class="flex-game-form_row">
+                        <label class="flex-game-editor-scoring-options-label flex-game-data-label">Calculate Score:</label>
+                        <select class="flex-game-editor-scoring-options"></select>
+                    </div>
+                    <div class="flex-game-form_row">
+                        <label class="flex-game-data-label">Has Tie Breaker?</label>
+                        <select id="hasTieBreakerScoring">
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                    <div class="flex-game-form_row">
+                        <label class="flex-game-data-label">Tie Breaker Scoring Metric:</label>
+                        <select id="tieBreakerKpi_MqfNumber" class="flex-game-editor-tie-breaker-scoring-metric"></select>
+                    </div>
+                    <div class="flex-game-form_row">
+                        <label class="flex-game-data-label">Tie Breaker Scoring Basis:</label>
+                        <select id="tieBreakerKpi_ScoringTypeId" class="flex-game-editor-tie-breaker-scoring-type"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-game-editor-tab-panel" id="participants-panel">
+                <div class="flex-game-editor-participants-holder-step">                    
+                    <div class="flex-game-data_participants">
+                            <div class="flex-intra-team-manager-user-options-holder">   
+                            <div>
+                                <div>
+                                    <fieldset>
+                                        <legend>Filters</legend>
+                                        <div class="flex-game-editor-filter-holder project-filter-holder inline-item">
+                                            <label>Project:</label>
+                                            <select class="flex-game-editor-project-filter-options"></select>
+                                        </div>
+                                        <div class="flex-game-editor-filter-holder location-filter-holder inline-item">
+                                            <label>Location:</label>
+                                            <select class="flex-game-editor-location-filter-options"></select>
+                                        </div>
+                                        <div class="flex-game-editor-filter-holder group-filter-holder inline-item">                        
+                                            <label>Group:</label>
+                                            <select class="flex-game-editor-group-filter-options"></select>
+                                        </div>
+                                        <div class="flex-game-editor-filter-holder team-filter-holder inline-item">                        
+                                            <label>Team:</label>
+                                            <select class="flex-game-editor-team-filter-options"></select>
+                                        </div>
+                                        <div class="flex-game-editor-filter-holder clear-options inline-item">
+                                            <a class="flex-game-editor-filter-clear-all-options">Clear filters</a>
+                                        </div>
+                                        &nbsp;&nbsp;
+                                        <div class="flex-game-editor-filter-holder clear-options inline-item">
+                                            <label resource="RESOURCE_TEXT_FLEX_INCLUDE_NONAGENT" defaultText="Include Non-Agent Profiles"></label>
+                                            <input type="checkbox" id="flexParticipantEditor_IncludeNonAgentProfiles" class="flex-game-editor-all-profiles-filter-options">
+                                        </div>
+                                        <div class="flex-game-editor-filter-holder clear-options inline-item">
+                                            <label>Include System Users</label>
+                                            <input type="checkbox" id="flexParticipantEditor_IncludeSystemUsers" class="flex-game-editor-all-profiles-filter-options">
+                                        </div>
+                                    </fieldset>                                
+                                </div>
+                            </div>
+                            <br>
+                            <div class="editor_col1of2">
+                                <div>
+                                    <div>
+                                        <div class="flex-intra-team-manager-editor-agent-list-holder">
+                                            Current Participants
+                                            <label class="current-participants-count"></label>
+                                        </div>
+                                        <div class="flex-intra-team-manager-current-user_row">
+                                        <label class="flex-intra-team-manager-current-user-name">&nbsp;</label>
+                                            <div class="flex-intra-team-manager-current-user-button-holder inline_button-holder">
+                                                <button class="flex-participants-manager-current-user-remove-button remove-all-participants" value="removeUser_all">
+                                                    Remove All <i class="fa fa-remove"></i>
+                                                </button>
+                                            </div>
+                                   
+                                        </div>
+                                        <hr class="thin-line">
+                                        <div class="flex-game-editor-participants-current agent-selection-list-holder"></div>
+                                    </div>
+                                </div>
+                            </div>                                            
+                            <div class="editor_col2of2">
+                                <div>
+                                    <div>
+                                        <div class="flex-intra-team-manager-editor-agent-list-holder">
+                                            Available Participants
+                                            <label class="available-participants-count"></label>
+                                            <img id="loading-flex-participants-image" src="./images/blue-loading.gif" height="15px" />
+                                        </div>
+                                        <div class="flex-intra-team-manager-available-user_row">
+                                            <label class="flex-intra-team-manager-available-user-name">&nbsp;</label>
+                                            <div class="flex-intra-team-manager-available-user-button-holder inline_button-holder">                                        
+                                                <button class="flex-participants-manager-available-user-remove-button add-all-participants" value="AddUser_all">
+                                                    Add All <i class="fa fa-plus"></i>
+                                                </button>
+                                            </div>                                                                       
+                                        </div>
+                                        <hr class="thin-line">
+                                        <div class="flex-game-editor-participants-available agent-selection-list-holder"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-game-editor-tab-panel" id="scoring-panel">
+                <div class="flex-game-editor-scoring-holder-step">
+                    <div class="flex-game-editor-scoring-area-holder">
+                        <div class="gamescoring-title">
+                            <label class="flex-game-data-label_gamescoring">Game Scoring</label>
+                            <label class="flex-game-data-label_acuityscoring"><i class="fas fa-question-circle"></i></label>
+                            <div class="flex-game-editor-acuity-scoring-display-holder">
+                                <div class="flex-game-editor-acuity-scoring-display-header">Current Acuity Scoring</div>
+                                <div class="flex-game-editor-acuity-scoring-display-data"></div>
+                            </div>
+                        </div>
+                        <div class="flex-editor_2col-scoringtable">
+                            <table class="flex-game-scoring-ranges-table">
+                                <thead>
+                                    <tr>
+                                        <th>Level</th>
+                                        <th>Low</th>
+                                        <th>High</th>
+                                        <th>Game Points</th>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                </thead>
+                                <tbody class="flex-game-scoring-range-table-body">
+                                </tbody>
+                                <tfoot>
+                                    <tr class="flex-game-scoring-range-add-new-row">
+                                        <td>--<input type="hidden" class="flex-game-scoring-ranges-new-game-id range-editor" /></td>
+                                        <td><input type="text" class="flex-game-scoring-ranges-new-low range-editor" /></td>
+                                        <td><input type="text" class="flex-game-scoring-ranges-new-high range-editor" /></td>
+                                        <td><input type="text" class="flex-game-scoring-ranges-new-game-score range-editor" /></td>
+                                        <td>
+                                            <button class="button" title="Add Row" id="scoreAdd" /><i class="fas fa-plus"></i></button>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-game-editor-tab-panel" id="prizes-panel">                
+                <div class="flex-game-editor-prizes-holder-step">
+                    <div>
+                        <div>
+                            <label class="flex-game-data-label_prizes">Setup the Rewards &amp; Prizes for this Game</label>
+                        </div>
+                        <div class="budget-holder" id="userBudgetSectionHolder">
+                            <div id="userBudgetInfoHolder">
+                                <label><i class="fa fa-sack-dollar"></i> Total Budget:</label> <span id="userTotalBudgetAmount"></span> 
+                                <span class="budget-divider">|</span>
+                                <label><i class="fa fa-money-check-dollar"></i> Available Budget:</label> <span id="userAvailableBudgetAmount"></span> (<span id="userProjectedDollarUsed"></span>)
+                                <span class="budget-divider">|</span>
+                                <label><i class="fa fa-hand-holding-dollar"></i> Acuity Credits Available:</label> <span id="userAvaialbleCreditsAmount"></span> (<span id="userProjectedCreditUsed"></span>)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="awards-selections" id="awardsSelectionsHolder">
+                        <div class="awards-selections_item">
+                            <input type="checkbox" id="hasPrizeOptions" /> Allow Position Rewards for Game
+                        </div>
+                        <div class="awards-selections_item" id="spinnerOptionsHolder">
+                            <input type="checkbox" id="hasSpinnerOptions" /> Allow Spinner for User?
+                        </div>
+                    </div>
+                    
+                    <div class="clearfix"></div>
+                    <div id="prizeOptionsOverallHolder" class="flex-game-prize-option-editor-holder">
+                        <div class="column1of2" id="rewardListHolder">
+                            <div class="flex-game-prize-option-header-holder">
+                                <div class="reward-option-item header-item position-name inline-item">Position</div>
+                                <div class="reward-option-item header-item prize-name inline-item">Prize</div>
+                                <div class="reward-option-item header-item prize-trophy inline-item">Trophy</div>
+                                <div class="reward-option-item header-item acuity-points-options inline-item">Acuity Credits</div>
+                                <div class="reward-option-item header-item button-holder inline-item">Actions</div>
+                            </div>
+                            <div class="flex-game-prize-option-body-holder">
+                                <div id="gamePrizeOptionsListing" class="flex-game-prize-option-list"></div>
+                            </div>
+                            <div class="flex-game-prize-option-footer-holder">
+                                <div class="sub-form-error-information-holder"></div>
+                                <div class="reward-option-item position-name inline-item">
+                                    <select id="addPositionRewardList"></select>
+                                </div>
+                                <div class="reward-option-item prize-name inline-item">                                    
+                                    <select id="addPrizeRewardList"></select>
+                                    &nbsp;
+                                    <button class="refresh-prize-option" id="refreshPrizeListButton" title="Refresh List" alt="Refresh List"><i class="fa fa-refresh"></i></button>
+                                </div>
+                                <div class="reward-option-item prize-image inline-item">
+                                    <img id="addPrizeRewardImage" width="50" />
+                                </div>
+                                <div class="reward-option-item acuity-points-options inline-item">
+                                    <input type="hidden" id="addAcuityPoints" >&nbsp;
+                                </div>
+                                <div class="reward-option-item prize-trophy inline-item">
+                                    <select id="addTrophyList"></select>
+                                </div>
+                                <div class="reward-option-item prize-trophy-image inline-item">
+                                    <img id="addTrophyImage" width="50" />
+                                </div>
+                                <div class="reward-option-item button-holder inline-item">
+                                    <button id="btnAddReward" class="button btn"><i class="fa fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column2of2" id="spinnerListHolder">
+                            <div class="flex-game-spinner-option-header-holder">                                    
+                                <div class="spinner-option-item header-item prize-name inline-item">Prize</div>
+                                <div class="spinner-option-item header-item prize-image inline-item">Image</div>
+                                <div class="spinner-option-item header-item button-holder inline-item">Actions</div>
+                            </div>
+                            <div class="flex-game-spinner-option-body-holder">
+                                <div id="gameSpinnerOptionListing" class="flex-game-spinner-option-list"></div>
+                            </div>
+                            <div class="flex-game-spinner-option-footer-holder">
+                                <div class="sub-form-error-information-holder"></div>
+                                <div class="spinner-option-item prize-name inline-item">
+                                    <select id="addSpinnerOptionList"></select>
+                                </div>
+                                <div class="spinner-option-item prize-image inline-item">
+                                    <img id="addSpinnerOptionImage" width="50" />
+                                </div>
+                                <div class="spinner-option-item button-holder inline-item">
+                                    <button id="btnAddSpinnerOption" class="button btn" title="Add Spinner Prize Option"><i class="fa fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+                         
+                        </div>
+                    </div>                    
+                    <div id="freeFormRewardInputSection">
+                        <label class="flex-game-data-label">Reward</label>
+                        <input type="text" id="freeFormRewardInput" class="flex-game-editor-reward" placeholder="Reward (if any) for game">
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>            
+        </div>
+        <div class="clearfix"></div>
+        <div class="flex-game-editor-button-holder">
+            <div class="flex-game-form_buttons">
+                    <input type="button" class="flex-game-form-btn-save" value="Save" title="Save the information without closing the editor." /> 
+                    &nbsp;&nbsp;&nbsp;
+                    <input type="button" class="flex-game-form-btn-save-and-close" value="Save & Close" title="Save information AND close the editor." />
+                    &nbsp;&nbsp;&nbsp;
+                    <input type="button" class="flex-game-form-btn-cancel" value="Cancel" title="Close the editor without saving." />
+                <br />
+                <input type="hidden" id="editor-step" value="1" />
+                <input type="hidden" class="flex-game-form-current-game-id" />
+            </div>
+            <div class="flex-game-form_buttonsNotNeeded">
+                Information in this tab is automatically saved as adding/removing occurs.
+            </div>
+        </div>
+    </div>
+    <!--COPY GAME EDITOR-->
+    <div class="flex-game-copy-game-holder">
+        <button class="flex-game-copy-btn-cancel flex-game-form-btn-close"> <i class="fas fa-times" aria-hidden="true"></i>
+        </button>
+        <div>
+            <div class="flex-game-editor-form-header">
+                Clone Game
+            </div>
+            <br />
+            <div>
+                <label class="flex-game-data-label">Name:</label>
+                <label class="flex-game-copy-game-name"></label>
+            </div>
+            <div>
+                <label class="flex-game-data-label">Theme:</label>
+                <label class="flex-game-copy-game-theme"></label>
+            </div>
+            <div>
+                <label class="flex-game-data-label">Game Admin:</label>
+                <label class="flex-game-copy-game-supervisor"></label>
+            </div>
+            <div>
+                <label class="flex-game-data-label">Scoring Metric:</label>
+                <label class="flex-game-copy-game-scoring-area"></label>
+            </div>
+            <div>
+                <label class="flex-game-data-label">New Game Name:</label>
+                <input type="text" class="flex-game-copy-editor-new-game-name" placeholder="Game Name" />
+            </div>
+            <div>
+                <label class="flex-game-data-label">Start Date:</label>
+                <input type="text" class="flex-game-copy-editor-start-date" placeholder="Start Date" />
+            </div>
+            <div>
+                <label class="flex-game-data-label">End Date:</label>
+                <input type="text" class="flex-game-copy-editor-end-date" placeholder="End Date" />
+            </div>
+            <div class="flex-game-copy-participation-radio-options-holder">
+                <label class="flex-game-data-label">Participant Options:</label>
+                <input type="radio" class="flex-game-copy-participant-option" name="FlexGameCopyParticipantType" value="C" />
+                <label>Current</label> &nbsp;&nbsp;
+                <input type="radio" class="flex-game-copy-participant-option" name="FlexGameCopyParticipantType" value="N" />
+                <label>None (I will chose later)</label>
+            </div>
+
+            <div class="flex-game-copy-scoring-radio-options-holder">
+                <label class="flex-game-data-label">Scoring Options:</label>
+                <input type="radio" class="flex-game-copy-scoring-option" name="FlexGameCopyScoringType" value="C" />
+                <label>Current</label> &nbsp;&nbsp;
+                <input type="radio" class="flex-game-copy-scoring-option" name="FlexGameCopyScoringType" value="N" />
+                <label>None (I will chose later)</label>
+            </div>
+            <div>
+                <input type="hidden" class="flex-game-copy-game-id" />
+            </div>
+        </div>
+        <br/>
+        <div class="flex-game-copy_buttons">
+            <input type="button" class="flex-game-copy-btn-save" value="Save" /> &nbsp;&nbsp;
+            <input type="button" class="flex-game-copy-btn-cancel" value="Cancel" />
+        </div>
+    </div>
+    <!--MANUAL ENTRY EDITOR-->
+    <div class="flex-game-editor-user-score-entry-holder">
+        <button class="flex-game-editor-user-score-entry-btn-cancel flex-game-form-btn-close"> <i class="fas fa-times" aria-hidden="true"></i>
+        </button>
+        <div class="flex-game-editor-user-score-entry-form">
+            <div class="flex-game-editor-form-header">
+                Manual Scoring Entry
+            </div>
+            <div class="error-information-holder"></div>                
+            <div>
+                <div>
+                    <label>Filters:</label>
+                    <span>
+                        <input type="text" id="manual-entry-filter-rec-date" placeholder="Date" />
+                    </span>               
+                    <span>
+                        <select id="manual-entry-filter-user-id" class="flex-game-editor-user-entry-scores-user-filter"></select>
+                    </span>                
+                    <a href="#" id="manual-entry-button-filter-clear">Clear Filters</a>
+                </div>
+                <div class="flex-game-editor-list-header">
+                    <div class="user-scores-score-date">Date</div>
+                    <div class="user-scores-score-user-name">User</div>
+                    <div class="user-scores-score-area">Area</div>
+                    <div class="user-scores-score-item">Score</div>
+                    <div class="user-scores-button-holder">&nbsp;</div>
+                </div>
+            </div>
+            <div class="flex-game-editor-user-score-entry-body-holder">
+                <div class="flex-game-editor-user-score-entry-current-list">
+                    <div>No scores currently found.</div>
+                </div>
+            </div>
+            <div class="flex-game-editor-user-score-entry-footer">
+                <div class="user-scores-score-date"><input type="text" class="flex-game-editor-user-entry-scores-date" placeholder="Date"></div>
+                <div class="user-scores-score-user-name">
+                    <select class="flex-game-editor-user-entry-scores-user"></select>
+                </div>
+                <div class="user-scores-score-area">
+                    <select class="flex-game-editor-user-entry-scores-area"></select>
+                </div>
+                <div class="user-scores-score-item">
+                    <input type="text" class="flex-game-editor-user-entry-scores-score" placeholder="0.00">
+                </div>
+                <div class="user-scores-button-holder">
+                    <input type="hidden" class="flex-game-editor-user-entry-scores-game-id">
+                    <button class="flex-game-editor-user-entry-scores-add-score-button"><i class="fa fa-plus"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--REWARDS EDITOR-->
+    <div class="flex-game-editor-rewards-assignment-holder">
+        <button class="flex-game-editor-rewards-assignment-entry-btn-cancel flex-game-form-btn-close"> <i class="fas fa-times" aria-hidden="true"></i>
+        </button>
+        <div class="flex-game-editor-rewards-assignment-entry-form">
+            <div class="flex-game-editor-form-header">
+                Rewards Assignments
+            </div>
+            <div class="error-information-holder"></div>
+            <div class="flex-game-editor-rewards-assignment-body-holder">
+                <div class="flex-game-editor-rewards-assignment-current-assignments">
+                    <div>No reward assignments found.</div>
+                </div>
+            </div>
+            <div class="flex-game-editor-rewards-assignment-button-holder">
+                <input type="hidden" id="flex-game-editor-rewards-assignment-game-id">
+                <button class="flex-game-editor-rewards-assignement-entry-btn-save">Save</button>
+                &nbsp;
+                <button class="flex-game-editor-rewards-assignment-entry-btn-cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="flex-game-user-info-display"></div>

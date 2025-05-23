@@ -1,0 +1,84 @@
+<div class="location-manager-app-manager-holder basic-directive-holder">
+    <div class="top-filters">
+        Location Name: <input type="text" id="locationManager_LocationNameFilter">
+        City: <input type="text" id="locationManager_CityFilter">
+        Status: <select id="locationManager_StatusFilter"></select>
+        <button id="btnApplyFilter"><i class="fas fa-filter"></i> Apply</button>
+        <button id="btnClearFilter">Clear Filter</button>        
+    </div>
+    <br>
+    <div class="bottom-buttons">
+        <div class="filter-input-group">
+            <button id="btnAddNewLocation" class="btn button btn-add-new btn-large btn-green" value="Add Location">
+                <i class="fas fa-plus"></i> Add New Location
+            </button>
+        </div>
+    </div>    
+    <div id="locationDataHolder">
+        <div id="locationListHeader" class="header-holder header-holder_entities header-holder_entities-location">
+            <div class="header-item project-expander">
+                <i class="fa fa-minus" id="collapseAll"></i>
+            </div>
+            <div class="header-item location-name">Location Name</div>
+            <div class="header-item">City</div>
+            <div class="header-item">State</div>
+            <div class="header-item">Status</div>
+            <div class="header-item"># Groups</div>
+            <div class="header-item"># Teams</div>
+            <div class="header-item">Actions</div>
+        </div>
+        <div class="selection-holder large-holder">
+            <div id="locationListHolder"></div>
+        </div>
+    </div>
+    <!--Editor Form START-->
+    <div id="locationEditorPanel" class="editor-form">
+        <div class="form-holder-big"> 
+            <button class="btn-close btn-close-x"> <i class="fas fa-times" aria-hidden="true"></i></button>
+            <div class="error-information-holder"></div>
+            <div class="two-col-flex">
+                <div class="column1of2p">
+                    <div class="location-manager-form_row">
+                        <div class="location-manager-data-label inline-item">Name</div>
+                        <input type="text" id="locationManager_LocationName" />
+                    </div>
+                    <div class="location-manager-form_row">
+                        <div class="location-manager-data-label inline-item">City</div>
+                        <input type="text" id="locationManager_LocationCity" />
+                    </div>
+                    <div class="location-manager-form_row">
+                        <div class="location-manager-data-label inline-item">State</div>
+                        <input type="text" id="locationManager_LocationState" />
+                    </div>
+                    <div class="location-manager-form_row">
+                        <div class="location-manager-data-label inline-item">Status</div>
+                        <select id="locationManager_Status"></select>
+                    </div>
+                </div>
+                <div class="column2of2p">
+                    <div class="tab-holder">
+                        <div class="tab-holder-item" id="locationManagerFormTab_Projects">Projects</div>
+                        <div class="tab-holder-item" id="locationManagerFormTab_Groups">Groups</div>
+                        <div class="tab-holder-item" id="locationManagerFormTab_Teams">Teams</div>
+                        <div class="tab-holder-item" id="locationManagerFormTab_Stats">Stats</div>
+                    </div>
+                    <div class="tab-containers">
+                        <div id="locationManager_ProjectsTabContainer"></div>
+                        <div id="locationManager_GroupsTabContainer"></div>
+                        <div id="locationManager_TeamsTabContainer"></div>
+                        <div id="locationManager_StatsTabContainer">
+                            <ng-entity-item-stats></ng-entity-item-stats>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="badgeAdminForm_btns">
+                <input type="hidden" id="editorFormType" value="add">
+                <input type="hidden" class="locationEditor_LocationId" value="0">
+                <button id="btnSave" class="button btn btn-large">Save</button>
+                &nbsp;&nbsp;
+                <button id="btnClose" class="button btn btn-large btn-close">Close</button>                
+            </div>    
+        </div>    
+    </div>
+</div>

@@ -1,0 +1,44 @@
+<style>
+   .irpas-filter-holder {
+      display:inline-block;
+      min-width:49%;
+      max-width:49%;
+      min-height:50px;
+   }
+   .irpas-filter-option-holder {
+      display:inline-block;
+   }
+   .irpas-filter-option-label
+   {
+      display:inline-block;
+      font-weight:bold;
+   }
+   .irpas-filter-option-input-holder
+   {
+      display:inline-block;
+   }
+</style>
+<div class="irpas-filter-holder">
+   <div class="irpas-filter-option-holder">
+      <div class="irpas-filter-option-label">Area:</div>
+      <div class="irpas-filter-option-input-holder">
+         <select id="irpasAreaFilter"></select> 
+      </div>
+   </div>
+   <div class="irpas-filter-option-holder">
+      <div class="irpas-filter-option-label">Sub-Area:</div>
+      <div class="irpas-filter-option-input-holder">
+         <select id="irpasSubAreaFilter"></select>
+      </div>
+   </div>
+   <div class="irpas-filter-option-holder">
+      <div class="irpas-filter-option-label">Interval:</div>
+      <div class="irpas-filter-option-input-holder">
+         <select id="irpasIntervalFilter"></select>
+      </div>
+   </div>
+   <div class="irpas-filter-option-holder irpas-filter-button-holder">
+      <button id="btnIrpasApplyFilter" class="button btn apply-filter">Apply Filter</button>
+      <button id="btnIrpasClearFilter" class="button btn clear-filter">Clear Filter</button>
+   </div>
+</div>

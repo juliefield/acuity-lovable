@@ -1,0 +1,102 @@
+<DIV>
+   
+
+    <div class="sign-up-wizard-holder">
+        <div class="sign-up-wizard-body">
+            <div class="all-steps-progress-holder">
+                <div class="setup-account-step setup-start">
+                    Start/Usage Terms        
+                </div>
+                <div class="setup-account-step setup-billing-step">
+                    Account/Admin Setup        
+                </div>
+                <div class="setup-account-step setup-users-step">
+                    Users/Team
+                </div>
+                <div class="setup-account-step setup-kpi-step">
+                    KPI Selection
+                </div>
+                <div class="setup-account-step setup-scoring-step">
+                    Scoring
+                </div>
+                <div class="setup-account-step setup-review-step">
+                    Review
+                </div>
+            </div>
+        </div>
+        <div class="sign-up-wizard-body">
+            <div class="base-form-holder">
+                Terms of service
+                 <ol>
+                     <li>Terms for the service</li>
+                     <li>User Agreement</li>
+                 </ol>
+             </div>
+             <div class="base-form-holder">
+                 Account Setup Form Here.
+                 <div>
+                     <label>Your Email:</label>
+                     <input type="text" id="SignupEmailAddress" />
+                 </div>
+                 <div>
+                     <label>
+                         Billing Plan Options
+                         <a id="planOptions" onclick="alert('Show Plans');">Plan Info</a>
+                     </label>
+                     <select>
+                         <option>Plan 1</option>
+                         <option>Plan 2</option>
+                         <option>Plan 3</option>
+                         <option>Plan 4</option>
+                     </select>            
+                 </div>
+                 <div>
+                     <label>Billing Information</label>
+                     <select>
+                         <option>Pay Type 1</option>
+                         <option>Pay Type 2</option>
+                     </select>
+                 </div>        
+             </div>
+             <div class="base-form-holder">
+                 Users Setup here.
+                 <ol>
+                     <li>Hand enter vs. upload of file</li>
+                     <li>Download of templated file</li>
+                     <li>Process uploaded file</li>
+                     <li>Limited User Stuff</li>
+                 </ol>
+             </div>
+             <div class="base-form-holder">
+                 KPI setup form here.
+                 <ol>
+                     <li>selection of base kpi to use</li>            
+                 </ol>
+             </div>
+             <div class="base-form-holder">
+                 Scoring Form Here
+                 <ol>
+                     <li>Scoring basis for each KPI.</li>
+                 </ol>
+             </div>
+             <div class="base-form-holder">
+                 Review form here.
+                 <ol>
+                     <li>Full review of data information.</li>
+                 </ol>
+             </div>
+        </div>
+        <div class="sign-up-wizard-footer">
+            <div>
+                <input type="button" id="wizardPreviousStep" value="Previous"  onclick="alert('Move to Previous Step');">
+            </div>
+            <div>Footer Information</div>
+            <div>
+                <input type="button" id="wizardNextStep" value="Next" onclick="alert('Validate and move to next step');">
+                <input type="button" id="wizardCompleteStep" value="Complete" onclick="alert('Save all information and move along.');">
+            </div>
+        </div>
+    </div>
+
+    
+</DIV>

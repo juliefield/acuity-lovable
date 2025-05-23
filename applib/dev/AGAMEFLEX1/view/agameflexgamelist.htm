@@ -1,0 +1,154 @@
+<div>
+    <div class="header-title header-title_gamelist">
+        <div class="flex-game-display-options-buttons">
+            <a href="#trophys" class="user-stats-panel-link achievements-link" id="userStatsPanelLink" title="View Your Achievements">
+                <i class="fad fa-trophy-alt"></i> View Your Achievements
+            </a>
+            <a href="#addgame" class="create-flex-game-panel-link admin-link" id="userAdminGame" title="Add/Edit Games">
+                <i class="fad fa-cogs"></i> Add/Edit Games
+            </a>
+            <a href="#refreshgame" class="flex-game-user-refresh-game-listing admin-link"><i class="fad fa-sync-alt"></i> Refresh All Games</a>
+        </div>
+        <div class="flex-game-header-user-profile flex-game-header-user-profile_avatar">
+            <div class="user-profile-avatar-holder"></div>
+        </div>
+        <div class="flex-game-header-user-profile user-text">
+            <div class="flex-game-header">
+                A-GAME Flex Game Listings <span class="flex-game-header-user-name"></span> &nbsp;&nbsp;
+            </div>
+
+            <div class="flex-game-user-stats-full-holder">
+                <div class="flex-game-user-stats-header">
+                    <i class="fas fa-times close-icon right"></i> Your Achievements
+                </div>
+                <div class="flex-game-user-stats-body">
+                    <div class="flex-game-user-stats-row">
+                        <label class="flex-game-user-stats-label">Active Games</label>
+                        <label class="flex-game-user-stats-data-active-game-count"></label>
+                    </div>
+                    <div class="flex-game-user-stats-row">
+                        <label class="flex-game-user-stats-label">Current Leader
+                          <i class="fas fa-star achievement-icon achievement-icon--gold"></i>
+                        </label>
+                        <label class="flex-game-user-stats-data-current-leader-count"></label>
+                    </div>
+                    <div class="flex-game-user-stats-row">
+                        <label class="flex-game-user-stats-label">Gold Medals
+                          <i class="fad fa-trophy-alt achievement-icon achievement-icon--gold"></i>
+                        </label>
+                        <label class="flex-game-user-stats-data-top1-count"></label>
+                    </div>
+                    <div class="flex-game-user-stats-row">
+                        <label class="flex-game-user-stats-label">Silver Medals
+                          <i class="fad fa-trophy-alt achievement-icon achievement-icon--silver"></i>
+                        </label>
+                        <label class="flex-game-user-stats-data-top2-count"></label>
+                    </div>
+                    <div class="flex-game-user-stats-row">
+                        <label class="flex-game-user-stats-label">Top 5</label>
+                        <label class="flex-game-user-stats-data-top5-count"></label>
+                    </div>
+                    <div class="flex-game-user-stats-row">
+                        <label class="flex-game-user-stats-label">Top 10</label>
+                        <label class="flex-game-user-stats-data-top10-count"></label>
+                    </div>
+                    <div class="flex-game-user-stats-row">
+                        <label class="flex-game-user-stats-label">Total Games</label>
+                        <label class="flex-game-user-stats-data-total-count"></label>
+                    </div>
+                    <div class="flex-game-user-stats-row">
+                        <label class="flex-game-user-stats-label">Games Supervised</label>
+                        <label class="flex-game-user-stats-data-supervised-games-count"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="status-content">
+            <div class="flex-game-display-options">
+                <b>View by Game Status:</b>&nbsp;
+                <input type="checkbox" value="A" name="filters" id="filterPreGame" class="flex-game-display-filter" />
+                <label>Pre-Game <span class="game-count-pregame"></span></label>&nbsp;&nbsp;
+                <input type="checkbox" value="P" name="filters" id="filterInProgress" class="flex-game-display-filter" />
+                <label>Live <span class="game-count-live"></span></label>&nbsp;&nbsp;
+                <input type="checkbox" value="C" name="filters" id="filterComplete" class="flex-game-display-filter" />
+                <label>In Review <span class="game-count-in-review"></span></label>&nbsp;&nbsp;
+                <input type="checkbox" value="F" name="filters" id="filterFinalized" class="flex-game-display-filter" />
+                <label>Final <span class="game-count-final"></span></label>&nbsp;&nbsp;
+            </div>
+            <div class="tabsHolder">
+                <div id="myGameLinkHolder" class="tab game-display-selector">
+                    <a id="lnkShowMyGames">My Games</a>
+                </div>
+                <div id="allGameScoreLinkHolder" class=" tab game-display-selector">
+                    <a id="lnkShowAllGameScores">All Games</a>
+                </div>
+            </div>
+            <div class="flex-game-ticker-holder">
+                <div class="flex-game-ticker"></div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="flex-game-user-status"></div>
+    <div class="flex-game-all-list-holder">
+        <div id="currentGamesHolder" class="current-games-display-holder">
+            <div class="flex-game-user-list-holder"></div>
+        </div>
+        <div id="allGamesHolder" class="all-games-display-holder">
+            <ng-agame-flex-list-all></ng-agame-flex-list-all>
+        </div>
+        <input type="hidden" value=0 id="spinnerLoopNumber">
+        <!-- <input type="hidden" value=0 id="winningPrizeId"> -->
+    </div>
+</div>
+
+<div class="game-board-holder">
+    <div class="game-board-options">
+        <div class="game-board-info left" id="gameboardLeftPanel"></div>
+        <div class="game-board-info left" id="gameboardCenterPanel"></div>
+        <div class="game-board-info left" id="gameboardRightPanel"></div>
+        <span class="game-board-buttons">
+          <button class="game-board-close-button"><i class="fas fa-times"></i> Close</button>
+          &nbsp;
+          <button class="game-board-refresh-button" value="Refresh">
+            <i class="fad fa-sync-alt"></i> Refresh
+          </button> 
+          &nbsp;
+          <button class="game-board-expand-button" title="Expand Full Screen">
+            <i class="fas fa-expand-alt"></i>
+          </button> 
+          <button class="game-board-minimize-button" title="Minimize Full Screen">
+            <i class="fas fa-compress-alt"></i>
+          </button> 
+          &nbsp;
+        </span>
+        <div class="clearfix"></div>
+    </div>
+    <div id="gameBoardInformationHolder" class="game-board-information-holder">&nbsp;</div>
+</div>
+<div class="reward-winner-display-panel-holder">
+    <button class="reward-winner-display-button-close flex-game-form-btn-close"> <i class="fas fa-times" aria-hidden="true"></i></button>    
+    <div class="reward-winner-display-panel-header">
+        Congrats! You Win:
+    </div>
+    <div class="reward-winner-display-panel-content">
+        <div class="reward-winner-display-panel-winning-prize">
+            <img src="/3/ng/AgameFlex/images/prize-images/default.jpg" >
+        </div>
+    </div>
+    <div class="reward-winner-display-panel-footer">
+        <button class="reward-winner-display-button-close">Close</button>
+    </div>
+</div>
+<div class="admin-panel-holder">
+    <div>
+        <input type="button" class="flex-game-btn-clear-console admin-btn" value="Clear Console">
+    </div>
+    <div>
+        <label>User to Mimic:</label>
+        <select class="admin-select-user"></select>
+    </div>
+    <br />
+    <div class="admin-status-output" />
+</div>

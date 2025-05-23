@@ -1,0 +1,65 @@
+<div class="player-profile-card__header" style="display:none;" ng-NOTACTIVEhide="maximized()">
+   <p>Race your Teammates!</p>
+   <div class="rpt-max-link rpt-max-link-plus" ng-click="maximize(true)"></div>
+</div>
+<div class="home_message-panel-label" ng-show="gamesfound()">
+	 <div class="home_message-panel-label-number">{{gamesfound()}}</div>
+	 Games in play
+   <ul class="home_message-row" ng-repeat="g in games">
+	   <li>
+       <a ng-click="selectgame(g.gameid);">
+         <div class="home_message-row_date">
+       	   {{(g.status=="F") ? "Final" : "In Play"}}
+         </div>
+         <div class="home_message-row_icon">
+       	   <i class="fa fa-check-square-o"></i>
+         </div>
+         <div class="home_message-row_content">
+       	   <div class="home_message-row_name">
+       	   	 {{g.gamename}}
+           </div>
+           <div class="home_message-row_subject">
+        	   {{g.theme}}
+           </div>
+         </div>
+       </a>
+     </li>
+   </ul>
+</div>
+<div class="versus-maximized" ng-show="maximized()">
+	<div class="board" ng-show="maximized()">
+	  <div class="rpt-max-link rpt-max-link-minus" ng-click="maximize(false)"></div>
+	  <div style="text-decoration:underline;cursor:pointer;" ng-click="startanimation()">Animate!</div>
+	  <div class="versus-theme-dragrace">
+  		<div class="versus-panel track versus-theme-dragstrip">
+  	    <div class="race">
+          <div class="namelegend"></div>
+          <div class="gamepiece"></div>
+          <div class="leaderboard-group"></div>
+          <div class="game-board"></div>
+        </div>
+  		</div>
+  		<div class="versus-panel track versus-theme-ovaltrack">
+        <div class="race">
+          <div class="namelegend"></div>
+          <div class="gamepiece"></div>
+          <div class="leaderboard-group"></div>
+          <div class="game-board"></div>
+        </div>
+      </div>
+  		<div class="versus-panel track versus-theme-boardgame boardgame-theme boardgame-theme_tiki">
+        <div class="leaderboard-group"></div>
+        <div class="game-board">
+          <div class="gamepiece">
+              <div class="namelegend"></div>
+          </div>
+          <div class="game-drawing"></div>
+        </div>
+        <!--<div class="countdown-group"></div>-->
+        <div class="boardgame-theme_tiki-logo"><img src="../App_Themes/Acuity3/images/tiki-logo.png" /></div>
+        <div class="grass grass--left"><img src="../App_Themes/Acuity3/images/grass-bottom-left.png" /></div>
+        <div class="grass grass--right"><img src="../App_Themes/Acuity3/images/grass-bottom-right.png" /></div>
+  		</div>
+	  </div>
+	</div>
+</div>

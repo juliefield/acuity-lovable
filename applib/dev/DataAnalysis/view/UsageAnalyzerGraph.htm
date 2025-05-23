@@ -1,0 +1,67 @@
+<div class="directive-holder">
+   <div class="main-analyzer-holder">
+      <div class="usage-analyzer-title-holder">
+         <h4><div id="directiveTitleHolder"></div></h4>
+      </div>
+      <div class="directive-filter-section" id="directiveFilterHolder">
+         Display:
+         <select id="directiveFilterDataArea" readyonly="true" disabled="true">
+            <option value=""></option>
+            <option value="location">By Location</option>
+            <option value="project">By Project</option>
+         </select>
+      </div>
+      <div class="directive-data-section">
+         <div class="directive-data-list-holder" id="directiveDataArea"></div>
+      </div>
+   </div>   
+   <div class="popup-holder editor-holder">
+      <div class="display-form" id="usageDetailWithScoresForm">
+         <div>
+            <button class="btn btn-close"><i class="fa fa-close"></i></button>
+         </div>
+         <div class="display-form-header-section">
+            <div id="usageDetailHeaderInfo"></div>
+         </div>
+         <div class="display-form-body-section">
+            <div  class="usage-detail-list-header">
+               <div class="usage-analyzer-user-data-item-holder record-number header-item">#</div>
+               <div class="usage-analyzer-user-data-item-holder user-name header-item">Name</div>
+               <div class="usage-analyzer-user-data-item-holder user-balanced-score header-item">Score</div>
+               <div class="usage-analyzer-user-data-item-holder user-status header-item">User Status</div>
+            </div>
+            <div id="usageDetailList" class="usage-detail-list-body"></div>
+         </div>
+         <div class="display-form-footer-section">
+
+            <button class="btn-close">Close</button>
+         </div>
+      </div>
+      <div class="display-form" id="userLogStatusNoScoresForm">
+         <div>
+            <button class="btn btn-close-user-log"><i class="fa fa-close"></i></button>
+         </div>
+         <div class="display-form-header-section">
+            <div id="userLogStatusDetailHeaderInfo"></div>
+         </div>
+         <div id="userLogDetailLoadingImage">                  
+            <img id="userLogLoadingImage" height="100px" src="/applib/css/images/acuity-loading.gif">Loading...
+         </div>
+         <div class="display-form-body-section">
+            <div  class="usage-detail-list-header">
+               <div class="user-log-status-user-log-item-holder record-number header-item">#</div>
+               <div class="user-log-status-user-log-item-holder user-name header-item">Name</div>
+               <div class="user-log-status-user-log-item-holder user-role header-item">Role</div>
+               <div class="user-log-status-user-log-item-holder user-last-login header-item">Recent Login Date</div>
+               <div class="user-log-status-user-log-item-holder user-status header-item">Status</div>
+            </div>
+            <div class="usage-detail-list-body">
+               <div id="userLogStatusList"></div>
+            </div>
+         </div>
+         <div class="display-form-footer-section">
+            <button class="btn-close-user-log">Close</button>
+         </div>
+      </div>
+   </div>
+</div>

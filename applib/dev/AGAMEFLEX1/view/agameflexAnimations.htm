@@ -1,0 +1,49 @@
+<div class="flex-animation-holder">
+   <div class="flex-animation-header">
+      Animation Header
+   </div>
+   <div class="flex-animation-content" style="overflow:auto;max-height:80vh;max-width:80vw;">
+      <div class="flex-animation-scoring-info-holder left-column">
+         <div class="flex-animation-score-board"></div>
+         <div>
+            <div class="flex-animation-lights">
+               <div class="flex-animation-lights-red">&nbsp;</div>
+               <div class="flex-animation-lights-yellow">&nbsp;</div>
+               <div class="flex-animation-lights-green">&nbsp;</div>
+            </div>
+            <div class="clearfix">
+               <input type="checkbox" id="AnimationAutoReload">Continually Run Animation
+            </div>
+         </div>
+      </div>
+      <div class="flex-animation-board-holder right-column">
+         <div class="flex-animation-board" id="animation-board-holder"></div>
+         <div id="animation-winner-holder">
+            <button class="flex-game-winner-btn-close"> <i class="fas fa-times" aria-hidden="true"></i></button>
+            <div class="flex-game-winner-popup-header">
+               <P>Winner!</P>
+            </div>
+            <div class="flex-game-winner-popup-content">
+               <div id="animation-winner-display"></div>
+            </div>
+            <div class="flex-game-winner-popup-footer">Footer</div>
+         </div>
+      </div>
+   </div>
+   <div class="flex-animation-footer">
+      <div class="flex-animation-button-holder">
+         <button id="flexAnimationButton-run">Run Animation</button>
+         <button id="flexAnimationButton-stop">Stop</button>
+         <button id="flexAnimationButton-reload">Reload</button>         
+         <input type="hidden" id="gameIdToLoad" />
+         <input type="hidden" id="maxAnimations" />
+         <input type="hidden" id="animationCounter" />
+         <input type="hidden" id="highlightedUserId" />
+         <input type="hidden" id="endAtFinishLine" />
+         <div class="rightposition">
+            <button id="flexAnimationButton-close">Close</button>
+         </div>
+         
+      </div>
+   </div>
+</div>

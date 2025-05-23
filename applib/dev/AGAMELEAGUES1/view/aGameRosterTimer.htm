@@ -1,0 +1,109 @@
+<style>
+   @import url("../../../../applib/css/variables.css");
+   .inline-item
+   {
+      display:inline-block;
+   }
+   .agame-timer-overall-holder
+   {
+      background: var(--countdown-timer-bg);
+      padding: 10px;
+      display: flex;
+      gap: 20px;
+      -webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+   }
+   .user-dashboard-countdown h2 {
+      margin: 0;
+      color: #fff;
+      margin-bottom: 5px;
+   }
+   
+   .agame-timer-section-holder
+   {
+      vertical-align:top;
+      display: flex;
+      gap: 20px;
+      color: white;
+      align-items: center;
+   }
+   #agameRosterTimer_LinksHolder {
+      display: flex;
+      gap: 20px;
+      color: white;
+      text-decoration: underline;
+      font-size: 15px;
+   }
+   #agameRosterTimer_LogoHolder {
+      margin-right: 10px;
+   }
+   .inline-date-holder
+   {
+      display:inline-block;
+      width:60px;
+      border-radius:5px;
+      background-color:lightgray;
+      text-align:center;
+      overflow: hidden;
+      color: black;
+   }
+   .timer-timing-holder
+   {
+      font-weight:bold;
+      padding:0;
+      font-size:23px;
+      text-align:center;
+      background-color:white; 
+      color: black;
+   }
+   #agameRosterTimer_UserInfoHolder {
+      justify-content: space-between;
+      align-items: flex-start;
+   }
+</style>
+<div id="aGameRosterTimerDisplayHolder">
+   <div id="userInformationMessage"></div>
+   <div class="agame-timer-overall-holder">
+      <div id="agameRosterTimer_TimerHolder" class="agame-timer-section-holder">
+         <div id="agameRosterTimer_LogoHolder" class="inline-item">
+            <img id="agameRosterTimer_GameLogo" width="50px" src="/applib/css/images/agame-countdown-icon.png">
+         </div>
+         <div id="timerDisplay" class="block" style="width: 260px;">
+            <div class="inline-date-holder">
+               <div class="timer-timing-holder" id="daysRemaining">--</div>
+               <div>Days</div>
+            </div>
+            <div class="inline-date-holder">
+               <div class="timer-timing-holder" id="hoursRemaining">--</div>
+               <div>Hours</div>
+            </div>
+            <div class="inline-date-holder">
+               <div class="timer-timing-holder" id="minutesRemaining">--</div>
+               <div>Mins</div>
+            </div>
+            <div class="inline-date-holder">
+               <div class="timer-timing-holder" id="secondsRemaining">--</div>
+               <div>Secs</div>
+            </div>
+         </div>
+   
+      </div>
+      <div id="agameRosterTimer_UserInfoHolder" class="agame-timer-section-holder">
+         <div>
+            <h2><label id="lblLoggedUserFullName"></label>, make sure you set your Roster!</h2>
+            <div>
+               <i id="itemLockStatus" class="fa-regular fa-lock-open"></i>
+               <span id="rosterLockLabel">Roster Locks on</span>
+               <span id="rosterCloseDateTime"></span>
+            </div> 
+           
+         </div>
+         <div id="agameRosterTimer_LinksHolder" style="width: 250px;justify-content: flex-end;">
+            <a id="lnkSetRoster">Set Roster</a>
+            <a id="lnkPlaceWager">Place Wager</a>
+         </div>
+      </div>
+   </div>
+   
+</div>

@@ -1,0 +1,77 @@
+<style>
+   @import url("../../../../3/ng/AgameLeague/css/agameWager.css");
+</style>
+<div class="wager-widget-holder" id="agameWagerWidget">
+   <div class="wager-widget-holder_container">
+      <div class="wager-col1-holder">
+         <div id="currentWagerHolder" class="wager-holder current-wager">
+            <div class="wager-information-holder current-wager-balance wager-balance-holder">
+               <div class="wager-widget-user-balance-section">
+                  <div class="wager-widget-image-holder">
+                     <img id="wagerWidgetImage" class="wager-widget-image" src="../../../applib/css/images/wager-widget-img.png">
+                  </div>
+                  <div class="wager-widget-user-balance-holder">
+                     <span class="wager-widget-text-label wager-user-balance-label">Balance: </span>
+                     <div id="currentUserBudgetAmount" class="wager-widget-user-balance-label"></div>
+                     <span class="wager-widget-text-label wager-user-current-wager-label">Current Wager: </span>
+                     <div id="currentUserWagerAmount" class="wager-widget-user-current-wager-label"></div>
+                     
+                  </div>
+               </div>
+            </div>
+            <div id="previousUserWagerMessageHolder" class="wager-information-holder previous-wager-message">
+               <div class="wager-widget-user-message-section">
+                  <div class="wager-widget-message-holder">
+                     <div id="previousUserWagerMessage" class="wager-widget-message"></div>
+                  </div>
+               </div>
+            </div>
+            <!-- <div class="wager-information-holder current-wager-message">
+               <div class="wager-widget-user-message-section">
+                  <div class="wager-widget-message-holder">
+                     <div id="currentUserWagerMessage" class="wager-widget-message"></div>
+                  </div>
+               </div>
+            </div> -->
+               
+         </div>
+      </div>   
+      <div class="wager-col2-holder">
+         <!-- <div id="nextWagerHolder" class="wager-holder next-wager">
+            <div class="wager-information-holder next-wager-message">
+               <div class="wager-widget-user-message-section">
+                  <div class="wager-widget-message-holder">
+                     <div id="nextUserWagerMessage" class="wager-widget-message"></div>
+                  </div>
+               </div>
+            </div>
+         </div> -->
+        
+         
+         <div class="wager-information-holder">
+            <div class="wager-information-holder current-wager-message" style="    margin-bottom: 5px;">
+               <div class="wager-widget-user-message-section">
+                  <div class="wager-widget-message-holder">
+                     <div id="currentUserWagerMessage" class="wager-widget-message"></div>
+                  </div>
+               </div>
+            </div>
+            <div id="formButtonHolder" class="wager-widget-button-section">
+               <div id="wagerWidgetButtonHolder" class="wager-widget-buttons button-holder">
+                  <button id="btnWagerWidgetAccept" class="button btn btn-green wager-widget-button">Accept</button>
+                  <button id="btnWagerWidgetReject" class="button btn wager-widget-button">Reject</button>
+                  <span id="lblWagerWidgetOr" class="wager-widget-text-label wager-or-label">OR</span>
+                  <div class="wager-widget-balance-input-holder">
+                     <input type="hidden" id="currentWagerDetailId">
+                     <input type="hidden" id="currentWagerAgainstUserId">
+                     <input type="text" id="currentWagerInputAmount" placeholder="$250 max" class="wager-widget-balance-input">         
+                  </div>   
+                  <button id="btnWagerWidgetCounter" class="button btn wager-widget-button wager-widget-button_counter">Counter</button>
+                  <button id="btnWagerWidgetCreate" class="button btn btn-green wager-widget-button">Propose</button>
+               </div>
+            </div>
+         </div>
+      </div>
+     
+   </div>   
+</div>

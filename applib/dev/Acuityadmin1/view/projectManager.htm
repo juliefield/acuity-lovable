@@ -1,0 +1,103 @@
+<div class="project-app-manager-holder basic-directive-holder">
+    <div class="top-filters">
+        Project Name:<input type="text" id="projectManager_ProjectNameFilter">
+        Status:<select id="projectManager_ProjectStatusFilter"></select>
+        &nbsp;&nbsp;
+        <button id="btnApplyFilter"><i class="fas fa-filter"></i>Apply</button>
+        &nbsp;&nbsp;
+        <button id="btnClearFilter">Clear Filter</button>
+    </div>
+    <br>
+    <div class="bottom-buttons">
+        <div class="filter-input-group">
+            <button id="btnAddNewProject" class="btn button btn-add-new btn-large btn-green">
+                <i class="fas fa-plus"></i> Add New Project
+            </button>
+        </div>
+    </div>
+    <div id="projectDataHolder">
+        <div id="projectListHeader" class="header-holder header-holder_entities header-holder_entities-project">
+            <div class="header-item project-expander">
+                <i class="fa fa-minus" id="collapseAll"></i>
+            </div>
+            <div class="header-item project-name">Project</div>
+            <div class="header-item project-status">Status</div>
+            <div class="header-item project-location-count"># Location</div>
+            <div class="header-item project-group-count"># Groups</div>
+            <div class="header-item project-team-count"># Teams</div>
+            <!-- <div class="header-item project-user-count"># Users</div> -->
+            <div class="header-item project-buttons">Actions</div>
+        </div>
+        <div class="selection-holder large-holder">
+            <div id="projectLoadingHolder" class="project-information-loading-message">
+                <img src="../../../../applib/css/images/acuity-loading.gif" height="25px">
+                <span id="projectLoadingMessage"></span>
+            </div>
+            <div id="projectListHolder" class="project-list-holder"></div>
+        </div>
+    <!--Editor Form START-->
+    <div id="projectEditorFormPanel" class="editor-form">
+        <div class="form-holder-big">
+            <button class="btn-close btn-close-x"> <i class="fas fa-times" aria-hidden="true"></i></button>
+            <div class="error-information-holder"></div>
+            <div class="two-col-flex">
+                <div class="column1of2p">
+                    <div class="project-manager-form_row">
+                        <div class="user-manager-data-label inline-item">Project Name</div>
+                        <input type="text" id="projectEditor_ProjectName">
+                    </div>
+                    <div class="project-manager-form_row">
+                        <div class="user-manager-data-label inline-item">Status</div>
+                        <select id="projectEditor_ProjectStatus"></select>
+                    </div>
+                    <div class="project-manager-form_row">
+                        <div class="user-manager-data-label inline-item">Roster Code</div>
+                        <input type="text" id="projectEditor_RosterCode" />
+                    </div>
+                    <div class="project-manager-form_row">
+                        <div class="user-manager-data-label inline-item">Client Id</div>
+                        <input type="text" id="projectEditor_ClientId" />
+                    </div>
+                    <div class="project-manager-form_row">
+                        <div class="user-manager-data-label inline-item">Model</div>
+                        <select id="projectEditor_ModelId"></select>
+                    </div>
+                    <div class="project-manager-form_row">
+                        <div class="user-manager-data-label inline-item">Coaching Sessions Per Agent Per Month</div>
+                        <input type="text" id="projectEditor_AgentCoachingSessions" class="project-manager-editor-coaching-sessions" />
+                    </div>
+                    <div class="project-manager-form_row">
+                        <div class="user-manager-data-label inline-item">Recognitions Per Agent Per Month</div>
+                        <input type="text" id="projectEditor_AgentRecognitions" class="project-manager-editor-agent-recognitions" />
+                    </div>
+                </div>
+                <div class="column2of2p">
+                    <div class="tab-holder">
+                        <div class="tab-holder-item" id="projectManagerFormTab_Locations">Locations</div>
+                        <div class="tab-holder-item" id="projectManagerFormTab_Groups">Groups</div>
+                        <div class="tab-holder-item" id="projectManagerFormTab_Teams">Teams</div>
+                        <!-- <div class="tab-holder-item" id="projectManagerFormTab_Users">Users</div> -->
+                        <div class="tab-holder-item" id="projectManagerFormTab_Stats">Stats</div>
+                    </div>
+                    <div class="tab-containers">
+                        <div id="projectManager_LocationsTabContainer"></div>
+                        <div id="projectManager_GroupsTabContainer"></div>
+                        <div id="projectManager_TeamsTabContainer"></div>
+                        <!-- <div id="projectManager_UsersTabContainer">Users Here.</div> -->
+                        <div id="projectManager_StatsTabContainer">
+                            <ng-entity-item-stats></ng-entity-item-stats>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="badgeAdminForm_btns">
+                <input type="hidden" id="editorFormType"/>
+                <input type="hidden" id="projectEditor_ProjectId"/>
+                <button id="btnSave" class="button btn btn-large">Save</button>
+                &nbsp;&nbsp;
+                <button class="btn-close button btn btn-large">Close</button>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,75 @@
+<div class="user-task-manager-holder">
+    <div class="user-task-manager-button-holder">
+        <button class="user-task-manager-add-new-task-button" title="Add a new task"><i class="fas fa-plus"></i> Add New Task</button>
+        <button class="user-task-manager-refresh-task-button" title="Refresh tasks"><i class="fad fa-sync-alt"></i> Refresh Tasks</button>
+    </div>
+    <div class="user-task-manager-header">
+       <h3>
+           Tasks
+            <div class="user-task-manager-filter-holder">
+                <input type="checkbox" class="user-task-mansger-options-include-completed">Show Completed Tasks
+                &nbsp;&nbsp;
+                <input type="checkbox" class="user-task-mansger-options-include-archived">Show Archived Tasks        
+            </div>
+       </h3>
+    </div>
+    <div class="user-task-manager-user-stats-holder"></div>
+
+    <div class="user-task-manager-editor-holder">        
+        <div class="user-task-manager-editor-form-header">
+            <button class="close-panel-btn"> 
+                <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
+           <label class="user-task-manager-editor-header-label"></label>
+        </div>    
+        <div class="error-information-holder"></div>
+        <div class="user-task-manager-editor-form">            
+            <div class="user-task-manager-form_row">
+                <label class="user-task-manager-data-label">Task Name:</label>
+                <input type="text" class="user-task-manager-editor-task-name" placeholder="Task Name" />
+            </div>
+            <div class="user-task-manager-form_row">
+                <label class="user-task-manager-data-label">Due Date:</label>
+                <input type="text" class="user-task-manager-editor-due-date" placeholder="Due Date" />
+            </div>            
+            <div class="user-task-manager-form_row">
+                <label class="user-task-manager-data-label">Description:</label>
+                <div class="clearfix"></div>
+                <textarea id="editorTaskDesc" class="user-task-manager-editor-task-desc" 
+                    maxlength="1000" placeholder="Describe your task"></textarea>
+            </div>
+            <div class="user-task-manager-form_row">
+                <label class="user-task-manager-data-label">Goal:</label>
+                <select class="user-task-manager-editor-goal-assigned"></select>
+            </div>
+            <div class="user-task-manager-form_row">
+                <label class="user-task-manager-data-label">Send Reminder?</label>
+                <input type="checkbox" class="user-task-manager-editor-send-reminder" >
+            </div>
+            <div class="user-task-manager-form_row user-task-manager-editor-date-complete-row">
+                <label class="user-task-manager-data-label">Date Complete</label>
+                <input type="text" class="user-task-manager-editor-date-complete" />
+            </div>            
+            <div class="user-task-manager-form_row">
+                <label class="user-task-manager-data-label">Status:</label>
+                <select class="user-task-manager-editor-task-status"></select>
+            </div>            
+        </div>
+        
+        <div class="user-task-manager-editor-buttons-holder">
+            <button class="user-task-manager-editor-button-save">Save</button>
+            <button class="user-task-manager-editor-button-cancel">Cancel</button>    
+            <input type="hidden" id="taskId" class="user-task-manager-form-task-id" />
+            <input type="hidden" id="createdBy" class="user-task-manager-form-created-by" />
+            <input type="hidden" id="createdOn" class="user-task-manager-form-created-on" />
+        </div>
+    </div>
+    <div class="user-task-manager-user-list-holder"> 
+        <div class="user-task-manager-user-tasks-list"></div>
+        <br>
+        <div class="user-task-manager-button-options-holder">
+            <button class="user-task-manager-button-remove-selected button--red" title="Remove selected tasks"><i class="fas fa-trash-alt"></i> Remove Selected</button>
+            <button class="user-task-manager-button-complete-selected button--green" title="Completed selected tasks"><i class="fas fa-check"></i> Complete Selected</button>
+        </div>
+    </div>
+</div>

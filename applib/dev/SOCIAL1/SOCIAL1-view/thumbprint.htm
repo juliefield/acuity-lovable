@@ -1,0 +1,33 @@
+<div class="player-profile-thumbsup" ng-class="{ 'is-small': small }">
+   <div
+     class="player-profile-thumbsup-item"
+     ng-click="thumbclick('received')"
+     ng-class="{'player-profile-thumbsup-item--on' : activeDir == 'received' }"
+     ng-if="isReceivedVisible()"
+   >
+      <img src="../applib/css/images/thumbsup-lrg-received.png" alt="Thumbs Up Received" />
+      <div class="number-bubble number-bubble-left">
+         {{ thumbs.received }}
+         <div ng-if="thumbs.unseenReceived" class="alert-number">{{ thumbs.unseenReceived }}</div>
+      </div>
+      <div class="player-profile-thumbsup-label">
+         Received
+      </div>
+   </div>
+   <div
+     class="player-profile-thumbsup-item"
+     ng-click="thumbclick('given')"
+     ng-class="{'player-profile-thumbsup-item--on' : activeDir == 'given' }"
+     ng-if="isGivenVisible()"
+   >
+      <div class="number-bubble number-bubble-right">
+         {{ thumbs.given }}
+         <div ng-if="thumbs.unseenGiven" class="alert-number">{{ thumbs.unseenGiven }}</div>
+      </div>
+      <img src="../applib/css/images/thumbsup-lrg-given.png" alt="Thumbs Up Given" />
+      <div class="player-profile-thumbsup-label">
+         Given
+      </div>
+   </div>
+   <div class="clearfix"></div>
+</div>

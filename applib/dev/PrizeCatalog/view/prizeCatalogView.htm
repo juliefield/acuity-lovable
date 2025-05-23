@@ -1,0 +1,86 @@
+<div class="user-prize-catalog-view-module-holder">
+   <div class="user-prize-catalog-view-catalog-display-left-holder">
+      <div id="userLoadingPanel" class="user-prize-catalog-loading-information-panel loading-panel">
+         <img id="userLoadingMessageImage" src="/applib/css/images/acuity-loading.gif" height="50" class="user-prize-catalog-loading-image loading-image">
+         <div id="userLoadingMessageHolder" class="user-loading-message-holder"></div>
+      </div>
+      <div class="user-prize-catalog-view-filter-holder">
+         <div class="user-prize-catalog-view-previous-button-holder hide">
+            <button id="btnPreviousCatalogPage" class="user-prize-catalog-view-button previous-button">Previous</button>
+         </div>
+         <div class="user-prize-catalog-view-center-filter-holder">
+            <div class="user-prize-catalog-view-center-filter-section">
+               <div class="user-redeemed-prizes-filter-options">
+                  <div class="user-redeemed-prizes-filter-label">Catalog:</div>
+                  <select id="catalogDisplaySelector"></select>
+               </div>
+            </div>
+            <div class="user-prize-catalog-view-center-filter-section">
+               <div class="user-redeemed-prizes-filter-options">
+                  <div class="user-redeemed-prizes-filter-label">Tag:</div>
+                  <input type="text" id="catalogItemTagFilter" />
+               </div>
+            </div>
+            <div class="user-prize-catalog-view-center-filter-section" style="display:none;">
+               <div class="user-redeemed-prizes-filter-options">
+                  <div class="user-redeemed-prizes-filter-label">Display:</div>
+                  <input type="radio" name="catalogDisplay_DisplayType" value="grid" checked> Grid
+                  <input type="radio" name="catalogDisplay_DisplayType" value="list"> List
+               </div>
+            </div>
+            <div class="user-prize-catalog-view-center-filter-section">
+               <div class="user-redeemed-prizes-filter-options">
+                  <div class="user-redeemed-prizes-filter-label">Sort Items:</div>
+                  <select id="catalogDisplay_SortType">
+                     <option>Item Name</option>
+                     <option value="highLow">High to Low Cost</option>
+                     <option value="lowHigh">Low to High Cost</option>
+                  </select>
+               </div>
+            </div>
+            <div class="user-prize-catalog-view-center-filter-section" style="display:none;">
+               <div class="user-redeemed-prizes-filter-options">
+                  <input type="checkbox" id="catalogDisplay_OnlyNew" value="newOnly">
+                  <div class="user-redeemed-prizes-filter-label">New Items Only</div>
+               </div>
+            </div>
+         </div>
+         <div class="user-prize-catalog-view-next-button-holder hide">
+            <button id="btnNextCatalogPage" class="user-prize-catalog-view-button next-button">Next</button>
+         </div>
+      </div>      
+      <div id="catalogDisplayHolder" class="user-prize-catalog-catalog-display-list-holder"></div>
+   </div>
+   <div class="user-prize-catalog-view-catalog-display-right-holder">
+      <div id="selectedCatalogItemHolder" class="user-prize-catalog-selected-item-large-display-holder">
+         <div class="user-prize-catalog-selected-item-display-section">
+            <div class="user-prize-catalog-selected-item-data-section">
+               <div class="user-prize-catalog-selected-item-large-image-section">
+                  <div class="user-prize-catalog-selected-item-large-image-holder">
+                     <img id="catalogItemImage" class="user-prize-catalog-catalog-item-image-large">
+                  </div>
+               </div>
+               <div class="user-prize-catalog-selected-item-name-section">
+                  <div id="lblItemNameLabel"></div>
+               </div>
+               <div class="user-prize-catalog-selected-item-quatity-section">
+                  <div id="lblItemQuantityLabel"></div>
+               </div>
+            </div>
+            <div class="user-prize-catalog-selected-item-attributes-section">
+               <div class="user-prize-catalog-selected-item-attribues-holder">
+                  <div id="lblItemTagList" class="user-prize-catalog-item-tag-list-holder"></div>
+                  <div id="lblItemCatalogList" class="user-prize-catalog-item-catalog-list-holder"></div>
+               </div>
+            </div>
+         </div>
+         <div class="user-prize-catalog-selected-item-user-actions-section">
+            <div class="user-prize-catalog-selected-item-user-actions-holder">
+               <button id="btnRedeemItem">Redeem XXX Credits</button>
+               <input type="hidden" id="redeemItemSelectedPrizeId">
+               <input type="hidden" id="redeemItemSelectedCatalogId">
+            </div>
+         </div>
+      </div>
+   </div>
+</div>   

@@ -1,0 +1,92 @@
+  <div class="user-profile-wrapper">
+
+  <!-- AGENT PROFILE PANEL -->
+  <div class="agent-profile-panel">
+    <div class="agent-profile-panel_img">
+      <img class="user-profile-img-avatar"  />
+    </div>
+    <div class="agent-profile-panel_name user-profile-fullName"></div>
+    <div class="agent-profile-panel_name user-profile-userid"></div>
+    <div class="action-icons">
+      <!-- <a class="fa profile-sidekick-icon btn-blue profile-icon" title="Sidekick">&nbsp;</a>
+      <a class="fa profile-video-icon btn-blue profile-icon" title="Video Conference">&nbsp;</a>
+      <a class="fa profile-share-icon btn-blue profile-icon" title="Share Desktop">&nbsp;</a> -->
+    </div>
+    <!-- <div class="editprofile-link">
+      <a href="../jq/fullprofile.aspx">View/Edit Full Profile &#187;</a>
+    </div> -->
+    <div class="agent-profile-panel_form">
+      <div class="agent-profile-panel_form-group">
+        <div class="agent-profile-panel_field agent-profile-panel_field--half">
+          <label resource="RESOURCE_TEXT_TEAM" defaulttext="Team"></label>
+          <span class="user-profile-user-team"></span>
+        </div>
+        <div class="agent-profile-panel_field agent-profile-panel_field--half">
+          <label resource="RESOURCE_TEXT_GROUP" defaulttext="Group"></label>
+          <span class="user-profile-user-group"></span>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="agent-profile-panel_form-group">
+        <div class="agent-profile-panel_field agent-profile-panel_field--half">
+          <label resource="RESOURCE_TEXT_LOCATION" defaulttext="Location"></label>
+          <span class="user-profile-user-location"></span>
+        </div>
+        <div class="agent-profile-panel_field agent-profile-panel_field--half">
+          <label>Hire Date:</label>
+          <span class="user-profile-hireDate"></span>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="agent-profile-panel_form-group">
+        <div class="agent-profile-panel_field agent-profile-panel_field--half">
+          <label>Role:</label>
+          <span class="user-profile-userRoleName"></span>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <br />
+      <div class="add-agent-appear">
+        <a class="btn btn-small btn-blue" id="add-profile-note"><i class="fa fa-plus"></i> Add an Agent Note</a>
+        <span class="agent-profile-panel_note-history user-profile-btn-show-notes" style="float:right;">
+          View Agent Notes
+        </span>
+      </div>
+      <div class="clearfix"></div>
+      <br />
+      <div class="agent-profile-panel_form-group agent-profile-panel-notebox">
+        <div class="agent-profile-panel_field">
+          <span class="max-limit-note">500 Characters Max</span>
+          <label>Notes:</label>
+          <div class="clearfix"></div>
+          <textarea maxlength="500" id="user-profile-note-text"></textarea>
+          <div class="clearfix"></div>
+          <a class="btn btn-small btn-blue" id="save-profile-note">Save Note</a>
+          <input type="hidden" class="user-profile-note-id"/>
+          <input type="hidden" class="user-profile-note-enterby-userid"/>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <hr />
+      <div class="clearfix"></div>      
+    </div>
+  </div>
+  <!--END AGENT PROFILE PANEL-->
+
+  <!-- AGENT PROFILE NOTES HISTORY -->
+  <div class="agent-notes-panel">
+    <a class="agent-notes-panel_close"><i class="fa fa-times"></i> Close Notes</a>
+    <br />
+    <div class="agent-notes-panel_title">
+      <div class="agent-notes-panel_img">
+        <img class="user-profile-img-avatar"  />
+      </div>
+      Notes for <span class="user-profile-fullName"></span>
+    </div>
+    <div class="notes-tabs"></div>
+  </div>
+  <!-- END AGENT PROFILE NOTES HISTORY -->
+
+
+
+  </div>

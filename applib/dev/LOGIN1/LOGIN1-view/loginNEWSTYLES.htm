@@ -1,0 +1,66 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" >
+  <uc:head id="head" runat="server" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700,700i" rel="stylesheet">
+
+         <!-- AngularJS ng- ng -->
+  		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.2/angular.min.js"></script>
+  		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.2/angular-cookies.js"></script>
+  		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.2/angular-sanitize.js"></script>
+  <asp:PlaceHolder runat="server">
+    <link rel="stylesheet" href="/App_Themes/Acuity3/css/app.css?<%=CONFMGR.Bump()%>" />
+    <link href="css/login-styles.css" rel="stylesheet">
+
+    <script type="text/javascript" src="/appLib/js/controllers/main.js?<%=CONFMGR.Bump()%>"></script>
+    <script type="text/javascript" src="/appLib/dev/LOGIN1/LOGIN1-vm/login.js?<%=CONFMGR.Bump()%>"></script>
+  </asp:PlaceHolder>
+
+  <body onload="javascript:if (typeof document.login != 'undefined') document.login.userID_txt.focus();">
+
+		<section class="acuity-login">
+			<h2>Welcome back! Please login.</h2>
+			<div class="acuity-login-container">
+				<div class="acuity-logo">
+					<img src="images/acuity-logo.png" alt="Acuity" />
+					<!--CES LOGO <img src="../App_Themes/data/CEScoreLogoSmall6.jpg" /> -->
+				</div>
+
+				<div>
+					<form method="post" runat="server">
+            <div class="err-container" style="display: block;">
+              <p class="err-message">Your username or password were incorrect. Please try again.</p>
+            </div>
+						<div class="acuity-form-group">
+							<span id="userID_lbl" runat="server">Username or email address: </span>
+							<input type="text" id="userID_txt" class="acuity-form-input" placeholder="Username" />
+							<p class="err-message-inline">Please enter your username or email address</p>
+						</div>
+						<div class="acuity-form-group">
+						<span id="pwrd_lbl" runat="server">Password: </span>
+						<input type="password" id="pwrd_txt" class="acuity-form-input" placeholder="Password" />
+						  <p class="err-message-inline">Please enter your password</p>
+						</div>
+						<div class="acuity-form-group">
+							<input type="submit" id="userLogin" class="acuity-form-input btn-blue" value="Login" />
+						</div>
+
+					</form>
+				</div>
+			</div>
+		</section>
+		<section class="acuity-form-copyright">
+			<p id="debugdiv" runat="server"></p>
+			<p>
+				This system is for authorized use only. ©<script>document.write(new Date().getFullYear())</script> TouchPoint One, LLC. All Rights Reserved.
+			</p>
+		</section>
+
+        <!-- Saved as a remnant, will need re-styled -->
+        <div style="margin-bottom: 10px;display:none;" runat="server" id="divADLink">
+			Click <a href="http://192.168.111.161" style="color:#0092CE;">here</a> for Active Directory Login.
+		</div>
+
+  </body>
+</HTML>

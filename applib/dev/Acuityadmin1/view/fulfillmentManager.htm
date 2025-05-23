@@ -1,0 +1,76 @@
+<div class="basic-directive-holder">
+   <div class="top-filters">
+      <div class="filter-input-group">
+         <span>
+            Users
+            <select id="fulfillmentManager_UserFilter"></select>
+         </span>
+      </div>
+      <div class="filter-input-group"> 
+         <span>
+            Items
+            <select id="fulfillmentManager_ItemFilter"></select>
+         </span>
+      </div>
+      <div class="filter-input-group"> 
+         <span>
+            Status:
+            <select id="fulfillmentManager_ItemStatus">
+               <option value="">All Items</option>
+               <option value="open">Open</option>
+               <option value="fulfilled">Fulfilled</option>
+            </select>   
+         </span>
+      </div>
+      <div class="filter-input-group">    
+         <span>
+            <a id="fulfillmentManager_RefreshList">Refresh</a>
+            &nbsp;
+            <a id="fulfilmentManager_ClearFilters">Clear Filters</a>   
+         </span>
+      </div>
+   </div>   
+   
+   <div class="user-information-holder"></div>
+
+   <br>
+   <div>
+      
+      <div class="header-holder">
+         <div class="header-item date-earned">Date Earned</div>
+         <div class="header-item user-name">User</div>
+         <div class="header-item fulfillment-item-name">Item</div>
+         <div class="header-item fulfilled-date">Date Fulfilled</div>
+         <div class="header-item fulfilled-by">Fulfilled By</div>
+         <div class="header-item actions-options">Actions</div>
+      </div>
+      <div id="fulfillmentManager_ListHolder"></div>
+   </div>
+
+
+   <div id="FulfillmentManagerForm" class="editor-form">
+      <div class="form-holder">
+         <button class="btn-close btn-close-x"><i class="fa fa-times"></i></button>
+         <h2>Fulfillment Manager</h2>
+         <div class="badgeAdminForm_form">
+            <div class="error-information-holder"></div>   
+            <div class="badgeAdminForm_image-preview">
+               <div id="fulfillmentManagerForm_PrizeOptionHolder" ></div>
+               <br>         
+               <div id="fulfillmentManagerForm_UserInfoHolder"></div>
+            </div>   
+            <div class="badgeAdminForm_form-preview">
+               <strong>Who fulfilled by?</strong> <br><select id="fulfillmentManagerForm_PrizeFulfillmentBy"></select>
+               <br>
+               <strong>When Fulfilled?</strong> <br> <input type="textbox" id="fulfillmentManagerForm_PrizeFulfillmentDate" />
+            </div>   
+         </div>
+   
+         <div class="acuityAdminForm_btns">
+            <input type="hidden" id="fulfillmentManagerForm_UserPointsId" />
+            <button class="btn-large" id="btnSaveFulfillmentManagerForm">Save</button>
+            &nbsp;&nbsp;
+            <button class="btn-close btn-large">Cancel</button>
+         </div>
+   </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="form-setup" ng-repeat="f in form" ng-show="credentialed()">
+    <h1>Violation Categories</h1>
+    <div>
+			<select style="width: 600px; float: left;" ng-model="f.selectedCategory" ng-disabled="readonly()" ng-change="changeCategory()">
+      	<option ng-repeat="cat in violations" ng-if="(!cat.deprecated)" value="{{cat.id}}">
+        	{{cat.Category}}
+        </option>
+      </select>
+      <input type="text" style="width: 575px; margin-left: -599px; margin-top: 1px; border: none; float: left;" ng-model="f.selectedCategoryText" />
+
+      <input type="button" ng-show="differentCategory(true)" ng-click="addCategory()" value="Add New" /><input type="button" ng-hide="differentCategory(false)" ng-click="deleteCategory()" value="Delete" />
+      <div style="clear:both;"></div>
+    </div>
+    
+    <div ng-hide="differentCategory(true)">
+    <h1>Violation SubCategories</h1>
+    <div>
+			<select ng-model="f.selectedSubcategory" style="width: 600px; float: left;" ng-disabled="readonly()" ng-change="changeSubcategory()">
+      	<option value="0">--Select--</option>
+        <option ng-repeat="subcat in f.subcategories" ng-if="(!subcat.deprecated)" value="{{subcat.id}}">
+        	{{subcat.Subcategory}}
+        </option>
+        <option value="noshow" selected="selected"></option>
+      </select>
+      <input type="text" style="width: 575px; margin-left: -599px; margin-top: 1px; border: none; float: left;" ng-model="f.selectedSubcategoryText" />
+      <input type="button" ng-show="differentSubcategory(true)" ng-click="addSubcategory()" value="Add New" /><input type="button" ng-hide="differentSubcategory(false)" ng-click="deleteSubcategory()" value="Delete" />
+      <br>
+      <div ng-show="showsubfields()" style="margin:10px;margin-left:30px;padding:10px;border: 1px solid black;">
+      	<label>Reference:</label><input type="text" ng-model="f.Reference" />
+      	<br><label>Risk:</label><input type="text" ng-model="f.Risk" />
+      	<br><label>Type:</label><input type="text" ng-model="f.Type" />
+      	<br><label>Point Level:</label><input type="text" ng-model="f.PointLevel" />
+      	<br><label>Deduction Percentage:</label><input type="text" ng-model="f.DeductionPercentage" />
+      	<br><label>Focus Issue (Y/N):</label><input type="text" ng-model="f.FocusIssue" />
+      	<br><input type="button" ng-hide="differentSubcategory(false)" ng-click="updateSubcategory()" value="Update" />
+      </div>
+    </div>
+    </div>
+
+    <h1></h1>
+
+</div>

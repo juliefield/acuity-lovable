@@ -1,0 +1,92 @@
+<div class="trophy-manager-holder">
+    <div>
+        Filters? <br>
+        <button class="show-editor">Show</button>
+    </div>
+    <div id="currentTrophyList"></div>
+    <div id="trophyEditorFormHolder" class="form-holder">
+        <div class="editor-form">
+            <div class="editor-form-header">
+                <button class="btn-close"><i class="fa fa-x"></i></button>
+            </div>
+            <div class="editor-form-body">
+                <div class="error-information-holder"></div>
+                <div class="editor-form-column-holder">
+
+                <div class="editor-form-column-1of2">
+                    <div>
+                        <div>
+                            <img id="trophyEditorTrophyImage">
+                        </div>
+                        <div>
+                            <input id="trophyEditorImageUrl">
+                        </div>
+                        <div>
+                            <button id="btnSelectTrophyImage">Select Image</button>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="editor-form-column-2of2">
+                    <div class="editor-form-input-row">
+                        <label>Id</label>
+                        <label id="trophyEditorTrophyIdLabel"></label>
+                        <input id="trophyEditorTrophyId" readonly>
+                    </div>
+                    <div class="editor-form-input-row">
+                        <label>Client</label>
+                        <select id="trophyEditorClient"></select>
+                    </div>
+                    <div class="editor-form-input-row">
+                        <label>Trophy Full Name</label>
+                        <input id="trophyEditorTrophyFullName" readonly>
+                    </div>
+                    <div class="editor-form-input-row">
+                        <label>Trophy Description</label>
+                        <input id="trophyEditorTrophyDesc">
+                    </div>                    
+                    <div class="editor-form-input-row">
+                        <label>Display Name</label>
+                        <input id="trophyEditorDisplayName">
+                    </div>
+                    <div class="editor-form-input-row">
+                        <label>Status</label>
+                        <input type="checkbox" id="trophyEditorIsActive">
+                    </div>
+                    <div class="editor-form-input-row">
+                        <label>Award Start Date</label>
+                        <input id="trophyEditorTrophyAwardStartDate">
+                    </div>
+                    <div class="editor-form-input-row">
+                        <label>Award End Date</label>
+                        <input id="trophyEditorTrophyAwardEndDate">
+                    </div>
+                    <div class="editor-form-input-row">
+                        <label>Theme</label>
+                        <select id="trophyEditorTrophyTheme"></select>
+                    </div>
+                    <div class="editor-form-input-row">
+                        <label>Position</label>
+                        <select id="trophyEditorTrophyPosition"></select>
+                    </div>
+                    <div class="editor-form-input-row">
+                        <label>Rank</label>
+                        <select id="trophyEditorTrophyRank"></select>
+                    </div>
+                    <div class="editor-form-input-row">
+                        <label>Trophy Award Key</label>
+                        <input id="trophyEditorTrophyAwardKey" readonly>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="editor-form-footer">
+                <div class="button-holder">
+                    <button id="btnSave" class="button btn btn-save">Save</button>
+                    &nbsp;&nbsp;
+                    <button id="btnClose" class="button btn btn-close">Close</button>
+                </div>
+            </div>
+        </div>    
+    </div>
+</div>

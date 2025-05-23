@@ -1,0 +1,35 @@
+<div class="rpt-popup-background">
+  <div class="rpt-popup-sizer form-popup">
+    <div class="rpt-dismiss form-popup_dismiss" ng-click="dismissform()"><i class="fa fa-close"></i></div>
+    <div class="rpt-popup form-popup_content">
+      <div class="rpt-form">
+        <h1>Journal Entry Form</h1>
+        <div class="form-popup_info-fields">
+          <div class="form-popup_user-info">
+            <p><b>User:</b> {{f.User}}</p>
+            <p><b>Specialist:</b> {{f.User}}</p>
+          </div>
+          <div class="form-popup_input-fields">
+            <p class="form-popup_twocol">
+              <b>Occurrence Date:</b>
+              <input dynamic-ui type="text" ng-model="f.Date" placeholder="mm/dd/yyyy" />
+            </p>
+            <p class="form-popup_twocol">
+              <b>Delivered By:</b>
+              <input dynamic-ui type="text" ng-model="f.DeliveredBy" placeholder="Last name, First name" />
+            </p>
+            <p><b>Reason:</b> <input dynamic-ui type="text" class="full-width" ng-model="f.Reason" /></p>
+            <p><b>Details-Issues:</b><br />
+            <textarea ng-model="f.DetailsIssues" rows="4" cols="170"></textarea></p>
+            <p><b>Resolution-Followup:</b><br />
+            <textarea ng-model="f.ResolutionFollowup" rows="4" cols="170"></textarea></p>
+            <p><b>Date Closed:</b> <input dynamic-ui type="text" ng-model="f.DateClosed" placeholder="mm/dd/yyyy" /></p>
+            <p ng-show="f.User==''"><b>No user selected, select one from the filters.</b></p>
+            <button type="button" class="btn btn-blue btn-xs btn-noborder btn-pullright" ng-disabled="f.User == ''" ng-show="$parent.formeditsave" ng-click="submitform()">Submit</button>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

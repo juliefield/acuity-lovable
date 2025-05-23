@@ -1,0 +1,202 @@
+<style type="text/css"> @import url("../../../applib/css/teamManager.css"); </style>
+<script src="https://kit.fontawesome.com/550f4bc1b1.js" crossorigin="anonymous"></script>
+<div id="userMessageHolder" class="userMessageHolder">
+   <div class="userMessageHolder_popup">
+      <img src="../../../applib/css/images/acuity-loading.gif" alt="Loading Data" height="50px">
+      <span id="userMessageText"> Loading...</span>
+   </div>
+</div>
+
+<div class="team-manager_container">   
+   <div class="myteam_col">
+      <div>         
+         <div class="teamManager_top-selects">
+            <div class="page-title">
+               My Team 
+               <a href="" id="instructions" class="instructions">Instructions »</a>
+            </div>
+            <div class="my-team-selector-holder">
+               <select class="my-team-selector" id="myTeamSelector"></select>
+               <button id="btnRefreshMyTeam"><i class="fa fa-refresh"></i></button>
+            </div>
+         </div>
+         <div>
+            <div class="table-topper">
+               <div class="inline-item user-full-name">User Name</div>
+               <div class="inline-item future-move-holder">&nbsp;</div>
+               <div class="inline-item button-holder">Actions</div>
+            </div>
+            <div class="myTeamHolder">
+               <div id="myTeamListHolder"></div>
+            </div>   
+         </div>
+      </div>
+      <br />
+      <div class="instructions_popup" id="instructions_popup">
+         <div class="instructions_popup_container">
+            <div class="text-center">
+               <h2>Instructions</h2>
+               <hr>
+            </div>
+            <div class="instructions_popup-content">
+               <p>
+                  <b>Remove User:</b> In My Team, click remove and enter an effective date that the user should be removed from your team.               
+               </p>
+               <p>
+                  <b>Add User from Pool:</b> Under the Pool Users, find the user you would like to add, and click the Add button.  
+                  Enter the effective date that they joined your team.   The Effective Date cannot be in the future.
+               </p>
+               <p>
+                  <b>Add User from another Team:</b> Under Other Teams, select the team the user is coming from, or enter information to find them by first/last name.
+                  Click the Add button, and enter the effective date that they joined, or will join, your team.
+               </p>
+               <div class="text-center">
+                  <button id="close-instructions">Close</button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="addTeam_col">
+      <div>
+         <div class="teamManager_top-selects" >
+            <div class="page-title">
+               Users Pool
+               
+            </div>
+            <div class="filter-option-header">
+               <div class="filter-option-holder">
+                  <span>First Name</span>
+                  <input type="text" id="poolUserFirstName" />
+               </div>
+               <div class="filter-option-holder">
+                  <span>Last Name</span>
+                  <input type="text" id="poolUserLastName" />
+               </div>
+               <div class="filter-option-holder">
+                  <button id="btnFilterUserPoolList">Apply Filter</button>
+                  &nbsp;
+                  <button id="btnClearUserPoolFilter">Clear Filter</button>
+                  &nbsp;
+                  <button id="btnRefreshUserPoolList"><i class="fa fa-refresh"></i></button>
+               </div>
+            </div>
+         </div>   
+         <div class="table-topper">
+            <div class="inline-item user-full-name">User Name</div>
+            <div class="inline-item future-move-holder">&nbsp;</div>
+            <div class="inline-item button-holder">Actions</div>
+         </div>
+         <div class="userPool_col">
+            <div id="userPoolListLoader">
+               <img src="../../../applib/css/images/acuity-loading.gif" alt="Loading Users in pool" height="50px">
+               <div style="display:inline-block;" id="userPoolListLoaderMessage"></div>
+            </div>
+            <div id="userPoolListHolder"></div>
+         </div>
+         <div  class="table-footer">
+            <span>
+               <label id="usersInPoolCount">0</label> total users in pool
+            </span>
+         </div>
+      </div>
+      <br />
+      <hr />
+      <br />
+      <div class="otherTeams">
+         <div class="teamManager_top-selects" >
+            <div class="page-title">
+               Other Teams
+            </div>
+            <div class="filter-option-holder">
+               <button id="btnFilterOtherTeamList">Apply Filters</button>
+               &nbsp;
+               <button id="btnClearOtherTeamFilter">Clear Filters</button>
+            </div>
+         </div>
+         <div class="teamManager_top-selects" style="padding-top: 0;">   
+            <div class="filter-option-header">
+               
+                  <div class="filter-option-holder"">
+                     <span>Project</span>
+                     <select id="otherTeamProjectIdFilter">
+                        <option value=""></option>                     
+                     </select>
+                  </div>
+                  <div class="filter-option-holder">
+                     <span>Location</span>
+                     <select id="otherTeamLocationIdFilter">
+                        <option value=""></option>                     
+                     </select>
+                  </div>
+                  <div class="filter-option-holder">
+                     <span>Group</span>
+                     <select id="otherTeamGroupIdFilter">
+                        <option value=""></option>                     
+                     </select>
+                  </div>
+                  <div class="filter-option-holder">
+                     <span>Team</span>
+                     <select id="otherTeamUserTeamIdFilter">
+                        <option value="">Select Other Team</option>
+                     </select>
+                  </div>   
+               
+                  <div class="filter-option-holder">
+                     <span>First Name</span>
+                     <input type="text" id="otherTeamUserFirstNameFilter" />
+                  </div>
+                  <div class="filter-option-holder">
+                     <span>Last Name</span>
+                     <input type="text" id="otherTeamUserLastNameFilter" />
+                  </div>   
+              
+             
+            </div>
+         </div>   
+    
+         <div class="table-topper">
+            <div class="inline-item user-full-name">User Name</div>
+            <div class="inline-item team-name">Team Name</div>
+            <div class="inline-item future-move-holder">&nbsp;</div>
+            <div class="inline-item button-holder">Actions</div>
+         </div>
+         <div class="otherTeam_col">
+            <div id="otherTeamListLoader">
+               <img src="../../../applib/css/images/acuity-loading.gif" alt="Loading Other Teams Info" height="50px">
+               <div style="display:inline-block;" id="otherTeamListLoaderMessage"></div>
+            </div>
+            <div id="otherTeamListHolder"></div>
+         </div>   
+      </div>
+  
+   </div>
+
+   <div class="form-holder">
+      <div class="teamManager_form-holder">
+         <div id="teamEditorForm" class="teamManager_form-container">
+            <button class="btn-close btn-close-x"><i class="fa fa-close"></i></button>
+            <div class="error-information-holder"></div>
+            <div>
+               <h2>User</h2>
+               <input type="hidden" id="userTeamUserId">
+               <h3 id="userTeamUserIdLabel"></h3>
+            </div>
+            <div class="effective-date">
+               <div class="inline-item">Effective Date:</div>
+               <input type="text" id="userTeamEffectiveDate">
+            </div>
+            <div>
+               &nbsp;
+            </div>
+            <div class="user-bottom-buttons">
+               <input type="hidden" id="userTeamFormAction">
+               <button id="btnSaveEditorForm" class="btm-btn">Save</button>
+               &nbsp;
+               <a href="" class="btn-close">Cancel</a>
+            </div>
+         </div>   
+      </div>
+   </div>
+</div>
+

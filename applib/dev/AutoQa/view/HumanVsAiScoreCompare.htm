@@ -1,0 +1,29 @@
+<div class="ai-vs-human-score-compare-directive-holder">
+  <div class="ai-vs-human-score-compare-holder">
+    <div class="ai-vs-human-score-compare-header">
+      <div class="auto-qa-detail-display-header">
+        <div class="directive-title-holder">
+          Team Member vs. AI Score Comparison
+        </div>
+        <div>
+          <span id="directiveTimeFrame"></span>
+        </div>
+      </div>
+
+      <div id="directiveLoading" class="directive-loading-information-holder">
+        <img
+          alt="Comparison Loading"
+          class="directive-information-loading-image"
+        />
+      </div>
+      <input type="hidden" id="currentSortValue" style="width: 50px" />
+      <input type="hidden" id="currentSortOrder" style="width: 50px" />
+      <!-- <button id="btnRefreshDetails" class="directive-refresh-button"><i class="fa fa-refresh"></i> Load & Refresh Details</button> -->
+    </div>
+    <div class="ai-vs-human-score-compare-body">
+      <div id="humanVsAiScoreCompareDisplayHolder">
+        <div id="humanVsAiScoreCompareDisplay" style="text-align: center"></div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="virtual-mentor-scoring-holder">
+   <div>
+      <div class="header-holder">
+         <div class="header-item area-name">Area</div>
+         <div class="header-item area-slider">Slider</div>
+         <div class="header-item area-weight">Weight</div>
+      </div>      
+      <div class="list-holder">
+         <div>
+            <div class="calculation-area-list-item area-name">Unallocated</div>
+            <div class="calculation-area-list-item area-slider">
+               
+            </div>
+            <div class="calculation-area-list-item area-weight">
+               <label id="remainingWeightOption"></label>
+               <input type="hidden" id="remainingWeight" />
+            </div>   
+         </div>
+         <div class="button-holder">
+            <button id="btnEqualAllocation" value="eq">Equal</button>
+            <button id="btnBalScoreAllocation" value="balscore">Balanced Score</button>
+            <button id="btnAttritionAllocation" value="atrisk">Attrition</button>
+            <button id="btnLastTouchAllocation" value="lasttouch">Last Touch</button>
+            <button id="btnClearAllocation" value="clear">Clear</button>
+            <span id="weightError" class="weight-information-holder">&nbsp;</span>
+         </div>
+         <div id="virtualMentorScoringOptionList"></div>
+      </div>
+      <div class="footer-holder">
+         <div class="button-holder">
+            <button id="generateListButton" class="">Generate List</button>
+            <button id="saveConfigurationButton" class="">Save Configuration</button>
+         </div>
+      </div>
+   </div>
+   
+</div>

@@ -1,0 +1,69 @@
+<div class="basic-directive-holder">
+   <div class="top-filters">
+      <div class="filter-input-group">
+         <span>Users <select id="userBadges_usersFilter"></select></span>
+      </div>
+      <div class="filter-input-group">
+         <span>Badge Group <select id="userBadges_groupFilter"></select></span>
+      </div>
+      <div class="filter-input-group">   
+         <span>Badges <select id="userBadges_badgeFilter"></select></span>
+      </div>
+   </div>
+   <div class="userdetails_holder">
+      <div class="userdetails_user">
+         <div class="user-holder">
+            <div class="user-avatar">
+               <img id="user-avatar" />
+            </div>
+            <div class="user-holder_details">
+               <div id="user-full-name"></div>
+               Total Badges for User: <b><span id="user-badge-count"></span></b><br>
+               <button id="btnAddUserBadge" class="btn-large btn-assign-pts">Add Badge</button>
+            </div>   
+         </div>
+      </div>
+      <div class="userdetails_content">
+         <div class="header-holder">
+            <div class="header-item user-badge-image">Badge Image</div>
+            <div class="header-item user-badge-name">Badge Name</div>
+            <div class="header-item user-badge-date">Date Earned</div>
+            <div class="header-item user-badge-button-holder">Actions</div>
+         </div>
+         <div class="list-holder">
+            <div id="userBadges_EarnedListHolder"></div>
+         </div>
+      </div>
+   </div>
+   <div id="userBadgeManagementPanel" class="editor-form">
+      <div class="form-holder">
+         <button class="btn-close btn-close-x"><i class="fa fa-times"></i></button>
+
+         <div id="userBadgeManager_ErrorsFound" class="error-information-holder"></div>
+         <div>
+            <h2>
+               Assign To: <b><span id="userBadgeManager_AssignToReadOnlyLabel"></span></b>
+            </h2>
+
+            <div class="badgeAdminForm_form">
+               <div class="badgeAdminForm_image-preview">
+                  <img id="userBadgeManager_BadgeImage" />
+               </div>
+               <div class="badgeAdminForm_form-preview">
+                  <hidden id="userBadgeManager_AssignTo" readonly></hidden>
+                  <br/>
+                  <strong>Badge:</strong> <select id="userBadgeManager_BadgeId"></select>
+                  <br /> <br/>
+                  <strong>Date Earned:</strong> <input type="text" class="user-badge-manager-earned-date" id="userBadgeManager_EarnedDate">
+                  <br />
+               </div>
+            </div>
+         </div>
+         <div class="acuityAdminForm_btns">
+            <button class="btn-large" id="btnSave">Save</button>
+            &nbsp;&nbsp;
+            <button class="btn-close btn-large">Close</button>
+         </div>
+      </div>   
+   </div>
+</div>

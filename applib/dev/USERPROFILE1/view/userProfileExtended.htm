@@ -1,0 +1,354 @@
+<style>
+.button--red {
+   background-color:var(--red);
+}
+.user-current-theme-background-holder
+{
+   position:absolute;
+   top:-10px;
+   left:-10px;
+   min-height:100%;
+   max-height:100%;
+   min-width: 100%;
+   max-width: 100%;
+   z-index: -1;
+   opacity:50%;
+   
+}
+.user-profile-extended-directive-holder
+   {
+      max-height:80vh;
+      min-height:80vh;
+   }
+   .user-profile-extended-display-holder
+   {
+
+   }
+   .user-profile-extended-form-holder
+   {
+      border:2px solid black;
+      background-color:white;
+      position: absolute;
+      top: 10vh;
+      left:10vw;
+      z-index:9000;
+      min-width:70vw;
+      max-width:70vw;
+      min-height:50vh;
+      max-height:50vh;
+      overflow:auto;
+      border-radius: 25px;
+      padding:10px;
+   }
+   .user-profile-display-info-section
+   {
+      display:inline-block;
+      min-width:49%;
+      max-width:49%;
+      min-height:500px;
+      max-height:50%;
+      border:1px solid black;
+      padding:5px;
+      overflow:auto;
+      vertical-align:top;
+   }
+   .display-info-form-row
+   {
+      background-color:white;
+      padding:5px 3px 5px 3px;
+      vertical-align: top;
+   }
+   .display-info-form-row:nth-child(even)
+   {
+      background-color:lightgray;
+   }
+   .inline-data-item-label {
+      display:inline-block;
+      font-weight:bold;
+      max-width:150px;
+      min-width:150px;
+   }
+   .inline-data-item {
+      display:inline-block;
+   }
+   .user-color-item-display-holder {
+      border-radius:25px;
+      text-align:center;
+      min-height:25px;
+      max-height:25px;
+      min-width:25px;
+      max-width:25px;
+      display:inline-block;
+      margin:5px;
+      padding:3px;
+   }
+   .user-profile-extended-user-tab-item-holder
+   {
+      display:inline-block;
+      text-align:center;
+      background-color:blue;
+      color:yellow;
+      min-width:100px;
+      min-height:25px;
+      padding:5px 3px 5px 3px;
+   }
+
+   .user-profile-extended-user-tab-item-holder.active
+   {
+      color:blue;
+      background-color:yellow;
+      border:1px solid yellow;
+   }
+   .user-profile-saved-reports-listing-holder
+   {
+      min-height:200px;      
+      padding:3px;
+   }
+   .user-profile-saved-report-item-row
+   {
+      background-color:white;
+      min-height:30px;
+      max-height:30px;
+   }
+   .user-profile-saved-report-item-row:nth-child(even)
+   {
+      background-color:lightgray;
+   }
+   .user-profile-report-name-holder
+   {
+      display:inline-block;
+      min-width:45%;
+      max-width:45%;
+   }
+   .user-profile-saved-report-button-holder
+   {
+      display:inline-block;
+      max-width:50%;
+      min-width:50%;
+      text-align:right;
+   }
+   .current-user-reports-saved-listing-holder
+   {
+      max-height:175px;
+      min-height:175px;
+      overflow:auto;
+   }
+   .user-saved-reports-found-count-holder,
+   .user-avatars-found-count-holder
+   {
+      color:slategray;
+      font-size:.75em;
+   }
+
+   .color-picker-display-holder-form
+   {
+      border:2px solid black;
+      border-radius:10px;
+      background-color:white;
+      max-width:425px;
+      min-width:425px;
+      max-height:400px;
+      min-height:400px;
+      position:absolute;
+      top:15vh;
+      left:15vw;
+      z-index:8000;
+      padding:5px;
+   }
+   .color-picker-holder
+   {
+      max-height:375px;
+      min-height:375px;
+      max-width:420px;
+      min-width:420px;
+      padding-left:5px;
+      padding-right:5px;
+      overflow: auto;      
+   }
+   .color-picker-item {
+
+   }
+   .color-cell {
+      max-height:20px;
+      min-height:20px;
+      max-width:20px;
+      min-width:20px;
+      display:inline-block;
+      margin:2px;
+      border-radius: 20px;
+
+   }
+   .avatar-picker-display-holder-form
+   {
+      border:2px solid black;
+      border-radius:10px;
+      background-color:white;
+      max-width:650px;
+      min-width:650px;
+      max-height:450px;
+      min-height:450px;
+      position:absolute;
+      top:15vh;
+      left:15vw;
+      z-index:8000;
+      padding:5px;
+   }
+   .avatar-picker-holder
+   {
+      max-height:375px;
+      min-height:375px;
+      max-width:99%;
+      min-width:99%;
+      padding-left:5px;
+      padding-right:5px;
+      padding-bottom:10px;
+      padding-top:5px;
+      overflow: auto;      
+   }
+   .avatar-picker-item {      
+      display:inline-block;
+      margin:2px;
+      padding:2px;
+   }
+   .avatar-picker-item.active {
+      border:4px solid blue;
+      border-radius:10px;
+   }
+   .avatar-picker-item IMG{
+      max-width:75px;
+      max-height:75px;
+   }
+</style>
+
+
+<div class="user-profile-extended-directive-holder">
+   <div class="user-profile-extended-display-holder">
+      <div class="user-profile-display-info-section">
+         <div>
+            <div class="display-info-form-row">
+               <div class="inline-data-item-label">Avatar:</div>
+               <div class="inline-data-item">
+                  <img id="currentUserAvatarImage" width="75" height="75">
+               </div>
+            </div>
+            <div class="display-info-form-row">
+               <div class="inline-data-item-label">User Name:</div>
+               <div id="lblUserId" class="inline-data-item"></div>
+            </div>
+            <div class="display-info-form-row">
+               <div class="inline-data-item-label">First Name:</div>
+               <div id="lblUserFirstName" class="inline-data-item"></div>
+            </div>
+            <div class="display-info-form-row">
+               <div class="inline-data-item-label">Last Name:</div>
+               <div id="lblUserLastName" class="inline-data-item"></div>
+               </div>
+            <div class="display-info-form-row">
+               <div class="inline-data-item-label">Full Name:</div>
+               <div id="lblUserFullName" class="inline-data-item"></div>
+            </div>
+             <div class="display-info-form-row">
+               <div class="inline-data-item-label">Email:</div>
+               <div id="lblUserEmailAddress" class="inline-data-item"></div>
+            </div>
+            <div class="display-info-form-row">
+               <div class="inline-data-item-label">Alt. Email:</div>
+               <div id="lblUserEmailAddress2" class="inline-data-item"></div>
+            </div>
+            <div class="display-info-form-row">
+               <div class="inline-data-item-label">Cell Phone:</div>
+               <div id="lblUserCellPhone" class="inline-data-item"></div>
+            </div>            
+            <div class="display-info-form-row">
+               <div class="inline-data-item-label">Best Contact Type:</div>
+               <select id="currentUserBestContactType"></select>
+            </div>
+            <div class="display-info-form-row">
+               <div class="inline-data-item-label">User Dashboard Tab:</div>
+               <div class="inline-data-item">&nbsp;</div>
+               <div id="userDashboardTabDisplay"></div>
+               <br style="clear:both;">
+            </div>
+             <div class="display-info-form-row">
+               <div class="inline-data-item-label">Colors:</div>
+               <div class="inline-data-item">
+                  <div id="UserColorDisplay_1" class="user-color-item-display-holder"></div>
+                  <div id="UserColorDisplay_2" class="user-color-item-display-holder"></div>
+                  <div id="UserColorDisplay_3" class="user-color-item-display-holder"></div>
+                  <div id="UserColorDisplay_4" class="user-color-item-display-holder"></div>
+                  <div id="UserColorDisplay_5" class="user-color-item-display-holder"></div>
+               </div>
+            </div>
+            <div class="display-info-form-row">
+               <div class="inline-data-item-label">Theme:</div>
+               <select id="currentUserVirtualPrizeCatalogTheme"></select>
+            </div>            
+            <div class="display-info-form-row">
+               <button id="btnEditProfile">Edit</button>
+               <button id="btnRefreshProfile"><i class="fa fa-refresh"></i></button>
+            </div>   
+         </div>
+      </div>
+      <div class="user-profile-display-info-section">
+         <div class="display-info-form-row">
+            <h3>Current Saved Reports</h3>
+            <div id="currentUserSavedReportsList" class="current-user-reports-saved-listing-holder"></div>
+            <div class="user-saved-reports-found-count-holder">Saved Reports Found:<label id="currentUserSavedReportsCount"></label></div>
+         </div>
+      </div>
+   </div>
+   <div class="user-profile-extended-form-holder">
+      <div class="form-editor">
+         <div>
+            <h3>Current Form Editor:</h3>
+            <button class="btn-close""><i class="fa fa-x"></i></button>            
+         </div>
+         <hr>
+         <div>
+            UserId: <input type="text" id="currentUserId"><br>
+            First Name: <input type="text" id="currentUserFirstName" ><br>
+            Last Name: <input type="text" id="currentUserLastName"><br>
+            Email: <input type="text" id="currentUserEmailAddress"><br>
+            Alt. Email: <input type="text" id="currentUserEmailAddress2"><br>
+            Cell Phone: <input type="text" id="currentUserCellPhone"><br>
+         </div>
+         <div>
+            <button id="btnSaveCurrentUserProfile" class="button btn btn-save">Save</button>
+            &nbsp;
+            <button id="btnCancelCurrentUserProfile" class="button btn btn-close">Cancel</button>
+         </div>
+      </div>
+   </div>
+   <hr />   
+   <div id="colorPickerHolder">
+      <div class="color-picker-display-holder-form">
+         <div style="float:right;">
+            <input type="hidden" id="currentColorPickerIndex">
+            <button id="btnCloseColorPicker" class="btn-close-color"><i class="fa fa-close"></i></button>
+         </div>
+         <br style="clear:both">
+         <div class="color-picker-holder">
+            <div id="colorPickerDisplay"></div>
+         </div>
+      </div>
+   </div>
+   <div id="avatarPickerHolder">
+      <div class="avatar-picker-display-holder-form">
+         <div style="float:right;">
+            <input type="hidden" id="currentUserAvatarFileName">
+            <input type="hidden" id="currentUserAvatarFileBase">
+            <button id="btnCloseAvatarPicker" class="btn-close-avatar"><i class="fa fa-close"></i></button>
+         </div>
+         <br style="clear:both">
+         <div class="avatar-picker-holder">
+            <div id="avatarPickerDisplay"></div>
+         </div>
+         <br>
+         <div class="user-avatars-found-count-holder">Available Avatars Found:<label id="avatarsFoundCount"></label></div>
+      </div>
+   </div>
+   <div id="currentUserVirtualPrizeCatalogThemeDisplay" class="user-current-theme-background-holder">&nbsp;</div>
+   <div>
+      <div id="currentProfileDisplayInfoDev"></div>
+   </div>
+</div>

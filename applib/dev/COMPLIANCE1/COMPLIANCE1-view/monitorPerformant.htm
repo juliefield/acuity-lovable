@@ -1,0 +1,588 @@
+      <style>
+          html input[disabled]:hover {
+				    background: lightgray;
+				  }
+				  html input[type="button"] {
+				  	background-color: white;
+				  }				  
+    .page-wrapper {
+      width: 910px;
+      margin: 0px auto 0 auto;
+      position: relative;
+      border: 1px solid gray;
+    }
+    .mon-wrapper
+    {
+        position:relative;
+    }
+    .mon-stats
+    {
+        position:absolute;
+        top: 70px;
+        right: 30px;
+        background-color: Green;
+        width: 250px;
+        z-index: 50;
+    }
+    .mon-stats ul
+    {
+        list-style: none;
+        padding: 10px;
+        margin: 0;
+    }
+    .mon-stats ul li
+    {
+        color: White;
+        font-size: 12px;
+    }
+    .mon-stats li label
+    {
+        font-weight: bold;
+        width: 60px;
+    }
+    .mon-stats li span
+    {
+        padding-left: 15px;
+        float:right;
+    }
+    .mon-content
+    {
+        position:relative;
+        padding: 10px;
+        margin-top: 10px;
+        width: 100%;
+        overflow-y:scroll;
+    }
+    .mon-content li
+    {
+        padding: 5px;
+    }
+    .mon-answer
+    {
+        float:right;
+        min-width: 200px;
+        /* padding-right: 300px; */
+    }
+    .multiplier
+    {
+    	padding-left: 20px;
+    }
+    .disposition
+    {
+    	text-align: left !important;
+    	padding-left: 70px;
+    }
+    .mp-lt,.mp-gt
+    {
+    	cursor: pointer;
+    	padding-left: 5px;
+    	padding-right: 5px;
+    	font-weight: bold;
+    }
+    .mp-val
+    {
+    	color: green;
+    	font-weight: bold;
+    }
+    .mon-subtotal
+    {
+        width: 40px;
+        float:right;
+        text-align: right;
+        color: Blue;
+        font-weight: bold;
+        font-size: 20px;
+        vertical-align:middle;
+    }
+    .mon-submit
+    {
+        clear:both;
+    }
+    .mon-comments
+    {
+        clear: both;
+    }
+    .mon-comments label
+    {
+        vertical-align:middle;
+    }
+    .mon-comments textarea
+    {
+        margin-left: 10px;
+        vertical-align:middle;
+    }
+    textarea
+    {
+        overflow: visible;
+    }
+    .mon-fields
+    {
+        margin-left: 5px;
+    }
+
+    .mon-field
+    {
+        clear both;
+        min-height: 30px;
+    }
+
+    .mon-field label
+    {
+        color:White;
+        float: left;
+    }
+
+    .mon-field-input, .mon-field select
+    {
+        width: 120px;
+        padding-right: 5px;
+        float: right;
+    }
+
+    .sel_time
+    {
+        width: 30px;
+    }
+
+    .mon-address textarea
+    {
+        margin-left: 0px;
+    }
+
+    .mon-question
+    {
+        /* font-weight: bold; */
+    }
+    .mon-section
+    {
+        font-weight: bold;
+    }
+    .mon-desc
+    {
+        margin-top: 8px;
+        margin-left: 25px;
+        font-size: 12px;
+        width: 60%;
+    }
+    .highlight-hover {
+        background: white;
+        color: black;
+        border: none;
+        margin-left: 12px;
+        margin-right: 2px;
+    }
+    .monitor-table
+    {
+    	margin-top: 20px;
+    	border: 1px solid black;
+    }
+    .monitor-table td
+    {
+    	font-size: 11px;
+    	text-align: center;
+    	border: 1px solid black;
+    }
+    .monitor-table th
+    {
+    	text-align: center;
+    	border: 1px solid black;
+    }
+
+    .highlight {
+        background: green !important;
+        color: white;
+    }
+
+      </style>
+
+<div class="form-monitor" ng-repeat="f in form" ng-show="credentialed()">
+    <div ng-hide="monitoringnow()">
+      Queue:
+                <select ng-model="f.Queue" ng-disabled="agentLocked() || readonly()" >
+                    <option value="">--Select from Queue--</option>
+                    <option ng-repeat="item in queue" value="{{item.id}}">
+                        {{'Completed: ' + item.completed + '/' + item.required + ', Points: ' + item.points + ', Complaints: ' + item.complaints + ' - ' + item.name}}
+                    </option>
+                </select>
+                <button type="button" class="btn btn-xs btn-success" style="font-size:10px;" ng-show="agentQueued()" ng-click="monitorqueuedagent()">Monitor From Queue</button>
+			<button type="button" class="btn btn-xs btn-success" style="font-size:10px;margin-left:200px;" ng-show="true" ng-click="monitornewagent()">Monitor NON-QUEUED Agent</button></label>
+    </div>    
+
+    <div ng-show="monitoringnow()">
+    	<table style="width:100%;">
+    		<tr>
+    			<td style="width:15%;">Project</td>
+    			<td style="width:35%;">
+								<select style="width: 200px; float: left;" ng-change="clientchange()" ng-model="f.clientselection">
+                    <option value="" selected="selected"></option>
+                    <option ng-repeat="item in clientlist" ng-if="f.Project==item.projectid" value="{{item.clientname}}">
+                        {{item.clientname}}
+                    </option>
+								</select>
+            		<input type="text" style="width: 180px; margin-left: -199px; margin-top: 1px; border: none; float: left;" ng-disabled="readonly()"  ng-model="f.Group" />
+    			</td>
+    			<td style="width:15%;">Case Number</td>
+    			<td style="width:35%;">
+    				<input type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" ng-disabled="readonly()" style="width: 90%;"  ng-model="f.CallID" />
+    			</td>
+    		</tr>
+    		<tr>
+    			<td>Reviewer</td>
+    			<td><input type="text" style="width:90%" value="{{reviewer}}" ng-model="f.Reviewer" /></td>
+    			<td>&nbsp;</td>
+    			<td>
+    				<input type="radio" name="ghp" selected="selected" value="GHP" ng-model="selectedLetterType" /><label for="GHP">GHP</label>
+    				<input type="radio" name="ghp" value="NGHP" ng-model="selectedLetterType" /><label for="NGHP">NGHP</label>
+    			</td>
+    		</tr>
+    		<tr>
+    			<td>Review Date</td>
+    			<td>
+            	<input type="text" style="text-align: center;background-color:lightgray;" ng-disabled="true || readonly()" ng-model="f.AuditDate" /><span class="form-box-required">*</span>    				
+    			</td>
+    			<td>Letter ID and Name</td>
+    			<td>
+							<select style="width: 200px; float: left;" ng-model="f.lettertypeselection">
+                   <option ng-repeat="item in letterTypes" ng-if="selectedLetterType==item.GHP_NGHP" value="{{item.LETTER_NUMBER}}">
+                      {{item.LETTER_NUMBER}} - {{item.LETTER_TYPE}}
+                   </option>
+							</select>
+    			</td>
+    		</tr>
+    		<tr>
+    			<td>User Group</td>
+    			<td>
+                <select ng-model="f.GroupName" ng-change="groupchange()" ng-disabled="agentLocked() || readonly()">
+                    <option value="select" selected="selected">--Select--</option>
+                    <option ng-repeat="item in grouplist" value="{{item.group_name}}">
+                        {{item.group_name}}
+                    </option>
+                    <option value="">Non-Agent</option>
+                </select><span class="form-box-required">*</span>    				
+    			</td>
+    			<td>Supervisor</td>
+    			<td>
+                <select ng-model="f.Supervisor" ng-disabled="readonly()" >
+                    <option ng-repeat="item in userlist" ng-if="item.role != 'CSR'" value="{{item.user_id}}">
+                        {{item.name + ' (' + item.CLOCKID + ')'}}
+                    </option>
+                </select><span class="form-box-required">*</span>    				
+    			</td>
+    		</tr>
+    		<tr>
+    			<td>User Name/ID</td>
+    			<td>
+                <select ng-change="changeAgent()" ng-model="f.Agent" ng-disabled="agentLocked() || readonly()" >
+                    <option ng-repeat="item in userlist" ng-if="f.GroupName==item.group_name" value="{{item.user_id}}">
+                        {{item.name + ' (' + item.CLOCKID + ')'}}
+                    </option>
+                </select><span class="form-box-required">*</span>    				
+    			</td>
+    			<td>Team Lead</td>
+    			<td>
+                <select ng-model="f.GroupLeader" ng-disabled="readonly()" >
+                    <option ng-repeat="item in userlist" ng-if="item.role != 'CSR'" value="{{item.user_id}}">
+                        {{item.name + ' (' + item.CLOCKID + ')'}}
+                    </option>
+                </select><span class="form-box-required">*</span>    				
+    			</td>
+    		</tr>
+    		<tr>
+    			<td></td>
+    			<td></td>
+    			<td>Manager</td>
+    			<td>
+                <select ng-model="f.Manager" ng-disabled="readonly()">
+                    <option ng-repeat="item in userlist" ng-if="item.role != 'CSR'" value="{{item.user_id}}">
+                        {{item.name + ' (' + item.CLOCKID + ')'}}
+                    </option>
+                </select>    				
+    			</td>
+    		</tr>
+    	</table>
+    	<table class="monitor-table">
+    		<thead>
+    			<tr>
+    				<th style="width:15%">Parameters</th>
+    				<th style="width:35%">Checklist</th>
+    				<th style="width:5%">Points</th>
+    				<th style="width:10%">Disposition</th>
+    				<th style="width:35%">Comments</th>
+    			</tr>
+    		</thead>
+    		<tbody>
+    			<tr>
+    				<td>Information Disclosure</td>
+    				<td>Inappropriate information shared with incorrect entity. This includes any <b>PHI and/or PII shared.</b></td>
+    				<td>0 (AF)</td>
+    				<td class="disposition">
+    					<span class="mon-answer"><select class="cheapscore qst" qstid="240" score="0" af="Y"><option value="">--select--</option><option selected="selected" value="Pass">Pass</option><option value="Fail">Fail</option></select><span class="mon-subtotal">&nbsp;</span></span>
+    				</td>
+    				<td><textarea class="qst" qstid="242" type="text" style="width: 95%; border: none;" ng-disabled="readonly()"  ng-modelHOLD="f.Comment" ></textarea></td>
+    			</tr>
+    			<tr>
+    				<td rowspan="3">Decision Making</td>
+    				<td><b>Rationale/Case Level</b> -Case decision was inappropriate for the documentation provided. This category also relates to scenarios where all pertinent documentation was not reviewed to make case decision.</td>
+    				<td>16 (AF)</td>
+    				<td class="disposition">
+    					<span class="mon-answer"><select class="cheapscore qst" qstid="244" score="16" af="Y"><option value="">--select--</option><option selected="selected" value="Pass">Pass</option><option value="Fail">Fail</option></select><span class="mon-subtotal">&nbsp;</span></span>
+    				</td>
+    				<td><textarea class="qst" qstid="243" type="text" style="width: 95%; border: none;" ng-disabled="readonly()"  ng-modelHOLD="f.Comment" ></textarea></td>
+    			</tr>
+    			<tr>
+    				<td><b>Inappropriate Letter-</b> The incorrect letter was generated, and the letter sent is not concurrent with the decision and or SOP's and Job Aids.</td>
+    				<td>16 (AF)</td>
+    				<td class="disposition">
+    					<span class="mon-answer"><select class="cheapscore qst" qstid="246" score="16" af="Y"><option value="">--select--</option><option selected="selected" value="Pass">Pass</option><option value="Fail">Fail</option></select><span class="mon-subtotal">&nbsp;</span></span>
+    				</td>
+    				<td><textarea class="qst" qstid="245" type="text" style="width: 95%; border: none;" ng-disabled="readonly()"  ng-modelHOLD="f.Comment" ></textarea></td>
+    			</tr>
+    			<tr>
+    				<td><b>Case Work-</b> Case not processed according to SOP's, Job Aids and Resources. (E.g. incorrect claims removed, claims dispositioned inappropriately, letter was initiated from the incorrect DCN, check wasn't acknowledged etc.)</td>
+    				<td>6</td>
+    				<td class="disposition">
+    					<span class="mon-answer"><select class="cheapscore qst" qstid="249" score="6" af="N"><option value="">--select--</option><option selected="selected" value="Pass">Pass</option><option value="Fail">Fail</option></select><span class="mon-subtotal">&nbsp;</span></span>
+    				</td>
+    				<td><textarea class="qst" qstid="250" type="text" style="width: 95%; border: none;" ng-disabled="readonly()"  ng-modelHOLD="f.Comment" ></textarea></td>
+    			</tr>
+    			<tr>
+    				<td rowspan="4">Documentation Match</td>
+    				<td><b>Outgoing Correspondence</b> provides inaccurate and incomplete information (E.g. Boxes Checked, DOI, Insurer ID, CC Field, Subscriber Name, Check Number)</td>
+    				<td>6</td>
+    				<td class="disposition">
+    					<span class="mon-answer"><select class="cheapscore qst" qstid="274" score="6" af="N"><option value="">--select--</option><option selected="selected" value="Pass">Pass</option><option value="Fail">Fail</option></select><span class="mon-subtotal">&nbsp;</span></span>
+    				</td>
+    				<td><textarea class="qst" qstid="275" type="text" style="width: 95%; border: none;" ng-disabled="readonly()"  ng-modelHOLD="f.Comment" ></textarea></td>
+    			</tr>
+    			<tr>
+    				<td>The <b>Amounts and Balances</b> on the outgoing correspondence are incorrect. (E.g. Payment Amount, Interest Amount, Total Amount Due)</td>
+    				<td>6</td>
+    				<td class="disposition">
+    					<span class="mon-answer"><select class="cheapscore qst" qstid="276" score="6" af="N"><option value="">--select--</option><option selected="selected" value="Pass">Pass</option><option value="Fail">Fail</option></select><span class="mon-subtotal">&nbsp;</span></span>
+    				</td>
+    				<td><textarea class="qst" qstid="277" type="text" style="width: 95%; border: none;" ng-disabled="readonly()"  ng-modelHOLD="f.Comment" ></textarea></td>
+    			</tr>
+    			<tr>
+    				<td>The <b>Dates</b> on the outgoing correspondence are inaccurate. (E.g. Next Interest Accrual Date, Demand Date etc.)</td>
+    				<td>6</td>
+    				<td class="disposition">
+    					<span class="mon-answer"><select class="cheapscore qst" qstid="278" score="6" af="N"><option value="">--select--</option><option selected="selected" value="Pass">Pass</option><option value="Fail">Fail</option></select><span class="mon-subtotal">&nbsp;</span></span>
+    				</td>
+    				<td><textarea class="qst" qstid="279" type="text" style="width: 95%; border: none;" ng-disabled="readonly()"  ng-modelHOLD="f.Comment" ></textarea></td>
+    			</tr>
+    			<tr>
+    				<td>The <b>Claim Summary Form/Enclosure</b> reflects information. (E.g.  Incorrect Balance Due)</td>
+    				<td>6</td>
+    				<td class="disposition">
+    					<span class="mon-answer"><select class="cheapscore qst" qstid="280" score="6" af="N"><option value="">--select--</option><option selected="selected" value="Pass">Pass</option><option value="Fail">Fail</option></select><span class="mon-subtotal">&nbsp;</span></span>
+    				</td>
+    				<td><textarea class="qst" qstid="281" type="text" style="width: 95%; border: none;" ng-disabled="readonly()"  ng-modelHOLD="f.Comment" ></textarea></td>
+    			</tr>
+
+    			<tr>
+    				<td rowspan="4">System Updates</td>
+    				<td><b>Notes </b> are incomplete and inconsistent with decision and documentation being reviewed. (Notes must be present in both BCRS and every record of HIGLAS where applicable)</td>
+    				<td>16 (AF)</td>
+    				<td class="disposition">
+    					<span class="mon-answer"><select class="cheapscoreqst" qstid="282" score="16" af="Y"><option value="">--select--</option><option selected="selected" value="Pass">Pass</option><option value="Fail">Fail</option></select><span class="mon-subtotal">&nbsp;</span></span>
+    				</td>
+    				<td><textarea class="qst" qstid="283" type="text" style="width: 95%; border: none;" ng-disabled="readonly()"  ng-modelHOLD="f.Comment" ></textarea></td>
+    			</tr>
+    			<tr>
+    				<td><b>HIGLAS Balance</b> is incorrect and inconsistent with case decision. (E.g. Adjustment not being made according to the provided documentation and checks not being applied appropriately.)</td>
+    				<td>16 (AF)</td>
+    				<td class="disposition">
+    					<span class="mon-answer"><select class="cheapscore qst" qstid="284" score="16" af="Y"><option value="">--select--</option><option selected="selected" value="Pass">Pass</option><option value="Fail">Fail</option></select><span class="mon-subtotal">&nbsp;</span></span>
+    				</td>
+    				<td><textarea class="qst" qstid="285" type="text" style="width: 95%; border: none;" ng-disabled="readonly()"  ng-modelHOLD="f.Comment" ></textarea></td>
+    			</tr>
+    			<tr>
+    				<td><b>Case Status and Claims</b> placed in the incorrect status in BCRS, once case decision was made. </td>
+    				<td>6</td>
+    				<td class="disposition">
+    					<span class="mon-answer"><select class="cheapscore qst" qstid="286" score="6" af="N"><option value="">--select--</option><option selected="selected" value="Pass">Pass</option><option value="Fail">Fail</option></select><span class="mon-subtotal">&nbsp;</span></span>
+    				</td>
+    				<td><textarea class="qst" qstid="287" type="text" style="width: 95%; border: none;" ng-disabled="readonly()"  ng-modelHOLD="f.Comment" ></textarea></td>
+    			</tr>
+    			<tr>
+    				<td><b>Task Not Completed</b>- This occurs when a work item/items are closed and caseworker documents that a letter was sent but no letter was initiated or successfully sent. </td>
+    				<td>0 (AF)</td>
+    				<td class="disposition">
+    					<span class="mon-answer"><select class="cheapscore qst" qstid="288" score="0" af="Y"><option value="">--select--</option><option selected="selected" value="Pass">Pass</option><option value="Fail">Fail</option></select><span class="mon-subtotal">&nbsp;</span></span>
+    				</td>
+    				<td><textarea class="qst" qstid="289" type="text" style="width: 95%; border: none;" ng-disabled="readonly()"  ng-modelHOLD="f.Comment" ></textarea></td>
+    			</tr>
+    		</tbody>
+    		<tfoot>
+    			<tr>
+							<td colspan="2" style="font-size:16px;text-align: right;font-weight: bold;">Score:&nbsp;</td>
+							<td style="font-size:16px;text-align: center;background-color:White;font-weight: bold;" class="show-score"></td>
+							<td style="font-size:16px;text-align: center;background-color:White;font-weight: bold;" class="show-disp"></td>
+   				</tr>
+    		</tfoot>
+    	</table>
+      <div style="margin: 0 auto 0 auto">
+        <div class="form-box-group" style="display:none;">
+            <div class="form-box-item"><label>Directory:</label><input type="text" ng-disabled="readonly()" ng-model="f.Directory" ng-change="refreshCallID()" /><span class="form-box-required">*</span></div>
+            <div class="form-box-item"><label>Account#:</label><input type="text" ng-disabled="readonly()"  ng-model="f.AccountNumber" ng-change="refreshCallID()" /><span class="form-box-required">*</span></div>
+            <div class="form-box-item"><label>Name on account:</label><input type="text" ng-disabled="readonly()"  ng-model="f.NameOnAccount" /></div>
+            <div class="form-box-item">
+            		<label style="float:left;">Client:</label>
+								<select style="width: 200px; float: left;" ng-change="clientchange()" ng-model="f.clientselection">
+                    <option value="" selected="selected"></option>
+                    <option ng-repeat="item in clientlist" ng-if="f.Project==item.projectid" value="{{item.clientname}}">
+                        {{item.clientname}}
+                    </option>
+								</select>
+            		<input type="text" style="width: 180px; margin-left: -199px; margin-top: 1px; border: none; float: left;" ng-disabled="readonly()"  ng-model="f.Group" />
+            </div>
+            <div class="form-box-item"><label>PERFORMANT Client ACCT #:</label><input type="text"ng-disabled="readonly()"   ng-model="f.GroupAccountNumber" /><span class="form-box-required">*</span></div>
+            <div class="form-box-item"><label>&nbsp;</label><label style="font-size: 10px;">* - Required Field</label></div>
+        </div>
+        <div class="form-box-group" style="display:none;">
+            <div class="form-box-item"><label>Stage:</label>
+            	<!--
+                <select ng-model="f.Project" ng-disabled="agentLocked() || readonly()">
+                    <option value="select" selected="selected">--Select--</option>
+                    <option ng-repeat="item in projectlist" value="{{item.projectid}}">
+                        {{item.projectdesc}}
+                    </option>
+                    <option value="0">Non-CSR</option>
+                </select><span class="form-box-required">*</span>
+              -->
+            </div>
+            <div class="form-box-item"><label>Agent:</label>
+            		<!--
+                <select ng-change="changeAgent()" ng-model="f.Agent" ng-disabled="agentLocked() || readonly()" >
+                    <option ng-repeat="item in userlist" ng-if="f.Project==item.projectid" value="{{item.user_id}}">
+                        {{item.name + ' (' + item.CLOCKID + ')'}}
+                    </option>
+                </select><span class="form-box-required">*</span>
+                -->
+            </div>
+            <div class="form-box-item"><label>Supervisor:</label>
+            	  <!--
+                <select ng-model="f.Supervisor" ng-disabled="readonly()" >
+                    <option ng-repeat="item in userlist" ng-if="item.role != 'CSR'" value="{{item.user_id}}">
+                        {{item.name + ' (' + item.CLOCKID + ')'}}
+                    </option>
+                </select><span class="form-box-required">*</span>
+                -->
+            </div>
+            <div class="form-box-item"><label>Manager:</label>
+            		<!--
+                <select ng-model="f.Manager" ng-disabled="readonly()">
+                    <option ng-repeat="item in userlist" ng-if="item.role != 'CSR'" value="{{item.user_id}}">
+                        {{item.name + ' (' + item.CLOCKID + ')'}}
+                    </option>
+                </select>
+                -->
+            </div>
+            <div class="form-box-item"><label>Audit Date:</label>
+            	<!--
+            	<input type="text" style="text-align: center;" ng-disabled="true || readonly()" ng-model="f.AuditDate" /><span class="form-box-required">*</span>
+            	-->
+            </div>
+        </div>
+        <div class="form-box-group" style="display:none;">
+            <div class="form-box-item"><label>Call ID:</label><input type="text" ng-disabled="readonly()" ng-model="f.CallID"  ng-disabled="agentLocked()" /></div>
+            <div class="form-box-item"><label>Date/Time of Call:</label>
+                <input ng-disabled="readonly()" dynamic-ui ng-model="f.CallDate" type="text" />
+                <span class="bad-ng-calltime">
+                    <input style="width: 85px;" ng-disabled="readonly()" dynamic-ui ng-model="f.CallTime" type="text" />
+                </span>
+                *
+            </div>
+            <div class="form-box-item"><label>Call Duration:</label><input type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" ng-disabled="readonly()" ng-model="f.CallDuration" /><span class="form-box-required">*</span></div>
+            <div class="form-box-item"><label>Agent Alias:</label><input type="text" ng-disabled="readonly()" ng-model="f.CallReceivedBy" /></div>
+        </div>
+      </div>
+        <div style="clear:both;">&nbsp;</div>
+        <div ng-show="complaintFiled()">
+            <div style="display:block;text-align: center; font-weight:bold;padding: 10px; color: Red;">Complaint Filed</div>
+            <div style="width: calc(100% - 40px);border-radius: 20px;border: 2px solid red;background-color:White;color:Black;padding:20px;text-align: center;">{{f.Complaint}}</div>
+        </div>
+
+        <div class="form-findings-label" style="display:block;display:none;text-align: center; font-weight:bold;padding: 10px;">Please review the Call Findings Below:</div>
+        <table class="form-violations">
+            <thead style="display:none;">
+                <th style="width:250px;">Violation Category</th>
+                <th style="width:300px;">Sub-Category</th>
+                <th style="width:150px;">Comments</th>
+                <th style="width:150px;">Reference</th>
+                <th style="width:60px;">Risk<br />Factor</th>
+                <th style="width:80px;">Type</th>
+                <th style="width:50px;">Points</th>
+                <th style="width:50px;font-size:11px;">Commission<br />Deduction</th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="r in records" style="display:none;">
+                    <td>
+                        <select ng-model="r.selectedCategory" ng-disabled="readonly()" ng-change="changeCategory($index, false)">
+                            <option value="0" selected="selected">--Add--</option>
+                            <option ng-repeat="cat in violations" ng-if="existingmonitor() || (!cat.deprecated)" value="{{cat.id}}">
+                                {{cat.Category + ((cat.deprecated) ? " (Deprecated)" : "")}}
+                            </option>
+                        </select>
+                    <td>
+                        <select ng-model="r.selectedSubcategory" ng-disabled="readonly()" ng-change="changeSubcategory($index,false)">
+                            <option value="0">--Select--</option>
+                            <option ng-repeat="subcat in r.subcategories" ng-if="existingmonitor() || (!subcat.deprecated)" value="{{subcat.id}}">
+                                {{subcat.Subcategory + ((subcat.deprecated) ? " (Deprecated)" : "")}}
+                            </option>
+                            <option value="noshow" selected="selected"></option>
+                        </select>
+                    </td>
+                    <td style="width:300px;" ng-if="vs_selected($index)">
+                        <textarea style="text-align: center;" ng-disabled="readonly()" ng-model="r.Comments"></textarea>
+                    </td>
+                    <td style="text-align: center;font-size:10px;" ng-if="vs_selected($index)">{{r.Reference}}</td>
+                    <td style="text-align: center;" ng-if="vs_selected($index)">{{r.Risk}}</td>
+                    <td style="text-align: center;" ng-if="vs_selected($index)">{{r.Type}}</td>
+                    <td style="text-align: center;" ng-if="vs_selected($index)">{{r.PointLevel}}</td>
+                    <td style="text-align: right;" ng-if="vs_selected($index)">{{(r.DeductionPercentage * 100.0) + '%'}}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr style="display:none;">
+                    <td></td>
+                    <td colspan="3"></td>
+                    <td colspan="2" style="text-align: right;">Monitor<br />Deductions:</td>
+                    <td style="text-align: right;background-color:White;font-weight: bold;">{{totalPoints().toFixed(0)}}</td>
+                    <td style="text-align: right;background-color:White;font-weight: bold;">{{(totalDeduction() * 100.0).toFixed(0) + '%'}}</td>
+                </tr>
+                <tr>                	
+                    <td colspan="2">&nbsp;</td>
+                    <td colspan="2" style="text-align: center;">
+                    	<div ng-show="readonly()">&nbsp;</div>
+                    	<div ng-show="(!readonly())">
+                    		<h4>Acknowledgement Request</h4>
+                    		<div style="font-size: 11px;" ng-show="(!existingmonitor())">
+                    			<p>
+                    				A request for acknowledgement will be sent automatically<br />when you save this monitor.
+                    				<br/><br /><span style="white-space:nowrap;"><input type="checkbox" ng-click="setCheckHoldAcknowledgement()" ng-model="cb.checkHoldAcknowledgement" style="width:20px;" />Do NOT send acknowledgement request.</span>
+                    			</p>                    		
+                    		</div>
+                    		<div style="font-size: 11px;" ng-show="(existingmonitor())">                    		                    		
+                    			<p>
+                    				<div ng-show="!ack_requestsent()">NO Acknowledgement request has been sent.</div>
+                    				<div ng-show="ack_requestsent()">Request for acknowledgment sent: {{ack_requestsent_date}}</div>
+                    				<div ng-show="ack_acknowledged()">Monitor Acknowledged: {{ack_acknowledged_date}}</div>
+                    				<br/><br /><span style="white-space:nowrap;"><input type="checkbox" ng-click="setCheckAcknowledgementResend()" ng-model="cb.checkAcknowledgementResend" style="width:20px;" />Send <span ng-show="ack_requestsent()">ANOTHER</span> Acknowledgement Request upon Update.</span>
+                    			</p>                    		
+                    		</div>                    		
+                    	</div>
+                    </td>
+                    <td colspan="4" style="text-align: right;">
+                        <button type="button" class="btn btn-xs btn-success" style="font-size:10px;" ng-click="save()" ng-show="vs_readytosave() && (!readonly())"><span ng-show="existingmonitor()">Update</span><span ng-show="!existingmonitor()">Save</span><span ng-show="existingmonitor()"> &amp; Close</span></button>
+                        <button type="button" class="btn btn-xs btn-success" style="font-size:10px;" ng-click="deletemonitor()" ng-show="existingmonitor() && (!readonly())">Delete</button>
+                        <button type="button" class="btn btn-xs btn-success" style="font-size:10px;" ng-click="close()" ng-show="existingmonitor()">{{closetext}}</button>
+                        <button type="button" class="btn btn-xs btn-success" style="font-size:10px;" ng-click="cancel()" ng-show="(!readonly()) && (!existingmonitor())">Cancel</button>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+
+    </div>
+
+</div>

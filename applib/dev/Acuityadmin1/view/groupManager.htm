@@ -1,0 +1,102 @@
+<div class="group-manager-app-manager-holder basic-directive-holder">
+    <div class="top-filters">
+        Group Name: <input type="textbox" id="groupManager_groupNameFilter">
+        Supervisor: <select id="groupManager_supervisorFilter"></select>
+        Location: <select id="groupManager_locationFilter"></select>
+        Project: <select id="groupManager_projectFilter"></select>
+        Status:<select id="groupManager_statusFilter"></select>
+        &nbsp;&nbsp;
+        <button id="btnApplyFilter"><i class="fas fa-filter"></i> Apply</button>
+        &nbsp;&nbsp;
+        <button id="btnClearFilter">Clear Filter</button>
+    </div>
+    <br>
+    <div class="bottom-buttons">
+        <div class="filter-input-group">
+            <button id="btnAddNewGroup" class="btn button btn-add-new btn-large btn-green">
+                <i class="fas fa-plus"></i> Add New Group
+            </button>
+        </div>
+    </div>
+    <div id="groupDataHolder">
+        <div id="groupListHeader" class="header-holder header-holder_entities header-holder_entities-group">
+            <div class="header-item project-expander">
+                <i class="fa fa-minus" id="collapseAll"></i>
+            </div>
+            <div class="header-item group-name">Group Name</div>
+            <div class="header-item group-location-name">Location</div>
+            <div class="header-item group-leader-name">Supervisor</div>
+            <div class="header-item group-project-name">Project</div>
+            <div class="header-item group-status">Status</div>
+            <div class="header-item group-team-count"># Teams</div>
+            <!-- <div class="header-item group-user-count"># Users</div> -->
+            <div class="header-item group-buttons">Actions</div>
+        </div>
+        <div class="selection-holder large-holder">
+            <div id="groupLoadingHolder" class="group-information-loading-message">
+                <img src="../../../../applib/css/images/acuity-loading.gif" height="25px">
+                <span id="groupLoadingMessage"></span>
+            </div>
+            <div id="groupListHolder" class="group-list-holder"></div>
+        </div>
+    </div>
+    
+    <!--Editor Form START-->
+    <div id="groupEditorFormPanel" class="editor-form">
+        <div class="form-holder-big">
+            <button class="btn-close btn-close-x"><i class="fa fa-close"></i></button>
+            <div class="error-information-holder"></div>
+            <div class="two-col-flex">
+                <div class="column1of2p">
+                    <div class="group-manager-form_row">
+                        <div class="user-manager-data-label inline-item">Group Name</div>
+                        <input type="text" id="groupEditor_GroupName">
+                    </div>
+                    <div class="group-manager-form_row">
+                        <div class="user-manager-data-label inline-item">Project</div>
+                        <select id="groupEditor_ProjectId"></select>
+                    </div>
+                    <div class="group-manager-form_row">
+                        <div class="user-manager-data-label inline-item">Location</div>
+                        <select id="groupEditor_LocationId"></select>
+                    </div>
+                    <div class="group-manager-form_row">
+                        <div class="user-manager-data-label inline-item">Supervisor</div>
+                        <select id="groupEditor_SupervisorUserId"></select>
+                    </div>
+                    <div class="group-manager-form_row">
+                        <div class="user-manager-data-label inline-item">Status</div>
+                        <select id="groupEditor_GroupStatus"></select>
+                    </div>
+                    <div class="project-manager-form_row">
+                        <div class="user-manager-data-label inline-item">Coaching Sessions Per Agent Per Month</div>
+                        <input type="text" id="groupEditor_AgentCoachingSessions" class="group-manager-editor-coaching-sessions" />
+                    </div>
+                    <div class="project-manager-form_row">
+                        <div class="user-manager-data-label inline-item">Recognitions Per Agent Per Month</div>
+                        <input type="text" id="groupEditor_AgentRecognitions" class="group-manager-editor-agent-recognitions" />
+                    </div>
+                </div>
+                <div class="column2of2p">
+                    <div class="tab-holder">
+                        <div class="tab-holder-item" id="groupManagerFormTab_Teams">Teams</div>
+                        <div class="tab-holder-item" id="groupManagerFormTab_Stats">Stats</div>
+                    </div>
+                    <div class="tab-containers">
+                        <div id="groupManager_TeamsTabContainer"></div>
+                        <div id="groupManager_StatsTabContainer">
+                            <ng-entity-item-stats></ng-entity-item-stats>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="badgeAdminForm_btns">
+                <input type="hidden" id="editorFormType" />
+                <input type="hidden" id="groupEditor_GroupId" />
+                <button id="btnSave" class="button btn btn-large">Save</button>
+                &nbsp;&nbsp;
+                <button class="btn-close button btn btn-large">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

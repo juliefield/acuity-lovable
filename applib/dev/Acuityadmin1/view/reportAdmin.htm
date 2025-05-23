@@ -1,0 +1,68 @@
+<div class="basic-directive-holder" style="overflow-y:auto;">
+   <div class="top-filters">
+      <div class="filter-input-group">
+        <span>Client <select id="clientSelectorFilter"></select></span>
+      </div>
+      <div class="filter-input-group">
+         <a id="reportAdmin_RefreshList">Refresh</a>
+         &nbsp;&nbsp;
+         <a id="reportAdmin_ClearFilters">Clear Filters</a>   
+      </div>
+   </div>
+   <div class="error-information-holder"></div>
+   <div class="report-admin-form-holder">
+
+      <div>
+         Report: <select id="reportSelectorFilter"></select>
+         &nbsp;&nbsp;
+         CID:<span id="reportSelectedCIDName"></span>
+      </div>
+      <div>
+         <div class="column1of2">
+            <div class="column1of2">
+               <div class="report-admin-header-holder">
+                  <span>Client Access</span>
+                  <span id="foundClientAccessCounter"></span>
+               </div>
+               <div id="possibleClientListHolder" class="selection-holder large-holder"></div>
+            </div>
+            <div class="column2of2">
+               <div class="report-admin-header-holder">
+                  <span>Role Access</span>
+                  <span id="foundRoleAccessCounter"></span>
+               </div>
+               <div id="possibleRoleListHolder" class="selection-holder"></div>
+            </div>
+         </div>
+         <div class="column2of2">
+            <div class="report-admin-header-holder">
+               <span>User Access</span>
+               <span id="foundUserAccessCounter"></span>
+               <span><input type="checkbox" id="includeInactiveUsersForAccess">Include INACTIVE users</span>               
+            </div>
+            <div class="selection-holder large-holder">
+               <div id="userLoadingHolder" class="user-profile-information-loading-message">
+                  <img src="../../../../applib/css/images/acuity-loading.gif" height="25px"><span id="userLoadingMessage"></span>
+               </div>
+               <div id="possibleUserListHolder"></div>   
+            </div>
+
+         </div>
+      </div>
+   </div>
+   <div class="button-holder">
+      <div>
+         <button id="btnSave">Save</button>
+         <div style="font-size:8pt;">            
+            Client: <input type="text" style="width:30%;" id="clientAllowStringInfo" />
+            Role: <input type="text" style="width:30%;" id="roleAllowStringInfo" />
+            <br>
+            Users: <input type="text" style="width:90%;" id="userAllowStringInfo" />
+            <br>
+            Original: <input type="text" style="width:90%;" id="originalAllowString" />
+            <br>
+            New: <input type="text" style="width:90%;" id="newAllowString" />
+         </div>
+      </div>   
+   </div>
+</div>

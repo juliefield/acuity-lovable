@@ -1,0 +1,234 @@
+<div class="basic-directive-holder">
+
+   <div class="top-filters">
+      <div class="filter-input-group">
+         Name
+         <input type="text" id="badgeAdmin_BadgeNameFilter" placeholder="Search by Name">
+      </div>
+      <div class="filter-input-group">
+         Category
+         <select id="badgeAdmin_GroupNameFilter"></select>
+      </div>
+      <div class="filter-input-group">
+         Level
+         <select id="badgeAdmin_BadgeLevelFilter"></select>
+      </div>
+      <div class="filter-input-group">
+         KPI
+         <select id="badgeAdmin_RelatedKpiFilter"></select>
+      </div>
+      <div class="filter-input-group">
+         Status
+         <select id="badgeAdmin_ActiveFilter">
+            <option value="All">All Badges</option>
+            <option value="Active">Active Badges</option>
+            <option value="Inactive">Inactive Badges</option>
+         </select>
+      </div>  
+      <div class="filter-input-group">
+         <a id="badgeAdmin_ResetFilters">Clear Filters</a>
+      </div>  
+      <!-- 
+      <div class="filter-input-group">
+         Related Sub-KPI
+         <select id="badgeAdmin_RelatedSubKpiFilter"></select>
+      </div> 
+       -->
+   </div>
+   <br />
+   <div>
+     
+      <!-- <button id="btnRefreshBadgeList">Refresh</button> -->
+      <div id="userInformationDisplay" class="user-information-display">
+         <img id="UI_loadingImage" height="25" alter="Loading Information...">
+         <span id="UI_loadingText">This is the loading of info</span>
+      </div>   
+   </div>
+   <div>
+      <div class="header-holder">
+         <div class="header-item badge-image">
+            Image
+         </div>
+         <div class="header-item badge-name" sort="badgeName">
+            Name
+         </div>
+         <div class="header-item badge-grouping-name" sort="groupingName">
+            Category
+         </div>
+         <div class="header-item related-kpi" sort="relatedKpi">
+            KPI
+         </div>
+         <div class="header-item badge-level" sort="badgeLevel">
+            Level
+         </div>
+         <div class="header-item badge-button-holder">            
+            Actions
+         </div>
+         <div class="header-item badge-active">            
+            Status
+         </div>
+      </div>
+      <div id="badgeAdmin_BadgeListHolder" class="badge-list-holder list-holder"></div>
+   </div>
+   <div id="badgeFormHolder" class="editor-form">
+      <div class="form-holder">
+         <div>
+            <button class="btn-close btn-close-x"><i class="fa fa-close"></i></button>            
+         </div>
+         <div class="error-information-holder"></div>
+         
+         <div class="badgeAdminForm_form">               
+            <div class="badgeAdminForm_image-preview">
+               <img class="badge-preview-image" id="badgeAdminForm_BadgeImagePreview" height="75" />
+               &nbsp;
+               <button id="btnOpenImageManager">Select Image</button>
+               <br />
+               <span style="display:none;">
+                  Image Url <input type="text" id="badgeAdminForm_ImageUrl" readonly />
+               </span>               
+            </div>
+            <div class="tab-holder">
+               <div class="tab-holder-item" id="badgeAdminFormTab_Badge">Badge Details</div>
+               <div class="tab-holder-item" id="badgeAdminFormTab_Rules">Badge Rules</div>
+            </div>
+            <div id="badgeAdminForm_BadgeEditorContainer">
+               <div class="badgeAdminForm_form-preview">
+                  <div class="badgeAdminForm_form-fieldgroup">
+                     Select KPI 
+                     <select id="badgeAdminForm_RelatedMqfNumber"></select>
+                  </div>
+                  <div class="badgeAdminForm_form-fieldgroup">
+                     Name
+                     <input type="text" id="badgeAdminForm_BadgeName" />
+                  </div>
+                  <div class="badgeAdminForm_form-fieldgroup">        
+                     Description
+                     <input text="text" id="badgeAdminForm_BadgeDesc" />
+                  </div>
+                  <div class="badgeAdminForm_form-fieldgroup">
+                     Category 
+                     <select id="badgeAdminForm_BadgeGroupingName"></select>
+                     <button id="btnOpenGroupingManager">Add New Category</button>
+                     <div id="badgeAdmin_AddGroupingNameHolder" class="badgeAdmin_AddGroupingNameHolder">
+                        Create New Category Name:<br>
+                        <input type="text" id="badgeAdminGroupingNameForm_GroupingName" placeholder="Write in a New Category Name">
+                        <button id="btnGroupingManagerSave"><i class="fa-solid fa-save"></i> Save</button>
+                        &nbsp;
+                        <a class="btn-close-grouping"><i class="fa fa-close"></i> Cancel</a>
+                        <div>
+                           <small>
+                              New Category Name will display when a badge has been assigned to it.
+                           </small>
+                        </div>
+      
+                     </div>
+                  </div>
+                  <div class="badgeAdminForm_form-fieldgroup">
+                     Level <select id="badgeAdminForm_BadgeLevel"></select>
+                  </div>
+                  <div class="badgeAdminForm_form-fieldgroup">
+                     Active?
+                     <input type="checkbox" id="badgeAdminForm_IsActive" />   
+                  </div>
+               </div>
+            </div>
+            <div id="badgeAdminForm_BadgeRulesContainer">
+               <div class="badge-admin-editor-rule-holder">
+                  <div>
+                     KPI:
+                     <select id="badgeAdminForm_BadgeAssignedKpi"></select>   
+                  </div>
+                  <div>
+                     Basis:
+                     <select id="badgeAdminForm_BadgeScoreType">
+                        <option value="Score">Scored Value</option>
+                        <option value="Standard">Standard Value</option>
+                        <option value="Total">Total</option>
+                     </select>   
+                  </div>
+                  <div id="badgeAdminForm_ScoreValueHolder" style="display: inline-block;">
+                     between 
+                     <input type="text" class="small-box" id="badgeAdminForm_MinimumScoreValueToEarn"/>
+                     and 
+                     <input type="text" class="small-box" id="badgeAdminForm_MaximumScoreValueToEarn"/>
+                  </div>
+                  <div id="badgeAdminForm_StandardValueHolder">
+                     between 
+                     <input type="text" class="small-box" id="badgeAdminForm_MinimumStandardValueToEarn"/>
+                     and 
+                     <input type="text" class="small-box" id="badgeAdminForm_MaximumStandardValueToEarn"/>
+                  </div>
+                  <div id="badgeAdminForm_RawTotalValueHolder">
+                     at least
+                     <input type="text" id="badgeAdminForm_MinimumRawSumToEarn"/>
+                  </div>
+                  <br />
+                  <div id="badgeAdminForm_ConsecutiveMonthHolder">
+                     For:
+                     <input type="text" class="small-box" id="badgeAdminForm_ConsecutiveMonthsToEarn"/>
+                     Month(s)
+                  </div>
+                  <div id="badgeAdminForm_ConsecutiveDaysHolder">
+                     <input type="text" class="small-box" id="badgeAdminForm_ConsecutiveDaysToEarn"/>
+                     Day(s)
+                  </div>
+                  <div>
+                     Require previous level:
+                     <input type="checkbox" id="badgeAdminForm_IsProgressiveBadge"/>
+                  </div>
+                  <div>
+                     Maximum Number Earnable:
+                     <input type="text" class="small-box" id="badgeAdminForm_MaximumBadgePerUser"/>
+                  </div>
+                  <div>
+                     Award Credits
+                     <input type="checkbox" id="badgeAdminForm_HasPoints"/>
+                     Credits for Earning:
+                     <input type="text" id="badgeAdminForm_PointsForBadgeAward"/>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="badgeAdminForm_btns">
+            <input type="hidden" id="badgeAdminForm_BadgeId" />
+            <input type="hidden" id="badgeAdminForm_BadgeRuleId" />
+            <input type="hidden" id="badgeAdminForm_SelectedTab" />
+            <button id="btnSave" class="btn-large">Save</button>
+            &nbsp;&nbsp;
+            <button id="btnSaveAndClose" class="btn-large">Save & Close</button>
+            &nbsp;&nbsp;
+            <button class="btn-close btn-large">Cancel</button>
+         </div>
+      </div>
+   </div>
+   <div id="badgeImageManagementHolder" class="sub-form preview-form">
+      <div class="form-holder">
+         <button class="button btn-close-image-manager btn-close btn-close-x">
+            <i class="fa fa-close"></i>
+         </button>
+         <div class="badge-preview-manager-holder">
+            <div id="badgeImageManagement_ImageOptionHolder" class="badgeImageManagement_ImageOptionHolder"></div>
+         </div>
+         <div class="badgeAdminForm_btns">
+            <input type="hidden" id="selectedImageFileName" readonly />
+            <input type="hidden" id="selectedImagePath" readonly />
+            <button id="btnSetImageManager" class="button btn-large">Use Selected Image</button>
+            &nbsp;&nbsp;
+            <button class="button btn-close-image-manager btn-large">Cancel</button>
+         </div>
+      </div>   
+   </div>
+
+   <div class="bottom-buttons">
+      <div class="badgeCounter-box">
+         Badges: <span id="badgeFoundCounter"></span>        
+      </div>
+      <div class="filter-input-group">
+         <button class="btn-large btn-green" id="btnAddBadge"><i class="fas fa-plus" aria-hidden="true"></i> Add a New Badge</button>
+      </div>
+      <!-- <div class="filter-input-group">
+         <button class="btn-large" id="btnSaveAllRules">Save All</button>
+      </div> -->
+   </div>
+
+</div>

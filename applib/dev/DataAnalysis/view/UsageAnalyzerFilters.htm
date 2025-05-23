@@ -1,0 +1,64 @@
+<div class="filters-box">
+   <div class="filters-box_filter">
+    <div class="filters-box-filter-label">
+      Project:
+      <button class="showAddToFilterButton" dataValue="project">+</button>
+      <span id="usageAnalyzerFilter_Project" class="current-filter-selected-list">All</span>
+      <input type="hidden" id="usageAnalyzerFilterSelected_Project">
+    </div>
+   </div>
+   <div class="filters-box_filter">
+    <div class="filters-box-filter-label">
+      Location:
+      <button class="showAddToFilterButton" dataValue="location">+</button>
+      <span id="usageAnalyzerFilter_Location" class="current-filter-selected-list">All</span>
+      <input type="hidden" id="usageAnalyzerFilterSelected_Location">
+    </div>
+   </div>
+   <div class="filters-box_filter">
+    <div class="filters-box-filter-label">
+      LOB/Group:
+      <button class="showAddToFilterButton" dataValue="group">+</button>
+      <span id="usageAnalyzerFilter_Group" class="current-filter-selected-list">All</span>
+      <input type="hidden" id="usageAnalyzerFilterSelected_Group">
+    </div>
+   </div>
+   <div class="filters-box_filter">
+    <div class="filters-box-filter-label">
+      Team:
+      <button class="showAddToFilterButton" dataValue="team">+</button>
+      <span id="usageAnalyzerFilter_Team" class="current-filter-selected-list">All</span>
+      <input type="hidden" id="usageAnalyzerFilterSelected_Team">
+    </div>
+   </div>
+   <!-- <div class="filters-box_filter">
+    <div class="filters-box-filter-label">
+      <input type="checkbox" id="usageAnalyzerFilter_IncludeInactives" value="true">
+      Include Inactive
+    </div>
+   </div>
+    -->
+   <button class="button btn btn-notes" id="btnApplyUsageAnalyzerFilters">
+     Apply
+   </button>
+   <a href="" id="btnClearUsageAnalyzerFilters">
+    Clear Filters
+   </a>
+ </div>
+
+<div id="filterPanelSelectionHolder" class="form-filter-holder">
+  <div class="form-filter-holder-content">
+    <div class="form-filter-header">
+       <div id="filterPanelSelectionHolderAreaName"></div>
+       <input type="hidden" id="filterApplyArea" />
+    </div>
+    <div class="form-filter-body">
+       <div id="filterPanelSelectionOptionListHolder" class="editor-list-holder"></div>
+    </div>
+    <div class="form-filter-footer">
+       <button id="btnAddSelectedFilter" class="button btn btn-large add-selected-button">Add Selected</button>
+       <button id="btnClearCurrentFilters" class="button btn btn-large add-selected-button">Clear Selected</button>
+       <button class="btn-close btn-large editor-close">Close</button>
+    </div>
+  </div>
+</div>

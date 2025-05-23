@@ -1,0 +1,84 @@
+<div>
+<div class="container-topper">
+
+Welcome Back, <span class="user-dashboard-fullname" id="userfullname"></span>!
+</div>
+<div class="container-body">
+<div class="user-dashboard_flexbox">
+   <div class="user-dashboard_avatar">
+      <a href="#" class="btn-blue edit-avatar-btn"><i class="fa fa-edit"></i></a>
+      <div class="avatar-circle" style="width: 116px;height: 116px;-webkit-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+      -moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+      box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);">
+         <img id="user-dashboard-avatar-holder" />
+      </div>
+      <!-- <a href="#" class="btn-blue refresh-avatar-btn"><i class="fa fa-refresh"></i></a> -->
+</div>
+<div class="user-dashboard_agent-info">
+<h2 class="user-dashboard-fullname"></h2>
+<h3 class="user-dashboard-teamname"></h3>
+<p>
+<!-- <span id="user-dashboard-rankingstatus"></span> -->
+<div class="user-dashboard-score-callouts">
+   <span id="user-dashboard-overall-score-holder">
+      <strong>Balanced Score:</strong> <span class="user-dashboard-user-balancedscore"></span>
+   </span>
+   <span id="userDashboardOverallTeamScoreHolder">
+      <strong>Team Average:</strong> <span class="user-dashboard-team-score" id="userCurrentTeamScore">0</span>
+   </span>
+</div>
+<div id="userDashboardOverallCreditsHolder" class="userDashboardOverallCreditsHolder">
+   <img src="/applib/css/images/coins.png" alt="Coins">
+   <span>You have <span id="userTotalCredits">0</span> credits.</span>
+   <span id="btnRedeemPoints_OverallStats" class="userDashboardOverallCreditsHolder_link">Redeem</span>
+</div>
+</p>
+
+</div>
+<div class="clearfix"></div>
+<div>
+   <div>
+      <button id="btnParticipatingInGamePrevious"><i class="fa fa-arrow-left"></i></button>
+   </div>
+   <div>
+      <div id="gameParticipationHolder" ></div>
+      <input type="hidden" id="currentGameParticipantDisplayIndex" value="0">
+   </div>
+   <div>
+      <button id="btnParticipatingInGameNext"><i class="fa fa-arrow-right"></i></button>
+   </div>
+</div>
+<div class="clearfix"></div>
+<div id="tipTrickHolder"></div>
+<div class="clearfix"></div>
+<div id="userRankingHolder">
+   <div class="relative-rank-label"><span>7-day Relative Rank</span></div>
+   <div class="user-dashboard_rankbox ranking-box_content">
+      <div class="clearfix"></div>
+   </div>
+   <div class="clearfix"></div>
+</div>
+<div id="KpiLoader">
+   <img id="KpiLoadingImage" height="25" alt="Loading KPI Data">
+   <span id="KpiLoaderText"></span>
+</div>
+<div id="kpiToggleSwitch">
+   <span>
+      <a id="toggleSwitchTop">Top</a>
+   </span>
+
+   &nbsp;
+   <span>
+      <a id="toggleSwitchBottom">Bottom</a>
+   </span>
+   &nbsp;
+   <span>
+      <a id="toggleSwitchAll">All</a>
+   </span>
+</div>
+<div class="kpi-block"></div>
+</div>
+
+</div>
+
+

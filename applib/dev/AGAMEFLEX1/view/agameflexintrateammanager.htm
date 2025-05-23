@@ -1,0 +1,113 @@
+<div class="header-title">
+    <div class="flex-game-display-options-buttons">
+        <button class="flex-intra-team-manager-button-add-new achievements-link" title="Add new Intra-Team"><i class="fas fa-plus"></i> Add New Team</button>
+        <button class="flex-intra-team-manager-button-refresh achievements-link" title="Refresh List"><i class="fad fa-sync-alt"></i> Refresh</button>
+    </div> 
+    <a class="intra-team-btn-return-game-list">« Back to Game Manager</a>    
+    <h2>Intra-Team Manager</h2>
+    <div class="flex-game-user-status"></div>
+    <div class="flex-game-filter-nav-holder">
+        <div class="flex-game-display-options flex-game-display-options_filters">
+           
+                Intra-team name: <input type="text" class="flex-intra-team-manager-filter-intrateam-name" placeholder="Enter an Intra-team Name">
+                Base Team: <select class="flex-intra-team-manager-filter-base-team"></select>    
+                <span class="include-inactive-filter">
+                    <input type="checkbox" id="includeInactiveTeams"> Include Inactive
+                </span>               
+                
+            
+                <button class="flex-intra-team-manager-button-apply-filter"><i class="far fa-filter"></i> Apply</button>            
+                <button class="flex-intra-team-manager-button-clear-filter">Clear Filter</button>    
+    
+        </div>
+       
+    </div>
+</div>
+
+
+<div class="flex-intra-team-manager-holder">
+    <div class="flex-intra-team-manager-teams-list"></div>
+    <div class="flex-intra-team-manager-footer-options">
+        <div class="inline-holder intra-team-name-column">
+            Records Found: <span class="flex-intra-team-manager-list-record-count"></span>
+        </div>
+        <div class="inline-holder intra-team-name-column">
+            <select class="flex-intra-team-manager-list-page-size">
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="100">100</option>
+                <option value="ALL">All</option>
+            </select>Items Per Page
+        </div>
+        <div class="inline-holder intra-team-buttons-column">
+            <strong>Page</strong> <select class="flex-intra-team-manager-list-current-page"></select>
+            of <span class="flex-intra-team-manager-list-total-page-count"></span>
+        </div>
+    </div>
+    <br class="clearfix">
+    <br class="clearfix">
+    <div>
+        <div class="flex-intra-team-manager-button-holder">
+            <button class="flex-intra-team-manager-button-delete-selected" title="Delete Selected"><i class="far fa-trash-alt"></i> Delete Selected</button>
+            <button class="flex-intra-team-manager-button-inactivate-selected" title="Inactivate Selected"><i></i> Inactivate Selected</button>
+        </div>            
+    </div>
+    <div class="flex-intra-team-manager-editor-holder">
+        <div>
+            <button class="flex-intra-team-manager-editor-button-cancel flex-game-form-btn-close"><i class="fas fa-times" aria-hidden="true"></i></button>
+            <div class="flex-intra-team-manager-editor-header">
+                <div class="flex-intra-team-manager-editor-header-label">
+                    Add Intra-Team
+                </div>
+                <hr>
+            </div>
+            <div class="error-information-holder"></div>
+            <div class="flex-intra-team-manager-editor-body">
+                <div class="flex-intra-team-manager-editor-form">
+                    <div class="flex-game-filter-nav-holder">
+                        <div class="flex-game-display-options flex-game-display-options_filters">
+                           
+                                Intra-team name: <input type="text" class="flex-intra-team-manager-editor-team-name" placeholder="Enter an Intra-team Name"> 
+                                Team: <select class="flex-intra-team-manager-editor-base-team"></select>    
+                                Status: <select class="flex-intra-team-manager-editor-team-status">
+                                            <option value="A">Active</option>
+                                            <option value="I">Inactive</option>
+                                        </select>
+                        </div>
+                    </div>
+
+                    
+                    <br >
+                    <div class="flex-intra-team-manager-form_row flex-intra-team-manager-form_row-columns">
+                        <div class="flex-intra-team-manager-user-options-holder">
+                            <div class="editor_col1of2">
+                                <div class="flex-intra-team-manager-editor-agent-list-holder">
+                                    Current Team Members
+                                </div>                        
+                                <div class="flex-intra-team-manager-editor-agent-list-current-members agent-selection-list-holder">
+                                </div>
+                            </div>
+                            <div class="editor_col2of2">
+                                <div class="flex-intra-team-manager-editor-agent-list-holder">
+                                    Available Team Members
+                                </div>                        
+                                <div class="flex-intra-team-manager-editor-agent-list-available agent-selection-list-holder">                            
+                                </div>
+                            </div>    
+                        </div>
+                     </div>
+                </div>
+            </div>
+            <div class="flex-intra-team-manager-editor-footer">
+                <div class="flex-intra-team-manager-editor-buttons-holder">
+                    <button class="flex-intra-team-manager-editor-button-save">Save</button>
+                    &nbsp;&nbsp;
+                    <button class="flex-intra-team-manager-editor-button-cancel">Cancel</button>
+                    <input type="hidden" id="intraTeamId">
+                    <input type="hidden" id="createBy">
+                    <input type="hidden" id="createOn">
+                </div>
+            </div>
+        </div>
+    </div> 
+</div>

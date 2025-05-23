@@ -1,0 +1,54 @@
+<div class="flex-game-top-level-holder">
+   <div class="header-title">
+      <div class="flex-game-display-options-buttons">
+         <a class="flex-rewards-manager-add-new achievements-link">Add New Reward</a>
+      </div>
+      <a class="flex-rewards-manager-btn-return-game-list">« Back to Games</a>
+      <h2>Rewards Manager</h2>
+      <div class="flex-game-user-status"></div>
+      <div class="flex-game-filter-nav-holder">
+         &nbsp;
+      </div>
+   </div>
+   <div class="flex-rewards-manager-manager-holder">      
+      <div class="flex-rewards-manager-list">
+         <div>No current Rewards Found.</div>
+      </div>
+      <div class="flex-rewards-manager-footer-options">
+         &nbsp;
+      </div>
+   </div>
+   <!--EDITOR FORM-->
+   <div class="flex-rewards-manager-form-editor-holder">
+      <button class="flex-rewards-manager-editor-button-cancel flex-game-form-btn-close"><i class="fas fa-times"
+            aria-hidden="true"></i></button>
+      <div class="flex-manual-entry-editor-header">
+         <div class="flex-manual-entry-editor-header-label">
+            Rewards Manager Editor
+            <hr>
+         </div>
+      </div>
+      <div class="error-information-holder"></div>
+      <div>
+         <div class="flex-manual-entry-scoring-area-edit-container">
+            <label>Name</label>
+            <input type="text" class="flex-rewards-manager-manual-reward-edit-name" placeholder="Rewards Name">
+         </div>
+         <div class="flex-manual-entry-scoring-area-edit-container">
+            <label>Description</label>
+            <textarea class="flex-rewards-manager-manual-reward-edit-desc" placeholder="Description"></textarea>
+         </div>
+         <div class="flex-manual-entry-scoring-area-edit-container">
+            <label>Status</label>
+            <input type="checkbox" class="flex-rewards-manager-manual-reward-edit-is-active" checked>
+            <label class="edit-item-status-displayname">Active</label>
+         </div>
+         <div class="flex-manual-entry-scoring-area-edit-footer">
+            <button class="flex-rewards-manager-scoring-area-edit-form-btn-save">Save</button>
+            &nbsp;
+            <button class="flex-rewards-manager-scoring-area-edit-form-btn-cancel flex-rewards-manager-editor-button-cancel">Cancel</button>
+            <input type="hidden" id="flex-rewards-manager-manual-reward-id" value="-1" />
+         </div>
+      </div>
+   </div>
+</div>

@@ -1,0 +1,77 @@
+<div class="prize-catalog-user-header-module-holder">
+      <div class="prize-catalog-user-header-module-header-holder">
+         <div class="prize-catalog-user-header-user-information-items">
+            <div class="prize-catalog-user-header-user-avatar-section">
+               <div class="prize-catalog-user-header-user-avatar-holder">
+                  <img id="loggedUserAvatar" class="prize-catalog-user-header-user-logged-avatar">
+               </div>
+            </div>
+            <div class="prize-catalog-user-header-user-message-holder">
+               <div class="prize-catalog-user-header-user-message-text-holder">
+                  Welcome <label id="lblLoggedUserName"></label>!
+               </div>
+               <div class="prize-catalog-user-header-user-message-stats-holder">
+                  <div class="prize-catalog-user-header-stats-line1">Success Logins: 888</div>
+                  <div class="prize-catalog-user-header-stats-line2">Failed Logins: 888</div>
+                  <div class="prize-catalog-user-header-stats-line3">Current Credits: <label id="lblLoggedUserCurrentCredits"></label></div>
+               </div>
+               <div class="prize-catalog-user-header-button-options-holder">
+                  <button id="btnRefresh" class="prize-catalog-user-header-button button btn"><i class="fa fa-refresh"></i> Refresh</button>
+               </div>
+            </div>
+         </div>
+         <div class="prize-catalog-user-header-previous-items-listing">
+            <div class="prize-catalog-user-header-scoring-status-holder">
+               <div id="userScoringStatusHolder" class="prize-catalog-user-header-scoring-status-list"></div>
+            </div>
+         </div>
+         <div class="prize-catalog-user-header-user-spin-information-holder">
+            <div class="prize-catalog-user-header-spin-credit-section">
+               <div id="userScoringSpinCreditStatusMessage" class="prize-catalog-user-header-spin-credit-text"></div>
+               You have earned<br>
+               <span><label id="userCurrentCreditsLabel"></label> Credits!</span>
+            </div>
+         
+            <div class="prize-catalog-user-header-change-theme-holder">
+               <div class="prize-catalog-user-header-change-theme-section">
+                  <a id="changeUserCatalogTheme">
+                     <img src="../../../appLib/css/images/changetheme-img.png" alt="Change Theme" />
+                  </a>
+               </div>
+               <div class="prize-catalog-user-header-change-theme-icon-section">
+                  <img id="currentUserThemeChangeIcon" class="change-user-theme-icon">
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="prize-catalog-user-header-user-theme-form-holder" id="prizeCatalogUserHeaderThemeFormHolder">
+         <div class="prize-catalog-user-header-user-theme-form" id="prizeCatalogUserHeaderThemeForm">
+            <div class="prize-catalog-user-header-user-theme-header-holder">
+               <div class="prize-catalog-user-header-user-theme-header">
+                 Change Game Theme
+               </div>
+            </div>
+            <div class="prize-catalog-user-header-user-theme-body-holder">
+               <div class="prize-catalog-user-header-user-theme-body">
+                  <div class="prize-catalog-user-header-current-user-theme-holder">
+                     <div class="prize-catalog-user-header-current-user-theme-label">Current Theme:
+                       
+                     </div>
+                     <div id="prizeCatalogCurrentUserTheme" class="prize-catalog-user-header-current-user-theme-name"></div>
+                  </div>
+                  <div class="prize-catalog-user-header-new-user-theme-selector-holder">
+                     <div class="prize-catalog-user-header-new-user-theme-selector-label">New Theme:</div>
+                     <select id="prizeCatalogNewUserTheme" class="prize-catalog-user-header-new-user-theme-selector"></select>
+                  </div>
+               </div>
+            </div>
+            <div class="prize-catalog-user-header-user-theme-footer-holder">
+               <div class="prize-catalog-user-header-user-theme-footer">
+                  <button id="btnSaveUserTheme" class="btn-save btn button">Save</button>
+                      &nbsp;
+                      <button id="btnCancelUserTheme" class="btn-cancel btn button">Cancel</button>
+               </div>
+            </div>
+         </div>
+      </div>
+</div>

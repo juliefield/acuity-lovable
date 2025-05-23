@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Res Med</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"
+        integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha256-fzFFyH01cBVPYzl16KT40wqjhgPtq6FFUB6ckN2+GGw=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js" integrity="sha256-5YmaxAwMjIpMrVlK84Y/+NjCpKnFYa8bWWBbUHSBGfU=" crossorigin="anonymous"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" integrity="sha256-yMjaV542P+q1RnH6XByCPDfUFhmOafWbeLPmqKh11zo=" crossorigin="anonymous" /> -->
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css"
+        integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-old-ie-min.css">
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css">
+    <!--<![endif]-->
+    <style>
+        body {
+            padding: 1em;
+        }
+
+        .pure-form .col {
+            margin-bottom: .5em;
+        }
+
+        .pure-form fieldset {
+            display: block;
+            margin: 0 0 1em;
+            padding-top: 0.5em;
+            /* padding-bottom: 1em; */
+            padding-left: 0.75em;
+            padding-right: 0.75em;
+            background-color: rgba(0, 0, 0, .05);
+        }
+
+        .pure-form fieldset.even {
+            background-color: transparent;
+            margin-right: 0;
+            margin-left: 0;
+            padding-right: 0;
+            padding-left: 0;
+        }
+
+        .pure-form legend {
+            border: none;
+            font-weight: bold;
+        }
+
+        .pure-form fieldset .section {
+            border: 1px solid #ccc;
+        }
+
+        .pure-form fieldset .section .head {
+            font-weight: bold;
+            font-size: 115%;
+            padding-left: 1em;
+            padding-right: 1em;
+        }
+
+        .pure-form fieldset.even .section .row {
+            padding-right: 1em;
+            padding-left: 1em;
+        }
+
+        .pure-form fieldset.even .section .row.odd {
+            background-color: rgba(0, 0, 0, .05);
+            padding-top: .333em;
+            padding-bottom: .333em;
+        }
+
+        .pure-form fieldset .section .row .checkbox {
+            text-align: center;
+        }
+
+        .pure-form fieldset .section .row .checkbox input[type="checkbox"] {
+            zoom: 2;
+            margin-top: 6px;
+        }
+
+        .pure-form fieldset .section .row .comments {
+            max-height: 50px;
+        }
+
+        .pure-form fieldset .section .row .comments::placeholder {
+            opacity: .5;
+        }
+
+        .pure-form .row>label,
+        .pure-form .row>input,
+        .pure-form .row>label p,
+        .pure-form .row>label input {
+            display: inline-block;
+        }
+
+        #general-comments .head {
+            margin-bottom: .333em;
+        }
+
+        #general-comments textarea {
+            margin: 0 1em 1em;
+            resize: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <h1>ResMed Coaching</h1>
+    <form class="pure-form pure-form-stacked">
+        <fieldset>
+            <div class="pure-g">
+                <div class="pure-u-1 pure-u-md-1-4 col">
+                    <label for="date-time">Date and Time</label>
+                    <!-- <div class='input-group date' id='datetimepicker1'>
+                            <input type='text' class="form-control" />
+                        </div> -->
+                    <input id="date-time" type="text" class="pure-u-1-1 pure-u-md-23-24">
+                </div>
+                <div class="pure-u-1 pure-u-md-1-4 col">
+                    <label for="ticket-num">Ticket Number</label>
+                    <input id="ticket-num" type="text" class="pure-u-1-1 pure-u-md-23-24">
+                </div>
+                <div class="pure-u-1 pure-u-md-1-4 col">
+                    <label for="it-analyst">IT Analyst</label>
+                    <input id="it-analyst" type="text" class="pure-u-1-1 pure-u-md-23-24">
+                </div>
+                <div class="pure-u-1 pure-u-md-1-4 col">
+                    <label for="observers">Observers</label>
+                    <input id="observers" type="text" class="pure-u-1-1 pure-u-md-23-24">
+                </div>
+            </div>
+        </fieldset>
+        <fieldset class="even">
+            <div class="pure-g">
+                <div class="pure-u-1-1 section">
+                    <p class="head">Enthusiastic Greeting</p>
+                    <div class="row-container">
+                        <div class="row odd pure-g">
+                            <label class="pure-u-1-2" for="enthusiasm01">
+                                <span class="pure-g">
+                                    <p class="pure-u-21-24 label">Greet with enthusiasm</p>
+                                    <span class="pure-u-3-24 checkbox">
+                                        <input type="checkbox" id="enthusiasm01" value="">
+                                    </span>
+                                </span>
+                            </label>
+                            <input class="pure-u-1-2 comments" type="text" id="enthusiasm01-comments"
+                                placeholder="Comments">
+                        </div>
+                        <div class="row even pure-g">
+                            <label class="pure-u-1-2" for="enthusiasm02">
+                                <span class="pure-g">
+                                    <p class="pure-u-21-24 label">Always use "please" and "thank you"</p>
+                                    <span class="pure-u-3-24 checkbox">
+                                        <input type="checkbox" id="enthusiasm02" value="">
+                                    </span>
+                                </span>
+                            </label>
+                            <input class="pure-u-1-2 comments" type="text" id="enthusiasm02-comments"
+                                placeholder="Comments">
+                        </div>
+                        <div class="row odd pure-g">
+                            <label class="pure-u-1-2" for="enthusiasm03">
+                                <span class="pure-g">
+                                    <p class="pure-u-21-24 label">Show empathy, acknowledge concerns</p>
+                                    <span class="pure-u-3-24 checkbox">
+                                        <input type="checkbox" id="enthusiasm03" value="">
+                                    </span>
+                                </span>
+                            </label>
+                            <input class="pure-u-1-2 comments" type="text" id="enthusiasm03-comments"
+                                placeholder="Comments">
+                        </div>
+                        <div class="row even pure-g">
+                            <label class="pure-u-1-2" for="enthusiasm04">
+                                <span class="pure-g">
+                                    <p class="pure-u-21-24 label">Assure help</p>
+                                    <span class="pure-u-3-24 checkbox">
+                                        <input type="checkbox" id="enthusiasm04" value="">
+                                    </span>
+                                </span>
+                            </label>
+                            <input class="pure-u-1-2 comments" type="text" id="enthusiasm04-comments"
+                                placeholder="Comments">
+                        </div>
+                        <div class="row odd pure-g">
+                            <label class="pure-u-1-2" for="enthusiasm05">
+                                <span class="pure-g">
+                                    <p class="pure-u-21-24 label">Restate customer concern</p>
+                                    <span class="pure-u-3-24 checkbox">
+                                        <input type="checkbox" id="enthusiasm05" value="">
+                                    </span>
+                                </span>
+                            </label>
+                            <input class="pure-u-1-2 comments" type="text" id="enthusiasm05-comments"
+                                placeholder="Comments">
+                        </div>
+                        <div class="row even pure-g">
+                            <label class="pure-u-1-2" for="enthusiasm06">
+                                <span class="pure-g">
+                                    <p class="pure-u-21-24 label">Provide appropriate commitment statement</p>
+                                    <span class="pure-u-3-24 checkbox">
+                                        <input type="checkbox" id="enthusiasm06" value="">
+                                    </span>
+                                </span>
+                            </label>
+                            <input class="pure-u-1-2 comments" type="text" id="enthusiasm06-comments"
+                                placeholder="Comments">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pure-u-1-1 section">
+                    <p class="head">Roost Cause Discovery and Troubleshooting</p>
+                    <div class="row-container">
+                        <div class="row odd pure-g">
+                            <label class="pure-u-1-2" for="root01">
+                                <span class="pure-g">
+                                    <p class="pure-u-21-24 label">Define the problem</p>
+                                    <span class="pure-u-3-24 checkbox">
+                                        <input type="checkbox" id="root01" value="">
+                                    </span>
+                                </span>
+                            </label>
+                            <input class="pure-u-1-2 comments" type="text" id="root01-comments" placeholder="Comments">
+                        </div>
+                        <div class="row even pure-g">
+                            <label class="pure-u-1-2" for="root02">
+                                <span class="pure-g">
+                                    <p class="pure-u-21-24 label">Collect information</p>
+                                    <span class="pure-u-3-24 checkbox">
+                                        <input type="checkbox" id="root02" value="">
+                                    </span>
+                                </span>
+                            </label>
+                            <input class="pure-u-1-2 comments" type="text" id="root02-comments" placeholder="Comments">
+                        </div>
+                        <div class="row odd pure-g">
+                            <label class="pure-u-1-2" for="root03">
+                                <span class="pure-g">
+                                    <p class="pure-u-21-24 label">Identify possible causal factors</p>
+                                    <span class="pure-u-3-24 checkbox">
+                                        <input type="checkbox" id="root03" value="">
+                                    </span>
+                                </span>
+                            </label>
+                            <input class="pure-u-1-2 comments" type="text" id="root03-comments" placeholder="Comments">
+                        </div>
+                        <div class="row even pure-g">
+                            <label class="pure-u-1-2" for="root04">
+                                <span class="pure-g">
+                                    <p class="pure-u-21-24 label">Identify root cause</p>
+                                    <span class="pure-u-3-24 checkbox">
+                                        <input type="checkbox" id="root04" value="">
+                                    </span>
+                                </span>
+                            </label>
+                            <input class="pure-u-1-2 comments" type="text" id="root04-comments" placeholder="Comments">
+                        </div>
+                        <div class="row odd pure-g">
+                            <label class="pure-u-1-2" for="root05">
+                                <span class="pure-g">
+                                    <p class="pure-u-21-24 label">Recommend and implement solution</p>
+                                    <span class="pure-u-3-24 checkbox">
+                                        <input type="checkbox" id="root05" value="">
+                                    </span>
+                                </span>
+                            </label>
+                            <input class="pure-u-1-2 comments" type="text" id="root05-comments" placeholder="Comments">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pure-u-1-1 section">
+                    <p class="head">Solution</p>
+                    <div class="row-container">
+                        <div class="row odd pure-g">
+                            <label class="pure-u-1-2" for="solution01">
+                                <span class="pure-g">
+                                    <p class="pure-u-21-24 label">Solution</p>
+                                    <span class="pure-u-3-24 checkbox">
+                                        <input type="checkbox" id="solution01" value="">
+                                    </span>
+                                </span>
+                            </label>
+                            <input class="pure-u-1-2 comments" type="text" id="solution01-comments"
+                                placeholder="Comments">
+                        </div>
+                        <div class="row even pure-g">
+                            <label class="pure-u-1-2" for="solution02">
+                                <span class="pure-g">
+                                    <p class="pure-u-21-24 label">Bridge</p>
+                                    <span class="pure-u-3-24 checkbox">
+                                        <input type="checkbox" id="solution02" value="">
+                                    </span>
+                                </span>
+                            </label>
+                            <input class="pure-u-1-2 comments" type="text" id="solution02-comments"
+                                placeholder="Comments">
+                        </div>
+                        <div class="row odd pure-g">
+                            <label class="pure-u-1-2" for="solution03">
+                                <span class="pure-g">
+                                    <p class="pure-u-21-24 label">Benefit</p>
+                                    <span class="pure-u-3-24 checkbox">
+                                        <input type="checkbox" id="solution03" value="">
+                                    </span>
+                                </span>
+                            </label>
+                            <input class="pure-u-1-2 comments" type="text" id="solution03-comments"
+                                placeholder="Comments">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pure-u-1-1 section">
+                    <p class="head">Education</p>
+                    <div class="row-container">
+                        <div class="row odd pure-g">
+                            <label class="pure-u-1-2" for="education01">
+                                <span class="pure-g">
+                                    <p class="pure-u-21-24 label">Remember to use good human relations skills</p>
+                                    <span class="pure-u-3-24 checkbox">
+                                        <input type="checkbox" id="education01" value="">
+                                    </span>
+                                </span>
+                            </label>
+                            <input class="pure-u-1-2 comments" type="text" id="education01-comments"
+                                placeholder="Comments">
+                        </div>
+                        <div class="row even pure-g">
+                            <label class="pure-u-1-2" for="education02">
+                                <span class="pure-g">
+                                    <p class="pure-u-21-24 label">Offer one point of education on each interaction</p>
+                                    <span class="pure-u-3-24 checkbox">
+                                        <input type="checkbox" id="education02" value="">
+                                    </span>
+                                </span>
+                            </label>
+                            <input class="pure-u-1-2 comments" type="text" id="education02-comments"
+                                placeholder="Comments">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pure-u-1-1 section">
+                        <p class="head">Closing the Interaction</p>
+                        <div class="row-container">
+                            <div class="row odd pure-g">
+                                <label class="pure-u-1-2" for="closing01">
+                                    <span class="pure-g">
+                                        <p class="pure-u-21-24 label">Recap</p>
+                                        <span class="pure-u-3-24 checkbox">
+                                            <input type="checkbox" id="closing01" value="">
+                                        </span>
+                                    </span>
+                                </label>
+                                <input class="pure-u-1-2 comments" type="text" id="closing01-comments"
+                                    placeholder="Comments">
+                            </div>
+                            <div class="row even pure-g">
+                                <label class="pure-u-1-2" for="closing02">
+                                    <span class="pure-g">
+                                        <p class="pure-u-21-24 label">Offer additional assistance</p>
+                                        <span class="pure-u-3-24 checkbox">
+                                            <input type="checkbox" id="closing02" value="">
+                                        </span>
+                                    </span>
+                                </label>
+                                <input class="pure-u-1-2 comments" type="text" id="closing02-comments"
+                                    placeholder="Comments">
+                            </div>
+                            <div class="row odd pure-g">
+                                <label class="pure-u-1-2" for="closing03">
+                                    <span class="pure-g">
+                                        <p class="pure-u-21-24 label">Say "thank you" and close with the brand</p>
+                                        <span class="pure-u-3-24 checkbox">
+                                            <input type="checkbox" id="closing03" value="">
+                                        </span>
+                                    </span>
+                                </label>
+                                <input class="pure-u-1-2 comments" type="text" id="closing03-comments"
+                                    placeholder="Comments">
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </fieldset>
+        <fieldset class="even" id="general-comments">
+            <div class="pure-g">
+                <div class="pure-u-1-1 section">
+                    <label for="key-strengths">
+                        <p class="head">Key Strengths</p>
+                    </label>
+                    <textarea name="key-strengths" id="key-strengths" class="pure-u-23-24"></textarea>
+
+                    <label for="key-dev-opp">
+                        <p class="head">Key Development Opportunities</p>
+                    </label>
+                    <textarea name="key-dev-opp" id="key-dev-opp" class="pure-u-23-24"></textarea>
+
+                    <label for="it-analyst-commit">
+                        <p class="head">IT Analyst Commitment</p>
+                    </label>
+                    <textarea name="it-analyst-commit" id="it-analyst-commit" class="pure-u-23-24"></textarea>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="pure-g">
+                <div class="pure-u-1 pure-u-md-1-4 col">
+                    <label for="date-coached">Date Coached</label>
+                    <input id="date-coached" type="text" class="pure-u-1-1 pure-u-md-23-24">
+                </div>
+                <div class="pure-u-1 pure-u-md-1-4 col">
+                    <label for="date-follow-up">Follow-Up Date</label>
+                    <input id="date-follow-up" type="text" class="pure-u-1-1 pure-u-md-23-24">
+                </div>
+            </div>
+        </fieldset>
+        <button type="submit" class="pure-button pure-button-primary">Submit</button>
+    </form>
+    <!-- <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker1').datetimepicker();
+        });
+    </script> -->
+</body>
+
+</html>

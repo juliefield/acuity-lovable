@@ -1,0 +1,17 @@
+  <div class="login-background" ng-show="! LOGGED_IN()">
+    <section class="acuity-login">
+        <h2>Please login.</h2>
+        <div class="acuity-login-container">
+            <div class="acuity-logo acuity-logo-image">
+            </div>
+        <div>
+        <ng-login embedded="Y" ng-show="!loginMode || loginMode === 'login'"></ng-login>
+        <ng-change-password ng-show="loginMode === 'changePassword'"></ng-change-password>
+    </section>
+    <section class="acuity-form-copyright">
+        <p id="debugdiv" runat="server"></p>
+        <p>
+            This system is for authorized use only. ©<script>document.write(new Date().getFullYear())</script> TouchPoint One, LLC. All Rights Reserved.
+        </p>
+    </section>
+  </div>

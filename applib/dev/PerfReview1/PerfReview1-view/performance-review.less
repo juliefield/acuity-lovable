@@ -1,0 +1,925 @@
+#side-perf-shell {
+
+    /* dev stuff - delete before prod */
+    .placeholder {
+        @border-radius: 0 0 8px 8px;
+        -webkit-border-radius: @border-radius;
+        border-radius: @border-radius;
+        width: 100%;
+        height: auto;
+    }
+
+    .error {
+        color: red;
+        font-style: italic;
+    }
+
+    /* end dev stuff */
+    @grey15: rgba(0, 0, 0, .15);
+    @grey45: rgba(0, 0, 0, .45);
+
+    @media screen and (min-width:35.5em) {
+        .pure-u-sm- {
+            &align-left {
+                text-align: left;
+            }
+
+            &align-right {
+                text-align: right;
+            }
+
+            &align-center {
+                text-align: center;
+            }
+        }
+    }
+
+    @media screen and (min-width:48em) {
+        .pure-u-md- {
+            &align-left {
+                text-align: left;
+            }
+
+            &align-right {
+                text-align: right;
+            }
+
+            &align-center {
+                text-align: center;
+            }
+        }
+    }
+
+    @media screen and (min-width:64em) {
+        .pure-u-lg- {
+            &align-left {
+                text-align: left;
+            }
+
+            &align-right {
+                text-align: right;
+            }
+
+            &align-center {
+                text-align: center;
+            }
+        }
+    }
+
+    @media screen and (min-width:80em) {
+        .pure-u-xl- {
+            &align-left {
+                text-align: left;
+            }
+
+            &align-right {
+                text-align: right;
+            }
+
+            &align-center {
+                text-align: center;
+            }
+        }
+    }
+
+    .align-right {
+        text-align: right;
+    }
+
+    .align-center {
+        text-align: center;
+    }
+
+    dd,
+    dt {
+        margin: 0;
+        display: inline-block;
+    }
+
+    .hover-transition() {
+        -webkit-transition: all .3s ease;
+        -moz-transition: all .3s ease;
+        -ms-transition: all .3s ease;
+        -o-transition: all .3s ease;
+        transition: all .3s ease;
+    }
+
+    .center-horz-vert() {
+        top: 50%;
+        left: 50%;
+        -moz-transform: translateX(-50%) translateY(-50%);
+        -webkit-transform: translateX(-50%) translateY(-50%);
+        -o-transform: translateX(-50%) translateY(-50%);
+        -ms-transform: translateX(-50%) translateY(-50%);
+        transform: translateX(-50%) translateY(-50%);
+    }
+
+    .wrapper {
+        @border-radius: 8px;
+        -webkit-border-radius: @border-radius;
+        border-radius: @border-radius;
+        @box-shadow: 0 0 4px 0 @grey15;
+        -webkit-box-shadow: @box-shadow;
+        box-shadow: @box-shadow;
+        display: inline-block;
+        width: 100%;
+        margin: 1em 0;
+    }
+
+    .expand-compress:not[button] {
+        padding: .5em;
+        background-color: rgba(255, 255, 255, .3);
+        @border-radius: 4px;
+        -webkit-border-radius: @border-radius;
+        border-radius: @border-radius;
+        display: block;
+
+        i {
+            font-size: 1.33em !important;
+        }
+
+        &:hover,
+        &:focus {
+            background-color: rgba(255, 255, 255, .6);
+        }
+    }
+
+    .float-left {
+        float: left;
+    }
+
+    .float-right {
+        float: right;
+    }
+
+    .clear-all {
+        clear: both;
+    }
+
+    .pure-form select {
+        height: auto;
+    }
+
+    .btn-add,
+    .btn-remove {
+        border: none;
+        background: transparent;
+
+        i {
+            zoom: 1.5;
+        }
+    }
+
+    .btn-add i {
+        color: green;
+    }
+
+    .btn-remove i {
+        color: red;
+    }
+
+    .section-header {
+        background: #000;
+        @border-radius: 8px 8px 0 0;
+        -webkit-border-radius: @border-radius;
+        border-radius: @border-radius;
+        width: 100%;
+        display: inline-block;
+
+        * {
+            color: #fff;
+            font-size: 14px;
+            display: inline-block;
+        }
+
+        h2,
+        h3 {
+            margin: 1em;
+        }
+
+        h3 {
+            font-weight: normal;
+        }
+    }
+
+    div[nv="performance-review"] {
+        .refreshing {
+            display:inline-block;
+            position: relative;
+            color: @grey45;
+            .center-horz-vert();
+        }
+        #confirmation-message {
+            color: #fff;
+            text-align: center;
+            background-color: #019F01;
+            padding: 1em;
+            border-radius: 8px;
+            font-size: 1.5em;
+            position: relative;
+
+            .close {
+                position: absolute;
+                right: 20px;
+                background: none;
+                padding: 8px;
+                margin: 0;
+                border: none;
+                top: 20px;
+
+                i.fa {
+                    color: #fff;
+                }
+            }
+        }
+
+        .header {
+            h1 {
+                float: left;
+            }
+
+            .btn-back-to-journal {
+                font-size: 120%;
+                margin: 20.5px 0;
+
+                i {
+                    margin-right: 7px;
+                }
+            }
+
+            .tabs-container {
+                list-style: none;
+                margin: 1.4em 0;
+                padding: 0;
+                float: right;
+
+                li {
+                    display: inline-block;
+
+                    a {
+                        &.active:before {
+                            content: "Hide";
+                        }
+
+                        &:before {
+                            content: "Show";
+                        }
+                    }
+                }
+            }
+
+            .tab_contents_container {
+                .tab_contents {
+                    border: 1px solid #ccc;
+                    padding: 1em;
+                    @border-radius: .5em;
+                    -webkit-border-radius: @border-radius;
+                    border-radius: @border-radius;
+
+                    >div {
+                        width: 19%;
+                        display: inline-block;
+                        vertical-align: top;
+
+                        label,
+                        select {
+                            display: block;
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+
+        .content {
+            #agentList {
+                #agentTable {
+                    >table {
+                        >tbody {
+                            >tr {
+                                &:nth-child(2n)>td {
+                                    background-color: #f8fafc;
+                                }
+
+                                >td {
+                                    padding: 0;
+                                }
+                            }
+                        }
+                    }
+
+                    table {
+                        width: 100%;
+
+                        .col-expand-collapse {
+                            width: 3%;
+                            text-align: center;
+                        }
+
+                        .col-name {
+                            width: 32%;
+                            text-align: left;
+                        }
+
+                        .col-role {
+                            width: 10%;
+                            text-align: left;
+                        }
+
+                        .col-tenure-milestone {
+                            width: 15%;
+                            text-align: right;
+                        }
+
+                        .col-date {
+                            width: 15%;
+                            text-align: right;
+                        }
+
+                        .col-score {
+                            width: 10%;
+                            text-align: right;
+                        }
+
+                        .col-actions {
+                            width: 15%;
+                            text-align: right;
+                        }
+
+                        .col-reviewed-by {
+                            width: 24%;
+                        }
+
+                        thead {
+                            tr {
+                                th {
+
+                                    &,
+                                    a {
+                                        color: black;
+                                        text-decoration: none;
+                                    }
+                                }
+                            }
+                        }
+
+                        tbody {
+                            tr {
+                                td {
+                                    &.col-expand-collapse {
+                                        a {
+                                            color: rgba(0, 0, 0, .33);
+
+                                            i {
+                                                font-size: 1.33em;
+                                            }
+
+                                            &:hover,
+                                            &:focus {
+                                                color: rgba(0, 0, 0, 1);
+                                            }
+                                        }
+                                    }
+
+                                    &.col-name {
+
+                                        .agent-avatar,
+                                        p {
+                                            display: inline-block;
+                                            vertical-align: middle;
+                                            text-align: left;
+                                        }
+
+                                        .agent-avatar {
+                                            max-width: 24px;
+                                        }
+                                    }
+
+                                    &.col-actions {
+                                        a {
+                                            color: rgba(0, 0, 0, .33);
+                                            display: inline-block;
+                                            padding: .5em;
+                                            border: 1px solid;
+                                            @border-radius: 4px;
+                                            -webkit-border-radius: @border-radius;
+                                            border-radius: @border-radius;
+
+                                            i {
+                                                @dimension: 18px;
+                                                width: @dimension;
+                                                height: @dimension;
+                                                font-size: @dimension;
+                                                text-align: center;
+                                            }
+
+                                            &:hover,
+                                            &:focus {
+                                                color: rgba(0, 0, 0, 1);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            >tr.agent-row-main {
+                                >td {
+                                    border-bottom: none;
+                                }
+                            }
+
+                            >tr.agent-row-sub-head {
+                                background-color: #e5eaee;
+
+                                // display: none;
+                                >td {
+                                    font-weight: bold;
+                                    border: none;
+                                }
+                            }
+
+                            >tr.agent-row-sub-content {
+
+                                // display: none;
+                                >td {
+                                    background-color: #fff;
+                                }
+
+                                td.review-data {
+                                    padding: 0;
+
+                                    .pure-table-striped tr:nth-child(2n-1) td {
+                                        background-color: #f8fafc;
+                                    }
+                                }
+
+                                .col-name {
+                                    border-right: 1px solid #cbcbcb;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .createReview {
+                border: none;
+                padding: 0;
+
+                h1 {
+                    line-height: 1.2em;
+                }
+
+                h1 sub {
+                    display: block;
+                    margin-top: 1em;
+                    color: @grey45;
+                }
+
+                >h1,
+                >button {
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+
+                >button {
+                    margin: 0 24px;
+                }
+
+                #cancel-review-create {
+                    margin: 24px 0;
+                }
+
+                .wrapper {
+                    .section-header {
+
+                        h2,
+                        p {
+                            font-size: 14px;
+                            margin: 12px;
+                        }
+
+                        >div {
+                            float: right;
+
+                            p {
+                                font-style: italic;
+                            }
+                        }
+
+                        h2,
+                        >div,
+                        >div p {
+                            display: inline-block;
+                        }
+                    }
+
+                    ul {
+                        clear: both;
+                    }
+
+                    #performance {
+                        #team-leader {
+                            margin-block-start: 27px;
+                        }
+
+                        .balanced-score h3 {
+                            margin-block-start: 24px;
+                        }
+
+                        #targets-goals {
+                            background: rgba(0, 0, 0, .0333);
+                            -webkit-border-radius: .5em;
+                            border-radius: .5em;
+
+                            .focus-target {
+
+                                .head,
+                                .pure-form,
+                                dl {
+                                    margin: 1em;
+                                }
+
+                                .pure-form,
+                                dl {}
+
+                                dl {}
+
+                                .head {
+                                    margin: 0 1em;
+
+                                    h3,
+                                    button {}
+
+                                    button {
+                                        color: #222;
+                                        position: relative;
+                                        font-size: 1.66em;
+                                        background: none;
+                                        top: 50%;
+                                        -moz-transform: translateY(-50%);
+                                        -webkit-transform: translateY(-50%);
+                                        -o-transform: translateY(-50%);
+                                        -ms-transform: translateY(-50%);
+                                        transform: translateY(-50%);
+                                        outline: none;
+                                    }
+                                }
+                            }
+                        }
+
+                        #all-kpi {
+                            .section-header {
+                                #toggle-group {
+                                    display: inline-block;
+
+                                    >div {
+                                        display: inline-block;
+                                        margin: 14px;
+                                    }
+                                }
+
+                                #toggle-view {
+                                    display: inline-block;
+                                    margin: 14px;
+                                }
+                            }
+
+                            .btn-toggle {
+                                text-decoration: none;
+
+                                >span {
+                                    display: inline-block;
+                                    position: relative;
+                                    float: none;
+                                }
+
+                                .label {
+                                    &.left {}
+
+                                    &.right {}
+                                }
+
+                                .btn-img {
+                                    width: 50px;
+                                    top: -15px;
+                                    left: 6px;
+
+                                    &:after {
+                                        content: "";
+                                        background-color: #fff;
+                                        height: 24px;
+                                        width: 42px;
+                                        position: absolute;
+                                        z-index: 2;
+                                        -webkit-border-radius: 12px;
+                                        border-radius: 12px;
+                                        top: -1px;
+                                        left: -2px;
+                                    }
+
+                                    .fa {
+                                        position: absolute;
+                                        z-index: 3;
+                                        color: #0092ce;
+                                        font-size: 21px;
+                                        top: 1px;
+                                    }
+
+                                    &.left .fa {
+                                        left: 1px;
+                                    }
+
+                                    &.right .fa {
+                                        right: 13px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    #profile-information,
+                    #performance,
+                    #summary,
+                    #goals-objectives,
+                    #view-last-review-modal {
+
+                        dt,
+                        dd {
+                            display: block;
+                        }
+
+                        dd {
+                            font-weight: bold;
+                            color: @grey45;
+                        }
+
+                        dt {
+                            margin-bottom: 1em;
+                        }
+                    }
+
+                    #observations,
+                    #summary {
+                        .fa-caret-up {
+                            color: green;
+                        }
+
+                        .fa-caret-down {
+                            color: red;
+                        }
+
+                        a>.fa-caret-up,
+                        a>.fa-caret-down {
+                            color: #000;
+                        }
+
+                        .pure-form {
+                            display: none;
+                        }
+
+                        table {
+                            width: 100%;
+
+                            >thead {
+                                th {
+                                    border: none;
+                                    background-color: #e5ecf2;
+                                }
+                            }
+
+                            >tbody {
+                                >tr {
+                                    &:nth-child(4n-2) {
+                                        td {
+                                            background-color: #f2f2f2;
+                                        }
+                                    }
+                                }
+
+                                tr {
+                                    &.row-child {
+                                        display: none;
+
+                                        >td {
+                                            padding: 0;
+                                            position: relative;
+
+                                            &:before {
+                                                content: "";
+                                                -webkit-box-shadow: inset 0 0 8px 0 rgba(0, 0, 0, .33);
+                                                box-shadow: inset 0 0 8px 0 rgba(0, 0, 0, .33);
+                                                position: absolute;
+                                                top: 0;
+                                                right: 0;
+                                                bottom: 0;
+                                                left: 0;
+                                            }
+
+                                            table {
+                                                border: none;
+
+                                                >thead {
+                                                    th {
+                                                        background-color: #e4e9ed;
+                                                    }
+                                                }
+
+                                                >tbody {}
+
+                                                >tfoot {
+                                                    td {
+                                                        background-color: #000;
+                                                        font-weight: bold;
+                                                        color: #fff;
+                                                        text-align: right;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    #goals-objectives {
+
+                        input,
+                        textarea {
+                            width: 100%;
+                        }
+                    }
+
+                    #summary {
+                        dd {
+                            font-weight: bold;
+
+                            &:after {
+                                content: ": ";
+                            }
+                        }
+
+                        #btn-download {
+                            display: inline-block;
+                            padding: 8px 10px;
+                            color: #c1c6ca;
+                            border: 1px solid #c1c6ca;
+                            -webkit-border-radius: 4px;
+                            border-radius: 4px;
+                            margin-block-end: 18.26px;
+                            margin-block-start: 18.26px;
+
+                            &:hover,
+                            &:focus {
+                                color: #000;
+                                border-color: #000;
+                            }
+                        }
+                    }
+
+                    section {
+                        ng-acuity-report {
+                            display: block;
+                            width: 100%;
+                            margin-bottom: 1em;
+                            background-color: #E5ECF2;
+                            height: 414px;
+                        }
+
+                        padding: 0 1em;
+
+                        >div {
+                            border-bottom: 1px solid @grey15;
+                            padding-bottom: 1em;
+                        }
+
+                        &:first-child>div {
+                            padding-top: 1em;
+                        }
+
+                        &:last-child>div {
+                            border: 0px;
+                        }
+
+                        dt,
+                        dd,
+                        label {
+                            display: block;
+                        }
+
+                        dd,
+                        label {
+                            font-weight: bold;
+                            color: @grey45;
+                        }
+
+                        dt {
+                            margin-bottom: 1em;
+                        }
+
+                        textarea {
+                            resize: none;
+                            height: 7em;
+                        }
+
+                        input,
+                        select,
+                        table,
+                        .placeholder {
+                            margin-bottom: 1em;
+                        }
+                        .counter-text {
+                            color:@grey45;
+                            font-size: 1em;
+                            margin-top: .333em;
+                            margin-bottom: 1em;
+                            display: block;
+                            &.error {
+                                color:orangered;
+                                font-style: normal;
+                            }
+                        }
+
+                        table {
+
+                            input,
+                            select {
+                                margin-bottom: initial;
+                            }
+                        }
+
+                        .placeholder {
+                            border-radius: 0;
+                        }
+
+                        input[disabled],
+                        select[disabled],
+                        textarea[disabled] {
+                            color: rgba(0, 0, 0, .5);
+                        }
+
+                        &#goal-setting {
+                            p.label {
+                                margin: 0;
+                                padding: 0;
+                            }
+
+                            label {
+                                display: block;
+                                font-weight: normal;
+                            }
+
+                            select#goal-kpi {
+                                max-width: 90%;
+                            }
+
+                            #goal_from_x,
+                            #goal_increase,
+                            #goal_to_x {
+                                width: 6em;
+
+                                &.ng-invalid-pattern {
+                                    &::after {
+                                        content: "Numbers Only";
+                                        color: red;
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+                }
+                &.view-only {
+                    #coaching {
+                        dl {
+                            span {
+                                display: inline-block;
+                                margin-right:1.333em;
+                            }
+                        }
+                    }
+                    h3 {
+                        margin-bottom:0;
+                        + table {
+                            margin-top: .333em;
+                        }
+                        + p {
+                            margin-top:0;
+                        }
+                    }
+                }
+            }
+        }
+
+        #createReview {
+            .wrapper {
+                >ul {
+                    list-style-type: none !important;
+                    list-style-position: inside !important;
+                }
+            }
+
+        }
+    }
+}

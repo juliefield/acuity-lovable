@@ -1,0 +1,25 @@
+				<div class="err-container">
+					<div class="err-hide" ng-click="HIDE_ERROR()">Done with this error</div>
+					<div class="err-text">Acuity Error:</div>
+					<div class="err-content">&nbsp;</div>
+					<div class="err-text">This notice has already been submitted to technical services. If you would like to add more information, please enter it below and submit.</div>
+					<div><input id="errinput" type="text" style="width: 500px;" value="" /><input id="errsubmit" type="button" value="Submit" /></div>
+					<div class="err-text">We will work diligently to correct this problem. You will be notified when we have a solution or work-around for you.</div>
+				</div>
+				<div class="app-header gradient-lightest">
+					<div class="logo" style="margin-left:0px;">
+						<a href="#" class="logo-reload">
+							<img src="/App_Themes/Acuity2/images/acuity-white-logo.png" alt="Acuity" />
+						</a>
+					</div>
+					<div class="heading" style="margin-left:0px;">{{Heading}}</div>
+					<div class="header-tile" style="width:50px;">&nbsp;</div>
+					<div class="header-tile" id="loadingprompt" style="color:White;background-color:#EF4521;padding-top:4px;padding-bottom:2px;padding-left:20px;font-weight:bold;display:none;font-size:16px;padding-right: 20px;float:right;">Loading...</div>
+					<div class="header-tile" style="margin-top: 25px;" id="logout"><a href='#' ng-click="LOG_OUT()" title='Log Out'>Log Out</a><a id="logsomething" style="display:none;" href='#'
+						    title='Log Out'>Log Out</a></div>
+					<div class="header-tile" style="margin-top: 25px;position:relative;" id="userid"><span id="welcomelabel">Welcome</span> <span>{{showname}}</span></div>
+					<div class="header-tile">
+						<div class="err-icon" ng-click="SHOW_ERROR()">
+						</div>
+                    </div>
+                </div>

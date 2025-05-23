@@ -1,0 +1,80 @@
+<div class="basic-directive-holder">
+   <div class="top-filters">
+      <div class="filter-input-group">
+         <span>Users <select id="userTrophies_usersFilter"></select></span>
+         <!-- <span>Trophies <select id="userTrophies_trophyFilter"></select></span> -->
+         <!-- <span>Flex Game <select id="userTrophies_flexGameFilter"></select></span> -->
+      </div>
+   </div>
+   <div class="userdetails_holder">
+      <div class="userdetails_user">
+         <div class="user-holder">
+            <div class="user-holder_details">
+               <div class="user-avatar">
+                  <img id="user-avatar" />
+               </div>
+               <div id="user-full-name"></div>
+               Total Trophies for User: <b><span id="user-trophy-count"></span></b>
+               <button id="btnAddUserTrophy" class="btn-large btn-assign-pts">Add Trophy</button>
+               
+            </div>   
+         </div>
+       </div>
+       <div class="userdetails_content">
+         <div class="header-holder">
+            <div class="header-item user-trophy-image">Trophy Image</div>
+            <div class="header-item user-trophy-name">Trophy Name</div>
+            <div class="header-item user-trophy-date">Date Earned</div>
+            <div class="header-item user-trophy-award-for">Award For</div>
+            <div class="header-item user-trophy-position-status">Position</div>         
+            <div class="header-item user-trophy-button-holder">Actions</div>
+         </div>
+         <div class="list-holder">
+            <div id="userTrophies_EarnedListHolder"></div>
+         </div>
+         
+      </div>
+   </div>   
+   <div id="userTrophyManagementPanel" class="editor-form">
+      <div class="form-holder">
+         <button class="btn-close btn-close-x"><i class="fa fa-times"></i></button>
+     
+         <div id="userTrophyManager_ErrorsFound" class="error-information-holder"></div>
+         <div>
+            
+            <h2>
+               Assign To: <b><span id="userTrophyManager_AssignToReadOnlyLabel"></span></b>
+            </h2>
+            
+            <div class="badgeAdminForm_form">
+               <div class="badgeAdminForm_image-preview">
+                  <img id="userTrophyManager_TrophyImage" />
+               </div>
+               <div class="badgeAdminForm_form-preview">
+                  <hidden id="userTrophyManager_AssignTo" readonly></hidden>
+                  <br/>
+                  <strong>Trophy:</strong> <select id="userTrophyManager_TrophyId"></select>
+                  <br />
+                  <strong>Flex Game Earned For:</strong>  <select id="userTrophyManager_FlexGameId"></select>
+                  <br />
+                  <strong>A-GAME Earned For:</strong>  <select id="userTrophyManager_AGameDivisionId"></select>
+                  <br />
+                  <strong>Date Earned:</strong>  <input type="text" class="user-trophy-manager-earned-date" id="userTrophyManager_EarnedDate">
+                  <br />
+                  <strong>Award Position:</strong>  <input type="text" class="user-trophy-manager-award-position" id="userTrophyManager_AwardPosition">
+                  <br />
+                  <strong>Total Positions:</strong>  <input type="text" class="user-trophy-manager-total-position" id="userTrophyManager_TotalPosition">
+                  <br />
+               </div>
+            </div>
+
+           
+         </div>
+         <div class="acuityAdminForm_btns">
+            <button class="btn-large" id="btnSave">Save</button>
+            &nbsp;&nbsp;
+            <button class="btn-close btn-large">Close</button>
+         </div>
+      </div>   
+   </div>
+</div>

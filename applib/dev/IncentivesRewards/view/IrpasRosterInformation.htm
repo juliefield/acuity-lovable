@@ -1,0 +1,61 @@
+<div>
+   <div class="flex flex-align-center justify-space-between">
+      <h3>Latest Activity:</h3>
+      <button id="btnForceUpdate">Force Run/Update</button>
+   </div>
+   <div class="p-5 flex flex-align-center justify-space-between">
+      Program Start Date: <span id="lblProgramStartDate">--</span>
+   </div>
+   <div class="p-5 flex flex-align-center justify-space-between">
+      Roster Last Updated: <span id="lblRosterLastUpdatedDate">--</span>
+   </div>
+   <div class="p-5 flex flex-align-center justify-space-between">
+      Dollar Value per Point: <span id="lblDollarValuePerPoint">--</span>
+   </div>
+   <div class="p-5 flex flex-align-center justify-space-between">
+      Total Points Awarded Today: <span id="lblTotalPointsAwardedToday">--</span>
+   </div>
+   <div class="p-5 flex flex-align-center justify-space-between">
+      Points Awarded Today Dollar Value: <span id="lblTotalDollarValueToday">--</span>
+   </div>
+   <div class="p-5 flex flex-align-center justify-space-between">
+      Award to Roles: 
+      <button id="btnChangeAwardToRoles" class="button btn btn-text">Change</button>
+      <span id="lblAwardToRolesList">--</span>
+   </div>
+
+   <div class="editor-form" id="awardToRolesFormHolder">
+      <div class="form-holder" id="awardToRolesForm">
+         <div class="editor-form-header-holder">
+            <h2>Award Points to Roles</h2>
+            <button class="button btn btn-close"><i class="fa fa-close"></i></button>
+         </div>
+         <div class="editor-form-body">
+            <div class="editor-form-row">
+               <h5>Instructions</h5>
+               <div>
+                  Check the role(s) that you wish to award points to.
+               </div>
+            </div>
+            <hr>
+            <div class="editor-form-row">
+               <div>
+                  <button id="btnSelectAllRolesToAward" class="button btn btn-small">Select All</button>
+                  &nbsp;
+                  <button id="btnClearAllRolesToAward" class="button btn btn-small">Clear All</button>
+               </div>
+               <div id="availableRolesToAwardPointToList"></div>
+            </div>
+            <hr>
+            <div class="award-to-roles-description-notes-holder">
+               <h5>Description of Roles</h5>
+               <div id="availableRolesDescriptionNotes"></div>
+            </div>
+         </div>
+         <div class="editor-form-button-holder">
+            <button id="btnSaveAwardToRolesList" class="button btn btn-save btn-large">Save</button>
+            <button class="button btn btn-close btn-large">Close</button>
+         </div>
+      </div>
+   </div>
+</div>

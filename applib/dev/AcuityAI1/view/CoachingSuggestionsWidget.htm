@@ -1,0 +1,66 @@
+<style>
+   .coaching-suggestion-widget-row
+   {
+      height:25px;
+      padding:3px;
+      border-bottom:1px solid darkgray;
+      border-top:1px solid darkgray;
+      background-color:white;
+   }
+   .coaching-suggestion-widget-row:nth-child(even)
+   {
+      background-color:lightgray;
+   }
+   .coaching-suggestion-widget-item
+   {
+      display:inline-block;
+   }
+   .coaching-suggestion-name
+   {
+      width:40%;
+      text-align:left;
+   }
+   .coaching-suggestion-suggestion
+   {
+      width:25%;
+      text-align:center;
+   }
+   .coaching-suggestion-area
+   {
+      width:20%;
+      text-align:center;
+   }
+   .coaching-suggestion-button-holder
+   {
+      width:10%;
+      text-align:center;
+   }
+   .coaching-suggestion-widget-row.active {
+      background-color:cyan !important;
+      font-weight:bold;
+   }
+</style>
+<div>
+   <div style="display:inline-block;width:45%;">
+      <h4>Coaching Suggestions</h4>
+   </div>
+   <div style="display:inline-block;width:45%;">
+      <a href="#" onclick="javascript:alert('Navigate to sidekick');">Sidekick</a>
+   </div>
+
+</div>
+
+<div style="font-size:.85em;">
+   <div style="background-color:var(--brand-blue); font-weight:bold;color:var(--light-gray);">
+      <div class="coaching-suggestion-widget-item header-item coaching-suggestion-name">Name</div>
+      <div class="coaching-suggestion-widget-item header-item coaching-suggestion-suggestion">Suggestion</div>
+      <div class="coaching-suggestion-widget-item header-item coaching-suggestion-area">Area</div>
+      <div class="coaching-suggestion-widget-item header-item coaching-suggestion-button-holder">&nbsp;</div>
+   </div>
+   <div style="overflow:auto;max-height:15vh;min-height:15vh;background-color:lightgray;">
+      <div id="userCoachingSuggestionListHolder"></div>
+   </div>
+   <div>
+      &nbsp;
+   </div>
+</div>

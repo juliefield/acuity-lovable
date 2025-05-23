@@ -1,0 +1,132 @@
+<div class="cdsprompt-fiddle">AI&nbsp;Prompts</div>
+<div class="cdsprompt-editors">
+    <div style="position:relative;">
+        <div class="gencds-anchor"></div>
+        <input type="button" class="cdsprompt-save" value="Save Prompts" />
+    </div>
+
+    <div style="position:absolute;top:0px;right:0px;">
+        <div class="ai-process" style="position:relative;float:right;padding-top:30px;padding-right:10px;text-align:right;">
+            <div class="ai-voice" style="display:none;padding-bottom:10px;">
+               <span class="ai-voice-message"></span>
+                <input type="button" value="Change Voice File" class="ac-ai-voice-upload" style="margin-left:10px;" />
+            </div>
+            <div class="ai-process-show">
+                Process:
+                <select class="ai-process-select">
+                    <option value="Whisper>DiarizeLLM>LLM">Whisper>DiarizeLLM>LLM</option>
+                    <option value="DeepGram>LLM">DeepGram>LLM</option>
+                </select>
+                <div class="ai-steps">
+                    Steps:
+                    <select class="ai-steps-select">
+                        <option value="all">Overview</option>
+                        <option value="1">Speech to Text (Whisper)</option>
+                        <option value="2">Diarization (LLM)</option>
+                        <option value="3">Monitor Eval (LLM)</option>
+                    </select>
+                </div>
+                <div class="ai-steps-overview ai-step ai-step-all" step="all" style="float:right;">
+                    <table style="text-align:center;">
+                        <thead>
+                            <tr>
+                                <th>Step</th><th>LastRun</th><th>Redo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Speech to Text (Whisper)</td><td>12/15/2024</td><td><input type="button" value="Re-Transcribe" class="ac-ai-run" process="Whisper>DiarizeLLM>LLM" step="1" /></td>
+                            </tr>
+                            <tr>
+                                <td>Diarization (LLM)</td><td>12/20/2024</td><td><input type="button" value="Re-Diarize" class="ac-ai-run" process="Whisper>DiarizeLLM>LLM" step="2" /></td>
+                            </tr>
+                            <tr>
+                                <td>Monitor Eval (LLM)</td><td>12/15/2024</td><td><input type="button" value="Regenerate" class="ac-ai-run" process="Whisper>DiarizeLLM>LLM" step="3" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="ai-steps-wrapper">
+            </div>
+            <div class="ai-step-single ai-step" step="1" style="display:none;">
+                <div class="ai-step-subdiv">
+                    <div class="ai-step-label">Speech to Text (Whisper)</div>
+                    <div class="ai-settings-label">Settings</div>
+                    <div class="ai-setting-block" >
+                        <div class="ai-setting-block-label">Default</div>
+                        <div class="ai-setting-provider">Provider: <select disabled="disabled"><option value="OpenAI.Whisper">OpenAI.Whisper</option></select></div>
+                        <textarea class="ai-stg-editor ai-stg-default" disabled="disabled"></textarea>
+                        <input type="button" value="Update Default Settings" class="ac-ai-settings-default" step="1" />
+                    </div>
+                    <div class="ai-setting-block">
+                        <div class="ai-setting-block-label">Re-Run</div>
+                        <div class="ai-setting-provider">Provider: <select><option value="OpenAI.Whisper">OpenAI.Whisper</option></select></div>
+                        <textarea class="ai-stg-editor ai-stg-rerun"></textarea>
+                        <input type="button" value="Re-Transcribe" class="ac-ai-run" process="Whisper>DiarizeLLM>LLM" step="1" />
+                    </div>
+                    <div class="ai-setting-block">
+                        <div class="ai-setting-block-label">This Monitor</div>
+                        <div class="ai-setting-provider">Provider: <select disabled="disabled"><option value="OpenAI.Whisper">OpenAI.Whisper</option></select></div>
+                        <textarea class="ai-stg-editor ai-stg-current" disabled="disabled"></textarea>
+                        <div class="ac-showtranscription ai-datafield-link">Show Current Transcription</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ai-step-single ai-step" step="2" style="display:none;">
+                <div style="width:600px;text-align:center;">
+                    <div class="ai-step-label" style="margin: 3px 0 5px 0;background-color:lightblue;">Diarize (LLM)</div>
+                    <div style="display:block;width:100%;background-color:lightblue;">Settings</div>
+                    <div style="width: calc( 100% / 3.0 );float:right;">
+                        <div style="display:block;">Default</div>
+                        <div style="width:100%;">Provider: <select disabled="disabled"><option value="OpenAI.Chat">OpenAI.Chat</option></select></div>
+                        <textarea class="ai-stg-editor ai-stg-default" disabled="disabled"></textarea>
+                        <input type="button" style="font-size:10px;" value="Update Default Settings" class="ac-ai-settings-default" step="2" />
+                    </div>
+                    <div style="width: calc( 100% / 3.0 );float:right;">
+                        <div style="display:block;">Re-Run</div>
+                        <div style="width:100%;">Provider: <select><option value="OpenAI.Chat">OpenAI.Chat</option></select></div>
+                        <textarea class="ai-stg-editor ai-stg-rerun"></textarea>
+                        <input type="button" value="Re-Diarize" class="ac-ai-run" process="Whisper>DiarizeLLM>LLM" step="2" />
+                    </div>
+                    <div style="width: calc( 100% / 3.0 );float:right;">
+                        <div style="display:block;">This Monitor</div>
+                        <div style="width:100%;">Provider: <select disabled="disabled"><option value="OpenAI.Chat">OpenAI.Chat</option></select></div>
+                        <textarea class="ai-stg-editor ai-stg-current" disabled="disabled"></textarea>
+                        <div class="ac-showdiarization" style="cursor:pointer;text-decoration:underline;font-size:9px;">Show Diarization</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ai-step-single ai-step" step="3" style="display:none;">
+                <div style="width:600px;text-align:center;">
+                    <div class="ai-step-label" style="margin: 3px 0 5px 0;background-color:lightblue;">Monitor Eval (LLM)</div>
+                    <div style="display:block;width:100%;background-color:lightblue;">Settings</div>
+                    <div style="width: calc( 100% / 3.0 );float:right;">
+                        <div style="display:block;">Default</div>
+                        <div style="width:100%;">Provider: <select disabled="disabled"><option value="OpenAI.Chat">OpenAI.Chat</option></select></div>
+                        <textarea class="ai-stg-editor ai-stg-default" disabled="disabled"></textarea>
+                        <input type="button" style="font-size:10px;" value="Update Default Settings" class="ac-ai-settings-default" step="3" />
+                    </div>
+                    <div style="width: calc( 100% / 3.0 );float:right;">
+                        <div style="display:block;">Re-Run</div>
+                        <div style="width:100%;">Provider: <select><option value="OpenAI.Chat">OpenAI.Chat</option></select></div>
+                        <textarea class="ai-stg-editor ai-stg-rerun"></textarea>
+                        <div class="ac-showfullprompt" style="cursor:pointer;text-decoration:underline;font-size:9px;margin-bottom:5px;">Show Full Prompt</div>
+                        <input type="button" value="Regenerate" class="ac-ai-run" process="Whisper>DiarizeLLM>LLM" step="3" />
+                    </div>
+                    <div style="width: calc( 100% / 3.0 );float:right;">
+                        <div style="display:block;">This Monitor</div>
+                        <div style="width:100%;">Provider: <select disabled="disabled"><option value="OpenAI.Chat">OpenAI.Chat</option></select></div>
+                        <textarea class="ai-stg-editor ai-stg-current" disabled="disabled"></textarea>
+                        <div class="ac-showreturn" style="cursor:pointer;text-decoration:underline;font-size:9px;">Show Return Text</div>
+                    </div>
+                </div>
+            </div>
+
+                
+            </div>
+        </div>
+    </div>
+    <div style="height:100px;">&nbsp;</div>
+    <div class="datafield-dialog"></div>
+</div>

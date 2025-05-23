@@ -1,0 +1,310 @@
+<div class="reason-wrapper">
+<div class="rpt-popup-background">
+  <div class="rpt-popup-sizer form-popup" id="JournalPopupID" >
+    <div class="rpt-dismiss form-popup_dismiss" ng-click="dismissform()">
+      <i class="fa fa-close"></i>
+    </div>
+    <div class="rpt-popup form-popup_content">
+      <div class="rpt-form">
+        <h1><span style="font-weight:bold;">{{multiuserlabel}}</span><span>Journal Entry for</span> {{myname}}</h1>
+        <div class="printicon">print</div>
+        <div class="hack-RecordID-Show" style="position:absolute;top:40px;right:30px;font-weight:bold;display:none;">
+              ID:
+              <input disabled="disabled" style="border:0px;width:55px;text-align:right;border:0px;" ng-model="f_selected.id" />
+        </div>
+        <h2 ng-show="record_saved" id="save-message">Journal record saved.</h2>
+        <h3 style="display:none;font-size:24px;" class="subform-save-confirmation"></h3>
+        <form name="form_journal" class="pure-form" novalidate ng-hide="record_saved">
+          <div class="form-popup_info-fields pure-g " style="justify-content: space-between;">
+            <div class="pure-u-1-1" id="kpis-loading" ng-if="!kpis_loaded">
+              <div class="animation">
+                <div class="sk-circle">
+                  <div class="sk-circle1 sk-child"></div>
+                  <div class="sk-circle2 sk-child"></div>
+                  <div class="sk-circle3 sk-child"></div>
+                  <div class="sk-circle4 sk-child"></div>
+                  <div class="sk-circle5 sk-child"></div>
+                  <div class="sk-circle6 sk-child"></div>
+                  <div class="sk-circle7 sk-child"></div>
+                  <div class="sk-circle8 sk-child"></div>
+                  <div class="sk-circle9 sk-child"></div>
+                  <div class="sk-circle10 sk-child"></div>
+                  <div class="sk-circle11 sk-child"></div>
+                  <div class="sk-circle12 sk-child"></div>
+                </div>
+              </div>
+            </div>
+            <div class="pure-u-1-1 pure-u-md-1-3">
+              <label>Entry Date</label>
+              <input NOT-dynamic-ui type="text" class="clugue-date-floating" ng-model="f_selected.Date" name="clugue_date"
+                placeholder="mm/dd/yyyy" style="width: 90% !important;display: block;margin-top: 5px;" required />
+              <span ng-show="form_journal.clugue_date.$touched && form_journal.clugue_date.$invalid"
+                class="validation error">Required</span>
+            </div>
+            <div class="pure-u-1-1 pure-u-md-1-3">
+              <div ng-hide="current_reason.DisplayDeliveredBy === 'No'">
+              <label>Delivered By</label>
+              <input NOT-dynamic-ui type="text" ng-model="f_selected.DeliveredBy" name="clugue_delivered_by"
+                placeholder="Last name, First name" style="width: 90%;display: block;margin-top: 5px;" required />
+              <span ng-show="form_journal.clugue_delivered_by.$touched && form_journal.clugue_delivered_by.$invalid"
+                class="validation error">Required</span>
+              </div>
+            </div>
+            <div class="pure-u-1-1 pure-u-md-1-3">
+              <label for="clugue_for_reason">Category</label>
+              <span class="reason-loading" style="display:none;">Loading...</span>
+              <select class="clugue-for-reason" name="clugue_for_reason" id="clugue_for_reason"
+                ng-model="f_selected.Reason" style="width: 90%;display: block;margin-top: 5px;" required>
+                <option value="" disabled selected>Select</option>
+                <option ng-repeat="r in journal_reason" value="{{r}}">{{r}}</option>
+              </select>
+              <span ng-show="form_journal.clugue_for_reason.$touched && form_journal.clugue_for_reason.$invalid"
+                class="validation error">Required</span>
+            </div>
+            <div class="pure-u-1-1 pure-u-md-1-3 hack-SalesforceCaseNumber-Show" style="display:none;">
+              <label>Contact Information</label>
+              <input NOT-dynamic-ui type="text" ng-model="f_selected.SalesforceCaseNumber" 
+                placeholder="" style="width: 90%;display: block;margin-top: 5px;" />
+            </div>
+            <div class="pure-u-1-1 pure-u-md-1-3 hack-CoachingType-Show" style="display:none;">
+              <label>Coaching Type</label>
+              <select ng-model="f_selected.CoachingType" style="width: 90%;display: block;margin-top: 5px;">
+                <option value="">New Coaching</option>
+                <option value="Follow-Up">Follow-Up Coaching</option>
+              </select>
+            </div>
+            <div class="pure-u-1-1 pure-u-md-1-3 hack-CoachingParentID-Show" ng-show="f_selected.CoachingType === 'Follow-Up'">
+              <label>Coaching Parent ID</label>
+              <input NOT-dynamic-ui type="text" ng-model="f_selected.CoachingParentID" 
+                placeholder="" style="width: 90%;display: block;margin-top: 5px;" />
+            </div>
+            <div class="pure-u-1-1 pure-u-md-1-3 hack-BehavioralInstances-Show" style="display:none;">
+              <label>Instances</label>
+              <input NOT-dynamic-ui type="text" ng-model="f_selected.BehavioralInstances" 
+                placeholder="" style="width: 90%;display: block;margin-top: 5px;" />
+            </div>
+            <div class="pure-u-1-1 pure-u-md-1-3 hack-Behavior-Show" style="display:none;">
+              <label>Behavior</label>
+              <input NOT-dynamic-ui type="text" ng-model="f_selected.Behavior" 
+                placeholder="" style="width: 90%;display: block;margin-top: 5px;" />
+            </div>
+
+            <!-- Side-by-Side -->
+            <div class="pure-u-1-1" id="side-by-side" ng-show="f_selected.Reason === 'Side-by-Side' && sbs_answers_loaded">
+              <div class="pure-form pure-form-stacked">
+                <fieldset>
+                  <div class="pure-g">
+                    <div class="pure-u-1 pure-u-md-1-2 col" ng-repeat="r in form.details.questions | orderBy:'seq'">
+                      <label for="details-questions{{$index}}">{{r.title}}</label>
+                      <input ng-if="r.date" type="text" datepicker class="pure-u-1-1 pure-u-md-23-24 details-questions" name="details-questions{{$index}}" ng-model="temp_ans[r.friendly_name][$index].answertext">
+                        <input ng-if="!r.date" type="text" class="pure-u-1-1 pure-u-md-23-24 details-questions" name="details-questions{{$index}}"
+                        ng-model="temp_ans[r.friendly_name][$index].answertext">
+                    </div>
+                  </div>
+                </fieldset>
+                <fieldset class="even">
+                  <div class="pure-g">
+                    <div class="pure-u-1-1 section" ng-repeat="r in form.sections">
+                      <p class="head" ng-click="showSib($index)">{{r.title}} <i class="align-right fa" ng-class="show[$index] ? 'fa-minus-square' : 'fa-plus-square'"aria-hidden="true"></i></p>
+                      <div class="row-container" ng-show="show[$index]">
+                        <div class="row pure-g" ng-class-odd="'odd'" ng-class-even="'even'"
+                          ng-repeat="s in r.questions | orderBy:'seq'">
+                          <label class="pure-u-1-2">
+                            <span class="pure-g">
+                              <p class="pure-u-19-24 label">{{s.title}}</p>
+                              <span class="pure-u-4-24 checkbox">
+                                <input type="checkbox" ng-model="temp_ans[s.friendly_name][$index].score">
+                              </span>
+                            </span>
+                          </label>
+                          <div class="pure-u-1-2">
+                            <input type="text" ng-hide="true" ng-model="temp_ans[s.friendly_name][$index].idquestion">
+                            <input class="pure-u-23-24 comments" type="text" placeholder="Comments"
+                              ng-model="temp_ans[s.friendly_name][$index].answertext">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+                <fieldset class="even" id="general-comments">
+                  <div class="pure-g">
+                    <div class="pure-u-1-1 section">
+                      <div ng-repeat="r in form.comments.questions | orderBy:'seq'">
+                        <label>
+                          <p class="head">{{r.title}}</p>
+                        </label>
+                        <input type="text" ng-hide="true" ng-model="temp_ans[r.friendly_name][$index].idquestion">
+                        <textarea class="pure-u-23-24"
+                          ng-model="temp_ans[r.friendly_name][$index].answertext"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+            <!-- end Side-by-Side -->
+            <div class="custom-form-placeholder" id="CustomFormPlaceholderID"></div>
+            <div ng-hide="current_reason.DisplayNotes === 'No'">
+            <div class="pure-u-1-1 hack-AreasOfSuccess-Show" style="margin-top: 0;display:none;">
+              <label>Areas of Success</label>
+              <textarea class="cs-required-field hack-AreasOfSuccess" ng-model="f_selected.AreasOfSuccess"  rows="4" cols="50" style="resize: auto !important;"></textarea>
+              <div class="ce-div contentEditable-AreasOfSuccess" contenteditable="true" style="resize: auto !important;height:86px;min-width:600px;overflow-y:auto;border: 1px solid;padding:5px;"></div>
+            </div>
+            <div class="pure-u-1-1 hack-Chime-ShowPII" style="margin-top: 0;display:none;">
+              <p style="color: red; font-weight: bold;"">IMPORTANT REMINDER - Do not enter PII information in this form</p>
+            </div>
+            <div class="pure-u-1-1" style="margin-top: 0;">
+              <label class="hack-DetailsIssues-Label">Details/Issues</label>
+              <textarea class="cs-required-field hack-DetailsIssues" ng-model="f_selected.DetailsIssues"  rows="4" cols="50" style="resize: auto !important;"></textarea>
+              <div class="ce-div contentEditable-DetailsIssues" contenteditable="true" style="height: 64px;
+              min-width: 600px;
+              overflow-y: auto;
+              border: 1px solid rgb(223, 223, 223);
+              padding: 5px;
+              border-radius: 5px;
+              resize: vertical !important;"></div>
+            </div>
+            <div class="pure-u-1-1">
+              <label class="hack-ResolutionFollowup-Label" style="margin-top: 20px;display:block;">Resolution/Follow-up</label>
+
+              <textarea class="hack-ResolutionFollowup full-textbox cs-smart-all" ng-model="f_selected.ResolutionFollowup"  rows="4" cols="50" style="resize: auto !important;"></textarea>
+              <div class="ce-div contentEditable-ResolutionFollowup full-textbox cs-smart-all" contenteditable="true" style="height: 64px;
+             min-width: 600px;
+              overflow-y: auto;
+              border: 1px solid rgb(223, 223, 223);
+              padding: 5px;
+              border-radius: 5px;
+              resize: vertical !important;"></div>
+
+              <div class="cs-smart" style="display:none;">
+                <div class="cs-smart__row" style="display:flex; justify-content: space-between; margin-bottom: 5px;">
+                  <label  style="margin-right: 5px; min-width: 15px;">S</label>
+                  <textarea class="cs-required-field cs-smart__s" rows="1" cols="50" style="resize: auto !important;"></textarea>
+                </div>
+                <div class="cs-smart__row" style="display:flex; justify-content: space-between; margin-bottom: 5px;">
+                  <label style="margin-right: 5px; min-width: 15px;">M</label>
+                  <textarea class="cs-required-field cs-smart__m" rows="1" cols="50" style="resize: auto !important;"></textarea>
+                </div>
+                <div class="cs-smart__row" style="display:flex; justify-content: space-between; margin-bottom: 5px;">
+                  <label style="margin-right: 5px; min-width: 15px;">A</label>
+                  <textarea class="cs-required-field cs-smart__a" rows="1" cols="50" style="resize: auto !important;"></textarea>
+                </div>
+                <div class="cs-smart__row" style="display:flex; justify-content: space-between; margin-bottom: 5px;">
+                  <label style="margin-right: 5px; min-width: 15px;">R</label>
+                  <textarea class="cs-required-field cs-smart__r" rows="1" cols="50" style="resize: auto !important;"></textarea>
+                </div>
+                <div class="cs-smart__row" style="display:flex; justify-content: space-between; margin-bottom: 5px;">
+                  <label style="margin-right: 5px; min-width: 15px;">T</label>
+                  <textarea class="cs-required-field cs-smart__t" rows="1" cols="50" style="resize: auto !important;"></textarea>
+                </div>
+              </div>
+            </div>
+            </div>
+            <div ng-hide="current_reason.DisplayGoals === 'No'" class="pure-u-1-1" id="goal-setting" style="margin-top: 0;">
+              <h2 class="label hack-SetGoal-Label" style="margin: 0;">Set Goal</h2>
+              <div style="display: flex; flex-wrap: nowrap; gap: 15px;">
+                <div class="pure-u-1-1 pure-u-md-1-6" style="width: 16.666%;">
+                  <label for="goal-kpi">KPI</label>
+                  <select ng-model="f_selected.goal_kpi" style="width: 100%;" class="form-control" id="goal-kpi" name="goal-kpi" ng-change="get_goal_kpi(f_selected.goal_kpi);" required>
+                    <option value="" disabled selected>Select</option>
+                    <option ng-repeat="r in agent_kpis | orderBy: 'id'" ng-value="r.id">{{concatKPI(r.kpiname,r.subkpiname)}}</option>
+                  </select>
+                </div>
+                <div class="pure-u-1-1 pure-u-md-1-6" style="width: 16.666%;">
+                  <label for="goal-score">Basis</label>
+                  <select id="goal-score" name="goal-score" ng-disabled="goal_score_flag"
+                    ng-model="f_selected.goal_score" ng-change="get_goal_score(f_selected.goal_score)" style="width: 100%;">
+                    <option value="" disabled selected>Select</option>
+                    <option value="kpi_raw_score">Standard</option>
+                    <option value="kpi_score">Scored</option>
+                  </select>
+                </div>
+                <div class="pure-u-1-1 pure-u-md-1-6" style="width: 16.666%;">
+                  <label for="goal_from_x">Current Value</label>
+                  <input type="text" ng-pattern="/^(-?[0-9]+(.[0-9]+)?)$/" id="goal_from_x" name="goal_from_x"
+                    ng-disabled="!f_selected.goal_score" ng-model="f_selected.goal_from_x" style="width: 100%;" />
+                  <span ng-if="form_journal.goal_from_x.$touched && form_journal.goal_from_x.$invalid"
+                    class="validation error">Numbers Only</span>
+                </div>
+                <div class="pure-u-1-1 pure-u-md-1-6" style="width: 16.666%;">
+                  <label for="goal_increase">% Increase</label>
+                  <input type="text" ng-pattern="/^(-?[0-9]+(.[0-9]+)?)$/" ng-model="goal_increase" id="goal_increase"
+                    name="goal_increase" ng-disabled="!f_selected.goal_score" style="width: 100%;">
+                  <span ng-if="form_journal.goal_increase.$touched && form_journal.goal_increase.$invalid"
+                    class="validation error">Numbers Only</span>
+                </div>
+               
+                <div class="pure-u-1-1 pure-u-md-1-6" style="width: 16.666%;">
+                  <label class="hack-Goal-Label" for="goal_to_x">Goal</label>
+                  <input type="text" ng-pattern="/^(-?[0-9]+(.[0-9]+)?)$/" id="goal_to_x" name="goal_to_x"
+                    ng-disabled="!f_selected.goal_score" ng-model="f_selected.goal_to_x" style="width: 100%;" />
+                  <span ng-if="form_journal.goal_to_x.$touched && form_journal.goal_to_x.$invalid"
+                    class="validation error">Numbers Only</span>
+                </div>
+                <div class="pure-u-1-1 pure-u-md-1-6 dates" style="width: 16.666%;">
+                  <div ng-hide="current_reason.DisplayGoals === 'No'">
+                  <label for="goal_date">When</label>
+                  <input NOT-dynamic-ui class="clugue-date-floating" type="text" id="goal_date" name="goal_date"
+                    ng-model="f_selected.goal_date" placeholder="mm/dd/yyyy" onfocus="(this.type='date')"
+                    onblur="(this.type='text')" style="width: 100%;"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="pure-u-1-1 pure-u-md-1-3 dates" style="display: flex; gap: 15px; align-items: center;">
+              <div class="inline-block" ng-hide="current_reason.DisplayFollowup === 'No'">
+                <label style="white-space: nowrap;" for="follow_up_date">Follow-Up</label>
+                <select name="follow_up" style="width: 80px;" id="follow_up" ng-model="f_selected.follow_up" ng-change="showcal(f_selected.follow_up);">
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select></div>
+              <div class="inline-block" ng-hide="current_reason.DisplayFollowup === 'No'">
+                <label for="follow_up_date">&nbsp;</label>
+                <input NOT-dynamic-ui class="clugue-date-floating" style="width: 110px;" type="text" id="follow_up_date" name="follow_up_date"
+                  ng-model="f_selected.follow_up_date"
+                  ng-disabled="!f_selected.follow_up || f_selected.follow_up === 'No'" placeholder="mm/dd/yyyy"
+                  required onfocus="(this.type='date')"
+                  onblur="(this.type='text')"/>
+                <span
+                  ng-if="f_selected.follow_up === 'Yes' && form_journal.follow_up_date.$touched && form_journal.follow_up_date.$invalid"
+                  class="validation error"></span>
+              </div>
+              <div class="inline-block">
+                <label for="cal_link">&nbsp;</label>
+                <div style="cursor:pointer;">
+                    <div id="cal_link" class="cal-wrapper" style="display:none;"><div class="cal-link ac-cal"><img width="14" src="../applib/css/images/addtocal-icon.png"></div></div>
+                </div>
+              </div>
+            </div>
+            <div class="pure-u-1-1 pure-u-md-1-6 dates" ng-hide="current_reason.DisplayFollowup === 'No'" style="display: flex; flex-direction: column; justify-content: center;">
+              <label for="date_closed">Date Closed</label>
+              <input NOT-dynamic-ui class="clugue-date-floating" type="text" name="date_closed" id="date_closed"
+                ng-model="f_selected.DateClosed" placeholder="mm/dd/yyyy" onfocus="(this.type='date')"
+                onblur="(this.type='text')" />
+            </div>
+            <!-- <div class="pure-u-1-2">
+              <button type="button" class="btn btn-xs btn-success" ng-click="launchperfreview()"
+                ng-show="f_selected.Reason === 'Performance Review'">Launch Performance Review</button>
+            </div> -->
+            <div class="pure-u-1-1 pure-u-md-1-4 align-right">
+              <button type="button" class="btn btn-blue btn-xs btn-noborder journal-entry-form-btn" style="margin-top: 30px;" ng-disabled="form_disabled"
+                ng-show="true" ng-click="submitform()">Save</button>
+            </div>
+          </div>
+          <div class="jg-notify-agent-wrapper" style="display:none;">
+            <input type="checkbox" checked="checked" class="jg-notify-agent" />
+            <label class="jg-notify-agent-label" for="send-notifications">Notify Agent</label>
+          </div>
+          <div class="jg-israted" style="display:none;">
+            This journal has been rated.
+          </div>
+          <div class="jg-attachments"></div>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+</div>

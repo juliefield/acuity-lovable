@@ -1,0 +1,171 @@
+<div class="form-monitor" ng-repeat="f in form" ng-show="credentialed()">
+    <div ng-hide="monitoringnow()">
+      Queue:
+                <select ng-model="f.Queue" ng-disabled="agentLocked() || readonly()" >
+                    <option value="">--Select from Queue--</option>
+                    <option ng-repeat="item in queue" value="{{item.id}}">
+                        {{'Completed: ' + item.completed + '/' + item.required + ', Points: ' + item.points + ', Complaints: ' + item.complaints + ' - ' + item.name}}
+                    </option>
+                </select>
+                <button type="button" class="btn btn-xs btn-success" style="font-size:10px;" ng-show="agentQueued()" ng-click="monitorqueuedagent()">Monitor From Queue</button>
+			<button type="button" class="btn btn-xs btn-success" style="font-size:10px;margin-left:200px;" ng-show="true" ng-click="monitornewagent()">Monitor NON-QUEUED Agent</button></label>
+    </div>    
+
+    <div ng-show="monitoringnow()">
+      <div style="display:block;text-align: center; font-weight:bold;padding: 10px;padding-bottom: 20px;">Compliance Monitor</div>
+      <div style="margin: 0 auto 0 auto">
+        <div class="form-box-group">
+            <div class="form-box-item"><label>Directory:</label><input type="text" ng-disabled="readonly()" ng-model="f.Directory" ng-change="refreshCallID()" /><span class="form-box-required">*</span></div>
+            <div class="form-box-item"><label>Account#:</label><input type="text" ng-disabled="readonly()"  ng-model="f.AccountNumber" ng-change="refreshCallID()" /><span class="form-box-required">*</span></div>
+            <div class="form-box-item"><label>Name on account:</label><input type="text" ng-disabled="readonly()"  ng-model="f.NameOnAccount" /></div>
+            <div class="form-box-item">
+            		<label style="float:left;">Client:</label>
+								<select style="width: 200px; float: left;" ng-change="clientchange()" ng-model="f.clientselection">
+                    <option value="" selected="selected"></option>
+                    <option ng-repeat="item in clientlist" ng-if="f.Project==item.projectid" value="{{item.clientname}}">
+                        {{item.clientname}}
+                    </option>
+								</select>
+            		<input type="text" style="display:none;width: 179px; margin-left: -199px; margin-top: 1px; border: none; float: left;" ng-disabled="readonly()"  ng-model="f.Group" />
+            </div>
+            <div class="form-box-item"><label>Client ACCT #:</label><input type="text"ng-disabled="readonly()"   ng-model="f.GroupAccountNumber" /><span class="form-box-required">*</span></div>
+            <div class="form-box-item"><label>&nbsp;</label><label style="font-size: 10px;">* - Required Field</label></div>
+        </div>
+        <div class="form-box-group">
+            <div class="form-box-item"><label>Stage:</label>
+                <select ng-model="f.Project" ng-disabled="agentLocked() || readonly()">
+                    <option value="select" selected="selected">--Select--</option>
+                    <option ng-repeat="item in projectlist" value="{{item.projectid}}">
+                        {{item.projectdesc}}
+                    </option>
+                    <option value="0">Non-CSR</option>
+                </select><span class="form-box-required">*</span>
+            </div>
+            <div class="form-box-item"><label>Agent:</label>
+                <select ng-change="changeAgent()" ng-model="f.Agent" ng-disabled="agentLocked() || readonly()" >
+                    <option ng-repeat="item in userlist" ng-if="f.Project==item.projectid" value="{{item.user_id}}">
+                        {{item.name + ' (' + item.CLOCKID + ')'}}
+                    </option>
+                </select><span class="form-box-required">*</span>
+            </div>
+            <div class="form-box-item"><label>Supervisor:</label>
+                <select ng-model="f.Supervisor" ng-disabled="readonly()" >
+                    <option ng-repeat="item in userlist" ng-if="item.role != 'CSR'" value="{{item.user_id}}">
+                        {{item.name + ' (' + item.CLOCKID + ')'}}
+                    </option>
+                </select><span class="form-box-required">*</span>
+            </div>
+            <div class="form-box-item"><label>Manager:</label>
+                <select ng-model="f.Manager" ng-disabled="readonly()">
+                    <option ng-repeat="item in userlist" ng-if="item.role != 'CSR'" value="{{item.user_id}}">
+                        {{item.name + ' (' + item.CLOCKID + ')'}}
+                    </option>
+                </select>
+            </div>
+            <div class="form-box-item"><label>Audit Date:</label><input type="text" style="text-align: center;" ng-disabled="true || readonly()" ng-model="f.AuditDate" /><span class="form-box-required">*</span></div>
+        </div>
+        <div class="form-box-group">
+            <div class="form-box-item"><label>Call ID:</label><input type="text" ng-disabled="readonly()" ng-model="f.CallID"  ng-disabled="agentLocked()" /></div>
+            <div class="form-box-item"><label>Date/Time of Call:</label>
+                <input ng-disabled="readonly()" dynamic-ui ng-model="f.CallDate" type="text" />
+                <span class="bad-ng-calltime">
+                    <input style="width: 85px;" ng-disabled="readonly()" dynamic-ui ng-model="f.CallTime" type="text" />
+                </span>
+                *
+            </div>
+            <div class="form-box-item"><label>Call Duration:</label><input type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" ng-disabled="readonly()" ng-model="f.CallDuration" /><span class="form-box-required">*</span></div>
+            <div class="form-box-item"><label>Agent Alias:</label><input type="text" ng-disabled="readonly()" ng-model="f.CallReceivedBy" /></div>
+        </div>
+      </div>
+        <div style="clear:both;">&nbsp;</div>
+        <div ng-show="complaintFiled()">
+            <div style="display:block;text-align: center; font-weight:bold;padding: 10px; color: Red;">Complaint Filed</div>
+            <div style="width: calc(100% - 40px);border-radius: 20px;border: 2px solid red;background-color:White;color:Black;padding:20px;text-align: center;">{{f.Complaint}}</div>
+        </div>
+        <div class="form-findings-label" style="display:block;text-align: center; font-weight:bold;padding: 10px;">Please review the Call Findings Below:</div>
+        <table class="form-violations">
+            <thead>
+                <th style="width:250px;">Violation Category</th>
+                <th style="width:300px;">Sub-Category</th>
+                <th style="width:150px;">Comments</th>
+                <th style="width:150px;">Reference</th>
+                <th style="width:60px;">Risk<br />Factor</th>
+                <th style="width:80px;">Type</th>
+                <th style="width:50px;">Points</th>
+                <th style="width:50px;font-size:11px;">Commission<br />Deduction</th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="r in records">
+                    <td>
+                        <select ng-model="r.selectedCategory" ng-disabled="readonly()" ng-change="changeCategory($index, false)">
+                            <option value="0" selected="selected">--Add--</option>
+                            <option ng-repeat="cat in violations" ng-if="existingmonitor() || (!cat.deprecated)" value="{{cat.id}}">
+                                {{cat.Category + ((cat.deprecated) ? " (Deprecated)" : "")}}
+                            </option>
+                        </select>
+                    <td>
+                        <select ng-model="r.selectedSubcategory" ng-disabled="readonly()" ng-change="changeSubcategory($index,false)">
+                            <option value="0">--Select--</option>
+                            <option ng-repeat="subcat in r.subcategories" ng-if="existingmonitor() || (!subcat.deprecated)" value="{{subcat.id}}">
+                                {{subcat.Subcategory + ((subcat.deprecated) ? " (Deprecated)" : "")}}
+                            </option>
+                            <option value="noshow" selected="selected"></option>
+                        </select>
+                    </td>
+                    <td style="width:300px;" ng-if="vs_selected($index)">
+                        <textarea style="text-align: center;" ng-disabled="readonly()" ng-model="r.Comments"></textarea>
+                    </td>
+                    <td style="text-align: center;font-size:10px;" ng-if="vs_selected($index)">{{r.Reference}}</td>
+                    <td style="text-align: center;" ng-if="vs_selected($index)">{{r.Risk}}</td>
+                    <td style="text-align: center;" ng-if="vs_selected($index)">{{r.Type}}</td>
+                    <td style="text-align: center;" ng-if="vs_selected($index)">{{r.PointLevel}}</td>
+                    <td style="text-align: right;" ng-if="vs_selected($index)">{{(r.DeductionPercentage * 100.0) + '%'}}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td></td>
+                    <td colspan="3"></td>
+                    <td colspan="2" style="text-align: right;">Monitor<br />Deductions:</td>
+                    <td style="text-align: right;background-color:White;font-weight: bold;">{{totalPoints().toFixed(0)}}</td>
+                    <td style="text-align: right;background-color:White;font-weight: bold;">{{(totalDeduction() * 100.0).toFixed(0) + '%'}}</td>
+                </tr>
+                <tr>
+                    <td><button type="button" class="btn btn-xs btn-success" style="font-size:10px;" ng-click="addrow()" ng-show="vs_complete() && (!readonly())">Add Another Row</button></td>
+                </tr>
+                <tr><td>&nbsp;</td></tr>
+                <tr>
+                	
+                    <td colspan="2">&nbsp;</td>
+                    <td colspan="2" style="text-align: center;">
+                    	<div ng-show="readonly()">&nbsp;</div>
+                    	<div ng-show="(!readonly())">
+                    		<h4>Acknowledgement Request</h4>
+                    		<div style="font-size: 11px;" ng-show="(!existingmonitor())">
+                    			<p>
+                    				A request for acknowledgement will be sent automatically<br />when you save this monitor.
+                    				<br/><br /><span style="white-space:nowrap;"><input type="checkbox" ng-click="setCheckHoldAcknowledgement()" ng-model="cb.checkHoldAcknowledgement" style="width:20px;" />Do NOT send acknowledgement request.</span>
+                    			</p>                    		
+                    		</div>
+                    		<div style="font-size: 11px;" ng-show="(existingmonitor())">                    		                    		
+                    			<p>
+                    				<div ng-show="!ack_requestsent()">NO Acknowledgement request has been sent.</div>
+                    				<div ng-show="ack_requestsent()">Request for acknowledgment sent: {{ack_requestsent_date}}</div>
+                    				<div ng-show="ack_acknowledged()">Monitor Acknowledged: {{ack_acknowledged_date}}</div>
+                    				<br/><br /><span style="white-space:nowrap;"><input type="checkbox" ng-click="setCheckAcknowledgementResend()" ng-model="cb.checkAcknowledgementResend" style="width:20px;" />Send <span ng-show="ack_requestsent()">ANOTHER</span> Acknowledgement Request upon Update.</span>
+                    			</p>                    		
+                    		</div>                    		
+                    	</div>
+                    </td>
+                    <td colspan="4" style="text-align: right;">
+                        <button type="button" class="btn btn-xs btn-success" style="font-size:10px;" ng-click="save()" ng-show="vs_readytosave() && (!readonly())"><span ng-show="existingmonitor()">Update</span><span ng-show="!existingmonitor()">Save</span><span ng-show="false && existingmonitor()"> &amp; Close</span></button>
+                        <button type="button" class="btn btn-xs btn-success" style="font-size:10px;" ng-click="deletemonitor()" ng-show="existingmonitor() && (!readonly())">Delete</button>
+                        <button type="button" class="btn btn-xs btn-success" style="font-size:10px;" ng-click="close()" ng-show="existingmonitor()">{{closetext}}</button>
+                        <button type="button" class="btn btn-xs btn-success" style="font-size:10px;" ng-click="cancel()" ng-show="(!readonly()) && (!existingmonitor())">Cancel</button>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+</div>

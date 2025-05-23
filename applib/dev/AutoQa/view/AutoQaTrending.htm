@@ -1,0 +1,44 @@
+<div class="auto-qa-trending-directive-holder">
+   <div class="auto-qa-trending-display-holder">
+      <div class="auto-qa-trending-display-header header-row">
+         <div class="directive-header-column1">
+            <div>
+               <button id="btnRefreshTrendingChart" class="directive-refresh-button"><i class="fa fa-refresh"></i></button>
+            </div>
+         </div>
+         <div class="directive-header-column2">
+            <div class="directive-title-holder">
+               Trends
+            </div>
+            <div class="directive-filters-holder">
+               <div class="directive-filter-option">
+                  <select id="trendingChart_Timeframe">
+                     <option>Timeframes</option>
+                  </select>
+               </div>
+               <div class="directive-filter-option">
+                  <select id="trendingChart_TrendType">
+                     <option>Trend Options</option>
+                  </select>
+               </div>
+            </div>
+         </div>
+         <div class="directive-header-column3">
+            <div id="directiveLoading" class="directive-loading-information-holder">
+               <img alt="Trend Chart Loading" class="directive-information-loading-image" >
+            </div>
+         </div>
+      </div>
+      <div class="auto-qa-trending-display-body">
+         <div class="auto-qa-trending-chart-holder" id="mainChartHolder">
+            <div id="autoQaTrending" class="auto-qa-trending-chart"></div>
+         </div>
+      </div>
+      <div class="auto-qa-trending-display-footer">
+         <span id="directiveTimeFrame"></span>
+         <span class="user-information-note">
+            <p>Team Member Vs. AI Diff Trend: Postive value means team members scoring higher.  Negative Value means AI is scoring higher.</p>
+         </span>
+      </div>
+   </div>
+</div>

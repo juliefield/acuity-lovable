@@ -1,0 +1,194 @@
+<div class="basic-directive-holder">
+   <h1>Suggestion Text Management</h1>
+   <div class="top-filters">
+      <div class="filter-input-group">
+         Priority Level: <select id="suggestionText_PriorityLevelFilter"></select>
+      </div>
+      <div class="filter-input-group">
+        Text: <input type="text" id="suggestionText_TextFilter">
+      </div>
+      <div class="filter-input-group">
+         Client: <select id="suggestionText_ClientFilter"></select>
+      </div>
+      <div class="filter-input-group">
+         <button id="suggestionText_Refresh"><i class="fa fa-filter"></i>Apply Filter</button>
+         &nbsp;&nbsp;
+         <button id="suggestionText_clearFilter">Clear Filter</button>
+      </div>
+  </div>
+  <br>
+  <div class="bottom-buttons">
+      <div class="filter-input-group">
+          <button id="btnAddSuggestionText" class="btn button btn-add-new btn-large btn-green"><i class="fas fa-plus"></i> Add New Suggestion Text</button>
+      </div>
+  </div>
+  <div id="suggestionTextDataHolder">        
+   <div class="selection-holder large-holder">
+       <div class="suggestion-text-listing-header-holder">
+         <div class="suggestion-text-display-list-item-holder header-row" style="padding:0;">
+            <div class="suggestion-text-header-holder suggestion-text-id">Id</div>
+            <div class="suggestion-text-header-holder suggestion-text-priority-level">Priority Level
+               &nbsp;<label class="priority-level-show-button" id="lblPriorityLevel"><i class="fas fa-question-circle" aria-hidden="true"></i></label>               
+            </div>
+            <div class="suggestion-text-header-holder suggestion-text-client">Client</div>
+            <div class="suggestion-text-header-holder suggestion-text-base-string">Base Text</div>
+            <div class="suggestion-text-header-holder suggestion-text-is-active">Active?</div>
+            <div class="suggestion-text-header-holder suggestion-text-button-holder">Actions</div>
+         </div>
+       </div>
+       <div id="suggestionTextLoadingHolder" class="suggestion-text-information-loading-message">
+         <img src="../../../../applib/css/images/acuity-loading.gif" height="25px"><span
+             id="suggestionTextLoadingMessage"></span>
+     </div>
+     <div id="suggestionTextList" class="suggestion-text-list-holder"></div>
+   </div>
+   
+</div>
+<div id="vmTextFormPanel" class="editor-form">
+   <div class="form-holder-big">
+      <button class="btn-close btn-close-x"><i class="fa fa-times"></i></button>
+      <div class="error-information-holder"></div>
+      <div class="resourceEditor-fields">
+         <div class="column1of2p">
+            <div class="suggestionTextEditor-fields_group">
+               <label>Id:</label>
+               <input type="text" id="suggestionText_SidekickCoachingSuggestionTextId">
+            </div>
+            <div class="suggestionTextEditor-fields_group">
+               <label>Priority Level:</label> <label id="lblShowPriorityLevels"><i class="fas fa-question-circle"></i></label>
+               <select id="suggestionText_PriorityLevel"></select>
+            </div>
+            <div class="suggestionTextEditor-fields_group">
+               <label>Client:</label>
+               <select id="suggestionText_Client"></select>
+            </div>
+            <div class="suggestionTextEditor-fields_group">
+               <label>Active:</label>
+               <input type="checkbox" id="suggestionText_IsActive">
+            </div>
+            <div class="suggestionTextEditor-fields_group">
+               <label>Base Text:</label>
+               <textarea id="suggestionText_BaseString" rows="3" cols="80"></textarea>
+            </div>
+         </div>
+         <div class="column2of2p">
+            <div class="token-holder">
+               <div class="token-button-holder">
+                  <button class="button btn possible-tokens-button" id="btnShowTokens">Possible Tokens</button>
+               </div>
+               <div class="token-list-holder" id="tokenListHolder">
+                  <div>
+                     <ul>
+                        <li>{suggestedaction} - The suggested action for the statement. (ex: Coach, Recognize, etc.)</li>
+                        <li>{userfullname} - The full name of the user. (ex: Mr. Business)</li>
+                        <li>{userid} - The userid of the user who the action will be on. (ex: mrb01)</li>
+                        <li>{kpiname} - The name of the KPI that the action is for.</li>
+                        <li>{kpiscore} - The Acuity Score for the user.</li>
+                        <li>{standardvalue} - The Standard (raw) data for the user.</li>
+                        <li>{lasttouchdays} - The number of days that are checked for the last time user was touched.</li>
+                     </ul>
+                  </div>
+               </div>
+           </div>
+           <hr />
+           <div class="suggestionTextEditor-fields_group">
+               <button class="button btn preview-button" id="btnPreviewText"><i class="fa-regular fa-eye"></i> Preview Text</button>
+               <div class="preview-text-holder" id="yourPreviewText">
+                  <div class="mr-business-says-holder">
+                     <div class="mr-business-says-avatar mr-b-says-column1of2">
+                        <img src="../../../../applib/css/images/tipoftheday-mrb.png" alt="Mr. Business Says.." />
+                     </div>
+                     <div class="mr-business-says-text mr-b-says-column2of2">
+                        <div class="preview-text-data">                        
+                           <label id="previewTextLabel"></label>
+                        </div>   
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="badgeAdminForm_btns">
+         <button id="btnSaveVmText" class="btn-large">Save</button>
+         &nbsp;&nbsp;
+         <button class="btn-close btn-large">Close</button>
+      </div>
+   </div>
+</div>
+<div id="vmPriorityLevels" class="editor-popup-2">
+   <button class="btn-close-popup btn-close-x"><i class="fa fa-times"></i></button>
+   <div>
+      <table class="editor-popup-table" cellpadding="3" cellspacing="0" border="1">
+         <thead>
+            <tr>
+               <th>Priority Level</th>
+               <th>Base Rule</th>
+               <th>% to Goal Rule</th>
+               <th>Standard Deviation Rule</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td class="centerme">100</td>
+               <td colspan="2" class="centerme">Perfect Balanced Score</td>               
+               <td>User Score = 3 in Balanced Score KPI</td>
+            </tr>
+            <tr>
+               <td class="centerme">90</td>
+               <td colspan="2" class="centerme"> ** skipped **</td>
+               <td>User Score <= -2</td>
+            </tr>
+            <tr>
+               <td class="centerme">80</td>
+               <td colspan="2" class="centerme">KPI Weight >= 25% and User's KPI Score Value <= 50% of max</td>
+               <td>KPI Weight >= 25% and User Score < -1</td>               
+            </tr>            
+            <tr>
+               <td class="centerme">79</td>
+               <td colspan="3" class="centerme">No Touch in 10 or more days.</td>               
+            </tr>
+            <tr>
+               <td class="centerme">60</td>
+               <td>User's KPI Score Value > 90% of max</td>
+               <td>User's KPI Score Value > 100%</td>
+               <td>User Score >= 2</td>               
+            </tr>
+            <tr>
+               <td class="centerme">50</td>
+               <td colspan="2" class="centerme">KPI Weight < 25% and User's KPI Score Value <= 50%</td>               
+               <td>KPI Weight < 25% and User Score <= 0</td>               
+            </tr>
+            <tr>
+               <td class="centerme">40</td>
+               <td colspan="2" class="centerme">KPI Weight >= 25% and User's KPI Score Value between 50% and 80%</td>
+               <td>KPI Weight >= 25% and User Score between 0 and 1.9999</td>
+            </tr>
+            <tr>
+               <td class="centerme">10</td>
+               <td>Perfect User Score Value in any KPI</td>
+               <td>** skipped **</td>
+               <td>User Score = 3 in any KPI</td>
+            </tr>
+            <tr class="notshown">
+               <td class="centerme">5</td>
+               <td colspan="3" class="centerme">Does not conform to any rules (not shown currently)</td>               
+            </tr>
+            <tr class="notshown">
+               <td class="centerme">0</td>
+               <td colspan="3" class="centerme">Unknown Suggestion (not shown)</td>
+            </tr>
+         </tbody>
+         <tfoot>
+            <tr>
+               <td colspan="4">
+                  <ul class="foot-notes-list">
+                     <li>Standard Deviation scoring uses the user score value instead of percentages to scoring.</li>
+                     <li>User score percentages are based on scoring scale. (5 on 1-10 = 50%, 9 on 1-10 = 90%, etc.)</li>
+                  </ul>
+               </td>
+            </tr>
+         </tfoot>
+      </table>
+   </div>
+</div>
+</div>

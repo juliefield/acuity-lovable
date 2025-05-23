@@ -1,0 +1,90 @@
+<div class="directive-holder">
+   <div id="currentPointsLoadingMessage">
+      <img src="../../../../applib/css/images/acuity-loading.gif" height="50">
+      Loading...
+   </div>
+   <div class="current-points-list-base-display-holder">
+      <div class="table-topper">
+         <h3><span id="lblRecordsFound">0</span> Records Found</h3>
+         <button id="btnRefreshCurrentPointsAward"><i class="fa fa-refresh"></i></button>
+      </div>
+      <div class="current-points-list-header-holder"> 
+         <div class="current-points-list-header-row">
+            <div class="current-points-list-item header-item area-name">Area</div>
+            <div class="current-points-list-item header-item interval-type">Interval</div>
+            <div class="current-points-list-item header-item interval-number">Interval #</div>
+            <div class="current-points-list-item header-item award-amount">Award Amount</div>
+            <div class="current-points-list-item header-item button-holder">
+               <button id="btnAddNewRewardOption"><i class="fa fa-plus"></i></button>
+            </div>
+         </div>
+      </div>
+      <div class="current-points-list-body-holder"> 
+         <div id="currentPointsRewardList"></div>
+      </div>
+   </div>   
+   <div id="currentPointsRewardEditorFormHolder"  class="editor-form">
+      <div class="form-holder">
+         <div class="editor-form-header-holder">
+            <h2>Editor Form</h2>
+            <button class="button btn btn-close"><i class="fa fa-x"></i></button>
+         </div>
+         <div class="editor-form-body">
+            <div class="editor-form-row">
+               <div class="editor-form-label-holder">
+                  Area:
+               </div>
+               <div class="editor-form-input-holder">
+                  <select id="rewardOptionsEditor_IrpasAreaId"></select>
+               </div>
+            </div>
+            <div class="editor-form-row">
+               <div class="editor-form-label-holder">
+                  Sub Area:
+               </div>
+               <div class="editor-form-input-holder">
+                  <select id="rewardOptionsEditor_IrpasSubAreaId"></select>
+               </div>
+            </div>
+            <div class="editor-form-row">
+               <div class="editor-form-label-holder">
+                  Interval:
+               </div>
+               <div class="editor-form-input-holder">
+                  <select id="rewardOptionsEditor_IrpasIntervalId"></select>
+               </div>
+            </div>
+            <div class="editor-form-row">
+               <div class="editor-form-label-holder">
+                  Interval Number:
+               </div>
+               <div class="editor-form-input-holder">
+                  <input type="textbox" id="rewardOptionsEditor_IntervalNumber">
+               </div>
+            </div>
+            <div class="editor-form-row">
+               <div class="editor-form-label-holder">
+                  Award Amount:
+               </div>
+               <div class="editor-form-input-holder">
+                  <input type="textbox" id="rewardOptionsEditor_AwardAmount">
+               </div>
+            </div>
+            <div class="editor-form-row">
+               <div class="editor-form-label-holder">
+                  Is Reoccurring:
+               </div>
+               <div class="editor-form-input-holder">
+                  <input type="checkbox" id="rewardOptionsEditor_IsReoccurring">
+               </div>
+            </div>
+         </div>
+         <div class="editor-form-button-holder">
+            <button id="btnSaveAwardEditor" class="button btn btn-save btn-large">Save</button>
+            <button class="button btn btn-close btn-large">Cancel</button>
+            <input type="hidden" id="currentRewardsOptionId" value="-1" />
+         </div>  
+         
+      </div>
+   </div>
+</div>

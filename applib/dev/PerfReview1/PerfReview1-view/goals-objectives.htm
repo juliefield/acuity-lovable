@@ -1,0 +1,37 @@
+<div class="pure-g">
+  <div class="pure-u-1-1">
+    <h2>Goals & Objectives</h2>
+  </div>
+  <div class="pure-u-1-1">
+    <h3>{{review.profile.agent_full_name}}'s Self Evaluation</h3>
+  </div>
+  <div class="pure-u-1-1" ng-repeat="r in review.selected.evaluation.self">
+    <dd>{{r.ques}}</dd>
+    <dt>{{r.ans ? r.ans : "Currently unanswered."}}</dt>
+  </div>
+  <div class="pure-u-1-1" ng-show="peerRecognition.length > 0">
+    <h3>Peer Recognition</h3>
+    <!--#include virtual="peer-recognition.htm" -->
+  </div>
+  <div class="pure-u-1-1">
+    <h3>{{review.performance.supervisor_full_name}}'s Evaluation for {{review.profile.agent_full_name}}</h3>
+  </div>
+  <div class="pure-u-1-1" ng-repeat="r in review.selected_user.evaluation.supervisor">
+    <div ng-hide="viewFlag">
+      <p>{{r.ques}}</p>
+      <input type="text" ng-model="r.ans">
+    </div>
+    <div ng-show="viewFlag">
+      <dl>
+        <dd>{{r.ques}}</dd>
+        <dt>{{r.ans ? r.ans : "Currently unanswered."}}</dt>
+      </dl>
+    </div>
+  </div>
+  <div class="pure-u-1-1">
+    <h3>Create New Focus & Target Goals for {{review.profile.agent_full_name}}</h3>
+  </div>
+  <div class="pure-u-1-1">
+    <!--#include virtual="focus-target-goals.htm" -->
+  </div>
+</div>

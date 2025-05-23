@@ -1,0 +1,106 @@
+<div class="player-profile-card__header" ng-hide="maximized()">
+  <p>Easycom Messages</p>
+  <div class="rpt-max-link rpt-max-link-plus" ng-click="maximize(true)"></div>
+</div>
+<div class="easycom-maximized" ng-show="maximized()">
+	<div class="rpt-max-link rpt-max-link-minus" ng-click="maximize(false)"></div>
+	<div class="pure-g">
+		<div class="pure-u-1">
+			<button class="pure-button pure-button-primary" type="button" title="Add Message" id="btnAddMessage" ng-click="addNewRow(client.number)">Add Message</button>
+			<button class="pure-button pure-button-primary" type="button" title="Save Table" id="btnSaveTable" ng-click="save()">Save Table</button>
+			<table id="tblMessageList" class="pure-table pure-table-horizontal pure-table-striped">
+				<thead>
+					<tr>
+						<th ng-repeat="col in table.columns">{{col.name}}</th>
+						<th>&nbsp;</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="message in table.records">
+						<td><p>{{message.id}}</p></td>
+						<td><p>{{message.Allow}}</p></td>
+						<td><p>{{message.Disallow}}</p></td>
+						<td><p>{{message.Delivery}}</p></td>
+						<td><p>{{message.Position}}</p></td>
+						<td><p style="display: inline-block;">{{message.BackgroundColor}}</p> <span style="display:inline-block;width:10px;height:10px;border:1px solid #444; background-color: {{message.BackgroundColor}}"></span></td>
+						<td><p style="display: inline-block;">{{message.TextColor}}</p> <span style="display:inline-block;width:10px;height:10px;border:1px solid #444; background-color: {{message.TextColor}}"></span></td>
+						<td><span ng-bind-html="getHtml(message.Message)" style="font-size:50%;color:{{message.TextColor}};background-color:{{message.BackgroundColor}};display:block;padding:.1em .5em;"></span></td>
+						<td><p>{{message.Notes}}</p></td>
+						<td><p>{{message.client}}</p></td>
+						<td>
+						<button class="pure-button" type="button" ng-click="editRow($index)" id="btnEditRow" title="Edit Message" aria-label="Edit Message">Edit</button>
+						<button class="pure-button" type="button" ng-click="deleteRow($index)" id="btnDeleteRow" title="Delete" aria-label="Delete">Delete</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="pure-u-1" style="padding:1em;">			
+			<input type="hidden" name="id" id="" class="" ng-model="managementBaselineEdit.id"/>
+			<div class="pure-g">
+				<div class="pure-u-1-3">
+					<h3>Roles</h3>
+					<p><code>Ctrl + Click</code> to select roles.</p>
+					<select id="roleSelect" ng-options="r.name for r in roles" ng-model="roles.selected" multiple ng-attr-size="{{roles.length}}" ng-change="buildUsers()"></select>
+				</div>
+			</div>
+			<input type="hidden" name="allow" id="stringAllow" ng-model="managementBaselineEdit.Allow" />
+			<br/><br/>
+			
+			<input type="hidden" name="disallow" id="" class="" ng-model="managementBaselineEdit.Disallow"/>
+			
+			
+			<input type="hidden" name="delivery" id="" class="" ng-model="managementBaselineEdit.Delivery"/>
+			
+			
+			<input type="hidden" name="position" id="" class="" ng-model="managementBaselineEdit.Position"/>
+			
+			<label for="backgroundcolor">backgroundcolor</label><br/>
+			<input id="backgroundcolor" name="backgroundcolor" type="text" value="#333333"/><br/><br/>
+			
+			<label for="textcolor">textcolor</label><br/>
+			<input id="textcolor" name="textcolor" type="text" value="#ffffff" /><br/><br/>
+			
+			<label for="message">message</label><br/>
+			<input name="messageText" id="messageText" />
+			<br/><br/>
+			
+			<label for="notes">notes</label><br/>
+			<input type="text" name="notes" id="" class="" ng-model="managementBaselineEdit.Notes" style="width:100%;"/>
+			
+			
+			<input type="hidden" name="client" id="" class="" ng-model="managementBaselineEdit.client"/>
+			
+			<span><button type="button" class="pure-button" ng-click="cancelEditMessage()">Cancel</button><button type="button" class="pure-button pure-button-primary" ng-click="saveEditMessage()">Save</button></span>
+		</div>
+	</div>		
+</div>
+<script type="text/javascript">
+	// init color pickers
+	$('#backgroundcolor, #textcolor').spectrum({
+		showInput:true,
+		 preferredFormat: "hex"
+	});
+	$('#textcolor').spectrum({
+		 change: function(color) {
+		    $("#messageText_ifr").contents().find("#editorPreview").css('color', color.toHexString());
+		}
+	});
+	$('#backgroundcolor').spectrum({
+		 change: function(color) {
+		    $("#messageText_ifr").contents().find("#editorPreview").css('background-color', color.toHexString());
+		}
+	});
+	
+
+	// init TinyMCE WYSIWYG editor
+	tinymce.init({
+    	selector: '#messageText',
+    	branding: false,
+    	menubar: false,
+    	resize: 'both',
+    	toolbar: 'styleselect bold italic alignleft bullist numlist code',
+  		plugins: 'code',
+  		body_id: 'editorPreview'
+  	});
+</script>

@@ -1,0 +1,330 @@
+<!-- <div id="message-no-review" ng-init="no_review_flag = false" ng-if="no_review_flag">
+  <div class="pure-g">
+    <div class="pure-u-1-1">
+      <h2>
+        There is no current review for {{getUserName(review.selected.agent_id,"agent","")}}, or the selected review has been completed.
+      </h2>
+    </div>
+  </div>
+</div> -->
+<div class="createReview" ng-show="showCreateReview" ng-if="!viewFlag">
+  <div class="pure-g">
+    <div class="pure-u-1-1">
+      <div id="confirmation-message" ng-init="evalSaved = false"
+        ng-show="$parent.evalSaved" class="fade">
+        Review Saved
+        <button type="button" ng-click="$parent.evalSaved = false"
+          class="close"><i class="fa fa-times-circle" aria-hidden="true"></i></button>
+      </div>
+      <div id="confirmation-message" ng-show="$parent.messageSent" class="fade">
+        Message Sent
+        <button type="button" ng-click="$parent.messageSent = false"
+          class="close"><i class="fa fa-times-circle" aria-hidden="true"></i></button>
+      </div>
+    </div>
+    <div class="pure-u-1-2">
+      <h1 ng-if="createFlag">New Performance Review for {{new_review.agent_full_name}}<br /><sub>Team Leader:
+          {{supervisorFirstName}} {{supervisorLastName}}</sub></h1>
+      <h1 ng-if="!createFlag">Performance Review for {{getUserName(review.selected.agent_id,"agent","")}}<br /><sub>Team
+          Leader: {{supervisorFirstName}} {{supervisorLastName}}</sub></h1>
+    </div>
+    <div class="pure-u-1-2 align-right">
+      <button type="button" id="cancel-review-create" class="pure-button pure-button-primary" ng-click="page_reload();"
+        ng-if="!agentFlag"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Agent List</button>
+    </div>
+  </div>
+  <div class="wrapper">
+    <div class="section-header">
+      <h2 class="float-left" ng-if="review.selected.date_entered">Performance Review for
+        {{review.selected.date_entered}}</h2>
+      <div class="float-right">
+        <p>Todays Date: {{new_review.date_today}}</p>
+        <p>Last Review: {{new_review.date_last_review}}</p>
+        <p>Days Since Last Review: {{new_review.days_since_last_review}}</p>
+      </div>
+      <div class="clear-all"></div>
+    </div>
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <!-- Hide this if last coaching session doesn't exist -->
+        <section class="pure-g" id="targets-goals" ng-if="toggle_goals_last">
+          <div class="pure-u-1-1">
+            <h2>What was reviewed during the last coaching session?</h2>
+            <dl>
+              <dd>Goal/Target</dd>
+              <dt>{{review.last.goals.goal}}</dt>
+              <dd>Basis</dd>
+              <dt>{{review.last.goals.goal_score}}</dt>
+              <dd>From(x)</dd>
+              <dt>{{review.last.goals.from_x}}</dt>
+              <dd>To(x)</dd>
+              <dt>{{review.last.goals.to_x}}</dt>
+              <dd>When(date)</dd>
+              <dt>{{review.last.goals.when_date}}</dt>
+              <dd>How?</dd>
+              <dt>{{review.last.goals.how}}</dt>
+            </dl>
+          </div>
+        </section>
+        <!-- end Hide this if last coaching session doesn't exist -->
+        <section class="pure-g">
+          <div class="pure-u-1-1 pure-form pure-form-stacked">
+            <h2>Observations</h2>
+            <h3>CMX Observations</h3>
+            <table class="pure-table pure-table-horizontal">
+              <thead>
+                <tr>
+                  <th>CX Monitors</th>
+                  <th>Customer Experience was...</th>
+                  <th>&nbsp;</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="cx in cmx_values track by $index">
+                  <td><label for="cx{{$index + 1}}">Call {{$index + 1}}</label></td>
+                  <td>
+                    <select name="cx{{$index + 1}}" ng-model="cmx_values[$index]" ng-disabled="agentFlag || viewFlag">
+                      <option value="" disabled selected>Select</option>
+                      <option ng-repeat="val in cmx_options" value="{{val}}">{{val}}</option>
+                    </select>
+                  </td>
+                  <td>
+                    <button ng-click="remove_row([$index])" ng-if="!agentFlag" ng-hide="viewFlag" class="btn-remove"><i
+                        class="fa fa-minus-circle" aria-hidden="true"></i></button>
+                  </td>
+                </tr>
+                <tr ng-hide="viewFlag">
+                  <td class="align-right" colspan="3" ng-if="!agentFlag">
+                    <button ng-click="add_row()" class="btn-add"><i class="fa fa-plus-circle"
+                        aria-hidden="true"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <label for="cmx-observations" ng-if="review.selected.evaluation.supervisor[0].ques">{{review.selected.evaluation.supervisor[0].ques}}</label>
+            <textarea class="pure-u-sm-1-1 pure-u-md-1-2" name="cmx-observations"
+              ng-model="review.selected.evaluation.supervisor[0].ans" ng-disabled="agentFlag || viewFlag" ng-if="review.selected.evaluation.supervisor[0].ques"></textarea>
+
+            <h3>Performance Observations</h3>
+            <div class="pure-u-1-1">
+              <ng-acuity-report text="Metrics" details="Metric Table" hidetopper="true"
+                filters="Customize=CoxPerfReview&Project=1&CSR={CSR}&daterange={Date,Month,Start,-4},{Date,Month,End,0}&StartDate={Date,Month,Start,0}&EndDate={Date,Month,End,0}"
+                cid="DashboardGrid" cidclient="all">
+              </ng-acuity-report>
+            </div>
+            <label for="perf-obs-notes" ng-if="review.selected.evaluation.supervisor[1].ques">{{review.selected.evaluation.supervisor[1].ques}}</label>
+            <textarea class="pure-u-sm-1-1 pure-u-md-1-2" name="perf-obs-notes"
+              ng-model="review.selected.evaluation.supervisor[1].ans" ng-disabled="agentFlag || viewFlag" ng-if="review.selected.evaluation.supervisor[1].ques"></textarea>
+          </div>
+        </section>
+        <section class="pure-g" ng-if="review.selected.evaluation.supervisor[2].ques">
+          <div class="pure-u-1-1 pure-form pure-form-stacked">
+            <h2>Diagnosis and Discussion</h2>
+            <label for="diagdiscuss01">{{review.selected.evaluation.supervisor[2].ques}}</label>
+            <textarea class="pure-u-sm-1-1 pure-u-md-1-2" name="diagdiscuss01"
+              ng-model="review.selected.evaluation.supervisor[2].ans" ng-disabled="agentFlag || viewFlag"></textarea>
+            <label for="diagdiscuss02" ng-if="review.selected.evaluation.supervisor[3].ques">{{review.selected.evaluation.supervisor[3].ques}}</label>
+            <textarea class="pure-u-sm-1-1 pure-u-md-1-2" name="diagdiscuss02"
+              ng-model="review.selected.evaluation.supervisor[3].ans" ng-disabled="agentFlag || viewFlag" ng-if="review.selected.evaluation.supervisor[3].ques"></textarea>
+          </div>
+        </section>
+        <section class="pure-g" id="goal-setting">
+          <div class="pure-u-1-1 pure-form pure-form-stacked">
+            <h2>Coaching Plan</h2>
+            <h3>Coaching session plan and SMART action agreement for the next meeting: ("X" to "Y" by When and How?)
+            </h3>
+            <div class="pure-g">
+              <div class="pure-u-1-1 subhead">
+                <p class="label">Set Goal</p>
+              </div>
+              <div class="pure-u-1-1 pure-u-md-1-4">
+                <label for="goal-kpi">KPI</label>
+                <select ng-model="review.selected.evaluation.goals.goal" class="form-control" id="goal-kpi"
+                  name="goal-kpi" ng-change="get_goal_kpi(review.selected.evaluation.goals.goal); kpi_change()" required
+                  ng-disabled="agentFlag || viewFlag">
+                  <option value="" disabled selected>Select</option>
+                  <option ng-repeat="r in agent_kpis" ng-value={{r.id}}>
+                    {{r.label}}
+                  </option>
+                </select>
+              </div>
+              <div class="pure-u-1-1 pure-u-md-1-8">
+                <label for="goal-score">Basis</label>
+                <select id="goal-score" name="goal-score" ng-disabled="goal_score_flag || agentFlag || viewFlag"
+                  ng-model="review.selected.evaluation.goals.goal_score"
+                  ng-change="get_goal_score(review.selected.evaluation.goals.goal_score);kpi_change()"
+                  ng-disabled="agentFlag || viewFlag">
+                  <option value="" disabled selected>Select</option>
+                  <option value="kpi_raw_score">Standard</option>
+                  <option value="kpi_score">Scored</option>
+                </select>
+              </div>
+              <div class="pure-u-1-1 pure-u-md-1-8">
+                <label for="goal_from_x">Current Value</label>
+                <input type="text" ng-pattern="only_numbers" id="goal_from_x" name="goal_from_x"
+                  ng-change="kpi_change()"
+                  ng-disabled="agentFlag || viewFlag || !review.selected.evaluation.goals.goal_score"
+                  ng-model="review.selected.evaluation.goals.from_x" />
+              </div>
+              <div class="pure-u-1-1 pure-u-md-1-8">
+                <label for="goal_increase">% Increase</label>
+                <input type="text" ng-pattern="only_numbers"
+                  ng-disabled="agentFlag || viewFlag || !review.selected.evaluation.goals.from_x"
+                  ng-model="review.selected.evaluation.goal_increase" ng-change="kpi_change()" id="goal_increase"
+                  name="goal_increase">
+              </div>
+              <div class="pure-u-1-1 pure-u-md-1-8">
+                <label for="goal_to_x">Goal</label>
+                <input type="text" ng-pattern="only_numbers" id="goal_to_x" name="goal_to_x"
+                  ng-model="review.selected.evaluation.goals.to_x"
+                  ng-disabled="agentFlag || viewFlag || !review.selected.evaluation.goals.from_x" />
+              </div>
+              <div class="pure-u-1-1">
+                <label for="new-when-date">When(date)</label>
+                <input type="text" id="new-when-date" name="new-when-date"
+                  ng-model="review.selected.evaluation.goals.when_date" placeholder="mm/dd/yyyy"
+                  ng-disabled="agentFlag || viewFlag" />
+                <label for="new-how">How?</label>
+                <textarea class="pure-u-sm-1-1 pure-u-md-1-2" name="new-how" id="new-how"
+                  ng-model="review.selected.evaluation.goals.how" ng-disabled="agentFlag || viewFlag"></textarea>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="pure-g" ng-if="review.selected.evaluation.self[0].ques">
+          <div class="pure-u-1-1 pure-form pure-form-stacked">
+            <h2>Individual Development Plan</h2>
+            <label for="idp01">{{review.selected.evaluation.self[0].ques}}</label>
+            <textarea class="pure-u-sm-1-1 pure-u-md-1-2" name="idp01" ng-model="review.selected.evaluation.self[0].ans"
+              ng-disabled="!agentFlag || viewFlag"></textarea>
+            <label for="idp02" ng-if="review.selected.evaluation.self[1].ques">{{review.selected.evaluation.self[1].ques}}</label>
+            <textarea class="pure-u-sm-1-1 pure-u-md-1-2" name="idp02" ng-model="review.selected.evaluation.self[1].ans"
+              ng-disabled="!agentFlag || viewFlag"></textarea>
+          </div>
+        </section>
+      </div>
+      <section class="pure-g">
+        <div class="pure-u-1-1" ng-hide="viewFlag">
+          <button type="button" class="pure-button" ng-click="page_reload();" ng-if="!agentFlag">Cancel Changes</button>
+          <button type="button" class="pure-button" ng-click="send_message();" ng-if="!agentFlag && !createFlag">Notify Agent</button>
+          <button type="button" class="pure-button pure-button-primary" ng-click="save_evaluation()">Save
+            Review</button>
+          <button type="button" class="pure-button pure-button-primary" ng-click="complete_evaluation()"
+            ng-if="supervisorFlag" ng-disabled="createFlag">Complete Review</button>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+<!-- Read-only Section -->
+<div class="createReview view-only" ng-if="viewFlag">
+  <div class="pure-g">
+    <div class="pure-u-1-1">
+      <div id="confirmation-message" ng-init="complete_evaluation_saved = false"
+        ng-show="$parent.complete_evaluation_saved" class="fade">
+        Review Completed
+        <button type="button" ng-click="$parent.complete_evaluation_saved = false;"
+          class="close"><i class="fa fa-times-circle" aria-hidden="true"></i></button>
+      </div>
+    </div>
+    <div class="pure-u-1-2">
+      <h1>Performance Review for {{getUserName(review.selected.agent_id,"agent","")}}<br /><sub>Team Leader:
+          {{supervisorFirstName}} {{supervisorLastName}}</sub></h1>
+    </div>
+    <div class="pure-u-1-2 align-right">
+      <button type="button" id="cancel-review-create" class="pure-button pure-button-primary" ng-click="page_reload();"
+        ng-if="!agentFlag"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Agent List</button>
+    </div>
+  </div>
+  <div class="wrapper">
+    <div class="section-header">
+      <h2 ng-if="review.selected.date_entered">Performance Review for {{review.selected.date_entered}}</h2>
+    </div>
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <section class="pure-g">
+          <div class="pure-u-1-1">
+            <h2>Observations</h2>
+            <h3>CMX Observations</h3>
+            <table class="pure-table pure-table-horizontal">
+              <thead>
+                <tr>
+                  <th>CX Monitors</th>
+                  <th>Customer Experience was...</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="cx in cmx_values track by $index">
+                  <td>Call {{$index + 1}}</td>
+                  <td>{{cmx_values[$index]}}</td>
+                </tr>
+              </tbody>
+            </table>
+            <h3>{{review.selected.evaluation.supervisor[0].ques}}</h3>
+            <p>
+              {{review.selected.evaluation.supervisor[0].ans ? review.selected.evaluation.supervisor[0].ans : "Not Answered"}}
+            </p>
+          </div>
+        </section>
+        <section class="pure-g">
+          <div class="pure-u-1-1">
+            <h2>Diagnosis and Discussion</h2>
+            <h3>{{review.selected.evaluation.supervisor[2].ques}}</h3>
+            <p>
+              {{review.selected.evaluation.supervisor[2].ans ? review.selected.evaluation.supervisor[2].ans : "Not Answered"}}
+            </p>
+            <h3>{{review.selected.evaluation.supervisor[3].ques}}</h3>
+            <p>
+              {{review.selected.evaluation.supervisor[3].ans ? review.selected.evaluation.supervisor[3].ans : "Not Answered"}}
+            </p>
+          </div>
+        </section>
+        <section class="pure-g" id="coaching">
+          <div class="pure-u-1-1">
+            <h2>Coaching Plan</h2>
+            <h3>Goal</h3>
+            <dl>
+              <span>
+                <dd>KPI</dd>
+                <dt>
+                  {{review.selected.evaluation.goals.goal ? convertKPI(review.selected.evaluation.goals.goal) : "Not Selected"}}
+                </dt>
+              </span>
+              <span>
+                <dd>Basis</dd>
+                <dt>{{get_goal_score_title(review.selected.evaluation.goals.goal_score)}}</dt>
+              </span>
+              <span>
+                <dd>From</dd>
+                <dt>
+                  {{review.selected.evaluation.goals.from_x ? review.selected.evaluation.goals.from_x : "Not Answered"}}
+                </dt>
+              </span>
+              <span>
+                <dd>To</dd>
+                <dt>{{review.selected.evaluation.goals.to_x ? review.selected.evaluation.goals.to_x : "Not Answered"}}
+                </dt>
+              </span>
+            </dl>
+            <h3>When</h3>
+            <p>
+              {{review.selected.evaluation.goals.when_date ? review.selected.evaluation.goals.when_date : "Not Answered"}}
+            </p>
+            <h3>How</h3>
+            <p>{{review.selected.evaluation.goals.how ? review.selected.evaluation.goals.how : "Not Answered"}}</p>
+          </div>
+        </section>
+        <section class="pure-g">
+          <div class="pure-u-1-1">
+            <h2>Individual Development Plan</h2>
+            <h3>{{review.selected.evaluation.self[0].ques}}</h3>
+            <p>{{review.selected.evaluation.self[0].ans ? review.selected.evaluation.self[0].ans : "Not Answered"}}</p>
+            <h3>{{review.selected.evaluation.self[1].ques}}</h3>
+            <p>{{review.selected.evaluation.self[1].ans ? review.selected.evaluation.self[1].ans : "Not Answered"}}</p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end Read-only Section -->

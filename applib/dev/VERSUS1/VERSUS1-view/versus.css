@@ -1,0 +1,301 @@
+.versus-maximized
+{
+	position: fixed;
+	top: 80px;
+	left: 0px;
+	background-color: white;
+	z-index: 9999;
+	height: 100%;
+	width: 100%;
+}
+
+ body
+    {
+    	font-family: arial;
+        font-size: 16pt;
+    }
+    .versus-board
+    {
+    	height: 100%;
+    	width: 100%;
+    	position: absolute;
+    }
+    .versus-panel
+    {
+    	position: absolute;
+    	width: 1072px;
+    }
+    .track
+    {
+    	top: 0px;
+    	left: 0px;
+    	background-color: white;
+        z-index:-9999;
+    }
+    .ball
+    {
+    	position: absolute;
+    }
+    .ballspecial
+    {
+    	position: absolute;
+        z-index: 2;
+    }
+    .avatar
+    {
+        vertical-align: middle;
+        height: 30px;
+        width: 30px;
+        border: 1px solid black;
+        border-radius: 15px;
+    }
+    .avatarspecial
+    {
+        vertical-align: middle;
+        height: 30px;
+        width: 30px;
+        border: 2px solid black;
+        border-radius: 15px;
+        border-color: yellow;
+        z-index: 2;
+				overflow: hidden;
+    }
+
+    .lane
+    {
+    	position: absolute;
+        background-color: black;
+        height:2px;
+        width:1920px;
+        left: -478px;
+        z-index:-1;
+    }
+    .circle
+    {
+    	position: absolute;
+        background-color: white;
+        border-radius: 50%;
+        border: 2px solid black;
+        left: 400px;
+        top: 400px;
+        z-index:-1;
+    }
+
+    .bar1
+    {
+    	position: absolute;
+    	height: 30px;
+    	width: 0px;
+        top: 0px;
+    }
+    .bar2
+    {
+    	position: absolute;
+    	height: 30px;
+    	width: 0px;
+        top: 60px;
+    }
+    .text
+    {
+        position: absolute;
+        color: black;
+        font-size:31pt;
+        font-family: "Verdana";
+    }
+    .countdown
+    {
+        position: absolute;
+        font-size:150px;
+        width: 200px;
+        top: -200px;
+        left: -400px;
+        font-family: "Lucida Console";
+        text-align: center;
+        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+        z-index:-101;
+    }
+    #announcer
+    {
+        position: absolute;
+        top: 20px;
+        left: 330px;
+        font-size:31px;
+    }
+    #three
+    {
+        color: red;
+    }
+    #two
+    {
+        color: yellow;
+    }
+    #one
+    {
+        color: green;
+    }
+    #go
+    {
+        color: black;
+    }
+    .block
+    {
+    	position: absolute;
+    	background-color: white;
+        z-index:-100;
+    }
+    #block0
+    {
+    	position: absolute;
+    	width: 500px;
+        height: 150px;
+        left: -700px;
+        top: -180px;
+    }
+    #block1
+    {
+    	position: absolute;
+    	width: 1000px;
+        height: 150px;
+        left: 0px;
+        top: -180px;
+    }
+    #block2
+    {
+    	position: absolute;
+    	width: 200px;
+        height: 150px;
+        left: -200px;
+        top: -180px;
+        visibility: hidden;
+    }
+    #block3
+    {
+    	position: absolute;
+    	width: 10px;
+        height: 150px;
+        left: -200px;
+        top: -180px;
+        background-color: black;
+    }
+    #block4
+    {
+    	position: absolute;
+    	width: 10px;
+        height: 150px;
+        left: -10px;
+        top: -180px;
+        background-color: black;
+    }
+    #block5
+    {
+    	position: absolute;
+    	width: 200px;
+        height: 10px;
+        left: -200px;
+        top: -180px;
+        background-color: black;
+    }
+    #block6
+    {
+    	position: absolute;
+    	width: 200px;
+        height: 10px;
+        left: -200px;
+        top: -30px;
+        background-color: black;
+    }
+    .button
+    {
+        position: absolute;
+        top: 0%;
+    	left: 0%;
+        color: black;
+        font-size:20px;
+    }
+    .name
+    {
+        position: absolute;
+        left: -475px;
+        width: 470px;
+        color: black;
+        font-size:31px;
+        font-family: Lucida Console;
+    }
+    .namespecial
+    {
+        position: absolute;
+        left: -475px;
+        width: 470px;
+        color: yellow;
+        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+        font-size:31px;
+        font-family: Lucida Console;
+        z-index: 2;
+    }
+    .plus
+    {
+        position: absolute;
+        left: 35px;
+        width: 40px;
+        opacity:0;
+        color: black;
+        font-size:31px;
+        font-family: Lucida Console;
+        z-index: 1;
+    }
+    .plusspecial
+    {
+        position: absolute;
+        left: 35px;
+        width: 40px;
+        opacity:0;
+        color: yellow;
+        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+        font-size:31px;
+        font-family: Lucida Console;
+        z-index: 2;
+    }
+    .game-board
+    {
+        position: absolute;
+        top: 110px;
+        left: 300px;
+    }
+    .namelegend
+    {
+        position: absolute;
+        top: -5px;
+    }
+
+    .countdown-group
+    {
+        position: absolute;
+        top: 205px;
+        left: 300px;
+    }
+    #versusname1
+    {
+        top: -100px;
+    	left: 0px;
+    }
+    #versusname2
+    {
+        top: 100px;
+    	left: 0px;
+    }
+    .startline
+    {
+    	position: absolute;
+    	background-color:black;
+    	width: 4px;
+        left: 33px;
+        z-index:-1;
+    }
+    .endline
+    {
+    	position: absolute;
+    	background-color:black;
+    	width: 4px;
+        left: 1067px;
+        z-index:-1;
+    }

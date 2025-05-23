@@ -1,0 +1,38 @@
+
+<div class="chartDisplayOptions_holder">
+   <div id="chartDisplayOptions" class="chartDisplayOptions">
+      <h3>Modify the chart with the selections below:</h3>
+      <select id="measureItem1"></select>
+      <select id="measureItem2"></select>
+      <select id="measureItem3"></select>
+      <select id="measureItem4"></select>
+      <select id="measureItem5"></select>
+      <div class="chartDisplayOptions_checkbox">
+         <input type="checkbox" id="chkIncludeLogins">
+         <span>Include Logins</span>
+      </div>
+      <div class="chartDisplayOptions_checkbox">
+         <input type="checkbox" id="chkIncludeBalScore">
+         <span>Include Balanced Score</span>
+      </div>
+      <div class="chartDisplayOptions_buttons">
+         <button id="resetChart" class="button btn">Reset Chart</button>
+         &nbsp;
+         <button id="refreshChart" class="btn button"><i class="fa fa-refresh"></i> Refresh</button>
+      </div>
+   </div>
+   <div class="chartDisplayChart">
+      <div class="value-display_header">
+         <span>Value Display:</span>
+         &nbsp;
+         <select id="chartDisplayType">
+            <option value="Percentage">Score Value Percentage of Max</option>
+            <option value="Score">Score Value</option>
+            <option value="Standard">Standard Value</option>                  
+         </select> 
+      </div>
+      <div id="measurableChartDisplay" >
+         <div id="measureableChartHolder"></div>
+      </div>
+   </div>
+</div>

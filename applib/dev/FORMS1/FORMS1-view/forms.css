@@ -1,0 +1,128 @@
+.rpt-popup-sizer {
+  border: 0px;
+  -webkit-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.45);
+  -moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.45);
+  box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.45);
+  border-radius: 8px;
+}
+.rpt-popup-background {
+  min-height: 610px;
+  overflow-y: auto;
+}
+.form-popup {
+  width: 700px;
+}
+.form-popup_dismiss {
+  font-size: 20px;
+  color: #5f798a;
+}
+.form-popup_content input {
+  padding: 5px;
+}
+.form-popup_user-info {
+  padding: 4px 20px;
+  background: #e3eaef;
+  margin-top: 10px;
+}
+.form-popup_user-info p,
+.form-popup_twocol {
+  display: inline-block;
+  width: 49%;
+}
+.form-popup_twocol {
+  margin-bottom: 4px;
+}
+.form-popup_content hr {
+  border: 0;
+  margin: 15px 0;
+  height: 1px;
+  background: #eee;
+}
+.form-popup_input-fields textarea {
+  width: 600px;
+  padding: 10px 10px 0;
+  margin-top: 9px;
+}
+.form-popup_input-fields select.full-width {
+  width: 89%;
+  margin-top: 7px;
+}
+.form-popup_input-fields {
+  padding: 8px 20px;
+}
+.form-popup_twocol b {
+  width: 120px;
+  display: inline-block;
+}
+.form-popup_twocol input {
+  width: 145px !important;
+}
+.table-form-attendance {
+  min-width: 750px;
+}
+.table-form-attendance .rpt-title {
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-topright: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+button {
+  border:0;
+}
+.btn-noborder {
+  border: 0;
+}
+.btn-top-right {
+  float: right;
+  margin-top: 7px;
+  margin-right: 10px;
+}
+.btn-pullright {
+  float: right;
+  margin-top: -30px;
+}
+.journal-table-top {
+  position: absolute;
+  width: 100%;
+}
+.addnewrecord-btn {
+  z-index: 1;
+  position: absolute;
+  left: 85px;
+}
+.journal-table {
+  margin-top: 40px !important;
+}
+
+.reason-PerformanceReview .form-popup {
+  width: 90% !important;
+}
+.custom-form-placeholder {
+  width: 100%;
+}
+.reason-VeyoPerformanceReview iframe {
+  width: 100% !important;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.performance-form-container {
+  position: relative;
+  width: 100%;
+  /* height: 450px; */
+  left: 0;
+  top: 0;
+  display: block;
+  float: none;
+}
+.journal-entry-form-btn {
+  width: 100%;
+  margin: 15px 0 0 0;
+}
+.rpt-popup-sizer.form-popup .rpt-popup.form-popup_content {
+  background: white !important;
+}
+
+

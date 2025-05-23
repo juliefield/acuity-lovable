@@ -1,0 +1,609 @@
+<style>
+.active-tag {
+   font-weight:bold;
+   color:blue;
+}
+.active-catalog {
+   font-weight:bold;
+   border:1px solid blue;
+   color:blue;
+   background-color:lightskyblue
+}
+.active-catalog-item
+{
+   font-weight:bold;
+   border:1px solid goldenrod;
+   color:goldenrod;
+   background-color:lightgoldenrodyellow
+}
+.item-assigned-to-catalog
+{
+   font-weight:bold;
+   background-color:darkcyan !important;   
+   color:aqua;
+}
+.errorField {
+    border: 2px solid red !important;
+}
+.error-information-holder {
+    color: red;
+}
+.error-information-holder ul {
+    margin-left: 18px;
+    padding-left: 0;
+    margin-top: 4px;
+}
+.error-information-holder ul li {
+    list-style: none;
+    display: inline-block;
+    color: red;
+    position: relative;
+    margin-right: 10px;
+}
+.error-information-holder ul li:after {
+    content: ',';
+    position: absolute;
+    right: -4px;
+    bottom: 0;
+}
+.error-information-holder ul li:last-child:after {
+    display: none;
+}
+.column1of3 {
+      display:inline-block;
+      width:15%;
+      background-color:lightblue;
+      border:2px solid black;
+      padding:5px;
+      margin:2px;
+   }
+   .column2of3 {
+      display:inline-block;
+      width:15%;
+      background-color:lightpink;
+      border:2px solid black;
+      padding:5px;
+      margin:2px;
+   }
+   .column3of3 {
+      display:inline-block;
+      width:65%;
+      background-color:lightgreen;
+      border:2px solid black;
+      padding:5px;
+      margin:2px;
+      vertical-align: top;
+      max-height:calc(100%- 10px);      
+   }
+   .editor-form-column {
+      display:inline-block;
+      overflow-y:auto;
+      max-height:calc(95% -100px);
+      min-height:375px;
+      border:1px solid yellow;
+      vertical-align: top;
+   }
+   .editor-form-column.column1 {
+      min-width:30%;
+      max-width:30%;
+      border: 1px dotted green;
+      
+   }
+   .editor-form-column.column2 {
+      min-width:45%;
+      max-width:45%;
+      border: 1px dotted green;
+   }
+   .editor-form-column.column3 {
+      min-width:20%;
+      max-width:20%;
+      border: 1px dotted green;
+   }
+   .virtual-prize-catalog-manager-column {
+      min-height:50vh;
+      max-height:50vh;
+      overflow:auto;
+      vertical-align: top;
+   }
+   .current-catalog-base-listing-holder,
+   .virtual-prize-current-catalog-display-body-holder
+   {
+      min-height:calc(50vh - 50px);
+      max-height:calc(50vh - 500px);
+   }
+   .possible-tags-list-header-holder
+   {
+      min-height:5%;
+      max-height:5%;
+      background-color:lightblue;
+      font-weight:bold;
+   }
+   .possible-tags-list-body-holder
+   {
+      min-height:80%;
+      max-height:80%;
+      overflow:auto;
+      background-color:burlywood;
+   }
+   .possible-tags-list-footer-holder
+   {
+      min-height:10%;
+      max-height:10%;
+      background-color:lightgray;
+   }
+   .prize-catalog-editor-form_row
+   {
+      max-height:50px;
+      min-height:30px;      
+      width:99%;
+      clear:both;
+      display:block;
+      background-color:white;
+   }
+   .hidden-row
+   {
+      display:none;
+   }
+   .prize-catalog-editor-image-holder
+   {
+      min-height:350px;
+      max-height:99%;      
+   }
+   .prize-catalog-editor-item-label
+   {
+      display:inline-block;
+      width:200px;
+   }
+   .required-field {
+      font-weight: bold;
+   }
+   .prize-catalog-editor-item-input-holder
+   {
+      display:inline-block;
+   }
+   .item-assigned-catalog-listing-holder
+   {
+      min-height:200px;
+      max-height:200px;
+      overflow-y:auto;
+   }
+   .item-assigned-catalog-row
+   {
+      background-color: lightgray;
+   }
+   .item-assigned-catalog-row:nth-child(even)   
+   {
+      background-color: white;
+   }
+   .item-assigned-catalog-item-holder
+   {
+      display:inline-block;
+   }
+   .catalog-select {      
+      min-width: 5%;
+      max-width: 5%;
+      text-align:center;
+   }
+   .catalog-name
+   {
+      min-width: 50%;
+      max-width: 50%;
+      text-align:left;
+   }
+   .catalog-cost
+   {
+      min-width: 25%;
+      max-width: 25%;
+      text-align:center;
+   }
+   /* .catalog-dates
+   {
+      min-width: 20%;
+      max-width: 20%;
+      text-align:center;
+   } */
+   .catalog-buttons
+   {
+      min-width: 15%;
+      max-width: 15%;
+      text-align:center;
+   }
+   .user-messaging-text-holder
+   {
+      border:2px solid limegreen;
+      background-color:black;
+      color:limegreen;
+      width:250px;
+      position: fixed;
+      overflow: hidden;
+      z-index: 2400;
+      opacity: 0.70;
+      right: 30px;
+      top: 0px !important;
+      padding:5px;
+   }
+   .fade-out {
+     animation: fadeOut 3s;
+   }
+   @keyframes fadeOut {
+      0% { opacity: 1; }
+      100% { opacity: 0; }
+   }
+   .virtual-prize-catalog-list-display-footer-holder
+   ,.virtual-prize-current-catalog-display-footer-holder
+   {
+      font-weight:bold;
+   }
+   .virtual-prize-current-catalog-display-body-holder
+   {
+      max-height:calc(99%-150px);
+      min-height:calc(99%-150px);
+      overflow-y:auto;
+   }
+   .editor-form-header-holder
+   {
+      font-weight:bold;
+      font-size:1.25em;
+      max-height:25px;
+      min-height:25px;
+      background-color:#f9f9f9;
+   }
+   .editor-form-body-holder
+   {
+      min-height: 400px;
+      max-height: 400px;
+      overflow:auto;
+      vertical-align: top;
+   }
+   .editor-form-footer-holder
+   {
+      max-height:25px;
+      min-height:25px;
+   }
+   .header-row
+   {
+      background-color:lightblue;
+      color:blue;
+   }
+   .prize-catalog-editor-item-image
+   {
+      min-width:25px;
+      max-width:250px;
+      min-height:25px;
+      max-height:400px;
+      aspect-ratio: inherit;
+   }
+   
+   .catalog-editor-list-form-header
+   {
+      max-height:20px;
+      min-height:20px;
+      border:1px solid orangered;
+   }
+   .catalog-editor-list-form-footer
+   {
+      max-height:20px;
+      min-height:20px;
+      border:1px solid pink;
+   }
+   .catalog-image-option-selector-holder
+   {
+      display:inline-block;
+      min-width:100px;
+      max-width:100px;
+      min-height:100px;
+      max-height:100px;
+      border:1px solid gray;
+      text-align: center;
+      vertical-align: middle;
+      margin:3px;
+      padding:2px;
+   }
+   .catalog-image-option-selector-holder.active
+   {
+      border:5px solid cyan;
+   }
+   .catalog-image-option-item
+   {
+      max-width: 75px;
+      max-height: 75px;
+      aspect-ratio: inherit;
+   }
+   .editor-form-popup-holder
+   {
+      position: absolute;
+      z-index: 9000;
+      top: 50px;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      width: 900px;
+      height: 500px;
+      background-color: #fff;
+      overflow: auto;
+      -webkit-box-shadow: 0px 0px 9px 0px rgb(0 0 0 / 35%);
+      -moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+      box-shadow: 0px 0px 9px 0px rgb(0 0 0 / 35%);
+      padding: 20px;
+   }
+</style>
+<div id="virtualPrizeCatalogAdminHolder">
+   <div>
+      <div id="virtualPrizeCatalogManagerUserMessagingHolder" class="user-messaging-text-holder">
+         <div id="catalogManagerUserMessage"></div>
+      </div>   
+   </div>
+   <div id="virtualPrizeCatalogManagerHolder">
+      <div class="virtual-prize-catalog-manager-column column1of3">
+         <div>
+            <button id="btnAddNewCatalog" class="button btn btn-add-new"><i class="fa fa-plus"></i> Add New</button>
+            <button id="btnRefreshCatalog" class="button btn btn-refresh"><i class="fa fa-refresh"></i></button>
+         </div>
+         <div id="currentCatalogListing" class="current-catalog-base-listing-holder"></div>
+         <div class="virtual-prize-catalog-list-display-footer-holder">
+            <div>
+               <div>Catalogs found: <label id="lblCatalogsFound">0</label></div>
+            </div>
+         </div>
+      </div>
+      <div class="virtual-prize-catalog-manager-column column2of3">
+         <div class="virtual-prize-catalog-manager-current-catalog-full-display">
+            <div class="virtual-prize-current-catalog-display-header-holder">
+               <button id="btnAddNewItem" class="button btn btn-add-new"><i class="fa fa-plus"></i> Add New</button>
+               <button id="btnRefreshItems" class="button btn btn-refresh"><i class="fa fa-refresh"></i></button>
+            </div>
+            <div class="virtual-prize-current-catalog-display-body-holder">
+               <div id="currentCatalogItemListingHolder"></div>
+            </div>
+            <div class="virtual-prize-current-catalog-display-footer-holder">
+               <div>
+                  <div>Items found: <label id="lblCatalogItemsFound">0</label></div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="virtual-prize-catalog-manager-column column3of3">
+         <div id="virtualPrizeCatalogEditorFormHolder" class="editor-form-holder">
+            <div id="virtualPrizeCatalogEditorForm" class="editor-form">
+               <div class="editor-form-header-holder">
+                  Prize Editor Form
+               </div>
+               <div class="editor-form-body-holder">
+                  <div class="error-information-holder error-information-holder-item-form"></div>
+                  <div class="editor-form-body">
+                     <div class="editor-form-column column1">
+                        <div class="prize-catalog-editor-image-holder">
+                           <img id="prizeCatalogEditorImageHolder" class="prize-catalog-editor-item-image">
+                           <input type="textbox" id="prizeCatalogEditor_ImageUrl" style="display:none" />
+                        </div>
+                     </div>
+                     <div class="editor-form-column column2">
+                        <div class="prize-catalog-editor-form-inputs-holder">
+                           <div class="prize-catalog-editor-form_row hidden-row">
+                              <div class="prize-catalog-editor-form_row">
+                                 ID
+                              </div>
+                              <div class="prize-catalog-editor-item-input-holder">
+                                 <input type="textbox" id="prizeCatalogEditor_VirtualPrizeItemId"/>
+                              </div>
+                           </div>
+                           <div class="prize-catalog-editor-form_row hidden-row">
+                              <div class="prize-catalog-editor-form_row">
+                                 Temp Key
+                              </div>
+                              <div class="prize-catalog-editor-item-input-holder">
+                                 <input type="textbox" id="prizeCatalogEditor_TempKey" />
+                              </div>
+                           </div>
+                           <div class="prize-catalog-editor-form_row">
+                              <div class="prize-catalog-editor-item-label">
+                                 Thumbnail
+                              </div>
+                              <div class="prize-catalog-editor-item-input-holder">
+                                 <img id="prizeCatalogEditorThumbnailImageHolder" class="prize-catalog-editor-item-image" height="25px">
+                                 <input type="textbox" id="prizeCatalogEditor_ThumbnailUrl" style="display:none" />
+                              </div>
+                           </div>
+                           <div class="prize-catalog-editor-form_row">
+                              <div class="prize-catalog-editor-item-label required-field">
+                                 Name
+                              </div>
+                              <div class="prize-catalog-editor-item-input-holder">
+                                 <input type="textbox" id="prizeCatalogEditor_PrizeName"/>
+                              </div>
+                           </div>
+                           <div class="prize-catalog-editor-form_row">
+                              <div class="prize-catalog-editor-item-label required-field">
+                                 Base Cost
+                              </div>
+                              <div class="prize-catalog-editor-item-input-holder">
+                                 <input type="textbox" id="prizeCatalogEditor_BaseCreditCost"/>
+                              </div>
+                           </div>                           
+                           <div class="prize-catalog-editor-form_row">
+                              <div class="prize-catalog-editor-item-label required-field">
+                                 Status
+                              </div>
+                              <div class="prize-catalog-editor-item-input-holder">
+                                 <select id="prizeCatalogEditor_Status">
+                                    <option value="A">Active</option>
+                                    <option value="I">Inactive</option>
+                                 </select>
+                              </div>
+                           </div>
+                           <div class="prize-catalog-editor-form_row">
+                              <div class="prize-catalog-editor-item-label">
+                                 Description
+                              </div>
+                              <div class="prize-catalog-editor-item-input-holder">
+                                 <input type="textbox" id="prizeCatalogEditor_PrizeDesc"/>
+                              </div>
+                           </div>
+                           <div class="prize-catalog-editor-form_row">
+                              <div class="prize-catalog-editor-item-label">
+                                 Date Available
+                              </div>
+                              <div class="prize-catalog-editor-item-input-holder">
+                                 <input type="textbox" id="prizeCatalogEditor_DateAvailable" />
+                              </div>
+                           </div>
+                           <div class="prize-catalog-editor-form_row">
+                              <div class="prize-catalog-editor-item-label">
+                                 Date Expires
+                              </div>
+                              <div class="prize-catalog-editor-item-input-holder">
+                                 <input type="textbox" id="prizeCatalogEditor_DateExpires" />
+                              </div>
+                           </div>
+                           <div class="prize-catalog-editor-form_row">
+                              <div class="prize-catalog-editor-item-label">
+                                 Limited?
+                              </div>
+                              <div class="prize-catalog-editor-item-input-holder">
+                                 <input type="checkbox" id="prizeCatalogEditor_IsLimited"/>
+                              </div>
+                           </div>
+                           <div class="prize-catalog-editor-form_row">
+                              <div class="prize-catalog-editor-item-label">
+                                 Available Quantity
+                              </div>
+                              <div class="prize-catalog-editor-item-input-holder">
+                                 <input type="textbox" id="prizeCatalogEditor_AvailableQuantity" />
+                              </div>
+                           </div>
+                           <div class="prize-catalog-editor-form_row">
+                              <div class="prize-catalog-editor-item-label">
+                                 Maximum Quantity
+                              </div>
+                              <div class="prize-catalog-editor-item-input-holder">
+                                 <input type="textbox" id="prizeCatalogEditor_MaximumQuantity" />
+                              </div>
+                           </div>
+                        </div>
+                        <br />
+                        <div class="prize-catalog-editor-form-assigned-catalogs catalog-editor-list-form-body">
+                           <div class="prize-catalog-editor-from-catalog-list">
+                              <div id="itemAssignedCatalogList"></div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="editor-form-column column3">
+                        <div class="possible-tags-list-form-listing-holder">
+                           <div class="possible-tags-list-header-holder">
+                              <h5>Tags</h5>
+                           </div>
+                           <div class="possible-tags-list-body-holder">
+                              <div id="possibleTagsListHolder" class="possible-tags-list-holder"></div>
+                           </div>
+                           <div class="possible-tags-list-footer-holder">
+                              <div>
+                                 <span class="input-label">New Tag</span>
+                                 &nbsp;
+                                 <input type="textbox" id="newTagOptionInput" width="10">
+                                 &nbsp;
+                                 <button id="btnSaveNewTagOption" class="button btn add-new-tag-button"><i class="fa fa-save"></i></button>
+                              </div> 
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="editor-form-footer-holder">
+                  <div>
+                     <button id="btnSaveCatalogForm" class="button btn btn-save">Save</button>
+                     <button id="btnCancelCatalogForm", class="button btn btn-close">Cancel</button>
+                  </div>
+               </div>      
+            </div>
+         </div>
+         <div id="virtualPrizeCatalogCreateFormHolder" class="editor-form-holder">            
+            <div id="virtualPrizeCatalogCreateForm" class="editor-form">
+               <div class="editor-form-header-holder">
+                  Catalog Editor Form
+               </div>
+               <div class="editor-form-body-holder">
+                  <div class="error-information-holder error-information-holder-create-form"></div>
+                  <div class="editor-form-body">
+                     <div>
+                        <div class="prize-catalog-editor-form-inputs-holder">
+                           <div class="prize-catalog-editor-form_row hidden-row">
+                              <div class="prize-catalog-editor-item-label">
+                                 ID
+                              </div>
+                              <div class="prize-catalog-editor-item-input-holder">
+                                 <input type="textbox" id="prizeCatalogCreateEditor_CatalogId"/>
+                              </div>
+                           </div>
+                           <div class="prize-catalog-editor-form_row">
+                              <div class="prize-catalog-editor-item-label required-field">
+                                 Name
+                              </div>
+                              <div class="prize-catalog-editor-item-input-holder">
+                                 <input type="textbox" id="prizeCatalogCreateEditor_CatalogName"/>
+                              </div>
+                           </div>
+                           <div class="prize-catalog-editor-form_row">
+                              <div class="prize-catalog-editor-item-label required-field">
+                                 Status
+                              </div>
+                              <div class="prize-catalog-editor-item-input-holder">
+                                 <select id="prizeCatalogCreateEditor_Status">
+                                    <option value="A">Active</option>
+                                    <option value="I">Inactive</option>
+                                 </select>
+                              </div>
+                           </div>
+                           <div class="prize-catalog-editor-form_row">
+                              <div class="prize-catalog-editor-item-label">
+                                 Desc
+                              </div>
+                              <div class="prize-catalog-editor-item-input-holder">
+                                 <input type="textbox" id="prizeCatalogCreateEditor_CatalogDesc"/>
+                              </div>
+                           </div>
+                           <div class="prize-catalog-editor-form_row">
+                              <div class="prize-catalog-editor-item-label">
+                                 Start Date
+                              </div>
+                              <div class="prize-catalog-editor-item-input-holder">
+                                 <input type="textbox" id="prizeCatalogCreateEditor_CatalogStartDate" class="datepicker"/>
+                              </div>
+                           </div>
+                           <div class="prize-catalog-editor-form_row">
+                              <div class="prize-catalog-editor-item-label">
+                                 End Date
+                              </div>
+                              <div class="prize-catalog-editor-item-input-holder">
+                                 <input type="textbox" id="prizeCatalogCreateEditor_CatalogEndDate" class="datepicker"/>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="editor-form-footer-holder">
+                  <div>
+                     <button id="btnSaveCatalogCreateEditor" class="button btn btn-save">Save</button>
+                     <button id="btnCancelCatalogCreateEditor", class="button btn btn-close">Cancel</button>
+                  </div>
+               </div>      
+            </div>
+         </div>
+      </div>      
+   </div>
+   <div id="virtualPrizeCatalogImageSelectorHolder" class="editor-form-popup-holder">
+      <div id="virtualPrizeCatalogImageSelectorForm" class="editor-form">
+         <div class="image-select-form-header-holder">
+            &nbsp;
+         </div>
+         <div class="image-select-form-body-holder">
+            <div id="catalogItemAvailableImagesList">
+               Image selection information here.
+            </div>
+         </div>
+         <div class="image-select-form-footer-holder">
+            <button id="btnCloseImageSelectionForm" class="button btn">Close</button>
+         </div>   
+      </div>
+   </div>
+</div>

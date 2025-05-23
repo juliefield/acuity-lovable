@@ -1,0 +1,321 @@
+<style>
+   @import url("../../../../applib/css/variables.css");
+   
+   /*My Team Manager stuff START */
+   .inline-item
+   {
+      display:inline-block;
+   }
+   .column1
+   {
+      display:inline-block;
+      width:48%;      
+      padding-left:5px;      
+   }
+   .column2
+   {
+      display:inline-block;
+      width:48%;
+      text-align:right;
+      padding-right:5px;
+   }
+   .left-column
+   {
+      width:33%;
+      float: left;
+      min-height:30px;
+   }
+   .right-column
+   {
+      width:33%;
+      float: right;
+      min-height:30px;
+   }
+   .center-column
+   {
+      width:33%;
+      display:inline-block;
+      min-height:30px;
+   }
+   .active {
+      border:2px solid var(--brand-blue) !important;
+      border-radius:25px;
+   }
+         .gray-bar
+         {
+            background-color:darkgray;
+         }
+         .team-overview-header-name-holder
+         {
+            width:49%;
+         }
+         .team-overview-header-stats-holder
+         {
+            width:49%;
+         }
+         .my-team-user-holder
+         {
+            display:inline-block;
+            max-width:250px;
+            min-width:250px;
+            max-height:150px;
+            min-height:150px;
+            border:1px solid var(--light-gray);
+            background-color:var(--lighter-gray);
+            margin:3px;
+            padding:0px 0px 3px 0px;
+            text-align:center;                        
+            border-radius:10px;
+         }
+         .my-team-user-holder DIV
+         {
+            font-size:10px;
+         }
+         .my-team-user-scoring-color-bar
+         {
+            width:100%;
+            max-height:10px;
+            min-height:10px;
+            margin-bottom:8px;
+            border-radius:20px 20px 0px 0px;
+            z-index:0;
+         }         
+         .my-team-user-name-holder
+         {
+            font-weight:bold;
+            font-size:12px !important;
+            text-wrap: nowrap;
+            min-width:99%;
+            max-width:99%;
+            text-align:center;            
+         }
+         .my-team-user-pop-up-display-holder
+         {
+            display:flexbox;
+            border:1px solid var(--red);
+            z-index:1000;
+            min-width:300px;
+            max-width:300px;
+            max-height:400px;
+            min-height:400px;
+            overflow:auto;
+         }
+         .user-avatar-image
+         {
+            border-radius:25px;
+            height:50px;
+         }
+         .user-kpi-score-row {
+            margin: 2px;            
+         }
+         .user-kpi-score-name {
+            width:74%;
+            display:inline-block;
+            padding:2px;
+         }
+         .user-kpi-score-holder {
+            width:23%;
+            display:inline-block;
+            padding:2px;
+         }
+         .user-coaching-record-row
+         {
+            margin: 2px;
+         }
+         .user-coaching-record-row DIV
+         {
+            font-size: .75em;
+         }
+         .user-coaching-date {
+            width:20%;
+            display:inline-block;
+            padding:2px;
+         }
+         .user-coaching-subject {
+            width:40%;
+            display:inline-block;
+            padding:2px;
+         }
+         .user-coaching-coach-by {
+            width:35%;
+            display:inline-block;
+            padding:2px;            
+         }
+         .user-coaching-past-list-holder
+         {
+            min-height:150px;
+            max-height:200px;
+            overflow:auto;
+         }
+         .my-team-user-kpi-options-holder
+         {
+            min-height:25px;
+            max-height:25px;
+            overflow:auto;
+            min-width:99%;
+            max-width:99%;
+
+         }
+         .user-kpi-dot-item
+         {
+            display:inline-block;
+            max-height:10px;
+            min-height:10px;
+            max-width:10px;
+            min-width:10px;
+            border-radius: 5px;
+            margin:2px;
+            background-color:lime;
+         }
+         .user-kpi-dot-item.weighted {
+            border:2px solid var(--gray);
+            border-radius:7px;
+
+         }
+         .user-kpi-data-popup-display-holder
+         {
+            background-color: white;
+            border:2px solid black;
+            padding: 15px;
+            z-index: 100;
+            position: absolute;
+            top: 10%;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+            max-height:50%;
+            overflow:auto;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            -webkit-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+            -moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+            box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+         }
+         .user-kpi-data-popup-holder
+         {
+            background-color:var(--light-gray);
+            text-align:left;
+            border:1px solid var(--gray);
+            margin-top:2px;
+            margin-bottom:2px;
+         }
+         .user-kpi-data-popup-button-holder
+         {
+            float:right;
+            text-align:right;
+         }
+         .close-btn
+         {
+            float:right;
+            min-height:25px;
+            max-height:25px;
+            min-width:25px;
+            max-width:25px;
+            margin:5px;
+         }
+         .my-team-user-selection-holder
+         {
+            float:right;
+         }
+         DIV.selected-user
+         {
+            background-color:var(--highlight);
+         }
+         .user-kpi-data-popup-user-info-holder
+         {
+            background-color:var(--brand-blue-hover);
+            font-weight:bold;
+            color:var(--background-gray);
+            min-height:100px;
+            max-height:100px;
+            vertical-align: top;
+            width:100%;
+         }
+         .user-kpi-data-popup-trend-chart-holder {
+            min-height:125px;
+         }
+         .user-kpi-data-popup-user-avatar{
+            min-width:75px;
+            max-width:75px;
+            text-align:center;
+         }
+         .user-kpi-data-popup-user-name{
+            min-width:45%;
+            max-width:45%;
+            text-align:center;
+            font-size:1.25em;
+            min-height:75px;
+            max-height:75px;
+            vertical-align: middle;
+         }
+         .user-kpi-data-popup-user-score-holder
+         {
+            min-width:40%;
+            max-width:40%;
+            font-size:1.25em;
+            text-align:center;
+            margin-left:10px;
+            padding-left:25px;
+            min-height:75px;
+            max-height:75px;
+            vertical-align: middle;
+         }
+         .user-kpi-data-popup-user-rank-holder
+         {
+            clear:both;
+            min-width:99%;
+            text-align:left;
+            font-size:.75em;
+            background-color:var(--light-blue);
+            color:var(--font-color);
+         }
+         /*My Team Manager stuff END */
+</style>
+<div>
+   <div>
+      <div>
+         <div>
+            <div class="team-overview-header-name-holder inline-item">
+               <h1 id="teamOverviewTeamName"></h1>
+            </div>
+            <div class="team-overview-header-stats-holder inline-item">
+               Team Members: <span id="lblCurrentUserCount"></span>
+               &nbsp;
+               Available Seats: <span id="lblAvailableSeatCount"></span>
+            </div>
+         </div>
+         <div>
+            <div class="left-column">               
+               <button id="btnRefreshTeamList"><i class="fa fa-refresh"></i></button>
+               <button id="btnClearSelectedUsers">Clear Users Selected</button>
+            </div>
+            <div class="center-column">
+               <div class="inline-item">
+                  Selected Users (<label id="selectedUserCountDataLabel"></label>)
+                  <select id="selectedUserAction"></select>
+                  &nbsp;
+                  <button id="btnDoUserAction">Go</button>
+               </div>
+
+            </div>
+            <div class="right-column">
+               <div class="inline-item">
+                  Display Team: <select id="teamOverviewTeamDisplayOrder"></select>
+               </div>               
+            </div>   
+         </div>
+      </div>
+      <br style="clear:both;"/>
+      <div class="user-kpi-data-popup-display-holder">
+         <div id="myTeamMembersKpiPopups"></div>
+      </div>
+      <div>
+         <div id="myTeamMembersDisplay"></div>
+      </div>
+      
+   </div>
+</div>

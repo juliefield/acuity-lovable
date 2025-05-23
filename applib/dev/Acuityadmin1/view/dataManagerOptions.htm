@@ -1,0 +1,188 @@
+<div>
+   <div style="width:33%;display:inline-block;vertical-align:top;">
+      <div>
+         <div>
+            <fieldset>
+               <legend>
+                  User Badges
+               </legend>
+               <div>
+                  <p>Run Automated Badge Assignment Process</p>
+                  <button id="btnRunUserBadgeAssignment">Start</button>
+               </div>
+               <div id="UserBadgeAssignmentMessages" class="small-information-holder">&nbsp;</div>
+            </fieldset>
+         </div>
+      </div>
+      <div>
+         <div>
+            <fieldset>
+               <legend>User Credits</legend>
+               <div>
+                  <p>Run the automated credits assignments, including won badges</p>
+                  <button id="btnRunUserPointsAssignment">Start</button>
+               </div>
+               <div id="UserPointsAssignmentMessages" class="small-information-holder">&nbsp;</div>
+               </fieldse </div>
+         </div>
+
+         <div>
+            <div>
+               <fieldset>
+                  <legend>User Trophies</legend>
+                  <div>
+                     <p>Run the automated trophy assignments</p>
+                     <button id="btnRunUserTrophyAssignment">Start</button>
+                  </div>
+                  <div id="UserTrophyAssignmentMessages" class="small-information-holder">&nbsp;</div>
+               </fieldset>
+            </div>
+         </div>
+         <!-- <div>
+         <div>
+               <fieldset>
+                  <legend>Flex</legend>
+                  <div>
+                     <p>Run the automated scoring process</p>
+                     <button id="btnRunFlexAutomatedScoring">Start</button>                                    
+                  </div>
+                  <div id="FlexAutomatedScoringMessages" class="small-information-holder">&nbsp;</div>
+               </fieldset>
+         </div>
+      </div> -->
+      </div>
+   </div>
+   <div style="width:33%;display:inline-block;vertical-align:top;">
+      <div>
+         <div>
+            <fieldset>
+               <legend>Budget Assignments</legend>
+               <div>
+                  <p>Assign Budgets for the users for the month.</p>
+                  <input type="textbox" id="budgetMonthDate" />
+                  <button id="btnMonthlyBudgetAssignment" b>Start</button>
+               </div>
+               <div id="budgetAssignmentMessages" class="small-information-holder">&nbsp;</div>
+            </fieldset>
+         </div>
+      </div>
+      <div>
+         <div>
+            <fieldset>
+               <legend>Scoring</legend>
+               <div>
+                  <p>Calculate the scoring.</p>
+                  <button id="btnStartDailyScoring">Start</button>
+               </div>
+               <div id="scoringExecutionMessages" class="small-information-holder">&nbsp;</div>
+            </fieldset>
+         </div>
+      </div>
+      <div>
+         <div>
+            <fieldset>
+               <legend>Goal Calculations</legend>
+               <div>
+                  <p>Calculate Goals Achieved</p>
+                  <button id="btnStartGoalProcessing">Start</button>
+               </div>
+               <div id="goalExecutionMessages" class="small-information-holder">&nbsp;</div>
+            </fieldset>
+         </div>
+      </div>
+      <div>
+         <div>
+            <fieldset>
+               <legend>A-GAME Scoring Run</legend>
+               <div>
+                  <p>Run the A-GAME Scoring</p>
+                  <select id="aGameDivisionToScore"></select>
+                  <input type="text" id="aGameDateToScore" />
+                  <button id="btnAGameScoring">Score</button>
+               </div>
+               <div id="agameScoringMessages" class="small-information-holder">&nbsp;</div>
+            </fieldset>
+         </div>
+      </div>
+   </div>
+   <div style="width:33%;display:inline-block;vertical-align:top;">
+      <div>
+         <div>
+            <fieldset>
+               <legend>API management</legend>
+               <div>
+                  <div>
+                     <p>Manage information for the various API's</p>
+                  </div>
+                  <div>
+                     <button id="btnChangeApiInformation">Change Info</button>
+                     <div id="currentApiIntegrationsList"></div>
+                  </div>
+               </div>
+               <div class="form-holder" id="apiInformationManagementForm">
+                  <div>
+                     <div>
+                        <button class="btn-cancel-api btn"><i class="fa fa-close"></i></button>
+                     </div>
+                     <div>
+                        <div>
+                           <label>API</label>
+                           <select id="apiToChange"></select>
+                        </div>
+                        <div>
+                           <label>Username:</label>
+                           <input type=text id="apiUsername">
+                        </div>
+                        <div>
+                           <label>Password:</label>
+                           <input type="text" id="apiPassword">
+                        </div>
+                        <div id="additionalApiInformationHolder"></div>
+                     </div>
+                     <div>
+                        <input type="hidden" id="existingApiId" value="-1" />
+                        <button class="btn-save-api btn button" id="btnSaveApiInformation">Save</button>
+                        <button class="btn-cancel-api btn button">Cancel</button>
+                     </div>
+                  </div>
+
+               </div>
+            </fieldset>
+         </div>
+      </div>
+      <div>
+         <div>
+            <fieldset>
+               <legend>Import Information</legend>               
+               <div>
+                  <div><button id="btnRefreshImportInfo" ><i class="fa fa-refresh"></i> Refresh Information</button></div>
+                  <div class="header-holder">
+                     <div class="header-item import-name">Area</div>
+                     <div class="header-item import-status">Status</div>
+                     <div class="header-item import-for-dates">Import Dates</div>
+                     <div class="header-item import-complete-date">Complete Time</div>
+                  </div>
+                  <div id="dataManagerImportStats"></div>
+               </div>
+            </fieldset>
+         </div>
+      </div>
+      <div>
+         <div>
+            <fieldset>
+               <legend>Generate Testing Data</legend>
+               <div>
+                  Start Date <input type="text" id="testDataStartDate"><br>
+                  End Date <input type="text" id="testDataEndDate"><br>
+                  Kpi <select id="testDataKpi"></select><br>
+                  User <select id="testDataUserFor"></select><br>      
+                  <div class="button-holder">
+                     <button id="btnTestDataGenerate">Generate</button>
+                  </div>
+                  <div id="testDataMessages" class="small-information-holder">&nbsp;</div>
+               </div>
+            </fieldset>
+         </div>
+      </div>
+   </div>
+</div>

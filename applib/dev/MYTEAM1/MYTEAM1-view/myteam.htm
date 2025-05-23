@@ -1,0 +1,51 @@
+<div class="tables_container"   data-bind="visible: (roster.length > 0)">
+  <div class="table_topper table_topper--inside-tabs">
+    {{ team.name }}
+  </div>
+  <table class="acuity-v3-table">
+    <thead>
+      <tr class="acuity-v3-table__top-th">
+        <th class="text-left">Rank</th>
+        <th class="text-left">Player Name</th>
+        <th class="text-left">Provide Recognition</th>
+        <th>Score</th>
+      </tr>
+    </thead>
+    <tbody data-bind="foreach: roster">
+
+      <!-- PLAYER ROW-->
+      <tr
+        ng-repeat="teammate in teammates"
+      >
+        <td>{{ teammate.rank }}</td>
+        <td class="text-left">
+          <div class="player-photo-avatar avatar-circle">
+            <img src="{{ teammate.avatarfilename }}" width="30" />
+          </div>
+          <div class="table_avatar-name">
+            <p>
+              {{teammate.stg.nickname}}
+              <span ng-hide="teammate.stg.nickname == ''">(</span>{{teammate.firstnm}} {{teammate.lastnm}}<span ng-hide="teammate.stg.nickname == ''">)</span>
+
+            <span class="table_starter-star" data-bind="visible:playtype=='T'" title="On Starting Lineup"></span>
+
+            <div class="player-name__tag-line" ng-if="teammate.stg.slogan">
+              "{{ teammate.stg.slogan }}"
+            </div>
+          </div>
+        </td>
+        <td class="text-left" ng-if="teammate.uid !== me.person.uid">
+          <ng-thumb
+            context='teammate-performance'
+            uid='{{ teammate.uid }}'
+            thumbup-on='teammate.thumbup === "Y"'
+            message='{{ teammate.comment ? teammate.comment : "Great job " + (teammate.stg.nickname ? teammate.stg.nickname : teammate.firstnm) + "!" }}'
+          ></ng-thumb>
+        </td>
+        <td ng-if="teammate.uid === me.person.uid"></td>
+        <td><b>{{ teammate.score | number : 2 }}</b></td>
+      </tr>
+      <!--END PLAYER ROW -->
+    </tbody>
+  </table>
+</div>

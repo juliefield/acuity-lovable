@@ -1,0 +1,38 @@
+<div class="all-prize-holder">
+   <div class="all-prize-header-holder">
+      Available Prize Options 
+   </div>   
+   <div id="possiblePrizeOptionsHolder" class="prize-list-holder"></div>         
+</div>
+
+<div id="PointsSpendConfirmationHolder" class="editor-form">
+   
+   <div class="form-holder">
+      <button class="btn-close btn-redeem-confirmation-close btn-close-x"><i class="fa fa-times"></i></button>
+      <div class="pointsredeem-confirmation">
+         <p>
+            You are about to spend <label id="confirmPrize_PrizePointCostLabel">8888</label> credits on:               
+         </p>
+         <div>
+            <div class="confirmPrize_PrizeImage">
+               <img id="confirmPrize_PrizeImage" />
+            </div>
+            
+               <label id="confirmPrize_PrizeName"></label><br>
+               <label id="confirmPrize_PrizeDesc"></label>
+
+         </div>
+         <p>
+            Are you sure you wish to spend these credits on that prize?
+         </p>
+      </div>
+
+      <div class="availablePrizeForm_btns">
+         <input type="hidden" id="confirmPrize_PrizeOptionId" />
+         <input type="hidden" id="confirmPrize_PrizePointCost" />
+         <button class="btn-large" id="btnConfirmPrizeRedeem">Yes</button>
+         &nbsp;&nbsp;
+         <button class="btn-close btn-redeem-confirmation-close btn-large">No</button>
+      </div>
+   </div>
+</div>

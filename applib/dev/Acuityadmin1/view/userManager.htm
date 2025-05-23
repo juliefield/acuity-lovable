@@ -1,0 +1,343 @@
+<div class="user-manager-app-manager-holder  basic-directive-holder">
+    <div class="user-manager-filters-holder top-filters">
+        Role:<select id="userManager_RoleFilter"></select>
+        Type:<select id="userManager_TypeFilter"></select>
+        <label resource="RESOURCE_TEXT_TEAM" defaultText="Team">Team</label>: <select id="userManager_TeamFilter"></select>
+        User First Name:<input type="text" id="userManager_firstNameFilter">
+        User Last Name: <input type="text" id="userManager_lastNameFilter">
+        User Status <select id="userManager_userStatus"></select>
+        &nbsp;&nbsp;
+        <button id="userManager_refresh"><i class="fa fa-filter"></i>Apply Filter</button>
+        &nbsp;&nbsp;
+        <button id="userManager_clearFilter">Clear Filter</button>
+
+    </div>
+    <br>
+    <div class="bottom-buttons">
+        <div class="filter-input-group">
+            <button id="btnAddNewUser" class="user-manager-btn-add-user btn button btn-add-new btn-large btn-green">
+                <i class="fas fa-plus"></i> Add New User
+            </button>
+        </div>
+    </div>
+    <div id="userDataHolder">
+        <div id="userListHeader" class="header-holder header-holder_entities header-holder_entities-users">
+            <div class="header-item user-id">User ID</div>
+            <div class="header-item user-name">Name</div>
+            <div class="header-item user-role">Role</div>
+            <div class="header-item user-team">
+                <label resource="RESOURCE_TEXT_TEAM" defaultText="Team">Team</label>
+            </div>
+            <div class="header-item user-type">Type</div>
+            <div class="header-item user-status">Status</div>
+            <div class="header-item user-buttons">Actions</div>
+        </div>
+        <div class="selection-holder large-holder">
+            <div id="userLoadingHolder" class="user-profile-information-loading-message">
+                <img src="../../../../applib/css/images/acuity-loading.gif" height="25px"><span
+                    id="userLoadingMessage"></span>
+            </div>
+            <div id="userListHolder" class="user-list-holder"></div>
+        </div>
+    </div>
+    <div id="editorLoadingPanel" class="editor-form">
+        <div class="form-holder-big">
+            <img src="../../../../applib/css/images/acuity-loading.gif" height="25px">
+            <label resource="USER_EDITOR_LOADING_USER_INFO" defaultText="Loading User editor..."></label>
+        </div>
+    </div>
+    <!--Editor Form START-->    
+    <div id="userEditorFormPanel" class="editor-form">
+        <div class="form-holder-big">
+            <button class="btn-close btn-close-x"><i class="fa fa-times"></i></button>
+            <div class="error-information-holder"></div>
+            <div class="two-col-flex">
+                <div class="column1of2p">
+                    <div>
+                        <div class="inline-item reset-pass-profile-btn">
+                            <div class="avatar-circle" style="width: 75px;height: 75px;">
+                                <img id="userAvatar" height="75"" >
+                            </div>
+                        </div>
+                        &nbsp;
+                        <div class="inline-item">                            
+                            <button id="btnResetPassword" class="button btn">Reset Password</button>
+                        </div>
+                    </div>
+                    <div class="user-manager-form_row">
+                        <div class="inline-item">User Id:</div>
+                        <input type="text" id="userId" />
+                        <span id="userIdValidCheckHolder"><i
+                                class="user-manager-user-id-available fas fa-check-circle"></i></span>
+                    </div>
+                    <div class="user-manager-form_row">
+                        <div class="inline-item">Employee Id</div>
+                        <input type="text" id="userEmployeeId" />
+                    </div>
+                    <div class="user-manager-form_row">
+                        <div class="inline-item">First Name</div>
+                        <input type="text" id="userFirstName" />
+                    </div>
+                    <div class="user-manager-form_row">
+                        <div class="inline-item">Last Name</div>
+                        <input type="text" id="userLastName" />
+                    </div>
+                    <div class="user-manager-form_row">
+                        <div class="inline-item">Role</div>
+                        <select id="userRole"></select>
+                    </div>
+                    <div class="user-manager-form_row">
+                        <div class="inline-item">Hire Date</div>
+                        <input type="text" id="userHireDate" class="user-manager-editor-hire-date datepicker" />
+                    </div>
+                    <div class="user-manager-form_row">
+                        <div class="inline-item">Inactive Date</div>
+                        <input type="text" id="userTermDate" class="user-manager-editor-inactive-date datepicker" />
+                    </div>
+                    <div class="user-manager-form_row">
+                        <div class="inline-item">Status</div>
+                        <select id="userStatus"></select>&nbsp;
+                        <span><label id="lblUserInactiveDate"></label></span>
+                    </div>
+                    <div class="user-manager-form_row">
+                        <div class="inline-item">Employee Type</div>
+                        <select id="userEmployeeType"></select>
+                    </div>
+                    <div class="user-manager-form_row">
+                        <div class="inline-item">Email Address</div>
+                        <input type="text" id="userEmailAddress" />
+                    </div>                    
+                    <div class="user-manager-form_row">
+                        <div class="inline-item">Created</div>
+                        <span id="userCreatedInfoHolder"></span>
+                    </div>
+                    <div class="user-manager-form_row">
+                        <div class="inline-item">Updated</div>
+                        <span id="userUpdatedInfoHolder"></span>
+                    </div>
+                </div>
+                <div class="column2of2p">
+                    <div class="tab-holder">
+                        <div class="tab-holder-item" id="userManagerFormTab_EmpId">Identifiers</div>
+                        <div class="tab-holder-item" id="userManagerFormTab_Location">Location</div>
+                        <div class="tab-holder-item" id="userManagerFormTab_Group">Group</div>
+                        <div class="tab-holder-item" id="userManagerFormTab_Team">Team</div>
+                        <div class="tab-holder-item" id="userManagerFormTab_Assisting">Assists</div>
+                        <div class="tab-holder-item" id="userManagerFormTab_Attributes">Attributes</div>
+                        <div class="tab-holder-item" id="userManagerFormTab_UserBudget">Budget</div>
+                        <div class="tab-holder-item" id="userManagerFormTab_UserStats">Stats</div>
+                    </div>
+                    <div class="tab-containers">
+                        <div id="userManager_TeamTabContainer">
+                            <div id="userTeamInfoHolder">
+                                <div class="current-user-team-holder">
+                                    <h5>Current Team</h5>
+                                    <button id="userManagerForm_ChangeUserTeam">Change Team</button>
+                                    <div id="currentUserTeamInfoHolder"></div>
+                                </div>
+                                <br />
+                                <div class="historical-user-team-holder">
+                                    <h5>Historical Team(s)</h5>
+                                    <div id="userTeamHistoryInfoHolder"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="userManager_EmployeeIdTabContainer">
+                            <div>
+                                <button id="btnGenerateDefaultEmpIds">Generate Defaults</button>
+                            </div>
+                            <div class="sub-item-header_flex">
+                                <div class="sub-item-header">Value</div>
+                                <div class="sub-item-header">Type</div>
+                                <div class="sub-item-header">Enter Date</div>
+                                <div class="sub-item-header" style="width: 45px;">Actions</div>
+                            </div>
+                            <div class="sub-item-header_flex">
+                                <div class="sub-item-inline-form-item-holder"><input type="text"
+                                        id="newEmployeeIdInput" /></div>
+                                <div class="sub-item-inline-form-item-holder"><select id="employeeTypeIdInput"></select>
+                                </div>
+                                <div class="sub-item-inline-form-item-holder">&nbsp;</div>
+                                <div class="sub-item-inline-form-item-holder" style="width: 33px;"><button
+                                        id="btnAddNewEmployeeId"><i class="fa-solid fa-save"></i></button></div>
+                            </div>
+                            <div id="employeeIdListHolder">
+                            </div>
+                        </div>
+                        <div id="userManager_AssistingTabContainer">
+                            <div>
+                                <div class="sub-item-header_flex" style="justify-content: space-between !important;">
+                                    <div class="sub-item-header">Team</div>
+                                    <div class="sub-item-header" style="width: 45px;">Actions</div>
+                                </div>
+                                <div class="sub-item-header_flex" style="justify-content: space-between !important;">
+                                    <div class="sub-item-inline-form-item-holder"><select id="userManager_AssistTeamInput"></select></div>
+                                    <div class="sub-item-inline-form-item-holder" style="text-align: right;"><button id="btnAddAssistTeamItem"><i class="fa-solid fa-save"></i></button></div>
+                                </div>                            
+                                <div id="employeeAssistTeamListHolder"></div>
+                            </div>
+                            <hr />
+                            <div>
+                                <div class="sub-item-header_flex" style="justify-content: space-between !important;">
+                                    <div class="sub-item-header">Group</div>
+                                    <div class="sub-item-header" style="width: 45px;">Actions</div>
+                                </div>
+                                <div class="sub-item-header_flex" style="justify-content: space-between !important;">
+                                    <div class="sub-item-inline-form-item-holder"><select id="userManager_AssistGroupInput"></select></div>
+                                    <div class="sub-item-inline-form-item-holder" style="text-align: right;"><button id="btnAddAssistGroupItem"><i class="fa-solid fa-save"></i></button></div>
+                                </div>                            
+                                <div id="employeeAssistGroupListHolder"></div>
+                            </div>
+                            <input type="hidden" id="userManager_UserId"/>
+                        </div>
+                        <div id="userManager_UserStatsTabContainer">                            
+                            <ng-entity-item-stats></ng-entity-item-stats>
+                        </div>
+                        <div id="userManager_UserBudgetTabContainer">
+                            <div id="userBudgetDollarsInfoHolder">
+                                <h3>Monetary</h3>
+                                <div class="list-header">
+                                    <div class="dollar-budget-item-holder earn-spend">&nbsp;</div>
+                                    <div class="dollar-budget-item-holder trans-desc">&nbsp;</div>
+                                    <div class="dollar-budget-item-holder trans-date">Date</div>
+                                    <div class="dollar-budget-item-holder trans-amount">Amount</div>
+                                </div>
+                                <div class="dollar-remaining-row">
+                                    <div class="dollar-budget-item-holder earn-spend"></div>
+                                    <div class="dollar-budget-item-holder trans-desc">Remaining</div>
+                                    <div class="dollar-budget-item-holder trans-date">
+                                        <label id="userBudgetDollarRemainingDate"></label>
+                                    </div>
+                                    <div class="dollar-budget-item-holder trans-amount">
+                                        <label id="userBudgetDollarRemainingAmount"></label>
+                                    </div>
+                                </div>
+                                <div id="userBudgetDollarsCurrentLedger"></div>
+                            </div>
+                        
+                            <div id="userBudgetCreditsInfoHolder">
+                                <h3>Acuity Credits</h3>
+                                <div class="list-header">
+                                    <div class="credit-budget-item-holder earn-spend">&nbsp;</div>
+                                    <div class="credit-budget-item-holder trans-desc">&nbsp;</div>
+                                    <div class="credit-budget-item-holder trans-date">Date</div>
+                                    <div class="credit-budget-item-holder trans-amount">Amount</div>
+                                </div>
+                                <div class="dollar-remaining-row">
+                                    <div class="credit-budget-item-holder earn-spend"></div>
+                                    <div class="credit-budget-item-holder trans-desc">Remaining</div>
+                                    <div class="dollar-budget-item-holder trans-date">
+                                        <label id="userBudgetCreditsRemainingDate"></label>
+                                    </div>
+                                    <div class="credit-budget-item-holder trans-amount">
+                                        <label id="userBudgetCreditsRemainingAmount"></label>
+                                    </div>
+                                </div>
+                                <div id="userBudgetCreditsCurrentLedger"></div>
+                                
+                            </div>
+                        </div>
+                        <div id="userManager_AttributesTabContainer">
+                            <div>
+                                <div class="sub-item-header_flex" style="justify-content: space-between !important;">
+                                    <div class="sub-item-header attribute-name">Assigned Attributes</div>
+                                    <!-- <div class="sub-item-header" style="width:45px;">Actions</div> -->
+                                </div>
+                                <div id="userAttributesListHolder"></div>
+                            </div>
+                        </div>
+                        <div id="userManager_UserLocationTabContainer">
+                            <div>
+                                Location Assigned by Group Here.
+                                <div id="userLocationAssignmentFormHolder">
+                                    <hr />
+                                    Location Assigned directly to user options here. (follow assist inputs)
+                                </div>
+                            </div>
+                        </div>
+                        <div id="userManager_UserGroupTabContainer">
+                            <div>
+                                <div class="sub-item-header_flex" style="justify-content: space-between !important;">
+                                    <div class="sub-item-header">Group</div>
+                                    <div class="sub-item-header" style="width: 45px;">Actions</div>
+                                </div>
+                                <div class="sub-item-header_flex" style="justify-content: space-between !important;">
+                                    <div id="userAssignedTeamGroupHolder"></div>
+                                </div>
+                               <div id="userGroupAssignmentFormHolder">
+                                    <hr />
+                                    <div class="sub-item-header_flex" style="justify-content: space-between !important;">
+                                        <div class="sub-item-inline-form-item-holder"><select id="userManager_AssignUserGroupInput"></select></div>
+                                        <div class="sub-item-inline-form-item-holder" style="text-align: right;"><button id="btnAddUserGroupItem"><i class="fa-solid fa-save"></i></button></div>
+                                    </div>
+                                    <div id="userAssignedGroupListHolder"></div>    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="badgeAdminForm_btns">
+                <input type="hidden" id="editorFormType" />
+                <button class="btn-large" id="btnSave">Save</button>
+                &nbsp;&nbsp;
+                <button class="btn-close btn-large">Close</button>
+            </div>
+        </div>
+    </div>
+    <!--Editor Form END-->
+    <!-- Password form start -->
+    
+    <div id="userEditorResetPasswordPanel" class="editor-form-password">
+        <div class="editor-popup">
+            <button id="btnCancelPassword" class="btn-close btn-close-x"><i class="fa fa-close"></i></button>
+            <div>
+                <input type="hidden" id="userResetPasswordUserId" />
+                <h3> Input the new password for <em><span id="userResetPasswordUserIdLabel"></span></em>: </h3>
+                <input type="password" id="userEditorResetPassword">
+            </div>
+            <div class="badgeAdminForm_btns">
+                <button id="btnSetPassword" class="button btn btn-large">Set Password</button>
+                <button id="btnCancelPassword" class="button btn btn-large">Cancel</button>
+            </div>
+        </div>    
+    </div>
+    <!-- Password form End -->
+    <!-- Change Team Form Start -->
+    <div id="userEditorChangeUserTeamAssignmentPanel" class="editor-form-change-user-team"> 
+        <div class="editor-popup">
+            <button id="btnCancelTeamAssignment" class="btn-close btn-close-x"><i class="fa fa-close"></i></button>
+            <div class="error-information-holder"></div>
+            <div>
+                <input type="hidden" id="userChangeTeamUserId" />
+                <input type="hidden" id="userChangeTeamCurrentTeamId" />
+                <h3>Set new team for user <em><span id="userChangeTeamUserIdLabel"></span></em>:</h3>
+                <p>Current Team: <em><span id="userChangeTeamCurrentUserTeamLabel"></span></em></p>
+                <p>New Team: <select id="userChangeTeamNewTeamSelector"></select></p>
+                <p>Start Date on New Team: <input type="text" id="userChangeTeamStartDate" class="user-change-team-start-date"></p>
+            </div>
+            <div class="badgeAdminForm_btns">
+                <button id="btnSaveUserAssignment" class="button btn btn-large"><i class="fas fa-save"></i> Save</button>
+                <button id="btnCancelTeamAssignment" class="button btn btn-large">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <!-- Change Team Form End -->
+    <!-- TERMINATE USER Form Start-->
+    <div id="userEditorTerminateUserPanel" class="editor-form-password">        
+        <div class="editor-popup">
+            <button id="btnCancelTermination" class="btn-close btn-close-x"><i class="fa fa-close"></i></button>
+            <div>
+                <input type="hidden" id="userTerminateUserId" />
+                 <h3>Inactivate User <em><span id="userTerminateUserNameLabel"></span></em></h3>
+                <p>Inactive As Of Date: <input type="text" id="userTerminateUserOnDate" class="user-terminate-date"></p>
+            </div>
+            <div class="badgeAdminForm_btns">
+                <button id="btnTerminateUserSave" class="button btn btn-large">Save</button>
+                <button id="btnCancelTermination" class="button btn btn-large">Cancel</button>
+            </div>
+        </div>    
+    </div>
+    <!-- TERMINATE USER Form End-->
+</div>

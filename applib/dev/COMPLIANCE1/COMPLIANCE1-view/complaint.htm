@@ -1,0 +1,62 @@
+<div class="form-complaint2" ng-repeat="f in form" ng-show="credentialed()">
+    <div class="form-box-group">
+        <div class="form-box-item"><label>Directory:</label><input type="text" ng-model="f.Directory" /><span class="form-box-required">*</span></div>
+        <div class="form-box-item"><label>Account#:</label><input type="text" ng-model="f.AccountNumber" /><span class="form-box-required">*</span></div>
+        <div class="form-box-item"><label>Name on account:</label><input type="text" ng-model="f.NameOnAccount" /></div>
+        <div class="form-box-item">
+            		<label style="float:left;">Client:</label>
+								<select style="width: 200px; float: left;" ng-change="clientchange()" ng-model="f.clientselection">
+                    <option value="" selected="selected"></option>
+                    <option ng-repeat="item in clientlist" ng-if="f.Project==item.projectid" value="{{item.clientname}}">
+                        {{item.clientname}}
+                    </option>
+								</select>
+            		<input type="text" style="display:none;width: 180px; margin-left: -199px; margin-top: 1px; border: none; float: left;" ng-disabled="readonly()"  ng-model="f.Group" />
+				</div>
+        <div class="form-box-item"><label>Client ACCT #:</label><input type="text" ng-model="f.GroupAccountNumber" /><span class="form-box-required">*</span></div>
+        <div class="form-box-item"><label>&nbsp;</label><label style="font-size: 10px;">* - Required Field</label></div>
+    </div>
+    <div class="form-box-group">
+        <div class="form-box-item"><label>Stage:</label>
+            <select ng-model="f.Project">
+                <option value="select" selected="selected">--Select--</option>
+                <option ng-repeat="item in projectlist" value="{{item.projectid}}">
+                    {{item.projectdesc}}
+                </option>
+                <option value="0">Non-CSR</option>
+            </select><span class="form-box-required">*</span>
+        </div>
+        <div class="form-box-item"><label>Agent:</label>
+            <select ng-change="changeAgent()" ng-model="f.Agent" >
+                <option ng-repeat="item in userlist" ng-if="f.Project==item.projectid" value="{{item.user_id}}">
+                    {{item.name + ' (' + item.CLOCKID + ')'}}
+                </option>
+            </select><span class="form-box-required">*</span>
+        </div>
+        <div class="form-box-item"><label>Supervisor:</label>
+            <select ng-model="f.Supervisor">
+                <option ng-repeat="item in userlist" ng-if="item.role != 'CSR'" value="{{item.user_id}}">
+                    {{item.name + ' (' + item.CLOCKID + ')'}}
+                </option>
+            </select><span class="form-box-required">*</span>
+        </div>
+        <div class="form-box-item"><label>Manager:</label>
+            <select ng-model="f.Manager">
+                <option ng-repeat="item in userlist" ng-if="item.role != 'CSR'" value="{{item.user_id}}">
+                    {{item.name + ' (' + item.CLOCKID + ')'}}
+                </option>
+            </select>
+        </div>
+        <div class="form-box-item"><label>Complaint Date:</label><input type="text" style="text-align: center;" dynamic-ui ng-model="f.Complaintdate" /><span class="form-box-required">*</span></div>
+    </div>
+
+    <div style="clear:both;">&nbsp;</div>
+
+    <p>Complaint:<span class="form-box-required">*</span></p>
+    <textarea style="width: 800px; height: 200px;" ng-model="f.Complaint"></textarea>
+    <div style="clear:both;">&nbsp;</div>
+
+    <button type="button" class="btn btn-xs btn-success" style="font-size:10px;" ng-click="queueagent(false)" ng-show="agentSelected()">Queue Agent/Call for Monitoring</button>
+    &nbsp;&nbsp;<button type="button" class="btn btn-xs btn-success" style="font-size:10px;" ng-click="queueagent(true)" ng-show="agentSelected()">Monitor Agent/Call Now</button>
+
+</div>

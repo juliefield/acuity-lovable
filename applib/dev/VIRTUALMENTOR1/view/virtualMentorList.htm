@@ -1,0 +1,91 @@
+<div class="virtual-mentor-holder">
+   <div>
+      <div>
+         <button class="button btn" id="currentUserIgnoreListButton">Current User Ignore List</button>
+         &nbsp;
+         <button class="button btn" id="refreshList">Refresh List</button>
+      </div>
+      <div class="header-holder">         
+         <div class="virtual-mentor-list-item header-item user-name">User</div>
+         <div class="virtual-mentor-list-item header-item option-scoring-data">Scoring Info</div>
+         <div class="virtual-mentor-list-item header-item button-holder">Action</div>
+      </div>
+      <div class="list-holder">
+         <div id="virtualMentorLoader" class="virtual-mentor-information-loading-message">
+            <img src="../../../../applib/css/images/acuity-loading.gif" height="25px"><span
+               id="virtualMentorLoadingMessage">Loading Virtual Mentor....</span>
+         </div>
+         <div id="virtualMentorListHolder"></div>
+      </div>
+   </div>
+   <!--Add Task Form START-->
+   <div id="virtualMentorAddTaskForm" class="form-holder">
+      <div class="form-header">
+         <button class="button btn btn-close"><i class="fa fa-close"></i></button>
+      </div>
+      <div class="form-body">
+         <div>
+            <label>Task Due Date</label>
+            <input type="text" id="taskDate">
+         </div>
+         <div>
+            <label>Message/Desc</label>
+            <textarea id="taskDesc" maxlength="1000"></textarea>
+         </div>
+      </div>
+      <div class="form-footer">
+         <div class="button-holder">
+            <input type="hidden" id="taskForAgent" />
+            <input type="hidden" id="suggestionId" />
+            <button id="btnSaveAddTaskForm">Save</button>
+            <button class="button btn btn-close">Cancel</button>
+         </div>
+      </div>
+   </div>
+   <!--Add Task Form END-->
+   <!--Ignore Form START-->
+   <div id="virtualMentorIgnoreForm" class="form-holder">
+      <div class="form-header">
+         <button class="button btn btn-close"><i class="fa fa-close"></i></button>
+      </div>
+      <div class="form-body">
+         <div>
+            <label>Name:</label>
+            <label id="ignoreUserIdLabel"></label>
+            <input type="hidden" id="ignoreUserId">
+         </div>
+         <div>
+            <label>Ignore suggestions for user until:</label>
+            <br />
+            <input type="text" id="ignoreUntilDate" />
+         </div>
+      </div>
+      <div class="form-footer">
+         <div class="button-holder">
+            <button id="btnSaveIgnoreForm">Save</button>
+            <button class="button btn btn-close">Cancel</button>
+         </div>
+      </div>
+   </div>
+   <!--Ignore Form END-->
+   <!--Current User Ignore List START-->
+   <div id="virtualMentorCurrentIgnoreListHolder" class="form-holder">
+      <div>
+         <button class="button btn btn-close-ignore-list"><i class="fa fa-close"></i></button>
+      </div>
+      <div>
+         <div>
+            <div class="virtual-mentor-list-item header-item user-name">User</div>
+            <div class="virtual-mentor-list-item header-item ignore-until-date">Ignored Until</div>
+            <div class="virtual-mentor-list-item header-item button-holder">Action</div>
+         </div>
+         <div id="virtualMentorCurrentIgnoreList"></div>
+      </div>
+      <div>
+         <button class="button btn" id="clearIgnoreListButton">Clear User Ignore List</button>
+         &nbsp;&nbsp;
+         <button class="button btn btn-close-ignore-list">Close</button>
+      </div>
+   </div>
+   <!--Current User Ignore List END-->
+</div>

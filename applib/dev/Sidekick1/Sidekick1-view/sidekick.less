@@ -1,0 +1,303 @@
+@width: 100%;
+@height: 400px;
+@auto-height: auto;
+@position: relative;
+[nv=";sidekick;sidekick/summary"] {
+    width: @width;
+    height: @auto-height;
+    position: @position;
+    .table-topper_toggle {
+        a,
+        span {
+            display: inline-block;
+            text-decoration: none;
+        }
+        .btn-img {
+            width: 50px;
+            top: -16px;
+            left: 6px;
+            position: relative;
+            float: none;
+            &:after {
+                content: "";
+                background-color: #fff;
+                height: 24px;
+                width: 42px;
+                position: absolute;
+                z-index: 2;
+                -webkit-border-radius: 12px;
+                border-radius: 12px;
+                top: -1px;
+                left: -2px;
+            }
+            .fa {
+                position: absolute;
+                z-index: 3;
+                color: #0092ce;
+                font-size: 21px;
+                top: 1px;
+                left: 1px;
+            }
+            &.left .fa {
+                left: 1px;
+            }
+            &.right .fa {
+                right: 13px;
+            }
+        }
+    }
+    [nv="default:;default:sidekick;default:sidekick/summary;sidekick/summary/process"] {
+        width: @width;
+        height: @auto-height;
+        position: @position;
+        #summary-process-wrap {
+            width: @width;
+            height: @auto-height;
+            position: @position;
+            [id^="acuity-report"] {
+                width: @width;
+                height: @height;
+                position: @position;
+            }
+        }
+    }
+    #agent-selection {
+        padding: 1em;
+        #recommendations,
+        #sortBy {
+            display: inline-block;
+        }
+        #recommendations {
+            #number,
+            p {
+                display: inline-block;
+                vertical-align: middle;
+            }
+            #number {
+                background-color: #d0021b;
+                color: #fff;
+                @dimension: 32px;
+                width: @dimension;
+                height: @dimension;
+                line-height: @dimension;
+                -webkit-border-radius: @dimension;
+                border-radius: @dimension;
+                text-align: center;
+                font-weight: bold;
+                margin-right: 8px;
+            }
+            p {
+                font-size: 1.5em;
+            }
+        }
+        #sortBy {
+            float: right;
+            content: "";
+            label {
+                margin-block-end: 20px;
+                margin-block-start: 20px;
+                display: inline-block;
+                font-weight: bold;
+            }
+            select {
+                option {}
+            }
+        }
+        &:after {
+            clear: both;
+        }
+    }
+    [nv="sidekick/summary/performance"] {
+        width: @width;
+        height: @height;
+        position: @position;
+    }
+    #agent-selection {
+        width: @width;
+        height: @auto-height;
+        position: @position;
+    }
+    #one-on-one-modal {
+        .header {
+            #title {}
+            #identity {
+                text-align: right;
+                img,
+                span {
+                    vertical-align: middle;
+                    margin: .333em;
+                    margin-right: 0;
+                }
+                img {
+                    width: 32px;
+                }
+            }
+        }
+        .content {
+            #buttons {
+                text-align: right;
+            }
+            #datepicker {
+                [data-tooltip] {
+                    &:before,
+                    &:after {
+                        display: none;
+                    }
+                }
+                .datepicker-wrapper {
+                    .month-wrapper {
+                        .day {}
+                    }
+                }
+            }
+        }
+        .confirmation-message {
+            text-align: center;
+            h1 {
+                padding: 3em;
+            }
+        }
+    }
+}
+
+[nv="self-evaluation"] {
+    border: none;
+    // background: #000;
+    display: block;
+    width: 100%;
+    height: 1px;
+    .ng-hide:not(.ng-hide-animate) {
+        transition: all linear 500ms;
+        opacity: 0;
+        /*display: block !important;*/
+        height: 0px;
+        padding: 0px !important;
+        margin: 0px !important;
+    }
+    .wrapper {
+        .section-header {}
+        .content {
+            .row {
+                margin-bottom: 1em;
+            }
+            #selfEvalForm,
+            #agent-list {
+                /*display: none;*/
+            }
+            #selfEvalForm {
+                .avatar {
+                    width: 32px;
+                    vertical-align: middle;
+                    margin-right: .333em;
+                }
+                margin: 1.4em 1em;
+                label,
+                textarea,
+                select {
+                    display: block;
+                }
+                textarea[disabled] {
+                    color: #000;
+                }
+                label {
+                    margin-top: 0;
+                }
+                textarea {
+                    width: 100%;
+                    height: 8em;
+                }
+                #self-evaluation {
+                    #sub-self-evaluation {
+                        .row {
+                            label {}
+                            textarea {}
+                        }
+                    }
+                }
+                #head-peer-recognition,
+                #sub-peer-recognition {
+                    td {
+                        vertical-align: top;
+                    }
+                }
+                #sub-peer-recognition {
+                    >.row {
+                        &:first-child {
+                            margin-bottom: 0;
+                        }
+                        h3,
+                        button {
+                            display: inline-block;
+                        }
+                        >.col {
+                            display: inline-block;
+                            margin-right: .666em;
+                            &last-of-type,
+                            &:nth-last-of-type(2) {
+                                margin-right: 0;
+                            }
+                            label {}
+                            select {
+                                option {}
+                            }
+                            a.btn-delete {
+                                color: inherit;
+                                padding: 7.62px 9px;
+                                display: block;
+                                position: relative;
+                                top: -1px;
+                            }
+                        }
+                    }
+                }
+                #supervisor-evaluation>.row {
+                    margin-bottom: 0;
+                }
+                #confirmation-message {
+                    color: #fff;
+                    text-align: center;
+                    background-color: #019F01;
+                    padding: 1em;
+                    border-radius: 8px;
+                    font-size: 1.5em;
+                    .close {
+                        position: absolute;
+                        right: 30px;
+                        background: none;
+                        padding: 8px;
+                        margin: 0;
+                        border: none;
+                        top: 36px;
+                        i.fa {
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+            #agent-list {
+                padding: 1em;
+                ul {
+                    li {
+                        margin: .5em 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*temp for dev; delete later;*/
+
+/*
+[nv=";sidekick;sidekick/summary"],
+[nv="default:;default:sidekick;default:sidekick/summary;sidekick/summary/process"],
+[nv="sidekick/summary/performance"],
+#summary-process-wrap {
+    border: 1px solid #ccc;
+    padding: 1em;
+}
+*/
+
+[nv="default:;default:sidekick;default:sidekick/summary;sidekick/summary/process"] {
+    /* display: none !important; */
+}

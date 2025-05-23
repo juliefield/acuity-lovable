@@ -1,0 +1,54 @@
+<div class="rpt-popup-background">
+  <div class="rpt-popup-sizer form-popup">
+    <div class="rpt-dismiss form-popup_dismiss" ng-click="dismissform()"><i class="fa fa-close"></i></div>
+    <div class="rpt-popup form-popup_content">
+      <div class="rpt-form">
+        <h1>Attendance Entry Form</h1>
+        <div class="form-popup_info-fields">
+          <div class="form-popup_user-info">
+            <p><b>User:</b> {{f.User}}</p>
+            <p><b>Specialist:</b> {{f.User}}</p>
+          </div>
+          <div class="form-popup_input-fields">
+            <p class="form-popup_twocol">
+              <b>Date:</b>
+              <input dynamic-ui type="text" ng-model="f.Date" placeholder="mm/dd/yyyy" />
+            </p>
+            <p class="form-popup_twocol">
+              <b>Occurrence:</b>
+              <input class="bgr-occurrence" dynamic-ui type="text" ng-model="f.Occurrence" />
+            </p>
+
+            <p class="form-popup_twocol">
+              <b>Arrival Time:</b>
+              <input dynamic-ui type="text" ng-model="f.ArrivalTime" />
+            </p>
+            <p class="form-popup_twocol">
+              <b>Departure Time:</b>
+              <input dynamic-ui type="text" ng-model="f.DepartureTime"  />
+            </p>
+            <p class="form-popup_twocol">
+              <b>Notification Time:</b>
+              <input dynamic-ui type="text" ng-model="f.NotificationTime"  />
+            </p>
+            <p><b>Reason:</b><br />
+              <textarea class="bgr-reason-text" ng-model="f.Reason" rows="4" cols="70"></textarea>
+              <select class="bgr-reason-select" style="display:none;"></select>
+            </p>
+            <p><b>Comments:</b><br />
+              <textarea ng-model="f.Comments" rows="4" cols="50"></textarea>
+            </p>
+            <p>
+              <b>Action Taken:</b>
+              <input class="bgr-action" dynamic-ui type="text" ng-model="f.ActionTaken" />
+            </p>
+            <div class="clearfix"></div>
+            <p ng-show="f.User==''"><b>No user selected, select one from the filters.</b></p>
+            <button type="button" class="btn btn-blue btn-xs btn-noborder btn-pullright" ng-show="$parent.formedit" ng-disabled="f.User == ''" ng-click="submitform()">Submit</button>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

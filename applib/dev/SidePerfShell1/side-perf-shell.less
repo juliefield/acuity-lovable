@@ -1,0 +1,72 @@
+body[ng-controller="sideperfController"] {
+	.hover-transition() {
+		-webkit-transition: all .3s ease;
+		-moz-transition: all .3s ease;
+		-ms-transition: all .3s ease;
+		-o-transition: all .3s ease;
+		transition: all .3s ease;
+	}
+
+	.center-horz-vert() {
+		top: 50%;
+		left: 50%;
+		-moz-transform: translateX(-50%) translateY(-50%);
+		-webkit-transform: translateX(-50%) translateY(-50%);
+		-o-transform: translateX(-50%) translateY(-50%);
+		-ms-transform: translateX(-50%) translateY(-50%);
+		transform: translateX(-50%) translateY(-50%);
+	}
+	overflow:auto;
+	#side-perf-shell {
+		position: relative;
+		padding:1em;
+		.modal-underlay {
+		    position: absolute;
+		    z-index: 9990;
+		    top: 0;
+		    right: 0;
+		    bottom: 0;
+		    left: 0;
+		    background: rgba(0,0,0,.66);
+		    display: block;
+		}
+		.modal-wrapper {
+			position: fixed;
+			max-height: calc(100% - 100px);
+			z-index: 9991;
+			padding:1em 2em 2em;
+			background:#fff;
+			@border-radius:8px;
+		    -webkit-border-radius: @border-radius;
+		    border-radius: @border-radius;
+		    @box-shadow: 0 0 4px 0 rgba(0,0,0,.5);
+		    -webkit-box-shadow:@box-shadow;
+		    box-shadow: @box-shadow;
+		    top:50%;
+	    	left:50%;
+	    	-moz-transform: translate(-50%,-50%);
+	    	-webkit-transform: translate(-50%,-50%);
+	    	-o-transform: translate(-50%,-50%);
+	    	-ms-transform: translate(-50%,-50%);
+	    	transform: translate(-50%,-50%);
+		    .btn-modal-close {
+		        position: absolute;
+		        right: 12px;
+		        top: 12px;
+		        .fa {
+		        	font-size:24px;
+		        }
+		    }
+		}
+	}
+	.ui-timepicker-container {
+		width: auto !important;
+		.ui-timepicker {
+			.ui-timepicker-viewport {
+				.ui-menu-item {
+					text-align:left;
+				}
+			}
+		}		
+	}
+}

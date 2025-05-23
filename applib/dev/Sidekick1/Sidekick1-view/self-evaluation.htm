@@ -1,0 +1,139 @@
+<div class="pure-g">
+	<div class="wrapper">
+		<div class="pure-u-1-1 section-header">
+			<h2>Agent Evaluation</h2>
+		</div>
+		<div class="pure-u-1-1 content">
+			<form name="selfEvalForm" id="selfEvalForm" class="pure-form" ng-show="self_eval_toggle && agentId">
+				<div id="confirmation-message" ng-init="evalSaved = false" ng-show="evalSaved" class="fade">
+					Evaluation Saved <button type="button" ng-click="evalSaved = false" class="close"><i
+							class="fa fa-times-circle" aria-hidden="true"></i></button>
+				</div>
+				<div id="self-evaluation">
+					<div class="section" id="sub-self-evaluation">
+						<h3><img src="{{agentAvatar}}" alt="{{agentFullName}} Avatar" class="avatar"/> {{agentFullName}}'s Self
+							Evaluation ({{review.selected.agent_id}})</h3>
+						<div class="pure-g">
+
+							<!-- <div class="pure-u-1-1">
+<pre>
+<small>self_eval_toggle: {{self_eval_toggle | json}}</small>
+<small>agentFlag: {{agentFlag | json}}</small>
+<small>supervisorFlag: {{supervisorFlag | json}}</small>
+<small>viewFlag: {{viewFlag | json}}</small>
+<small>editFlag: {{editFlag | json}}</small>
+<small>otherFlag: {{otherFlag | json}}</small>
+<small>createFlag: {{createFlag | json}}</small>
+<small>last_review_flag: {{last_review_flag | json}}</small>
+<small>user_flag: {{user_flag | json}}</small>
+<small>agentId: {{agentId | json}}</small>
+<small>supervisorId: {{supervisorId | json}}</small>
+<small>review.selected.evaluation.supervisor: {{review.selected.evaluation.supervisor |json}}</small>
+</pre>
+							</div> -->
+							<div class="row pure-u-1-1" ng-repeat="r in review.selected.evaluation.self">
+								<label for="agentAnswers[$index]">{{r.ques}}</label>
+								<input type="hidden" value="{{r.id}}" ng-model="r.id" />
+								<textarea name="agentAnswers[$index]" ng-model="r.ans" class="form-control"
+									ng-disabled="!agentFlag" required></textarea>
+							</div>
+						</div>
+					</div>
+					<!-- Supervisor Peer Recognition View -->
+					<div ng-if="!showPeerRecognition" id="head-peer-recognition">
+						<h3>Peer Recognition</h3>
+						<table class="pure-table pure-table-horizontal">
+							<thead>
+								<tr>
+									<td ng-repeat="r in peerRecognitionHead">{{r}}</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="q in peerRecognition">
+									<td>{{getUserName(q.to_user_id,"agent","last")}}</td>
+									<td>{{q.rec_type}}</td>
+									<td>{{q.rec_val}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!-- end Supervisor Peer Recognition View -->
+					<!-- Agent/Self Peer Recognition View -->
+					<div class="section pure-form pure-form-stacked" id="sub-peer-recognition"
+						ng-if="showPeerRecognition">
+						<div class="row">
+							<h3>Peer Recognition</h3>
+							<button type="button" class="pure-button " id="btn-add-recognition" ng-click="addRow()"><i
+									class="fa fa-plus"></i> Add a New Peer Recognition</button>
+						</div>
+						<div class="row" ng-repeat="q in peerRecognition">
+							<div class="col">
+								<label for="to{{$index}}">Select Peer</label>
+								<select name="to{{$index}}" ng-model="q.to_user_id" class="form-control" required>
+									<option value="" disabled selected>Select</option>
+									<option ng-repeat="r in peer_teammates | orderBy: 'lastnm'" value="{{r.uid}}">
+										{{getUserName(r.uid,"agent","last") }}</option>
+								</select>
+							</div>
+							<div class="col">
+								<label for="recognitionType{{$index}}">Select Recognition Type</label>
+								<select name="recognitionType{{$index}}" ng-model="q.rec_type" class="form-control"
+									required>
+									<option value="" disabled selected>Select</option>
+									<option ng-repeat="r in recognitionType" value="{{r}}">{{r}}</option>
+								</select>
+							</div>
+							<div class="col">
+								<label>Select Recognition</label>
+								<select name="recognitionValue{{$index}}" ng-model="q.rec_val" class="form-control"
+									required>
+									<option value="" disabled selected>Select</option>
+									<option ng-repeat="r in recognitionValue" value="{{r}}">{{r}}</option>
+								</select>
+							</div>
+							<div class="col">
+								<label>&nbsp;</label>
+								<a href="#self-evaluation" class="btn-delete" title="Delete Peer Recognition"
+									ng-click="deleteRow($index)"><i class="fa fa-trash" aria-hidden="true"></i></a>
+							</div>
+						</div>
+					</div>
+					<!-- end Agent/Self Peer Recognition View -->
+				</div>
+				<hr />
+				<div id="supervisor-evaluation">
+					<h3><img src="{{supervisorAvatar}}" alt="{{supervisorFullName}} Avatar" ng-hide="otherFlag" class="avatar"/>
+						{{supervisorFullName}}'s Evaluation for {{agentFullName}}</h3>
+					<div class="pure-g row">
+						<div class="row pure-u-1-1" ng-repeat="r in review.selected.evaluation.supervisor">
+							<label for="supervisorAnswers[$index]">{{r.ques}}</label>
+							<input type="hidden" value="{{r.id}}" ng-model="r.id" />
+							<textarea name="supervisorAnswers[$index]" ng-model="r.ans" class="form-control"
+								ng-disabled="agentFlag || otherFlag" required></textarea>
+						</div>
+					</div>
+				</div>
+				<div class="pure-u-1-1">
+					<button type="submit" class="pure-button pure-button-primary" ng-click="save_evaluation()"
+						ng-hide="otherFlag">Submit Evaluation</button>
+				</div>
+			</form>
+			<div id="agent-list" ng-hide="self_eval_toggle && agentId">
+				<div>
+					<p>Click the username of a {{agentRoleLabel}} to create or update an agent evaluation.</p>
+					<ul>
+						<li ng-repeat="r in teammates | orderBy: 'lastnm'">
+							<a href="#self-evaluation" ng-click="$parent.load_self_eval(r.uid);">{{r.fullnm}}
+								({{r.uid}})</a>
+						</li>
+					</ul>
+				</div>
+				<div>
+					<p ng-if="review.selected.review_id"><a href="#performance-review" >Click here</a> for {{agentFullName}}'s performance
+					review.</p>
+					<p ng-if="!review.selected.review_id">There is not a current review for {{agentFullName}}.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
